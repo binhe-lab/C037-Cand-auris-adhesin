@@ -24,10 +24,18 @@ wrap multiple lines of code with three backsticks
 
 # 2020-01-29 FungalRV prediction for B11221
 1. Divided proteome fasta file into two by the following command
-    `command`
-2. Submit the split files to [FungalRV](fungalrv link)
+    `split -l #oflines filename`
+2. Submit the split files to [FungalRV](fungalrv.igib.res.in/query.php)
 3. Output saved as csv files in `output/FungalRV` folder
 
 _Next_
 1. use the output from FungalRV to extract the subset of hits into new fasta
-2. submit the hits to Fas...
+`cat B11221_2_fungalRV.txt | awk '{print $1}' > B11221_2_fungalRV_IDs.txt
+# isolate IDs from FungalRV predicted adhesins list`
+`awk '/^>/ {printf("%s%s\t",(N>0?"\n":""),$0);N++;next;} {printf("%s",$0);} END {printf("\n");}' B11221_2.fasta > B11221_2_linear.txt
+# linearize fasta file`
+`while read IDS ; do grep "\b$IDS\b" B11221_2_linear.txt ; done < B11221_2_fungalRV_IDs.txt > B11221_2_linear_filtered.txt
+# Filter out the predicted adhesins from FungalRV based on ID`
+`cat B11221_2_linear_filtered.txt | tr '\t' '\n' > B11221_2_filtered.fasta 
+# rewrap the sequences`
+2. submit the hits to Faapred
