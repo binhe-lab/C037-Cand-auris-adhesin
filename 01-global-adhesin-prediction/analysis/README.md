@@ -30,12 +30,12 @@ wrap multiple lines of code with three backsticks
 
 _Next_
 1. use the output from FungalRV to extract the subset of hits into new fasta
-`cat B11221_2_fungalRV.txt | awk '{print $1}' > B11221_2_fungalRV_IDs.txt
-# isolate IDs from FungalRV predicted adhesins list`
-`awk '/^>/ {printf("%s%s\t",(N>0?"\n":""),$0);N++;next;} {printf("%s",$0);} END {printf("\n");}' B11221_2.fasta > B11221_2_linear.txt
-# linearize fasta file`
-`while read IDS ; do grep "\b$IDS\b" B11221_2_linear.txt ; done < B11221_2_fungalRV_IDs.txt > B11221_2_linear_filtered.txt
-# Filter out the predicted adhesins from FungalRV based on ID`
-`cat B11221_2_linear_filtered.txt | tr '\t' '\n' > B11221_2_filtered.fasta 
-# rewrap the sequences`
+1.  isolate IDs from FungalRV predicted adhesins list
+`cat B11221_2_fungalRV.txt | awk '{print $1}' > B11221_2_fungalRV_IDs.txt`
+1. linearize fasta file
+`awk '/^>/ {printf("%s%s\t",(N>0?"\n":""),$0);N++;next;} {printf("%s",$0);} END {printf("\n");}' B11221_2.fasta > B11221_2_linear.txt`
+1. Filter out the predicted adhesins from FungalRV based on ID
+`while read IDS ; do grep "\b$IDS\b" B11221_2_linear.txt ; done < B11221_2_fungalRV_IDs.txt > B11221_2_linear_filtered.txt`
+1. rewrap the sequences
+`cat B11221_2_linear_filtered.txt | tr '\t' '\n' > B11221_2_filtered.fasta` 
 2. submit the hits to Faapred
