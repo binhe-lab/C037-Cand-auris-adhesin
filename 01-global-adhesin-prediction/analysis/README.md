@@ -26,16 +26,27 @@ wrap multiple lines of code with three backsticks
 1. Divided proteome fasta file into two by the following command
     `split -l #oflines filename`
 2. Submit the split files to [FungalRV](fungalrv.igib.res.in/query.php)
+    No parameters are needed for this tool.
 3. Output saved as csv files in `output/FungalRV` folder
 
-_Next_
-1. use the output from FungalRV to extract the subset of hits into new fasta
-1.  isolate IDs from FungalRV predicted adhesins list
-`cat B11221_2_fungalRV.txt | awk '{print $1}' > B11221_2_fungalRV_IDs.txt`
+# 2020-01-30 Extract the fasta sequences for FungalRV predicted adhesins
+_Goal_
+
+- Take FungalRV predicted adhesin sequences and run them through the second prediction algorithm [FaaPred](http://bioinfo.icgeb.res.in/faap/)
+- The positive hits from FaaPred will be our primary set for analysis
+
+_Task_
+
+Use the output from FungalRV to extract the subset of hits into new fasta (thanks Yann for help with these commands!)
+1. isolate IDs from FungalRV predicted adhesins list
+    `cat B11221_2_fungalRV.txt | awk '{print $1}' > B11221_2_fungalRV_IDs.txt`
 1. linearize fasta file
-`awk '/^>/ {printf("%s%s\t",(N>0?"\n":""),$0);N++;next;} {printf("%s",$0);} END {printf("\n");}' B11221_2.fasta > B11221_2_linear.txt`
+    `awk '/^>/ {printf("%s%s\t",(N>0?"\n":""),$0);N++;next;} {printf("%s",$0);} END {printf("\n");}' B11221_2.fasta > B11221_2_linear.txt`
 1. Filter out the predicted adhesins from FungalRV based on ID
-`while read IDS ; do grep "\b$IDS\b" B11221_2_linear.txt ; done < B11221_2_fungalRV_IDs.txt > B11221_2_linear_filtered.txt`
+    `while read IDS ; do grep "\b$IDS\b" B11221_2_linear.txt ; done < B11221_2_fungalRV_IDs.txt > B11221_2_linear_filtered.txt`
 1. rewrap the sequences
-`cat B11221_2_linear_filtered.txt | tr '\t' '\n' > B11221_2_filtered.fasta` 
-2. submit the hits to Faapred
+    `cat B11221_2_linear_filtered.txt | tr '\t' '\n' > B11221_2_filtered.fasta` 
+1. submit the hits to Faapred
+
+# 2020-02-04 HB, tried to put the commands above together in a shell script
+Check out the `script` folder.
