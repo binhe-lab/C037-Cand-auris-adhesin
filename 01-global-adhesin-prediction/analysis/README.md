@@ -50,3 +50,8 @@ Use the output from FungalRV to extract the subset of hits into new fasta (thank
 
 # 2020-02-04 HB, tried to put the commands above together in a shell script
 Check out the `script` folder.
+
+# 2020-02-09 Faapred prediction for B11221 and B8441
+1. Divided positive hits from FungalRV into files with 25 or less sequences (requirement of Faapred) 
+1. Submit files to Faapred using default parameters, ACHM model with a threshold of -0.8
+1. Output saved in `output/Faapred` folder
