@@ -1,0 +1,24 @@
+function(fungalrv_file, linear_fasta, species) {
+    require(data.table)
+    require(tidyverse)
+    require(dplyr)
+    library(readr)
+    rv_table <- read.delim(fungalrv_file, sep = "\t" , skip = 2, strip.white = TRUE, blank.lines.skip = TRUE, colClasses = "character")
+    fasta_table <- read.delim(linear_fasta, sep = ";", header = FALSE, skip = 0, strip.white = TRUE,blank.lines.skip = TRUE, colClasses = "character")
+    names(fasta_table)[1] <- "long_fasta"
+    rv_table <- as.data.table(rv_table)
+    fasta_table <- as.data.table(fasta_table)
+    for (i in 1:nrow(rv_table)){
+        split <- str_split(rv_table[i,1], "\\s")
+        rv_table[i, short_string:=split[[1]][1]]
+    }
+    for (i in 1:nrow(fasta_table)){
+        split <- str_split(fasta_table[i,1], "\\s")
+        fasta_table[i, short_string:=split[[1]][1]]
+    }
+    joined_table <- as.data.table(left_join(rv_table, fasta_table, by = "short_string"))
+    joined_table[, Score:=as.numeric(Score)]
+    filtered_table <- as.data.table(joined_table[Score>0,long_fasta])
+    fwrite(filtered_table, file = paste(species, "linear_filtered.txt", sep = "_"), col.names = FALSE, quote = FALSE)
+    return(joined_table)
+}
