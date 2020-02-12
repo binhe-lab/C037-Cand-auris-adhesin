@@ -55,3 +55,14 @@ Check out the `script` folder.
 1. Divided positive hits from FungalRV into files with 25 or less sequences (requirement of Faapred) 
 1. Submit files to Faapred using default parameters, ACHM model with a threshold of -0.8
 1. Output saved in `output/Faapred` folder
+
+
+# 2020-02-12 FungalRV and FaaPred predictions for *C. albicans* and *C. glabrata*
+1. Downloaded RefSeq protein sequences from NCBI on 11 Feb 2020
+2. Ran entire proteomes through FungalRV, downloaded all results
+3. Followed process outlined in shell script to filter the results **but** the filter step did not work; it returned all of the sequences. Wrote a function in R to do the same thing (recorded in `script` folder)
+4. Returned results with Score > 0 for each species, results in `output/FungalRV` folder
+5. Divided positive predictions into 25 sequences each with split command above and ran through FaaPred, default ACHM model with a threshold of -0.8
+6. Returned results for SVM Score > -0.8 (done in R `left_join` on accession number to the tables returned in previous R function) results in `output/Faapred` folder
+
+Note that I have the full table in R with all of the FungalRV and FaaPred scores if we ever decide we want to change our cutoffs.
