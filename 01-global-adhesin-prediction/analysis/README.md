@@ -68,6 +68,6 @@ Check out the `script` folder.
 Note that I have the full table in R with all of the FungalRV and FaaPred scores if we ever decide we want to change our cutoffs.
 
 # 2020-02-13 Signal peptides predicted using Phobius for all strains
-1. Uploaded Faapred output fasta files for each strain to Phobius web server using short output format
+1. Uploaded Faapred output fasta files for each strain to [Phobius](http://phobius.sbc.su.se/index.html) using short output format
 1. Filtered sequences with predicted signal peptides
 1. Output saved in `output/SignalPeptide`
