@@ -66,3 +66,8 @@ Check out the `script` folder.
 6. Returned results for SVM Score > -0.8 (done in R `left_join` on accession number to the tables returned in previous R function) results in `output/Faapred` folder
 
 Note that I have the full table in R with all of the FungalRV and FaaPred scores if we ever decide we want to change our cutoffs.
+
+# 2020-02-13 Signal peptides predicted using Phobius for all strains
+1. Uploaded Faapred output fasta files for each strain to Phobius web server using short output format
+1. Filtered sequences with predicted signal peptides
+1. Output saved in `output/SignalPeptide`
