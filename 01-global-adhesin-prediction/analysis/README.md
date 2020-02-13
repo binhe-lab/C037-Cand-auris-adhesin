@@ -71,3 +71,7 @@ Note that I have the full table in R with all of the FungalRV and FaaPred scores
 1. Uploaded Faapred output fasta files for each strain to [Phobius](http://phobius.sbc.su.se/index.html) using short output format
 1. Filtered sequences with predicted signal peptides
 1. Output saved in `output/SignalPeptide`
+
+# 2020-02-13 GPI anchors predicted using GPI-som for all strains
+1. Uploaded Faapred output fasta files for each strain to [GPI-som](http://genomics.unibe.ch/cgi-bin/gpi.cgi)
+1. Saved GPI anchored sequences in `output/GPIanchor`
