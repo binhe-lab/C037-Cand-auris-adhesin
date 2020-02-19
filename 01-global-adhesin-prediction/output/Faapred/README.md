@@ -1,0 +1,4 @@
+# February 9, 2020 Predicted adhesins with Faapred
+1.Divided positive hits from FungalRV into files with 25 or less sequences (requirement of Faapred)
+2.Submit files to [Faapred](http://bioinfo.icgeb.res.in/faap/query.html) using default parameters, ACHM model with a threshold of -0.8 PMID: 20300572
+3.Output saved in output/Faapred folder
