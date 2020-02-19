@@ -13,3 +13,11 @@ Used the following command to compile the c files on my Ubuntu. Should be simila
 for f in *.c;do gcc $f -o ./bin/${f/.c/}; done
 ```
 Note that `FungalRV_adhesin_predictor/calc_hdr_comp.c` failed to compile.
+
+## 2020-02-19 Solved error in compiling one of the FungalRV code
+Error:
+> undefined reference to `pow'
+> error: ld returned 1 exit status
+
+This [link](https://stackoverflow.com/questions/12824134/undefined-reference-to-pow-in-c-despite-including-math-h) solved the problem.
+`gcc calc_hdr_comp.c -o bin/calc_hdr_comp -lm`
