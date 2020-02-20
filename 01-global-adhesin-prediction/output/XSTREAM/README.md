@@ -1,4 +1,4 @@
-##20 February 2020
+## 20 February 2020
 
 Added XSTREAM tandem repeat finder output
 - XSTREAM was chosen among various other protein tandem repeat finders due to its [flexibility](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-8-382), speed, and its ability to be downloaded and not enter the proteins sequence by sequence
