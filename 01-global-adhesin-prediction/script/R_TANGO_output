@@ -1,0 +1,19 @@
+function (working_directory) {
+require(tidyverse)
+require(data.table)
+require(readr)
+setwd(working_directory)
+
+file_list <- list.files(path=working_directory, pattern = ".txt$")
+dataset <- data.frame(file = character(length(file_list)), agg_seqs = integer(length(file_list)), stringsAsFactors = FALSE)
+
+for (i in 1:length(file_list)) {
+    temp_data <- fread(file = file_list[i], stringsAsFactors = FALSE)
+    temp_data <- as.data.table(temp_data)
+    temp_data[,pass:=(Aggregation>5)]
+    temp_data[,seq_count:=sequence(rle(temp_data[,pass])$lengths)]
+    dataset$file[i] <- file_list[i]
+    dataset$agg_seqs[i] <- count(temp_data[pass == TRUE & seq_count == 5,])
+}
+return(dataset)
+}
