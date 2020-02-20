@@ -5,7 +5,7 @@
 | FungalRV adhesin predictor | tools for predicting adhesins | http://fungalrv.igib.res.in/download.html | 2020-02-09 |
 | R_fungalrv_fasta_filter_function | R script to extract and filter fasta files | RS, custom | 2020-02-11 |
 | TANGO_input.bat | Input file for control line TANGO | RS, custom | 2020-02-20 |
-| R_tango_output_function | R script to load and analyze TANGO output filed | RS, custom |2020-02-20 |
+| R_tango_output | R script to load and analyze TANGO output filed | RS, custom |2020-02-20 |
 
 # Notes
 ## 2020-02-10 Compiled and tested FungalRV code
