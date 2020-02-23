@@ -78,3 +78,7 @@ Note that I have the full table in R with all of the FungalRV and FaaPred scores
 
 # 2020-02-22 Learn about CATH
 Created a new folder to document all CATH related stuff. The goal is to use the web service to determine if there are known protein domains in the N-terminal of the predicted adhesins
+
+# 2020-02-23 Switch to genomewide scan code base
+Found a useful resource by the CATH authors. Will give it a try. See `analysis/CATH/genomescan` for details.
+<https://github.com/UCLOrengoGroup/cath-tools-genomescan>
