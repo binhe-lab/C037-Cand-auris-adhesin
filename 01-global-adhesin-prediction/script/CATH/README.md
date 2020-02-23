@@ -22,3 +22,7 @@ My progress today is that I figured out how to use cURL and REST API to query th
     ```
 4. next
     a. study the output and decide what information to retrieve using `jq`
+
+## Learn about CATH
+- CATH :: stands for Class, Architecture, Topology, Homology. It is a hierarchical protein domain classification database. Protein structures are taken from the PDB, chopped into individual structural domains and then classified into superfamilies based on their evolutionary origin. CATH ID reflects the hierarchical classification, e.g. HLH DBD is classified as 4.10.280.10
+- CATH FunFam :: stands for Functional Families, represents functionally coherent grouping of protein domain sequences within the CATH-Gene3D homologous superfamily.

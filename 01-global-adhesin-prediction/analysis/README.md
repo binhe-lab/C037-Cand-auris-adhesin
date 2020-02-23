@@ -75,3 +75,6 @@ Note that I have the full table in R with all of the FungalRV and FaaPred scores
 # 2020-02-13 GPI anchors predicted using GPI-som for all strains
 1. Uploaded Faapred output fasta files for each strain to [GPI-som](http://genomics.unibe.ch/cgi-bin/gpi.cgi)
 1. Saved GPI anchored sequences in `output/GPIanchor`
+
+# 2020-02-22 Learn about CATH
+Created a new folder to document all CATH related stuff. The goal is to use the web service to determine if there are known protein domains in the N-terminal of the predicted adhesins
