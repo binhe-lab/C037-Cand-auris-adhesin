@@ -29,3 +29,9 @@ My progress today is that I figured out how to use cURL and REST API to query th
 
 ## 2020-02-23 Follow the CATH authors' instructions to set up a genomewide scan
 <https://github.com/UCLOrengoGroup/cath-tools-genomescan>
+Exceptions:
+1. Instead of downloading HMMER via `wget`, I used `brew install hmmer` on my MBA. If working on ARGON, use the following
+    ```bash
+    $ module load stack/2020.1
+    $ module load hmmer/3.3_gcc-9.2.0
+    ```

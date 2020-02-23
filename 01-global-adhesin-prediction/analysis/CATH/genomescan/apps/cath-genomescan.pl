@@ -16,7 +16,7 @@ my $datadir    = exists $ENV{CATHSCAN_DATADIR} ? $ENV{CATHSCAN_DATA}   : path( $
 my $bindir     = exists $ENV{CATHSCAN_BINDIR}  ? $ENV{CATHSCAN_BINDIR} : path( $FindBin::Bin, "..", "bin" );
 
 my $bintype     = $Config{osname} eq 'darwin' ? 'macos' : 'centos6';
-my $hmmsearch   = path( $bindir, 'hmmer3', 'hmmsearch' );
+my $hmmsearch   = $Config{osname} eq 'darwin' ? path( 'hmmsearch' ) : path( $bindir, 'hmmer3', 'hmmsearch' );
 my $resolvehits = path( $bindir, "cath-resolve-hits.$bintype" );
 my $min_dc_hmm_coverage = 80;
 my $max_seq_db_size = 10_000_000;

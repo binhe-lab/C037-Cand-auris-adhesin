@@ -26,13 +26,13 @@ Clone a new project template from GitHub and move into the directory.
 > pwd
 ```
 
-Note: this directory will be called ```${PROJECTHOME}``` for the rest of the tutorial.
+Note: this directory will be called `${PROJECTHOME}` for the rest of the tutorial.
 
 ## 2. Organise your query sequences
 
 Choose a genome and get all translated protein sequences in FASTA format.
 
-The file ```${PROJECTHOME}/data/test.fasta``` containing two query sequences has been included in the template as an example.
+The file `${PROJECTHOME}/data/test.fasta` containing two query sequences has been included in the template as an example.
 
 ```
 > cd ${PROJECTHOME}
@@ -45,6 +45,10 @@ MIGRLRGIIIEKQPPLVLIEVGGVGYEVHMPMTCFYELPEAGQEAIVFTHFVVREDAQLLYGFNNKQERTLFKELIKTNG
 ```
 
 ## 3. Download and install HMMER3
+
+_note_: 2020-02-23 BH
+- installed HMMER3 via Homebrew on my MBA instead of following the code below
+- below are the authors' original documentation
 
 Download and extract the recent [HMMER3](http://eddylab.org/software/hmmer3/) software:
 
@@ -65,7 +69,7 @@ Create a link for convenience:
 
 Check to make sure the link and binaries work as expected:
 
-```
+```bash
 > cd ${PROJECTHOME}
 > ./bin/hmmer3/hmmscan -h
 # hmmscan :: search sequence(s) against a profile database
