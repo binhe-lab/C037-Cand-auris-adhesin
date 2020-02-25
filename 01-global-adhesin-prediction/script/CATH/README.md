@@ -35,3 +35,6 @@ Exceptions:
     $ module load stack/2020.1
     $ module load hmmer/3.3_gcc-9.2.0
     ```
+
+## 2020-02-24 Scanned all protein sequences using ARGON
+Note: the C_albicans proteome had an extra '"' at the beginning of line 205. Corrected that and rerun genomescan on that file alone. The error file in the `job-log` folder is not updated since I ran it in an interactive session (`qlogin -q BH`)

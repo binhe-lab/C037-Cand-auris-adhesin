@@ -1,0 +1,27 @@
+Scanning ./genomescan/data/B8441_fungalRV_filtered.fasta
+Mon Feb 24 09:21:22 2020 # ------------------------------------------------------------------------------
+Mon Feb 24 09:21:22 2020 # PROGRAM:         /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/apps/cath-genomescan.pl
+Mon Feb 24 09:21:22 2020 # DATE:            Mon Feb 24 09:21:22 2020
+Mon Feb 24 09:21:22 2020 # PROJECT_HOME:    /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH
+Mon Feb 24 09:21:22 2020 # QUERY_SEQUENCES: /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/data/B8441_fungalRV_filtered.fasta
+Mon Feb 24 09:21:22 2020 # HMM_LIBRARY:     /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/data/funfam-hmm3-v4_2_0.lib
+Mon Feb 24 09:21:22 2020 # RESULTS_DIR:     /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results
+Mon Feb 24 09:21:22 2020 # ------------------------------------------------------------------------------
+Mon Feb 24 09:21:22 2020 # Processing data ...
+Mon Feb 24 09:21:22 2020 #   ... found 112 sequences
+Mon Feb 24 09:21:44 2020 #   ... found 67598 HMM models
+Mon Feb 24 09:21:44 2020 # 
+Mon Feb 24 09:21:44 2020 # Scanning HMM library ...
+Mon Feb 24 09:21:44 2020 #   output: /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.domtblout
+Mon Feb 24 09:21:44 2020 # CMD: `/Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/apps/../bin/hmmer3/hmmsearch --cut_tc --domtblout /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.domtblout -Z 10000000 -o /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.hmmsearch /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/data/funfam-hmm3-v4_2_0.lib /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/data/B8441_fungalRV_filtered.fasta`
+Mon Feb 24 09:31:07 2020 #   done
+Mon Feb 24 09:31:07 2020 # 
+Mon Feb 24 09:31:07 2020 # Resolving domain boundaries ... 
+Mon Feb 24 09:31:07 2020 #   output: /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.crh
+Mon Feb 24 09:31:07 2020 # CMD: `/Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/apps/../bin/cath-resolve-hits.centos6 --input-format hmmsearch_out --hits-text-to-file /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.crh --min-dc-hmm-coverage=80 --html-output-to-file /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.html /Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.hmmsearch`
+Mon Feb 24 09:31:08 2020 #   done
+Mon Feb 24 09:31:08 2020 # 
+Mon Feb 24 09:31:08 2020 # Point your web browser at: file:///Users/bhe2/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/script/CATH/genomescan/results/B8441_fungalRV_filtered.html
+Mon Feb 24 09:31:08 2020 # 
+Mon Feb 24 09:31:08 2020 # Done
+finished
