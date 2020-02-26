@@ -1,0 +1,389 @@
+---
+title: "C_auris_adhesinome"
+author: "Rachel Smoak"
+date: "2/26/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, message=FALSE}
+working_directory = "C:/Users/Rachel/OneDrive - University of Iowa/Fall 2019/Bioinformatics/Project work/Paper/Adhesin_Analysis"
+library(data.table)
+library(stringr)
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+library(knitr)
+```
+
+
+# *C. auris* adhesinome analysis R code
+
+## Summary
+
+This document collects and documents all code needed to make the master results table for the *Candida* adhesin analysis. It requires formatted inputs from the different tools used in the analysis.
+
+**Please change your working directory before trying to run this.** It is in line 12 of the .Rmd file.
+
+## Functions to parse data inputs
+
+### Extract species
+
+This function can parse a FASTA ID line to extract the *Candida* species name, which can later be used to easily sort by species. It is incorporated into the next function which reads in FASTA data.
+
+```{r}
+extract_species <- function(table_with_data){
+    test_table <- as.data.table(table_with_data)
+    for(i in 1:nrow(test_table)){
+        if(like(test_table[i, fidline],"Candida albicans")){
+            test_table[i, species:= "Candida albicans SC5314"]
+        }
+        else if(like(test_table[i, fidline], "glabrata")){
+            test_table[i, species:= "Candida glabrata"]
+        }
+        else if(like(test_table[i, fidline], ">QEO")){
+            test_table[i, species:= "Candida auris B11220"]
+        }
+        else if(like(test_table[i, fidline], ">PIS")){
+            test_table[i, species:= "Candida auris B8441"]
+        }
+        else if(like(test_table[i, fidline], "XP") & like(test_table[i, fidline], "auris")) {
+            test_table[i, species:= "Candida auris B11221"]
+        }
+        else{
+            test_table[i, species:="Could not parse"]
+        }
+    }
+    return(test_table)
+}
+```
+
+
+### Table with all predicted adhesins
+
+After running FungalRV and FaaPred on the proteomes of the desired species, the proteins that were predicted to be adhesins by both tools were compiled. A linearized FASTA file with the FASTA header (>...) separated from the sequence by a tab character was created and read into R to be parsed. This function reads in the file as a table, extracts the ID line to the first space, and names all columns. It then uses the function to extract species names to correlate each entry with a particular *Candida* species.
+
+```{r}
+make_all_predicted_adhesins_table <- function(all_predicted_adhesins_linear = working_directory){
+    adhesins <- read_delim(all_predicted_adhesins_linear, "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE)
+    all_predicted <- as.data.table(adhesins)
+    names(all_predicted)[1] <- "fidline"
+    names(all_predicted)[2] <- "sequence"
+    all_predicted[,short_string_2:= trimws(str_extract(fidline, "^.*?\\s"), "r")]
+    all_predicted_with_species <- extract_species(all_predicted)
+    return(all_predicted_with_species)
+}
+
+```
+
+Using this function on the combined FASTA file on the github:
+
+```{r message=FALSE}
+linear_adhesins_file <- paste(working_directory, "/", "linear_adhesins.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/predicted-adhesins/All_predicted_adhesins_linear.txt", destfile = linear_adhesins_file)
+all_predicted_adhesins_table <- make_all_predicted_adhesins_table(all_predicted_adhesins_linear = linear_adhesins_file)
+```
+
+### Load signal peptide data
+
+This requires a text file input of the short ouput format from [Phobius](http://phobius.sbc.su.se/). The Phobius short output contains the FASTA header and the sequence. Because we already have the sequence data, the function extracts only the FASTA header, parses out the accession identifier, and creates a logical column with result "TRUE" for each that will later be used in the master result table.
+
+```{r}
+process_signal_peptide <- function(signal_peptide_file = working_directory){
+    All_Signal_Peptide <- read_csv(signal_peptide_file, col_names = FALSE)
+    All_Signal_Peptide <- as.data.table(All_Signal_Peptide)
+    all_signal_peptide_tags <- All_Signal_Peptide[like(X1, ">")]
+    colnames(all_signal_peptide_tags)[1] <- "long_string"
+    all_signal_peptide_tags <- as.data.table(all_signal_peptide_tags)
+    for (i in 1:nrow(all_signal_peptide_tags)){
+        all_signal_peptide_tags[i,short_string:=str_split(all_signal_peptide_tags[i,1], pattern = "[[:blank:]]")[[1]][1]]
+        }
+    all_signal_peptide_tags[,signal_peptide:=TRUE]
+    return(all_signal_peptide_tags)
+}
+```
+
+Using this function on the combined Phobius output on the github:
+
+```{r message=FALSE}
+phobius_file <- paste(working_directory, "/", "phobius.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/SignalPeptide/All_Signal_Peptide.txt", destfile = phobius_file)
+signal_peptide_table <- process_signal_peptide(signal_peptide_file = phobius_file)
+```
+
+### Load GPI anchor data
+
+This requires a text output from [GPI-som](http://genomics.unibe.ch/cgi-bin/gpi.cgi). The GPI-som output contains the FASTA header, the sequence, and the best cleavage site for most results. Because we already have the sequence data, the function extracts only the FASTA header and best cleavage site, parses out the accession identifier, and creates a logical column with result "TRUE" for each that will later be used in the master result table.
+
+```{r}
+process_gpi <- function(gpi_file = working_directory){
+    All_GPI <- read_csv(gpi_file, col_names = FALSE)
+    All_GPI <- as.data.table(All_GPI)
+    All_GPI_tags <- All_GPI[like(X1, ">")]
+    for (i in 1:nrow(All_GPI_tags)){
+        All_GPI_tags[i,short_string:=str_split(All_GPI_tags[i,1], pattern = "[[:blank:]]")[[1]][1]]
+        All_GPI_tags[i,best_cleavage_site:=str_extract(string = All_GPI_tags[i,1], pattern = "C-\\d*")]
+    }
+    All_GPI_tags[,GPI_mod:= TRUE]
+    return(All_GPI_tags)
+}
+```
+
+Using this function on the combined GPI-som output on the github:
+
+```{r message=FALSE}
+gpi_file <- paste(working_directory, "/", "gpi.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/GPIanchor/All_GPI.txt", destfile = gpi_file)
+gpi_table <- process_gpi(gpi_file = gpi_file)
+```
+
+### TANGO results for aggregation sequences
+
+[TANGO](http://tango.crg.es/) requires that each sequence be uploaded indivudally and provides individual download files for each sequence. Assuming that all of the .txt files are in the same directory, this function can be used to read them into a table, parse out the accession identifier (with and without ">"), and count the number of times that required_in_serial number of amino acids each with aggregation probability above agg_threshold percent appear next to each other.
+
+
+```{r}
+load_tango <- function (directory_for_tango_files = working_directory, agg_threshold = 5, required_in_serial = 5) {
+    require(tidyverse)
+    require(data.table)
+    require(readr)
+
+    file_list <- list.files(path=directory_for_tango_files, pattern = ".txt$")
+    dataset <- data.frame(file = character(length(file_list)), agg_seqs = integer(length(file_list)), short_string = character(length(file_list)), short_string_2 = character(length(file_list)), stringsAsFactors = FALSE)
+    
+    for (i in 1:length(file_list)) {
+        temp_data <- fread(file = paste(directory_for_tango_files,"/", file_list[i], sep = ""), stringsAsFactors = FALSE)
+        temp_data <- as.data.table(temp_data)
+        temp_data[,pass:=(Aggregation>agg_threshold)]
+        temp_data[,seq_count:=sequence(rle(temp_data[,pass])$lengths)]
+        dataset$file[i] <- file_list[i]
+        dataset$agg_seqs[i] <- count(temp_data[pass == TRUE & seq_count == required_in_serial,])
+        dataset$short_string[i] <- str_split(dataset$file[i], pattern = "\\.txt")[[1]][1]
+        dataset$short_string_2[i] <- paste(">", dataset$short_string[i], sep = "")
+    }
+    return(dataset)
+}
+```
+
+
+The TANGO output files are on the github. Unfortunately, I couldn't figure out how to download the .zip file from github in the code and use it. Instead, please [go to the folder](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/TANGO/all_tango_out.zip), download the file, and place it into your working directory. This code will unzip the file, and read all the files into the function, and output a table using the default parameters. It may take some time to run because of the large number of files.
+
+```{r}
+tango_zip_directory <- paste(working_directory, "/all_tango_out.zip", sep = "")
+tango_directory <-  paste(working_directory, "/all_tango_outputs", sep = "")
+unzip(zipfile = tango_zip_directory, exdir = tango_directory)
+tango_results_table <- load_tango(directory_for_tango_files = tango_directory)
+```
+
+### XSTREAM results for tandem repeats
+
+The process for generating the XSTREAM output is described [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/01-global-adhesin-prediction/output/XSTREAM). The input for this function is the .xls output from XSTREM. The function reads the .xls in and parses out each accession number.
+
+```{r}
+process_xstream <- function(xstream_file = working_directory){
+    XSTREAM_chart <- read_delim(xstream_file, "\t", escape_double = FALSE, trim_ws = TRUE)
+    XSTREAM_chart <- as.data.table(XSTREAM_chart)
+    for (i in 1:nrow(XSTREAM_chart)){
+        XSTREAM_chart[i,short_string:=str_split(XSTREAM_chart[i,identifier], pattern = "[[:blank:]]")[[1]][1]]
+        }
+    return(XSTREAM_chart)
+}
+```
+
+Using this function on the XSTREAM output on the github:
+
+```{r message=FALSE}
+xstream_file <- paste(working_directory, "/", "xstream.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/XSTREAM/XSTREAM__i0.7_g3_m2_L10_chart.xls", destfile = xstream_file)
+xstream_results_table <- process_xstream(xstream_file)
+```
+
+### CATH structural domain results
+
+[CATH](https://www.cathdb.info/) predicted structural domains based on comparisons with known structures. It outputs [four files](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/01-global-adhesin-prediction/output/CATH) but the .crh is the useful one. This function inputs the .crh file, splits out the starting and ending positions of each domain, splits out the structural nodes, and adds the node descriptions for each structural level from a node description file.
+
+```{r}
+process_CATH_results <- function(CATH_crh, CATH_names){
+    require(stringr)
+    require(data.table)
+    require(dplyr)
+    CATH_out <- read_table2(CATH_crh, col_names = FALSE, skip = 2)
+    CATH_out <- as.data.table(CATH_out)
+    names(CATH_out)[1] <- "short_string"
+    names(CATH_out)[2] <- "match-id"
+    names(CATH_out)[3] <- "score"
+    names(CATH_out)[4] <- "boundaries"
+    names(CATH_out)[5] <- "resolved-boundaries"
+    names(CATH_out)[5] <- "cond-evalue"
+    names(CATH_out)[5] <- "resolved-boundaries"
+    names(CATH_out)[6] <- "cond-evalue"
+    names(CATH_out)[7] <- "indp-evalue"
+    for (i in 1:nrow(CATH_out)) {
+        CATH_out[i, start_1:=str_split(string = CATH_out[i,5], pattern = "[-,]")[[1]][1]]
+        CATH_out[i, end_1:=str_split(string = CATH_out[i,5], pattern = "[-,]")[[1]][2]]
+        CATH_out[i, start_2:=str_split(string = CATH_out[i,5], pattern = "[-,]")[[1]][3]]
+        CATH_out[i, end_2:=str_split(string = CATH_out[i,5], pattern = "[-,]")[[1]][4]]
+        CATH_out[i,tag_1:=as.character(str_match_all(string = CATH_out[i,2], pattern = "[[:alnum:]]")[[1]][1])]
+        CATH_out[i, tag_2:= as.character(str_match_all(string = CATH_out[i,2], pattern = "[[:alnum:]]*[[:punct:]][[:alnum:]]*")[[1]][1])]
+        CATH_out[i, tag_3:= as.character(str_match_all(string = CATH_out[i,2], pattern = "[[:alnum:]]*[[:punct:]][[:alnum:]]*[[:punct:]][[:alnum:]]*")[[1]][1])]
+        CATH_out[i, tag_4:= as.character(str_match_all(string = CATH_out[i,2], pattern = "[[:alnum:]]*[[:punct:]][[:alnum:]]*[[:punct:]][[:alnum:]]*[[:punct:]][[:alnum:]]*")[[1]][1])]
+    }
+    cath_names_RAS <- read_delim(CATH_names, "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE, skip = 16)
+    names(cath_names_RAS)[1] <- "node-num"
+    names(cath_names_RAS)[2] <- "rep-protein"
+    names(cath_names_RAS)[3] <- "description"
+    CATH_out <- left_join(CATH_out, cath_names_RAS, by = c("tag_1" = "node-num"))
+    names(CATH_out)[16] <- "tag_1_rep-protein"
+    names(CATH_out)[17] <- "tag_1_desription"
+    CATH_out <- left_join(CATH_out, cath_names_RAS, by = c("tag_2" = "node-num"))
+    names(CATH_out)[18] <- "tag_2_rep-protein"
+    names(CATH_out)[19] <- "tag_2_desription"
+    CATH_out <- left_join(CATH_out, cath_names_RAS, by = c("tag_3" = "node-num"))
+    names(CATH_out)[20] <- "tag_3_rep-protein"
+    names(CATH_out)[21] <- "tag_3_desription"
+    CATH_out <- left_join(CATH_out, cath_names_RAS, by = c("tag_4" = "node-num"))
+    names(CATH_out)[22] <- "tag_4_rep-protein"
+    names(CATH_out)[23] <- "tag_4_desription"
+    return(as.data.table(CATH_out))
+    }
+```
+
+
+The [node description file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/CATH/cath-names_RAS.txt) is the same as on the [CATH website](ftp://orengoftp.biochem.ucl.ac.uk/cath/releases/latest-release/cath-classification-data/) but with four spaces replaced by a tab character. Running the function on the combined output file and names file on the github:
+
+```{r message=FALSE}
+cath_out_file <- paste(working_directory, "/", "cath_out.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/CATH/All_predicted_adhesins.crh", destfile = cath_out_file)
+cath_names_file <- paste(working_directory, "/", "cath_names.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/CATH/cath-names_RAS.txt", destfile = cath_names_file)
+CATH_results_table <- process_CATH_results(CATH_crh = cath_out_file, CATH_names = cath_names_file)
+```
+
+### hmmscan search against pfam for sequence-based domains
+
+A search was performed for all proteins agains the pfam database using [hmmscan](https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan); the gathering threshold was used. The output was an html table, which was downloaded. A column containing "Retreival URL" was added by combining the results url with the sequence number for the query; explanation [here](https://hmmer-web-docs.readthedocs.io/en/latest/api.html#downloading-files-from-batch-searches). The base batch retreival number is appended with ".sequence_number" to get each result in the batch (ex. XXX is the base batch retreival, sequence 1 is XXX.1, sequence 2 is XXX.2, etc). The function works with this modified html table to retreive each result, download it to a newly created "hmmer_out" folder in your working directory (if it isn't already there), and recreate the html output table seen under each batch result. Results may be removed from the server; if the server query download doesn't work, please extract the [zip folder of results]() to a folder called "hmmer_out" in your working directory.
+
+```{r}
+parse_hmmer <- function(mod_html_file, working_directory = working_directory) {
+    hmmer_data_table <- read_delim(mod_html_file, "\t", escape_double = FALSE, trim_ws = TRUE)
+    hmmer_data_table <- as.data.table(hmmer_data_table)
+    results_table <- data.table()
+    hmmer_directory <- paste(working_directory, "/hmmer_out", sep = "")
+    dir.create(hmmer_directory)
+    for (i in 1:nrow(hmmer_data_table)){
+        filename <- paste(hmmer_directory, "/", as.character(hmmer_data_table[i, 'Query Name']), ".json", sep = "")
+        if (as.numeric(hmmer_data_table[i, `Hits Found`]) == 0){
+            next}
+        else if(as.numeric(hmmer_data_table[i, `Hits Found`]) > 0 && file.exists(filename)){
+            result <- fromJSON(filename)
+            domains <- result$results$hits$domains
+            for (i in 1:length(domains)){
+                results_table <- rbind(as.data.table(results_table), as.data.table(domains[[i]]), fill = TRUE)
+            }
+        }
+        else if (as.numeric(hmmer_data_table[i, `Hits Found`]) > 0 && !file.exists(filename)) {
+            download.file(url = as.character(hmmer_data_table[i, 'Retreival URL']), destfile = filename)
+            result <- fromJSON(filename)
+            domains <- result$results$hits$domains
+            for (i in 1:length(domains)){
+                results_table <- rbind(as.data.table(results_table), as.data.table(domains[[i]]), fill = TRUE)
+            }
+        }
+        else {print("error counting hits or with file name")}
+    }
+    full_results <- as.data.table(results_table[, .(alisqname, alihmmname, alihmmacc, clan, alihmmdesc, ienv, jenv, ievalue, cevalue)])
+    setnames(full_results, "alisqname", "fidline")
+    setnames(full_results, "alihmmname", "pfam_id")
+    setnames(full_results, "alihmmacc", "pfam_accession")
+    setnames(full_results, "clan", "pfam_clan")
+    setnames(full_results, "alihmmdesc", "pfam_description")
+    setnames(full_results, "ienv", "start_position")
+    setnames(full_results, "jenv", "end_position")
+    setnames(full_results, "ievalue", "indp_e_value")
+    setnames(full_results, "cevalue", "cond_e_value")
+    return(full_results)
+}
+```
+
+Using the modified html table posted on the github to run the function:
+
+```{r message=FALSE}
+mod_html_file <- paste(working_directory, "/", "hmmer_html.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/HMMER/hmmer_out.txt", destfile = mod_html_file)
+hmmer_results_table <- parse_hmmer(mod_html_file = mod_html_file, working_directory = working_directory)
+```
+
+## Making the master results table
+
+The function below will take the results tables created above and combine relevant pieces of them into a master results table. The "CATH_result" and "hmmer_result" columns are TRUE if any domains were detected in the protein. The "CATH_result_start" and "hmmer_result_start" are TRUE if a detected domain starts within the first quarter of the protein length. The table will be printed as a text file to your working directory. Note that logical values will be recorded as 1 and 0 rather than "TRUE" and "FALSE" in the text file.
+
+```{r}
+make_analysis_results_table <- function(all_predicted_adhesins_table, signal_peptide_table, gpi_table, tango_results_table, xstream_results_table, CATH_results_table, hmmer_results_table) {
+    results <- as.data.table(all_predicted_adhesins_table)
+    results <- as.data.table(left_join(results, tango_results_table, by = c("short_string_2" = "short_string_2")))
+    results[,file := NULL]
+    results <- as.data.table(left_join(results, signal_peptide_table, by = c("short_string_2" = "short_string")))
+    results[, long_string:= NULL]
+    results <- as.data.table(left_join(results, gpi_table, by = c("short_string_2" = "short_string")))
+    results[, X1:= NULL]
+    for (i in 1:nrow(results)){
+        results[i, aa_length:= str_length(results[i, sequence])]
+        results[i, num_tr:= sum(str_count(string = xstream_results_table$short_string, pattern = results[i, short_string]))]
+    }
+    results[, CATH_result:=logical()]
+    for (i in 1:nrow(CATH_results_table)){
+        match_i <- match(x = CATH_results_table[i,1], table = results$short_string)
+        if(isTRUE(results[match_i, CATH_result])) {
+            next
+        }
+        else{
+            results[match_i, CATH_result:=TRUE]
+            if (CATH_results_table[i, start_1] < results[match_i, aa_length]/4){
+                results[match_i, CATH_result_start:= TRUE]
+            } else{
+                results[match_i, CATH_result_start:=FALSE]
+            }
+        }
+    }
+    hmmer_results_table <- as.data.table(hmmer_results_table)
+    results[, hmmer_result:=logical()]
+    results[, hmmer_result_start:=logical()]
+    for (i in 1:nrow(hmmer_results_table)){
+        match_i <-match(x = hmmer_results_table[i,1], table = results$fidline) 
+        if(isTRUE(results[match_i, hmmer_result_start])) {
+            next
+        }
+        else{
+            results[match_i, hmmer_result:=TRUE]
+            if (hmmer_results_table[i, start_position] < results[match_i, aa_length]/4){
+                results[match_i, hmmer_result_start:= TRUE]
+            } else{
+                results[match_i, hmmer_result_start:=FALSE]
+            }
+        }
+    }
+    setcolorder(x = results, neworder = c("species", "fidline", "short_string", "short_string_2", "aa_length", "sequence", "agg_seqs", "num_tr", "signal_peptide", "GPI_mod", "best_cleavage_site", "CATH_result", "CATH_result_start", "hmmer_result", "hmmer_result_start"))
+    fwrite(x = results, file = "master_results_table.txt", sep = "\t", col.names = TRUE, logical01 = TRUE)
+    return(results)
+}
+```
+
+Running this function on the data processed earlier in this session gives:
+
+```{r}
+master_analysis_results <- make_analysis_results_table(all_predicted_adhesins_table = all_predicted_adhesins_table, signal_peptide_table = signal_peptide_table, gpi_table = gpi_table, tango_results_table = tango_results_table, xstream_results_table = xstream_results_table, CATH_results_table = CATH_results_table, hmmer_results_table = hmmer_results_table)
+kable(master_analysis_results)
+```
+
+
+
+
+
+
+
+
+
