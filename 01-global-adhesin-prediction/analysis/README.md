@@ -82,3 +82,6 @@ Created a new folder to document all CATH related stuff. The goal is to use the 
 # 2020-02-23 Switch to genomewide scan code base
 Found a useful resource by the CATH authors. Will give it a try. See `analysis/CATH/genomescan` for details.
 <https://github.com/UCLOrengoGroup/cath-tools-genomescan>
+
+# 2020-02-26 Upload first version Rmarkdown file
+Uploaded the first version of the Rmarkdown file to create master results table
