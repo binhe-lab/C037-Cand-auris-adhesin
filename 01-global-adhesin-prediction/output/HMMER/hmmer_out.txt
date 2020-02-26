@@ -530,5 +530,4 @@ Sequence Number	Query Name	Hits Found	Status	Top Hit Identifier	Top Hit Descript
 256	XP_444921.1	1	DONE	COX6B	Cytochrome oxidase c subunit VIb	show	https://www.ebi.ac.uk/Tools/hmmer/download/0852DDA2-5705-11EA-BF27-3F9153F04F9B.256/score?format=json						
 257	XP_446100.1	0	DONE			show	https://www.ebi.ac.uk/Tools/hmmer/download/0852DDA2-5705-11EA-BF27-3F9153F04F9B.257/score?format=json						
 258	XP_445654.1	1	DONE	COX17	Cytochrome C oxidase copper chaperone (COX17)	show	https://www.ebi.ac.uk/Tools/hmmer/download/0852DDA2-5705-11EA-BF27-3F9153F04F9B.258/score?format=json						
-259	XP_446739.1	1	DONE	SUN	Beta-glucosidase (SUN family)	show	https://www.ebi.ac.uk/Tools/hmmer/download/0852DDA2-5705-11EA-BF27-3F9153F04F9B.259/score?format=json						
-		
+259	XP_446739.1	1	DONE	SUN	Beta-glucosidase (SUN family)	show	https://www.ebi.ac.uk/Tools/hmmer/download/0852DDA2-5705-11EA-BF27-3F9153F04F9B.259/score?format=json					
