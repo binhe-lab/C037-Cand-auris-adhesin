@@ -1,0 +1,1 @@
+../../analysis/amino-acid-composition/cysteine_freq_all_predicted_adhesin_20200226.txt
