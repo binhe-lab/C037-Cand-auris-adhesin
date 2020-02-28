@@ -1,0 +1,11 @@
+---
+title: Analyze amino acid composition
+author: Bin He
+date: 2020-02-27
+---
+
+# goal
+
+Compare the Cysteine and Dibasic peptide frequencies in the predicted adhesins and the genome
+
+# 

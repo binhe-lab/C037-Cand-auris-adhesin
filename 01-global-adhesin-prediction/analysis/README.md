@@ -22,14 +22,14 @@ _this is how I italicize_
 wrap multiple lines of code with three backsticks
 ```
 
-# 2020-01-29 FungalRV prediction for B11221
+# 2020-01-29 [LFS] FungalRV prediction for B11221
 1. Divided proteome fasta file into two by the following command
     `split -l #oflines filename`
 2. Submit the split files to [FungalRV](fungalrv.igib.res.in/query.php)
     No parameters are needed for this tool.
 3. Output saved as csv files in `output/FungalRV` folder
 
-# 2020-01-30 Extract the fasta sequences for FungalRV predicted adhesins
+# 2020-01-30 [LFS] Extract the fasta sequences for FungalRV predicted adhesins
 _Goal_
 
 - Take FungalRV predicted adhesin sequences and run them through the second prediction algorithm [FaaPred](http://bioinfo.icgeb.res.in/faap/)
@@ -48,16 +48,16 @@ Use the output from FungalRV to extract the subset of hits into new fasta (thank
     `cat B11221_2_linear_filtered.txt | tr '\t' '\n' > B11221_2_filtered.fasta` 
 1. submit the hits to Faapred
 
-# 2020-02-04 HB, tried to put the commands above together in a shell script
+# 2020-02-04 [HB] tried to put the commands above together in a shell script
 Check out the `script` folder.
 
-# 2020-02-09 Faapred prediction for B11221 and B8441
+# 2020-02-09 [LFS] Faapred prediction for B11221 and B8441
 1. Divided positive hits from FungalRV into files with 25 or less sequences (requirement of Faapred) 
 1. Submit files to Faapred using default parameters, ACHM model with a threshold of -0.8
 1. Output saved in `output/Faapred` folder
 
 
-# 2020-02-12 FungalRV and FaaPred predictions for *C. albicans* and *C. glabrata*
+# 2020-02-12 [RS] FungalRV and FaaPred predictions for *C. albicans* and *C. glabrata*
 1. Downloaded RefSeq protein sequences from NCBI on 11 Feb 2020
 2. Ran entire proteomes through FungalRV, downloaded all results
 3. Followed process outlined in shell script to filter the results **but** the filter step did not work; it returned all of the sequences. Wrote a function in R to do the same thing (recorded in `script` folder)
@@ -67,21 +67,33 @@ Check out the `script` folder.
 
 Note that I have the full table in R with all of the FungalRV and FaaPred scores if we ever decide we want to change our cutoffs.
 
-# 2020-02-13 Signal peptides predicted using Phobius for all strains
+# 2020-02-13 [LFS] Signal peptides predicted using Phobius for all strains
 1. Uploaded Faapred output fasta files for each strain to [Phobius](http://phobius.sbc.su.se/index.html) using short output format
 1. Filtered sequences with predicted signal peptides
 1. Output saved in `output/SignalPeptide`
 
-# 2020-02-13 GPI anchors predicted using GPI-som for all strains
+# 2020-02-13 [LFS] GPI anchors predicted using GPI-som for all strains
 1. Uploaded Faapred output fasta files for each strain to [GPI-som](http://genomics.unibe.ch/cgi-bin/gpi.cgi)
 1. Saved GPI anchored sequences in `output/GPIanchor`
 
-# 2020-02-22 Learn about CATH
+# 2020-02-22 [HB] Learn about CATH
 Created a new folder to document all CATH related stuff. The goal is to use the web service to determine if there are known protein domains in the N-terminal of the predicted adhesins
 
-# 2020-02-23 Switch to genomewide scan code base
-Found a useful resource by the CATH authors. Will give it a try. See `analysis/CATH/genomescan` for details.
+# 2020-02-23 [HB] Switch to genomewide scan code base
+Found a useful resource by the CATH authors. Will give it a try. See `script/CATH/genomescan` for details.
 <https://github.com/UCLOrengoGroup/cath-tools-genomescan>
 
-# 2020-02-26 Upload first version Rmarkdown file
+# 2020-02-26 [RS] Upload first version Rmarkdown file
 Uploaded the first version of the Rmarkdown file to create master results table
+
+# 2020-02-27 [HB] amino acid composition
+_Goal_
+
+Compute the frequency of cysteine and dibasic motifs in predicted adhesins
+
+_Notes_
+
+1. Initially I used the `compseq` program in EMBOSS 6.6.0. But I later realized that for what we need to do, grep is sufficient
+1. Rewrote the script in Python, much more elegant and more efficient.
+1. Now that my script can efficiently compute these statistics, I wonder how does the distribution of the two properties for the predicted adhesins compare to that of the entire genome.
+1. Created a new folder in `analysis` and used a modified python code to calculate the frequencies for the 7 genomes. To be continued with analysis in R

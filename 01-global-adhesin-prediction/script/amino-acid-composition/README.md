@@ -10,6 +10,16 @@ Based on Lipke 2018 (pmid:29772751), fungal adhesin molecules are characterized 
 
 # Methods
 
+## 2020-02-27 Update:
+
+Replaced EMBOSS programs with a simple `grep`
+The old scripts are now moved as `.old`. The new code executes much faster.
+
+## 2020-02-27 Update 2: 
+
+Switched to Python, as it is more flexible and can output both cysteine and dibasic motifs in the same script.
+
+
 ## Install bioawk
 
 Follow the author's [github repo](https://github.com/lh3/bioawk)
@@ -40,5 +50,5 @@ Instead of ripping the sequences from the pdf, which I found to be problematic, 
 ## Main program
 
 ```bash
-sh cystein_dibasic.sh
+sh RUNME_cysteine_dibasic.sh
 ```
