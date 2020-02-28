@@ -15,16 +15,22 @@ my @arr_model=();
 my @arr_model2=();
 my @arr_model3=();
 
-print "Enter the input file name\n";
-$filename=<STDIN>;
+# Bin He modified 2020-02-28
+# to change the interactive input to command line arguments
+die "usage: perl run_fungalrv_adhesin_predictor.pl <input> <output> <human pathogen?y/n>\n" unless $#ARGV == 2;
+# print "Enter the input file name\n";
+$filename=$ARGV[0];
 chomp $filename;
-print "Enter the Output File name\n";
-$fileout=<STDIN>;
+# print "Enter the Output File name\n";
+$fileout=$ARGV[1];
 chomp $fileout;
-print "Run on Human pathogenic fungi?(answer in yes/y or no/n )";
-$ans=<STDIN>;
+# print "Run on Human pathogenic fungi?(answer in yes/y or no/n )";
+$ans=$ARGV[2];
 chomp $ans;
 print $ans;
+# End of modification, 2020-02-28
+# Bin He
+
 my $start=time();
 open(FH,"<$filename") or die "failed to open file because of $!";
 @arr = <FH>;
