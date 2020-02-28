@@ -1,8 +1,6 @@
 FungalRV adhesin predictor Output
 Input File: c-albicans.faa
 
-Protein	Score
-
 >XP_718077.1 Als1p [Candida albicans SC5314]	2.4127486
 >XP_710425.2 Als4p [Candida albicans SC5314]	2.3575859
 >XP_720438.2 Pga54p [Candida albicans SC5314]	2.1669896
