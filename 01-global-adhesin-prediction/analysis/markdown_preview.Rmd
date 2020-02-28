@@ -317,12 +317,23 @@ download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris
 hmmer_results_table <- parse_hmmer(mod_html_file = mod_html_file, working_directory = working_directory)
 ```
 
+### Cysteine and dibasic counts
+
+Loading Bin's results from github:
+
+```{r load cysteine and dibasic, message=FALSE}
+cys_dibasic_file <- paste(working_directory, "/", "cys_dibasic.txt", sep = "")
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/cysteine-dibasic/cysteine-dibasic-all-predicted-20200227.txt", destfile = cys_dibasic_file)
+cys_dibasic_table <- read_delim(file = cys_dibasic_file, "\t", escape_double = FALSE, trim_ws = TRUE)
+cys_dibasic_table <- as.data.table(cys_dibasic_table)
+```
+
 ## Making the master results table
 
 The function below will take the results tables created above and combine relevant pieces of them into a master results table. The "CATH_result" and "hmmer_result" columns are TRUE if any domains were detected in the protein. The "CATH_result_start" and "hmmer_result_start" are TRUE if a detected domain starts within the first quarter of the protein length. The table will be printed as a text file to your working directory. Note that logical values will be recorded as 1 and 0 rather than "TRUE" and "FALSE" in the text file.
 
 ```{r}
-make_analysis_results_table <- function(all_predicted_adhesins_table, signal_peptide_table, gpi_table, tango_results_table, xstream_results_table, CATH_results_table, hmmer_results_table) {
+make_analysis_results_table <- function(all_predicted_adhesins_table, signal_peptide_table, gpi_table, tango_results_table, xstream_results_table, CATH_results_table, hmmer_results_table, cys_dibasic_table) {
     results <- as.data.table(all_predicted_adhesins_table)
     results <- as.data.table(left_join(results, tango_results_table, by = c("short_string_2" = "short_string_2")))
     results[,file := NULL]
@@ -366,7 +377,16 @@ make_analysis_results_table <- function(all_predicted_adhesins_table, signal_pep
             }
         }
     }
-    setcolorder(x = results, neworder = c("species", "fidline", "short_string", "short_string_2", "aa_length", "sequence", "agg_seqs", "num_tr", "signal_peptide", "GPI_mod", "best_cleavage_site", "CATH_result", "CATH_result_start", "hmmer_result", "hmmer_result_start"))
+    
+    results <- as.data.table(left_join(x = results, y = cys_dibasic_table, by = c("short_string" = "# <ID>")))
+    for (i in 1:nrow(results)){
+        if (results[i, aa_length] == results[i, '<length>']){
+            results[i, '<length>':= 0]
+        }
+    }
+    if (sum(results$'<length>') == 0) {results[,'<length>':=NULL]}
+    
+    setcolorder(x = results, neworder = c("species", "fidline", "short_string", "short_string_2", "aa_length", "sequence", "agg_seqs", "num_tr", "signal_peptide", "GPI_mod", "best_cleavage_site", "CATH_result", "CATH_result_start", "hmmer_result", "hmmer_result_start", "<#Cys>",  "<#Dibasic>"))
     fwrite(x = results, file = "master_results_table.txt", sep = "\t", col.names = TRUE, logical01 = TRUE)
     return(results)
 }
@@ -375,9 +395,11 @@ make_analysis_results_table <- function(all_predicted_adhesins_table, signal_pep
 Running this function on the data processed earlier in this session gives:
 
 ```{r}
-master_analysis_results <- make_analysis_results_table(all_predicted_adhesins_table = all_predicted_adhesins_table, signal_peptide_table = signal_peptide_table, gpi_table = gpi_table, tango_results_table = tango_results_table, xstream_results_table = xstream_results_table, CATH_results_table = CATH_results_table, hmmer_results_table = hmmer_results_table)
+master_analysis_results <- make_analysis_results_table(all_predicted_adhesins_table = all_predicted_adhesins_table, signal_peptide_table = signal_peptide_table, gpi_table = gpi_table, tango_results_table = tango_results_table, xstream_results_table = xstream_results_table, CATH_results_table = CATH_results_table, hmmer_results_table = hmmer_results_table, cys_dibasic_table = cys_dibasic_table)
 kable(master_analysis_results)
 ```
+
+
 
 
 
