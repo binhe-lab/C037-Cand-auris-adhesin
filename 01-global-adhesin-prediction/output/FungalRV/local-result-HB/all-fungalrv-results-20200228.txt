@@ -1,6 +1,6 @@
 # FungalRV combined results
 # 2020-02-28
-# <Species>	<Strain>	<ID>	<Score>
+Species	Strain	ID	Score
 C_albicans	SC5314	XP_718077.1	2.4127486
 C_albicans	SC5314	XP_710425.2	2.3575859
 C_albicans	SC5314	XP_720438.2	2.1669896
@@ -232,65 +232,65 @@ C_albicans	SC5314	XP_711729.1	0.0059243547
 C_albicans	SC5314	XP_710402.1	0.0053865614
 C_albicans	SC5314	XP_714477.2	0.0045317338
 C_albicans	SC5314	XP_714916.1	0.0018435103
-C_albicans	SC5314	XP_722599.2	Can't be processed
-C_albicans	SC5314	XP_721762.2	Can't be processed
-C_albicans	SC5314	XP_720981.2	Can't be processed
-C_albicans	SC5314	XP_720553.2	Can't be processed
-C_albicans	SC5314	XP_719967.2	Can't be processed
-C_albicans	SC5314	XP_719965.2	Can't be processed
-C_albicans	SC5314	XP_719954.2	Can't be processed
-C_albicans	SC5314	XP_719924.2	Can't be processed
-C_albicans	SC5314	XP_719833.2	Can't be processed
-C_albicans	SC5314	XP_719543.2	Can't be processed
-C_albicans	SC5314	XP_719146.2	Can't be processed
-C_albicans	SC5314	XP_718864.2	Can't be processed
-C_albicans	SC5314	XP_718644.2	Can't be processed
-C_albicans	SC5314	XP_717976.2	Can't be processed
-C_albicans	SC5314	XP_717840.2	Can't be processed
-C_albicans	SC5314	XP_717838.2	Can't be processed
-C_albicans	SC5314	XP_717775.2	Can't be processed
-C_albicans	SC5314	XP_717655.2	Can't be processed
-C_albicans	SC5314	XP_717597.2	Can't be processed
-C_albicans	SC5314	XP_717225.2	Can't be processed
-C_albicans	SC5314	XP_716951.2	Can't be processed
-C_albicans	SC5314	XP_716755.2	Can't be processed
-C_albicans	SC5314	XP_716476.2	Can't be processed
-C_albicans	SC5314	XP_716113.2	Can't be processed
-C_albicans	SC5314	XP_716079.2	Can't be processed
-C_albicans	SC5314	XP_716062.2	Can't be processed
-C_albicans	SC5314	XP_715523.2	Can't be processed
-C_albicans	SC5314	XP_715384.2	Can't be processed
-C_albicans	SC5314	XP_715075.2	Can't be processed
-C_albicans	SC5314	XP_715067.2	Can't be processed
-C_albicans	SC5314	XP_714683.2	Can't be processed
-C_albicans	SC5314	XP_714419.2	Can't be processed
-C_albicans	SC5314	XP_714338.2	Can't be processed
-C_albicans	SC5314	XP_714308.2	Can't be processed
-C_albicans	SC5314	XP_713643.2	Can't be processed
-C_albicans	SC5314	XP_713563.2	Can't be processed
-C_albicans	SC5314	XP_713038.2	Can't be processed
-C_albicans	SC5314	XP_713014.2	Can't be processed
-C_albicans	SC5314	XP_712646.2	Can't be processed
-C_albicans	SC5314	XP_712404.2	Can't be processed
-C_albicans	SC5314	XP_712105.2	Can't be processed
-C_albicans	SC5314	XP_712039.2	Can't be processed
-C_albicans	SC5314	XP_711964.2	Can't be processed
-C_albicans	SC5314	XP_711669.2	Can't be processed
-C_albicans	SC5314	XP_711420.2	Can't be processed
-C_albicans	SC5314	XP_711217.2	Can't be processed
-C_albicans	SC5314	XP_711092.2	Can't be processed
-C_albicans	SC5314	XP_710719.2	Can't be processed
-C_albicans	SC5314	XP_710569.2	Can't be processed
-C_albicans	SC5314	XP_710507.2	Can't be processed
-C_albicans	SC5314	XP_710505.2	Can't be processed
-C_albicans	SC5314	XP_710395.2	Can't be processed
-C_albicans	SC5314	XP_710120.2	Can't be processed
-C_albicans	SC5314	XP_710107.2	Can't be processed
-C_albicans	SC5314	XP_710069.2	Can't be processed
-C_albicans	SC5314	XP_443225.2	Can't be processed
-C_albicans	SC5314	XP_019331080.1	Can't be processed
-C_albicans	SC5314	XP_019330792.1	Can't be processed
-C_albicans	SC5314	XP_019330611.1	Can't be processed
+C_albicans	SC5314	XP_722599.2	NA
+C_albicans	SC5314	XP_721762.2	NA
+C_albicans	SC5314	XP_720981.2	NA
+C_albicans	SC5314	XP_720553.2	NA
+C_albicans	SC5314	XP_719967.2	NA
+C_albicans	SC5314	XP_719965.2	NA
+C_albicans	SC5314	XP_719954.2	NA
+C_albicans	SC5314	XP_719924.2	NA
+C_albicans	SC5314	XP_719833.2	NA
+C_albicans	SC5314	XP_719543.2	NA
+C_albicans	SC5314	XP_719146.2	NA
+C_albicans	SC5314	XP_718864.2	NA
+C_albicans	SC5314	XP_718644.2	NA
+C_albicans	SC5314	XP_717976.2	NA
+C_albicans	SC5314	XP_717840.2	NA
+C_albicans	SC5314	XP_717838.2	NA
+C_albicans	SC5314	XP_717775.2	NA
+C_albicans	SC5314	XP_717655.2	NA
+C_albicans	SC5314	XP_717597.2	NA
+C_albicans	SC5314	XP_717225.2	NA
+C_albicans	SC5314	XP_716951.2	NA
+C_albicans	SC5314	XP_716755.2	NA
+C_albicans	SC5314	XP_716476.2	NA
+C_albicans	SC5314	XP_716113.2	NA
+C_albicans	SC5314	XP_716079.2	NA
+C_albicans	SC5314	XP_716062.2	NA
+C_albicans	SC5314	XP_715523.2	NA
+C_albicans	SC5314	XP_715384.2	NA
+C_albicans	SC5314	XP_715075.2	NA
+C_albicans	SC5314	XP_715067.2	NA
+C_albicans	SC5314	XP_714683.2	NA
+C_albicans	SC5314	XP_714419.2	NA
+C_albicans	SC5314	XP_714338.2	NA
+C_albicans	SC5314	XP_714308.2	NA
+C_albicans	SC5314	XP_713643.2	NA
+C_albicans	SC5314	XP_713563.2	NA
+C_albicans	SC5314	XP_713038.2	NA
+C_albicans	SC5314	XP_713014.2	NA
+C_albicans	SC5314	XP_712646.2	NA
+C_albicans	SC5314	XP_712404.2	NA
+C_albicans	SC5314	XP_712105.2	NA
+C_albicans	SC5314	XP_712039.2	NA
+C_albicans	SC5314	XP_711964.2	NA
+C_albicans	SC5314	XP_711669.2	NA
+C_albicans	SC5314	XP_711420.2	NA
+C_albicans	SC5314	XP_711217.2	NA
+C_albicans	SC5314	XP_711092.2	NA
+C_albicans	SC5314	XP_710719.2	NA
+C_albicans	SC5314	XP_710569.2	NA
+C_albicans	SC5314	XP_710507.2	NA
+C_albicans	SC5314	XP_710505.2	NA
+C_albicans	SC5314	XP_710395.2	NA
+C_albicans	SC5314	XP_710120.2	NA
+C_albicans	SC5314	XP_710107.2	NA
+C_albicans	SC5314	XP_710069.2	NA
+C_albicans	SC5314	XP_443225.2	NA
+C_albicans	SC5314	XP_019331080.1	NA
+C_albicans	SC5314	XP_019330792.1	NA
+C_albicans	SC5314	XP_019330611.1	NA
 C_albicans	SC5314	XP_019330614.1	-0.00031260612
 C_albicans	SC5314	XP_723553.2	-0.00044185377
 C_albicans	SC5314	XP_722740.1	-0.0011698094

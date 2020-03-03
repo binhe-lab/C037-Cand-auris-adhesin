@@ -2,10 +2,78 @@
 title: Analyze amino acid composition
 author: Bin He
 date: 2020-02-27
+output: html_document
 ---
 
 # goal
 
-Compare the Cysteine and Dibasic peptide frequencies in the predicted adhesins and the genome
+Compare the Cysteine and Dibasic peptide frequencies in the predicted adhesins and the genome average (distrubtion)
 
-# 
+# Data
+
+1. cysteine and dibasic peptide counts per protein in five genomes.
+2. list of FungalRV and FaaPred predicted adhesins
+
+# Approach
+
+1. Load the data and make a data frame that consists of
+    # <species> <strain>  <ID>  <Length>  <FungalRV Y/N>  <FaaPred Y/N> ...
+2. Populate them with the results above
+3. Plot to explore the data
+
+# Analysis
+
+```{r prepare_env}
+require(tidyverse)
+require(cowplot)
+```
+
+```{r load_n_process_data}
+# load FungalRV results
+FungalRV <- read_tsv("all-fungalrv-results-20200228.txt", comment = "#")
+FungalRV.cut <- 0
+# turn Score into Y/N, based on the cutoff (0)
+predict <- FungalRV %>% mutate(FungalRV = ifelse(Score > FungalRV.cut, TRUE, FALSE), Score = NULL)
+# load FaaPred results, just a list of sequence names
+FaaPred <- system("cut -d' ' -f1 all-faapred-seq-names-20200228.txt", intern = TRUE)
+# create a column corresponding to the FaaPred results
+predict <- predict %>% mutate(FaaPred = ifelse(ID %in% FaaPred, TRUE, FALSE))
+# load genome cysteine and dibasic motif prediction results
+genome.freq <- read_tsv("all-genome-freq.txt", col_names = c("ID","length","Cys","Dibasic"), col_types = "ciii")
+# combine all the data, stratify the genes based on their length by creating a binL variable
+master <- full_join(predict, genome.freq) %>% 
+  mutate(binL = cut(length, breaks = c(0,100,250,500,1000,5500), labels =
+                      c("<100","101-250","251-500","501-1000","1001-5500")))
+```
+
+```{r visualize}
+# plot #cysteine and # dibasic peptides against protein length
+master %>% 
+  filter(Species == "C_glabrata") %>% 
+  ggplot( mapping = aes(x = length, y = Dibasic)) +  geom_jitter(aes( color = FungalRV )) + scale_x_log10()
+```
+
+Based on the example above, it seems that the predicted adhesins **do not** have more cysteine or dibasic motifs compared to the rest of the proteins! The plot above clearly suffers from over-plotting. Below I'm trying to make the point by grouping the proteins in the genome into several length bins
+
+```{r divide_to_length_gp, fig.width=10, fig.height=5}
+# plot C. albicans and C. glabrata Cysteine content
+master %>% 
+  filter(Species %in% c("C_albicans","C_glabrata")) %>% 
+  ggplot(mapping = aes(x = binL, y = Dibasic)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "A") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+# plot C. albicans and C. glabrata Dibasic content
+master %>% 
+  filter(Species %in% c("C_albicans","C_glabrata")) %>% 
+  ggplot(mapping = aes(x = binL, y = Cys)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "B") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+
+# plot C. auris Cysteine content
+master %>% 
+  filter(Species == c("C_auris")) %>% 
+  ggplot(mapping = aes(x = binL, y = Cys)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "C") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+
+# plot C. auris Dibasic content
+master %>% 
+  filter(Species == c("C_auris")) %>% 
+  ggplot(mapping = aes(x = binL, y = Dibasic)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "D") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+```
+
+Based on the results above, I conclude that the predicted adhesins on average have lower cysteine and dibasic motif content.
