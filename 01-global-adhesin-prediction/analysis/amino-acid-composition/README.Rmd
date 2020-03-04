@@ -23,11 +23,13 @@ Compare the Cysteine and Dibasic peptide frequencies in the predicted adhesins a
 
 # Analysis
 
+## Load packages
 ```{r prepare_env}
 require(tidyverse)
 require(cowplot)
 ```
 
+## Data transformation
 ```{r load_n_process_data}
 # load FungalRV results
 FungalRV <- read_tsv("all-fungalrv-results-20200228.txt", comment = "#")
@@ -42,10 +44,11 @@ predict <- predict %>% mutate(FaaPred = ifelse(ID %in% FaaPred, TRUE, FALSE))
 genome.freq <- read_tsv("all-genome-freq.txt", col_names = c("ID","length","Cys","Dibasic"), col_types = "ciii")
 # combine all the data, stratify the genes based on their length by creating a binL variable
 master <- full_join(predict, genome.freq) %>% 
-  mutate(binL = cut(length, breaks = c(0,100,250,500,1000,5500), labels =
-                      c("<100","101-250","251-500","501-1000","1001-5500")))
+  mutate(binL = cut(length, breaks = c(0,250,500,1000,2000,5500), labels =
+                      c("<250","251-500","501-1000","1k-2k", "2k-5.5k")))
 ```
 
+## Exploratory analysis
 ```{r visualize}
 # plot #cysteine and # dibasic peptides against protein length
 master %>% 
@@ -55,15 +58,15 @@ master %>%
 
 Based on the example above, it seems that the predicted adhesins **do not** have more cysteine or dibasic motifs compared to the rest of the proteins! The plot above clearly suffers from over-plotting. Below I'm trying to make the point by grouping the proteins in the genome into several length bins
 
-```{r divide_to_length_gp, fig.width=10, fig.height=5}
+```{r divide_by_length_grp, fig.width=10, fig.height=5}
 # plot C. albicans and C. glabrata Cysteine content
 master %>% 
   filter(Species %in% c("C_albicans","C_glabrata")) %>% 
-  ggplot(mapping = aes(x = binL, y = Dibasic)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "A") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+  ggplot(mapping = aes(x = binL, y = Cys)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "A") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
 # plot C. albicans and C. glabrata Dibasic content
 master %>% 
   filter(Species %in% c("C_albicans","C_glabrata")) %>% 
-  ggplot(mapping = aes(x = binL, y = Cys)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "B") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+  ggplot(mapping = aes(x = binL, y = Dibasic)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Dibasic motif count", x = "length", tag = "B") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
 
 # plot C. auris Cysteine content
 master %>% 
@@ -73,7 +76,40 @@ master %>%
 # plot C. auris Dibasic content
 master %>% 
   filter(Species == c("C_auris")) %>% 
-  ggplot(mapping = aes(x = binL, y = Dibasic)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine count", x = "length", tag = "D") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+  ggplot(mapping = aes(x = binL, y = Dibasic)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Dibasic count", x = "length", tag = "D") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
 ```
 
+```{r length_normalized_percent, fig.width=10, fig.height=5}
+percent <- master %>% mutate(Cys = Cys/length, Dibasic = Dibasic/length)
+
+# plot C. albicans and C. glabrata Cysteine content
+percent %>% filter(Cys > 0) %>% 
+  filter(Species %in% c("C_albicans","C_glabrata")) %>% 
+  ggplot(mapping = aes(x = binL, y = Cys)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine usage per protein (excluding those with 0 Cys)", x = "length", tag = "E") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5)) + scale_y_log10()
+
+# plot C. auris Cysteine content
+percent %>% filter(Cys > 0) %>% 
+  filter(Species == c("C_auris")) %>% 
+  ggplot(mapping = aes(x = binL, y = Cys)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine usage per protein (excluding those with 0 Cys)", x = "length", tag = "F") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5)) + scale_y_log10()
+```
+## Tentative conclusion
+
 Based on the results above, I conclude that the predicted adhesins on average have lower cysteine and dibasic motif content.
+
+## Revisit the percentage
+
+Jan suggested comparing the cysteine content as a percentage of the protein length to the naive expectation of 1/20, assuming all 20 amino acids are equally represented.
+
+```{r cysteine_percent}
+# first I'd like to get an idea of the genome-wide cysteine percentage
+print("Across the genome, the cysteine percentage is:")
+print(master %>% group_by(Species, Strain) %>% summarize(Cys.Usage = sum(Cys)/sum(length)))
+print("In the predicted adhesins, the cysteine percentage is:")
+print(master %>% filter(FungalRV) %>% group_by(Species, Strain) %>% summarize(Cys.Usage = sum(Cys)/sum(length)))
+
+print("A closer look at the distribution of cysteine usage per protein")
+print("First for the genome-wide:")
+print(master %>% mutate(Cys.perc = Cys / length) %>% group_by(Species, Strain) %>% summarize(min=min(Cys.perc), QT1=quantile(Cys.perc,probs = 0.25), median = median(Cys.perc), QT3 = quantile(Cys.perc, probs = 0.75), max=max(Cys.perc)))
+print("Next just for the predicted adhesins:")
+print(master %>% filter(FungalRV) %>% mutate(Cys.perc = Cys / length) %>% group_by(Species, Strain) %>% summarize(min=min(Cys.perc), QT1=quantile(Cys.perc,probs = 0.25), median = median(Cys.perc), QT3 = quantile(Cys.perc, probs = 0.75), max=max(Cys.perc)))
+```

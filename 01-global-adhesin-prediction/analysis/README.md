@@ -97,3 +97,9 @@ _Notes_
 1. Rewrote the script in Python, much more elegant and more efficient.
 1. Now that my script can efficiently compute these statistics, I wonder how does the distribution of the two properties for the predicted adhesins compare to that of the entire genome.
 1. Created a new folder in `analysis` and used a modified python code to calculate the frequencies for the 7 genomes. To be continued with analysis in R
+
+# 2020-03-02 [HB] amino acid composition, preliminary result
+I did a preliminary analysis comparing the counts of cysteine and dibasic residues in the predicted adhesins vs. the rest of the genome. To control for protein length, I stratified the proteins by length into five groups. Plotting the number of both types of residues showed that the predicted adhesins had **less**, not **more** than the rest of the genome.
+
+# 2020-03-03 [HB] amino acid composition, revisit
+I talked to Jan, who suggested comparing the frequency of both types of motifs against the naive expectation of 1/20, assuming each amino acid is equally used in the proteome. My current thinking is that for cysteine, we probably should look at a sliding window (maybe 300bp) and record the highest percentage per protein. This would correspond to the "Cysteine-rich region" definition. As for the dibasic motif, perhaps there is no need comparing them to the other proteins, but rather just score 0 or 1 (has or don't have). Jan also suggested using the [Eukaryotic Linear Motif (ELM)](http://elm.eu.org/index.html) database, which uses regular expression to search for linear protein motifs. There, the regular expression for protease digestion site is often more than the [RR|KK|RK|KR].
