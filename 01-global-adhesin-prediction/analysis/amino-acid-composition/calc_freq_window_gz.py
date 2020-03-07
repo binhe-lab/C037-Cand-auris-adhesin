@@ -1,0 +1,1 @@
+../../script/amino-acid-composition/calc_freq_window_gz.py

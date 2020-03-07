@@ -1,0 +1,1 @@
+../../analysis/amino-acid-composition/C-glabrata-genome-freq.txt

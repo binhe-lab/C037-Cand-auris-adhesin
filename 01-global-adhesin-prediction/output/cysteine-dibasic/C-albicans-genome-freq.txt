@@ -1,0 +1,1 @@
+../../analysis/amino-acid-composition/C-albicans-genome-freq.txt

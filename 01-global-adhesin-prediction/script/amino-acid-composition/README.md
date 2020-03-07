@@ -19,6 +19,9 @@ The old scripts are now moved as `.old`. The new code executes much faster.
 
 Switched to Python, as it is more flexible and can output both cysteine and dibasic motifs in the same script.
 
+## 2020-03-06 Update 3:
+
+Made another modification: this time I'd like to run a sliding window and record the highest number of cysteine content. The script is named `calc_aafreq_window.py` and `calc_freq_window_gz.py`.
 
 ## Install bioawk
 

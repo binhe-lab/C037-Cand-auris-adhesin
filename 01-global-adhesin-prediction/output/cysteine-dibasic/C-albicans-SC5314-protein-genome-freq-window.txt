@@ -1,0 +1,1 @@
+../../analysis/amino-acid-composition/C-albicans-SC5314-protein-genome-freq-window.txt

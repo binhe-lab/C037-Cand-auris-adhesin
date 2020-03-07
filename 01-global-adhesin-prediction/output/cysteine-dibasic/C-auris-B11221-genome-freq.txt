@@ -1,0 +1,1 @@
+../../analysis/amino-acid-composition/C-auris-B11221-genome-freq.txt

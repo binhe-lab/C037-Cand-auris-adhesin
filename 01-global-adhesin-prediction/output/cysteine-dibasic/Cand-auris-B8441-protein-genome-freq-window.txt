@@ -1,0 +1,1 @@
+../../analysis/amino-acid-composition/Cand-auris-B8441-protein-genome-freq-window.txt

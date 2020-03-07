@@ -1,0 +1,1 @@
+../../analysis/amino-acid-composition/C-glabrata-CBS138-protein-genome-freq-window.txt
