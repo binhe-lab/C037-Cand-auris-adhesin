@@ -106,17 +106,21 @@ Jan suggested comparing the cysteine content as a percentage of the protein leng
 
 ```{r cysteine_percent}
 # first I'd like to get an idea of the genome-wide cysteine percentage
-print("Across the genome, the cysteine percentage is:")
+# Across the genome, the cysteine percentage is:
 print(master %>% group_by(Species, Strain) %>% summarize(Cys.Usage = sum(Cys)/sum(length)))
-print("In the predicted adhesins, the cysteine percentage is:")
+# In the predicted adhesins, the cysteine percentage is:
 print(master %>% filter(FungalRV) %>% group_by(Species, Strain) %>% summarize(Cys.Usage = sum(Cys)/sum(length)))
 
-print("A closer look at the distribution of cysteine usage per protein")
-print("First for the genome-wide:")
+# A closer look at the distribution of cysteine usage per protein
+# First for the genome-wide:
 print(master %>% mutate(Cys.perc = Cys / length) %>% group_by(Species, Strain) %>% summarize(min=min(Cys.perc), QT1=quantile(Cys.perc,probs = 0.25), median = median(Cys.perc), QT3 = quantile(Cys.perc, probs = 0.75), max=max(Cys.perc)))
-print("Next just for the predicted adhesins:")
+# Next just for the predicted adhesins:
 print(master %>% filter(FungalRV) %>% mutate(Cys.perc = Cys / length) %>% group_by(Species, Strain) %>% summarize(min=min(Cys.perc), QT1=quantile(Cys.perc,probs = 0.25), median = median(Cys.perc), QT3 = quantile(Cys.perc, probs = 0.75), max=max(Cys.perc)))
 ```
+
+### Conclusion
+
+In conclusion, cysteine usage is actually slightly lower in the predicted adhesins compared with the genome average.**
 
 ## Sliding window approach
 
@@ -124,5 +128,32 @@ While looking at the manually annotated adhesin sequences in Lipke 2018, I reali
 
 ```{r sliding_window_cysteine}
 # load data
-cys.window <- read_tsv("all-genome-freq-window.txt",)
+cys.window.raw <- read_tsv("all-genome-freq-window.txt", col_names = c("ID","length","Cys","Dibasic"), comment = "#", col_types = "ciii")
+cys.window <- cys.window.raw %>% mutate(window = ifelse(length >= 300, 300, length), Cys.w.perc = Cys / window)
+master1 <- master %>% left_join(cys.window %>% select(ID, Cys.w.perc))
+
+# plot
+# First, check the fraction of sequences without cysteine at all
+master1 %>% 
+  group_by(Species, Strain, FungalRV) %>% 
+  summarize(Frac_no_Cys = sum(Cys==0)/n()) %>% 
+  ggplot(mapping = aes(x = paste(Species, Strain, sep = "\n"), y = Frac_no_Cys)) + 
+  geom_col(aes(fill = FungalRV), position = position_dodge()) +
+  labs(x = "Species-strain", y = "% of proteins without cysteine") + 
+  theme(axis.text.x = element_text(angle = 30, vjust=0.4))
+# C. albicans and C. glabrata Cysteine content
+master1 %>% 
+  filter(Species %in% c("C_albicans","C_glabrata"), Cys.w.perc > 0) %>% 
+  ggplot(mapping = aes(x = binL, y = Cys.w.perc)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Highest Cysteine % in a 300bp window", x = "length", y = "Cysteine frequency") + scale_y_log10() + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
+
+# plot C. auris Cysteine content
+master1 %>% 
+  filter(Species == c("C_auris"), Cys.w.perc > 0) %>% 
+  ggplot(mapping = aes(x = binL, y = Cys.w.perc)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Highest Cysteine % in a 300bp window", x = "length", y = "Cysteine frequency") + scale_y_log10() + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5))
 ```
+
+### Conclusion
+
+In _C. albicans_ and _C. auris_, the fraction of adhesins without any cysteine is twice that of the rest of the genome, while in _C. glabrata_, the percentage is slightly higher for predicted adhesins than the rest of the genome.
+
+Among the proteins with cysteine, the mean cysteine percentage in a window size of 300 a.a. appears to be slightly higher in the predicted adhesins than in the rest of the genome in _C. albicans_ and _C. auris_, but only for proteins with < 1000 a.a.
