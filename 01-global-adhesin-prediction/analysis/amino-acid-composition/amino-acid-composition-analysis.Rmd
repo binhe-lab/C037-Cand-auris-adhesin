@@ -2,7 +2,10 @@
 title: Analyze amino acid composition
 author: Bin He
 date: 2020-02-27
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 # goal
@@ -92,6 +95,7 @@ percent %>% filter(Cys > 0) %>%
   filter(Species == c("C_auris")) %>% 
   ggplot(mapping = aes(x = binL, y = Cys)) +  geom_boxplot(aes( color = FungalRV )) + facet_wrap(~Species + Strain) + labs(title = "Cysteine usage per protein (excluding those with 0 Cys)", x = "length", tag = "F") + theme(axis.text.x = element_text(angle = 30, vjust=0.4), plot.title = element_text(hjust = 0.5)) + scale_y_log10()
 ```
+
 ## Tentative conclusion
 
 Based on the results above, I conclude that the predicted adhesins on average have lower cysteine and dibasic motif content.
@@ -112,4 +116,13 @@ print("First for the genome-wide:")
 print(master %>% mutate(Cys.perc = Cys / length) %>% group_by(Species, Strain) %>% summarize(min=min(Cys.perc), QT1=quantile(Cys.perc,probs = 0.25), median = median(Cys.perc), QT3 = quantile(Cys.perc, probs = 0.75), max=max(Cys.perc)))
 print("Next just for the predicted adhesins:")
 print(master %>% filter(FungalRV) %>% mutate(Cys.perc = Cys / length) %>% group_by(Species, Strain) %>% summarize(min=min(Cys.perc), QT1=quantile(Cys.perc,probs = 0.25), median = median(Cys.perc), QT3 = quantile(Cys.perc, probs = 0.75), max=max(Cys.perc)))
+```
+
+## Sliding window approach
+
+While looking at the manually annotated adhesin sequences in Lipke 2018, I realized that he used the term "Cys-rich regions" to emphasize the local enrichment of cysteine. This prompted me to use a sliding window approach to take another look. I chose the window size to be 300 a.a. and a step size of 10 a.a. The highest number of Cysteine residues in all sliding windows is recorded and reported.
+
+```{r sliding_window_cysteine}
+# load data
+cys.window <- read_tsv("all-genome-freq-window.txt",)
 ```
