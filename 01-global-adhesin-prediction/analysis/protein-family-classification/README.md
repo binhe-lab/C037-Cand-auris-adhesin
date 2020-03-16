@@ -24,6 +24,6 @@ Our goal is to map the predicted adhesins from all five genomes to "orthogroups"
 On 2020-03-10, I (Bin He) submitted all predicted adhesins to the workflow for mapping proteins to orthogroups, made availabe by EuPathDB's Galaxy site (see `output/OrthoMCL` for details). In this folder, I'm analyzing the output to answer the above questions.
 
 
-##03/16/2020 OrthoMCL Information [RS]
+## 03/16/2020 OrthoMCL Information [RS]
 
 Algorithm information is [here](https://docs.google.com/document/d/1RB-SqCjBmcpNq-YbOYdFxotHGuU7RK_wqxqDAMjyP_w/pub) and protocol information is [here](https://currentprotocols.onlinelibrary.wiley.com/doi/full/10.1002/0471250953.bi0612s35)
