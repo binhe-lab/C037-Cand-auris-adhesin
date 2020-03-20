@@ -1,3 +1,4 @@
+protein_id	orthomcl_group_id	most_similar_orthomcl_protein_id	evalue_mantissa	evalue_exponent	percent_identity	percent_match
 PIS48128.1	OG5_129066	dhan|XP_457427	4	-25	44.80	99.2
 PIS48129.1	OG5_126947	psti|XP_001384475	1	-51	84.07	69.8
 PIS48130.1	OG5_126947	psti|XP_001384475	1	-27	47.90	74.8

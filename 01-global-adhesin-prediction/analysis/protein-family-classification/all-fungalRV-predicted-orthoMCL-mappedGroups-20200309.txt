@@ -1,1 +1,0 @@
-../../output/OrthoMCL/all-fungalRV-predicted-orthoMCL-mappedGroups-20200309.txt

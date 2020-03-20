@@ -1,3 +1,4 @@
+protein_id	orthomcl_group_id	most_similar_orthomcl_protein_id	evalue_mantissa	evalue_exponent	percent_identity	percent_match
 QEO20424.1	OG5_157055	dhan|XP_456954	4	-07	35.10	69.6
 QEO20671.1	OG5_136970	dhan|XP_457401	5	-50	46.51	93.7
 QEO20351.1	OG5_138848	calb|calb_sc5314__orf19.1745	2	-09	37.90	73.2
