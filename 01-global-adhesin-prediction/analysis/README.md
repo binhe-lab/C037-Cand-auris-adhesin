@@ -111,3 +111,23 @@ What is the evolutionary relationship between the predicted adhesins in _C. auri
 1. [CD-HIT](http://weizhongli-lab.org/cd-hit/), which uses exact matches of short words to estimate sequence similarity without actually aligning them. It is a very popular tool to reduce a large sequence set to "representative sequences". FaaPred used it to first reduce the set of positive adhesin sequences before training the SVM on it.
 1. BLAST reciprocol best hits (RBH). This is widely used as a proxy for homology. Many different workflows exist to implement the idea.
 1. Ortho Groups. The [Fungal Orthogroup](https://portals.broadinstitute.org/regev/orthogroups/), which I uses frequently, is one such example. I found that EuPathDB has a sub-site that is called [OrthoDB](https://orthomcl.org/orthomcl), which has a workflow for mapping user defined proteins to pre-computed Orthogroups. This is what I ended up following. See `output/OrthoMCL` folder for details.
+## 2020-03-20 [HB] Re-ran OrthoMCL mapping for all fungalRV predicted adhesins
+
+1. Concatenated all FungalRV predicted adhesins to a single fasta file
+1. Upload onto [OrthoMCL galaxy site](https://veupathdb.globusgenomics.org/) and run the pipeline
+1. There are two result files, the `MCS.tabular` and the `mappedGroups.txt`. The former contains sequences not mapped to any existing Orthogroups, and are further clustered using the MCS algorithm.
+1. I manually edited the `MCS.tabular` so that each row is a protein sequence and the same cluster (at most three in a cluster) gets an arbitrary MCS_# number.
+1. On Galaxy OrthoMCL pipeline, I varied the "inflation" parameter for the MCS program according to the program's suggestion. the default is 4, and I changed it 1.4 and 2.0  Neither changed the results.
+
+## 2020-04-28 [HB] Reboot the project
+
+_Summary of previous work_
+
+1. I have submitted all FungalRV predicted adhesins to OrthoMCL. This essentially maps all the adhesins to an existing classification system. The MCL group ID can be used to group the adhesins and, to some extent, answer the question of whether the predicted adhesins in different species "come from the same set of ancestral genes".
+1. CATH results in the `../script/CATH/` folder provides protein domain information, which gives another way to answer the above question
+1. Rachel has collected PFAM data, which is another potential source of information.
+
+_Todo_
+
+1. Dig deeper into the OrthoMCL results
+1. Combine CATH AND Pfam information and get a clearer picture.

@@ -2,11 +2,16 @@
 title: "Mapping to Orthogroups"
 author: "Bin He"
 date: "3/12/2020"
-output: html_document
+output: 
+  html_document:
+  toc: TRUE
+  toc_float: TRUE
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(janitor) # for adding total row
 ```
 
 ## Questions
@@ -29,4 +34,100 @@ Briefly
 
 ## Data
 
-OrthoMCL output, including 
+OrthoMCL output, including `mappedGroups.txt`, `MCS.tabular` and `paralogPairs.txt`. Among them, the `mappedGroups.txt` contains the mapping between the proteins in the input file and the pre-calculated Orthogroups. `paralogPairs.txt` gives pairwise distance calculated among the input sequences. `MCS.tabular` contains the clustered proteins based on the `paralogPairs.txt`. Note these should only include those sequences that don't get mapped to the existing Orthogroups.
+
+## FungalRV results
+
+### Load data
+
+```{r load_data}
+# the following file contains the metadata for all genes
+# including species, strains, protein_id and FungalRV score
+# threhold used by current version of Fungal RV: Score > 0 
+
+frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#")
+
+# the following file contains the mapped results
+frv.mapped <- read_tsv("all-fungalRV-predicted-orthoMCL-mappedGroups-20200309.txt")
+# merge with frv.res to provide meta information
+frv.mapped <- frv.mapped %>% 
+  left_join(frv.res, by = c("protein_id"="ID")) %>% 
+  select(Species, Strain, protein_id, everything())
+
+# the following file contains unmapped genes grouped by MCS algorithm
+frv.mcs <- read_tsv("all-fungalRV-predicted-orthoMCL-MCS-20200309.txt", comment = "#")
+# merge with frv.res to provide meta information
+frv.mcs <- frv.mcs %>% 
+  left_join(frv.res, by = c("protein_id"="ID")) %>% 
+  select(Species, Strain, protein_id, everything())
+```
+
+### Examine OrthoMCL mapping results
+I submitted all predicted adhesins in the five genomes to the Galaxy site. How many of them were successfully mapped for each species/strain?
+
+```{r percent_mapped}
+# total number of adhesins submitted per species
+frv.res %>% 
+  filter(Score > 0) %>% 
+  count(Strain) %>% 
+  adorn_totals()
+
+# combined both mapped and MCS clustered
+
+```
+### Tally numbers and sort
+My goal is to count the number of members in each species/strain that belong to an orthogroup, ignoring those with just one member, as they have to be species specific. Then report the subtotals ordered by the total number of members in each orthogroup.
+
+```{r subtotal_orthogroup}
+# next let's look at the mappings
+faa.mapped.sub <- faa.mapped %>% 
+  count(Strain, orthomcl_group_id) %>% # group by strain and orthogroup ID, then count
+  spread(key = Strain, value = n)  # spread the Strain variable so that all counts per strain is in the same row
+
+faa.mapped.tot <- faa.mapped %>% 
+  count(orthomcl_group_id, name = "total") %>% 
+  filter(total > 1) # remove orthogroups with only one member across all species/strains
+
+faa.mapped.final <- faa.mapped.sub %>% 
+  right_join(faa.mapped.tot) %>% # this joins the two table and only retails rows that exist in mapped.tot
+  arrange(desc(total))
+
+print(faa.mapped.final, n=Inf)
+```
+
+## FaaPred results
+
+### Load data
+
+```{r load_data_faapred}
+frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#")
+faa.mapped <- read_tsv("all-faapred-predicted-orthoMCL-mappedGroups-20200309.txt")
+faa.mapped <- faa.mapped %>% 
+  select(-evalue_mantissa) %>% 
+  left_join(frv.res, by = c("protein_id"="ID")) %>% 
+  select(Species, Strain, protein_id, everything())
+```
+
+### Examine OrthoMCL mapping results
+I submitted all predicted adhesins in the five genomes to the Galaxy site. How many of them were successfully mapped for each species/strain?
+
+## Tally numbers and sort
+My goal is to count the number of members in each species/strain that belong to an orthogroup, ignoring those with just one member, as they have to be species specific. Then report the subtotals ordered by the total number of members in each orthogroup.
+
+```{r subtotal_orthogroup_faapred}
+
+# next let's look at the mappings
+faa.mapped.sub <- faa.mapped %>% 
+  count(Strain, orthomcl_group_id) %>% # group by strain and orthogroup ID, then count
+  spread(key = Strain, value = n)  # spread the Strain variable so that all counts per strain is in the same row
+
+faa.mapped.tot <- faa.mapped %>% 
+  count(orthomcl_group_id, name = "total") %>% 
+  filter(total > 1) # remove orthogroups with only one member across all species/strains
+
+faa.mapped.final <- faa.mapped.sub %>% 
+  right_join(faa.mapped.tot) %>% # this joins the two table and only retails rows that exist in mapped.tot
+  arrange(desc(total))
+
+print(faa.mapped.final, n=Inf)
+```
