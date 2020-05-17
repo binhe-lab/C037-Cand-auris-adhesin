@@ -86,16 +86,10 @@ frv.cmbd5 %>%
 #### Using OrthoMCL-DB v6r1
 
 ```{r load_data_v6, echo=FALSE}
-# the following file contains the metadata for all genes
-# including species, strains, protein_id and FungalRV score
-# threhold used by current version of Fungal RV: Score > 0 
-
-frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#")
-
 # the following file contains the mapped results
 frv.mapped <- read_tsv("all-fungalRV-predicted-orthoMCL-v6r1-mappedGroups-20200516.txt")
 # merge with frv.res to provide meta information
-frv.mapped <- frv.mapped %>% 
+frv.mapped6 <- frv.mapped %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
   select(Species, Strain, protein_id, everything())
 
@@ -103,9 +97,9 @@ frv.mapped <- frv.mapped %>%
 frv.mcs <- read.csv("all-fungalRV-predicted-orthoMCL-v6r1-MCS-20200516.tabular", sep = "\t", comment = "#", header = F, fill = T)
 # let's reformat it to a long formatc (each member has its own row)
 # and each group gets a unique ID
-frv.mcs <- cbind(group_id = paste("mcs",1:nrow(frv.mcs),sep = "_"),
+frv.mcs6 <- cbind(group_id = paste("mcs",1:nrow(frv.mcs),sep = "_"),
                  frv.mcs)
-frv.mcs.tbl <- as.tibble(frv.mcs) %>% 
+frv.mcs6.tbl <- as_tibble(frv.mcs6) %>% 
   # pivot_longer() replaces gather()
   # the first argument is the tibble, which is implicit; the second
   # argument is to define the columns to be reshaped, here we use
@@ -119,7 +113,7 @@ frv.mcs.tbl <- as.tibble(frv.mcs) %>%
   select(-member)
 
 # merge with frv.res to provide meta information
-frv.mcs.tbl <- frv.mcs.tbl %>% 
+frv.mcs6.tbl <- frv.mcs6.tbl %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
   select(Species, Strain, protein_id, everything())
 ```
@@ -147,7 +141,25 @@ frv.cmbd %>%
 
 _Dicussion_
 
-- Many more genes from the _C. auris_ genomes failed to map to existing orthogroups. It's not clear to me whether this is an issue with threshold or else.
+- Some genes in _C. glabrata_ and _C. albicans_ do not map to the Orthogroups. For those genes, neither do they cluster with each other or with the other proteins in the predicted adhesin list. Because FungalRV predictions are not always accurate, it is likely that these genes are not adhesins. Alternatively, they could represent genuine adhesins, but don't share significant similarity with other adhesins at the sequence level
+- It is puzzling why switching from v5 to v6r1 of OrthoMCL, we actually get more genes in _C. glabrata_ and _C. albicans_ to fall in the unmapped category.
+
+Below are some code to diagnose problems
+
+```{r diagnose_unmapped_genes, include = FALSE}
+# extract protein IDs from the input and the output and compare them
+cg.frv <- frv.res %>% filter(Strain == "CBS138", Score > 0) %>% pull(ID)
+cg.mapped5 <- frv.mapped5 %>% filter(Strain == "CBS138") %>% pull(protein_id)
+cg.mapped6 <- frv.mapped6 %>% filter(Strain == "CBS138") %>% pull(protein_id)
+
+# identify proteins that are unmapped
+cg.unmapped5 <- setdiff(cg.frv, cg.mapped5)
+cg.unmapped6 <- setdiff(cg.frv, cg.mapped6)
+cg.onlyin5 <- setdiff(cg.mapped5, cg.mapped6)
+cg.onlyin6 <- setdiff(cg.mapped6, cg.mapped5)
+```
+
+I could then use the IDs to pull out the sequences from NCBI, and submit them to OrthoMCL's blast tool to see why they failed to match any orthogroups.
 
 #### 3. Tally numbers and sort
 
