@@ -1,5 +1,5 @@
 # 2020-03-20 HB, manually edited from all-fungalRV-predicted-orthoMCL-MCS-20200309.tabular
-protein_id	mcs_id
+protein_id	group_id
 QEO24125.1	MCS_1
 XP_028891631.1	MCS_1
 PIS54714.1	MCS_1

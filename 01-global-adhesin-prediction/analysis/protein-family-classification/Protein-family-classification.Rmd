@@ -3,7 +3,7 @@ title: "Mapping to Orthogroups"
 author: "Bin He"
 date: "3/12/2020"
 output: 
-  html_document:
+  html_notebook:
   toc: TRUE
   toc_float: TRUE
 ---
@@ -16,31 +16,31 @@ require(janitor) # for adding total row
 
 ## Questions
 
-Did _C. auris_, _C. albicans_ and _C. glabrata_ inherit the same set of adhesin families? In other words, do they use an ancestral pool of adhesin genes or did they evolve species-specific ones by co-opting or _de novo_ evolution? If they share certain families, are the number of paralogs (members of a family) similar or different?
+Are the known and _predicted_ adhesin genes from _C. auris_, _C. albicans_ and _C. glabrata_ from the same group of adhesin families? In other words, do they use an ancestral pool of adhesin genes or did they evolve species-specific ones by co-option or _de novo_ evolution? If they share certain families, are the number of paralogs (members of a family) similar or different?
 
 ## OrthoMCL
-
 I used the EuPathDB's [Galaxy site](http://eupathdb.globusgenomics.org/) to map the predicted adhesins from all five genomes to "orthogroups". These are pre-computed groups of putative orthologous protein sequences. These are calculated using the OrthoMCL program. Here is a [description](https://orthomcl.org/orthomcl/about.do#background) of how that is done. 
 
 Briefly
+
 - All-v-all BLASTP of the proteins.
 - Compute percent match length
     - Select whichever is shorter, the query or subject sequence. Call that sequence S.
     - Count all amino acids in S that participate in any HSP (high scoring pairs, from BLAST local alignment).
     - Divide that count by the length of S and multiply by 100
-- Apply thresholds to blast result. Keep matches with E-Value \< 1e-5 percent match length \>= 50%
-- Find potential inparalog, ortholog and co-ortholog pairs using the Orthomcl Pairs program. (These are the pairs that are counted to form the Average % Connectivity statistic per group.)
+- Apply thresholds to blast result. Keep matches with E-Value \< 1e-5 percent and match length \>= 50%
+- Find potential in-paralog, ortholog and co-ortholog pairs using the Orthomcl Pairs program. (These are the pairs that are counted to form the Average % Connectivity statistic per group.)
 - Use the MCL program to cluster the pairs into groups
 
-## Data
+### Data
 
 OrthoMCL output, including `mappedGroups.txt`, `MCS.tabular` and `paralogPairs.txt`. Among them, the `mappedGroups.txt` contains the mapping between the proteins in the input file and the pre-calculated Orthogroups. `paralogPairs.txt` gives pairwise distance calculated among the input sequences. `MCS.tabular` contains the clustered proteins based on the `paralogPairs.txt`. Note these should only include those sequences that don't get mapped to the existing Orthogroups.
 
-## FungalRV results
+### FungalRV results
 
-### Load data
+#### Using OrthoMCL-DB v5
 
-```{r load_data}
+```{r load_data_v5, echo=FALSE}
 # the following file contains the metadata for all genes
 # including species, strains, protein_id and FungalRV score
 # threhold used by current version of Fungal RV: Score > 0 
@@ -48,34 +48,109 @@ OrthoMCL output, including `mappedGroups.txt`, `MCS.tabular` and `paralogPairs.t
 frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#")
 
 # the following file contains the mapped results
-frv.mapped <- read_tsv("all-fungalRV-predicted-orthoMCL-mappedGroups-20200309.txt")
+frv.mapped <- read_tsv("all-fungalRV-predicted-orthoMCL-mappedGroups-20200309.txt", col_names = TRUE)
+# merge with frv.res to provide meta information
+frv.mapped5 <- frv.mapped %>% 
+  left_join(frv.res, by = c("protein_id"="ID")) %>% 
+  select(Species, Strain, protein_id, everything())
+
+# the following file contains unmapped genes grouped by MCS algorithm
+frv.mcs5 <- read_tsv("all-fungalRV-predicted-orthoMCL-MCS-20200309.txt", comment = "#", col_names = TRUE)
+# add the species and strain information
+frv.mcs5 <- frv.mcs5 %>% 
+  left_join(frv.res, by = c("protein_id"="ID")) %>% 
+  select(Species, Strain, protein_id, everything())
+```
+
+How many predicted adhesins were successfully mapped in each species/strain?
+
+```{r percent_mapped_v5}
+# combine the mapped and mcs data
+frv.cmbd5 <- bind_rows(
+  mapped = select(frv.mapped5, Species, Strain, protein_id, group_id = orthomcl_group_id),
+  mcs = select(frv.mcs5, -Score), .id = "type")
+
+# total number of adhesins submitted per species
+frv.stat <- frv.res %>% 
+  group_by(Strain) %>% 
+  summarize(adhesin = sum(Score > 0, na.rm = T), all = n())
+
+# combined both mapped and MCS clustered
+frv.cmbd5 %>% 
+  group_by(Strain) %>% 
+  summarize(mapped = sum(type == "mapped"), mcs = sum(type == "mcs")) %>% 
+  right_join(frv.stat) %>% 
+  adorn_totals()
+```
+
+#### Using OrthoMCL-DB v6r1
+
+```{r load_data_v6, echo=FALSE}
+# the following file contains the metadata for all genes
+# including species, strains, protein_id and FungalRV score
+# threhold used by current version of Fungal RV: Score > 0 
+
+frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#")
+
+# the following file contains the mapped results
+frv.mapped <- read_tsv("all-fungalRV-predicted-orthoMCL-v6r1-mappedGroups-20200516.txt")
 # merge with frv.res to provide meta information
 frv.mapped <- frv.mapped %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
   select(Species, Strain, protein_id, everything())
 
 # the following file contains unmapped genes grouped by MCS algorithm
-frv.mcs <- read_tsv("all-fungalRV-predicted-orthoMCL-MCS-20200309.txt", comment = "#")
+frv.mcs <- read.csv("all-fungalRV-predicted-orthoMCL-v6r1-MCS-20200516.tabular", sep = "\t", comment = "#", header = F, fill = T)
+# let's reformat it to a long formatc (each member has its own row)
+# and each group gets a unique ID
+frv.mcs <- cbind(group_id = paste("mcs",1:nrow(frv.mcs),sep = "_"),
+                 frv.mcs)
+frv.mcs.tbl <- as.tibble(frv.mcs) %>% 
+  # pivot_longer() replaces gather()
+  # the first argument is the tibble, which is implicit; the second
+  # argument is to define the columns to be reshaped, here we use
+  # "-group_id" to mean all columns except for "group_id"
+  pivot_longer(-group_id, names_to = "member", values_to = "protein_id") %>% 
+  # now let's drop the rows with no protein_id (some rows in the 
+  # original table has only two members, resulting in empty string
+  # in the third column
+  filter(protein_id != "") %>% 
+  # finally, we will drop the unused column "member"
+  select(-member)
+
 # merge with frv.res to provide meta information
-frv.mcs <- frv.mcs %>% 
+frv.mcs.tbl <- frv.mcs.tbl %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
   select(Species, Strain, protein_id, everything())
 ```
 
-### Examine OrthoMCL mapping results
-I submitted all predicted adhesins in the five genomes to the Galaxy site. How many of them were successfully mapped for each species/strain?
+How many of them were successfully mapped for each species/strain?
 
-```{r percent_mapped}
+```{r percent_mapped_v6}
+# combine the mapped and mcs data
+frv.cmbd <- bind_rows(
+  mapped = select(frv.mapped, Species, Strain, protein_id, group_id = orthomcl_group_id),
+  mcs = select(frv.mcs.tbl, -Score), .id = "type")
+
 # total number of adhesins submitted per species
-frv.res %>% 
-  filter(Score > 0) %>% 
-  count(Strain) %>% 
-  adorn_totals()
+frv.stat <- frv.res %>% 
+  group_by(Strain) %>% 
+  summarize(adhesin = sum(Score > 0, na.rm = T), all = n())
 
 # combined both mapped and MCS clustered
-
+frv.cmbd %>% 
+  group_by(Strain) %>% 
+  summarize(mapped = sum(type == "mapped"), mcs = sum(type == "mcs")) %>% 
+  right_join(frv.stat) %>% 
+  adorn_totals()
 ```
-### Tally numbers and sort
+
+_Dicussion_
+
+- Many more genes from the _C. auris_ genomes failed to map to existing orthogroups. It's not clear to me whether this is an issue with threshold or else.
+
+#### 3. Tally numbers and sort
+
 My goal is to count the number of members in each species/strain that belong to an orthogroup, ignoring those with just one member, as they have to be species specific. Then report the subtotals ordered by the total number of members in each orthogroup.
 
 ```{r subtotal_orthogroup}
@@ -95,9 +170,9 @@ faa.mapped.final <- faa.mapped.sub %>%
 print(faa.mapped.final, n=Inf)
 ```
 
-## FaaPred results
+### FaaPred results
 
-### Load data
+#### 1. Load data
 
 ```{r load_data_faapred}
 frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#")
@@ -108,10 +183,12 @@ faa.mapped <- faa.mapped %>%
   select(Species, Strain, protein_id, everything())
 ```
 
-### Examine OrthoMCL mapping results
+#### 2. Examine OrthoMCL mapping results
+
 I submitted all predicted adhesins in the five genomes to the Galaxy site. How many of them were successfully mapped for each species/strain?
 
-## Tally numbers and sort
+#### 3. Tally numbers and sort
+
 My goal is to count the number of members in each species/strain that belong to an orthogroup, ignoring those with just one member, as they have to be species specific. Then report the subtotals ordered by the total number of members in each orthogroup.
 
 ```{r subtotal_orthogroup_faapred}

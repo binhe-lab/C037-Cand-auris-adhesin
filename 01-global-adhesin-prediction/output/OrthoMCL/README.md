@@ -6,13 +6,16 @@ date: 2020-03-09
 
 # approach
 1. Register an account on EupathDB
-1. Log on to [EuPathDB Galaxy Server](http://eupathdb.globusgenomics.org/)
+1. Log on to [EuPathDB Galaxy Server](http://veupathdb.globusgenomics.org/)
 1. Follow the workflow for OrthoMCL - uploading the fasta sequence and simply run the workflow to collect the results
 
 _update 2020-03-19_
 
 I realized that in the first try I uploaded the file that contains the FaaPred filtered genes (532 in total). To get the results for all FungalRV predicted adhesins, I re-concatenated the adhesin genes (in `data/predicted_adhesins`) and repeated the procedure above
 
+_update 2020-03-19_
+
+Resubmitted the sequences to VEupathDB (a new site integrating EupathDB, FungiDB and VectorBase) using OrthoMCL-DB v6r1 (previously I used v5)
 # output format
 
 Tool help for OrthoMCL Map Proteome to Groups

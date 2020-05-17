@@ -131,3 +131,7 @@ _Todo_
 
 1. Dig deeper into the OrthoMCL results
 1. Combine CATH AND Pfam information and get a clearer picture.
+
+_Notes_
+
+For more details on this part, check the README file in the `protein-family-classification` subfolder.
