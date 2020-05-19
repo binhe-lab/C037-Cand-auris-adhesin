@@ -1,1 +1,1 @@
-../../output/OrthoMCL/C-auris-B8441-orthoMCL-20200309.txt
+../../output/OrthoMCL/all-Cand-auris-B8441-orthoMCL-v5/C-auris-B8441-orthoMCL-20200309.txt

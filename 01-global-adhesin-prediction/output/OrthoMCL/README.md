@@ -13,9 +13,14 @@ _update 2020-03-19_
 
 I realized that in the first try I uploaded the file that contains the FaaPred filtered genes (532 in total). To get the results for all FungalRV predicted adhesins, I re-concatenated the adhesin genes (in `data/predicted_adhesins`) and repeated the procedure above
 
-_update 2020-03-19_
+_update 2020-05-16_
 
 Resubmitted the sequences to VEupathDB (a new site integrating EupathDB, FungiDB and VectorBase) using OrthoMCL-DB v6r1 (previously I used v5)
+
+_update 2020-05-18_
+
+The results from mapping to v5 and v6r1 are not the same. Each has its own unique entries. For example, "XP_447684.1" is mapped to OG6_128677 in v6r1, but failed to be mapped for v5. After checking the blasp results, I found that the gene actually yielded MANY hits in the v5 result, but all of the hits have cgla|XP_xxxx format, instead of the CAGL0Kxxx format, which suggests that the v5 and v6r1 OrthoMCL blast databases are quite different. As to why, despite having many hits in the v5 blastp result, it failed to be mapped with v5, I can't quite figure out.
+
 # output format
 
 Tool help for OrthoMCL Map Proteome to Groups

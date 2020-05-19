@@ -1,1 +1,1 @@
-../../output/OrthoMCL/all-faapred-predicted-orthoMCL-mappedGroups-20200309.txt
+../../output/OrthoMCL/all-faapred-orthoMCL-v5/all-faapred-predicted-orthoMCL-mappedGroups-20200309.txt
