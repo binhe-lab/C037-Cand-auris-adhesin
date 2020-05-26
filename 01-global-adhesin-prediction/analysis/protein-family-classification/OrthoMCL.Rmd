@@ -1,5 +1,5 @@
 ---
-title: "Mapping to Orthogroups MCL v5"
+title: "Mapping to Orthogroups MCL v5 or v6r1"
 author: "Bin He"
 date: "3/12/2020"
 output: 
@@ -8,9 +8,22 @@ output:
   toc_float: TRUE
 ---
 
-```{r setup, include=FALSE}
+```{r setup, cache=FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+# set the root directory to be the output folder for OrthoMCL
+knitr::opts_knit$set(root.dir = normalizePath("../../output/OrthoMCL/"))
+knitr::opts_knit$get("root.dir")
+# install the package if not already available
+if (!requireNamespace("tidyverse", quietly = TRUE))
+    install.packages("tidyverse")
+if (!requireNamespace("janitor", quietly = TRUE))
+    install.packages("janitor")
+if (!requireNamespace("rentrez", quietly = TRUE))
+    install.packages("rentrez")
+
+# load the package
 require(tidyverse)
+require(rentrez)
 require(janitor) # for adding total row
 ```
 
@@ -18,8 +31,7 @@ require(janitor) # for adding total row
 
 Are the known and _predicted_ adhesin genes from _C. auris_, _C. albicans_ and _C. glabrata_ from the same group of adhesin families? In other words, do they use an ancestral pool of adhesin genes or did they evolve species-specific ones by co-option or _de novo_ evolution? If they share certain families, are the number of paralogs (members of a family) similar or different?
 
-## OrthoMCL
-I used the VEuPathDB's [Galaxy site](http://veupathdb.globusgenomics.org/) to map the predicted adhesins from all five genomes to "orthogroups". These are pre-computed groups of putative orthologous protein sequences. These are calculated using the OrthoMCL program. Here is a [description](https://orthomcl.org/orthomcl/about.do#background) of how that is done. 
+In this analysis, I used the VEuPathDB's [Galaxy site](http://veupathdb.globusgenomics.org/) to map the predicted adhesins from all five genomes to "orthogroups". These are pre-computed groups of putative orthologous protein sequences. These are calculated using the OrthoMCL program. Here is a [description](https://orthomcl.org/orthomcl/about.do#background) of how that is done. 
 
 Briefly
 
@@ -32,32 +44,32 @@ Briefly
 - Find potential in-paralog, ortholog and co-ortholog pairs using the Orthomcl Pairs program. (These are the pairs that are counted to form the Average % Connectivity statistic per group.)
 - Use the MCL program to cluster the pairs into groups
 
-### Data
+## Data
 
 OrthoMCL output, including `mappedGroups.txt`, `MCS.tabular` and `paralogPairs.txt`. Among them, the `mappedGroups.txt` contains the mapping between the proteins in the input file and the pre-calculated Orthogroups. `paralogPairs.txt` gives pairwise distance calculated among the input sequences. `MCS.tabular` contains the clustered proteins based on the `paralogPairs.txt`. Note these should only include those sequences that don't get mapped to the existing Orthogroups.
 
-### FungalRV results
+## FungalRV results
 
 _Compare results using two versions of OrthoMCL-DB_
 
+### Compare OrthoMCL-DB v5 vs v6r1
 #### OrthoMCL-DB v5
 
 ```{r load_data_v5, echo=FALSE}
 # the following file contains the metadata for all genes
 # including species, strains, protein_id and FungalRV score
 # threhold used by current version of Fungal RV: Score > 0 
-
-frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#", col_types = "cccd")
+frv.res <- read_tsv("../FungalRV/all-fungalrv-results-20200228.txt", comment = "#", col_types = "cccd")
 
 # the following file contains the mapped results
-frv.mapped <- read_tsv("all-fungalRV-predicted-orthoMCL-mappedGroups-20200309.txt", col_types = "ccciidd")
+frv.mapped <- read_tsv("all-fungalRV-orthoMCL-v5/mappedGroups-20200309.txt", col_types = "ccciidd")
 # merge with frv.res to provide meta information
 frv.mapped5 <- frv.mapped %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
   select(Species, Strain, protein_id, everything())
 
 # the following file contains unmapped genes grouped by MCS algorithm
-frv.mcs5 <- read_tsv("all-fungalRV-predicted-orthoMCL-MCS-20200309.txt", comment = "#", col_types = "cc")
+frv.mcs5 <- read_tsv("all-fungalRV-orthoMCL-v5/MCS-20200309.txt", comment = "#", col_types = "cc")
 # add the species and strain information
 frv.mcs5 <- frv.mcs5 %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
@@ -89,14 +101,14 @@ frv.cmbd5 %>%
 
 ```{r load_data_v6, echo=FALSE}
 # the following file contains the mapped results
-frv.mapped <- read_tsv("all-fungalRV-predicted-orthoMCL-v6r1-mappedGroups-20200516.txt", col_types = "ccciidd")
+frv.mapped <- read_tsv("all-fungalRV-orthoMCL-v6r1/mappedGroups-20200516.txt", col_types = "ccciidd")
 # merge with frv.res to provide meta information
 frv.mapped6 <- frv.mapped %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
   select(Species, Strain, protein_id, everything())
 
 # the following file contains unmapped genes grouped by MCS algorithm
-frv.mcs <- read.csv("all-fungalRV-predicted-orthoMCL-v6r1-MCS-20200516.tabular", sep = "\t", comment = "#", header = F, fill = T)
+frv.mcs <- read.csv("all-fungalRV-orthoMCL-v6r1/MCS-20200516.tabular", sep = "\t", comment = "#", header = F, fill = T)
 # let's reformat it to a long formatc (each member has its own row)
 # and each group gets a unique ID
 frv.mcs6 <- cbind(group_id = paste("mcs",1:nrow(frv.mcs),sep = "_"),
@@ -141,7 +153,7 @@ _Dicussion_
 - Some genes in _C. glabrata_ and _C. albicans_ do not map to the Orthogroups. For those genes, neither do they cluster with each other or with the other proteins in the predicted adhesin list. Because FungalRV predictions are not always accurate, it is likely that these genes are not adhesins. Alternatively, they could represent genuine adhesins, but don't share significant similarity with other adhesins at the sequence level
 - It is puzzling why switching from v5 to v6r1 of OrthoMCL, we actually get more genes in _C. glabrata_ and _C. albicans_ to fall in the unmapped category.
 
-Below are some code to diagnose problems
+- Below are some code to diagnose problems
 
 ```{r diagnose_unmapped_genes}
 # extract protein IDs from the input and the output and compare them
@@ -159,13 +171,146 @@ cg.onlyin6 <- setdiff(cg.mapped6, cg.mapped5)
 I could then use the IDs to pull out the sequences from NCBI, and submit them to OrthoMCL's blast tool to see why they failed to match any orthogroups.
 
 For example, "XP_447684.1" is mapped to OG6_128677 in v6r1, but failed to be mapped for v5. After checking the blasp results, I found that the gene actually yielded MANY hits in the v5 result, but all of the hits have cgla|XP_xxxx format, instead of the CAGL0Kxxx format, which suggests that the v5 and v6r1 OrthoMCL blast databases are quite different. As to why, despite having many hits in the v5 blastp result, it failed to be mapped with v5, I can't quite figure out.
-#### 3. Tally numbers and sort
 
+### Compare mapped genes in the five strains
+
+_**Question**_
+
+What are some of the most populated groups, and what percent of genes fall in those groups?
+
+_**Exploratory data analyses**_
+
+Tally the number of genes mapped to an OrthoMCL group in each strain
+```{r EDA_for_mapped}
+frv.mcl5.sum <- frv.cmbd5 %>% 
+  group_by(group_id) %>% count(Strain) %>% 
+  # spread the table wider, one row per orthogroup
+  pivot_wider(names_from = Strain, values_from = n, values_fill = list(n = 0)) %>% 
+  mutate(Caur = median(c(B11220,B11221,B8441)), total = Caur+CBS138+SC5314) %>% 
+  select(group_id, Caur, Cgla = CBS138, Calb = SC5314, total) %>% 
+  arrange(desc(total))
+
+frv.mcl5.sum %>% filter(total > 2)
+
+# now let's do the same with the results based on OrthoMCL-DB v6r1
+frv.mcl6.sum <- frv.cmbd6 %>% 
+  group_by(group_id) %>% count(Strain) %>% 
+  # spread the table wider, one row per orthogroup
+  pivot_wider(names_from = Strain, values_from = n, values_fill = list(n = 0)) %>% 
+  mutate(Caur = median(c(B11220,B11221,B8441)), total = Caur+CBS138+SC5314) %>% 
+  select(group_id, Caur, Cgla = CBS138, Calb = SC5314, total) %>% 
+  arrange(desc(total))
+
+frv.mcl6.sum %>% filter(total > 2)
+```
+
+_**Discussion**_
+- It appears that v6 and v5 do have a lot of differences. v6 is only accessible through the VEuPathDB's galaxy site. The OrthoMCL-DB website only provide download links, but not through its searches.
+- Given the lack of information on v6, and the top orthogroup in v5 appears to be well supported (the _C. albicans_ ALS family), I will use v5 going forward.
+
+### Examine the potential functions of the genes in the top orthogroups
+
+#### Orthogroups annotation
+Now let's learn something about the top OG groups, e.g. what functional domains do these orthogroups have in common? What EC and GO terms are they associated with?
+
+To answer this question, we will collect the list of orthogroup id's and paste them manually onto the OrthoMCL-DB website's [search group id tool](https://orthomcl.org/orthomcl/showQuestion.do?questionFullName=GroupQuestions.ByNameList), and then download the output as a custom table.
+
+```{r orthogroup_output, include = FALSE}
+# print the top orthogroups' IDs
+cat(paste(frv.mcl5.sum$group_id, collapse = ","))
+# copy and paste the list to https://orthomcl.org/orthomcl/showQuestion.do?questionFullName=GroupQuestions.ByNameList
+# then choose the columns to report. I chose
+# num. sequences | average % identity | domains | EC numbers | Group | Keywords
+```
+
+```{r add_og_information}
+# read in the results
+frv.mcl5.og <- read_tsv("all-fungalRV-orthoMCL-v5/v5-orthogroups-summary-20200521.txt", col_types = "cidccc")
+
+# merge the tables
+frv.mcl5.sum <- frv.mcl5.sum %>% 
+  left_join(select(frv.mcl5.og, group, domains, keywords, EC.num),
+            by = c("group_id" = "group"))
+
+frv.mcl5.sum %>% filter(total > 2)
+```
+
+#### Orthogroup members annotation
+
+Now let's examine the top orthogroup in terms of membership and function.
+
+In v5, `OG5_126579` has the most members represented. Let's see which genes belong to this group. To do so, we will need to use the ref_protein IDs,  which were used in our initial OrthoMCL submission, to retrieve gene names and other useful annotation. We will use the NCBI Entrez REST API, provided by the EUtils. Luckily, there is an R package that makes it a piece of cake to deal with such searches. The package is called [rentrez](https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html) (both entrez and rentrez are french words, interesting play on the names)
+
+Fields of intersts:
+
+| db | field | purpose |
+|----|----|----|
+| gene | name | common name |
+| gene | genomicinfo | chromosome, start, stop |
+| cdd | subtitle | summary info for the gene |
+| cdd | abstract | longer description (can be truncated) |
+| cdd | database | source of information |
+
+First, we will use the rentrez interface to extract gene annotation info from NCBI databases
+```{r gather_gene_info, cache=TRUE, echo=FALSE}
+# because we have a large number of IDs, we will use the "web history" feature, as documented here:
+# https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html#web_history
+IDs <- split(frv.mapped5$protein_id, frv.mapped5$Strain)
+# let's only look at C. albicans and C. glabrata for now. I think most of the C. auris genes are not annotated
+IDs.Ca.Cg <- IDs[c("CBS138", "SC5314")]
+# "by_id=true" will retain the original ID. otherwise we won't know which new id maps to the input
+gene.links <- lapply(IDs.Ca.Cg, function(x) {
+  entrez_link(dbfrom = "protein", db = "gene", id = x, by_id = TRUE)})
+# extract the gene IDs only
+protein_gene <- lapply(gene.links, function(x){
+  sapply(x, function(y){ y$links$protein_gene})
+})
+# 2. let's build a tibble to hold the gene annotation information
+gene.sum <- tibble(Strain = c(rep("Cgla", length(IDs$CBS138)), rep("Calb", length(IDs$SC5314))),
+                   protein_id = c(IDs$CBS138, IDs$SC5314),
+                   gene_id = c(protein_gene$CBS138, protein_gene$SC5314))
+# 3. now we can retrieve the summary information data frame from the "gene" database
+gene.info <- entrez_summary(db = "gene", id = gene.sum$gene_id)
+
+# 4. we will extract the information we want from the records
+gene.info.extract <- do.call(rbind, lapply(gene.info, function(x){
+  c(x$uid, x$name, x$description, x$genomicinfo$chrloc, x$genomicinfo$chrstart, x$genomicinfo$chrstop)}))
+#    the above command first uses lapply to iterate through the gene.info list and extracts the useful columns. it returns a list of vectors. do.call() then supplies that list to rbind(), which normally takes discrete vectors as input. This returns a matrix
+colnames(gene.info.extract) <- c("uid","gene_name","description","chromosome","start","stop")
+gene.info.extract <- as_tibble(gene.info.extract)
+gene.sum <- gene.sum %>% 
+  left_join(gene.info.extract, by = c("gene_id"="uid")) %>% 
+  mutate(start = as.integer(start), stop = as.integer(stop))
+print(gene.sum)
+```
+
+Now we can look at the genes in the top orthogroup, OG5_132045. Note that I didn't include the _C. auris_ genes, as 1) they often don't have a link to the "gene" database and 2) the essential information, e.g. functional annotation, will almost certainly be based on the _C. albicans_ genes anyway.
+
+```{r examine_og5_132045}
+# get the protein IDs associated with the orthogroup
+members <- frv.mapped5 %>% 
+  filter(orthomcl_group_id == "OG5_132045") %>% 
+  pull(protein_id)
+
+gene.sum %>% 
+  filter(protein_id %in% members)
+```
+
+Above we looked at the gene locations and known names. That's still not very helpful. Let's see if we can gather more information by querying the Conserved Domain Database (cdd), which can be linked to from the "protein" database.
+
+```{r extract_ccd_info}
+get_ccd <- function(pid){
+  hit <- entrez_link(dbfrom = "protein", id = pid, db = "ccd")
+  # the returned objects will contain multiple links to different
+  # cdd display modes:
+  # 
+}
+```
 My goal is to count the number of members in each species/strain that belong to an orthogroup, ignoring those with just one member, as they have to be species specific. Then report the subtotals ordered by the total number of members in each orthogroup.
 
 ```{r subtotal_orthogroup}
 # next let's look at the mappings
-faa.mapped.sub <- faa.mapped %>% 
+frv.mapped.sub <- faa.mapped %>% 
   count(Strain, orthomcl_group_id) %>% # group by strain and orthogroup ID, then count
   spread(key = Strain, value = n)  # spread the Strain variable so that all counts per strain is in the same row
 
@@ -180,7 +325,7 @@ faa.mapped.final <- faa.mapped.sub %>%
 print(faa.mapped.final, n=Inf)
 ```
 
-### FaaPred results
+## FaaPred results
 
 #### 1. Load data
 

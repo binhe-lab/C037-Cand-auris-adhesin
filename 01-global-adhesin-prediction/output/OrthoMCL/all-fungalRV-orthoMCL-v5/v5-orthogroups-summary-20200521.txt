@@ -1,0 +1,270 @@
+group	n.seqs	avg.id	EC.num	domains	keywords
+OG5_126579	543	25.3	3.2.1.-(1)	N/A	N/A
+OG5_126628	288	56.8	1.2.1.12(102), 1.2.1.13(3), 1.2.1.72(6), 2.6.99.-(27)	Glyceraldehyde 3-phosphate dehydrogenase, C-terminal domain; Glyceraldehyde 3-phosphate dehydrogenase, NAD binding domain	dehydrogenase
+OG5_126661	238	34.8	1.-.-.-(3), 1.1.1.1(25), 1.1.1.195(18), 1.1.1.2(3)	Alcohol dehydrogenase GroES-like domain	alcohol; dehydrogenase; alcohol dehydrogenase
+OG5_126676	229	41.5	1.15.1.1(54)	Iron/manganese superoxide dismutases, C-terminal domain; Iron/manganese superoxide dismutases, alpha-hairpin domain	dismutase; superoxide; superoxide dismutase
+OG5_126698	217	56.6	4.2.1.11(106)	Enolase, C-terminal TIM barrel domain	enolase
+OG5_126773	191	41	N/A	DnaJ C terminal region	N/A
+OG5_126788	189	53.1	N/A	TCP-1/cpn60 chaperonin family	chaperonin
+OG5_126792	188	66.4	5.2.1.8(35)	Cyclophilin type peptidyl-prolyl cis-trans isomerase/CLD	cyclophilin; isomerase
+OG5_126847	175	41.5	1.8.4.11(46), 1.8.4.12(4)	Peptide methionine sulfoxide reductase	reductase; methionine; sulfoxide reductase; methionine sulfoxide reductase
+OG5_126970	156	39.8	3.6.1.19(76)	Ham1 family	N/A
+OG5_126971	156	65.1	N/A	Ras family	N/A
+OG5_127028	151	46.1	N/A	Phosphopantetheine attachment site	acyl; acyl carrier; carrier protein; acyl carrier protein
+OG5_127043	149	42.4	1.-.-.-(1), 3.1.-.-(4), 3.5.4.-(5)	Endoribonuclease L-PSP	N/A
+OG5_127118	143	36.4	N/A	Cofilin/tropomyosin-type actin-binding protein	N/A
+OG5_127142	141	41	N/A	Cytochrome b5-like Heme/Steroid binding domain	N/A
+OG5_127156	140	48.6	N/A	Ribosomal L22e protein family	ribosomal; ribosomal protein; 60S; L22; ribosomal protein L22; 60S ribosomal; 60S ribosomal protein; 60S ribosomal protein L22
+OG5_127229	134	32.9	2.7.1.-(1), 2.7.1.15(9)	pfkB family carbohydrate kinase	ribokinase
+OG5_127291	130	38.1	3.1.2.6(29)	Metallo-beta-lactamase superfamily	hydroxyacylglutathione; hydrolase; hydroxyacylglutathione hydrolase
+OG5_127299	129	37.6	N/A	MSP(Major sperm protein) domain	N/A
+OG5_127381	124	41.5	3.5.4.5(11)	Cytidine and deoxycytidylate deaminase zinc-binding region	deaminase; cytidine; cytidine deaminase
+OG5_127436	121	36	3.1.26.4(24)	RNase H; Caulimovirus viroplasmin	ribonuclease
+OG5_127475	119	36.5	N/A	SCP-like extracellular protein	N/A
+OG5_127541	116	43.6	3.1.-.-(35)	D-Tyr-tRNA(Tyr) deacylase	deacylase
+OG5_127576	114	36.2	N/A	SCP-like extracellular protein	N/A
+OG5_127612	112	33	N/A	SEP domain	N/A
+OG5_127617	112	39.7	N/A	Translationally controlled tumour protein	N/A
+OG5_127752	107	34.8	3.5.1.-(1), 3.5.1.19(3)	Isochorismatase family	N/A
+OG5_127991	101	53.1	5.2.1.8(19)	Cyclophilin type peptidyl-prolyl cis-trans isomerase/CLD	isomerase; cis-trans isomerase; peptidyl-prolyl; peptidyl-prolyl cis-trans isomerase
+OG5_128087	99	48.4	N/A	Cytochrome oxidase c subunit VIb	cytochrome
+OG5_128167	97	36.5	3.6.4.12(6), 3.6.4.13(6)	Nuclear transport factor 2(NTF2) domain	N/A
+OG5_128280	94	38.1	N/A	RNA recognition motif.(a.k.a. RRM, RBD, or RNP domain)	N/A
+OG5_128381	92	40.3	N/A	Sedlin, N-terminal conserved region	N/A
+OG5_128425	91	44	N/A	RNA polymerase Rpb3/Rpb11 dimerisation domain	RNA; DNA; RNA polymerase
+OG5_128490	89	53	N/A	LSM domain	nuclear; ribonucleoprotein; small nuclear ribonucleoprotein
+OG5_128552	87	31.9	3.1.27.-(3), 3.1.27.1(15)	Ribonuclease T2 family	ribonuclease
+OG5_128555	87	39.2	N/A	Exosome component EXOSC1/CSL4	N/A
+OG5_128626	85	48.4	N/A	Ribosomal protein S18	ribosomal; ribosomal protein; S18; protein S18; ribosomal protein S18;  30S ribosomal;  30S ribosomal protein S18
+OG5_128632	85	47.9	N/A	WD domain, G-beta repeat	N/A
+OG5_128700	84	32.6	N/A	Putative pre-mRNA-splicing factor(DUF2039)	N/A
+OG5_128890	80	28.8	N/A	Ribosomal protein L1p/L10e family	N/A
+OG5_128925	79	37.2	N/A	Sas10/Utp3/C1D family	N/A
+OG5_129050	77	51.6	N/A	Cytochrome C oxidase copper chaperone(COX17)	chaperone; copper; copper chaperone; cytochrome
+OG5_129128	75	36.4	2.4.1.198(6)	PIG-P	N/A
+OG5_129251	73	42.9	N/A	Histone acetyltransferase subunit NuA4	N/A
+OG5_129346	71	35.2	2.-.-.-(2), 2.1.1.-(2), 2.5.1.-(10)	Met-10+ like-protein	N/A
+OG5_129357	70	32.7	N/A	Uncharacterised ACR, COG2135	N/A
+OG5_129511	68	40.3	2.5.1.9(7)	Lumazine binding domain	riboflavin; riboflavin synthase;  riboflavin;  riboflavin synthase; riboflavin synthase subunit alpha
+OG5_129539	67	31.4	N/A	Smg-4/UPF3 family	N/A
+OG5_129748	64	34.7	N/A	Protein of unknown function(DUF775)	N/A
+OG5_129793	63	39.6	3.4.-.-(12)	Microsomal signal peptidase 25 kDa subunit(SPC25)	N/A
+OG5_129798	63	34.8	N/A	Ankyrin repeat	N/A
+OG5_129806	63	44	N/A	N/A	dynactin
+OG5_129886	62	36.3	N/A	LYAR-type C2HC zinc finger	N/A
+OG5_130006	60	30.7	N/A	Gar1 protein RNA binding region	N/A
+OG5_130154	58	37.5	N/A	HIT zinc finger	N/A
+OG5_130158	58	55	N/A	DSS1/SEM1 family	N/A
+OG5_130378	56	34.4	3.4.23.-(3), 3.4.23.24(13)	Eukaryotic aspartyl protease	N/A
+OG5_130470	55	34.5	1.-.-.-(1)	Zinc-binding dehydrogenase	N/A
+OG5_130471	55	41.9	2.4.1.-(5)	X8 domain	N/A
+OG5_130473	55	31.8	N/A	VID27 cytoplasmic protein	hypothetical protein
+OG5_130545	54	34	4.1.1.85(4), 4.1.2.43(3), 4.3.-.-(2)	Demethylmenaquinone methyltransferase	N/A
+OG5_130746	51	38	3.2.1.14(8)	Glycosyl hydrolases family 18	N/A
+OG5_130747	51	34.6	3.2.1.6(4)	Glycosyl hydrolase family 81	N/A
+OG5_130793	51	36.2	3.2.-.-(5)	DJ-1/PfpI family	N/A
+OG5_131278	46	35.6	N/A	ML domain	N/A
+OG5_131806	41	54	N/A	HMG(high mobility group) box	N/A
+OG5_131840	41	36.4	N/A	PX domain	N/A
+OG5_131966	40	40.8	1.1.-.-(2), 1.1.1.-(2), 1.1.1.289(2)	short chain dehydrogenase	N/A
+OG5_132045	40	39.1	N/A	N/A	N/A
+OG5_132150	39	55.6	2.3.3.13(8)	HMGL-like; LeuA allosteric(dimerisation) domain	synthase; 2-isopropylmalate synthase
+OG5_132246	38	31.6	N/A	N/A	N/A
+OG5_133266	32	39.9	1.-.-.-(2)	short chain dehydrogenase	N/A
+OG5_133615	30	33.6	N/A	WW domain	N/A
+OG5_133764	30	39.4	2.4.1.207(5), 3.2.-.-(2)	Glycosyl hydrolases family 16	N/A
+OG5_133778	30	44.3	2.7.11.1(3)	Protein kinase domain	N/A
+OG5_134514	27	40	2.4.1.207(1), 3.2.-.-(4)	Glycosyl hydrolases family 16	N/A
+OG5_134990	25	33.2	N/A	Putative phosphatase regulatory subunit	N/A
+OG5_135051	25	33.5	N/A	N/A	N/A
+OG5_135128	25	34.2	N/A	N/A	N/A
+OG5_135268	24	37.8	N/A	Gti1/Pac2 family	N/A
+OG5_135285	24	35.2	N/A	SH3 domain	N/A
+OG5_135396	24	32.9	N/A	Asp/Glu/Hydantoin racemase	N/A
+OG5_135526	24	90.1	N/A	Seripauperin and TIP1 family	seripauperin multigene; encoded mainly; subtelomeric regions
+OG5_135607	23	31.6	N/A	HMG(high mobility group) box	N/A
+OG5_136148	22	30.1	3.1.3.33(9)	mRNA capping enzyme, beta chain	N/A
+OG5_136155	22	37.8	N/A	WD domain, G-beta repeat	N/A
+OG5_136159	22	40.5	N/A	BRCA1 C Terminus(BRCT) domain	N/A
+OG5_136169	22	48.3	N/A	Beta-glucosidase(SUN family)	N/A
+OG5_136565	21	32.3	N/A	N/A	N/A
+OG5_136835	20	48.9	N/A	AN1-like Zinc finger	N/A
+OG5_136958	20	41.8	N/A	Mitochondrial import receptor subunit Tom22	mitochondrial; import
+OG5_136970	20	35.7	N/A	Yeast cell wall synthesis protein KRE9/KNH1	N/A
+OG5_137014	20	41.4	N/A	Copper fist DNA binding domain	N/A
+OG5_137019	20	46.6	2.4.1.-(3)	Glycolipid anchored surface protein(GAS1)	N/A
+OG5_137281	19	32.7	3.4.23.-(2), 3.4.23.24(2), 3.4.23.41(2)	Eukaryotic aspartyl protease	N/A
+OG5_137401	19	29.6	N/A	Putative Ig domain	N/A
+OG5_137415	19	41.1	N/A	SH3 domain	N/A
+OG5_137431	19	45.1	N/A	VMA21-like domain	N/A
+OG5_137462	19	42.7	3.2.1.-(2)	Glycosyl hydrolases family 17	N/A
+OG5_137716	18	28.1	N/A	RanBP1 domain	N/A
+OG5_137937	18	46.3	N/A	Heat shock protein 9 / 12	N/A
+OG5_137985	18	47.7	N/A	Rare lipoprotein A(RlpA)-like double-psi beta-barrel	N/A
+OG5_138046	18	39.4	N/A	N/A	hypothetical protein
+OG5_138472	17	40.8	N/A	N/A	N/A
+OG5_138626	17	34.5	N/A	N/A	hypothetical protein
+OG5_138642	17	43.9	N/A	GATA zinc finger	N/A
+OG5_138660	17	38.5	N/A	Golgin subfamily A member 7/ERF4 family	N/A
+OG5_138681	17	38.3	3.2.1.-(1), 3.2.1.21(3)	N/A	N/A
+OG5_138716	17	35.8	N/A	Signal recognition particle 9 kDa protein(SRP9)	N/A
+OG5_138846	17	51	N/A	N/A	 uncharacterized orf
+OG5_138848	17	49	N/A	N/A	hypothetical protein
+OG5_139112	16	39.6	N/A	N/A	N/A
+OG5_139309	16	37.9	N/A	Leucine Rich Repeat	N/A
+OG5_139378	16	46.9	1.9.3.1(6)	Cytochrome c oxidase subunit COX9	N/A
+OG5_139395	16	52.5	N/A	Outer membrane protein TOM13	N/A
+OG5_139398	16	35.5	N/A	WSC domain	N/A
+OG5_139630	16	40.5	N/A	N/A	N/A
+OG5_140009	15	32.3	N/A	WSC domain	N/A
+OG5_141377	14	35.1	N/A	N/A	N/A
+OG5_141386	14	26.7	N/A	N/A	N/A
+OG5_141477	14	30.3	N/A	N/A	N/A
+OG5_141560	14	34.5	N/A	Diacylglycerol kinase catalytic domain	N/A
+OG5_142754	13	30.7	N/A	N/A	N/A
+OG5_142791	13	44.5	N/A	N/A	N/A
+OG5_142804	13	33.9	N/A	WD domain, G-beta repeat	N/A
+OG5_144512	12	38.2	N/A	WD domain, G-beta repeat	N/A
+OG5_144543	12	43.6	N/A	N/A	N/A
+OG5_144620	12	57	N/A	N/A	hypothetical protein
+OG5_145217	12	42.4	N/A	N/A	N/A
+OG5_146756	11	29.9	N/A	Putative phosphatase regulatory subunit	N/A
+OG5_146841	11	38	N/A	Regulator of G protein signaling domain	hypothetical protein
+OG5_147021	11	41.2	N/A	N/A	hypothetical protein
+OG5_147558	11	27.1	N/A	N/A	N/A
+OG5_149792	10	31	N/A	Fungal domain of unknown function(DUF1709); PH domain	N/A
+OG5_149829	10	34.6	N/A	N/A	N/A
+OG5_149913	10	51.2	N/A	CFEM domain	hypothetical protein;  hypothetical protein; pichia stipitis cbs 6054
+OG5_150100	10	44.1	N/A	CHY zinc finger	hypothetical protein
+OG5_150699	10	31.6	N/A	N/A	N/A
+OG5_150707	10	30.7	3.4.23.-(1)	Eukaryotic aspartyl protease	N/A
+OG5_152673	9	41.9	N/A	Copper/zinc superoxide dismutase(SODC)	N/A
+OG5_152698	9	39.6	N/A	DNA-directed RNA polymerase I subunit RPA34.5	N/A
+OG5_152708	9	40.1	N/A	N/A	N/A
+OG5_152861	9	41.2	N/A	CFEM domain	hypothetical protein
+OG5_152943	9	30.6	N/A	N/A	candida glabrata
+OG5_153029	9	29.8	N/A	N/A	N/A
+OG5_153729	9	36.3	N/A	N/A	hypothetical protein
+OG5_153731	9	33.1	N/A	N/A	N/A
+OG5_153759	9	32.8	N/A	N/A	N/A
+OG5_153761	9	42.7	N/A	N/A	N/A
+OG5_153763	9	35.5	N/A	N/A	N/A
+OG5_153767	9	32.8	N/A	N/A	N/A
+OG5_155280	8	43	N/A	N/A	hypothetical protein
+OG5_155425	8	34.1	N/A	N/A	N/A
+OG5_155773	8	37.3	N/A	Vps51/Vps67	N/A
+OG5_155971	8	59.9	N/A	Beta-glucosidase(SUN family)	N/A
+OG5_156376	8	44.9	N/A	N/A	hypothetical protein
+OG5_156745	8	27.6	N/A	N/A	N/A
+OG5_156959	8	42.4	N/A	20S proteasome chaperone	N/A
+OG5_156985	8	40.7	N/A	N/A	N/A
+OG5_156986	8	41.4	N/A	UAF complex subunit Rrn10	N/A
+OG5_157015	8	43.6	N/A	Cytochrome c oxidase biogenesis protein Cmc1 like	N/A
+OG5_157055	8	35.2	N/A	N/A	N/A
+OG5_158688	7	38.6	N/A	N/A	hypothetical protein
+OG5_159087	7	39.8	N/A	Mid2 like cell wall stress sensor	N/A
+OG5_159685	7	33.6	N/A	N/A	N/A
+OG5_159761	7	40.1	N/A	short chain dehydrogenase	N/A
+OG5_160783	7	40.3	N/A	N/A	N/A
+OG5_162554	6	47.7	N/A	N/A	N/A
+OG5_162931	6	44.2	N/A	SCP-like extracellular protein	pathogenesis
+OG5_162932	6	49.5	N/A	SCP-like extracellular protein	N/A
+OG5_163783	6	39.2	N/A	Centromere protein Scm3	N/A
+OG5_163884	6	50.3	N/A	N/A	hypothetical protein
+OG5_165208	6	57.2	N/A	N/A	hypothetical; hypothetical protein
+OG5_165214	6	38.1	N/A	N/A	N/A
+OG5_165230	6	55.1	N/A	N/A	N/A
+OG5_165232	6	33.9	N/A	N/A	N/A
+OG5_165236	6	55.4	N/A	Glycine-rich protein domain(DUF2403); Putative secretory protein(DUF2401)	N/A
+OG5_165250	6	43.3	N/A	N/A	N/A
+OG5_165423	6	35	N/A	N/A	 hypothetical protein
+OG5_168128	5	42.3	N/A	N/A	hypothetical protein
+OG5_168935	5	48.9	N/A	N/A	hypothetical protein
+OG5_168939	5	48	N/A	La domain	hypothetical protein
+OG5_168988	5	57.3	N/A	Heat shock protein 9 / 12	hypothetical protein
+OG5_169560	5	68.9	N/A	N/A	N/A
+OG5_171019	5	33.9	N/A	N/A	N/A
+OG5_171576	5	52.1	N/A	N/A	hypothetical protein
+OG5_171614	5	63.3	N/A	N/A	 candida albicans wo1 conserved hypothetical protein
+OG5_171616	5	44.7	N/A	N/A	hypothetical protein
+OG5_171649	5	42.3	N/A	N/A	hypothetical protein
+OG5_171652	5	39.5	N/A	N/A	hypothetical protein
+OG5_171653	5	57.1	N/A	N/A	hypothetical protein
+OG5_171666	5	32.5	N/A	N/A	N/A
+OG5_175793	4	78.7	N/A	N/A	N/A
+OG5_175887	4	54.8	N/A	N/A	hypothetical protein
+OG5_176194	4	50.8	3.4.23.24(2)	Eukaryotic aspartyl protease	hypothetical protein
+OG5_176483	4	36	N/A	N/A	candida glabrata;  unnamed protein product
+OG5_176837	4	78.2	N/A	Fungal Zn(2)-Cys(6) binuclear cluster domain; Gal4-like dimerisation domain	N/A
+OG5_177077	4	43	N/A	N/A	N/A
+OG5_178942	4	48.8	N/A	N/A	 hypothetical protein
+OG5_179452	4	59.8	N/A	RHO protein GDP dissociation inhibitor	hypothetical protein
+OG5_179468	4	47.2	N/A	N/A	hypothetical protein
+OG5_179484	4	44.5	N/A	N/A	hypothetical protein
+OG5_179520	4	49.8	N/A	N/A	N/A
+OG5_179528	4	38.8	N/A	FHA domain	hypothetical protein
+OG5_179597	4	58.8	N/A	N/A	N/A
+OG5_179599	4	52.3	N/A	N/A	hypothetical protein
+OG5_179601	4	47.8	N/A	N/A	N/A
+OG5_179648	4	65.8	N/A	N/A	N/A
+OG5_179682	4	43.7	N/A	N/A	hypothetical protein
+OG5_179705	4	39.8	N/A	Minimal binding domain of Hap4 for binding to Hap2/3/5	N/A
+OG5_179729	4	52.2	N/A	N/A	hypothetical
+OG5_179733	4	46	N/A	N/A	hypothetical protein
+OG5_179742	4	46.5	N/A	Eukaryotic aspartyl protease	hypothetical protein
+OG5_179837	4	64	N/A	N/A	hypothetical protein
+OG5_179883	4	45.8	N/A	Vacuolar ATP synthase subunit S1(ATP6S1)	hypothetical protein
+OG5_180403	4	33.2	N/A	Rtt102p-like transcription regulator protein	N/A
+OG5_180448	4	29.3	N/A	N/A	N/A
+OG5_180519	4	41.9	N/A	N/A	N/A
+OG5_180558	4	41	N/A	Bin/amphiphysin/Rvs domain for vesicular trafficking	N/A
+OG5_184519	4	51.1	N/A	N/A	N/A
+OG5_189426	3	58	N/A	Zinc finger, C2H2 type	N/A
+OG5_189668	3	66.7	N/A	Ribonuclease T2 family	rnase T2
+OG5_193574	3	55	N/A	N/A	hypothetical protein
+OG5_193593	3	54	N/A	N/A	hypothetical protein
+OG5_193636	3	53.8	N/A	N/A	hypothetical
+OG5_193644	3	58.7	N/A	N/A	hypothetical protein
+OG5_193677	3	49	N/A	N/A	N/A
+OG5_193692	3	66.3	N/A	N/A	N/A
+OG5_193725	3	57	N/A	N/A	hypothetical protein
+OG5_193771	3	48.7	N/A	N/A	hypothetical
+OG5_193777	3	67.7	2.4.1.119(1)	Oligosaccaryltransferase	N/A
+OG5_194779	3	43.7	N/A	Seripauperin and TIP1 family	N/A
+OG5_194781	3	29.5	N/A	N/A	N/A
+OG5_194791	3	25.3	N/A	N/A	 unnamed protein product
+OG5_194847	3	33	N/A	N/A	cell wall; required for
+OG5_200764	3	38.7	2.4.1.119(1)	N/A	N/A
+OG5_211144	2	37.5	N/A	N/A	N/A
+OG5_216290	2	100	N/A	N/A	N/A
+OG5_216297	2	100	N/A	N/A	N/A
+OG5_216323	2	100	N/A	N/A	N/A
+OG5_216374	2	97	N/A	N/A	N/A
+OG5_216429	2	99	N/A	N/A	N/A
+OG5_216430	2	97	N/A	N/A	N/A
+OG5_216444	2	99	N/A	N/A	N/A
+OG5_216458	2	97	N/A	N/A	N/A
+OG5_216468	2	96	N/A	N/A	N/A
+OG5_216478	2	99	N/A	N/A	N/A
+OG5_216480	2	44	N/A	N/A	N/A
+OG5_216485	2	99	N/A	N/A	N/A
+OG5_216491	2	97	N/A	N/A	N/A
+OG5_216502	2	100	N/A	N/A	N/A
+OG5_216511	2	99	N/A	N/A	N/A
+OG5_216549	2	100	N/A	N/A	N/A
+OG5_216598	2	96	N/A	N/A	N/A
+OG5_216605	2	97	N/A	N/A	N/A
+OG5_216610	2	99	N/A	N/A	N/A
+OG5_216615	2	99	N/A	N/A	N/A
+OG5_216619	2	100	N/A	N/A	N/A
+OG5_216622	2	100	N/A	N/A	N/A
+OG5_216637	2	98	N/A	N/A	N/A
+OG5_216640	2	98	N/A	N/A	N/A
+OG5_216645	2	98	N/A	N/A	N/A
+OG5_216654	2	95	N/A	N/A	N/A
+OG5_216659	2	99	N/A	N/A	N/A
+OG5_216682	2	83	N/A	N/A	N/A
+OG5_216687	2	99	N/A	N/A	N/A
+OG5_222350	2	52	N/A	N/A	N/A
+OG5_222414	2	53	N/A	Asparaginase	N/A
+OG5_222443	2	28	N/A	N/A	N/A
