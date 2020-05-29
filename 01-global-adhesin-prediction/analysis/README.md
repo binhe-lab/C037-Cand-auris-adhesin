@@ -135,3 +135,21 @@ _Todo_
 _Notes_
 
 For more details on this part, check the README file in the `protein-family-classification` subfolder.
+
+## 2020-05-26 [HB] Low complexity repeats, why and how
+
+As I was re-reading the Lipke 2018 review, I was trying to understand why LCR is a characteristic of adhesins and what function could it serve. I came upon two papers by Kevin Verstrepen, a yeast geneticist trained with Gerry Fink at MIT, and found his work incredibly interesting. The references are below. In the second paper, he expressed eight natural variants of the _FLO1_ gene from _S. cerevisiae_ and ectopically expressed each one of them in the lab strain S288C, where all five endogenous flocculins are transcriptionally silent. He found that _FLO1_ alleles with a longer track of repeats, when expressed, made the cells more sticky!
+
+Here are the notes I made for the first paper:
+
+1. 44 / 6,591 ORFs in the budding yeast genome contain long (>40nt) or short (3-39nt) repeats.
+2. genes with repeats share surprising functional similarities: 75% of the 29 ORFs with long repeats encode cell surface proteins, while many of the ORFs with short repeats are regulatory proteins for cell wall synthesis
+3. the intragenic repeat regions are all in-frame, thus their expansion and contraction will not cause frameshifts
+4. length of the intragenic repeat regions are highly variable within the species
+5. the intragenic repeat sequences are hotspots for recombination.
+6. longer repeats in _FLO1_ correlates with stronger adherence!
+
+_References_
+Verstrepen KJ, Jansen A, Lewitter F, Fink GR. 2005. Intragenic tandem repeats generate functional variability. Nature Genetics [Internet] 37:986–990.
+
+Verstrepen KJ, Klis FM. 2006. Flocculation, adhesion and biofilm formation in yeasts. Molecular Microbiology [Internet] 60:5–15.

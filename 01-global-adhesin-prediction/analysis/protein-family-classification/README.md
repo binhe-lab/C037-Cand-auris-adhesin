@@ -57,3 +57,9 @@ By comparing the results from v5 and v6, I found that both version would leave s
 1. In practice, the orthogroups are just guesses at the evolutionary relationship. The Markov Clustering Algorithm also has an inflation ratio parameter that defines how "tight" the clusters are. All these mean that the orthogroup definitions are somewhat arbitrary.
 1. That being said, the OrthoMCL-DB is based on a very large number of proteomes (predicted for most species, I think) and thus is likely to capture a lot of the ancient families. Gene families that are more phylogenetically restricted are more likely to be missed, if the species in which they exist are not well sampled. This shouldn't be the case for fungi, and especially not a problem for the _Saccharomycotina_ order.
 1. Under the above considerations, I think I have to take the evidence from the OrthoMCL analyses as saying most of the adhesins don't belong to the same orthogroups in the three species.
+
+## 2020-05-28 [HB] Examine top orthogroups and gene functions
+- I separated the gene annotation part from the `orthomcl.Rmd`, which include the exploratory analyses with two versions of OrthoMCL-DB, and some summary statistics of the mapped genes in the five proteomes.
+- I made a new `orthomcl-gene-exploration.Rmd`, which uses a `shiny` app to allow interactive exploration of the gene functions. The annotations were fetched from the Conserved Domain Database based on the ref_protein IDs.
+- I manually examined the top 10 orthogroups. The top 3-5 clearly make sense -- the CDD showed that members were annotated as cell wall proteins or adhesions. The lower orthogroups, however, don't seem to make a lot of sense, e.g. alcohol dehydrogenase, HSP12 heat shock protein. Quite a few of the orthogroups contain glycosyl hydrolases. One orthogroup, represented by CaKre9 that is likely involved in cell wall regulation.
+

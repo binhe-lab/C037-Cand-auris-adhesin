@@ -1,0 +1,135 @@
+---
+title: "orthomcl-gene-exploration"
+author: "Bin He"
+date: "5/28/2020"
+output: 
+  html_notebook: 
+    code_folding: hide
+    theme: paper
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_data_library, echo=FALSE}
+load("orthomcl-v5-mapping-analysis-cache.RData")
+# install the package if not already available
+if (!requireNamespace("tidyverse", quietly = TRUE))
+    install.packages("tidyverse")
+if (!requireNamespace("rentrez", quietly = TRUE))
+    install.packages("rentrez")
+if (!requireNamespace("kableExtra", quietly = TRUE))
+    install.packages("kableExtra")
+
+require(tidyverse, quietly = TRUE)
+require(rentrez, quietly = TRUE)
+require(kableExtra, quietly = TRUE)
+```
+
+```{r extract_cdd_fct, echo=FALSE}
+get_cdd <- function(pid){
+  hit <- entrez_link(dbfrom = "protein", id = pid, db = "cdd")
+  # the returned objects will contain multiple links to different
+  # cdd display modes:
+  # 1. concise: shows only the best scoring model, in each hit category
+  # 2. standard: shows the best scorning model from each source in each hit category (some redundancy)
+  # 3. full: shows all domain models in each hit category
+  cdd.sum <- entrez_summary(db = "cdd", id = hit$links$protein_cdd_summary)
+  cdd.res <- extract_from_esummary(cdd.sum, c("accession", "subtitle", "abstract"), simplify = TRUE)
+  print(cdd.res)
+}
+```
+
+Here are all the orthogroups that contain at least two of the predicted adhesins in all species. The numbers in columns 2-4 represent the number of genes in each species (for _C. auris_, I took the **median** values of the three strains).
+```{r list_all_ogs, echo=FALSE}
+frv.mcl5.sum %>% 
+  filter(total > 2) %>% 
+  select(-total) %>% 
+  paged_table() %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+Build a Shiny app to allow the user to interactively select the orthogroup and gene to learn more about their annotation.
+```{r interactive_exploration, echo = FALSE}
+inputPanel(
+  # let the user choose the orthogroup to display
+  selectInput(inputId = "gid", label = "Please select the orthogroup", choices = frv.mcl5.sum$group_id),
+  # let the user provide the protein_id
+  textInput(inputId = "pid", label = "Please provide the protein ID", value = "XP_718077.1")
+)
+
+fluidPage(
+  titlePanel("Conserved Domain Database"),
+  fluidRow(
+    column(5,
+           renderTable({
+             members <- frv.mapped5 %>% 
+               filter(orthomcl_group_id == input$gid) %>% 
+               pull(protein_id)
+             
+             gene.sum %>% 
+               filter(protein_id %in% members) %>% 
+               select(Strain, protein_id, gene_name)
+           })
+    ),
+    column(7,
+           # show the gene table based on the orthogroup choice
+           renderPrint({
+             get_cdd(pid = input$pid)
+           }) 
+    )       
+  ) 
+)
+
+
+
+```
+
+
+## Inputs and Outputs
+
+You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change.  This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny `renderPlot` function. The `selectInput` and `sliderInput` functions create the input widgets used to drive the plot.
+
+```{r eruptions, echo=FALSE}
+inputPanel(
+  selectInput("n_breaks", label = "Number of bins:",
+              choices = c(10, 20, 35, 50), selected = 20),
+  
+  sliderInput("bw_adjust", label = "Bandwidth adjustment:",
+              min = 0.2, max = 2, value = 1, step = 0.2)
+)
+
+renderPlot({
+  hist(faithful$eruptions, probability = TRUE, breaks = as.numeric(input$n_breaks),
+       xlab = "Duration (minutes)", main = "Geyser eruption duration")
+  
+  dens <- density(faithful$eruptions, adjust = input$bw_adjust)
+  lines(dens, col = "blue")
+})
+```
+
+## Embedded Application
+
+It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a Shiny application located in another directory:
+
+```{r tabsets, echo=FALSE}
+shinyAppDir(
+  system.file("examples/06_tabsets", package = "shiny"),
+  options = list(
+    width = "100%", height = 550
+  )
+)
+```
+
+Note the use of the `height` parameter to determine how much vertical space the embedded application should occupy.
+
+You can also use the `shinyApp` function to define an application inline rather then in an external directory.
+
+In all of R code chunks above the `echo = FALSE` attribute is used. This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.
+
+
+

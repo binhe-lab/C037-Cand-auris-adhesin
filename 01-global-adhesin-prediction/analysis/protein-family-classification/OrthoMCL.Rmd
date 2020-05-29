@@ -4,15 +4,21 @@ author: "Bin He"
 date: "3/12/2020"
 output: 
   html_notebook:
-  toc: TRUE
-  toc_float: TRUE
+    toc: TRUE
+    toc_float: TRUE
+    toc_depth: 4
 ---
 
 ```{r setup, cache=FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # set the root directory to be the output folder for OrthoMCL
+# note that with the Rproject set, the default working directory
+# is where the .Rproj file is.
 knitr::opts_knit$set(root.dir = normalizePath("../../output/OrthoMCL/"))
 knitr::opts_knit$get("root.dir")
+```
+
+```{r load_libraries}
 # install the package if not already available
 if (!requireNamespace("tidyverse", quietly = TRUE))
     install.packages("tidyverse")
@@ -60,7 +66,6 @@ _Compare results using two versions of OrthoMCL-DB_
 # including species, strains, protein_id and FungalRV score
 # threhold used by current version of Fungal RV: Score > 0 
 frv.res <- read_tsv("../FungalRV/all-fungalrv-results-20200228.txt", comment = "#", col_types = "cccd")
-
 # the following file contains the mapped results
 frv.mapped <- read_tsv("all-fungalRV-orthoMCL-v5/mappedGroups-20200309.txt", col_types = "ccciidd")
 # merge with frv.res to provide meta information
@@ -229,10 +234,10 @@ frv.mcl5.og <- read_tsv("all-fungalRV-orthoMCL-v5/v5-orthogroups-summary-2020052
 
 # merge the tables
 frv.mcl5.sum <- frv.mcl5.sum %>% 
-  left_join(select(frv.mcl5.og, group, domains, keywords, EC.num),
+  left_join(select(frv.mcl5.og, group, domains, EC.num),
             by = c("group_id" = "group"))
 
-frv.mcl5.sum %>% filter(total > 2)
+frv.mcl5.sum %>% filter(total > 2) %>% select(-total)
 ```
 
 #### Orthogroup members annotation
@@ -252,7 +257,7 @@ Fields of intersts:
 | cdd | database | source of information |
 
 First, we will use the rentrez interface to extract gene annotation info from NCBI databases
-```{r gather_gene_info, cache=TRUE, echo=FALSE}
+```{r entrez_link_gene_db, cache=TRUE}
 # because we have a large number of IDs, we will use the "web history" feature, as documented here:
 # https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html#web_history
 IDs <- split(frv.mapped5$protein_id, frv.mapped5$Strain)
@@ -261,6 +266,9 @@ IDs.Ca.Cg <- IDs[c("CBS138", "SC5314")]
 # "by_id=true" will retain the original ID. otherwise we won't know which new id maps to the input
 gene.links <- lapply(IDs.Ca.Cg, function(x) {
   entrez_link(dbfrom = "protein", db = "gene", id = x, by_id = TRUE)})
+```
+
+```{r gather_gene_info}
 # extract the gene IDs only
 protein_gene <- lapply(gene.links, function(x){
   sapply(x, function(y){ y$links$protein_gene})
@@ -281,75 +289,29 @@ gene.info.extract <- as_tibble(gene.info.extract)
 gene.sum <- gene.sum %>% 
   left_join(gene.info.extract, by = c("gene_id"="uid")) %>% 
   mutate(start = as.integer(start), stop = as.integer(stop))
-print(gene.sum)
+save.image(file = "../../analysis/protein-family-classification/orthomcl-v5-mapping-analysis-cache.RData")
 ```
 
 Now we can look at the genes in the top orthogroup, OG5_132045. Note that I didn't include the _C. auris_ genes, as 1) they often don't have a link to the "gene" database and 2) the essential information, e.g. functional annotation, will almost certainly be based on the _C. albicans_ genes anyway.
 
-```{r examine_og5_132045}
+```{r example_og5_132045}
 # get the protein IDs associated with the orthogroup
 members <- frv.mapped5 %>% 
-  filter(orthomcl_group_id == "OG5_132045") %>% 
+  filter(orthomcl_group_id == "OG5_126579") %>% 
   pull(protein_id)
 
 gene.sum %>% 
-  filter(protein_id %in% members)
+  filter(protein_id %in% members) %>% 
+  select(-description)
 ```
 
 Above we looked at the gene locations and known names. That's still not very helpful. Let's see if we can gather more information by querying the Conserved Domain Database (cdd), which can be linked to from the "protein" database.
 
-```{r extract_ccd_info}
-get_ccd <- function(pid){
-  hit <- entrez_link(dbfrom = "protein", id = pid, db = "ccd")
-  # the returned objects will contain multiple links to different
-  # cdd display modes:
-  # 
-}
-```
 My goal is to count the number of members in each species/strain that belong to an orthogroup, ignoring those with just one member, as they have to be species specific. Then report the subtotals ordered by the total number of members in each orthogroup.
 
-```{r subtotal_orthogroup}
+```
 # next let's look at the mappings
 frv.mapped.sub <- faa.mapped %>% 
-  count(Strain, orthomcl_group_id) %>% # group by strain and orthogroup ID, then count
-  spread(key = Strain, value = n)  # spread the Strain variable so that all counts per strain is in the same row
-
-faa.mapped.tot <- faa.mapped %>% 
-  count(orthomcl_group_id, name = "total") %>% 
-  filter(total > 1) # remove orthogroups with only one member across all species/strains
-
-faa.mapped.final <- faa.mapped.sub %>% 
-  right_join(faa.mapped.tot) %>% # this joins the two table and only retails rows that exist in mapped.tot
-  arrange(desc(total))
-
-print(faa.mapped.final, n=Inf)
-```
-
-## FaaPred results
-
-#### 1. Load data
-
-```{r load_data_faapred}
-frv.res <- read_tsv("../../output/FungalRV/all-fungalrv-results-20200228.txt", comment = "#")
-faa.mapped <- read_tsv("all-faapred-predicted-orthoMCL-mappedGroups-20200309.txt")
-faa.mapped <- faa.mapped %>% 
-  select(-evalue_mantissa) %>% 
-  left_join(frv.res, by = c("protein_id"="ID")) %>% 
-  select(Species, Strain, protein_id, everything())
-```
-
-#### 2. Examine OrthoMCL mapping results
-
-I submitted all predicted adhesins in the five genomes to the Galaxy site. How many of them were successfully mapped for each species/strain?
-
-#### 3. Tally numbers and sort
-
-My goal is to count the number of members in each species/strain that belong to an orthogroup, ignoring those with just one member, as they have to be species specific. Then report the subtotals ordered by the total number of members in each orthogroup.
-
-```{r subtotal_orthogroup_faapred}
-
-# next let's look at the mappings
-faa.mapped.sub <- faa.mapped %>% 
   count(Strain, orthomcl_group_id) %>% # group by strain and orthogroup ID, then count
   spread(key = Strain, value = n)  # spread the Strain variable so that all counts per strain is in the same row
 
