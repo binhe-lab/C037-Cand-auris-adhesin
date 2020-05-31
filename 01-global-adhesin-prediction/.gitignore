@@ -1,3 +1,4 @@
 sandbox/*
 .Rhistory
 .python-version
+.ipynb_checkpoints

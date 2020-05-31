@@ -153,3 +153,6 @@ _References_
 Verstrepen KJ, Jansen A, Lewitter F, Fink GR. 2005. Intragenic tandem repeats generate functional variability. Nature Genetics [Internet] 37:986–990.
 
 Verstrepen KJ, Klis FM. 2006. Flocculation, adhesion and biofilm formation in yeasts. Molecular Microbiology [Internet] 60:5–15.
+
+## 2020-05-29 [HB] Next-step questions
+1. 

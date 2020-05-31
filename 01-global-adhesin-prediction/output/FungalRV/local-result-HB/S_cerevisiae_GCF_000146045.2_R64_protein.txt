@@ -1,0 +1,1 @@
+../../../script/FungalRV_adhesin_predictor/S_cerevisiae_GCF_000146045.2_R64_protein.txt
