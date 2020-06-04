@@ -1,6 +1,6 @@
 # FungalRV combined results
 # 2020-05-29
-# <Species>	<Strain>	<ID>	<Score>
+Species	Strain	ID	Score
 C_albicans	SC5314	XP_718077.1	2.4127486
 C_albicans	SC5314	XP_710425.2	2.3575859
 C_albicans	SC5314	XP_720438.2	2.1669896

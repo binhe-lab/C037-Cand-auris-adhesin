@@ -13,3 +13,10 @@ Subject FungalRV predicted adhesin genes to a second level of scrutinization, in
 find . -iname "*.fasta" -exec grep "^>" {} \; > all-faapred-seq-names-20200228.txt
 # then used vim to remove the preceding ">"
 ```
+
+## May 31, 2020 [HB] Added _S. cerevisiae_ predictions to the `all-faapred-seq-names.txt`
+
+```bash
+awk '{print $1}' all-faapred-seq-names-20200228.txt >| all-faapred-seq-names-20200531.txt
+awk 'NR>1{if($3=="Adhesin") print $1}' S-cerevisiae/faapred-results-20200530.txt >> all-faapred-seq-names-20200531.txt
+```
