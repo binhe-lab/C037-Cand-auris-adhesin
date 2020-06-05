@@ -97,7 +97,7 @@ frv.mapped <- read_tsv("all-fungalRV-orthoMCL-v5/mappedGroups-20200309.txt", col
 # merge the frv.mapped with frv.res to provide gene information
 frv.mapped.rest <- frv.mapped %>% 
   left_join(adhesin, by = c("protein_id"="ID")) %>% 
-  select(Species, Strain, protein_id, orthomcl_group_id, frv_score = Score, fungalRV, faapred)
+  select(Species, Strain, protein_id, group_id = orthomcl_group_id, frv_score = Score, fungalRV, faapred)
 
 head(frv.mapped.rest, 3)
 ```
@@ -125,33 +125,37 @@ frv.scer <- adhesin %>%
 # translate these IDs to entrez_id so we can bring in the orthomcl mapping results
 lnk <- entrez_link(dbfrom = "protein", id = frv.scer$ID, db = "gene", by_id = TRUE)
 frv.scer$entrez_id <- sapply(lnk, function(x) x$link$protein_gene)
+
+# pull in the orthogroup and other annotation
+frv.mapped.scer <- frv.scer %>% 
+  left_join(select(scer.mapped, group_id = orthogroup_id, entrez_id), by = c("entrez_id"="entrez_id")) %>% 
+  select(Species, Strain, protein_id = ID, group_id, frv_score = Score, fungalRV, faapred)
+write_tsv(frv.mapped.scer, "all-fungalRV-orthoMCL-v5/S_cerevisiae_mapped_w_entrezID.txt")
 ```
 
 ```{r process_and_merge_scer_data}
-# pull in the orthogroup and other annotation
-frv.mapped.scer <- frv.scer %>% 
-  left_join(select(scer.mapped, orthomcl_group_id = orthogroup_id, entrez_id), by = c("entrez_id"="entrez_id")) %>% 
-  select(Species, Strain, protein_id = ID, orthomcl_group_id, frv_score = Score, fungalRV, faapred)
-
+# read S. cerevisiae results generated above
+frv.mapped.scer <- read_tsv("all-fungalRV-orthoMCL-v5/S_cerevisiae_mapped_w_entrezID.txt", col_types = "ccccdll")
 # merge Scer results with the rest
 frv.mapped.all <- rbind(frv.mapped.rest, frv.mapped.scer)
 
 str(frv.mapped.all)
 ```
 
-Lastly, let's load the 
-```{r load_mcs}
-# merge with frv.res to provide meta information
-frv.mapped5 <- frv.mapped %>% 
-  left_join(frv.res, by = c("protein_id"="ID")) %>% 
-  select(Species, Strain, protein_id, everything())
-
+Lastly, let's load the Markov clustering results. This files contains the grouping produced by the MCL algorithm for those sequences that don't map to the orthomcl groups, and cluster them using the all-against-all blastp scores among themselves using the Markov Clustering Algorithm (MCL)
+```{r load_mcs, warning=FALSE}
 # the following file contains unmapped genes grouped by MCS algorithm
-frv.mcs5 <- read_tsv("all-fungalRV-orthoMCL-v5/MCS-20200309.txt", comment = "#", col_types = "cc")
-# add the species and strain information
-frv.mcs5 <- frv.mcs5 %>% 
-  left_join(frv.res, by = c("protein_id"="ID")) %>% 
-  select(Species, Strain, protein_id, everything())
+#frv.mcs <- read_tsv("all-fungalRV-orthoMCL-v5/MCS-20200605.tabular", comment = "#", col_types = "cc")
+frv.mcs <- read_tsv("all-fungalRV-orthoMCL-v5/MCS-20200605.tabular", col_names = FALSE, col_types = "ccc")
+frv.mcs$group_id <- paste("MCS",1:nrow(frv.mcs), sep = "_")
+frv.mcs.long <- frv.mcs %>%  
+  pivot_longer(-group_id, names_to = "member", values_to = "protein_id") %>% 
+  select(protein_id, group_id) %>% 
+  left_join(adhesin, by = c("protein_id" = "ID")) %>% 
+  select(Species, Strain, protein_id, group_id, frv_score = Score, fungalRV, faapred)
+
+# merge with the mapped results
+frv.cmbd <- bind_rows( mapped = frv.mapped.all, mcs = frv.mcs.long, .id = "type")
 ```
 
 ### Exploratory analysis
@@ -159,15 +163,10 @@ frv.mcs5 <- frv.mcs5 %>%
 #### How many predicted adhesins were successfully mapped in each species/strain?
 
 ```{r percent_mapped_v5, echo=FALSE}
-# combine the mapped and mcs data
-frv.cmbd5 <- bind_rows(
-  mapped = select(frv.mapped5, Species, Strain, protein_id, group_id = orthomcl_group_id),
-  mcs = select(frv.mcs5, -Score), .id = "type")
-
 # total number of adhesins submitted per species
-frv.stat <- frv.res %>% 
+frv.stat <- adhesin %>% 
   group_by(Strain) %>% 
-  summarize(adhesin = sum(Score > 0, na.rm = T), all = n())
+  summarize(FungalRV = sum(fungalRV, na.rm = T), FaaPred = sum(faapred, na.rm = T), all = n())
 
 # combined both mapped and MCS clustered
 frv.cmbd5 %>% 
