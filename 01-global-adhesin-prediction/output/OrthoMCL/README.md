@@ -21,6 +21,10 @@ _update 2020-05-18_
 
 The results from mapping to v5 and v6r1 are not the same. Each has its own unique entries. For example, "XP_447684.1" is mapped to OG6_128677 in v6r1, but failed to be mapped for v5. After checking the blasp results, I found that the gene actually yielded MANY hits in the v5 result, but all of the hits have cgla|XP_xxxx format, instead of the CAGL0Kxxx format, which suggests that the v5 and v6r1 OrthoMCL blast databases are quite different. As to why, despite having many hits in the v5 blastp result, it failed to be mapped with v5, I can't quite figure out.
 
+_update 2020-06-05_
+
+This time I added _S. cerevisiae_ results to the list. All files with this date are the new results.
+
 # output format
 
 Tool help for OrthoMCL Map Proteome to Groups
