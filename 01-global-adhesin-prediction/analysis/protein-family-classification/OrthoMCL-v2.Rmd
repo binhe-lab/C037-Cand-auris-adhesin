@@ -1,7 +1,7 @@
 ---
-title: "Mapping to Orthogroups MCL v5 or v6r1"
+title: "Analyze predicted adhesins mapped to Orthogroups MCL v5"
 author: "Bin He"
-date: "3/12/2020"
+date: "5/31/2020"
 output: 
   html_notebook:
     toc: TRUE
@@ -18,26 +18,28 @@ knitr::opts_knit$set(root.dir = normalizePath("../../output/OrthoMCL/"))
 knitr::opts_knit$get("root.dir")
 ```
 
-```{r load_libraries}
+```{r load_libraries, echo=FALSE}
 # install the package if not already available
 if (!requireNamespace("tidyverse", quietly = TRUE))
     install.packages("tidyverse")
-if (!requireNamespace("janitor", quietly = TRUE))
-    install.packages("janitor")
 if (!requireNamespace("rentrez", quietly = TRUE))
     install.packages("rentrez")
 
 # load the package
-require(tidyverse)
-require(rentrez)
-require(janitor) # for adding total row
+suppressMessages(library(tidyverse))
+suppressMessages(require(rentrez))
 ```
 
 ## Questions
 
 Are the known and _predicted_ adhesin genes from _C. auris_, _C. albicans_ and _C. glabrata_ from the same group of adhesin families? In other words, do they use an ancestral pool of adhesin genes or did they evolve species-specific ones by co-option or _de novo_ evolution? If they share certain families, are the number of paralogs (members of a family) similar or different?
 
-In this analysis, I used the VEuPathDB's [Galaxy site](http://veupathdb.globusgenomics.org/) to map the predicted adhesins from all five genomes to "orthogroups". These are pre-computed groups of putative orthologous protein sequences. These are calculated using the OrthoMCL program. Here is a [description](https://orthomcl.org/orthomcl/about.do#background) of how that is done. 
+_Update 2020-05-31_
+
+After my initial analysis of the OrthoMCL results (see [`OrthoMCL.Rmd`](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/analysis/protein-family-classification/OrthoMCL.Rmd)), I found that some of the orthogroups don't make obvious sense in terms of mediating adhesion, such as gene families annotated as alcohol dehydrogenases and other enzymes. Some of them may genuinely be relevant, such as aspartyl protease, which could be involved in cell wall remodeling triggered by host-fungal interaction. However, it does seem likely to me that the list of predicted adhesins contain an appreciable amount of false positives. To resolve this, I plan to take two approaches: 1) narrow down the list by including only those genes predicted by both FungalRV and FaaPred. This should reduce false positive rate, although it comes at the cost of higher false negative rates. 2) instead of analyzing the orthogroup mapping assuming all the predicted adhesins are correct, use the functional annotation for the orthogroups to vet the adhesins, and remove predictions that obviously _don't make sense_. Similarly, I can combine other predicted features such as Signal Peptide, GPI anchor and low complexity repeat regions to further eliminate potential false positives. In this document I will first try the FaaPred dataset.
+
+## Approach
+As previously, the OrthoMCL results were obtained using the VEuPathDB's [Galaxy site](http://veupathdb.globusgenomics.org/) to map the predicted adhesins from all five genomes to "orthogroups". These are pre-computed groups of putative orthologous protein sequences. These are calculated using the OrthoMCL program. Here is a [description](https://orthomcl.org/orthomcl/about.do#background) of how that is done. 
 
 Briefly
 
@@ -52,22 +54,93 @@ Briefly
 
 ## Data
 
-OrthoMCL output, including `mappedGroups.txt`, `MCS.tabular` and `paralogPairs.txt`. Among them, the `mappedGroups.txt` contains the mapping between the proteins in the input file and the pre-calculated Orthogroups. `paralogPairs.txt` gives pairwise distance calculated among the input sequences. `MCS.tabular` contains the clustered proteins based on the `paralogPairs.txt`. Note these should only include those sequences that don't get mapped to the existing Orthogroups.
+- OrthoMCL output, including `mappedGroups.txt`, `MCS.tabular` and `paralogPairs.txt`.
+    - `mappedGroups.txt`: the mapping between the proteins in the input file and the pre-calculated Orthogroups. 
+    - `paralogPairs.txt`: pairwise distance calculated among the input sequences. 
+    - `MCS.tabular`: the clustered proteins based on the `paralogPairs.txt`, which only include those sequences that don't get mapped to the existing Orthogroups.
+- FungalRV predictions: `../FungalRV/all-fungalrv-results-20200529.txt`
+- FaaPred predictions: `../Faapred/all-faapred-seq-names-20200531.txt`
 
-## FungalRV results
+## Analysis
 
-_Compare results using two versions of OrthoMCL-DB_
+### load data
 
-### Compare OrthoMCL-DB v5 vs v6r1
-#### OrthoMCL-DB v5
+Note! Please make sure that the threshold used below is correct before interpreting the remaining of this document
+```{r load_adhesin_prediction}
+# -------- Change Me! ----------
+# 0. Set the fungalRV score threshold
+#    The website application's default is 0, but the paper recommends 0.511 to achieve the best balance
+#   between true positive and false positive
+frv.th = 0.511
+# -----------END ---------------
 
-```{r load_data_v5, echo=FALSE}
-# the following file contains the metadata for all genes
-# including species, strains, protein_id and FungalRV score
-# threhold used by current version of Fungal RV: Score > 0 
-frv.res <- read_tsv("../FungalRV/all-fungalrv-results-20200228.txt", comment = "#", col_types = "cccd")
-# the following file contains the mapped results
+# 1. FungalRV
+#    the following file contains the metadata for all genes
+#    header: species, strains, protein_id and FungalRV score
+#    threshold used by current version of Fungal RV: Score > 0 
+frv.res <- read_tsv("../FungalRV/all-fungalrv-results-20200529.txt", comment = "#", col_types = "cccd", na = "Can't be processed")
+
+# 2. FaaPred
+faa.res <- scan("../Faapred/all-faapred-seq-names-20200531.txt", what = "string")
+
+# 3. Make T/F variables for FungalRV and FaaPred results
+adhesin <- frv.res %>% 
+  mutate(fungalRV = ifelse(Score > frv.th, TRUE, FALSE),
+         faapred = ifelse(ID %in% faa.res, TRUE, FALSE))
+```
+
+Load OrthoMCL mapping for proteins from the _Candida_ species
+```{r load_orthomcl_mapping_no_scer}
+# the following file contains the mapped results for the proteins with FungalRV score > 0 in all proteomes except for _S. cerevisiae_
 frv.mapped <- read_tsv("all-fungalRV-orthoMCL-v5/mappedGroups-20200309.txt", col_types = "ccciidd")
+
+# merge the frv.mapped with frv.res to provide gene information
+frv.mapped.rest <- frv.mapped %>% 
+  left_join(adhesin, by = c("protein_id"="ID")) %>% 
+  select(Species, Strain, protein_id, orthomcl_group_id, frv_score = Score, fungalRV, faapred)
+
+head(frv.mapped.rest, 3)
+```
+
+We need to process _S. cerevisiae_ data separately because instead of using the OrthoMCL mapping program, I downloaded the preprocessed results from [FungiDB](https://fungidb.org)
+
+Note: the code below is _not_ run by default. Only run it when the _S. cerevisiae_ mapping data are updated.
+```{r convert_scer_ID, echo=TRUE, eval=FALSE}
+# the S. cerevisiae mapping data is downloaded from fungiDB (which is from OrthoMCL v5)
+scer.mapped <- read_tsv("all-fungalRV-orthoMCL-v5/S_cerevisiae_orthoMCL_v5_download.txt", col_types = "ccccccccc")
+# rearrange the columns and make any non-orthomcl-group-ids "NA"
+scer.mapped <- scer.mapped %>%
+  select(gene_id, description, orthogroup_id, pfam_id, pfam_description, geneName, entrez_id) %>% 
+  mutate(orthogroup_id = ifelse(substr(orthogroup_id, 1, 4)=="OG5_", orthogroup_id, "NA"))
+
+# collect predicted adhesins in S. cerevisiae by FungalRV
+# note the threshold here is not altered, because my goal is to convert as many IDs 
+# as entrez_link() allows doing so for all _S. cerevisiae_ is not possible due to 
+# NCBI's API limit, but can be achieved by splitting the list into several batches 
+# of hundreds. I didn't do so since we don't need the information for most of the 
+# proteome (anything with score below zero are considered non-adhesin)
+frv.scer <- adhesin %>% 
+  filter(Species == "S_cerevisiae", Score > 0)
+
+# translate these IDs to entrez_id so we can bring in the orthomcl mapping results
+lnk <- entrez_link(dbfrom = "protein", id = frv.scer$ID, db = "gene", by_id = TRUE)
+frv.scer$entrez_id <- sapply(lnk, function(x) x$link$protein_gene)
+```
+
+```{r process_and_merge_scer_data}
+# pull in the orthogroup and other annotation
+frv.mapped.scer <- frv.scer %>% 
+  left_join(select(scer.mapped, orthomcl_group_id = orthogroup_id, entrez_id), by = c("entrez_id"="entrez_id")) %>% 
+  select(Species, Strain, protein_id = ID, orthomcl_group_id, frv_score = Score, fungalRV, faapred)
+
+# merge Scer results with the rest
+frv.mapped.all <- rbind(frv.mapped.rest, frv.mapped.scer)
+
+str(frv.mapped.all)
+```
+
+Lastly, let's load the 
+```{r load_mcs}
 # merge with frv.res to provide meta information
 frv.mapped5 <- frv.mapped %>% 
   left_join(frv.res, by = c("protein_id"="ID")) %>% 
@@ -81,7 +154,9 @@ frv.mcs5 <- frv.mcs5 %>%
   select(Species, Strain, protein_id, everything())
 ```
 
-How many predicted adhesins were successfully mapped in each species/strain?
+### Exploratory analysis
+
+#### How many predicted adhesins were successfully mapped in each species/strain?
 
 ```{r percent_mapped_v5, echo=FALSE}
 # combine the mapped and mcs data

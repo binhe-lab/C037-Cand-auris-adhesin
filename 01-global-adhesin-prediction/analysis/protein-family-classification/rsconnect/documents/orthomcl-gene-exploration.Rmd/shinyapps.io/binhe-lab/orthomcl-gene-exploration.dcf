@@ -1,0 +1,12 @@
+name: orthomcl-gene-exploration
+title: orthomcl-gene-exploration
+username:
+account: binhe-lab
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2401981
+bundleId: 3223613
+url: https://binhe-lab.shinyapps.io/orthomcl-gene-exploration/
+when: 1591197146.94457
+asMultiple: FALSE
+asStatic: FALSE

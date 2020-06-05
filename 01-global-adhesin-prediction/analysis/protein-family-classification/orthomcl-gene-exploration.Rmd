@@ -16,16 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load_data_library, echo=FALSE}
 load("orthomcl-v5-mapping-analysis-cache.RData")
 # install the package if not already available
-if (!requireNamespace("tidyverse", quietly = TRUE))
-    install.packages("tidyverse")
-if (!requireNamespace("rentrez", quietly = TRUE))
-    install.packages("rentrez")
-if (!requireNamespace("kableExtra", quietly = TRUE))
-    install.packages("kableExtra")
-
 require(tidyverse, quietly = TRUE)
 require(rentrez, quietly = TRUE)
 require(kableExtra, quietly = TRUE)
+require(rmarkdown)
 ```
 
 ```{r extract_cdd_fct, echo=FALSE}
@@ -72,6 +66,7 @@ fluidPage(
   titlePanel("Conserved Domain Database"),
   fluidRow(
     column(5,
+           h4("Genes in the orthogroup"),
            renderTable({
              members <- frv.mapped5 %>% 
                filter(orthomcl_group_id == input$gid) %>% 
@@ -83,6 +78,7 @@ fluidPage(
            })
     ),
     column(7,
+           h4("Top hits in the Conserved Domain Database"),
            # show the gene table based on the orthogroup choice
            renderPrint({
              get_cdd(pid = input$pid)

@@ -83,3 +83,5 @@ _todo_
 1. add FaaPred (Y/N) to the gene table
 1. add _S. cerevisiae_ to the gene table, including its orthogroup mapping
 1. start a new Rmd by duplicating the previous one, use a sandbox folder?
+
+
