@@ -25,6 +25,10 @@ _update 2020-06-05_
 
 This time I added _S. cerevisiae_ results to the list. All files with this date are the new results.
 
+_update 2020-06-06_
+
+_C. auris_ B8441 is incorporated into OrthoMCL v6r1. I used the new [FungiDB beta](https://beta.fungidb.org/fungidb.beta/app/) to download the results for all four genomes (using the "Strategy"->"add"->"union" feature), and selected Gene_ID, Organism, Orthogroup_ID, Protein length, Pfam ID, Pfam description fields. Intend to cross-check this result with my custom mapping using their Galaxy site later.
+
 # output format
 
 Tool help for OrthoMCL Map Proteome to Groups
