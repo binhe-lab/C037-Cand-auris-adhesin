@@ -1,0 +1,148 @@
+
+
+IMPORTANT WARNING: Sequences Caur_B11220_QEO24213.1 and Caur_B11221_XP_028889034.1 are exactly identical
+
+
+IMPORTANT WARNING: Sequences Caur_B11220_QEO24213.1 and Caur_B8441_PIS50297.1 are exactly identical
+
+
+IMPORTANT WARNING: Sequences Caur_B11221_XP_028888611.1 and Caur_B8441_PIS49865.1 are exactly identical
+
+
+IMPORTANT WARNING: Sequences Caur_B11221_XP_028887965.1 and Caur_B8441_PIS52483.1 are exactly identical
+
+
+IMPORTANT WARNING: Sequences Caur_B11221_XP_028892087.1 and Caur_B8441_PIS56617.1 are exactly identical
+
+IMPORTANT WARNING
+Found 5 sequences that are exactly identical to other sequences in the alignment.
+Normally they should be excluded from the analysis.
+
+Just in case you might need it, an alignment file with 
+sequence duplicates removed is printed to file /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/output/OrthoMCL/all-fungalRV-orthoMCL-v5/subset/OG5_132045_N500_aln.faa.fa.reduced
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 576 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 16.56%
+
+RAxML rapid hill-climbing mode
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+Executing 20 inferences on the original alignment using 20 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 576
+Name: No Name Provided
+DataType: AA
+Substitution Matrix: WAG
+Using fixed base frequencies
+
+
+
+
+RAxML was called as follows:
+
+./raxmlHPC-PTHREADS-SSE3 -m PROTGAMMAWAG -p 12345 -s /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/output/OrthoMCL/all-fungalRV-orthoMCL-v5/subset/OG5_132045_N500_aln.faa.fa -# 20 -n test 
+
+
+Partition: 0 with name: No Name Provided
+Base frequencies: 0.087 0.044 0.039 0.057 0.019 0.037 0.058 0.083 0.024 0.048 0.086 0.062 0.020 0.038 0.046 0.070 0.061 0.014 0.035 0.071 
+
+Inference[0]: Time 53.112183 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215358 
+Inference[1]: Time 61.363749 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215357 
+Inference[2]: Time 53.350731 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215354 
+Inference[3]: Time 50.676074 GAMMA-based likelihood -13978.495709, best rearrangement setting 5
+alpha[0]: 2.213166 
+Inference[4]: Time 55.072255 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215358 
+Inference[5]: Time 57.303933 GAMMA-based likelihood -13978.495944, best rearrangement setting 5
+alpha[0]: 2.211194 
+Inference[6]: Time 53.364004 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215356 
+Inference[7]: Time 49.229272 GAMMA-based likelihood -13978.495944, best rearrangement setting 5
+alpha[0]: 2.211195 
+Inference[8]: Time 47.552375 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215357 
+Inference[9]: Time 50.433053 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215357 
+Inference[10]: Time 55.048446 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215357 
+Inference[11]: Time 58.254999 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215357 
+Inference[12]: Time 59.006950 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215354 
+Inference[13]: Time 56.442126 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215357 
+Inference[14]: Time 49.700627 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215357 
+Inference[15]: Time 63.964614 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215358 
+Inference[16]: Time 56.094945 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215358 
+Inference[17]: Time 52.809514 GAMMA-based likelihood -13978.495944, best rearrangement setting 5
+alpha[0]: 2.211195 
+Inference[18]: Time 47.577359 GAMMA-based likelihood -13978.495539, best rearrangement setting 5
+alpha[0]: 2.215356 
+Inference[19]: Time 48.100848 GAMMA-based likelihood -13978.495709, best rearrangement setting 5
+alpha[0]: 2.213168 
+
+
+Conducting final model optimizations on all 20 trees under GAMMA-based models ....
+
+Inference[0] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.0
+Inference[1] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.1
+Inference[2] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.2
+Inference[3] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.3
+Inference[4] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.4
+Inference[5] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.5
+Inference[6] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.6
+Inference[7] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.7
+Inference[8] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.8
+Inference[9] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.9
+Inference[10] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.10
+Inference[11] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.11
+Inference[12] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.12
+Inference[13] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.13
+Inference[14] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.14
+Inference[15] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.15
+Inference[16] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.16
+Inference[17] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.17
+Inference[18] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.18
+Inference[19] final GAMMA-based Likelihood: -13978.495463 tree written to file /Users/bhe2/sw/standard-RAxML/RAxML_result.test.RUN.19
+
+
+Starting final GAMMA-based thorough Optimization on tree 19 likelihood -13978.495463 .... 
+
+Final GAMMA-based Score of best tree -13978.495463
+
+Program execution info written to /Users/bhe2/sw/standard-RAxML/RAxML_info.test
+Best-scoring ML tree written to: /Users/bhe2/sw/standard-RAxML/RAxML_bestTree.test
+
+Overall execution time: 1096.680658 secs or 0.304634 hours or 0.012693 days
+

@@ -84,4 +84,14 @@ _todo_
 1. add _S. cerevisiae_ to the gene table, including its orthogroup mapping
 1. start a new Rmd by duplicating the previous one, use a sandbox folder?
 
+## 2020-06-05 [HB] Todo list
+1. Merge _S. cerevisiae_ results, add FaaPred flag, and repeat the orthomcl results
+    - percent of predicted adhesins mapped
+    - merge the three _C. auris_ adhesin sets
+    - proportion of predicted adhesins belonging to an orthogroup that is shared by at least two genomes
+1. Examine top orthogroup functions
+1. Export the sequences belonging to an orthogroup and explore their evolutionary relationship.
 
+# 2020-06-06 [HB] Continue with OrthoMCL analysis
+1. Downloaded orthogroup and other gene information for the four species (for _C. auris_ only B8441 is provided) from FungiDB beta (more details see `../../output/OrthoMCL/README.md`
+1. When examining gene members in a single orthogroup, I asked myself what does it mean when one species have multiple members in that orthogroup? Were they species specific duplicates or were they ancient duplications shared across several species? To answer this question, I tested one orthogroup, OG5_132054, by performing alignment and tree reconstruction. See `../../output/OrthoMCL/all-fungalRV-orthoMCL-v5/subset/README.md` for details.

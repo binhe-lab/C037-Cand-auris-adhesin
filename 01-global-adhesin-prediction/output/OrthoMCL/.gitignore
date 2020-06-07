@@ -1,0 +1,2 @@
+# don't include RAxML run files, only include the best tree and info/logs
+*.RUN.*

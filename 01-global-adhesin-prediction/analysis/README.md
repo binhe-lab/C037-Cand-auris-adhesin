@@ -156,10 +156,3 @@ Verstrepen KJ, Klis FM. 2006. Flocculation, adhesion and biofilm formation in ye
 
 ## 2020-05-29 [HB] Next-step questions
 see `protein-family-classification/README.md` for details.
-
-## 2020-06-05 [HB] Todo list
-1. Merge _S. cerevisiae_ results, add FaaPred flag, and repeat the orthomcl results
-    - percent of predicted adhesins mapped
-    - merge the three _C. auris_ adhesin sets
-    - proportion of predicted adhesins belonging to an orthogroup that is shared by at least two genomes
-1. Examine top orthogroup functions

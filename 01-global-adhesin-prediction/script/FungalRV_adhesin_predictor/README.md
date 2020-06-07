@@ -41,6 +41,6 @@ Run locally and result moved to the output folder
 
 ## 2020-05-30 Rewrote the fasta extraction script in Python and run it to get the _S. cerevisiae_ sequences
 ```bash
-$ python3 extract_fasta.py ../../output/FungalRV/local-result-HB/S_cerevisiae_GCF_000146045.2_R64_protein.txt S_cerevisiae_GCF_000146045.2_R64_protein.faa.gz
+$ python3 extract_fasta_fungalRV.py ../../output/FungalRV/local-result-HB/S_cerevisiae_GCF_000146045.2_R64_protein.txt S_cerevisiae_GCF_000146045.2_R64_protein.faa.gz
 $ mv S_cerevisiae_GCF_000146045.2_R64_protein_filtered.faa ../../output/FungalRV/local-result-HB/
 ```

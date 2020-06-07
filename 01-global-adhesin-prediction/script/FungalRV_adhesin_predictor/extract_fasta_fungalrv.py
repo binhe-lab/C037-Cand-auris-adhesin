@@ -1,6 +1,6 @@
 """Extract the subset of fasta sequences based on FungalRV score
    Bin He
-   2020-02-27
+   2020-05-30
 """
 
 # import libraries
@@ -11,7 +11,7 @@ import re
 
 # parse arguments
 if len(sys.argv) != 3:
-    print("python3 extract_fasta.py <FungalRV result gzipped> <FASTA>")
+    print("python3 extract_fasta.py <FungalRV result> <FASTA gzipped>")
     exit()
 
 IN = sys.argv[1] # FungalRV result

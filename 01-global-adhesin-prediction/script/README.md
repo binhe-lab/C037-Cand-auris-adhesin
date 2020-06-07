@@ -7,3 +7,4 @@
 | R_tango_output | R script to load and analyze TANGO output filed | RS, custom |2020-02-20 |
 | CATH | shell script to scan the CATH database for identifying protein families | HB, custom | 2020-02-25 |
 | amino acid composition | a set of python scripts to calculate sequence composition properties in adhesins | HB, custom | 2020-03-07 |
+| misc | miscellanious scripts for sequence processing | HB, custom | 2020-06-06 |
