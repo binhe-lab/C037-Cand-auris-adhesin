@@ -16,10 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load_data_library, echo=FALSE}
 load("orthomcl-v5-mapping-analysis-cache.RData")
 # install the package if not already available
-require(tidyverse, quietly = TRUE)
-require(rentrez, quietly = TRUE)
-require(kableExtra, quietly = TRUE)
-require(rmarkdown)
+suppressMessages(library(tidyverse))
+suppressMessages(library(rentrez))
+suppressMessages(library(kableExtra))
+suppressMessages(library(rmarkdown))
 ```
 
 ```{r extract_cdd_fct, echo=FALSE}
@@ -38,12 +38,22 @@ get_cdd <- function(pid){
 
 Here are all the orthogroups that contain at least two of the predicted adhesins in all species. The numbers in columns 2-4 represent the number of genes in each species (for _C. auris_, I took the **median** values of the three strains).
 ```{r list_all_ogs, echo=FALSE}
-frv.mcl5.sum %>% 
-  filter(total > 2) %>% 
-  select(-total) %>% 
-  paged_table() %>% 
-  kable() %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+# define mapping from choice to subset name
+subset <- c(fungalRV_0 = "frv_low",
+            fungalRV_0.511 = "frv_high",
+            FaaPred = "faapred",
+            Both = "both")
+# select the subset
+selectInput(inputId = "sub", label = "Please select the criteria to apply", choices = c("fungalRV_0","fungalRV_0.511","FaaPred","Both"))
+
+renderTable({
+  frv.mcl5.sum[[subset[input$sub]]] %>% 
+    filter(total > 2) %>% 
+    select(-total) %>% 
+    paged_table()# %>% 
+    #kable() %>% 
+    #kable_styling(bootstrap_options = c("striped", "hover", "condensed"))  
+})
 
 ```
 

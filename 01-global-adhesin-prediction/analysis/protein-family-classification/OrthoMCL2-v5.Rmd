@@ -2,11 +2,15 @@
 title: "Analyze predicted adhesins mapped to Orthogroups MCL v5"
 author: "Bin He"
 date: "5/31/2020"
-output: 
+output:
   html_notebook:
-    toc: TRUE
-    toc_float: TRUE
-    toc_depth: 4
+    toc: yes
+    toc_float: yes
+    toc_depth: 5
+  html_document:
+    toc: yes
+    toc_depth: '5'
+    df_print: paged
 ---
 
 ```{r setup, cache=FALSE, include=FALSE}
@@ -27,7 +31,7 @@ if (!requireNamespace("rentrez", quietly = TRUE))
 
 # load the package
 suppressMessages(library(tidyverse))
-suppressMessages(require(rentrez))
+suppressMessages(library(rentrez))
 ```
 
 ## Questions
@@ -135,12 +139,12 @@ write_tsv(frv.mapped.scer, "all-fungalRV-orthoMCL-v5/S_cerevisiae_mapped_w_entre
 # read S. cerevisiae results generated above
 frv.mapped.scer <- read_tsv("all-fungalRV-orthoMCL-v5/S_cerevisiae_mapped_w_entrezID.txt", col_types = "ccccdll")
 # merge Scer results with the rest
-frv.mapped.all <- rbind(frv.mapped.rest, frv.mapped.scer)
+frv.mapped.all <- rbind(frv.mapped.rest, filter(frv.mapped.scer, substr(group_id,1,8) != "OG5_scer"))
 
 str(frv.mapped.all)
 ```
 
-Note that _S. cerevisiae_ data contain a number of orthogroups with unusual group_id, such as  `r head(frv.mapped.scer %>% filter(substr(group_id,1,8) == "OG5_scer") %>% pull(group_id))`. These groups have only one member, that is, the _S. cerevisiae_ gene. However, when I search in the OrthoMCL-DB v6r1, some of them, like "OG5_scer|scer_s288c__YJL116C" coorespond to "OG6_1300006", which do contain 8 core members and 110 peripheral members.
+Note that _S. cerevisiae_ data contain a number of orthogroups with unusual group_id, such as  `r head(frv.mapped.scer %>% filter(substr(group_id,1,8) == "OG5_scer") %>% pull(group_id))`. These groups have only one member, that is, the _S. cerevisiae_ gene. However, when I search in the OrthoMCL-DB v6r1, some of them, like "OG5_scer|scer_s288c__YJL116C" coorespond to "OG6_1300006", which do contain 8 core members and 110 peripheral members. For the moment, though, I **excluded** them from "mapped" list by assigning "NA" to their group_id.
 
 Now let's load the Markov clustering results. This files contains the grouping produced by the MCL algorithm for those sequences that don't map to the orthomcl groups, and cluster them using the all-against-all blastp scores among themselves using the Markov Clustering Algorithm (MCL)
 ```{r load_mcs, warning=FALSE}
@@ -207,16 +211,25 @@ Next let's look at how many of the sequences submitted to OrthoMCL were successf
 #  mutate(unmapped = Submitted - mapped - self_group) %>% 
 #  select(Species, Strain, mapped, self_group, unmapped, Submitted)
 
-frv.mapped.all %>% 
+frv.mapped.stat <- frv.mapped.all %>% 
   count(Strain) %>% 
   right_join(frv.stat, by = c("Strain" = "Strain")) %>% 
   mutate(mapped = n, unmapped = Submitted - mapped) %>% 
   select(Species, Strain, mapped, unmapped, Submitted)
+
+print(frv.mapped.stat)
+# plot the results
+frv.mapped.stat %>% 
+  select(-Submitted) %>% 
+  pivot_longer(cols = c(mapped, unmapped), names_to = "status", values_to = "n") %>% 
+  mutate(status = ordered(status, levels = c("unmapped","mapped"))) %>% 
+  ggplot(aes(x = Strain, y = n, fill = status)) + geom_col() + coord_flip() + scale_fill_brewer(palette = "Paired")
 ```
 
 Note that although all _S. cerevisiae_ proteins appear to be "mapped", `r length(frv.mapped.scer %>% filter(substr(group_id,1,8) == "OG5_scer") %>% pull(group_id))` belong to those unusual "OG5_scer|scer_S288c_xxx" groups.
 
 ### B. Reduce the three _C. auris_ strains to a single superset
+
 While the individual strains could reveal variation within species, the unequal assembly quality of the three strains' genome makes this approach less convincing. Instead, we could take advantage of the three genomes to come up with a superset of adhesins that "exist" in the _C. auris_ population. Here the idea is to use the OrthoMCL mapping to remove redundant genes. Among the _C. auris_ genes that map to one of the OrthoMCL groups, we pick one of them as a representative, e.g. choose the one that is the longest.
 
 #### Count the number of genes in each _C. auris_ strain belonging to every orthogroup
@@ -303,15 +316,6 @@ frv.reduced <- frv.mapped.all %>%
 ```
 
 ### C. Proportion of shared vs species-specific (predicted) adhesins
-
-This analysis will be done on four different subsets of the data.
-
-1. All genes with a FungalRV score greater than zero -- this is what we submitted to OrthoMCL, and also what is used in many other analyses as the input set. It probably contains a fair number of false positives.
-1. Genes with a FungalRV score greater than `r frv.th` -- this is the recommended score cutoff for FungalRV.
-1. Genes with a FungalRV score greater than 0 and also predicted by FaaPred to be adhesins.
-1. Genes that are predicted by FungalRV (recommended threshold) and FaaPred
-
-#### 1. FungalRV_0
 _Goal_
 
 Use a bar or pie chart to represent the number (or proportion) of predicted adhesins that fall in one of the four categories
@@ -326,10 +330,20 @@ _Approach_
 1. Subset the data
 1. Separately count the number of proteins in each species and group them based on whether they belong to an orthogroup or self_group that is shared by at least one other species.
 
+This analysis will be done on four different subsets of the data.
+
+1. All genes with a FungalRV score greater than zero -- this is what we submitted to OrthoMCL, and also what is used in many other analyses as the input set. It probably contains a fair number of false positives.
+1. Genes with a FungalRV score greater than `r frv.th` -- this is the recommended score cutoff for FungalRV.
+1. Genes with a FungalRV score greater than 0 and also predicted by FaaPred to be adhesins.
+1. Genes that are predicted by FungalRV (recommended threshold) and FaaPred
+
+#### 1. FungalRV_0
+
 Let's first examine the group membership, ordered by the size of each group in the reduced data set in descending order.
-```{r orthogroup_membership}
+```{r}
 # subset the data
-frv.tally <- frv.reduced %>% 
+frv.tally = list()
+frv.tally$frv_low <- frv.reduced %>% 
   # no filtering
   # count the number of genes in each strain belonging to one orthogroup
   group_by(group_id) %>% 
@@ -340,31 +354,49 @@ frv.tally <- frv.reduced %>%
   select(group_id, C_auris, C_albicans, C_glabrata, S_cerevisiae, Total) %>% 
   arrange(desc(Total))
 
-frv.tally %>% filter(Total > 2)
+frv.tally$frv_low %>% filter(Total > 2)
 ```
 
 Next let's compute the number of genes in each species belonging to the four groups.
 ```{r}
 # for each orthogroup, count the number of species with at least one member
-frv.group.Nsps <- frv.reduced %>%
+frv.group.Nsps = list()
+frv.group.Nsps$frv_low <- frv.reduced %>%
   group_by(group_id) %>%
-  summarize(N_sps = length(unique(Species))) %>% 
-  mutate(N_sps = factor(N_sps))
+  summarize(N_sps = length(unique(Species)))
 
 # for each species, count the number of genes belonging to groups with 4,3,2 or 1 species representation
-frv.group.sps <- frv.reduced %>%
+frv.mapped.low <- frv.reduced %>%
   # bring in the species number computed above
-  left_join(frv.group.Nsps) %>% 
+  left_join(frv.group.Nsps$frv_low) %>% 
   group_by(Species) %>% 
-  count(N_sps) %>% 
+  count(N_sps)
+```
+
+Now we will plot the proportions for each species depending on whether the predicted adhesin belongs to an orthogroup that is specific to one species (`N_sps=1`), shared across 2, 3 or all 4 species (`N_sps = 2,3,4`), and also genes not mapped to any orthogroup (`N_sps = unmapped`)
+```{r, echo=FALSE}
+
+# append the unmapped number
+frv.unmapped.low <-  frv.mapped.stat %>% 
+  group_by(Species) %>% 
+  summarize(n = as.integer(mean(unmapped))) %>% 
+  mutate(N_sps = 0) %>% 
+  select(Species, N_sps, n)
+
+# combine mapped and unmapped and save in the group status list
+frv.group.sps = list()
+frv.group.sps$frv_low <- rbind(frv.mapped.low, frv.unmapped.low) %>% 
   # calculate the proportions
   # from https://stackoverflow.com/questions/40249943/adding-percentage-labels-to-a-bar-chart-in-ggplot2
-  mutate(pct = prop.table(n)) 
+  mutate(pct = prop.table(n), 
+         N_sps = factor(N_sps, levels = 0:4, labels = c("unmapped",1,2,3,4))) %>% 
+  arrange(Species, N_sps)
 
-ggplot(frv.group.sps, aes(x = Species, y = n, fill = N_sps, label = scales::percent(pct, accuracy = 1))) + 
+ggplot(frv.group.sps$frv_low, aes(x = Species, y = n, fill = N_sps, label = scales::percent(pct, accuracy = 1))) + 
   geom_bar(stat = "identity", width = 0.5) + 
   geom_text(position = position_stack(vjust = 0.5), size = 3) +
-  coord_flip() + scale_fill_brewer(palette = "Paired") + theme_minimal()
+  coord_flip() + scale_fill_brewer(palette = "Paired") + theme_minimal() +
+  ggtitle("Number of predicted adhesins with shared orthogroup") + ylab("# of predicted adhesins")
 ```
 
 Now let's learn something about the top OG groups, e.g. what functional domains do these orthogroups have in common? What EC and GO terms are they associated with?
@@ -373,7 +405,7 @@ To answer this question, we will collect the list of orthogroup id's and paste t
 
 ```{r orthogroup_output, include = FALSE}
 # print the top orthogroups' IDs
-cat(paste(frv.mcl5.sum$group_id, collapse = ","))
+cat(paste(frv.tally$frv_low$group_id, collapse = ","))
 # copy and paste the list to https://orthomcl.org/orthomcl/showQuestion.do?questionFullName=GroupQuestions.ByNameList
 # then choose the columns to report. I chose
 # num. sequences | average % identity | domains | EC numbers | Group | Keywords
@@ -381,16 +413,133 @@ cat(paste(frv.mcl5.sum$group_id, collapse = ","))
 
 ```{r add_og_information}
 # read in the results
-frv.mcl5.og <- read_tsv("all-fungalRV-orthoMCL-v5/v5-orthogroups-summary-20200521.txt", col_types = "cidccc", na = "N/A")
+frv.mcl5.og <- read_tsv("all-fungalRV-orthoMCL-v5/v5-orthogroups-summary-20200608.txt", col_types = "cidcdcc", na = "N/A")
 
 # merge the tables
-frv.tally %>% 
+frv.mcl5.sum <- list()
+frv.mcl5.sum$frv_low <- frv.tally$frv_low %>% 
   left_join(select(frv.mcl5.og, group, domains, keywords), by = c("group_id" = "group")) %>% 
   filter(Total > 3) %>% 
   select(group_id, domains, keywords)
 ```
 
 #### 2. FungalRV_`r frv.th`
+Next we turn to the smaller set based on the recommended cutoff for FungalRV
+```{r, echo=F} 
+# subset the data
+frv.tally$frv_high <- frv.reduced %>% 
+  # based on FungalRV recommended cutoff
+  filter(fungalRV) %>% 
+  # count the number of genes in each strain belonging to one orthogroup
+  group_by(group_id) %>% 
+  count(Species) %>% 
+  # spread the table wider, one row per orthogroup
+  pivot_wider(names_from = Species, values_from = n, values_fill = list(n = 0)) %>% 
+  mutate(Total = C_albicans+C_auris+C_glabrata+S_cerevisiae) %>% 
+  select(group_id, C_auris, C_albicans, C_glabrata, S_cerevisiae, Total) %>% 
+  arrange(desc(Total))
+
+frv.tally$frv_high
+```
+
+Next let's compute the number of genes in each species belonging to the four groups. This time I also added the unmapped (filtered by the same score threshold).
+```{r, echo=FALSE, warning=FALSE}
+# for each orthogroup, count the number of species with at least one member
+frv.group.Nsps$frv_high <- frv.reduced %>%
+  # add the filter
+  filter(fungalRV) %>% 
+  group_by(group_id) %>%
+  summarize(N_sps = length(unique(Species)))
+
+# for each species, count the number of genes belonging to groups with 4,3,2 or 1 species representation
+frv.mapped.high <- frv.reduced %>%
+  # filter
+  filter(fungalRV) %>% 
+  # bring in the species number computed above
+  left_join(frv.group.Nsps$frv_high) %>% 
+  group_by(Species) %>% 
+  count(N_sps)
+
+# for each species, count the number of unmapped genes that meet the criteria
+# this will be combined with the mapped tally later
+frv.unmapped.high <- adhesin %>% 
+  # note that the adhesin dataset still has three C. auris genomes
+  # for convenience, we will use one strain, B11220, as the reference
+  filter(fungalRV & !(Strain %in% c("B11221","B8441"))) %>% 
+  # this counts the total # of proteins in each species meeting the criteria
+  count(Species, name = "submitted") %>% 
+  left_join(frv.reduced %>% filter(fungalRV) %>% count(Species, name = "mapped")) %>% 
+  mutate(N_sps = 0, n = submitted-mapped) %>% 
+  select(Species, N_sps, n)
+
+# combine the mapped & group classified with the unmapped
+frv.group.sps$frv_high <- rbind(frv.mapped.high, frv.unmapped.high) %>%
+  mutate(pct = prop.table(n), 
+         N_sps = factor(N_sps, levels = 0:4, labels = c("unmapped",1,2,3,4))) %>% 
+  arrange(Species, N_sps)
+
+ggplot(frv.group.sps$frv_high, aes(x = Species, y = n, fill = N_sps, label = scales::percent(pct, accuracy = 1))) + 
+  geom_bar(stat = "identity", width = 0.5) + 
+  geom_text(position = position_stack(vjust = 0.5), size = 3) +
+  coord_flip() + scale_fill_brewer(palette = "Paired") + theme_minimal() +
+  ggtitle("Number of predicted adhesins with shared orthogroup") + ylab("# of predicted adhesins")
+```
+
+_Discussion_
+
+Notice that the proportion of species-specific orthogroups generally goes down for all species. However, one question arises -- see below.
+
+##### _C. auris_ specific orthogroups
+Jan raised the question of why do we find _C. auris_ specific orthogroups -- given that _C. auris_ is the only species not included in the construction of the OrthoMCL-DB v5, the above observation makes one wonder whether these are genuinely _C. auris_ co-option of ancestrally non-adhesins to be used as adhesins, or are they false positives, or is it possible that the choice of the single cutoff, i.e. 0.511, leaves out members of this group in the other species.
+
+The first question we can ask is to compare the score distribution for genes in the different category.
+```{r score_distribution_by_shared_group}
+frv.reduced %>% 
+  filter(fungalRV) %>% 
+  left_join(frv.group.Nsps$frv_high, by = c("group_id" = "group_id")) %>% 
+  mutate(N_sps = factor(N_sps)) %>% 
+  ggplot(aes(x = N_sps, y = frv_score)) + 
+  geom_boxplot(position = position_dodge(0.9), width = 0.5) +
+  facet_wrap(~Species) + ylab("FungalRV Score") + xlab("Shared among N species")
+  
+```
+
+_Discussion_
+
+- The pattern doesn't lend support to my initial hunch that the proteins mapped to orthogroups not shared by other species have low FungalRV scores. 
+- There is a curious pattern where the orthogroups shared across three species consistently have lower scores. My suspicion is that this is due to the four species naturally forming two groups based on their evolutionary relationship -- those shared between two species are most likely between _C. glabrata_ and _S. cerevisiae_, or between _C. albicans_ and _C. auris_. For orthogroups shared across three species, the most parsimonious explanation would be loss in one of the species. The lower average score indicate that these orthogroups are more likely to be false positives.
+- In all species except _C. auris_, the proteins mapped to orthogroups present in all four species have the highest mean FungalRV score. But across all four species, the orthogroups shared among three of the four species have the lowest FungalRV score.
+- So the other idea is to examine those orthogroups and check whether the domains make any sense.
+
+```{r caur_specific_group, echo=FALSE, warning=FALSE}
+frv.tally$frv_high %>% 
+  filter(C_auris == Total) %>%
+  left_join(frv.mcl5.og, by = c("group_id" = "group")) %>% 
+  select(group_id, C_auris, n.seqs, avg.id, avg.connect, domains, keywords)
+```
+
+I then searched the first orthogroup on OrthoMCL website and found [OG5_138848](https://orthomcl.org/orthomcl/showRecord.do?name=GroupRecordClasses.GroupRecordClass&group_name=OG5_138848) has many _C. albicans_ genes, e.g. [C4_04080C](http://www.candidagenome.org/cgi-bin/locus.pl?locus=C4_04080C_B&organism=C_albicans_SC5314) (= [XP_717105.1](https://www.ncbi.nlm.nih.gov/protein/XP_717105.1?report=fasta) ). To see why this protein is not included in the `frv.reduced`, I looked up its prediction result `r adhesin %>% filter(ID == "XP_717105.1")` and found that it has a negative FungalRV score. So it's not even submitted to the OrthoMCL mapping. I verified this result by submitting the sequence of this protein to FungalRV again. I also submitted it to [FaaPred](http://bioinfo.icgeb.res.in/faap/query.html), which also classified it as non-adhesin. I then verified that one of the _C. auris_ proteins, PIS51941.1, is indeed predicted by both FungalRV and FaaPred to be an adhesin. The possible explanation for this result is either FungalRV and FaaPred missing the _C. albicans_ genes, whose annotations do contain words like "cell wall related" "GPI-anchor" etc., or, it could be that the _C. auris_ genes have taken those ancestral cell-wall related, GPI-anchor proteins and evolved them into adhesin molecules.
+
+Another _C. albicans_ gene in this orthogroup, [C4_04070C](http://www.candidagenome.org/cgi-bin/locus.pl?locus=C4_04070C_B&organism=C_albicans_SC5314) (=XP_717106.1) did get a positive FungalRV score that is lower than the `r frv.th` cutoff, but is predicted by FaaPred to be an adhesin. `r frv.reduced %>% filter(protein_id == "XP_717106.1")` So this protein would have been included in the `FungalRV_0` set as well as the `FaaPred` set.
+
+Another orthogroup, OG5_157055, does have _C. albicans_ members. `r frv.reduced %>% filter(group_id == "OG5_157055")`, but its FungalRV score is just below the `r frv.th` cutoff.
+
+_Conclusion & Next Steps_
+
+- The observation of _C. auris_ orthogroups can be due to a number of reasons or a combination of them: the single cutoff resulting in orthologs in the rest three species falling "just below" the cutoff, or the _C. auris_ protein represents a _de novo_ evolution, or co-option, of an ancestral cell-wall protein that doesn't have the adhesin function.
+- To partially address this issues, I could
+    1. Perform the analysis on FaaPred subset to compare.
+    1. Analyze the results using OrthoMCL-DB v6r1, which did include _C. auris_.
+    1. Manually examine the _C. auris_ specific orthogroups.
+- Also, this result brings up the possibility that some _C. auris_ adhesins may be missed, too. One idea is to take the top clusters with _C. albicans_ predicted adhesins, especially of the known adhesin families, and manually check the orthogroup in OrthoMCL v6r1 to see if any _C. auris_ gene fall in the same group.
+
+```{r, echo=FALSE, warning=FALSE}
+# merge the tables
+frv.mcl5.sum$frv_high <- frv.tally$frv_high %>% 
+  left_join(frv.mcl5.og %>% select(group, domains, keywords), by = c("group_id" = "group")) %>% 
+  filter(Total > 3) %>% 
+  select(group_id, domains, keywords)
+```
 
 #### 3. FaaPred
 
@@ -435,7 +584,6 @@ _**Discussion**_
 
 ### D. Examine the potential functions of the genes in the top orthogroups
 
-
 #### Orthogroup members annotation
 
 Now let's examine the top orthogroup in terms of membership and function.
@@ -453,38 +601,71 @@ Fields of intersts:
 | cdd | database | source of information |
 
 First, we will use the rentrez interface to extract gene annotation info from NCBI databases
-```{r entrez_link_gene_db, cache=TRUE}
+```{r entrez_link_gene_db, cache=TRUE, eval=FALSE}
 # because we have a large number of IDs, we will use the "web history" feature, as documented here:
 # https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html#web_history
-IDs <- split(frv.mapped5$protein_id, frv.mapped5$Strain)
+IDs <- split(frv.reduced$protein_id, frv.reduced$Species)
 # let's only look at C. albicans and C. glabrata for now. I think most of the C. auris genes are not annotated
-IDs.Ca.Cg <- IDs[c("CBS138", "SC5314")]
+IDs.to.map <- IDs[c("C_albicans", "C_glabrata", "S_cerevisiae")]
 # "by_id=true" will retain the original ID. otherwise we won't know which new id maps to the input
-gene.links <- lapply(IDs.Ca.Cg, function(x) {
+gene.links <- lapply(IDs.to.map, function(x) {
   entrez_link(dbfrom = "protein", db = "gene", id = x, by_id = TRUE)})
+# save(gene.links, file = "../../analysis/protein-family-classification/all-fungalRV-orthoMCL-v5/protein-to-gene-links-entrez.RData")
 ```
 
-```{r gather_gene_info}
-# extract the gene IDs only
+```{r gather_gene_info, eval=FALSE}
+#if(!exists("gene.links")){
+  #load("all-fungalRV-orthoMCL-v5/protein-to-gene-links-entrez.RData")
+#}
+# 1. extract the gene IDs only
 protein_gene <- lapply(gene.links, function(x){
   sapply(x, function(y){ y$links$protein_gene})
-})
-# 2. let's build a tibble to hold the gene annotation information
-gene.sum <- tibble(Strain = c(rep("Cgla", length(IDs$CBS138)), rep("Calb", length(IDs$SC5314))),
-                   protein_id = c(IDs$CBS138, IDs$SC5314),
-                   gene_id = c(protein_gene$CBS138, protein_gene$SC5314))
+}) # this is a list with three items corresponding to the three species
+
+# 2. let's build a tibble to hold the ID mapping
+IDs.mapped = tibble(Species = gsub('[0-9]+', '', names(unlist(IDs.to.map))),
+                                   protein_id = unlist(IDs.to.map), 
+                                   gene_id = unlist(protein_gene))
+
 # 3. now we can retrieve the summary information data frame from the "gene" database
-gene.info <- entrez_summary(db = "gene", id = gene.sum$gene_id)
+#    process the three species separately so as not to exceed the timeout limit.
+gene.info <- lapply(protein_gene, function(x){
+  entrez_summary(db = "gene", id = x)
+})
 
 # 4. we will extract the information we want from the records
-gene.info.extract <- do.call(rbind, lapply(gene.info, function(x){
-  c(x$uid, x$name, x$description, x$genomicinfo$chrloc, x$genomicinfo$chrstart, x$genomicinfo$chrstop)}))
-#    the above command first uses lapply to iterate through the gene.info list and extracts the useful columns. it returns a list of vectors. do.call() then supplies that list to rbind(), which normally takes discrete vectors as input. This returns a matrix
+gene.info.extract <- do.call(rbind, lapply(gene.info, function(sp){
+  do.call(rbind, lapply(sp, function(x){
+    c(x$uid, x$name, x$description, x$genomicinfo$chrloc, x$genomicinfo$chrstart, x$genomicinfo$chrstop)})
+    )
+  })
+)
+# ----------------- Long explanation, tl;dr : just skip it ------------------------
+# the above command looks complicated, because it has to go through two layers
+# of lists. it helps to know that gene.info contains three top items, each 
+# corresponding to one of the three species submitted. Each species is a list of
+# records corresponding to each gene_id passed on to entrez_summary()
+# and our goal is to extract certain information for each gene.
+# to read the code, start from the first lappy(): it essentially applies the 
+# function(sp) to each of the three top layer items (species).
+# for each species, the second lappy() iterates through each gene and extracts
+# the uid, name, description, chromosome, start and end information. lapply returns
+# those information for each gene as a list, which do.call(rbind, list()) takes in,
+# treats each list as a row, and bind them into a matrix. Since this procedure is
+# done for each of the three species, the first lapply would return a list of three
+# matrices, which the outside do.call(rbind, list()) further binds them into a
+# single matrix.
+# ---------  if you stick till here, congratulations, -----------
+# ------- you have just wasted some of your precious time!  -----
+
 colnames(gene.info.extract) <- c("uid","gene_name","description","chromosome","start","stop")
-gene.info.extract <- as_tibble(gene.info.extract)
-gene.sum <- gene.sum %>% 
-  left_join(gene.info.extract, by = c("gene_id"="uid")) %>% 
+
+# create a final gene.sum table to hold all gene related information with 
+# a cross-reference protein_id to be connected to the OrthoMCL result
+gene.sum <- bind_cols(IDs.mapped, gene.info.extract) %>% 
   mutate(start = as.integer(start), stop = as.integer(stop))
+  
+# save the result so this doesn't have to be run each time the R markdown is updated
 save.image(file = "../../analysis/protein-family-classification/orthomcl-v5-mapping-analysis-cache.RData")
 ```
 
@@ -492,8 +673,8 @@ Now we can look at the genes in the top orthogroup, OG5_132045. Note that I didn
 
 ```{r example_og5_132045}
 # get the protein IDs associated with the orthogroup
-members <- frv.mapped5 %>% 
-  filter(orthomcl_group_id == "OG5_126579") %>% 
+members <- frv.reduced %>% 
+  filter(group_id == "OG5_126579") %>% 
   pull(protein_id)
 
 gene.sum %>% 
