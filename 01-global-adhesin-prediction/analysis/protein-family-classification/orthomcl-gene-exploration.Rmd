@@ -18,8 +18,8 @@ load("orthomcl-v5-mapping-analysis-cache.RData")
 # install the package if not already available
 suppressMessages(library(tidyverse))
 suppressMessages(library(rentrez))
-suppressMessages(library(kableExtra))
-suppressMessages(library(rmarkdown))
+# suppressMessages(library(kableExtra))
+# suppressMessages(library(rmarkdown))
 ```
 
 ```{r extract_cdd_fct, echo=FALSE}
@@ -37,38 +37,50 @@ get_cdd <- function(pid){
 ```
 
 Here are all the orthogroups that contain at least two of the predicted adhesins in all species. The numbers in columns 2-4 represent the number of genes in each species (for _C. auris_, I took the **median** values of the three strains).
+
+In the dropdown box below, you can select the subset of orthogroups based on prediction criteria, as explained below:
+
+| Option | Criteria |
+| --------- | ------------------ |
+| `frv_low` | FungalRV score > 0 |
+| `frv_high`| FungalRV score > 0.511|
+| `faapred`| FungalRV score > 0 and predicted by FaaPred|
+| `both`| FungalRV score > 0.511 and predicted by FaaPred|
+
 ```{r list_all_ogs, echo=FALSE}
 # define mapping from choice to subset name
-subset <- c(fungalRV_0 = "frv_low",
-            fungalRV_0.511 = "frv_high",
-            FaaPred = "faapred",
-            Both = "both")
+# subset <- c(fungalRV_0 = "frv_low", fungalRV_0.511 = "frv_high", FaaPred = "faapred", Both = "both")
+subset <- c("frv_low", "frv_high", "faapred", "both")
 # select the subset
-selectInput(inputId = "sub", label = "Please select the criteria to apply", choices = c("fungalRV_0","fungalRV_0.511","FaaPred","Both"))
+selectInput(inputId = "sub", label = "Please select the criteria to apply", choices = subset)
+
+observe({
+  updateSelectInput(session, "gid", choices = frv.tally[["frv_high"]]$group_id)
+}
+)
 
 renderTable({
-  frv.mcl5.sum[[subset[input$sub]]] %>% 
-    filter(total > 2) %>% 
-    select(-total) %>% 
-    paged_table()# %>% 
-    #kable() %>% 
+  frv.mcl5.sum[[input$sub]] %>% 
+    filter(Total > 2) %>% 
+    head(n = 20)# %>% 
+    #paged_table() %>% 
+    #knitr::kable() %>% 
     #kable_styling(bootstrap_options = c("striped", "hover", "condensed"))  
 })
 
 ```
 
-Build a Shiny app to allow the user to interactively select the orthogroup and gene to learn more about their annotation.
 ```{r interactive_exploration, echo = FALSE}
 inputPanel(
   # let the user choose the orthogroup to display
-  selectInput(inputId = "gid", label = "Please select the orthogroup", choices = frv.mcl5.sum$group_id),
-  selectInput(inputId = "pid", label = "Please select the protein ID", choices = frv.mapped5$protein_id, selected = "XP_718077.1")
+  selectInput(inputId = "gid", label = "Please select the orthogroup", choices = frv.mcl5.sum$frv_low$group_id),
+  selectInput(inputId = "pid", label = "Please select the protein ID", choices = frv.reduced$protein_id, selected = "XP_718077.1")
   # let the user provide the protein_id
   #textInput(inputId = "pid", label = "Please provide the protein ID", value = "XP_718077.1")
 )
 
 observe({
-  updateSelectInput(session, "pid", choices = frv.mapped5$protein_id[frv.mapped5$orthomcl_group_id == input$gid])
+  updateSelectInput(session, "pid", choices = frv.reduced$protein_id[frv.reduced$group_id == input$gid])
 }
 )
 
@@ -76,15 +88,15 @@ fluidPage(
   titlePanel("Conserved Domain Database"),
   fluidRow(
     column(5,
-           h4("Genes in the orthogroup"),
+           h4("Genes in the orthogroup (no C. auris)"),
            renderTable({
-             members <- frv.mapped5 %>% 
-               filter(orthomcl_group_id == input$gid) %>% 
+             members <- frv.reduced %>% 
+               filter(group_id == input$gid) %>% 
                pull(protein_id)
              
              gene.sum %>% 
                filter(protein_id %in% members) %>% 
-               select(Strain, protein_id, gene_name)
+               select(Species, protein_id, gene_name)
            })
     ),
     column(7,
@@ -97,4 +109,3 @@ fluidPage(
   ) 
 )
 ```
-

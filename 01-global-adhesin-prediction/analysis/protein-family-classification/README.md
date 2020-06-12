@@ -8,6 +8,7 @@ The goal of this analysis is to answer the question "what are the evolutionary r
 1. Adhesin genes were ancestral and inherited by the descendent species, such as _C. albicans_ and _C. auris_ (_C. glabrata_ is more distantly related, but the same question applies).
 1. Adhesin genes were mostly species-specific, meaning that they evolved in each species from non-adhesin genes, or _de novo_ from non-coding DNA.
 
+# Content
 Our approach to answer this question and the results are documented in the R markdown files. Below are the links to view their results as HTML:
 
 | File | Description | Link | 
@@ -106,3 +107,26 @@ _todo_
 ## 2020-06-06 [HB] Continue with OrthoMCL analysis
 1. Downloaded orthogroup and other gene information for the four species (for _C. auris_ only B8441 is provided) from FungiDB beta (more details see `../../output/OrthoMCL/README.md`
 1. When examining gene members in a single orthogroup, I asked myself what does it mean when one species have multiple members in that orthogroup? Were they species specific duplicates or were they ancient duplications shared across several species? To answer this question, I tested one orthogroup, OG5_132054, by performing alignment and tree reconstruction. See `../../output/OrthoMCL/all-fungalRV-orthoMCL-v5/subset/README.md` for details.
+## 2020-06-12 [HB] Observations based on the latest version of `orthomcl-gene-exploration.Rmd`
+I finished updating the shinyapp to include all results based on OrthoMCL-DB v5. Four different subsets can be queried individually, corresponding to different selection criteria (liberal to stringent). Below are my summary of the observations:
+
+### FungalRV stringent (Score > 0.511)
+| Group_id   | Caur| Calb | Cgla | Scer | Putative function (based on Conserved Domain Database unless noted) | 
+|------------|-----|------|------|------|---------------------------------------------------------------------| 
+| OG5_126579 | 3   | 8    | 5    | 11   | ALS family                                                          | 
+| OG5_132045 | 8   | 8    | 0    | 0    | Hyr1 family, hyphally regulated cell wall GPI-anchored protein 1    | 
+| OG5_152943 | 0   | 0    | 14   | 0    | _C. glabrata_ specific, members contain domains such as<br>CAGL0J05159g: "Hyphally regulated cell wall protein N-terminal"<br>CAGL0I10362g: "bacterial beta-glucosidase", "GLEYA domain, lectin-like binding found in _S. cerevisiae_ Flo proteins" | 
+| NO_GROUP   | 1   | 4    | 3    | 0    | _C. glabrata_ CAGL0E06600g: Hyphally regulated cell wall protein N-terminal, Flocculin repeat | 
+| OG5_132246 | 0   | 0    | 5    | 1    | includes _S. cerevisiae_ Flo10, similar domains as the 3rd orthogroup above | 
+| OG5_136169 | 1   | 1    | 1    | 2    | Beta-glucosidase, _C. albicans_ _SUN41_: Cell surface beta-glucosidase involved in cytokinesis, cell wall biogenesis, adhesion to host tissue, and biofilm formation [UniProt](https://www.uniprot.org/uniprot/Q59NP5) | 
+| OG5_138681 | 1   | 1    | 1    | 1    | Glycosyl hydrolase, _C. albicans_ member has "cell wall organization" [UniProt](https://www.uniprot.org/uniprot/A0A1D8PNW1) | 
+| OG5_145217 | 0   | 2    | 1    | 1    | Flocculin type 3 repeat, pfam13928, including _S. cerevisiae_ _CCW12_ | 
+| OG5_126661 | 1   | 1    | 0    | 1    | Alcohol dehydrogenase GroES-like domain<sup>1</sup> | 
+| OG5_159685 | 0   | 0    | 2    | 1    | _S. cerevisiae_ _DAN4_: component of the cell wall, extensively O-glycosylated, GPI-anchor [UniProt](https://www.uniprot.org/uniprot/P47179) | 
+| OG5_160783 | 0   | 1    | 2    | 0    | _C. albicans_ _PGA62_: fungal cell wall organization, N- and O-glycosylated, GPI anchor [UniProt](https://www.uniprot.org/uniprot/Q5AF41)<br>_C. glabrata_ CAGL0L06424g: Flocculin type 3 repeat and many other domains | 
+| OG5_194847 | 0   | 0    | 1    | 2    | _S. cerevisiae_ _SRL1_: required to stablize cell wall in the presence of multiple GPI-anchored mannoproteins [UniProt](https://www.uniprot.org/uniprot/Q08673) | 
+
+_Notes_
+
+1. Defying my naive expectation that a cytosolic enzyme such as alcohol dehydrogenase can have nothing to do with adhesion, I found [this review](https://mmbr.asm.org/content/72/3/495) and a [paper](https://pubmed.ncbi.nlm.nih.gov/11700367/) it cited that says otherwise. Below I quote from the Discussion section of the second paper:
+    > The possibility that a cell-surface-associated cytosolic enzyme could serve in the capacity of an ECM protein receptor andor adhesin is well accepted in other micro- organisms. For example, E. histolytica ADH binds fibronectin, collagen type II and laminin (Yang et al., 1994). Along similar lines, the fibronectin receptor of Streptococcus pyogenes has been shown to be a glyceraldehyde-3-phosphate dehydrogenase (GAPDH) (Pancholi & Fischetti, 1992). Furthermore, these cyto- solic enzymes are found on the cell surface. GAPDH is a major protective antigen found on the surface of Schistosoma mansoni (Goudot-Crozel et al., 1989). GAPDH also functions as a surface lectin responsible for flocculation of the yeast Kluyveromyces marxianus (Fernandes et al., 1992). Pertinent to C. albicans it has been shown that the immunodominant C. albicans glycolytic enzyme enolase is found in culture super- natants and on the surface of the fungus (Sundstrom & Aliaga, 1994), and the cytosolic enzyme 3-phos- phoglycerate kinase is located on the surface of the fungus (Alloush et al., 1997). GAPDH of C. albicans is cell-wall-associated and even binds fibronectin and laminin (Gozalbo et al., 1998). These examples of cytosolic enzymes performing in different capacities are perhaps examples of gene sharing, a concept best demonstrated in the vertebrate cornea and lens where the enzyme ADH serves as a major structural protein with little or no enzymic activity (Cooper et al., 1993).

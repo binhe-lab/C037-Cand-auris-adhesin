@@ -1,1 +1,1 @@
-../../../../script/misc/extract_fasta.py
+../../../script/misc/extract_fasta.py
