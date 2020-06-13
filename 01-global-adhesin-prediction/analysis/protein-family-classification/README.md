@@ -118,7 +118,7 @@ _todo_
     - Looking at the FungalRV score distribution for the above five groups didn't show lower scores for the unmapped.
     - In _C. albicans_ and _S. cerevisiae_, the predicted adhesins belonging to orthogroups shared by 2 or 4 species have higher scores than those in species-specific orthogroups. Combined with the observation that these two species have higher number of predicted adhesins falling in species-specific orthogroups suggest to me that those ones are less trustworthy.
     - In all four species, the orthogroups with members in 3 species are the smallest in number and the adhesins in them tend to have the lowest scores. Knowing that the four species form two pairs of relatively closely related groups suggest to me that those orthogroups shared by 3 species are less trustworthy (haven't thought carefully about what may cause these).
-    - _C. glabrata_ has a lot of unmapped adhesin predictions, which have comparable FungalRV scores as the other groups, suggesting that this species may have evolved new adhesins since it diverged from _S. cerevisiae.
+    - _C. glabrata_ has a lot of unmapped adhesin predictions, which have comparable FungalRV scores as the other groups, suggesting that this species may have evolved new adhesins since it diverged from _S. cerevisiae_.
 - I'll leave the functional annotation for the top orthogroups to the other `orthomcl-gene-exploration.Rmd`.
 
 ## 2020-06-12 [HB] Observations based on the latest version of 'orthomcl-gene-exploration.Rmd'
@@ -132,10 +132,10 @@ I finished updating the shinyapp to include all results based on OrthoMCL-DB v5.
 | OG5_152943 | 0   | 0    | 14   | 0    | _C. glabrata_ specific, members contain domains such as<br>CAGL0J05159g: "Hyphally regulated cell wall protein N-terminal"<br>CAGL0I10362g: "bacterial beta-glucosidase", "GLEYA domain, lectin-like binding found in _S. cerevisiae_ Flo proteins" | 
 | NO_GROUP   | 1   | 4    | 3    | 0    | _C. glabrata_ CAGL0E06600g: Hyphally regulated cell wall protein N-terminal, Flocculin repeat | 
 | OG5_132246 | 0   | 0    | 5    | 1    | includes _S. cerevisiae_ Flo10, similar domains as the 3rd orthogroup above | 
-| OG5_136169 | 1   | 1    | 1    | 2    | Beta-glucosidase, _C. albicans_ _SUN41_: Cell surface beta-glucosidase involved in cytokinesis, cell wall biogenesis, adhesion to host tissue, and biofilm formation [UniProt](https://www.uniprot.org/uniprot/Q59NP5) | 
+| OG5_136169 | 1   | 1    | 1    | 2    | Beta-glucosidase (SUN family) _C. albicans_ _SUN41_: Cell surface beta-glucosidase involved in cytokinesis, cell wall biogenesis, adhesion to host tissue, and biofilm formation [UniProt](https://www.uniprot.org/uniprot/Q59NP5) | 
 | OG5_138681 | 1   | 1    | 1    | 1    | Glycosyl hydrolase, _C. albicans_ member has "cell wall organization" [UniProt](https://www.uniprot.org/uniprot/A0A1D8PNW1) | 
 | OG5_145217 | 0   | 2    | 1    | 1    | Flocculin type 3 repeat, pfam13928, including _S. cerevisiae_ _CCW12_ | 
-| OG5_126661 | 1   | 1    | 0    | 1    | Alcohol dehydrogenase GroES-like domain<sup>1</sup> | 
+| OG5_126661 | 1   | 1    | 0    | 1    | Alcohol dehydrogenase GroES-like domain<sup><em>1</em></sup> | 
 | OG5_159685 | 0   | 0    | 2    | 1    | _S. cerevisiae_ _DAN4_: component of the cell wall, extensively O-glycosylated, GPI-anchor [UniProt](https://www.uniprot.org/uniprot/P47179) | 
 | OG5_160783 | 0   | 1    | 2    | 0    | _C. albicans_ _PGA62_: fungal cell wall organization, N- and O-glycosylated, GPI anchor [UniProt](https://www.uniprot.org/uniprot/Q5AF41)<br>_C. glabrata_ CAGL0L06424g: Flocculin type 3 repeat and many other domains | 
 | OG5_194847 | 0   | 0    | 1    | 2    | _S. cerevisiae_ _SRL1_: required to stablize cell wall in the presence of multiple GPI-anchored mannoproteins [UniProt](https://www.uniprot.org/uniprot/Q08673) | 
@@ -144,3 +144,27 @@ _Notes_
 
 1. Defying my naive expectation that a cytosolic enzyme such as alcohol dehydrogenase can have nothing to do with adhesion, I found [this review](https://mmbr.asm.org/content/72/3/495) and a [paper](https://pubmed.ncbi.nlm.nih.gov/11700367/) it cited that says otherwise. Below I quote from the Discussion section of the second paper:
     > The possibility that a cell-surface-associated cytosolic enzyme could serve in the capacity of an ECM protein receptor andor adhesin is well accepted in other micro- organisms. For example, E. histolytica ADH binds fibronectin, collagen type II and laminin (Yang et al., 1994). Along similar lines, the fibronectin receptor of Streptococcus pyogenes has been shown to be a glyceraldehyde-3-phosphate dehydrogenase (GAPDH) (Pancholi & Fischetti, 1992). Furthermore, these cyto- solic enzymes are found on the cell surface. GAPDH is a major protective antigen found on the surface of Schistosoma mansoni (Goudot-Crozel et al., 1989). GAPDH also functions as a surface lectin responsible for flocculation of the yeast Kluyveromyces marxianus (Fernandes et al., 1992). Pertinent to C. albicans it has been shown that the immunodominant C. albicans glycolytic enzyme enolase is found in culture super- natants and on the surface of the fungus (Sundstrom & Aliaga, 1994), and the cytosolic enzyme 3-phos- phoglycerate kinase is located on the surface of the fungus (Alloush et al., 1997). GAPDH of C. albicans is cell-wall-associated and even binds fibronectin and laminin (Gozalbo et al., 1998). These examples of cytosolic enzymes performing in different capacities are perhaps examples of gene sharing, a concept best demonstrated in the vertebrate cornea and lens where the enzyme ADH serves as a major structural protein with little or no enzymic activity (Cooper et al., 1993).
+
+### FaaPred (FungalRV Score > 0)
+Redundant groups with above are not repeated below
+
+| Group_id   | Caur| Calb | Cgla | Scer | Putative function (based on Conserved Domain Database unless noted) | 
+|------------|-----|------|------|------|---------------------------------------------------------------------| 
+| OG5_127576 | 1   | 2    | 0    | 1    | CAP (Cysteine-rich secretory protein);<br>_C. albicans_ XP_715019.1: Cell wall protein involved in cell wall integrity and which plays a role in virulence. [UniProt](https://www.uniprot.org/uniprot/Q59ZX3) |
+| OG5_134514 | 1   | 1    | 1    | 1    | _C. albicans_ _UTR2_: Hevein or type 1 chitin binding domain, glycosyl hydrolase, etc.<br>Extracellular glycosidase which plays an important role in fungal pathogenesis. Involved in cell wall assembly and regeneration, filamentation, and adherence to host cells. [UniProt](https://www.uniprot.org/uniprot/Q59ZX://www.uniprot.org/uniprot/Q5AJC0) |
+| OG5_136970 | 0<sup><em>1</em></sup> | 1    | 2    | 1    | _C. albicans_ _KRE9_: S/T-rich GPI anchored, cell-wall biogenesis |
+| OG5_138681 | 1   | 1    | 1    | 1    | _C. albicans_ _SCW11_: glycosyl hydrolase |
+| OG5_138848 | 2   | 1    | 0    | 0    | _C. albicans_ _RHD3_: GPI anchored, cell wall protein |
+| OG5_139398 | 0   | 1    | 1    | 1    | _C. albicans_ _WSC4_: WCS domain, may be involved in carbohydrate binding, present in yeast cell wall integrity and stress response components. |
+| OG5_140009 | 0   | 1    | 0    | 2    | _C. albicans_ _WSC4_: WCS domain, may be involved in carbohydrate binding, present in yeast cell wall integrity and stress response components. |
+| OG5_149913 | 2   | 1    | 0    | 0    | _C. albicans_ _CSA1_: fungal specific cysteine rich domain, GPI-anchor, heme binding [UniProt](https://www.uniprot.org/uniprot/G1UB63) |
+| OG5_155971 | 1   | 1    | 1    | 0    | _C. albicans_ _SIM1_: similar to OG5_136169, beta-glucosidase, SUN family |
+| OG5_157055 | 2   | 1    | 0    | 0    | _C. albicans_ _YWP1_: flocculin type 3 repeat, same domain found in the FLO9 in _S. cerevisiae_, close to its C-terminus<br>_CaYWP1_: Cell wall protein which plays an anti-adhesive role and promotes dispersal of yeast forms, which allows the organism to seek new sites for colonization; GPI-anchored [UniProt](https://www.uniprot.org/uniprot/Q59Y31) |
+| OG5_176483 | 0   | 0    | 3    | 0    | _C. glabrata_ specific, hyphally regulated cell wall protein N-terminal |
+
+1. There are two _C. auris_ proteins belonging to the same orthogroup as the _C. albicans_ _KRE9_ in OrthoMCL-DB v6, one of which passes the stringent FungalRV threshold but was not predicted by FaaPred, while the other one is not predicted by either.
+
+## 2020-06-13 [HB] Next step
+1. Analyze OrthoMCL-DB v6 and check if the results are consistent with v5
+1. With the v6r1 data, which includes _C. auris_, could we recover more _C. auris_ genes?
+1. Build gene trees for the proteins in the most populated orthogroups

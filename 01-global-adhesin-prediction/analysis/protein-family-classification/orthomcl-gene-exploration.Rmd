@@ -51,11 +51,14 @@ In the dropdown box below, you can select the subset of orthogroups based on pre
 # define mapping from choice to subset name
 # subset <- c(fungalRV_0 = "frv_low", fungalRV_0.511 = "frv_high", FaaPred = "faapred", Both = "both")
 subset <- c("frv_low", "frv_high", "faapred", "both")
+og_groups <- lapply(frv.mcl5.sum, '[[', "group_id")
 # select the subset
 selectInput(inputId = "sub", label = "Please select the criteria to apply", choices = subset)
 
 observe({
-  updateSelectInput(session, "gid", choices = frv.tally[["frv_high"]]$group_id)
+  updateSelectInput(session, "gid", choices = og_groups[input$sub])
+  # not sure why choices take a list but not a vector
+  # my original attempt at og_groups[[input$sub]] never worked
 }
 )
 
