@@ -107,7 +107,21 @@ _todo_
 ## 2020-06-06 [HB] Continue with OrthoMCL analysis
 1. Downloaded orthogroup and other gene information for the four species (for _C. auris_ only B8441 is provided) from FungiDB beta (more details see `../../output/OrthoMCL/README.md`
 1. When examining gene members in a single orthogroup, I asked myself what does it mean when one species have multiple members in that orthogroup? Were they species specific duplicates or were they ancient duplications shared across several species? To answer this question, I tested one orthogroup, OG5_132054, by performing alignment and tree reconstruction. See `../../output/OrthoMCL/all-fungalRV-orthoMCL-v5/subset/README.md` for details.
-## 2020-06-12 [HB] Observations based on the latest version of `orthomcl-gene-exploration.Rmd`
+
+## 2020-06-12 [HB] Executive summary of the analysis of OrthoMCL-DB v5 results
+1. _C. auris_ (all three strains) have fewer genes predicted by either FungalRV or FaaPred to be adhesins (47 by FungalRV, vs ~60 in _S. cerevisiae_ and _C. glabrata_ and 84 in _C. albicans_)
+    - This lower number could be a result of 1) the model was trained on positive adhesins sets that _included_ the three non _auris_ species, and thus can be more sensitive to them, or 2) _C. auris_ genome is less complete. Being more closely related to _C. albicans_ and yet having far fewer predicted adhesins suggests that either adhesins are highly species-specific, or that the _C. auris_ genome is not as well assembled. I'm not sure genome assembly is the issue.
+1. The proportion of predicted adhesins mapped to an existing orthogroup in OrthoMCL-DB v5 is much lower (60%) than the other three species (80-90%), possibly because _C. auris_ is the only species not included in constructing the OrthoMCL v5
+1. Examining the gene tree for one of the orthogroups shows that the many members in that orthogroup duplicated in each of _C. auris_ and _C. albicans_ after they diverged from each other!
+1. Classify each orthogroup in the dataset by how many species have members in that orthogroup (1,2,3 or 4), and compare the proportion of predicted adhesins in each species that fall in one of the groups or "unmapped". This shows that more than half of the predicted adhesins are either "unmapped" or mapped to an orthogroup that is only represented by that species alone.
+    - Using various stringency criteria (FRV score > 0 or 0.511, with or without FaaPred positive), I found that the proportion of unmapped and species-specific orthogroups remain roughly the same (>50% for _S. cerevisiae_ and _C. albicans_, ~50% for _C. auris_ and _C. glabrata_). One interpretation, given the first two species are far more studied and better represented in the adhesin positive set, is that the predictor is more sensitive for species-specific adhesins in these two species, which would imply a high proportion of species-specific adhesins.
+    - Looking at the FungalRV score distribution for the above five groups didn't show lower scores for the unmapped.
+    - In _C. albicans_ and _S. cerevisiae_, the predicted adhesins belonging to orthogroups shared by 2 or 4 species have higher scores than those in species-specific orthogroups. Combined with the observation that these two species have higher number of predicted adhesins falling in species-specific orthogroups suggest to me that those ones are less trustworthy.
+    - In all four species, the orthogroups with members in 3 species are the smallest in number and the adhesins in them tend to have the lowest scores. Knowing that the four species form two pairs of relatively closely related groups suggest to me that those orthogroups shared by 3 species are less trustworthy (haven't thought carefully about what may cause these).
+    - _C. glabrata_ has a lot of unmapped adhesin predictions, which have comparable FungalRV scores as the other groups, suggesting that this species may have evolved new adhesins since it diverged from _S. cerevisiae.
+- I'll leave the functional annotation for the top orthogroups to the other `orthomcl-gene-exploration.Rmd`.
+
+## 2020-06-12 [HB] Observations based on the latest version of 'orthomcl-gene-exploration.Rmd'
 I finished updating the shinyapp to include all results based on OrthoMCL-DB v5. Four different subsets can be queried individually, corresponding to different selection criteria (liberal to stringent). Below are my summary of the observations:
 
 ### FungalRV stringent (Score > 0.511)

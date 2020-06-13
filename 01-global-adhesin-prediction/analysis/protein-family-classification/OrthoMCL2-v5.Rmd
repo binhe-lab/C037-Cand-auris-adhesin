@@ -34,6 +34,19 @@ suppressMessages(library(tidyverse))
 suppressMessages(library(rentrez))
 ```
 
+## Executive summary
+1. _C. auris_ (all three strains) have fewer genes predicted by either FungalRV or FaaPred to be adhesins (47 by FungalRV, vs ~60 in _S. cerevisiae_ and _C. glabrata_ and 84 in _C. albicans_)
+    - This lower number could be a result of 1) the model was trained on positive adhesins sets that _included_ the three non _auris_ species, and thus can be more sensitive to them, or 2) _C. auris_ genome is less complete. Being more closely related to _C. albicans_ and yet having far fewer predicted adhesins suggests that either adhesins are highly species-specific, or that the _C. auris_ genome is not as well assembled. I'm not sure genome assembly is the issue.
+1. The proportion of predicted adhesins mapped to an existing orthogroup in OrthoMCL-DB v5 is much lower (60%) than the other three species (80-90%), possibly because _C. auris_ is the only species not included in constructing the OrthoMCL v5
+1. Examining the gene tree for one of the orthogroups shows that the many members in that orthogroup duplicated in each of _C. auris_ and _C. albicans_ after they diverged from each other!
+1. Classify each orthogroup in the dataset by how many species have members in that orthogroup (1,2,3 or 4), and compare the proportion of predicted adhesins in each species that fall in one of the groups or "unmapped". This shows that more than half of the predicted adhesins are either "unmapped" or mapped to an orthogroup that is only represented by that species alone.
+    - Using various stringency criteria (FRV score > 0 or 0.511, with or without FaaPred positive), I found that the proportion of unmapped and species-specific orthogroups remain roughly the same (>50% for _S. cerevisiae_ and _C. albicans_, ~50% for _C. auris_ and _C. glabrata_). One interpretation, given the first two species are far more studied and better represented in the adhesin positive set, is that the predictor is more sensitive for species-specific adhesins in these two species, which would imply a high proportion of species-specific adhesins.
+    - Looking at the FungalRV score distribution for the above five groups didn't show lower scores for the unmapped.
+    - In _C. albicans_ and _S. cerevisiae_, the predicted adhesins belonging to orthogroups shared by 2 or 4 species have higher scores than those in species-specific orthogroups. Combined with the observation that these two species have higher number of predicted adhesins falling in species-specific orthogroups suggest to me that those ones are less trustworthy.
+    - In all four species, the orthogroups with members in 3 species are the smallest in number and the adhesins in them tend to have the lowest scores. Knowing that the four species form two pairs of relatively closely related groups suggest to me that those orthogroups shared by 3 species are less trustworthy (haven't thought carefully about what may cause these).
+    - _C. glabrata_ has a lot of unmapped adhesin predictions, which have comparable FungalRV scores as the other groups, suggesting that this species may have evolved new adhesins since it diverged from _S. cerevisiae.
+- I'll leave the functional annotation for the top orthogroups to the other `orthomcl-gene-exploration.Rmd`.
+
 ## Questions
 
 Are the known and _predicted_ adhesin genes from _C. auris_, _C. albicans_ and _C. glabrata_ from the same group of adhesin families? In other words, do they use an ancestral pool of adhesin genes or did they evolve species-specific ones by co-option or _de novo_ evolution? If they share certain families, are the number of paralogs (members of a family) similar or different?
@@ -199,6 +212,15 @@ frv.stat <- adhesin %>%
             Submitted = sum(Score > 0, na.rm = T), 
             Total = n())
 print(frv.stat)
+
+frv.stat %>%
+  rename(FungalRV_0 = Submitted) %>% 
+  select(-Total) %>% 
+  pivot_longer(cols = c(Both, FaaPred, FungalRV, FungalRV_0), 
+               names_to = "Predicted_by", values_to = "n") %>% 
+  ggplot(aes(x = Strain, y = n,  fill = Predicted_by)) + 
+  geom_bar(stat = "identity", position = position_dodge(0.7)) +
+  scale_fill_brewer(type = "div", palette = 2) + coord_flip()
 ```
 
 Next let's look at how many of the sequences submitted to OrthoMCL were successfully mapped.
@@ -491,15 +513,29 @@ Jan raised the question of why do we find _C. auris_ specific orthogroups -- giv
 
 The first question we can ask is to compare the score distribution for genes in the different category.
 ```{r score_distribution_by_shared_group}
-frv.reduced %>% 
+# all mapped adhesins grouped by N_sps (sharing of orthogroups)
+tmp1 <- frv.reduced %>% 
   filter(fungalRV) %>% 
   left_join(frv.group.Nsps$frv_high, by = c("group_id" = "group_id")) %>% 
-  mutate(N_sps = factor(N_sps)) %>% 
+  select(Species, frv_score, N_sps)
+
+# all unmapped adhesins
+tmp2 <- adhesin %>% 
+  filter(fungalRV, !Strain %in% c("B11221", "B8441"), !ID %in% frv.reduced$protein_id) %>% 
+  mutate(N_sps = 0) %>% 
+  select(Species, frv_score = Score, N_sps)
+
+bind_rows(tmp1, tmp2) %>% 
+  mutate(N_sps = factor(N_sps, levels = 0:4, labels = c("unmapped",1,2,3,4))) %>% 
   ggplot(aes(x = N_sps, y = frv_score)) + 
-  geom_boxplot(position = position_dodge(0.9), width = 0.5) +
+  #geom_boxplot(position = position_dodge(0.9), width = 0.5) + 
+  geom_point(alpha = 0.8, shape = 1, position = position_jitter(width = 0.2)) +
+  stat_summary(fun.data = "mean_cl_boot", color = "red") +
   facet_wrap(~Species) + ylab("FungalRV Score") + xlab("Shared among N species")
   
 ```
+
+    The red dots and vertical bars represent the mean and 95% confidence interval based on 1000 bootstrapping (resampling with replacement) of the data.
 
 _Discussion_
 
@@ -562,7 +598,7 @@ frv.mcl5.sum$faapred <- frv.tally$faapred %>%
   left_join(frv.mcl5.og %>% select(group, domains), by = c("group_id" = "group"))
 frv.mcl5.sum$faapred %>% 
   filter(Total > 2) %>% 
-  select(Caur = C_auris, Calb = C_albicans, Cgla = C_glabrata, Scer = S_cerevisiae, domains)
+  select(group_id, Caur = C_auris, Calb = C_albicans, Cgla = C_glabrata, Scer = S_cerevisiae, domains)
 ```
 
 Next let's compute the number of genes in each species belonging to the four groups. This time I also added the unmapped (filtered by the same score threshold).
