@@ -156,3 +156,5 @@ Verstrepen KJ, Klis FM. 2006. Flocculation, adhesion and biofilm formation in ye
 
 ## 2020-05-29 [HB] Next-step questions
 see `protein-family-classification/README.md` for details.
+## 2020-06-23 [HB] correct _C. glabrata_ new proteome
+See notes in the `../data/proteome-fasta/README.md` and `../script/FungalRV_adhesin_predictor/README.md`. Basically I corrected a mistake in the downloaded fasta file and ran the FungalRV prediction tool locally on the new CBS138 proteome. The result looks reasonable.

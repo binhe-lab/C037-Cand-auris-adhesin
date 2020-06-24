@@ -12,6 +12,7 @@ date: 2020-02-10
 | run_fungalrv_adhesin_predictor.pl | wrapper script to run the FungalRV prediction algorithm | http://fungalrv.igib.res.in/download.html | 2020-02-09 |
 | extract_fasta.sh | shell script to extract fasta sequences based on a list of IDs | HB, custom | 2020-02-04 |
 | extract_fasta.py | python script to extract fasta sequences based on a list of IDs | HB, custom | 2020-05-30 |
+| process-fungalrv-output.sh | shell script to extract the protein ID and fungalRV score | HB, custom | 2020-06-23 |
 # Notes
 ## 2020-02-10 Compiled and tested FungalRV code
 Used the following command to compile the c files on my Ubuntu. Should be similar on other machines, too. If the binaries don't work on other systems, follow my example to compile the source c code.
@@ -43,4 +44,35 @@ Run locally and result moved to the output folder
 ```bash
 $ python3 extract_fasta_fungalRV.py ../../output/FungalRV/local-result-HB/S_cerevisiae_GCF_000146045.2_R64_protein.txt S_cerevisiae_GCF_000146045.2_R64_protein.faa.gz
 $ mv S_cerevisiae_GCF_000146045.2_R64_protein_filtered.faa ../../output/FungalRV/local-result-HB/
+```
+## 2020-06-23 Run FungalRV locally on the new _C. glabrata_ proteins
+Copied the `batch-fungalrv-predict.sh` and modified it to be used for a single genome using a command line argument
+```bash
+$ sh single-species-fungalrv.sh C_glabrata_CBS138_new_genome_release_20200224_protein.faa.gz
+$ sh process-fungalrv-output.sh C_glabrata_CBS138_new_genome_release_20200224_protein.txt C_glabrata CBS138new > C_glabrata_CBS138_new_fungalRV.txt
+$ mv C_glabrata_GCA_010111755.1_ASM1011175v1_protein.txt ../../output/FungalRV/local-result-HB/
+# cd into the output folder
+$ cd ../../output/FungalRV/local-result-HB
+# and edited the combine-result.sh to include the new result
+$ sh combine-result.sh > all-fungalrv-results-20200623.txt
+```
+Checking the results in R shows reasonable numbers of predicted adhesins
+```r
+> library(tidyverse)
+> dat <- read_tsv("all-fungalrv-results-20200623.txt", comment = "#")
+> dat %>% 
+    filter(Score > 0) %>%g
+     roup_by(Strain) %>% 
+     summarize(">.511" = sum(Score > 0.511), n = n())
+
+# A tibble: 7 x 3
+#   Strain    `>.511`     n
+#   <chr>       <int> <int>
+# 1 B11220         36   100
+# 2 B11221         46   113
+# 3 B8441          47   112
+# 4 CBS138         62   142
+# 5 CBS138new      82   162
+# 6 S288C          58   179
+# 7 SC5314        143   290
 ```
