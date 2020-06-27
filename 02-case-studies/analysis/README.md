@@ -12,3 +12,4 @@ _Goal_
 _Approach_
 
 1. Edit the alignment to make the gene names compatible with Notung's postfix format, i.e. geneName_speciesName.
+1. 
