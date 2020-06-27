@@ -136,7 +136,7 @@ _todo_
 
 ## 2020-06-06 [HB] Continue with OrthoMCL analysis
 1. Downloaded orthogroup and other gene information for the four species (for _C. auris_ only B8441 is provided) from FungiDB beta (more details see `../../output/OrthoMCL/README.md`
-1. When examining gene members in a single orthogroup, I asked myself what does it mean when one species have multiple members in that orthogroup? Were they species specific duplicates or were they ancient duplications shared across several species? To answer this question, I tested one orthogroup, OG5_132054, by performing alignment and tree reconstruction. See `../../output/OrthoMCL/all-fungalRV-orthoMCL-v5/subset/README.md` for details.
+1. When examining gene members in a single orthogroup, I asked myself what does it mean when one species have multiple members in that orthogroup? Were they species specific duplicates or were they ancient duplications shared across several species? To answer this question, I tested one orthogroup, OG5_132054, by performing alignment and tree reconstruction. See `../../output/OrthoMCL/all-fungalRV-orthoMCL-v5/README.md` for details.
 
 * [Table of Contents](#table-of-contents)
 ## 2020-06-12 [HB] Executive summary of the analysis of OrthoMCL-DB v5 results

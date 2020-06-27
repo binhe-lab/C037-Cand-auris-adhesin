@@ -1,0 +1,46 @@
+---
+title: "Analyze predicted adhesins mapped to Orthogroups MCL v5"
+author: "Bin He"
+date: "5/31/2020"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    toc_depth: 5
+  html_document:
+    toc: yes
+    toc_depth: '5'
+    df_print: paged
+---
+
+This analysis is a copy of `OrthoMCL2-v5.Rmd`, applied to the newly released OrthoMCL-DB v6r1
+
+```{r setup, cache=FALSE, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# set the root directory to be the output folder for OrthoMCL
+# note that with the Rproject set, the default working directory
+# is where the .Rproj file is.
+knitr::opts_knit$set(root.dir = normalizePath("../../output/OrthoMCL/"))
+knitr::opts_knit$get("root.dir")
+```
+
+```{r load_libraries, echo=FALSE}
+# install the package if not already available
+if (!requireNamespace("tidyverse", quietly = TRUE))
+    install.packages("tidyverse")
+if (!requireNamespace("rentrez", quietly = TRUE))
+    install.packages("rentrez")
+
+# load the package
+suppressMessages(library(tidyverse))
+suppressMessages(library(rentrez))
+```
+
+## Questions & Introduction
+
+Are the known and _predicted_ adhesin genes from _C. auris_, _C. albicans_ and _C. glabrata_ from the same group of adhesin families? In other words, do they use an ancestral pool of adhesin genes or did they evolve species-specific ones by co-option or _de novo_ evolution? If they share certain families, are the number of paralogs (members of a family) similar or different?
+
+_Rationale for repeating the analysis on OrthoMCL-DB v6r1_
+
+_C. auris_ is included in the newly released OrthoMCL-DB v6r1. Although with the previous version (v5) I was able to use the "map your proteins to orthogroups" function to analyze the _C. auris_ proteins, there is a key difference between this and actually including _C. auris_ in the construction of the orthogroups. Because building the orthogroups is a clustering process. If a species is not part of it, the resulting orthogroups will not fully capture its proteins (for lack of better explanation). However, note that only B8441 is included in the building of v6r1. So I still did the "mapping".
+
