@@ -136,7 +136,28 @@ _todo_
 
 ## 2020-06-06 [HB] Continue with OrthoMCL analysis
 1. Downloaded orthogroup and other gene information for the four species (for _C. auris_ only B8441 is provided) from FungiDB beta (more details see `../../output/OrthoMCL/README.md`
-1. When examining gene members in a single orthogroup, I asked myself what does it mean when one species have multiple members in that orthogroup? Were they species specific duplicates or were they ancient duplications shared across several species? To answer this question, I tested one orthogroup, OG5_132054, by performing alignment and tree reconstruction. See `../../output/OrthoMCL/all-fungalRV-orthoMCL-v5/README.md` for details.
+1. When examining gene members in a single orthogroup, I asked myself what does it mean when one species have multiple members in that orthogroup? Were they species specific duplicates or were they ancient duplications shared across several species? To answer this question, I tested one orthogroup, OG5_132054, by performing alignment and tree reconstruction. See `../../output/OrthoMCL/all-fungalRV-orthoMCL-v5/README.md` for details. (pasted below)
+
+### Gene tree reconstruction
+1. Sequence names were stored in the `OG5_xxxxxx.txt` file, which was exported from R (`../../../analysis/protein-family-classification/OrthoMCL-v2.Rmd`).
+1. The `faa` file was generated using the `extract_fasta.py` script.
+1. The fasta file was opened in Jalview, and the first 499 aa of each sequence were selected and exported to a new window (I intend to make this part of the `extract_fasta.py` as an additional option).
+1. ClustalO was used to aligne the newly created file within Jalview, with **50 combined iterations and 1 guide tree**. The aligned file was stored as `OG5_132045_N500_aln.faa`. I intend to make this programmatic.
+1. Run RaxML
+
+    I installed RaxML based on the instruction 
+
+    ```bash
+    $ raxmlHPC-PTHREADS-SSE3 -m PROTGAMMAWAG -p 12345 -s OG5_132045_N500_aln.faa.fa -# 20 -n test
+    ```
+
+    Parameters based on [RaxML Manual v8.2.X](https://cme.h-its.org/exelixis/resource/download/NewManual.pdf)
+
+    > `-m` protein substitution matrix; `-p` random number seed; `-s` input sequence; -# specify the number of alternative runs on distinct starting trees,  e.g., if ­# 10 or ­N 10 is specified, RAxML will compute 10 distinct ML trees starting from 10 distinct randomized maximum parsimony starting trees
+
+    Results are stored in a folder named "raxml" under the respective OG5_xxxxx folder.
+
+    The most important files are the `info`, `log` and `bestTree`
 
 * [Table of Contents](#table-of-contents)
 ## 2020-06-12 [HB] Executive summary of the analysis of OrthoMCL-DB v5 results
