@@ -22,6 +22,9 @@ In addition, this folder also stores subsets of protein sequences, their alignme
 
     > `-m` protein substitution matrix; `-p` random number seed; `-s` input sequence; -# specify the number of alternative runs on distinct starting trees,  e.g., if ­# 10 or ­N 10 is specified, RAxML will compute 10 distinct ML trees starting from 10 distinct randomized maximum parsimony starting trees
 
-    Results are stored in a folder named "raxml" under the respective OG5_xxxxx folder.
+    Results are stored in a folder named "raxml" under the respective sub folder.
 
     The most important files are the `info`, `log` and `bestTree`
+
+## 2020-06-27 [HB] run raxml on ARGON
+Some results are dumped in the `OG5_132045`. For details, see main `README.md` under the `analysis` folder.

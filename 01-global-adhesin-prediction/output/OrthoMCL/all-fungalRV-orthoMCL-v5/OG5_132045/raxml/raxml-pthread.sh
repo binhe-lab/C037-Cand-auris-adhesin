@@ -6,9 +6,10 @@
 # use: qsub raxml.sh
 #----------------------
 # scheduler parameters
-#$ -q BH
+#$ -q BIO-INSTR
 #$ -M bhe2@uiowa.edu
 #$ -m ea
+#$ -pe smp 8
 #$ -N raxml
 #$ -cwd
 #$ -o job-log/$JOB_NAME_$JOB_ID.out
@@ -25,4 +26,4 @@ set -e
 set -u
 set -o pipefail
 
-/Users/bhe2/bin/raxmlHPC-AVX -f a -x 12345 -p 12345 -# autoMRE -m PROTGAMMAAUTO -s OG5_132045_N500_aln.faa -n SEQ.${JOB_ID}
+/Users/bhe2/bin/raxmlHPC-PTHREADS-AVX -f a -x 12345 -p 12345 -# autoMRE -m PROTGAMMAAUTO -s OG5_132045_N500_aln.faa -n TH8.${JOB_ID} -T 8
