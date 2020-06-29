@@ -22,6 +22,7 @@ _this is how I italicize_
 wrap multiple lines of code with three backsticks
 ```
 
+# Analysis notes
 ## 2020-01-29 [LFS] FungalRV prediction for B11221
 1. Divided proteome fasta file into two by the following command
     `split -l #oflines filename`
@@ -158,3 +159,24 @@ Verstrepen KJ, Klis FM. 2006. Flocculation, adhesion and biofilm formation in ye
 see `protein-family-classification/README.md` for details.
 ## 2020-06-23 [HB] correct _C. glabrata_ new proteome
 See notes in the `../data/proteome-fasta/README.md` and `../script/FungalRV_adhesin_predictor/README.md`. Basically I corrected a mistake in the downloaded fasta file and ran the FungalRV prediction tool locally on the new CBS138 proteome. The result looks reasonable.
+
+## 2020-06-27 [HB] build gene-tree pipeline
+
+_Goal_
+
+Build a pipeline that will extract a subset of protein sequences from a fasta file, where the sequence names match those listed in a text file (each on their own line). After that, the pipeline will extract the first N (default = 500) amino acids from each sequence and perform multiple sequence alignment (MSA) using `clustal omega`. Lastly, it will invoke RAxML to reconstruct a phylogenetic tree for all the sequences involved.
+
+_Reference_
+
+1. RAxML tutorial
+    <https://cme.h-its.org/exelixis/resource/doc/2011_Rokas_CPMB.pdf>
+
+1. RAxML manual
+    <https://cme.h-its.org/exelixis/resource/download/NewManual.pdf>
+
+1. Clustal Omega manual
+    <http://www.clustal.org/omega/README>
+
+_Notes_
+
+1. More notes on how to use RAxML on my journal.org and in the `00-misc-docs` folder.
