@@ -15,4 +15,4 @@ in=$1
 length=$2
 # this program assumes that bioawk (https://github.com/lh3/bioawk) is installed
 
-bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq,1,l)}' $in
+bioawk -c fastx -v l="$length" '{print ">"$name $comment;print substr($seq,1,l)}' $in
