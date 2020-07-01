@@ -1,6 +1,14 @@
+## Files
+
+File | Description
+-- | -- |
+adhesin_analysis.db | database file for use in R with package RSQLite
+upload_tables.xlsl | Excel file containing most tables uploaded into R for initial instance of adhesin_analysis.db
+
+
 ## To use database file in R
 
-Put the database file in the home directory for your R project and use conn <- dbConnect(RSQLite::SQLite(), "adhesin_analysis.db")
+Put the database file "adhesin_analysis.db" in the home directory for your R project and use conn <- dbConnect(RSQLite::SQLite(), "adhesin_analysis.db")
 
 ## Database tables, fields, types, and descriptions
 
