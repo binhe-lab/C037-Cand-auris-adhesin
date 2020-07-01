@@ -1,3 +1,7 @@
+## To use database file in R
+
+Put the database file in the home directory for your R project and use conn <- dbConnect(RSQLite::SQLite(), "adhesin_analysis.db")
+
 ## Database tables, fields, types, and descriptions
 
 Table | Field | Field Type  | Field Description
@@ -41,25 +45,25 @@ fasta | short_string  | text  | protein identifier
   --  | consensus_gap  | text  | consensus sequence of tandem repeat with gaps
   --  | consensus_error | double  | multiple sequence alignment error of the consensus sequence
   cath | short_string  | text  | protein identifier
-  --  | match-id  | text  | 
-  --  | score | double  | 
-  --  | boundaries  | text  | 
-  --  | resolved-boundaries | text  | 
-  --  | cond-evalue | double  | 
-  --  | indp-evalue | double  | 
-  --  | start_1 | double  | 
-  --  | end_1 | text  | 
-  --  | start_2 | text  | 
-  --  | end_2 | text  | 
-  --  | tag_1 | text  | 
-  --  | tag_2 | text  | 
-  --  | tag_3 | text  | 
-  --  | tag_4 | text  | 
-  --  | tag_1_rep-protein | text  | 
-  --  | tag_1_description | text  | 
-  --  | tag_2_rep-protein | text  | 
-  --  | tag_2_description | text  | 
-  --  | tag_3_rep-protein | text  | 
-  --  | tag_3_description | text  | 
-  --  | tag_4_rep-protein | text  | 
-  --  | tag_4_description | text  | 
+  --  | match-id  | text  | CATH ID of database structural match
+  --  | score | double  | score for database structural match
+  --  | boundaries  | text  | boundaries of match, unresolved
+  --  | resolved-boundaries | text  | boundaries of match, resolved so that no structural domains may overlap - higher scoring domain seems to be assigned any overlapping amino acids
+  --  | cond-evalue | double  | conditional e-value of match
+  --  | indp-evalue | double  | independent e-value of match
+  --  | start_1 | double  | amino acid number of start of first domain match
+  --  | end_1 | text  | amino acid number of end of first domain match
+  --  | start_2 | text  | amino acid number of start of second domain match, if same domain is in protein at multiple positions
+  --  | end_2 | text  | amino acid number of end of second domain match, if same domain is in protein at multiple positions
+  --  | tag_1 | text  | first hierarchical level CATH group
+  --  | tag_2 | text  | second hierarchical level CATH group
+  --  | tag_3 | text  | third hierarchical level CATH group
+  --  | tag_4 | text  | fourth hierarchical level CATH group
+  --  | tag_1_rep-protein | text  | CATH id for representative protein of first hierarchical level CATH group
+  --  | tag_1_description | text  | structural description of first hierarchical level CATH group
+  --  | tag_2_rep-protein | text  | CATH id for representative protein of second hierarchical level CATH group
+  --  | tag_2_description | text  | structural description of second hierarchical level CATH group
+  --  | tag_3_rep-protein | text  | CATH id for representative protein of third hierarchical level CATH group
+  --  | tag_3_description | text  | structural description of third hierarchical level CATH group
+  --  | tag_4_rep-protein | text  | CATH id for representative protein of fourth hierarchical level CATH group
+  --  | tag_4_description | text  | structural description of fourth hierarchical level CATH group
