@@ -1,8 +1,8 @@
 
 # Table of Contents
 
-1.  [reference](#org67810be)
-2.  [which version of RAxML to use?](#org47bca9d)
+1.  [Reference](#org67810be)
+2.  [Which version of RAxML to use?](#org47bca9d)
 3.  [RAxML flags](#orgcfd5534)
 4.  [Test runs](#org235771f)
 5.  [Test run evaluation](#org73e4c75)
@@ -11,7 +11,7 @@
 
 <a id="org67810be"></a>
 
-# reference
+# Reference
 
 -   <https://cme.h-its.org/exelixis/resource/download/NewManual.pdf>
 -   [Rapid Bootstrapping paper](https://academic.oup.com/sysbio/article/57/5/758/1618491)
@@ -19,7 +19,7 @@
 
 <a id="org47bca9d"></a>
 
-# which version of RAxML to use?
+# Which version of RAxML to use?
 
 -   RAxML comes in many different flavors, trying to take advantage of the computing hardward's capability.
 -   **Run mode**: sequential, hybrid MPI/Pthreads, MPI, PThreads
@@ -149,9 +149,18 @@ raxmlHPC -f a ­x 12345 ­p 12345 ­# autoMRE ­m PROTGAMMAAUTO --auto-prot=ml �
 
 # Test run evaluation
 
+| Run mode | Slots | Model | # RBS | per RBS time | ML search time |
+|----------|-------|-------|-------|--------------|----------------|
+| MPI      |    16 | WAG   |   500 |         0.55 |            151 |
+| PThreads |     8 | WAG   |   500 |         1.12 |            400 |
+| PThreads |    16 | WAG   |   500 |         1.17 |            307 |
+
+- clearly, the MPI version is much faster
+- PThreads version cannot run efficiently on this alignment (567 distinct patterns) on more than 8 cores.
+
 # Bootstrapping and Best-scoring tree search
 
-![Figure describing the RAxML procedure](2020/Stamatakis-2008-Fig2.gif)
+![Figure describing the RAxML procedure](img/Stamatakis-2008-Fig2.gif)
 
 -   The way boostrapping works for phylogenetics is normally to make N boostrap replicates and run the same ML tree search algorithm on them. The resulting BS tress can either be used to compute a "majority-rule consensus tree" (conceptually similar to computing an average tree), or use them to provide support values for the best-scoring ML tree on the original alignment
 -   The rapid bootstrapping (RBS) implementedin RAxML relies on the new heuristic introduced in RAxML v7
