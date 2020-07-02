@@ -5,3 +5,4 @@
 | Gene-tree | Phylogenetic analysis |
 | I-TASSER | Structural prediction by threading |
 | Phyre | Popular structural prediction based on homology modeling |
+| blast | Identify and select homologous sequences |

@@ -3,14 +3,14 @@
 # author: Bin He
 # date: 2020-06-29
 # title: RAxML tree search
-# use: qsub extract-align.sh
+# use: qsub truncate-align.sh
 #----------------------
 # scheduler parameters
 #$ -q BH,BIO-INSTR
 #$ -M bhe2@uiowa.edu
 #$ -m ea
 #$ -pe smp 10
-#$ -N extract-align.sh
+#$ -N truncate-align.sh
 #$ -cwd
 #$ -o job-log/$JOB_NAME_$JOB_ID.out
 #$ -e job-log/$JOB_NAME_$JOB_ID.err
