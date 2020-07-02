@@ -12,4 +12,4 @@ speciestree | Species tree inferred from the sequences above | See notes below |
 ### 2020-07-xx [LFS/RS] Infer species (strains) tree
 Lindsey, please fill in details here, including how you select the single gene families, how sequences were obtained, aligned, and how is the tree inferred. Is bootstrapping done on this?
 
-
+The sequences to build the species tree were constructed by concatenating homologs of three single-copy core genes selected from the literature[https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2782-9] available online[https://github.com/stajichlab/FGMP/blob/master/data/593_cleanMarkers.fa], homologs of  S. cerevisiae YKR054C, YHR165C, and YKL182W, for each species in the homolog table.
