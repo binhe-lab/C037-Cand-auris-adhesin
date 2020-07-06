@@ -1,0 +1,114 @@
+---
+title: "BLAST"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    toc_depth: 5
+---
+
+This analysis accompanies the BLAST search to identify homologs for XP_028889033
+
+```{r load_libraries}
+suppressMessages(library(tidyverse))
+suppressMessages(library(rentrez))
+```
+
+## Filter fungidb homologs
+Some of the identified homologs have less than 500 amino acids. I want to know if these hits also tend to have low _e-values_. If so, I'll exclude them from further analyses
+
+```{r fungidb_plot}
+# load table
+fungidb <- read_tsv("XP_028889033_homologs_fungidb_table.tsv", col_types = "cccddcccdcc")
+# plot protein length as a function of e-value
+fungidb %>% 
+  ggplot(aes(x = -log10(e_value), y = log2(length), col = (length > 500))) + geom_point()
+ggsave("20200701-XP_028889033-homologs-e-value-by-length.png", width = 5, height = 5)
+```
+Based on the results, I will remove the sequences that are shorter than 500 amino acids.
+
+```{r fungidb_filter}
+# output a list of IDs that correspond to sequences greater than 500 a.a.
+fungidb %>% 
+  filter(str_sub(gene_id, -2, -1) != "_B") %>%  # remove the B allele from C. albicans
+  filter(length > 500) %>%                      # require length greater than 500 amino acids
+  pull(gene_id) %>% cat(file = "fungidb_filter_list.txt", sep = "\n")
+```
+70 sequences left
+
+```{bash extract_filtered_sequences}
+/Users/bhe2/sw/miniconda3/bin/python ../../script/extract_fasta.py XP_028889033_homologs_fungidb.fasta fungidb_filter_list.txt
+mv fungidb_filter_list.faa XP_028889033_homologs_fungidb_use.fasta
+```
+
+## Translate fungiDB IDs to refseq_protein IDs
+Next we use BLAST to find out the corresponding refseq IDs for these sequences (see README.md for details on how I did BLAST)
+
+```{r refseq_id_for_fungidb_hits}
+# load blast table
+fdb.hits.blast <- read_tsv("fungidb_blast_refseq_protein.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
+
+# goal: for each fungidb hit, identify the refseq ID that has the highest Score
+fdb.hits.blast.filtered <-  fdb.hits.blast %>% 
+  group_by(query_id) %>% 
+  filter(score == max(score), str_sub(query_id, -2, -1) != "_B") # this blast was done before I removed the _B alleles
+
+# ID mapping for identical sequences (% identity = 100%)
+fdb.refseqID <- fdb.hits.blast.filtered %>% filter(perc_identity == 100) %>% pull(subject_id)
+names(fdb.refseqID) <- fdb.hits.blast.filtered %>% filter(perc_identity == 100) %>% pull(query_id)
+```
+
+_Discussion_
+
+1. Of the 70 sequence, 60 are present in the refseq database.
+1. Among the 10 sequences that didn't map, five belong to the _C. auris_ B8441 strain, which apparently are not in the refseq_protein database, although three other sequences in the same strain are identical with other _C. auris_ strains.
+1. The remaining five sequences belong to _C. paradoxus_ (4) and _C. tropicalis_ (1)
+
+## Refseq_protein BLAST
+
+I also blasted XP_028889033 using NCBI blast against the refseq_protein database. (See README.md for details). The taxonomy distribution is shown below:
+![taxonomy of refseq_protein blast](./20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
+```{r refseq_protein_blast}
+# load table
+refseq <- read_csv("XP_028889033_homologs_refprot_tab.csv", col_types = "cddnnnc")
+```
+
+## Merge fungidb and ref_prot blast results
+First we need to find out which sequences were duplicates. To do so we will blast the fungidb hits against the refseq hits.
+```{bash blast}
+# make blast database from the NCBI blast results
+mkdir blastdb
+makeblastdb -in XP_028889033_homologs_refprot.fasta -parse_seqids -dbtype prot -title XP_028889033_refprot -out blastdb/XP_028889033_refprot
+# blastp
+blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_fungidb_use.fasta -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1 -num_threads 4 -out XP_028889033_fungidb-refprot-blast.txt
+```
+
+The typical protocol for identifying orthologs is to perform reciprocol blast. But our goal here is to identify identical sequences -- more like what the CDD hits program does -- and thus one sided blast should be fine. The analysis below is meant to identify the shared hits as well as the unique hits in each set.
+```{r merge}
+# local blast the fungiDB hits against the library made from the refseq hits
+fdb2refseq <- read_tsv("XP_028889033_fungidb-refprot-blast.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
+sprintf("There are a total of %i queries submitted", length(unique(fdb2refseq$query_id)))
+match <- fdb2refseq %>% filter(perc_identity > 90) %>% select(-score, -bitscore, -e_value)
+
+# do we indeed have one entry per query?
+match %>% add_count(query_id) %>% filter(n > 1) %>% arrange(desc(n))
+# answer is yes
+
+# which proteins are unique to the fungidb hits?
+uniq.fdb <- setdiff(fdb2refseq$query_id, match$query_id)
+paste(uniq.fdb, collapse = " ")
+
+# were they unqiue because the sequences were not in refseq or because they have low e-values?
+fungidb %>% 
+  filter(gene_id %in% uniq.fdb) %>% 
+  mutate(refseq_id = fdb.refseqID[gene_id]) %>% 
+  select(gene_id, refseq_id, organism, e_value)
+```
+Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. Of the remaining sequences in the refseq_protein database but not included in the refseq hits, all but CLUG_05233 have lower than 50% query coverage. CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. All in all, I think I can safely use the refseq hits as the base and potentially add the _C. auris_ B9J08_004098 and the CLUG_05233 to the mix. The CPAR2 sequences are probably redundant with the _C. paradoxus sequences already included in the refseq hits.
+
+Next let's get the species and strain information for the refseq hits
+```{r refseq_species}
+# use rentrez function to get the organism information
+info <- entrez_summary(db = "protein", id = refseq$accession)
+refseq.orgn <- extract_from_esummary(info, elements = c("organism","strain"), simplify = FALSE)
+```
