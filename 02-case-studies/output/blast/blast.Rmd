@@ -11,7 +11,14 @@ This analysis accompanies the BLAST search to identify homologs for XP_028889033
 
 ```{r load_libraries}
 suppressMessages(library(tidyverse))
+# install rentrez package if not already installed
+if (!requireNamespace("rentrez", quietly = TRUE))
+    install.packages("rentrez")
 suppressMessages(library(rentrez))
+# install seqinr package if not already installed
+if (!requireNamespace("seqinr", quietly = TRUE))
+    install.packages("seqinr")
+suppressMessages(library(seqinr))
 ```
 
 ## Filter fungidb homologs
@@ -104,11 +111,34 @@ fungidb %>%
   mutate(refseq_id = fdb.refseqID[gene_id]) %>% 
   select(gene_id, refseq_id, organism, e_value)
 ```
-Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. Of the remaining sequences in the refseq_protein database but not included in the refseq hits, all but CLUG_05233 have lower than 50% query coverage. CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. All in all, I think I can safely use the refseq hits as the base and potentially add the _C. auris_ B9J08_004098 and the CLUG_05233 to the mix. The CPAR2 sequences are probably redundant with the _C. paradoxus sequences already included in the refseq hits.
+Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. Of the remaining sequences in the refseq_protein database but not included in the refseq hits, all but CLUG_05233 have lower than 50% query coverage. CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. All in all, I think I can safely use the refseq hits as the base and add the _C. auris_ B9J08_004098, CLUG_05233 and the _C. paradoxus_ sequences (for some reason this species is not included in refseq). To do so, I'll use the `read.fasta()` function from the `seqinr` package to extract their sequences, and use the `write.fasta()` function to output the combined fasta.
+
+In order to make it easier for the downstream tree building and reconciliation, I would like to programmatically reformat the sequence names to conform to the Notung post-script standard, i.e. SeqID_SpeciesName.
+
+```{r merge2}
+# export the IDs
+tmp.list <- c("B9J08_004098","CLUG_05233",paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
+refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
+fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
+combined.seq <- c(refseqdb.seq, fungidb.seq[tmp.list])
+write.fasta(combined.seq, names = getAnnot(combined.seq), file.out = "XP_028889033_homologs_combine.fasta")
+```
+
+Next we extract those sequences and add them to the refseq file
+```{bash}
+# python ../../script/extract_fasta.py XP_028889033_homologs_fungidb_use.fasta fungidb_add2refseq.txt
+#cat XP_028889033_homologs_refprot.fasta fungidb_add2refseq.fasta > XP_028889033_homologs_combine.fasta
+#rm fungidb_add2refseq.fasta
+which python
+```
 
 Next let's get the species and strain information for the refseq hits
 ```{r refseq_species}
 # use rentrez function to get the organism information
-info <- entrez_summary(db = "protein", id = refseq$accession)
-refseq.orgn <- extract_from_esummary(info, elements = c("organism","strain"), simplify = FALSE)
+tmp <- entrez_summary(db = "protein", id = refseq$accession)
+refseq.orgn.extract <- extract_from_esummary(tmp, elements = c("organism","strain"), simplify = FALSE)
+refseq.orgn <- do.call(rbind, lapply(refseq.orgn.extract, unlist))
+refseq1 <- cbind(refseq.orgn, refseq) %>% 
+  mutate(organism = word(str_replace_all(organism, "[\\x5B\\x5D]", ""), 1, 2)) %>% # \\x5B\\x5D are Hexadecimal representations of the square brackets
+  rename(species = organism)
 ```
