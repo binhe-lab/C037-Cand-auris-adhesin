@@ -91,7 +91,7 @@ blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_fungidb_u
 ```
 
 The typical protocol for identifying orthologs is to perform reciprocol blast. But our goal here is to identify identical sequences -- more like what the CDD hits program does -- and thus one sided blast should be fine. The analysis below is meant to identify the shared hits as well as the unique hits in each set.
-```{r merge}
+```{r match}
 # local blast the fungiDB hits against the library made from the refseq hits
 fdb2refseq <- read_tsv("XP_028889033_fungidb-refprot-blast.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
 sprintf("There are a total of %i queries submitted", length(unique(fdb2refseq$query_id)))
@@ -115,30 +115,38 @@ Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not 
 
 In order to make it easier for the downstream tree building and reconciliation, I would like to programmatically reformat the sequence names to conform to the Notung post-script standard, i.e. SeqID_SpeciesName.
 
-```{r merge2}
-# export the IDs
-tmp.list <- c("B9J08_004098","CLUG_05233",paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
-refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
-fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
-combined.seq <- c(refseqdb.seq, fungidb.seq[tmp.list])
-write.fasta(combined.seq, names = getAnnot(combined.seq), file.out = "XP_028889033_homologs_combine.fasta")
-```
-
-Next we extract those sequences and add them to the refseq file
-```{bash}
-# python ../../script/extract_fasta.py XP_028889033_homologs_fungidb_use.fasta fungidb_add2refseq.txt
-#cat XP_028889033_homologs_refprot.fasta fungidb_add2refseq.fasta > XP_028889033_homologs_combine.fasta
-#rm fungidb_add2refseq.fasta
-which python
-```
-
-Next let's get the species and strain information for the refseq hits
+Now let's do the renaming and gather some species/strain information as well.
 ```{r refseq_species}
 # use rentrez function to get the organism information
 tmp <- entrez_summary(db = "protein", id = refseq$accession)
 refseq.orgn.extract <- extract_from_esummary(tmp, elements = c("organism","strain"), simplify = FALSE)
 refseq.orgn <- do.call(rbind, lapply(refseq.orgn.extract, unlist))
+# Rename the refseq names. The goal is to have SeqID_Species, like XP_028889033_Cauris
+# what we have now is a two word species name, which we will shorten to a capital first letter of 
+# the first word followed by the entire second word
 refseq1 <- cbind(refseq.orgn, refseq) %>% 
-  mutate(organism = word(str_replace_all(organism, "[\\x5B\\x5D]", ""), 1, 2)) %>% # \\x5B\\x5D are Hexadecimal representations of the square brackets
-  rename(species = organism)
+  mutate(organism = word(str_replace_all(organism, "[\\x5B\\x5D]", ""), 1, 2),
+         # \\x5B\\x5D are Hexadecimal representations of the square brackets
+         species_id = paste0(str_sub(organism, 1, 1), word(organism, 2,2))) %>%
+  rename(species = organism) %>% 
+  select(accession, species, species_id, everything())
+```
+
+```{r merge}
+# refseq hit sequences and their names
+refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
+refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
+# below I verified that the names have the correct order
+# names(refseqdb.names) <- refseq1$accession
+# refseqdb.names1 <- refseqdb.names[names(refseqdb.seq)]
+
+# sequences to be added to the refseq list from fungidb hits
+fdb.list <- c("B9J08_004098","CLUG_05233",paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
+fdb.species <- c("Cauris", "Clusitaniae", rep("Cparadoxus",times = 4))
+fdb.names <- paste(fdb.list, fdb.species, sep = "_")
+fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
+
+combined.seq <- c(refseqdb.seq, fungidb.seq[fdb.list])
+combined.names <- c(refseqdb.names, fdb.names)
+write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine.fasta")
 ```
