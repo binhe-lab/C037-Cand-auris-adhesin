@@ -10,15 +10,15 @@ output:
 This analysis accompanies the BLAST search to identify homologs for XP_028889033
 
 ```{r load_libraries}
-suppressMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidyverse))
 # install rentrez package if not already installed
 if (!requireNamespace("rentrez", quietly = TRUE))
     install.packages("rentrez")
-suppressMessages(library(rentrez))
+suppressPackageStartupMessages(library(rentrez))
 # install seqinr package if not already installed
 if (!requireNamespace("seqinr", quietly = TRUE))
     install.packages("seqinr")
-suppressMessages(library(seqinr))
+suppressPackageStartupMessages(library(seqinr))
 ```
 
 ## Filter fungidb homologs
