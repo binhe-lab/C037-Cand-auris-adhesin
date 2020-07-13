@@ -1,0 +1,140 @@
+# Parse TANGO results for sequences
+
+This should extract TANGO sequences from all the files in a given list of folders. This just writes the function; you run it in the next chunk. Put this into an R file and you can call this function.
+
+```{r extract tango info for Jan}
+extract_tango <- function(tango_file_list, agg_threshold = 5, required_in_serial =5) {
+    require(tidyverse)
+    require(data.table)
+    require(readr)
+    d = NULL
+    for (i in 1:length(tango_file_list)){
+        file_list <- list.files(path = tango_file_list[i], pattern = ".txt$")
+        for (t in 1:length(file_list)) {
+            temp_data <- fread(file = paste(tango_file_list[i],"/", file_list[t], sep = ""), stringsAsFactors = FALSE)
+            temp_data <- as.data.table(temp_data)
+            temp_data[,pass:=(Aggregation>agg_threshold)]
+            temp_data[,seq_count:=sequence(rle(temp_data[,pass])$lengths)]
+            short_string <- as.character(str_split(file_list[t], pattern = "\\.txt")[[1]][1])
+            temp_data2 <- as.data.table(temp_data[pass == TRUE, .(res, aa, Aggregation, seq_count)])
+            temp_data2[,next_seq_count:= shift(x = seq_count, n = 1L, type = "lead")]
+            num_sequences <- as.integer(count(temp_data2[seq_count == 1]))
+            l_string <- vector("list", num_sequences)
+            l_sequence <- vector("list", num_sequences)
+            l_start <- vector("list", num_sequences)
+            l_end <- vector("list", num_sequences)
+            l_max <- vector("list", num_sequences)
+            tango_seq <- NULL
+            k <- 1
+            while (k < num_sequences+1){
+                for (j in 1:nrow(temp_data2)){
+                    if (temp_data2$seq_count[j] == 1) {
+                        tango_seq <- NULL
+                        tango_seq <- paste(tango_seq, temp_data2$aa[j], sep = "")
+                        l_start[[k]] <- as.integer(temp_data2$res[j])
+                        l_max[[k]] <- as.numeric(temp_data2$Aggregation[j])
+                    }  else if (is.na(temp_data2$next_seq_count[j])){
+                        tango_seq <- paste(tango_seq, temp_data2$aa[j], sep = "")
+                        l_sequence[[k]] <- tango_seq
+                        l_end[[k]] <- as.integer(temp_data2$res[j])
+                        if (temp_data2$Aggregation[j] > l_max[[k]]){
+                            l_max[[k]] <- temp_data2$Aggregation[j]
+                        }
+                        l_string[[k]] <- short_string
+                        k <- k+1
+                    } else if (temp_data2$next_seq_count[j] > temp_data2$seq_count[j]){
+                        tango_seq <- paste(tango_seq, temp_data2$aa[j], sep = "")
+                        if (temp_data2$Aggregation[j] > l_max[[k]]){
+                            l_max[[k]] <- temp_data2$Aggregation[j]
+                        }
+                    } else if (temp_data2$next_seq_count[j] < temp_data2$seq_count[j]){
+                        tango_seq <- paste(tango_seq, temp_data2$aa[j], sep = "")
+                        l_sequence[[k]] <- tango_seq
+                        l_end[[k]] <- as.integer(temp_data2$res[j])
+                        if (temp_data2$Aggregation[j] > l_max[[k]]){
+                            l_max[[k]] <- temp_data2$Aggregation[j]
+                        }
+                        l_string[[k]] <- short_string
+                        k <- k+1
+                    }
+                
+                }
+            
+            }
+            df <- data.frame(I(l_string), I(l_sequence), I(l_start), I(l_end), I(l_max), stringsAsFactors = FALSE)
+            dt <- as.data.table(df)
+            setnames(dt, c("l_string", "l_sequence", "l_start", "l_end", "l_max"), c("short_string", "sequence", "start", "end", "max"))
+            dt[,short_string:=as.character(short_string)]
+            dt[,sequence:=as.character(sequence)]
+            dt[,start:=as.integer(start)]
+            dt[,end:=as.integer(end)]
+            dt[,max:=as.numeric(max)]
+            dt[,size:=end-start+1]
+            dt <- unique(dt)
+            dt[,interval:=start - shift(end)]
+            df <- as.data.frame(dt[size >= required_in_serial,])
+            d <- rbind(d, df)
+        }
+    }
+    return(d)
+}
+
+```
+
+This is where you run the extract_tango function. You need to tell it what folder or folders your tango files are in; they should be the ONLY text files in the folder. You may list multiple folders, just add them to the c() list (add a comma and put the path file in quotation marks - make sure your slashes are going the right way). It automatically binds to a list if you've already run it before, but will not allow you to duplicate rows. It can take a while depending on how many files you're looking at.
+
+```{r test extract tango}
+tango_list <- c("C:/Users/Rachel/OneDrive - University of Iowa/Fall 2019/Bioinformatics/Project work/Paper/other_species/tango" )
+
+new_tango <- as.data.table(extract_tango(tango_file_list = tango_list))
+jan_tango <- unique(rbind(jan_tango, new_tango))
+View(jan_tango)
+
+```
+
+
+This will make a summary table after you've run the function to extract tango data. This is summarized by beta aggregation sequence and includes sequence, count of number of occurrences, number of proteins in which the sequence occurs, list of proteins in which the sequence occurs, list of species the proteins belong to, and number of species the proteins belong to. To use this function, you MUST also have the DATABASE file in your working directory. It will retreive it for you, but you need to set your working directory in the script FIRST. You also need the RSQLite package installed. If you are NOT running on a Windows machine, I think you need to delete the mode = "wb" argument in the download.file command.
+
+```{r jan tango summary}
+working_directory = "C:/Users/Rachel/OneDrive - University of Iowa/Fall 2019/Bioinformatics/Project work/Paper/Adhesin_Analysis"
+
+library(RSQLite)
+database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+jan_tango <- as.data.table(jan_tango)
+jan_tango_summary <- jan_tango[,(sequence)]
+jan_tango_summary <- as.data.table(jan_tango_summary)
+setnames(jan_tango_summary, c("jan_tango_summary"), c("sequence"))
+jan_tango_summary <- jan_tango_summary %>% add_count(sequence)
+setnames(jan_tango_summary, c("n"), c("count"))
+jan_tango_summary <- unique(jan_tango_summary)
+jan_tango_summary[,num_proteins:=0]
+jan_tango_summary[,list_proteins:=0]
+jan_tango_summary[,list_species:=0]
+jan_tango_summary[,num_species:=0]
+conn <- dbConnect(RSQLite::SQLite(), database_file)
+for (i in 1:nrow(jan_tango_summary)){
+    num_occur <- as.integer(jan_tango_summary$count[i])
+    l_proteins <- vector("list", num_occur)
+    l_species <- vector("list", num_occur)
+    k <- 1
+    for (j in 1:nrow(jan_tango)){
+        if (jan_tango$sequence[j] == jan_tango_summary$sequence[i]){
+            l_proteins[[k]] <- jan_tango$short_string[j]
+            sqlcmd <- paste("SELECT t1.species, t1.strain FROM fasta t1 WHERE t1.short_string='", l_proteins[[k]], "'", sep="")
+            query_results <- dbGetQuery(conn = conn, statement = sqlcmd)
+            l_species[[k]] <- paste(query_results[1][[1]], query_results[2][[1]], sep = " ")
+            k <- k+1
+        }
+    }
+    l_proteins <- unique(l_proteins)
+    jan_tango_summary$list_proteins[i] <- toString(l_proteins)
+    jan_tango_summary$num_proteins[i] <- length(l_proteins)
+    l_species <- unique(l_species)
+    jan_tango_summary$list_species[i] <- toString(l_species)
+    jan_tango_summary$num_species[i] <- length(l_species)
+}
+dbDisconnect(conn = conn)
+
+View(jan_tango_summary[order(-num_proteins)])
+```
