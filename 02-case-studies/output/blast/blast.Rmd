@@ -142,7 +142,7 @@ refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
 
 # sequences to be added to the refseq list from fungidb hits
 fdb.list <- c("B9J08_004098","CLUG_05233",paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
-fdb.species <- c("Cauris", "Clusitaniae", rep("Cparadoxus",times = 4))
+fdb.species <- c("Cauris", "Clusitaniae", rep("Cparapsilosis",times = 4))
 fdb.names <- paste(fdb.list, fdb.species, sep = "_")
 fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 
