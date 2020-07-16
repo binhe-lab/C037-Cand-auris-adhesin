@@ -9,7 +9,7 @@
 #$ -q BH,BIO-INSTR
 #$ -M bhe2@uiowa.edu
 #$ -m ea
-#$ -pe smp 10
+#$ -pe smp 30
 #$ -N clustalo-align.sh
 #$ -cwd
 #$ -o job-log/$JOB_NAME_$JOB_ID.out
@@ -32,4 +32,4 @@ base=XP_028889033_edited_N500
 align=${base}_clustalo.faa
 
 # align with clustalo
-clustalo -i $in -o $align --iter=50 --force --outfmt=fasta
+clustalo -i $in -o $align --iter=5 --force --outfmt=fasta -v -v
