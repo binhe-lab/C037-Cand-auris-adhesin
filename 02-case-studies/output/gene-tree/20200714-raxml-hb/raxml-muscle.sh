@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################
 # author: Bin He
-# date: 2020-07-07
+# date: 2020-07-15
 # title: RAxML tree search
 # use: qsub raxml-muscle.sh
 #----------------------
@@ -27,7 +27,7 @@ set -u
 set -o pipefail
 
 # set input file
-align=XP_028889033_muscle_C500.faa
+align=XP_028889033_muscle_refined_C530.faa
 
 # estimate the tree
 module load openmpi/2.1.2_gcc-8.3.0

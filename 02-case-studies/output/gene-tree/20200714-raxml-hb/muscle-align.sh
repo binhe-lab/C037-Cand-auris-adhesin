@@ -2,15 +2,15 @@
 ############################
 # author: Bin He
 # date: 2020-07-15
-# title: RAxML tree search
-# use: qsub raxml-clustalo.sh
+# title: align
+# use: qsub muscle-align.sh
 #----------------------
 # scheduler parameters
 #$ -q BH,BIO-INSTR
 #$ -M bhe2@uiowa.edu
 #$ -m ea
-#$ -pe orte 28
-#$ -N raxml-clustalo
+#$ -pe smp 10
+#$ -N muscle-align.sh
 #$ -cwd
 #$ -o job-log/$JOB_NAME_$JOB_ID.out
 #$ -e job-log/$JOB_NAME_$JOB_ID.err
@@ -26,9 +26,5 @@ set -e
 set -u
 set -o pipefail
 
-# set input file
-align=XP_028889033_clustalo_C530.faa
-
-# estimate the tree
-module load openmpi/2.1.2_gcc-8.3.0
-mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n clustalo_${JOB_ID}
+# align with muscle
+muscle -in XP_028889033_edited_N500.faa -out XP_028889033_edited_N500_muscle.faa
