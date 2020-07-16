@@ -7,8 +7,8 @@ date: 2020-07-14
 A repeat of the 2020-07-07 analysis (see sister folder). After attempting to write the species tree for reconciling the gene tree, I found that the new species I introduced in this round of blast, _D. rugosa_, could introduce polytomy to the species tree due to conflicting reports on its phylogenetic position (see `../README.md` notes on writing new species tree). For this reason I decide to remove the _D. rugosa_ sequences, realign and repeat the gene tree reconstruction.
 
 ```bash
-$ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 500)}' XP_028889033_edited_N500_clustalo.faa > XP_028889033_clustalo_C500.faa
-$ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 500)}' XP_028889033_edited_N500_clustalo.faa > XP_028889033_muscle_C500.faa
+bioawk -c fastx '{print ">"$name;print substr($seq, 1, 530)}' XP_028889033_edited_N500_clustalo.faa > XP_028889033_clustalo_C530.faa
+bioawk -c fastx '{print ">"$name;print substr($seq, 1, 530)}' XP_028889033_edited_N500_clustalo.faa > XP_028889033_muscle_C530.faa
 ```
 
 # Results files
