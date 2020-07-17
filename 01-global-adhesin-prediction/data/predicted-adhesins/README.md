@@ -20,3 +20,6 @@ I added _S. cerevisiae_ proteins with FungalRV scores greater than zero. The scr
 ```bash
 find . -iname "*_filtered.fasta" -exec cat {} >> all_fungalRV_predicted_adhesins.fasta \;
 ```
+
+## update 2020-07-16 [HB/RS]
+Added `all_predicted_adhesins_w_other.fasta`, which is a compilation of FungalRV predicted adhesins for an expanded list of species that Rachel has been working on. The goal is to extend most of our global analyses to this larger set of sequences.
