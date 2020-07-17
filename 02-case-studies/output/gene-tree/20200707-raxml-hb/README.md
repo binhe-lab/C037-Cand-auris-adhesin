@@ -8,7 +8,7 @@ A repeat of the 2020-07-06 analysis (see sister folder). After inspecting the al
 
 ```bash
 $ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 500)}' XP_028889033_edited_N500_clustalo.faa > XP_028889033_clustalo_C500.faa
-$ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 500)}' XP_028889033_edited_N500_clustalo.faa > XP_028889033_muscle_C500.faa
+$ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 500)}' XP_028889033_edited_N500_muscle.faa > XP_028889033_muscle_C500.faa
 ```
 
 # Results files

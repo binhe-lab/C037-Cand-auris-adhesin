@@ -9,9 +9,8 @@ Repeat the gene tree analysis with the newly assembled homologs consisting of mo
 # Results files
 file(s) | description | source 
 ------- | ----------- | ------
-species_tree.nwk | species tree | modified from Lindsey's species tree, removing _S. stipitis_
 truncate_align.sh | SGE job script for aligning with clustalo | custom, HB
-XP_028889033_homologs_combine.fasta | combined blast hits from fungidb and refseq_protein | HB
+XP_028889033_homologs_combine.fasta (not in this folder) | combined blast hits from fungidb and refseq_protein | HB
 XP_028889033_homologs_combine_edited.fasta | same as above but with the first 900 aa of XP_025344407.1 deleted (see notes below) | HB
 XP_028889033_edited_N500.faa | truncated first 500 aa from the above file | result from truncate-align.sh
 XP_028889033_edited_N500_clustalo.faa | aligned fasta using clustalo | result from truncate-align.sh

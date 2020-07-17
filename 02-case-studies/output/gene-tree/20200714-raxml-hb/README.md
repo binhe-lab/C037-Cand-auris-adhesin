@@ -15,6 +15,8 @@ $ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 530)}' XP_028889033_edi
 $ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 530)}' XP_028889033_edited_N500_muscle_refined.faa > XP_028889033_muscle_refined_C530.faa
 ```
 
+To align the sequences, I first did the ClustalO alignment with 50 iterations, which took 3 hours on 10 slots on ARGON. Instead of running Muscle on the unaligned sequences, I decided to use the `muscle -in <Aligned> -out <Refined> -refine` function. This took no time to complete, but upon inspecting the output, there seems to be very minimal changes. Nonetheless, I decided to run RAxML on both, this time only on the first 530 columns of both alignments.
+
 # Results files
 file(s) | description | source 
 ------- | ----------- | ------
