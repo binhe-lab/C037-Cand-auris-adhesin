@@ -1,0 +1,1491 @@
+########################################
+# Program: fuzzpro
+# Rundate: Fri 17 Jul 2020 16:44:42
+# Commandline: fuzzpro
+#    -sequence XP_028889033_homologs.fasta
+#    -sformat1 fasta
+#    -pattern "[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>"
+#    -outfile fungalGPIanchor.txt
+# Report_format: seqtable
+# Report_file: fungalGPIanchor.txt
+########################################
+
+#=======================================
+#
+# Sequence: XP_028889033.1_Cauris     from: 1   to: 3052
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   3032    3052 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GASIPKYGLLWSLPLALFAMF
+   3031    3052 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGASIPKYGLLWSLPLALFAMF
+   3025    3052 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVSTFQAGASIPKYGLLWSLPLALFAMF
+   3024    3052 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVSTFQAGASIPKYGLLWSLPLALFAMF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_028888611.1_Cauris     from: 1   to: 1704
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1688    1704 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SFGAKWLLPLAAMFAIF
+   1683    1704 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSTPSFGAKWLLPLAAMFAIF
+   1682    1704 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAGSTPSFGAKWLLPLAAMFAIF
+   1676    1704 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVSSFEAAGSTPSFGAKWLLPLAAMFAIF
+   1675    1704 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVSSFEAAGSTPSFGAKWLLPLAAMFAIF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025344416.1_Chaemuloni     from: 1   to: 2672
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   2654    2672 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSSKFSAKWLLPFAFFAMF
+   2653    2672 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASSSKFSAKWLLPFAFFAMF
+   2652    2672 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GASSSKFSAKWLLPFAFFAMF
+   2651    2672 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGASSSKFSAKWLLPFAFFAMF
+   2645    2672 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NVSSYEAGASSSKFSAKWLLPFAFFAMF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024713121.1_Cpseudohaemulonis     from: 1   to: 3335
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   3316    3335 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVPRVSLKWLLPLAFFAIA
+   3315    3335 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASVPRVSLKWLLPLAFFAIA
+   3314    3335 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAASVPRVSLKWLLPLAFFAIA
+   3307    3335 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ATVSAYEAAASVPRVSLKWLLPLAFFAIA
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025334498.1_Cduobushaemulonis     from: 1   to: 3113
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   3094    3113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVPRVSLKWLLPLAFFAIA
+   3093    3113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASVPRVSLKWLLPLAFFAIA
+   3092    3113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAASVPRVSLKWLLPLAFFAIA
+   3085    3113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ATVSAYEAAASVPRVSLKWLLPLAFFAIA
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025344407.1_Chaemuloni     from: 1   to: 4416
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   4396    4416 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGSLPSFNLKWLLPFAFFAAI
+   4395    4416 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGSLPSFNLKWLLPFAFFAAI
+   4394    4416 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSGSLPSFNLKWLLPFAFFAAI
+   4389    4416 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVSSYAGSGSLPSFNLKWLLPFAFFAAI
+   4388    4416 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVSSYAGSGSLPSFNLKWLLPFAFFAAI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025335682.1_Cduobushaemulonis     from: 1   to: 1873
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1854    1873 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASSTKFSAKWLLPFAFFAMI
+   1853    1873 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GASSTKFSAKWLLPFAFFAMI
+   1852    1873 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGASSTKFSAKWLLPFAFFAMI
+   1846    1873 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVSSYEAGASSTKFSAKWLLPFAFFAMI
+   1842    1873 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SAAPSVSSYEAGASSTKFSAKWLLPFAFFAMI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025344601.1_Chaemuloni     from: 1   to: 1320
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1301    1320 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGSLKTLSLLSFVFGIIAFI
+   1300    1320 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASGSLKTLSLLSFVFGIIAFI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025342839.1_Chaemuloni     from: 1   to: 1221
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1201    1221 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSLPNFGLNWVLPLGLLVLF
+   1200    1221 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSLPNFGLNWVLPLGLLVLF
+   1199    1221 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DGAGSLPNFGLNWVLPLGLLVLF
+   1194    1221 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSTYDGAGSLPNFGLNWVLPLGLLVLF
+   1192    1221 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVAVSTYDGAGSLPNFGLNWVLPLGLLVLF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024713119.1_Cpseudohaemulonis     from: 1   to: 765
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    747     765 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVVKYGALWLVSLALLAVL
+    746     765 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVVKYGALWLVSLALLAVL
+    745     765 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GASVVKYGALWLVSLALLAVL
+    744     765 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGASVVKYGALWLVSLALLAVL
+    738     765 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSTYEAGASVVKYGALWLVSLALLAVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025337653.1_Cduobushaemulonis     from: 1   to: 637
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    616     637 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGAPLARFGFRWLLSLALLVVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025341971.1_Chaemuloni     from: 1   to: 729
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    710     729 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGVPSFGPKWLLSLAILAVL
+    709     729 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGVPSFGPKWLLSLAILAVL
+    708     729 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGAGVPSFGPKWLLSLAILAVL
+    702     729 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSTYEAGAGVPSFGPKWLLSLAILAVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025334500.1_Cduobushaemulonis     from: 1   to: 973
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    955     973 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVVKFGASWLVSLALLAVL
+    954     973 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVVKFGASWLVSLALLAVL
+    953     973 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GASVVKFGASWLVSLALLAVL
+    952     973 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGASVVKFGASWLVSLALLAVL
+    946     973 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSTYEAGASVVKFGASWLVSLALLAVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025343300.1_Chaemuloni     from: 1   to: 2259
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   2240    2259 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSFLRTTFEWLLPLAVLVL
+   2239    2259 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSFLRTTFEWLLPLAVLVL
+   2238    2259 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGAGSFLRTTFEWLLPLAVLVL
+   2233    2259 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVSTFAGAGSFLRTTFEWLLPLAVLVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_028889034.1_Cauris     from: 1   to: 662
+# HitCount: 7
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    644     662 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASRFGAEWLVPLALLMMI
+    643     662 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAASRFGAEWLVPLALLMMI
+    642     662 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGAASRFGAEWLVPLALLMMI
+    641     662 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAGAASRFGAEWLVPLALLMMI
+    640     662 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAAGAASRFGAEWLVPLALLMMI
+    633     662 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AEVSTYEGAAGAASRFGAEWLVPLALLMMI
+    631     662 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVAEVSTYEGAAGAASRFGAEWLVPLALLMMI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_028887965.1_Cauris     from: 1   to: 787
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    769     787 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SIATFGLTGFISIVLLMLV
+    767     787 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GASIATFGLTGFISIVLLMLV
+    766     787 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGASIATFGLTGFISIVLLMLV
+    756     787 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGGPTVSSYEGGASIATFGLTGFISIVLLMLV
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024712323.1_Cpseudohaemulonis     from: 1   to: 596
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    575     596 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGAPLARFGLQWLLSLVLLVVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024711259.1_Cpseudohaemulonis     from: 1   to: 703
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    682     703 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGATLPRFGAEWVLPIALLAVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025335995.1_Cduobushaemulonis     from: 1   to: 727
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    706     727 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGATLPRFGAEWVLPLALLAVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024711351.1_Cpseudohaemulonis     from: 1   to: 1534
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1514    1534 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSLPKFGLEWVLPLGLFVLF
+   1513    1534 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSLPKFGLEWVLPLGLFVLF
+   1512    1534 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DGAGSLPKFGLEWVLPLGLFVLF
+   1505    1534 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASILTYDGAGSLPKFGLEWVLPLGLFVLF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025338053.1_Cduobushaemulonis     from: 1   to: 1785
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1765    1785 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSLPKFGLEWVLPLGLFVLF
+   1764    1785 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSLPKFGLEWVLPLGLFVLF
+   1763    1785 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DGAGSLPKFGLEWVLPLGLFVLF
+   1758    1785 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SLSTYDGAGSLPKFGLEWVLPLGLFVLF
+   1756    1785 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASLSTYDGAGSLPKFGLEWVLPLGLFVLF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_028892406.1_Cauris     from: 1   to: 1375
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1356    1375 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSAPKIGLTLLLPLALFALF
+   1354    1375 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GVGSAPKIGLTLLLPLALFALF
+   1348    1375 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AISTFEGVGSAPKIGLTLLLPLALFALF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025337648.1_Cduobushaemulonis     from: 1   to: 1427
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1409    1427 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAVLRLGVEVVLPLALLFF
+   1408    1427 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGAVLRLGVEVVLPLALLFF
+   1407    1427 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGAVLRLGVEVVLPLALLFF
+   1401    1427 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SISKFEGSGAVLRLGVEVVLPLALLFF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024712318.1_Cpseudohaemulonis     from: 1   to: 3575
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   3556    3575 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSYVRFGAQWVLPLAILAI
+   3555    3575 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAGSYVRFGAQWVLPLAILAI
+   3549    3575 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSTYEAAGSYVRFGAQWVLPLAILAI
+   3544    3575 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DSSPKAVSTYEAAGSYVRFGAQWVLPLAILAI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025343289.1_Chaemuloni     from: 1   to: 1165
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1145    1165 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSLPKLGVTLLLPLGLLALF
+   1144    1165 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSLPKLGVTLLLPLGLLALF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024716363.1_Cpseudohaemulonis     from: 1   to: 1131
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1111    1131 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSLPKLGATLLLPLGLLALF
+   1110    1131 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSLPKLGATLLLPLGLLALF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024711350.1_Cpseudohaemulonis     from: 1   to: 804
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    784     804 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSPPNLNPTWVIPIGLLWLV
+    783     804 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAGSPPNLNPTWVIPIGLLWLV
+    773     804 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DTAFTVLSYEAAGSPPNLNPTWVIPIGLLWLV
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025341988.1_Chaemuloni     from: 1   to: 962
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    943     962 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSVRDFCNNWVLPFVLFAVL
+    942     962 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGSVRDFCNNWVLPFVLFAVL
+    941     962 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGSVRDFCNNWVLPFVLFAVL
+    931     962 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AKSAEPSVLEGSGSVRDFCNNWVLPFVLFAVL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_462630.1_Dhansenii     from: 1   to: 775
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    754     775 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASSTRQRSIFSVFFTFIVLALT
+    753     775 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SASSTRQRSIFSVFFTFIVLALT
+    752     775 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSASSTRQRSIFSVFFTFIVLALT
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025336698.1_Cduobushaemulonis     from: 1   to: 932
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    913     932 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSPFLSLGLAFPLGLLALL
+    912     932 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSPFLSLGLAFPLGLLALL
+    911     932 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGAGSPFLSLGLAFPLGLLALL
+    902     932 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASRISTYEGGAGSPFLSLGLAFPLGLLALL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002770057.1_Dhansenii     from: 1   to: 1597
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1577    1597 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVIKPWTSFSFVALAAMFYF
+   1576    1597 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SASVIKPWTSFSFVALAAMFYF
+   1575    1597 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSASVIKPWTSFSFVALAAMFYF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025341634.1_Chaemuloni     from: 1   to: 817
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    798     817 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAGQVINYSWLISLVAFAFM
+    797     817 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAAGQVINYSWLISLVAFAFM
+    796     817 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGAAGQVINYSWLISLVAFAFM
+    790     817 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GVSTYEGGAAGQVINYSWLISLVAFAFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_028892087.1_Cauris     from: 1   to: 833
+# HitCount: 6
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    816     833 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NFAGLPMIMAVVAGILAL
+    811     833 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGTKNFAGLPMIMAVVAGILAL
+    810     833 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DGSGTKNFAGLPMIMAVVAGILAL
+    805     833 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GVSTYDGSGTKNFAGLPMIMAVVAGILAL
+    804     833 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGVSTYDGSGTKNFAGLPMIMAVVAGILAL
+    802     833 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AIAGVSTYDGSGTKNFAGLPMIMAVVAGILAL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025335681.1_Cduobushaemulonis     from: 1   to: 1353
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1335    1353 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ATARFGLEWILPLGLFALF
+   1333    1353 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAATARFGLEWILPLGLFALF
+   1332    1353 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAAATARFGLEWILPLGLFALF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024711300.1_Cpseudohaemulonis     from: 1   to: 899
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    880     899 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASPFLSLGLAFPLGLLALL
+    879     899 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAASPFLSLGLAFPLGLLALL
+    878     899 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGAASPFLSLGLAFPLGLLALL
+    869     899 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASRISTYEGGAASPFLSLGLAFPLGLLALL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025344020.1_Chaemuloni     from: 1   to: 745
+# HitCount: 6
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    729     745 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SAGIPTILAVVAGLLAL
+    728     745 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASAGIPTILAVVAGLLAL
+    726     745 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AKASAGIPTILAVVAGLLAL
+    724     745 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGAKASAGIPTILAVVAGLLAL
+    723     745 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGAKASAGIPTILAVVAGLLAL
+    714     745 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGHISTYEGSGAKASAGIPTILAVVAGLLAL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_028889361.1_Cauris     from: 1   to: 717
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    698     717 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAAQVINFSWLISLVAFAFF
+    697     717 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAAAQVINFSWLISLVAFAFF
+    696     717 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGAAAQVINFSWLISLVAFAFF
+    690     717 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSTYEGGAAAQVINFSWLISLVAFAFF
+    686     717 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSAPAVSTYEGGAAAQVINFSWLISLVAFAFF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025344415.1_Chaemuloni     from: 1   to: 1650
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1631    1650 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASSPRLGLEWVLPLGLFVFF
+   1630    1650 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASSPRLGLEWVLPLGLFVFF
+   1629    1650 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAASSPRLGLEWVLPLGLFVFF
+   1622    1650 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVQSYKGAASSPRLGLEWVLPLGLFVFF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024713725.1_Cpseudohaemulonis     from: 1   to: 856
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    837     856 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAAQVVNYSWLFALAGLALF
+    836     856 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAAAQVVNYSWLFALAGLALF
+    835     856 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGAAAQVVNYSWLFALAGLALF
+    829     856 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSSYEAGAAAQVVNYSWLFALAGLALF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025339494.1_Cduobushaemulonis     from: 1   to: 884
+# HitCount: 6
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    867     884 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AKVVNYSWLLALAGLALF
+    865     884 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAAKVVNYSWLLALAGLALF
+    864     884 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAAAKVVNYSWLLALAGLALF
+    863     884 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGAAAKVVNYSWLLALAGLALF
+    857     884 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSSYEAGAAAKVVNYSWLLALAGLALF
+    853     884 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSAPAVSSYEAGAAAKVVNYSWLLALAGLALF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_025336343.1_Cduobushaemulonis     from: 1   to: 694
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    678     694 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVGIPTVFAVVAGLLAL
+    677     694 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVGIPTVFAVVAGLLAL
+    673     694 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGVKASVGIPTVFAVVAGLLAL
+    672     694 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGVKASVGIPTVFAVVAGLLAL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_024713752.1_Cpseudohaemulonis     from: 1   to: 788
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    772     788 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVGIPTVFAVVAGLLAL
+    771     788 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASVGIPTVFAVVAGLLAL
+    767     788 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGVKASVGIPTVFAVVAGLLAL
+    766     788 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGVKASVGIPTVFAVVAGLLAL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002547764.1_Ctropicalis     from: 1   to: 1405
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1380    1405 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GIAENSTNKIQISFVSFIFSLIVLAV
+   1375    1405 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GVSVIGIAENSTNKIQISFVSFIFSLIVLAV
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_714203.1_Calbicans     from: 1   to: 1249
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1233    1249 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GKVLTLSVLSSMVVVFL
+   1226    1249 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGKLLNGKVLTLSVLSSMVVVFL
+   1225    1249 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSGKLLNGKVLTLSVLSSMVVVFL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_711686.2_Calbicans     from: 1   to: 1562
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1546    1562 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GKSAFIAIILTTFIGFI
+   1544    1562 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVGKSAFIAIILTTFIGFI
+   1539    1562 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGSKFSVGKSAFIAIILTTFIGFI
+   1538    1562 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NSGSKFSVGKSAFIAIILTTFIGFI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_001386047.2_Sstipitis     from: 1   to: 392
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    374     392 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NSVQTDCLAATIYTTTFTT
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_001387240.2_Sstipitis     from: 1   to: 397
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    378     397 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . STSTITAGCISNPTNTITST
+    370     397 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DKSNSWFTSTSTITAGCISNPTNTITST
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_718630.1_Calbicans     from: 1   to: 1526
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1506    1526 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NISNKYLKFLGTVVSILILLI
+   1502    1526 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSTNISNKYLKFLGTVVSILILLI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_717330.2_Calbicans     from: 1   to: 941
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    917     941 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSNKESIENIKYLALVVFGLMMFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_001386404.2_Sstipitis     from: 1   to: 555
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    537     555 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . STANSQTTITSTWTGTFTT
+    529     555 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DTVVVEVPSTANSQTTITSTWTGTFTT
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_714246.2_Calbicans     from: 1   to: 1085
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1062    1085 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NSGNHIKFTLFNGLLIGLVPIVFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002418802.1_Cdubliniensis     from: 1   to: 1277
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1254    1277 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NSGNHIKFTLFNGLLIGLISIVFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002421924.1_Cdubliniensis     from: 1   to: 945
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    921     945 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSNKEPIENIKYLALVVFGLMMFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002421951.1_Cdubliniensis     from: 1   to: 943
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    919     943 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSNKEPIENIKYLALVVFGLMMFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002421505.1_Cdubliniensis     from: 1   to: 2113
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   2097    2113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GTSVLIAAILTIFIGFI
+   2095    2113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVGTSVLIAAILTIFIGFI
+   2090    2113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGSKFSVGTSVLIAAILTIFIGFI
+   2089    2113 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NSGSKFSVGTSVLIAAILTIFIGFI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002420471.1_Cdubliniensis     from: 1   to: 940
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    922     940 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVGKTMLFGFLATVFVLFI
+    920     940 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NVSVGKTMLFGFLATVFVLFI
+    917     940 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSSNVSVGKTMLFGFLATVFVLFI
+    916     940 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSSNVSVGKTMLFGFLATVFVLFI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002421668.1_Cdubliniensis     from: 1   to: 1433
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1413    1433 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NISTKHFKFMGIVVSILILFV
+   1409    1433 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSTNISTKHFKFMGIVVSILILFV
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_715137.2_Calbicans     from: 1   to: 941
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    917     941 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSNKESIENIKYLTLVVFGLMMFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002421681.1_Cdubliniensis     from: 1   to: 1227
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1205    1227 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVVPLTRTVIVFVLLAISVVFML
+   1204    1227 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSVVPLTRTVIVFVLLAISVVFML
+   1203    1227 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGSVVPLTRTVIVFVLLAISVVFML
+   1198    1227 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SLVVKSGSVVPLTRTVIVFVLLAISVVFML
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002420246.1_Cdubliniensis     from: 1   to: 1279
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1255    1279 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSNQLSIENIKYLVLVVFGLLMVM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_715535.1_Calbicans     from: 1   to: 1308
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1284    1308 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSNQLSIENIKYLILVVFGLMMIM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002546360.1_Ctropicalis     from: 1   to: 1952
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1935    1952 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . STGSIMFGIVYILMVAIF
+   1929    1952 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGAMKYSTGSIMFGIVYILMVAIF
+   1922    1952 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVVIPAENGAMKYSTGSIMFGIVYILMVAIF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_717969.1_Calbicans     from: 1   to: 1225
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1203    1225 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SVVLLIRPVMIFVFLAICVVIML
+   1201    1225 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SESVVLLIRPVMIFVFLAICVVIML
+   1199    1225 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SKSESVVLLIRPVMIFVFLAICVVIML
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_714201.2_Calbicans     from: 1   to: 714
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    696     714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SIGMTFMISGFATMFALFM
+    691     714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSSKLSIGMTFMISGFATMFALFM
+    690     714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSSKLSIGMTFMISGFATMFALFM
+    683     714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GEVIPNANGSSKLSIGMTFMISGFATMFALFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002420375.1_Cdubliniensis     from: 1   to: 649
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    633     649 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NLSFIISGCAIILGLFM
+    626     649 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSSKLSINLSFIISGCAIILGLFM
+    625     649 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSSKLSINLSFIISGCAIILGLFM
+    618     649 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GEVIPNANGSSKLSINLSFIISGCAIILGLFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002547620.1_Ctropicalis     from: 1   to: 1689
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1673    1689 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGSLVFGLLLSAMISFF
+   1671    1689 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . STGGSLVFGLLLSAMISFF
+   1665    1689 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGGIKYSTGGSLVFGLLLSAMISFF
+   1658    1689 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AIVLPAENGGIKYSTGGSLVFGLLLSAMISFF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002545452.1_Ctropicalis     from: 1   to: 1383
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1362    1383 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NIANILKTTLIEWVISILILIM
+   1356    1383 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GVSTLGNIANILKTTLIEWVISILILIM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002550128.1_Ctropicalis     from: 1   to: 1230
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1214    1230 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SISVLSVLLASYLFLAY
+   1212    1230 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . CKSISVLSVLLASYLFLAY
+   1200    1230 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . DSSTEYVNNCPECKSISVLSVLLASYLFLAY
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_001386602.2_Sstipitis     from: 1   to: 382
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    366     382 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NTVIGTSISWYTSSSLI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_001385681.2_Sstipitis     from: 1   to: 2303
+# HitCount: 6
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   2287    2303 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NKSLVIAIISIFTIFAI
+   2283    2303 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SIVSNKSLVIAIISIFTIFAI
+   2281    2303 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AASIVSNKSLVIAIISIFTIFAI
+   2280    2303 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAASIVSNKSLVIAIISIFTIFAI
+   2279    2303 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGAASIVSNKSLVIAIISIFTIFAI
+   2273    2303 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SAAPVEGGAASIVSNKSLVIAIISIFTIFAI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_722183.2_Calbicans     from: 1   to: 919
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    903     919 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GKSILFGLIVSMVVLFM
+    898     919 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SIVTGGKSILFGLIVSMVVLFM
+    896     919 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSSIVTGGKSILFGLIVSMVVLFM
+    895     919 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NGSSIVTGGKSILFGLIVSMVVLFM
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_001523105.1_Lelongisporus     from: 1   to: 3496
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   3480    3496 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GISILVTFIISFFIIIV
+   3474    3496 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NKAQRTGISILVTFIISFFIIIV
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_003678549.1_Ncastellii     from: 1   to: 773
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    751     773 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGSRYLMNNFVVYFVGLLFLGLV
+    750     773 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGSRYLMNNFVVYFVGLLFLGLV
+    749     773 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSGSRYLMNNFVVYFVGLLFLGLV
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002547891.1_Ctropicalis     from: 1   to: 669
+# HitCount: 10
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    650     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NTVYGVEFLSAIAIVFALVF
+    646     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGAMNTVYGVEFLSAIAIVFALVF
+    645     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAGAMNTVYGVEFLSAIAIVFALVF
+    644     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AAAGAMNTVYGVEFLSAIAIVFALVF
+    643     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SAAAGAMNTVYGVEFLSAIAIVFALVF
+    642     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSAAAGAMNTVYGVEFLSAIAIVFALVF
+    641     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSSAAAGAMNTVYGVEFLSAIAIVFALVF
+    640     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSSSAAAGAMNTVYGVEFLSAIAIVFALVF
+    639     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSSSSAAAGAMNTVYGVEFLSAIAIVFALVF
+    638     669 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSSSSSAAAGAMNTVYGVEFLSAIAIVFALVF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002614829.1_Clusitaniae     from: 1   to: 702
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+    680     702 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GGANFNHVSIFITLVSIFNFFLY
+    675     702 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SISVTGGANFNHVSIFITLVSIFNFFLY
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002419002.1_Cdubliniensis     from: 1   to: 1268
+# HitCount: 2
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1244    1268 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGAINSIYSSIELLCAVTAIMALIF
+   1243    1268 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NAGAINSIYSSIELLCAVTAIMALIF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_002547904.1_Ctropicalis     from: 1   to: 1038
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1017    1038 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NSSYIIKIPLISLVIVFFVWFI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_447567.2_Cglabrata     from: 1   to: 1771
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1747    1771 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSRLTKTATFVKFILGITVLITIL
+   1746    1771 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SAGSRLTKTATFVKFILGITVLITIL
+   1745    1771 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NSAGSRLTKTATFVKFILGITVLITIL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: XP_001383953.2_Sstipitis     from: 1   to: 1452
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1436    1452 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSVYFASILCLIFSLYA
+   1435    1452 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASSVYFASILCLIFSLYA
+   1434    1452 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GASSVYFASILCLIFSLYA
+   1428    1452 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGATLIGASSVYFASILCLIFSLYA
+   1427    1452 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGATLIGASSVYFASILCLIFSLYA
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: B9J08_004098_Cauris     from: 1   to: 1247
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1227    1247 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGSLPRYSLELLLPLGLFALF
+   1226    1247 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAGSLPRYSLELLLPLGLFALF
+   1219    1247 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ATVSTYEGAGSLPRYSLELLLPLGLFALF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: CLUG_05233_Clusitaniae     from: 1   to: 1442
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1419    1442 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AGGTRFKRTTGFAALLSLLAIFLL
+   1417    1442 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SIAGGTRFKRTTGFAALLSLLAIFLL
+   1415    1442 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ATSIAGGTRFKRTTGFAALLSLLAIFLL
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: CPAR2_600430_Cparadoxus     from: 1   to: 1429
+# HitCount: 3
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1408    1429 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAVTKVSSVTSIIVCLVMLIAF
+   1407    1429 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SGAVTKVSSVTSIIVCLVMLIAF
+   1406    1429 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSGAVTKVSSVTSIIVCLVMLIAF
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: CPAR2_806390_Cparadoxus     from: 1   to: 1640
+# HitCount: 4
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1620    1640 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SSSNFLSITFLIASILLSMLI
+   1619    1640 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . ASSSNFLSITFLIASILLSMLI
+   1618    1640 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . SASSSNFLSITFLIASILLSMLI
+   1617    1640 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GSASSSNFLSITFLIASILLSMLI
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: CPAR2_806410_Cparadoxus     from: 1   to: 1671
+# HitCount: 1
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1649    1671 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GTGAITKYSTFVGVLASLIFVMV
+
+#---------------------------------------
+#---------------------------------------
+#=======================================
+#
+# Sequence: CPAR2_806420_Cparadoxus     from: 1   to: 1714
+# HitCount: 5
+#
+# Pattern_name Mismatch Pattern
+# pattern             0 [GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>
+#
+#=======================================
+
+  Start     End Pattern                                                             Mismatch Sequence
+   1698    1714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NKVLISVAGILAAYAMV
+   1692    1714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AFSFKPNKVLISVAGILAAYAMV
+   1690    1714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . NAAFSFKPNKVLISVAGILAAYAMV
+   1684    1714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . AVSELENAAFSFKPNKVLISVAGILAAYAMV
+   1683    1714 pattern:[GNSDAC]-[GASVIETKDLF]-[GASV]-X(4,19)-[FILMVAGPSTCYWN](10)>        . GAVSELENAAFSFKPNKVLISVAGILAAYAMV
+
+#---------------------------------------
+#---------------------------------------
+
+#---------------------------------------
+# Total_sequences: 110
+# Total_length: 128374
+# Reported_sequences: 85
+# Reported_hitcount: 282
+#---------------------------------------

@@ -7,7 +7,7 @@ XP_028889033.1_homologs_table.tsv | Table showing the homologs of the query prot
 XP_028892406_homologs.fasta | Homologs for Rachel's protein | BLAST identified | RS/2019.12
 Species_Tree_Seq.fasta | Concatednate single gene family sequences to infer species relationship | See notes below | LFS/2020
 speciestree | Species tree inferred from the sequences above | See notes below | LFS/2020
-XP_028889033_homologs_combine.fasta | Homologs for Lindsey's protein, based on blast against fungiDB AND refseq_protein | BLAST identified | HB/2020
+XP_028889033_homologs_combine.fasta | Homologs for Lindsey's protein, based on blast against fungiDB AND refseq_protein, with _D. rugosa_ sequences removed | BLAST identified | HB/2020
 20200709-species-tree.nwk | Species tree for the species included in the above file | Manually written based on the tree from Shen et al 2018 Cell | HB/2020
 20200710-species-tree-alternative.nwk | Alternative topology with _D. rugosa_ placed as an outgroup to _C. albicans_ and _C. auris | See `output/gene-tree/README.md` for detals | HB/2020
 20200716-species-tree.nwk | Removed _D. rugosa_ from the 20200709 species tree | | HB/2020
