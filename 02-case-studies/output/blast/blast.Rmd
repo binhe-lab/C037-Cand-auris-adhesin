@@ -29,8 +29,9 @@ Some of the identified homologs have less than 500 amino acids. I want to know i
 fungidb <- read_tsv("XP_028889033_homologs_fungidb_table.tsv", col_types = "cccddcccdcc")
 # plot protein length as a function of e-value
 fungidb %>% 
-  ggplot(aes(x = -log10(e_value), y = log2(length), col = (length > 500))) + geom_point()
-ggsave("20200701-XP_028889033-homologs-e-value-by-length.png", width = 5, height = 5)
+  ggplot(aes(x = -log10(e_value), y = log2(length), col = (length > 500))) + geom_point() +
+  theme(legend.position = "bottom")
+ggsave("20200701-XP_028889033-homologs-e-value-by-length.png", width = 3, height = 3)
 ```
 Based on the results, I will remove the sequences that are shorter than 500 amino acids.
 

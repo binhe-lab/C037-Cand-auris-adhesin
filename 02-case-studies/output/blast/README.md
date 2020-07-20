@@ -28,9 +28,10 @@ date: 2020-07-01
 Used the beta version of the new site on 2020-07-01
 
 - Used first 560 aa of XP_028889033 as query, e-value cutoff set to 1e-5, low complexity on, and limit the organisms to the CUG clade, _S. cerevisiae_, _C. glabrata_ and _S. pombe_
-- Downloaded 97 sequences along with a table with meta information.
+- Downloaded 95 sequences along with a table with meta information.
 - After examining the meta data, I noticed that some sequences are much shorter than others. I then plotted protein length as a function of e-value, both in log scales, and it became apparent that those sequences below 500 amino acids are the ones with the lowest e-values. I thus removed them by printing a list of gene IDs, and used the `extract_fasta.py` program to output the filtered list.
-    ![length-vs-e-value](20200701-XP_028889033-homologs-e-value-by-length.png)
+    <img src="20200701-XP_028889033-homologs-e-value-by-length.png" width="480">
+    <!--![length-vs-e-value](20200701-XP_028889033-homologs-e-value-by-length.png)-->
 
 ### Retrieve ref_protein ID for FungiDB hits
 ```bash

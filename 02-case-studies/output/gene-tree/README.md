@@ -28,6 +28,9 @@ _Approach_
 
 1. Edit the alignment to make the gene names compatible with Notung's postfix format, i.e. geneName_speciesName.
 
+### 2020-06-28 [HB] Learn to use RAxML
+See `00-misc-doc/2020-06-28-learn-to-use-RAxML.md` for details
+
 ### 2020-07-06 [HB] alignment
 See `20200706-raxml-hb`
 - After constructing the clustalo alignment, I found one of the sequences jump out as being poorly aligned (XP_025344407.1 from _C. haemuloni_). However, upon checking its blast e-value, I found it aligne with the querry very well, with 5e-149 e-value, 56% query coverage and 77.5% identity. I then discovered the issue: this sequence appears to be the single outlier in that the match in the subject sequence is not in the N-terminus, but in the middle of this unusally long protein (~4400 aa, with most of the other sequences between 328-3300, with median of 940.5 aa and 90% percentile at 1912.5 aa). Since my truncate and align program first truncates each protein at the 500 aa mark, it is not surprising that this sequence would fail to align. To correct this problem, I deleted the first 900 aa of this sequence and saved the new file as `XP_028889033_homologs_combine_edited.fasta` and reran the `truncate-align.sh` program with this file as input.
