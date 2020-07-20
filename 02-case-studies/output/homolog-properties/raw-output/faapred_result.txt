@@ -104,7 +104,7 @@ XP_001383953.2_Sstipitis	1.7574278	Adhesin
 XP_445977.1_Cglabrata	0.36653403	Adhesin
 B9J08_004098_Cauris	0.15825754	Adhesin
 CLUG_05233_Clusitaniae	-0.035072296	Adhesin
-CPAR2_600430_Cparadoxus	-0.17956884	Adhesin
-CPAR2_806390_Cparadoxus	0.10742111	Adhesin
-CPAR2_806410_Cparadoxus	0.75661206	Adhesin
-CPAR2_806420_Cparadoxus	-0.25005653	Adhesin
+CPAR2_600430_Cparapsilosis	-0.17956884	Adhesin
+CPAR2_806390_Cparapsilosis	0.10742111	Adhesin
+CPAR2_806410_Cparapsilosis	0.75661206	Adhesin
+CPAR2_806420_Cparapsilosis	-0.25005653	Adhesin

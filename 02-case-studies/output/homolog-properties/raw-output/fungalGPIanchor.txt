@@ -1415,7 +1415,7 @@
 #---------------------------------------
 #=======================================
 #
-# Sequence: CPAR2_600430_Cparadoxus     from: 1   to: 1429
+# Sequence: CPAR2_600430_Cparapsilosis     from: 1   to: 1429
 # HitCount: 3
 #
 # Pattern_name Mismatch Pattern
@@ -1432,7 +1432,7 @@
 #---------------------------------------
 #=======================================
 #
-# Sequence: CPAR2_806390_Cparadoxus     from: 1   to: 1640
+# Sequence: CPAR2_806390_Cparapsilosis     from: 1   to: 1640
 # HitCount: 4
 #
 # Pattern_name Mismatch Pattern
@@ -1450,7 +1450,7 @@
 #---------------------------------------
 #=======================================
 #
-# Sequence: CPAR2_806410_Cparadoxus     from: 1   to: 1671
+# Sequence: CPAR2_806410_Cparapsilosis     from: 1   to: 1671
 # HitCount: 1
 #
 # Pattern_name Mismatch Pattern
@@ -1465,7 +1465,7 @@
 #---------------------------------------
 #=======================================
 #
-# Sequence: CPAR2_806420_Cparadoxus     from: 1   to: 1714
+# Sequence: CPAR2_806420_Cparapsilosis     from: 1   to: 1714
 # HitCount: 5
 #
 # Pattern_name Mismatch Pattern

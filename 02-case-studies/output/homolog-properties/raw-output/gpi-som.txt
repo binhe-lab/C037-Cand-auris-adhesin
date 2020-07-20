@@ -316,14 +316,14 @@ seq104 x:15 y:9 map:G omega:30 oq:75
 >CLUG_05233_Clusitaniae  [Best match for cleavage site at C-29]
 seq105 x:19 y:9 map:G omega:29 oq:75
 
->CPAR2_600430_Cparadoxus  [Best match for cleavage site at C-16]
+>CPAR2_600430_Cparapsilosis  [Best match for cleavage site at C-16]
 seq106 x:28 y:2 map:G omega:16 oq:66
 
->CPAR2_806390_Cparadoxus  [Best match for cleavage site at C-23]
+>CPAR2_806390_Cparapsilosis  [Best match for cleavage site at C-23]
 seq107 x:18 y:24 map:G omega:23 oq:83
 
->CPAR2_806410_Cparadoxus  [Best match for cleavage site at C-23]
+>CPAR2_806410_Cparapsilosis  [Best match for cleavage site at C-23]
 seq108 x:31 y:20 map:G omega:23 oq:41
 
->CPAR2_806420_Cparadoxus  [Best match for cleavage site at C-25]
+>CPAR2_806420_Cparapsilosis  [Best match for cleavage site at C-25]
 seq109 x:33 y:22 map:G omega:25 oq:91

@@ -6726,10 +6726,10 @@ Signal anchor probability: 0.006
 Max cleavage site probability: 0.462 between pos. 20 and 21
 
 ----------------------------------------------------------------------
->CPAR2_600430_Cparadoxus  [Best match for cleavage site at C-16]
+>CPAR2_600430_Cparapsilosis  [Best match for cleavage site at C-16]
 
 SignalP-HMM result:
->CPAR2_600430_Cparadoxus
+>CPAR2_600430_Cparapsilosis
 # pos  aa    C       S      n-reg   h-reg   c-reg
     1   M   0.000   0.999   0.999   0.000   0.000
     2   Q   0.000   1.000   1.000   0.000   0.000
@@ -6801,17 +6801,17 @@ SignalP-HMM result:
    68   N   0.000   0.000   0.000   0.000   0.000
    69   G   0.000   0.000   0.000   0.000   0.000
    70   G   0.000   0.000   0.000   0.000   0.000
->CPAR2_600430_Cparadoxus
+>CPAR2_600430_Cparapsilosis
 Prediction: Signal peptide
 Signal peptide probability: 0.999
 Signal anchor probability: 0.001
 Max cleavage site probability: 0.951 between pos. 20 and 21
 
 ----------------------------------------------------------------------
->CPAR2_806390_Cparadoxus  [Best match for cleavage site at C-23]
+>CPAR2_806390_Cparapsilosis  [Best match for cleavage site at C-23]
 
 SignalP-HMM result:
->CPAR2_806390_Cparadoxus
+>CPAR2_806390_Cparapsilosis
 # pos  aa    C       S      n-reg   h-reg   c-reg
     1   M   0.000   0.996   0.996   0.000   0.000
     2   Q   0.000   1.000   1.000   0.000   0.000
@@ -6883,17 +6883,17 @@ SignalP-HMM result:
    68   G   0.000   0.000   0.000   0.000   0.000
    69   I   0.000   0.000   0.000   0.000   0.000
    70   F   0.000   0.000   0.000   0.000   0.000
->CPAR2_806390_Cparadoxus
+>CPAR2_806390_Cparapsilosis
 Prediction: Signal peptide
 Signal peptide probability: 0.996
 Signal anchor probability: 0.004
 Max cleavage site probability: 0.847 between pos. 20 and 21
 
 ----------------------------------------------------------------------
->CPAR2_806410_Cparadoxus  [Best match for cleavage site at C-23]
+>CPAR2_806410_Cparapsilosis  [Best match for cleavage site at C-23]
 
 SignalP-HMM result:
->CPAR2_806410_Cparadoxus
+>CPAR2_806410_Cparapsilosis
 # pos  aa    C       S      n-reg   h-reg   c-reg
     1   M   0.000   0.895   0.895   0.000   0.000
     2   M   0.000   0.971   0.971   0.000   0.000
@@ -6965,17 +6965,17 @@ SignalP-HMM result:
    68   G   0.000   0.000   0.000   0.000   0.000
    69   L   0.000   0.000   0.000   0.000   0.000
    70   Y   0.000   0.000   0.000   0.000   0.000
->CPAR2_806410_Cparadoxus
+>CPAR2_806410_Cparapsilosis
 Prediction: Signal peptide
 Signal peptide probability: 0.895
 Signal anchor probability: 0.075
 Max cleavage site probability: 0.682 between pos. 19 and 20
 
 ----------------------------------------------------------------------
->CPAR2_806420_Cparadoxus  [Best match for cleavage site at C-25]
+>CPAR2_806420_Cparapsilosis  [Best match for cleavage site at C-25]
 
 SignalP-HMM result:
->CPAR2_806420_Cparadoxus
+>CPAR2_806420_Cparapsilosis
 # pos  aa    C       S      n-reg   h-reg   c-reg
     1   M   0.000   0.976   0.976   0.000   0.000
     2   L   0.000   0.985   0.985   0.000   0.000
@@ -7047,7 +7047,7 @@ SignalP-HMM result:
    68   G   0.000   0.000   0.000   0.000   0.000
    69   F   0.000   0.000   0.000   0.000   0.000
    70   F   0.000   0.000   0.000   0.000   0.000
->CPAR2_806420_Cparadoxus
+>CPAR2_806420_Cparapsilosis
 Prediction: Signal peptide
 Signal peptide probability: 0.976
 Signal anchor probability: 0.009
