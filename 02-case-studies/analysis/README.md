@@ -6,5 +6,5 @@ This README serves the dual purpose of documenting any analyses in this folder a
 | blast.Rmd | BLAST to identify homologs for case gene | symbolic link points to `output/blast/` folder | HB/2020 |
 
 ## Notes
-
-Moved notes to their respective folders, e.g. `output/gene-tree/`
+Notes about specific analyses are often stored in the README files in their respective folder, e.g. `output/gene-tree/`
+Here I store notes and ideas not easily classified under any output folder.

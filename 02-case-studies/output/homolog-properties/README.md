@@ -8,7 +8,7 @@ date: 2020-07-17
 The overall question in the phylogenetic analysis of the protein family is to understand where did this putative adhesin evolve from, whether its homologs in other species also possess the adhesin properties and how has the protein family expanded or contracted -- whether there is any correlation between the trend of family expansion and pathogenecity potential of the species. My blast analysis was aimed at collecting homologs for this family from related commensal and free-living species. The gene tree reconstruction was to infer the evolutionary relationship between those sequences to infer the duplication and loss events in each species. Now I'd like to collect adhesin related properties for all the homologs, including FungalRV prediction, FaaPred, GPI-anchor & Signal peptide and MEME/XSTREM (for repeats). Once these statistics are gathered, the goal is to combine them in a data frame and plot them using the ggtree package.
 
 ## Data
-`XP_028889033_homologs.fasta` is copied from `../blast/XP_028889033_homologs_combine.fasta` but edited to remove all _D. rugosa_ sequences.
+`XP_028889033_homologs.fasta` is copied from `../blast/XP_028889033_homologs_combine.fasta` but edited to remove all _D. rugosa_ sequences. I also replaced the hyperlinked homolog file in the `02-case-study/data` folder with this version.
 
 ## Analysis
 ### FungalRV
@@ -37,4 +37,16 @@ My understanding is that for a protein to be "GPI-anchored", it needs to have tw
 
 86 / 110 submitted sequences were found to encode a C-terminal GPI-signal sequence, and 83 of them also have a predicted N-terminal signal peptide.
 
-### 
+### $\Beta$-aggregation sequence counts and intervals
+Jan and Rachel's talks have shown that a $\Beta$ aggregation signature motif, in the form of "G[VI]{1,4}T{0,4}", is present in XP_028889033 as well as two other homologs. The goal here is to identify all such motifs among all homologs. Here I'll use the same `fuzzpro` program used above to identify GPIanchor to search for this pattern.
+
+I also got Rachel's help to run TANGO locally on all the sequences. See `01-global-adhesin-prediction/output/TANGO` for details. The input file is stored as `XP_028889033_homologs_TANGO.bat` and the output is a zip file in `raw-output/`. The script to parse the result is in `01-global-adhesin-prediction/script/R%20TANGO_summaries.Rmd`.
+
+To get some quick result, I wrote a simple script called `myfuzzpro.py`, which mimics the `fuzzprot` program in the EMBOSS suite. using this tool with the regular expression pattern derived from both Jan and Rachel's presentation -- `G?[AVI][VI]{3}T[TA]` -- I was able to export the locations of the matches within each of the 110 sequences. I added an option in the script so that the output can be formatted for the [feature map](http://rsat-tagc.univ-mrs.fr/rsat/feature-map.cgi) program as part of the RSAT suite of online apps. The program is able to produce a visual representation of any arbitrary features, which is quite useful.
+
+In order to make the results more useful, I need to order them based on the order they appear in the gene tree. To do so, I first manually edited a gene tree newick format file by removing all branch lengths, parentheses and other characters that are not part of the sequence names. After converting the file to a list of sequence names by line, I reordered them manually to match the order they appear in the gene tree. The result is `RAxML_bipartitions.muscle_4005290_rooted_FigTree_order.txt`. I then sorted the input file based on this order using the same `extract_fasta.py` script I wrote before, and ran the `myfuzzprot` program on the output.
+
+```bash
+python extract_fasta.py XP_028889033_homologs.fasta RAxML_bipartitions.muscle_4005290_rooted_FigTree_order.txt
+python myfuzzpro.py 
+```
