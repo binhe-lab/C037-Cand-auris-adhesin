@@ -37,6 +37,8 @@ Phylogenetic analysis of the homologs of XP_028889033, including BLAST identifyi
 # Todo and next meeting topic
 - Make sure that the Nakaseomyces species proteins are included in my BLAST database -- is it true that only _C. glabrata_ contains homologs of the query sequence?
 - Explore alternative (bootstrap) trees to see if the position of the _C. lusitaniae_ sequences and the split between the _C. auris_ clade and _C. albicans_ clade are present in the majority of the alternative trees.
+    - Done, no obvious difference in the split between _C. albicans_ and _C. auris_ clade, or the placement of the _C. lusitaniae_ group.
+    - Plus, the rearrangement function in Notung is designed to explore alternative topologies by swapping sub-trees connected by poorly supported (by bootstrap) bifurcations.
 - Finish GPI-anchor slide
 - Parse TANGO results to identify alternative beta-aggregation motifs in the _C. albicans_ group sequences.
 - lower priority: predict N- and O-glycosylation sites
