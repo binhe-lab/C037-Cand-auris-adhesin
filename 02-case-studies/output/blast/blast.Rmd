@@ -167,7 +167,7 @@ Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not 
 gryc2refseq <- read_tsv("XP_028889033_gryc-refprot-blast.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
 match.gryc <- gryc2refseq %>% filter(perc_identity > 90) %>% select(-score, -bitscore, -e_value)
 ```
-There are a total of `r length(unique(gryc2refseq$query_id))` queries submitted, among which `r nrow(match.gryc)` are redundant with the refseq hits, which are `r match.gryc`. The rest are new entries. To include them in the gene tree reconstruction, we need to get their gene_id and species names.
+There are a total of `r length(unique(gryc2refseq$query_id))` queries submitted, among which `r nrow(match.gryc)` are redundant with the refseq hits, which are `r match.gryc` The rest are new entries, although some of them will be excluded (see analysis above). In the end we will just add 5 sequences to the total list.
 
 ### Merge
 In order to make it easier for the downstream tree building and reconciliation, I would like to programmatically reformat the sequence names to conform to the Notung post-script standard, i.e. SeqID_SpeciesName.
@@ -175,17 +175,18 @@ In order to make it easier for the downstream tree building and reconciliation, 
 Now let's do the renaming and gather some species/strain information as well.
 ```{r refseq_species}
 # use rentrez function to get the organism information
-tmp <- entrez_summary(db = "protein", id = refseq$accession)
+tmp <- entrez_summary(db = "protein", id = refseq0$accession)
 refseq.orgn.extract <- extract_from_esummary(tmp, elements = c("organism","strain"), simplify = FALSE)
 refseq.orgn <- do.call(rbind, lapply(refseq.orgn.extract, unlist))
 # Rename the refseq names. The goal is to have SeqID_Species, like XP_028889033_Cauris
 # what we have now is a two word species name, which we will shorten to a capital first letter of 
 # the first word followed by the entire second word
-refseq1 <- cbind(refseq.orgn, refseq) %>% 
+refseq1 <- cbind(refseq.orgn, refseq0) %>% 
   mutate(organism = word(str_replace_all(organism, "[\\x5B\\x5D]", ""), 1, 2),
          # \\x5B\\x5D are Hexadecimal representations of the square brackets
          species_id = paste0(str_sub(organism, 1, 1), word(organism, 2,2))) %>%
   rename(species = organism) %>% 
+  filter(species_id != "Drugosa") %>% # remove D. rugosa sequences
   select(accession, species, species_id, everything())
 ```
 
@@ -193,6 +194,7 @@ refseq1 <- cbind(refseq.orgn, refseq) %>%
 ```{r merge}
 # refseq hit sequences and their names
 refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
+refseqdb.list <- refseq1$accession
 refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
 # below I verified that the names have the correct order
 # names(refseqdb.names) <- refseq1$accession
@@ -210,7 +212,7 @@ gryc.list <- gryc1$ori_id
 gryc.names <- gryc1 %>% mutate(name = paste(id, species_id, sep = "_")) %>% pull(name)
 
 # sequences to be added to the 
-combined.seq <- c(refseqdb.seq, fungidb.seq[fdb.list], gryc.seq[gryc.list])
+combined.seq <- c(refseqdb.seq[refseqdb.list], fungidb.seq[fdb.list], gryc.seq[gryc.list])
 combined.names <- c(refseqdb.names, fdb.names, gryc.names)
 write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine.fasta")
 ```
