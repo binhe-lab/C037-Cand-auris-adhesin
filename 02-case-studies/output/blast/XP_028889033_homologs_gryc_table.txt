@@ -1,0 +1,16 @@
+id	ori_id	species	description	length	max_bit_score	query_cover	min_e_value	max_ident
+XP_003678549	NCAS_0J02330-1_1	Naumovozyma castellii CBS 4309	NULL	773	82.8	59.481	7.00E-16	27.869
+CANI0s18e03223g	BN122_CANI0s18e03223g1_1	Nakaseomyces nivariensis CBS 9983	similar to uniprot|Q6FQC7|Q6FQC7_CANGA Candida glabrata CAGL0I07293g Similarity	393	79	61.677	4.00E-15	29.814
+LAFE0D00122g	LAFE0D00122g1_1	Lachancea fermentati CBS 6772	weakly similar to uniprot|A3LSL7 Scheffersomyces stipitis agglutinin-like protein 2	1347	74.3	61.078	4.00E-13	28.75
+LAFE0A00122g	LAFE0A00122g1_1	Lachancea fermentati CBS 6772	some similarities with uniprot|A3LSL7 Scheffersomyces stipitis agglutinin-like protein 2	673	73.2	62.874	8.00E-13	27.879
+NADE0s05e04136g	BN124_NADE0s05e04136g1_1	Nakaseomyces delphensis CBS 2170	conserved hypothetical protein; partial CDS overlaps gap region;	409	67	63.074	4.00E-11	29.305
+CAGL0I07293g	CAGL0I07293g1_1	Candida glabrata CBS 138	no similarity	1771	68.2	57.884	4.00E-11	28.308
+XP_452176.1	KLLA0B14498g1_1	Kluyveromyces lactis CBS 2359	conserved hypothetical protein	766	63.5	61.277	9.00E-10	27.628
+CAGL0E06600g	CAGL0E06600g1_1	Candida glabrata CBS 138	some similarities with uniprot|P38894 Saccharomyces cerevisiae YHR211w FLO5	965	62	62.275	3.00E-09	28.657
+CACA0s29e00143g	BN121_CACA0s29e00143g1_1	Nakaseomyces castellii CBS 4332	weakly similar to uniprot|A5DD63|A5DD63_PICGU Pichia guilliermondii PGUG_01214 Putative uncharacterized protein	719	55.8	42.715	2.00E-07	30.603
+CACA0s05e11539g	BN121_CACA0s05e11539g1_1	Nakaseomyces castellii CBS 4332	weakly similar to uniprot|Q6FNG1 Candida glabrata CAGL0K00110g	696	55.8	42.914	2.00E-07	30.472
+CABR0s21e03234g	BN119_CABR0s21e03234g1_1	Nakaseomyces bracarensis CBS 10154	weakly similar to uniprot|Q6FUW7 Candida glabrata CAGL0E06600g	892	55.5	63.473	3.00E-07	27.545
+SAKL0C00330g	SAKL0C00330g1_1	Lachancea kluyveri CBS 3082	"weakly similar to uniprot|P40442 Saccharomyces cerevisiae YIL169C Putative protein of unknown function; serine/threonine rich and highly similar to YOL155C, a putative glucan alpha-1,4-glucosidase;transcript is induced in both high and low..."	1269	54.7	36.128	5.00E-07	32.632
+CAGL0L00227g	CAGL0L00227g1_1	Candida glabrata CBS 138	no similarity	3241	52	47.106	4.00E-06	24.701
+CABR0s31e03938g	BN119_CABR0s31e03938g1_1	Nakaseomyces bracarensis CBS 10154	similar to uniprot|Q6FQC7 Candida glabrata CAGL0I07293g	892	50.8	62.076	5.00E-06	25.538
+CANI0s04e00110g	BN122_CANI0s04e00110g1_1	Nakaseomyces nivariensis CBS 9983	weakly similar to uniprot|Q6FUW7 Candida glabrata CAGL0E06600g	918	51.2	58.882	7.00E-06	28.616

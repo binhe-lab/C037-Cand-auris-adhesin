@@ -20,7 +20,13 @@ date: 2020-07-01
 | XP_028889033_fungidb-refprot-blast.txt | fungiDB hits blasted against the refseq_protein database to identify matching sequences | NCBI BLAST | HB/2020 |
 | XP_028889033_homologs_refprot.fasta | XP_028889033 blast against refseq_protein database | NCBI refseq_protein | HB/2020 |
 | XP_028889033_homologs_refprot_tab.csv | Accompanying "description" table for the file above | NCBI BLAST | HB/2020 |
+| XP_028889033_homologs_refprot_length.txt | protein length | `bioawk -c fastx '{print $name, length($seq)}' XP_028889033_homologs_refprot.fasta` | HB/2020 |
+| XP_028889033_homologs_gryc.fasta | blast identified homologs in the Nakaseomyces group | [GRYC](http://gryc.inra.fr/index.php) | HB/2020 |
+| XP_028889033_homologs_gryc_blastp.out | accompanying blast alignment output for the above file | GRYC | HB/2020 |
+| XP_028889033_homologs_gryc_table.txt | accompanying meta data for the above file | GRYC html, manually edited | HB/2020 |
 | 20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png | screenshot of the taxonomy distribution of the above blast result | NCBI blast | HB/2020 |
+| 20200701-XP_028889033-homologs-e-value-by-length.png | plot protein length by e-value | see `blast.Rmd` for details | HB/2020 |
+| blast.* and fungidb_* | script and intermediate files for merging the blast hits | see `blast.Rmd` for details | HB/2020 |
 
 # Notes
 ## 2020-07-01 [HB] Repeat BLAST to identify XP_028889033 homologs
@@ -62,3 +68,12 @@ $ cut -f1 fungidb_blast_refseq_protein.txt | sort | uniq | wc -l
     - -outfmt 6: tabular output, no comments
     - -max_target_seqs 1: only output one (best-scoring) match per sequence
     - -num_threads 4: use 4 cpus to perform the search
+
+## 2020-07-22 [HB] Identify homologs in Nakaseomyces
+### Motivation
+The original blast to both the refseq_protein and fungiDB databases yielded no hits in the well represented _S. cerevisiae_ _sensu stricto_ or _sensu lato_ clade. The only hits were in _C. glabrata_ and _N. castellii_. I'm particularly curious why the other Nakaseomyces group species, e.g. _C. bracarensis_, _N. dephensis_ and _C. nivariensis_ had not hits. Turns out even the NCBI nr_protein database doesn't contain any protein entries for the Nakaseomyces -- I verified this by blast'ing Pho4 protein sequence against the nr_protein and limited the organisms to Nakaseomyces. I then found / remembered that the [Genome Resource for Yeast Chromosomes](http://gryc.inra.fr/index.php) site contains the Nakaseomyces genomes. I verified this by repeating the Pho4p blast. I then blast'ed the first 500 a.a. of XP_028889033 in GRYC, selecting the Nakaseomyces (6 sps)as well as _S. cerevisiae_ (1), Lachancea (12), Naumovozyma (1, _N. castellii_), Yarrowia (3 _Y. lipolytica_ strains) 
+
+### Approach
+Got 15 hits from the GRYC blast. Downloaded the fasta sequence and the blast text output. The latter requires a lot of parsing, and there is no option that I can find to change the output format to a table. Instead, I just brutal-forced it -- copy and paste the table on the html page, put it into a text file, and edited it with vim (only 15 rows, not too bad). I also added an ID column to render the sequence ID more in-line with what I have for the other sequences.
+
+I revamped the `blast.Rmd`. In the process of filtering and integrating the new hits, I found that I didn't properly filter the refseq_protein hits with the same length threshold I applied to the fungidb hits. So now I made the analysis consistent with respect to the selection criteria, and removed the _D. rugosa_ sequences (the reason is documented in the `README` files in the `output/gene-tree` folder or subfolders therein). In the end we get 100 sequences in total.
