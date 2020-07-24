@@ -196,9 +196,12 @@ refseq1 <- cbind(refseq.orgn, refseq0) %>%
 refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 refseqdb.list <- refseq1$accession
 refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
-# below I verified that the names have the correct order
-# names(refseqdb.names) <- refseq1$accession
-# refseqdb.names1 <- refseqdb.names[names(refseqdb.seq)]
+# in the "output/gene-tree/README.md", I documented an issue with a particular
+# sequence, XP_025344407.1, which has a long N-terminal part that is not aligned 
+# to any other sequences. the solution is to remove the first 900 a.a. of it
+truncated <- str_sub(refseqdb.seq$XP_025344407.1, start = 901)
+attributes(truncated) <- attributes(refseqdb.seq$XP_025344407.1)
+refseqdb.seq$XP_025344407.1 <- truncated
 
 # sequences to be added to the refseq list from fungidb hits
 fdb.list <- c("B9J08_004098","CLUG_05233",paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
