@@ -31,7 +31,7 @@ fungidb <- read_tsv("XP_028889033_homologs_fungidb_table.tsv", col_types = "cccd
 fungidb %>% 
   ggplot(aes(x = -log10(e_value), y = log2(length), col = (length > 500))) + geom_point() +
   theme(legend.position = "bottom")
-ggsave("20200701-XP_028889033-homologs-e-value-by-length.png", width = 3, height = 3)
+ggsave("20200701-XP_028889033-fungidb-hits-e-value-by-length.png", width = 3, height = 3)
 ```
 Based on the results, I will remove the sequences that are shorter than 500 amino acids.
 
@@ -85,6 +85,7 @@ refseq <- left_join(refseq, refseq.length) %>% select(accession, everything())
 refseq %>% 
   ggplot(aes(x = -log10(e.value), y = log2(length), col = (length > 500))) + geom_point() +
   theme(legend.position = "bottom")
+ggsave("20200723-XP_028889033-refseq-hits-e-value-by-length.png", width = 3, height = 3)
 # The answer is yes. So let's filter these out and show what they are
 refseq0 <- refseq %>% 
   filter(length > 500)
