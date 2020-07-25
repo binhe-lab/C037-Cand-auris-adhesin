@@ -7,14 +7,12 @@ date: 2020-07-17
 ## Overview
 The overall question in the phylogenetic analysis of the protein family is to understand where did this putative adhesin evolve from, whether its homologs in other species also possess the adhesin properties and how has the protein family expanded or contracted -- whether there is any correlation between the trend of family expansion and pathogenecity potential of the species. My blast analysis was aimed at collecting homologs for this family from related commensal and free-living species. The gene tree reconstruction was to infer the evolutionary relationship between those sequences to infer the duplication and loss events in each species. Now I'd like to collect adhesin related properties for all the homologs, including FungalRV prediction, FaaPred, GPI-anchor & Signal peptide and MEME/XSTREM (for repeats). Once these statistics are gathered, the goal is to combine them in a data frame and plot them using the ggtree package.
 
+## Data
+`XP_028889033_homologs.fasta` is copied from `../blast/XP_028889033_homologs_combine.fasta` but edited to remove all _D. rugosa_ sequences. I also replaced the hyperlinked homolog file in the `02-case-study/data` folder with this version.
+
+**Update 2020-07-24**
+A new list of homologs that included more species from the Saccharomycetaceae, and with some previous sequences removed -- mainly those shorter than 500 a.a.  Will repeat all the analyses below with the new homologs list.
 ## Analysis
-| Folder | Content |
-| ------ | ------- |
-| 2020-07-17| version 1 of the analysis|
-| 2020-07-24| version 2, with new homologs in the Saccharomycetaceae family (e.g. Nakaseomyces)|
-
-Below are notes for the original analysis. Updated notes will be in the respective folder.
-
 ### FungalRV
 Submitted the fasta sequence to the [FungalRV server](http://fungalrv.igib.res.in/query.php). The result was downloaded as a tab-delimited table `20200717-fungalRV.txt`.
 
