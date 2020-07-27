@@ -9,3 +9,6 @@ Added TANGO results for each species
   - Same screening method recommended in papers above
   - R function for this in the scripts folder
   - Results in tango_xstream_results.txt under column agg_seqs
+  
+## 26 July 2020
+Added the instruction manual for the downloadable version of TANGO under `TANGO_Instructions.pdf`
