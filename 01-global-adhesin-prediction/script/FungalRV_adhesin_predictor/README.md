@@ -76,3 +76,5 @@ Checking the results in R shows reasonable numbers of predicted adhesins
 # 6 S288C          58   179
 # 7 SC5314        143   290
 ```
+## 2020-07-25 Complile SVM light
+After upgrading to MacOS Catalina, the previously downloaded binary version of `svm_classify` no longer works. Instead, I downloaded the source file and compiled it locally. Things are fine now. Source file location: http://download.joachims.org/svm_light/current/svm_light.tar.gz 

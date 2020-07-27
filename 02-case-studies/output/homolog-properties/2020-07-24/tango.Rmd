@@ -1,0 +1,74 @@
+---
+title: analyze TANGO result for XP_028889033 homologs
+author: Bin He, basad on scripts written by Rachel Smoak
+date: 2020-07-26
+output:
+    html_notebook:
+        toc: yes
+        toc_float: yes
+---
+
+```{r setup}
+
+```
+
+## Define function to extract information from  TANGO results
+
+This function extracts the information of interest from the TANGO output file. It is designed to be used on a single file. Looping through all files in a folder can be easily achieved with `sapply` over a list of files using `list.files`.
+
+```{r extract_tango_info}
+extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 5) {
+    require(tidyverse)
+        tmp <- read_tsv(file = tango_output, col_types = "icddddd") %>% 
+            # a boolean vector for residues above threshold
+            mutate(pass = Aggregation > agg_threshold, )
+        pass.rle <- rle(tmp$pass) # this creates a run length encoding that will be useful for identifying the sub-sequences in a run longer than certain length
+        # --- Explanation ---
+        # this rle object is at the core of this function
+        # an example of the rle looks like
+        #   lengths: int[1:10] 5 19 20 8 1 5 19 6 181 18
+        #   values: logi[1:10] F T  F  T F T F  T F   T
+        #   note that by definition the values will always be T/F interdigited
+        # our goal is to identify the sub-sequences that is defined as a stretch of 
+        # n consecutive positions with a score greater than the cutoff and record the
+        # sub-sequence, its length, start and end position, 90% quantile of the score
+        # --- End of explanation ---
+        # 1. assigns a unique id for each run of events
+        tmp$group <- rep(1:length(pass.rle$lengths), times = pass.rle$lengths)
+        # 2. extract the subsequences
+        agg.seq <- tmp %>% 
+            filter(pass) %>% # drop residues not predicted to have aggregation potential
+            group_by(group) %>% # cluster by the runs
+            summarize(seq = paste0(aa, collapse = ""),
+                      start = min(res), end = max(res), length = n(),
+                      q90 = quantile(Aggregation, probs = 0.9),
+                      .groups = "drop") %>% 
+            mutate(interval = start - lag(end) - 1) %>% 
+            select(-group)
+        return(agg.seq)
+}
+```
+
+## Apply to my XP_028889033 homologs
+```{r apply}
+getwd()
+tango.output.files <- list.files(path = "tango-output", pattern = ".txt|.txt.gz", full.names = T)
+# the read_csv() function used in the custom function can automatically decompress gzipped files
+tango.res <- lapply(tango.output.files, extract_tango)
+names(tango.res) <- gsub(".txt|.txt.gz", "", basename(tango.output.files))
+tango.res.df <- bind_rows(tango.res, .id = "id")
+```
+
+## Cluster motifs by similarity
+Many motifs are similar to each other but are listed differently, such as "GVVIVTT" and "GVIVVTT" etc. Here we try to use string distance matrix method and K-means clustering to group them into sub-groups.
+```{r cluster}
+library(stringdist)
+library(factorextra)
+seqs <- unique(tango.res.df$seq)
+# compute distance matrix between strings using the full Damerau-Levenshtein method
+# reference: https://medium.com/my-datascience-journal/using-string-distance-to-group-text-variables-in-r-aa6d0f9226a6
+motif.dist <- stringdistmatrix(seqs, method = "dl", useNames = TRUE)
+# then we use the kmeans() function to group the motifs
+
+```
+
