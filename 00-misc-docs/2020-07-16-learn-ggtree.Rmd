@@ -1,0 +1,56 @@
+---
+title: "Learn ggtree"
+author: "Bin He"
+date: "7/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reference
+https://guangchuangyu.github.io/ggtree-book/chapter-ggtree.html
+
+## Load library
+```{r load_libraries}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+if (!requireNamespace("treeio", quietly = TRUE))
+    BiocManager::install("treeio")
+if (!requireNamespace("ggtree", quietly = TRUE))
+    BiocManager::install("ggtree")
+library(tidyverse)
+library(treeio)
+library(ggtree)
+```
+
+## Examples
+```{r}
+set.seed(2020-07-16)
+tree <- rtree(50)
+ggtree(tree)
+ggtree(tree, layout="slanted") 
+ggtree(tree, layout="circular")
+ggtree(tree, layout="fan", open.angle=120)
+ggtree(tree, layout="equal_angle")
+ggtree(tree, layout="daylight")
+ggtree(tree, branch.length='none')
+ggtree(tree, branch.length='none', layout='circular')
+ggtree(tree, layout="daylight", branch.length = 'none')
+```
+
+```{r}
+treetext = "(((ADH2:0.1[&&NHX:S=human], ADH1:0.11[&&NHX:S=human]):
+0.05 [&&NHX:S=primates:D=Y:B=100],ADHY:
+0.1[&&NHX:S=nematode],ADHX:0.12 [&&NHX:S=insect]):
+0.1[&&NHX:S=metazoa:D=N],(ADH4:0.09[&&NHX:S=yeast],
+ADH3:0.13[&&NHX:S=yeast], ADH2:0.12[&&NHX:S=yeast],
+ADH1:0.11[&&NHX:S=yeast]):0.1[&&NHX:S=Fungi])[&&NHX:D=N];"
+tree <- read.nhx(textConnection(treetext))
+ggtree(tree) + geom_tiplab() + 
+  geom_label(aes(x=branch, label=S), fill='lightgreen') + 
+  geom_label(aes(label=D), fill='steelblue') + 
+  geom_text(aes(label=B), hjust=-.5)
+```
+

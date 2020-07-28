@@ -9,7 +9,8 @@ output:
 ---
 
 ```{r setup}
-
+library(tidyverse)
+library(cowplot)
 ```
 
 ## Define function to extract information from  TANGO results
@@ -19,33 +20,35 @@ This function extracts the information of interest from the TANGO output file. I
 ```{r extract_tango_info}
 extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 5) {
     require(tidyverse)
-        tmp <- read_tsv(file = tango_output, col_types = "icddddd") %>% 
-            # a boolean vector for residues above threshold
-            mutate(pass = Aggregation > agg_threshold, )
-        pass.rle <- rle(tmp$pass) # this creates a run length encoding that will be useful for identifying the sub-sequences in a run longer than certain length
-        # --- Explanation ---
-        # this rle object is at the core of this function
-        # an example of the rle looks like
-        #   lengths: int[1:10] 5 19 20 8 1 5 19 6 181 18
-        #   values: logi[1:10] F T  F  T F T F  T F   T
-        #   note that by definition the values will always be T/F interdigited
-        # our goal is to identify the sub-sequences that is defined as a stretch of 
-        # n consecutive positions with a score greater than the cutoff and record the
-        # sub-sequence, its length, start and end position, 90% quantile of the score
-        # --- End of explanation ---
-        # 1. assigns a unique id for each run of events
-        tmp$group <- rep(1:length(pass.rle$lengths), times = pass.rle$lengths)
-        # 2. extract the subsequences
-        agg.seq <- tmp %>% 
-            filter(pass) %>% # drop residues not predicted to have aggregation potential
-            group_by(group) %>% # cluster by the runs
-            summarize(seq = paste0(aa, collapse = ""),
-                      start = min(res), end = max(res), length = n(),
-                      q90 = quantile(Aggregation, probs = 0.9),
-                      .groups = "drop") %>% 
-            mutate(interval = start - lag(end) - 1) %>% 
-            select(-group)
-        return(agg.seq)
+    tmp <- read_tsv(file = tango_output, col_types = "icddddd") %>% 
+        # a boolean vector for residues above threshold
+        mutate(pass = Aggregation > agg_threshold)
+    pass.rle <- rle(tmp$pass) # this creates a run length encoding that will be useful for identifying the sub-sequences in a run longer than certain length
+    # --- Explanation ---
+    # this rle object is at the core of this function
+    # an example of the rle looks like
+    #   lengths: int[1:10] 5 19 20 8 1 5 19 6 181 18
+    #   values: logi[1:10] F T  F  T F T F  T F   T
+    #   note that by definition the values will always be T/F interdigited
+    # our goal is to identify the sub-sequences that is defined as a stretch of 
+    # n consecutive positions with a score greater than the cutoff and record the
+    # sub-sequence, its length, start and end position, 90% quantile of the score
+    # --- End of explanation ---
+    # 1. assigns a unique id for each run of events
+    tmp$group <- rep(1:length(pass.rle$lengths), times = pass.rle$lengths)
+    # 2. extract the subsequences
+    agg.seq <- tmp %>% 
+        filter(pass) %>% # drop residues not predicted to have aggregation potential
+        group_by(group) %>% # cluster by the runs
+        summarize(seq = paste0(aa, collapse = ""),
+                  start = min(res), end = max(res), length = n(),
+                  median = median(Aggregation),
+                  q90 = quantile(Aggregation, probs = 0.9),
+                  .groups = "drop") %>% 
+        mutate(interval = start - lag(end) - 1) %>% 
+        filter(length >= required_in_serial) %>% 
+        select(-group)
+    return(agg.seq)
 }
 ```
 
@@ -56,19 +59,167 @@ tango.output.files <- list.files(path = "tango-output", pattern = ".txt|.txt.gz"
 # the read_csv() function used in the custom function can automatically decompress gzipped files
 tango.res <- lapply(tango.output.files, extract_tango)
 names(tango.res) <- gsub(".txt|.txt.gz", "", basename(tango.output.files))
-tango.res.df <- bind_rows(tango.res, .id = "id")
+tango.res.df <- bind_rows(tango.res, .id = "id") %>% 
+    mutate(species = str_split(id, "_(?!.*_)", simplify = TRUE)[,2]) 
+# extract the species names
+# credit: https://stackoverflow.com/questions/20454768/how-to-split-a-string-from-right-to-left-like-pythons-rsplit
+# the split pattern is equivalent to the rsplit() function in python
 ```
 
+```{r eda, fig.width=10, fig.height=4}
+# find unique motifs and count the number of proteins and species represented
+motif.summary <- tango.res.df %>% 
+    group_by(seq) %>% 
+    summarize(n = n(), n.protein = n_distinct(id), n.species = n_distinct(species),
+              avg.median = round(mean(median),1),
+              avg.q90 = round(mean(q90),1),
+              avg.intv = round(mean(interval, na.rm = T),1), sd.intv = round(sd(interval, na.rm = T),2),
+              pc.N300 = sum(start <= 300)/n()*100,
+              species = paste0(unique(species), collapse = ","), .groups = "drop") %>% 
+    arrange(desc(n))
+print(motif.summary)
+
+# Is there any relationship between the length of a motif and its aggregation value?
+p0 <- motif.summary %>% 
+    ggplot(aes(x = nchar(seq), y = avg.q90)) + geom_jitter(width = 0.2, alpha = 0.6) + 
+    stat_summary(fun.data = mean_cl_boot, geom = "crossbar", col = "red") +
+    labs(title = "Average of median Beta aggregation prob. for TANGO motifs of different lengths")
+
+p1 <- motif.summary %>% 
+    ggplot(aes(x = nchar(seq), y = avg.median)) + geom_jitter(width = 0.2, alpha = 0.6) + 
+    stat_summary(fun.data = mean_cl_boot, geom = "crossbar", col = "red") +
+    labs(title = "Average of 90th percentile of Beta aggregation prob. for TANGO motifs of different lengths")
+p0
+p1
+
+p01 <- plot_grid(p0, p1, labels = "AUTO")
+save_plot("img/20200727-motif-length-by-value.png", p01, nrow = 2, base_asp = 2)
+
+# Where are the TANGO identified motifs located within a sequence?
+# color by 90% quantile of agg. probability
+p2 <- tango.res.df %>% 
+    mutate(score = cut(q90, breaks = c(0,25,50,75,100))) %>% 
+    ggplot(aes(start, fill = score)) + geom_histogram(binwidth = 50) +
+    scale_fill_brewer(type = "seq", palette = "YlGnBu")
+
+p3 <- tango.res.df %>% 
+    filter(start <= 1000) %>% 
+    mutate(score = cut(q90, breaks = c(0,25,50,75,100))) %>% 
+    ggplot(aes(start, fill = score)) + geom_histogram(binwidth = 25) +
+    scale_fill_brewer(type = "seq", palette = "YlGnBu")
+
+plot_grid(p2, p3)
+ggsave("img/20200727-motif-location-group-by-agg-score.png")
+
+# color by sequence motif length
+p4 <- tango.res.df %>% 
+    mutate(Length = cut(length, breaks = c(5,7,9,11,25), include.lowest = TRUE)) %>% 
+    ggplot(aes(start, fill = Length)) + geom_histogram(binwidth = 50) +
+    scale_fill_brewer(type = "seq", palette = "YlGnBu")
+
+p5 <- tango.res.df %>% 
+    filter(start <= 1000) %>% 
+    mutate(Length = cut(length, breaks = c(5,7,9,11,25), include.lowest = TRUE)) %>% 
+    ggplot(aes(start, fill = Length)) + geom_histogram(binwidth = 25) +
+    scale_fill_brewer(type = "seq", palette = "YlGnBu")
+
+plot_grid(p4, p5)
+ggsave("img/20200727-motif-location-group-by-length.png")
+
+# what is the level of cross-species use of the same motif?
+motif.summary %>% count(n.species)
+```
+_**Discussion**_
+
+1. As expected, the longer the motif, the higher the aggregation potential, at least until 18 bp.
+1. Most of the motifs are species specific.
+
 ## Cluster motifs by similarity
-Many motifs are similar to each other but are listed differently, such as "GVVIVTT" and "GVIVVTT" etc. Here we try to use string distance matrix method and K-means clustering to group them into sub-groups.
-```{r cluster}
+Many motifs are similar to each other but are listed differently, such as "GVVIVTT" and "GVIVVTT" etc. Here we try to use string distance matrix method and hierarchical clustering to group them into sub-groups.
+
+### All motifs
+```{r gather_motif}
 library(stringdist)
-library(factorextra)
-seqs <- unique(tango.res.df$seq)
+# get the unique motif sets
+seqs <- motif.summary$seq
 # compute distance matrix between strings using the full Damerau-Levenshtein method
 # reference: https://medium.com/my-datascience-journal/using-string-distance-to-group-text-variables-in-r-aa6d0f9226a6
 motif.dist <- stringdistmatrix(seqs, method = "dl", useNames = TRUE)
-# then we use the kmeans() function to group the motifs
-
 ```
 
+```{r test_clustering_method}
+# test the performance of different hierarchical clustering method
+# reference: https://uc-r.github.io/hc_clustering
+library(cluster)
+# methods to assess
+m <- c( "average", "single", "complete", "weighted", "ward")
+names(m) <- c( "average", "single", "complete", "weighted", "ward")
+
+# function to compute coefficient
+ac <- function(x) {
+  agnes(motif.dist, method = x)$ac
+}
+
+map_dbl(m, ac)
+```
+- The ward method produces the strongest cluster.
+
+```{r cluster, fig.width=10, fig.height=5}
+motif.clust <- agnes(motif.dist, method = "ward")
+pltree(motif.clust, cex = 0.07, hang = -1)
+abline(h = 12, lty = 2)
+dev.print(pdf, "img/20200727-motif-cluster-dendrogram.pdf")
+```
+_**Discussion**_
+
+- Visually I can roughly detect 6 or 7 clusters. Next let's try to cut the tree into those clusters and examine the output
+
+```{r explore_diff_cluster}
+motif.summary$seq_grp <- cutree(as.hclust(motif.clust), k = 60)
+# number of sequences clustered in the first 6 clusters
+head(table(motif.summary$seq_grp))
+# sequences belonging to cluster 1
+toplist <- c("group 1" = 1, "group 2" = 2, "group 3" = 3)
+lapply(toplist, function(x) paste(pull(filter(motif.summary, seq_grp == x), seq), collapse = "  "))
+```
+
+### Excluding motifs in the first 300 amino acids
+
+```{r cluster_motif_1}
+# remake the motif.summary table with those motifs in the N300 a.a. removed
+motif.summary1 <- tango.res.df %>% 
+    filter(start > 300) %>% 
+    group_by(seq) %>% 
+    summarize(n = n(), n.protein = n_distinct(id), n.species = n_distinct(species), 
+              avg.q90 = round(mean(q90),1), sd.q90 = round(sd(q90),2),
+              avg.intv = round(mean(interval, na.rm = T),1), sd.intv = round(sd(interval, na.rm = T),2),
+              pc.N300 = sum(start <= 300)/n()*100,
+              species = paste0(unique(species), collapse = ","), .groups = "drop") %>% 
+    arrange(desc(n))
+# get the unique motif sets
+seqs1 <- motif.summary1$seq
+# compute distance matrix between strings using the full Damerau-Levenshtein method
+# reference: https://medium.com/my-datascience-journal/using-string-distance-to-group-text-variables-in-r-aa6d0f9226a6
+motif.dist1 <- stringdistmatrix(seqs1, method = "dl", useNames = TRUE)
+motif.clust1 <- agnes(motif.dist1, method = "ward")
+pltree(motif.clust1, cex = 0.07, hang = -1)
+abline(h = 12, lty = 2)
+dev.print(pdf, "img/20200727-motif-cluster-dendrogram-mN300.pdf")
+```
+
+```{r explore_diff_cluster_1}
+motif.summary1$seq_grp <- cutree(as.hclust(motif.clust1), k = 60)
+# number of sequences clustered in the first 6 clusters
+head(table(motif.summary1$seq_grp))
+
+# sequences belonging to cluster 1
+toplist <- c("group 1" = 1, "group 2" = 2, "group 3" = 3)
+lapply(toplist, function(x) paste(pull(filter(motif.summary1, seq_grp == x), seq), collapse = "  "))
+
+# motif usage in each species
+tango.res.df %>% 
+    filter(start > 300) %>% 
+    left_join(select(motif.summary, seq, seq_grp), by = c("seq" = "seq")) %>% 
+    group_by(species) %>% 
+    summarize(motif.use = paste(sort(unique(seq_grp)), collapse = ","))
+```
