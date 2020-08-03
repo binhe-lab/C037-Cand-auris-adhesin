@@ -75,3 +75,12 @@ fasta | short_string  | text  | protein identifier
   --  | tag_3_description | text  | structural description of third hierarchical level CATH group
   --  | tag_4_rep-protein | text  | CATH id for representative protein of fourth hierarchical level CATH group
   --  | tag_4_description | text  | structural description of fourth hierarchical level CATH group
+  hmm_pfam | short_string  | text  | protein identifier
+  --  | pfam_id | text  | pfam identification name of identified domain
+  --  | pfam_accession | text  | pfam accession number of identified domain
+  --  | pfam_clan | text  | name of pfam clan of identified domain
+  --  | pfam_description | text  | description of identified domain
+  --  | start_position| integer  | starting amino acid number of identified domain in protein
+  --  | end_position | integer  | ending amino acid number of identified domain in protein
+  --  | indp_e_value | text  | independent e-value of domain match to protein
+  --  | cond_e_value | text  | conditional e-value of domain match to protein
