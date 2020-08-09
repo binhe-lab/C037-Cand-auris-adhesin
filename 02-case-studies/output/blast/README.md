@@ -4,6 +4,24 @@ author: Bin He
 date: 2020-07-01
 ---
 
+<!--ts-->
+   * [Goal](#goal)
+   * [Content](#content)
+   * [Notes](#notes)
+      * [2020-07-01 [HB] Repeat BLAST to identify XP_028889033 homologs](#2020-07-01-hb-repeat-blast-to-identify-xp_028889033-homologs)
+         * [FungiDB](#fungidb)
+         * [Retrieve ref_protein ID for FungiDB hits](#retrieve-ref_protein-id-for-fungidb-hits)
+         * [NCBI blast](#ncbi-blast)
+         * [Merge the two datasets](#merge-the-two-datasets)
+      * [2020-07-22 [HB] Identify homologs in Nakaseomyces](#2020-07-22-hb-identify-homologs-in-nakaseomyces)
+         * [Motivation](#motivation)
+         * [Approach](#approach)
+      * [2020-08-06 [HB] HMMER and BLAST search for homologs of the N-terminal domain (350 a.a.) of XP_028889033 in viruses and bacteria](#2020-08-06-hb-hmmer-and-blast-search-for-homologs-of-the-n-terminal-domain-350-aa-of-xp_028889033-in-viruses-and-bacteria)
+
+<!-- Added by: bhe2, at: Sun Aug  9 12:16:52 CDT 2020 -->
+
+<!--te-->
+
 # Goal
 
 - Repeat the blast step to clean up the homologs list.
@@ -78,7 +96,11 @@ Got 15 hits from the GRYC blast. Downloaded the fasta sequence and the blast tex
 
 I revamped the `blast.Rmd`. In the process of filtering and integrating the new hits, I found that I didn't properly filter the refseq_protein hits with the same length threshold I applied to the fungidb hits. So now I made the analysis consistent with respect to the selection criteria, and removed the _D. rugosa_ sequences (the reason is documented in the `README` files in the `output/gene-tree` folder or subfolders therein). In the end we get 100 sequences in total.
 ## 2020-08-06 [HB] HMMER and BLAST search for homologs of the N-terminal domain (350 a.a.) of XP_028889033 in viruses and bacteria
-I did a HMMER search with the first 350 amino acid ("MAFNFVRGWLLLAFYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALTTLGGSLDNQGEFYVTSANGLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIGGFTNTGNMWLGISGYSLVPPIILGSATNWDNSGRIYLSQNSGSASTITISQTLGSITNDGSMCIERLSWLQTTSIKGAGCINLMDDAHLQLQISPWSVSNDQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVNTGFSGYSYEGDTLTLSFFLGLFKIAFKIGTGYSKSGFSTNGLFGAGTRISYSGAYPGTVPDVCKCFDFPEPTTTPLPSSTSQSSKPSSSSSVIT"), restricting the taxonomy to viruses, archaea and eubacteria, and e-value cutoff 0.01  No hits were found using either the PHMMER or JACKHMMER algorithm.
+I did a HMMER search with the first 350 amino acid 
+
+    MAFNFVRGWLLLAFYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALTTLGGSLDNQGEFYVTSANGLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIGGFTNTGNMWLGISGYSLVPPIILGSATNWDNSGRIYLSQNSGSASTITISQTLGSITNDGSMCIERLSWLQTTSIKGAGCINLMDDAHLQLQISPWSVSNDQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVNTGFSGYSYEGDTLTLSFFLGLFKIAFKIGTGYSKSGFSTNGLFGAGTRISYSGAYPGTVPDVCKCFDFPEPTTTPLPSSTSQSSKPSSSSSVIT
+
+restricting the taxonomy to viruses, archaea and eubacteria, and e-value cutoff 0.01  No hits were found using either the PHMMER or JACKHMMER algorithm.
 
 I repeated the search using blastp with e-value cutoff of 10, and taxonomy restricted to the same groups as above. The database in this case is the non-redundant proteins. This time I did get 3 significant hits!
 
@@ -91,3 +113,16 @@ I repeated the search using blastp with e-value cutoff of 10, and taxonomy restr
 | XP_028889033 | CQB89545.1 | 35.912 | 181 | 96 | 7 | 166 | 330 | 1 | 177 | 5.17e-16 | 89.4 | 51.93
 
 As one can see from the query coverage and evalue columns, the first and second matches are quite significant. The second hit, while short, has high sequence identity. Wondering why I got 3 bacterial hits -- I expect either none or a lot -- I took the sequence of the first hit and repeated the blastp search. This produced two significant hits, including itself and the 3rd hit above. What does this mean? Are these highly species-specific sequences coming from fungi? Are they ancient proteins that have been lost in many many bacteria except for a few? Could these be annotation errors, namely the sample used to identify these bacterial sequences may be contaminated with fungal material?
+
+**Update 2020-08-09**: while reading about the [Pfam family (PF11765)](http://pfam.xfam.org/family/PF11765) that the N-terminal domain of XP_028889033 is a member of, I learned that of the 559 members, 538 are in fungi -- in fact, 500/528 are in Saccharomycotina -- and only 31 are from bacteria. 
+
+![Sequence alignment of bacterial hits to XP_028889033 NTD](20200809-PF11765-phylogenetic-distribution.png)
+
+Interestingly, in the description of this protein family, it was said that this domain is specific to fungi, suggesting that the curators of this family don't believe the bacterial sequences are true hits. Among the 31 bacterial members, the majority (30) are in the group of alphaproteobacteria, which is a different group compared to the gammaproteobacteria that _Pseudomonas syringae_ belongs to. The other suspicious sign is when I blast the _Pseudomonas syringae_ hit, which is 186 a.a. long and represents a "partial CDS", to all proteins labeled as _Pseudomonas syringae_ in the nr database, only the query itself came up in the hits. This is unexpected as the species is well studied as a plant pathogen and there must be a large number of well-assembled genomes in the species. At this point I have two theories explaining the blastp hits:
+
+1. The hits represent false positives, likely due to fungal contamination of the bacterial sample.
+1. The hits represent true sequeces in a _particular_ strain of the bacterium, possibly as a result of horizontal gene transfer from fungi.
+
+In either case, I would conclude that XP_028889033 belongs to a fungi-specific protein family.
+
+![conclusion of the protein family being fungal specific](20200809-XP_028889033-nr-bacteria-hits-likely-spurious.png)

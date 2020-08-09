@@ -98,6 +98,7 @@ _Discussion_
 1. We see that the excluded sequences not only have less significant e-values, but also have barely above 50% query coverage. In terms of species distribution, most of them are from _S. stipitis_ and _D. rugosa_. The second species will be removed anyways (see notes in the `output/gene-tree` folder)
 1. Even though a couple of the _S. stipitis_ sequences were annotated as "fungal hyphal regulated cell wall proteins", with less than 500 a.a., they are unlikely to encode the stalk and in a separate analysis, I also found them to not possess the GPI-anchor. All in all, I think these sequences are unlikely to be candidate adhesins.
 
+### Evaluate e-value cutoff
 
 ## GRYC BLAST hits and filtering
 > **Update 2020-07-22**

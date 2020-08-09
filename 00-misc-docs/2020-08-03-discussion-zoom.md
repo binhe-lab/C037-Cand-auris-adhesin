@@ -19,8 +19,12 @@ Lindsey presented structural analysis result for XP_028889033
 - Jan and Rachel wondered if the PFam domain named Hyphally-regulated-domain, which is how Lindsey and Rachel identified their proteins in the first place, could all be modeled based on the $Beta$-solenoids fold.
 - Conversely, I (Bin) wondered if the proteins among the predicted adhesins that have a hit to the same CATH family can be modeled with this bacterial protein.
 - Is the C-terminal region of XP_028889033 rich in Serine/Threonin as the bacterial protein does?
+
 # Todo and next meeting topic
-- [ ] Perform HMMER search for XP_028889033 in phages/bacteria
+- [x] Perform blastp/HMMER search for XP_028889033 in phages/bacteria
 - [ ] Examine the frequency of S/T/C in the C-terminal region of XP_028889033
 
 Next meeting will be next Monday, when the four of us will take turns to summarize our major findings so far, and we will discuss our next steps.
+
+# Update 2020-08-09 HB
+- HMMER and blastp search for NTD of XP_028889033 specifically in bacteria. See [blast README.md](../02-case-studies/output/blast/README.md)
