@@ -54,3 +54,21 @@ In order to make the results more useful, I need to order them based on the orde
 python extract_fasta.py XP_028889033_homologs.fasta RAxML_bipartitions.muscle_4005290_rooted_FigTree_order.txt
 python myfuzzpro.py 
 ```
+
+### S/T frequency
+1. Use `freak` from EMBOSS suite to calculate the frequency of Serine or Threonine in each of the 100 sequences in the homolog file.
+
+    ```bash
+    freak XP_028889033_homologs.fasta -letters "ST" -window 100 -step 10 -outfile ST_freq_100_10.freak -odirectory raw-output
+    ```
+1. Convert the output to a table format for plotting
+    
+    ```bash
+    python format_freak_out.py raw-output/ST_freq_100_10.freak
+    ```
+
+1. Compress the output for storage
+
+    ```bash
+    gzip ST_freq*
+    ```
