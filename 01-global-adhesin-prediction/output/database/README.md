@@ -84,3 +84,19 @@ fasta | short_string  | text  | protein identifier
   --  | end_position | integer  | ending amino acid number of identified domain in protein
   --  | indp_e_value | text  | independent e-value of domain match to protein
   --  | cond_e_value | text  | conditional e-value of domain match to protein
+  motif_anr | motif_id  | double  | MEME/MAST any number of repeats identified motif id number
+  --  | motif_seq | text  | sequence of identified motif
+  --  | motif_alt_id | text  | alternate id of identified motif
+  --  | motif_aa_length | double  | length of identified motif
+  --  | motif_best_possible_match | text  | sequence of best match to the identified motif
+  mast_anr | short_string  | text  | protein identifier of MEME/MAST any number of repeats sequence
+  --  | e_value | double  | e-value for the motif diagram of the protein
+  --  | motif_diagram | text  | motif diagram of protein; -[x]- represents presence of motif number x; -y- represents y amino acids between motif occurrences
+  motif_zoops | motif_id  | double  | MEME/MAST zero or one occurrence per sequence identified motif id number
+  --  | motif_seq | text  | sequence of identified motif
+  --  | motif_alt_id | text  | alternate id of identified motif
+  --  | motif_aa_length | double  | length of identified motif
+  --  | motif_best_possible_match | text  | sequence of best match to the identified motif
+  mast_zoops | short_string  | text  | protein identifier of MEME/MAST zero or one occurrence per sequence
+  --  | e_value | double  | e-value for the motif diagram of the protein
+  --  | motif_diagram | text  | motif diagram of protein; -[x]- represents presence of motif number x; -y- represents y amino acids between motif occurrences
