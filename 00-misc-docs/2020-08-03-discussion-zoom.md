@@ -22,9 +22,10 @@ Lindsey presented structural analysis result for XP_028889033
 
 # Todo and next meeting topic
 - [x] Perform blastp/HMMER search for XP_028889033 in phages/bacteria
-- [ ] Examine the frequency of S/T/C in the C-terminal region of XP_028889033
+- [x] Examine the frequency of S/T/C in the C-terminal region of XP_028889033
 
 Next meeting will be next Monday, when the four of us will take turns to summarize our major findings so far, and we will discuss our next steps.
 
 # Update 2020-08-09 HB
 - HMMER and blastp search for NTD of XP_028889033 specifically in bacteria. See [blast README.md](../02-case-studies/output/blast/README.md)
+- S/T frequency is very low in the first 360 a.a. (the NTD), and rises in the majority of the sequences right after that.

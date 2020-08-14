@@ -90,10 +90,9 @@ p1 <- motif.summary %>%
     stat_summary(fun.data = mean_cl_boot, geom = "crossbar", col = "red") +
     labs(title = "Average of 90th percentile of Beta aggregation prob. for TANGO motifs of different lengths")
 p0
+save_plot("img/20200727-motif-length-by-value-q90.png", p0, base_asp = 2)
 p1
-
-p01 <- plot_grid(p0, p1, labels = "AUTO")
-save_plot("img/20200727-motif-length-by-value.png", p01, nrow = 2, base_asp = 2)
+save_plot("img/20200727-motif-length-by-value-median.png", p1, base_asp = 2)
 
 # Where are the TANGO identified motifs located within a sequence?
 # color by 90% quantile of agg. probability
