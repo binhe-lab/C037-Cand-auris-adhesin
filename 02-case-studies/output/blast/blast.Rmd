@@ -27,6 +27,7 @@ Some of the identified homologs have less than 500 amino acids. I want to know i
 ```{r fungidb_plot}
 # load table
 fungidb <- read_tsv("XP_028889033_homologs_fungidb_table.tsv", col_types = "cccddcccdcc")
+fungidb$species_id <- map_chr(str_split(fungidb$organism, " "), function(x) paste0(substr(x[1],1,1), x[2]))
 # plot protein length as a function of e-value
 fungidb %>% 
   ggplot(aes(x = -log10(e_value), y = log2(length), col = (length > 500))) + geom_point() +
@@ -220,15 +221,28 @@ combined.names <- c(refseqdb.names, fdb.names, gryc.names)
 write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine.fasta")
 ```
 
-### Evaluate e-value cutoff
+## Evaluate e-value cutoff
 
 Jan asked whether the 1e-5 cutoff is too liberal such that some of the hits that just "made the cut" may be false positives. I decide to look into this by highlighting those sequences in the alignment, and to examine their features such as protein length and annotated functions.
 ```{r}
 # Identify the subset with E-value between 1e-5 to 1e-10
-refseq0 %>% filter(-log10(e.value) < 10)
-fungidb %>% filter(gene_id %in% fdb.list, -log10(e_value) < 10)
-gryc %>% filter(id %in% gryc1$id, -log10(min_e_value) < 10)
+refseq.highE <- refseq1 %>% filter(-log10(e.value) < 10); refseq.highE
+fdb.highE    <- fungidb %>% filter(gene_id %in% fdb.list, -log10(e_value) < 10); fdb.highE
+gryc.highE   <- gryc %>% filter(id %in% gryc1$id, -log10(min_e_value) < 10); gryc.highE
+
+# get the subset of sequences
+highE.seq <- c(refseqdb.seq[refseq.highE$accession], fungidb.seq[fdb.highE$gene_id],
+               gryc.seq[gryc.highE$ori_id])
+highE.names <- c(paste(refseq.highE$accession, refseq.highE$species_id, sep = "_"),
+                 paste(fdb.highE$gene_id, fdb.highE$species_id, sep = "_"),
+                 paste(gryc.highE$ori_id, gryc.highE$species_id, sep = "_"))
+write.fasta(highE.seq, names = highE.names, 
+            file.out = "XP_028889033_homologs_high_Evalue.fasta")
 ```
-Below is the multiple sequence alignment in which I moved all the sequences with e-value > 1e-10 to the top
+
+When I submitted the `r length(highE.names)` sequences to the [CDD batch search site](https://www.ncbi.nlm.nih.gov/Structure/bwrpsb/bwrpsb.cgi) and downloaded the results. Below is a screenshot of the hits:
+
+![CDD hits](20200816-high-Evalue-CDD-hits.png)
+We can see that all of them have the Hyphally regulated cell wall protein (Hyphal_reg_CWP) domain. Therefore I believe they are true homologs to XP_028889033. Below is the multiple sequence alignment in which I moved all the sequences with e-value > 1e-10 to the top. We can see that while they are more divergent from the rest of the sequences, the alignment appears to be credible.
 
 ![sequence alignments with e-value > 1e-10](20200815-e-value-above-1E-10-alignment.png)

@@ -19,6 +19,7 @@ This is a quick update on last week's results. Main changes include
 # Todo and next meeting topic
 - [x] Explore the gene annotation for BLAST hits with relatively high E-values (between 1E-5 to 1E-20), to test if we get more meaningful homologs by making the criteria more stringent.
     - See `02-case-study/output/blast/blast.nb.html` for details.
+    - Main conclusion is that the sequences with E-value between 10E-5 and 10E-10 are most likely true homologs to XP_028889033. This conclusion is based on the observation that all 13 sequences have the N-terminal Hyphal_reg_CWP domain (by Conserved Domain Database search), and their sequences, while more divergent compared with the rest of the proteins, do appear to be aligned with reasonable quality.
 - [ ] Look for other ways to group motifs, including alternative ways to calculate the pairwise distance between peptides that take into account the amino acid substitution matrix, and explore the use of MEME to group motifs.
 - [ ] Rerun FungalRV locally for the recently expanded proteome datasets to make sure that the results Rachel is getting from the website are correct.
 
