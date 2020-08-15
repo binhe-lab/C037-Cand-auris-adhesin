@@ -98,8 +98,6 @@ _Discussion_
 1. We see that the excluded sequences not only have less significant e-values, but also have barely above 50% query coverage. In terms of species distribution, most of them are from _S. stipitis_ and _D. rugosa_. The second species will be removed anyways (see notes in the `output/gene-tree` folder)
 1. Even though a couple of the _S. stipitis_ sequences were annotated as "fungal hyphal regulated cell wall proteins", with less than 500 a.a., they are unlikely to encode the stalk and in a separate analysis, I also found them to not possess the GPI-anchor. All in all, I think these sequences are unlikely to be candidate adhesins.
 
-### Evaluate e-value cutoff
-
 ## GRYC BLAST hits and filtering
 > **Update 2020-07-22**
 > The original blast to both the refseq_protein and fungiDB databases yielded no hits in the well represented _S. cerevisiae_ _sensu stricto_ or _sensu lato_ clade. The only hits were in _C. glabrata_ and _N. castellii_. I'm particularly curious why the other Nakaseomyces group species, e.g. _C. bracarensis_, _N. dephensis_ and _C. nivariensis_ had not hits. Turns out even the NCBI nr_protein database doesn't contain any protein entries for the Nakaseomyces -- I verified this by blast'ing Pho4 protein sequence against the nr_protein and limited the organisms to Nakaseomyces. I then found / remembered that the [Genome Resource for Yeast Chromosomes](http://gryc.inra.fr/index.php) site contains the Nakaseomyces genomes. I verified this by repeating the Pho4p blast. I then blast'ed the first 500 a.a. of XP_028889033 in GRYC, selecting the Nakaseomyces (6 sps)as well as _S. cerevisiae_ (1), Lachancea (12), Naumovozyma (1, _N. castellii_), Yarrowia (3 _Y. lipolytica_ strains). 
@@ -120,12 +118,6 @@ _Discussion_
 1. Among the potentially excluded sequences, I would rescue NADE0s05e04136g out of the pile because its short length could be due to the sequence being a "partial CDS".
 
 1. Lastly, I'll remove the hits from _L. fermentati_. This is arbitrary and the rationale is that I just want to get some representation from the Lanchancea genus, and I already have _L. kluyveri_.
-
-```{r gryc_filter}
-gryc1 <- gryc %>% 
-  filter(!ori_id %in% match.gryc$query_id, species_id != "Lfermentati", query_cover > 50, id != "CANI0s18e03223g") %>% # the last criterion is to remove the one sequence with length smaller than 500 a.a.
-  select(ori_id, id, species, species_id)
-```
 
 ## Merge fungidb, gryc and ref_prot blast results
 First we need to find out which sequences were duplicates. To do so we will blast the fungidb and gryc hits against the refseq hits.
@@ -170,6 +162,12 @@ gryc2refseq <- read_tsv("XP_028889033_gryc-refprot-blast.txt", col_names = c("qu
 match.gryc <- gryc2refseq %>% filter(perc_identity > 90) %>% select(-score, -bitscore, -e_value)
 ```
 There are a total of `r length(unique(gryc2refseq$query_id))` queries submitted, among which `r nrow(match.gryc)` are redundant with the refseq hits, which are `r match.gryc` The rest are new entries, although some of them will be excluded (see analysis above). In the end we will just add 5 sequences to the total list.
+
+```{r gryc_filter}
+gryc1 <- gryc %>% 
+  filter(!ori_id %in% match.gryc$query_id, species_id != "Lfermentati", query_cover > 50, id != "CANI0s18e03223g") %>% # the last criterion is to remove the one sequence with length smaller than 500 a.a.
+  select(ori_id, id, species, species_id)
+```
 
 ### Merge
 In order to make it easier for the downstream tree building and reconciliation, I would like to programmatically reformat the sequence names to conform to the Notung post-script standard, i.e. SeqID_SpeciesName.
@@ -221,3 +219,16 @@ combined.seq <- c(refseqdb.seq[refseqdb.list], fungidb.seq[fdb.list], gryc.seq[g
 combined.names <- c(refseqdb.names, fdb.names, gryc.names)
 write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine.fasta")
 ```
+
+### Evaluate e-value cutoff
+
+Jan asked whether the 1e-5 cutoff is too liberal such that some of the hits that just "made the cut" may be false positives. I decide to look into this by highlighting those sequences in the alignment, and to examine their features such as protein length and annotated functions.
+```{r}
+# Identify the subset with E-value between 1e-5 to 1e-10
+refseq0 %>% filter(-log10(e.value) < 10)
+fungidb %>% filter(gene_id %in% fdb.list, -log10(e_value) < 10)
+gryc %>% filter(id %in% gryc1$id, -log10(min_e_value) < 10)
+```
+Below is the multiple sequence alignment in which I moved all the sequences with e-value > 1e-10 to the top
+
+![sequence alignments with e-value > 1e-10](20200815-e-value-above-1E-10-alignment.png)

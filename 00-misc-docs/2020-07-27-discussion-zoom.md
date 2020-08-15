@@ -17,7 +17,8 @@ This is a quick update on last week's results. Main changes include
 - Tried to use `stringdist` package to calculate pairwise distance between the 898 unique tango motifs identified from the 100 input sequences. Using the "DL" method followed by Ward's method for hierarchical clustering, I was able to recover the "GVVIVTT" and its variants as one cluster. The threshold for recovering this cluster is `k = 60` or `h = 12`, the latter of which resulted in 108 distinct clusters (too many?) using the `cutree()` function on the `hclust` object. Better methods for grouping the motifs would be desirable.
 
 # Todo and next meeting topic
-- [ ] Explore the gene annotation for BLAST hits with relatively high E-values (between 1E-5 to 1E-20), to test if we get more meaningful homologs by making the criteria more stringent.
+- [x] Explore the gene annotation for BLAST hits with relatively high E-values (between 1E-5 to 1E-20), to test if we get more meaningful homologs by making the criteria more stringent.
+    - See `02-case-study/output/blast/blast.nb.html` for details.
 - [ ] Look for other ways to group motifs, including alternative ways to calculate the pairwise distance between peptides that take into account the amino acid substitution matrix, and explore the use of MEME to group motifs.
 - [ ] Rerun FungalRV locally for the recently expanded proteome datasets to make sure that the results Rachel is getting from the website are correct.
 
