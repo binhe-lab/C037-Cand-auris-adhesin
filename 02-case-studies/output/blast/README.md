@@ -16,9 +16,11 @@ date: 2020-07-01
       * [2020-07-22 [HB] Identify homologs in Nakaseomyces](#2020-07-22-hb-identify-homologs-in-nakaseomyces)
          * [Motivation](#motivation)
          * [Approach](#approach)
-      * [2020-08-06 [HB] HMMER and BLAST search for homologs of the N-terminal domain (350 a.a.) of XP_028889033 in viruses and bacteria](#2020-08-06-hb-hmmer-and-blast-search-for-homologs-of-the-n-terminal-domain-350-aa-of-xp_028889033-in-viruses-and-bacteria)
+      * [2020-08-06 [HB] Identify potential homologs in bacteria and in <em>S. cerevisiae</em>](#2020-08-06-hb-identify-potential-homologs-in-bacteria-and-in-s-cerevisiae)
+      * [2020-08-09 [HB] Homologs in Bacteria?](#2020-08-09-hb-homologs-in-bacteria)
+      * [2020-08-19 [HB] Homologs in <em>S. cerevisiae</em>?](#2020-08-19-hb-homologs-in-s-cerevisiae)
 
-<!-- Added by: bhe2, at: Sun Aug  9 12:16:52 CDT 2020 -->
+<!-- Added by: bhe2, at: Sat Aug 22 10:58:58 CDT 2020 -->
 
 <!--te-->
 
@@ -54,8 +56,7 @@ Used the beta version of the new site on 2020-07-01
 - Used first 560 aa of XP_028889033 as query, e-value cutoff set to 1e-5, low complexity on, and limit the organisms to the CUG clade, _S. cerevisiae_, _C. glabrata_ and _S. pombe_
 - Downloaded 95 sequences along with a table with meta information.
 - After examining the meta data, I noticed that some sequences are much shorter than others. I then plotted protein length as a function of e-value, both in log scales, and it became apparent that those sequences below 500 amino acids are the ones with the lowest e-values. I thus removed them by printing a list of gene IDs, and used the `extract_fasta.py` program to output the filtered list.
-    <img src="20200701-XP_028889033-homologs-e-value-by-length.png" width="480">
-    <!--![length-vs-e-value](20200701-XP_028889033-homologs-e-value-by-length.png)-->
+    <img src="img/20200701-XP_028889033-homologs-e-value-by-length.png" width="480">
 
 ### Retrieve ref_protein ID for FungiDB hits
 ```bash
@@ -74,7 +75,7 @@ $ cut -f1 fungidb_blast_refseq_protein.txt | sort | uniq | wc -l
 - I also tried `Delta-blastp`, which first searches against the conserved domain database and then gather sequences with that domain. This resulted in way too many hits. Didn't pursue further.
 - For the `blastp` results, I further required the query coverage to be greater than 50%, which yielded 144 sequences. This cutoff was chosen subjectively as sequences with lower than 50% coverage appear uninteresting (in species that are not what I'm interested in).
 - I further excluded 6 species from consideration. These are "Metschnikowia bicuspidata var. bicuspidata NRRL YB-4993 (taxid:869754), Debaryomyces fabryi (taxid:58627), Suhomyces tanzawaensis NRRL Y-17324 (taxid:984487), Candida orthopsilosis Co 90-125 (taxid:1136231), Kazachstania (taxid:71245), Naumovozyma dairenensis CBS 421 (taxid:1071378), Meyerozyma guilliermondii (taxid:4929), Yamadazyma tenuis ATCC 10573 (taxid:590646)"
-- The resulting taxonomy is shown ![here](./20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
+- The resulting taxonomy is shown ![here](img/20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
 
 ### Merge the two datasets
 1. To merge the two datasets, I decide to blast the fungidb reduced set (a.a. length > 500) to the ref_protein dataset. To do so, I used the following commands
@@ -95,8 +96,8 @@ The original blast to both the refseq_protein and fungiDB databases yielded no h
 Got 15 hits from the GRYC blast. Downloaded the fasta sequence and the blast text output. The latter requires a lot of parsing, and there is no option that I can find to change the output format to a table. Instead, I just brutal-forced it -- copy and paste the table on the html page, put it into a text file, and edited it with vim (only 15 rows, not too bad). I also added an ID column to render the sequence ID more in-line with what I have for the other sequences.
 
 I revamped the `blast.Rmd`. In the process of filtering and integrating the new hits, I found that I didn't properly filter the refseq_protein hits with the same length threshold I applied to the fungidb hits. So now I made the analysis consistent with respect to the selection criteria, and removed the _D. rugosa_ sequences (the reason is documented in the `README` files in the `output/gene-tree` folder or subfolders therein). In the end we get 100 sequences in total.
-## 2020-08-06 [HB] HMMER and BLAST search for homologs of the N-terminal domain (350 a.a.) of XP_028889033 in viruses and bacteria
-I did a HMMER search with the first 350 amino acid 
+## 2020-08-06 [HB] Identify potential homologs in bacteria and in _S. cerevisiae_
+HMMER and BLAST search for homologs of the N-terminal domain (350 a.a.) of XP_028889033 in viruses and bacteria
 
     MAFNFVRGWLLLAFYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALTTLGGSLDNQGEFYVTSANGLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIGGFTNTGNMWLGISGYSLVPPIILGSATNWDNSGRIYLSQNSGSASTITISQTLGSITNDGSMCIERLSWLQTTSIKGAGCINLMDDAHLQLQISPWSVSNDQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVNTGFSGYSYEGDTLTLSFFLGLFKIAFKIGTGYSKSGFSTNGLFGAGTRISYSGAYPGTVPDVCKCFDFPEPTTTPLPSSTSQSSKPSSSSSVIT
 
@@ -104,25 +105,68 @@ restricting the taxonomy to viruses, archaea and eubacteria, and e-value cutoff 
 
 I repeated the search using blastp with e-value cutoff of 10, and taxonomy restricted to the same groups as above. The database in this case is the non-redundant proteins. This time I did get 3 significant hits!
 
-![blastp nr hits](./20200806-blastp-bacteria-nr-hits.png)
+![blastp nr hits](img/20200806-blastp-bacteria-nr-hits.png)
 
 | query acc.ver | subject acc.ver | % identity | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score | % positives 
-| ---------------|-----------------| ---------- | ---------------- | ---------- | --------- | -------- | ------ | -------- | ------ | ------ | --------- | -----------
+| --------------|-----------------| ---------- | ---------------- | ---------- | --------- | -------- | ------ | -------- | ------ | ------ | --------- | -----------
 | XP_028889033 | PYD84265.1 | 57.609 | 184 | 77 | 1 | 136 | 318 | 3 | 186 | 5.63e-70 | 226 | 76.63
 | XP_028889033 | WP_146232083.1 | 88.372 | 86 | 10 | 0 | 6 | 91 | 6 | 91 | 2.88e-40 | 146 | 95.35
 | XP_028889033 | CQB89545.1 | 35.912 | 181 | 96 | 7 | 166 | 330 | 1 | 177 | 5.17e-16 | 89.4 | 51.93
 
 As one can see from the query coverage and evalue columns, the first and second matches are quite significant. The second hit, while short, has high sequence identity. Wondering why I got 3 bacterial hits -- I expect either none or a lot -- I took the sequence of the first hit and repeated the blastp search. This produced two significant hits, including itself and the 3rd hit above. What does this mean? Are these highly species-specific sequences coming from fungi? Are they ancient proteins that have been lost in many many bacteria except for a few? Could these be annotation errors, namely the sample used to identify these bacterial sequences may be contaminated with fungal material?
 
-**Update 2020-08-09**: while reading about the [Pfam family (PF11765)](http://pfam.xfam.org/family/PF11765) that the N-terminal domain of XP_028889033 is a member of, I learned that of the 559 members, 538 are in fungi -- in fact, 500/528 are in Saccharomycotina -- and only 31 are from bacteria. 
+## 2020-08-09 [HB] Homologs in Bacteria?
 
-![Sequence alignment of bacterial hits to XP_028889033 NTD](20200809-PF11765-phylogenetic-distribution.png)
+while reading about the [Pfam family (PF11765)](http://pfam.xfam.org/family/PF11765), I noticed that the [description](http://pfam.xfam.org/family/PF11765#tabview=tab0) said that this domain is **specific to fungi**. Does this mean the curator(s) of this family don't believe the bacterial sequences are true hits? From the PFam site I navigated to the linked [InterPro page](http://www.ebi.ac.uk/interpro/entry/InterPro/IPR021031/taxonomy/uniprot/#tree). There I learned that of the 561 members, 530 are in fungi -- in fact, 500/528 are in Saccharomycotina -- and only 31 are from bacteria. The hits in bacteria are almost all (30/31) in the alphaproteobacteria group, which is a different group compared to the gammaproteobacteria that _Pseudomonas syringae_ belongs to (see blast results above). 
 
-Interestingly, in the description of this protein family, it was said that this domain is specific to fungi, suggesting that the curators of this family don't believe the bacterial sequences are true hits. Among the 31 bacterial members, the majority (30) are in the group of alphaproteobacteria, which is a different group compared to the gammaproteobacteria that _Pseudomonas syringae_ belongs to. The other suspicious sign is when I blast the _Pseudomonas syringae_ hit, which is 186 a.a. long and represents a "partial CDS", to all proteins labeled as _Pseudomonas syringae_ in the nr database, only the query itself came up in the hits. This is unexpected as the species is well studied as a plant pathogen and there must be a large number of well-assembled genomes in the species. At this point I have two theories explaining the blastp hits:
+![Sequence alignment of bacterial hits to XP_028889033 NTD](img/20200809-PF11765-phylogenetic-distribution.png)
+
+The other suspicious sign is when I blast the _Pseudomonas syringae_ hit, which is 186 a.a. long and represents a "partial CDS", to all proteins labeled as _Pseudomonas syringae_ in the nr database, only the query itself came up in the hits. This is unexpected as the species is well studied as a plant pathogen and there must be a large number of well-assembled genomes in the species. At this point I have two theories explaining the blastp hits:
 
 1. The hits represent false positives, likely due to fungal contamination of the bacterial sample.
 1. The hits represent true sequeces in a _particular_ strain of the bacterium, possibly as a result of horizontal gene transfer from fungi.
 
 In either case, I would conclude that XP_028889033 belongs to a fungi-specific protein family.
 
-![conclusion of the protein family being fungal specific](20200809-XP_028889033-nr-bacteria-hits-likely-spurious.png)
+![conclusion of the protein family being fungal specific](img/20200809-XP_028889033-nr-bacteria-hits-likely-spurious.png)
+
+## 2020-08-19 [HB] Homologs in _S. cerevisiae_?
+
+I went back to the "species" tab on the [Pfam site for (PF11765)](http://pfam.xfam.org/family/PF11765#tabview=tab7) to check for any bacterial members. There indeed are, but the listed species are different from either the InterPro or my ncbi blast results, again raising questions about whether these bacterial hits are real or due to fungal contamination.
+
+![pfam site taxonomy](img/20200819-pfam-taxonomy-view-PF11765.png)
+
+Another notable finding is that the PFam species page listed two hits in _S. cerevisiae_: CSS1/YIL169C and HPF1/YOL155C. I used BLASTP-align-two-sequences feature to align them and also the two _C. glabrata_ homologs identified before to the NTD of XP_028889033 (as query) and found that they do appear to share some homology, although with very low sequence identity (~28%). See results below
+
+![BLASTp graphic summary](img/20200821-Sc-Cg-blastp-XP_028889033-graphic-summary.png)
+![BLASTp table](img/20200821-Sc-Cg-blastp-XP_028889033.png)
+
+BLAST alignments for the _S. cerevisiae_ sequences can be viewed below:
+
+[YIL169C](img/20200819-YIL169C-alignment.png)
+[YOL155C](img/20200819-YOL155C-alignment.png)
+
+While they do share sequence similarity with the NTD in XP_028889033, their domain architectures are quite different.
+
+![domain architecture](img/20200819-PF11765-S-cerevisiae-domain-architecture.png)
+
+Here is the blastp alignment for one of the two _C. glabrata_ homologs, XP_447567.2 ([CAGL0I07293g](http://www.candidagenome.org/cgi-bin/locus.pl?dbid=CAL0130316)), which was annotated as adhesin-like cell wall protein. Both the query coverage and identity are better than the _S. cerevisiae_ hits
+
+[CAL0130316](img/20200819-CAGL0I07293g-alignment.png)
+
+Another way to visualize the similarity/difference between the domain sequences from the _S. cerevisiae_ and _C. glabrata_ sequences and XP_028889033 is a dotplot. Below is a polydot plot produced with the [`flexidot_v1.06`](https://github.com/molbio-dresden/flexidot) script with word size of 7 and allowed substitutions of 2.
+
+```bash
+python flexidot_v1.06.py -i PF11765_domains_only.fasta -p 2 -t 0 -k 7 -S 3
+```
+
+![polydot plot](Sc-Cg-members/Polydotplot_wordsize7_S2.png)
+
+To gain more insight into the potential functions of the two _S. cerevisiae_ hits, I looked at their annotations on SGD:
+
+> YIL169C: protein of unknown function, secretd when constitutively expressed; ... S/T rich; putative glucan alpha-1,4-glucosidase.
+> YOL155C: Haze-protective mannoprotein; reduces the particle size of aggregated proteins in white wines
+
+The latter has some obvious connection to adhesion, based on its role in aggregation. The former hits two features seen also in the adhesins: S/T rich region and putative gluan alpha-1,4-glucosidase activity, but seems to be not anchored on the cell wall (secreted). For these reasons, I'm further convinced that the PF11765 domain is indeed an ancient one. This protein family has remained either low number or altogether lost in most of the Saccharomycetaceae species, but has dramatically expanded in the MDR clade and _C. albicans_ clade.
+
+I further asked if using the _C. glabrata_ domain sequence as query, I can recover hits in _S. cerevisiae_ and other Saccharomycetales yeasts. The answer is no.
