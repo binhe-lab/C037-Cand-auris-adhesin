@@ -9,3 +9,5 @@ My initial BLAST search didn't recover any hits in _S. cerevisiae_, bu did recov
 1. Using the _C. glabrata_ sequence that was part of the my initial BLASTp result as a query and search against the Saccharomycetales. The idea is that perhaps using a more closely related species sequence as query will recover the _S. cerevisiae_ and its close relatives. I tried this and found _no additional hits_ compared with my initial BLAST using XP_028889033 1st 360 aa as query.
 
 1. Use dot-plot to visualize the similarity between the _S. cerevisiae_ or _C. glabrata_ hits and XP_028889033.
+
+1. Submitted the sequences (`PF11765_full_sequences.fasta`) to [GPI-SOM](http://genomics.unibe.ch/cgi-bin/gpi.cgi) and [PredGPI](http://gpcr.biocomp.unibo.it/predgpi/pred.htm) and saved the results locally.
