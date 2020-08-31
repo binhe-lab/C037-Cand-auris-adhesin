@@ -73,4 +73,58 @@ The script used to parse and explore the TANGO results are in `tango.Rmd`
     gzip ST_freq*
     ```
 
+
 1. For plotting, we would like to create a vector of sequence names in the same order as shown in the rooted gene tree. To do so, I loaded the `../gene-tree/20200723-raxml-hb/RAxML_bipartitions.muscle_4318866` in FigTree 1.4.4, rooted the tree on the Saccharomycotaceae, and rotated the auris and albicans groups, then saved the tree in Newick format. I then copied that file over to the current folder and edited in vim. By removing the branch lengths and other symbols such as parentheses, I got the sequence names in rows in the same order as the gene tree.
+
+1. At Jan's suggestion, I expanded the analysis above to separately document the frequency of Serine and Threonine. I also altered the window size and step size to 50 and 5 bp.
+
+### Collect feature profiles for a schematic plot for each homolog
+
+We would like to collect features including Signal peptide (N-terminus), GPI-anchor (C-terminus), NTD Hyp_reg_CWP domain, S/T frequency and TANGO sequences.
+
+#### Signal peptide and GPI-anchor
+Update [2020-08-27]: understanding GPI-SOM output in order to define the coordinates for the signal peptide and GPI-anchor
+
+
+Below is an example of GPI-SOM output:
+
+```
+>XP_028889033.1_Cauris  [Best match for cleavage site at C-21]
+seq0 x:15 y:10 map:G omega:21 oq:58
+```
+
+- "Best match for cleavage site at C-21":
+
+    This is based on the C-score from [SignalP](http://www.cbs.dtu.dk/services/SignalP-3.0/output.php), which has a value for each residue and should peak at the cleavage site. Note that in the SignalP output, the "peak" position actually points to the first residue in the mature protein. Hence it's the residue before that peak that is the "cleavage site". In this case it is residue 21.
+
+- Regarding the rest of the output, I suspect "x", "y" and "map" refer to the location of the sequence on their "self-organizing map"
+- To get the position of the GPI-anchor, I turn to the PredGPI result. An example is shown below:
+
+    ```
+    >XP_028889033.1_Cauris | FPrate:0.000 | OMEGA:S-3027
+    ```
+    Here we get the starting position of the GPI-anchor sequence
+
+#### Hyp_reg_CWP
+Some thoughts are, the Pfam site has many of these sequences and have the Pfam cartoon showing the positions of the NTD. Alternatively, I could use the alignment to define the boundaries of the NTD in each homolog. 
+
+What I ended up doing is submitting the sequence to the [HMMSCAN tool](https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan) and selects pfam as the target profile-HMM database. The batch result page didn't provide a link to download the collected hit table. Luckily, I filled in my email address at the time of submission, and the result is emailed to me. This is saved as `raw-output/HMMER-HMMScan-Pfam-hits.tsv`. I edited the header to make it friendly for R.
+
+To understand the output file, I referred to the [HMMER v3 manual](http://eddylab.org/software/hmmer3/3.1b2/Userguide.pdf). When HMMER searches a profile-HMM database, e.g. pfam, with the user-input query sequence(s), it tries to identify the region that matches the domain profiles. In doing so, it will produce three sets of coordinates, two of which refer to the query and one to the profile in the database. For the latter, we have "model start/end/length", which tells us which part of the model (profile) the query matches. For the former, there are the "alignment start/end" and "envelope start/end". The first refers to the best guess of the start and end of the query that matches the domain profile. The second is a slightly wider region that captures most of the posterior probability mass in the HMM run. HMMER usually uses the envelope start and end to annotate the domains in the protein.
+### Annotate XP_028889033 with Hyp_reg_CWP, Hyr1 and TANGO sequences
+_Goal_
+
+1. Visualize the domain architecture of XP_028889033
+1. Determine the relationship between the Hyr1 repeats and the regularly spaced TANGO sequences
+
+_Approach_
+
+To visualize the various domains along with TANGO sequences in Jalview, I followed Jalview's own feature file format and made a feature file for XP_028889033, by exporting the data from R. I then exported png files with or without the Hyr1 and TANGO features on or off, and made a GIF file from them.
+
+```bash
+convert -delay 180 20200830*.png -loop 0 20200830-XP_028889033-annotated.gif
+```
+
+![XP_028889033 annotated](img/20200830-XP_028889033-annotated.gif)
+
+

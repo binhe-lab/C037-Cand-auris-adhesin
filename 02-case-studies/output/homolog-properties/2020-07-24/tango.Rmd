@@ -9,8 +9,21 @@ output:
 ---
 
 ```{r setup}
-library(tidyverse)
-library(cowplot)
+suppressPackageStartupMessages(library(Biostrings))  # for pairwise alignment and calculating distance
+suppressPackageStartupMessages(library(tidyverse))   # for data wrangling and visualization
+#suppressPackageStartupMessages(library(Hmisc))       # for summary functions
+suppressPackageStartupMessages(library(cowplot))     # supplement ggplot
+```
+
+The libraries below are used for deriving and plotting weblogos
+```{r install_library}
+if(!requireNamespace("msa", quietly = TRUE))
+  BiocManager::install("msa")
+suppressPackageStartupMessages(library("msa"))
+
+if(!requireNamespace("RWebLogo", quietly = TRUE))
+  install.packages("RWebLogo")
+suppressPackageStartupMessages(library("RWebLogo"))
 ```
 
 ## Define function to extract information from  TANGO results
@@ -59,8 +72,13 @@ tango.output.files <- list.files(path = "tango-output", pattern = ".txt|.txt.gz"
 # the read_csv() function used in the custom function can automatically decompress gzipped files
 tango.res <- lapply(tango.output.files, extract_tango)
 names(tango.res) <- gsub(".txt|.txt.gz", "", basename(tango.output.files))
+# to add species information
+seqInfo <- read_tsv("XP_028889033_homologs.tsv", comment = "#", col_types = c("ccci"))
 tango.res.df <- bind_rows(tango.res, .id = "id") %>% 
-    mutate(species = str_split(id, "_(?!.*_)", simplify = TRUE)[,2]) 
+  left_join(select(seqInfo, -length), by = c("id" = "id"))
+# save the tango output
+write_tsv(tango.res.df, "tango_summary_table.tsv.gz")
+# mutate(species = str_split(id, "_(?!.*_)", simplify = TRUE)[,2]) 
 # extract the species names
 # credit: https://stackoverflow.com/questions/20454768/how-to-split-a-string-from-right-to-left-like-pythons-rsplit
 # the split pattern is equivalent to the rsplit() function in python
@@ -136,14 +154,17 @@ _**Discussion**_
 ## Cluster motifs by similarity
 Many motifs are similar to each other but are listed differently, such as "GVVIVTT" and "GVIVVTT" etc. Here we try to use string distance matrix method and hierarchical clustering to group them into sub-groups.
 
-### All motifs
+### Levenshtein edit distance approach
+
+Below are my first attempt, using the `stringdist` package.
 ```{r gather_motif}
 library(stringdist)
 # get the unique motif sets
 seqs <- motif.summary$seq
 # compute distance matrix between strings using the full Damerau-Levenshtein method
 # reference: https://medium.com/my-datascience-journal/using-string-distance-to-group-text-variables-in-r-aa6d0f9226a6
-motif.dist <- stringdistmatrix(seqs, method = "dl", useNames = TRUE)
+motif.dist <- stringdistmatrix(seqs, method = "dl", weight = c(d = 0.2, i = 0.2, s = 0.1, t = 1), useNames = TRUE)
+# by assigning different weights to deletion, insertion, substitution and transposition, I'm actively discouraging transposition, which cannot be achieved by any known mutation mechanism in one step. I'm also disfavoring insertion and deletion, although i would have loved to be able to distinguish between indels at the end (end gaps) from internal indels. The former is totally fine (I would like to cluster a substring of a longer motif with that longer one).
 ```
 
 ```{r test_clustering_method}
@@ -166,7 +187,8 @@ map_dbl(m, ac)
 ```{r cluster, fig.width=10, fig.height=5}
 motif.clust <- agnes(motif.dist, method = "ward")
 pltree(motif.clust, cex = 0.07, hang = -1)
-abline(h = 12, lty = 2)
+rect.hclust(as.hclust(motif.clust), h = 4, border = 1:10)
+abline(h = 4, lty = 2)
 dev.print(pdf, "img/20200727-motif-cluster-dendrogram.pdf")
 ```
 _**Discussion**_
@@ -174,12 +196,89 @@ _**Discussion**_
 - Visually I can roughly detect 6 or 7 clusters. Next let's try to cut the tree into those clusters and examine the output
 
 ```{r explore_diff_cluster}
-motif.summary$seq_grp <- cutree(as.hclust(motif.clust), k = 60)
+h <- seq(from = 3, to = 5, by = 0.5)
+seq_grp <- lapply(h, function(x) cutree(as.hclust(motif.clust), h = x))
+names(seq_grp) <- paste0("h", h)
+cluster_bars <- do.call(cbind, seq_grp); 
+pltree(motif.clust, cex = 0.05, hang = -1, xlab = "Tango sequences")
+dendextend::colored_bars(cluster_bars, as.dendrogram(motif.clust), add = TRUE, y_shift = -3, cex.rowLabels = 0.8)
+#abline(h = h, lty = 3)
+dev.print(pdf, "img/20200825-tango-word-hierarchical-clustering.pdf", width = 12, height = 5)
+```
+
+_Discussion_
+
+1. The first three clusters are very clear.
+1. Most variability comes from the right half of the tree, where the tango sequences are longer.
+1. Let's choose the lowest cutting height (3) and see what the clusters look like.
+
+```{r}
+motif.summary$seq_grp <- seq_grp$h3
 # number of sequences clustered in the first 6 clusters
-head(table(motif.summary$seq_grp))
+table(motif.summary$seq_grp)
 # sequences belonging to cluster 1
 toplist <- c("group 1" = 1, "group 2" = 2, "group 3" = 3)
-lapply(toplist, function(x) paste(pull(filter(motif.summary, seq_grp == x), seq), collapse = "  "))
+lapply(toplist, function(x) paste(head(pull(filter(motif.summary, seq_grp == x), seq), n = 50), collapse = "  "))
+```
+
+_Discussion_
+
+From the clustering result, I can identify the main issue with the currently approach -- because I set up the scoring matrix such that insertion and deletions are twice as costly as the substitutions, and since there is no way to distinguish the end gaps from the internal gaps, I'm stuck at either allowing internal gaps, which is not very desirable, or penalizing end gaps, which would result in sequences such as "GVVIV" and "VIVTT" to be grouped separately from the dominant sequence, "GVVIVTT". One can also see the effect of this by noticing how the tree is nicely ordered by the sequence motif length (left-to-right: short-to-long).
+
+In an attempt to relieve this problem, I will decrease the gap penalty and see if it makes any difference.
+
+### Levenshtein edit distance with different costs
+```{r}
+# reduce the insertion and deletion costs
+motif.dist <- stringdistmatrix(seqs, method = "dl", weight = c(d = 0.12, i = 0.12, s = 0.1, t = 1), useNames = TRUE)
+motif.clust <- agnes(motif.dist, method = "ward")
+```
+
+```{r}
+h <- seq(from = 2.5, to = 5, by = 0.5)
+seq_grp <- lapply(h, function(x) cutree(as.hclust(motif.clust), h = x))
+names(seq_grp) <- paste0("h", h)
+cluster_bars <- do.call(cbind, seq_grp); 
+pltree(motif.clust, cex = 0.05, hang = -1, xlab = "Tango sequences")
+dendextend::colored_bars(cluster_bars, as.dendrogram(motif.clust), add = TRUE, y_shift = -1, cex.rowLabels = 0.8)
+```
+
+```{r}
+motif.summary$seq_grp <- seq_grp$h3
+# number of sequences clustered in the first 6 clusters
+table(motif.summary$seq_grp)
+# sequences belonging to cluster 1
+toplist <- c("group 1" = 1, "group 2" = 2, "group 3" = 3, "group 4" = 4, "group 5" = 5)
+lapply(toplist, function(x) paste(head(pull(filter(motif.summary, seq_grp == x), seq), n = 50), collapse = "  "))
+```
+This result is still not satisfactory. To me, some sequences in group 3, e.g. "IVITT", "VIITT", "VVIVTT", "VIVTT", should be clustered with group 1, but they are not.
+
+### K-medoids clustering, aka partition around medoids (PAM)
+Let's try a different clustering approach, K-medoids, or Partition Around Medoids algorithm
+For methods, refer to [wikipedia](https://en.wikipedia.org/wiki/K-medoids) and [r doc for the `pam()` function](https://www.rdocumentation.org/packages/cluster/versions/2.1.0/topics/pam). According to the latter, PAM has several advantages over K-means, including clustering around one of the objects (by miniziming within cluster dissimilarity _around_ that medoid). This has a great advantage for this case as I can easily examine the "meoids" after the clustering and see if those representatives should have been grouped together.
+```{r silhouette_optimal_number_of_clusters}
+# construct dissimilarity matrix
+# we will use the distance matrix constructed above, i.e. motif.dist
+# the following code is adapted from 
+# https://www.rdocumentation.org/packages/cluster/versions/2.1.0/topics/pam.object
+## Use the silhouette widths for assessing the best number of clusters,
+## following a one-dimensional example from Christian Hennig :
+##
+asw <- numeric(25)
+## Note that "k=1" won't work!
+for (k in 2:25)
+  asw[k] <- pam(motif.dist, k, diss = TRUE) $ silinfo $ avg.width
+k.best <- which.max(asw)
+cat("silhouette-optimal number of clusters:", k.best, "\n")
+
+plot(1:25, asw, type= "b", pch = 19, frame = FALSE, main = "pam() clustering assessment",
+     xlab= "k  (# clusters)", ylab = "average silhouette width")
+axis(1, k.best, paste("best",k.best,sep="\n"), col = "red", col.axis = "red")
+```
+
+This is a bit surprising as the silhouette method suggests an optimal number of cluster = 2
+```{r}
+motif.pam <- pam(motif.dist, k = 10, diss = TRUE)
 ```
 
 ### Excluding motifs in the first 300 amino acids
@@ -199,15 +298,15 @@ motif.summary1 <- tango.res.df %>%
 seqs1 <- motif.summary1$seq
 # compute distance matrix between strings using the full Damerau-Levenshtein method
 # reference: https://medium.com/my-datascience-journal/using-string-distance-to-group-text-variables-in-r-aa6d0f9226a6
-motif.dist1 <- stringdistmatrix(seqs1, method = "dl", useNames = TRUE)
+motif.dist1 <- stringdistmatrix(seqs1, method = "dl", useNames = TRUE,
+                                weight = c(d = 0.12, i = 0.12, s = 0.1, t = 1))
 motif.clust1 <- agnes(motif.dist1, method = "ward")
-pltree(motif.clust1, cex = 0.07, hang = -1)
-abline(h = 12, lty = 2)
+pltree(motif.clust1, cex = 0.05, hang = -1)
 dev.print(pdf, "img/20200727-motif-cluster-dendrogram-mN300.pdf")
 ```
 
 ```{r explore_diff_cluster_1}
-motif.summary1$seq_grp <- cutree(as.hclust(motif.clust1), k = 60)
+motif.summary1$seq_grp <- cutree(as.hclust(motif.clust1), h = 2)
 # number of sequences clustered in the first 6 clusters
 head(table(motif.summary1$seq_grp))
 
@@ -222,3 +321,74 @@ tango.res.df %>%
     group_by(species) %>% 
     summarize(motif.use = paste(sort(unique(seq_grp)), collapse = ","))
 ```
+
+### Using proper amino acid substitution matrix to calculate distance
+Here we use the `Biostrings::stringDist()` function to calculate the pairwise distances between the motifs. What's different about this method compared to the generic string distance function used above is that it is based on pairwise alignment. Specifically, the function uses the following procedure to calculate the distance between any pair of sequences:
+
+1. perform pairwise alignment (local/global) using a given substitution matrix (e.g. BLOSUM62)
+1. use the negative of the score as the distance measure
+
+
+    note that this is different from the edit distance (Levenshtein), which is what is used in the method above
+
+Because the distance calculation is based on pairwise alignment, we need to decide on the "type" of alignment and the scoring matrix to use. According to the [manual](https://bioconductor.org/packages/release/bioc/vignettes/Biostrings/inst/doc/PairwiseAlignments.pdf) of `Biostrings`, there are five types, which differ in which part of the sequence the substitution scoring and gap panelties are applied to:
+
+1. Global
+
+    end-to-end: $[a_1, b_1] = [1,n_1]$ and $[a_2,b_2] = [1,n_2]$, where $n_1$ and $n_2$ denote the lengths of the query and subject sequences, and $a_i$ and $b_i$ denote the starting and end position in the query and subject that the alignment scoring is applied to.
+
+1. Local
+
+    align string fragments: $[a_1, b_1]$ and $[a_2, b_2]$; based on [wikipedia](https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm), the local alignment differs from the global alignment in that it sets the negative scoring matrix cells to zero. This means in this mode mismatches are _not penalized_.
+    
+1. Overlap
+
+    align whole strings without **end gap** penalties: ${[a_1, b_1] = [a_1,n_1], [a_2, b_2] = [1, b_2]}$ or ${[a_1, b_1] = [1,b_1], [a_2, b_2] = [a_2, n_2]}$
+    
+1. Subject overlap (global-local)
+
+    align whole strings in `pattern` with consecutive subsequences of `subject`: $[a_1,b_1]=[1,n_1]$ and $[a_2,b_2]$
+
+1. Query overlap (local-global)
+
+    align consecutive subsequences in `pattern` with whole strings of subject: $[a_1,b_1]$ and $[a_2,b_2]=[1,n_2]$
+    
+As for the scoring matrix, we will use a fixed one, BLOSUM62. The `pairwiseAlignment()` also allows for a quality-based scoring matrix. But since our sequences have no associated "quality", or "weights", we will not use that feature.
+
+Lastly, the default for gap opening and extension penalty are 10 and 4, which are quite high for the length of the motif sequences. Therefore we should see no gapped alignment, which I think is the right choice.
+```{r test_pairwise_alignmen_params}
+# set.seed(seed = 123)
+# sample.patterns <- sample(seqs, 10)
+sample.patterns <- c("GVVIVTT", "FGVVTITT", "IVIITSGSGIVIVTT", "FTTFTTTFTT", "VLVTT", 
+                     "GFFVTSL", "LIVFY", "LSLQALLSAVYCLSSVLALTIT", "FTSIWTTV", "FFSFWLLLNSVLALVIT")
+mat <- "BLOSUM50"
+pa1 <- pairwiseAlignment(sample.patterns, "GVVIVTT", type = "global", substitutionMatrix = mat)
+pa2 <- pairwiseAlignment(sample.patterns, "GVVIVTT", type = "local", substitutionMatrix = mat)
+pa3 <- pairwiseAlignment(sample.patterns, "GVVIVTT", type = "overlap", substitutionMatrix = mat)
+data.frame(pattern = sample.patterns, glb.aln = aligned(pa1), glb.d = nedit(pa1), glb.S = score(pa1),
+           lc.aln = aligned(pa2), lc.d = nedit(pa2), lc.S = score(pa2),
+           ov.aln = aligned(pa3), ov.d = nedit(pa3), ov.S = score(pa3))
+```
+
+Based on the result above, I decide to try "overlap" (which requires at least one end be anchored) with "BLOSUM" substitution matrix to calculate the distance
+```{r}
+motif.dist2 <- stringDist(seqs, method = "substitutionMatrix", type = "overlap", substitutionMatrix = "BLOSUM50", gapOpening = 10, gapExtension = 4)
+```
+```{r determine_optimal_num_clusters}
+asw <- numeric(20)
+## Note that "k=1" won't work!
+for (k in 2:20)
+  asw[k] <- pam(motif.dist2, k, diss = TRUE) $ silinfo $ avg.width
+k.best <- which.max(asw)
+cat("silhouette-optimal number of clusters:", k.best, "\n")
+
+plot(1:20, asw, type= "b", pch = 19, frame = FALSE, main = "pam() clustering assessment",
+     xlab= "k  (# clusters)", ylab = "average silhouette width")
+axis(1, k.best, paste("best",k.best,sep="\n"), col = "red", col.axis = "red")
+```
+
+```{r}
+motif.clust2 <- agnes(-motif.dist2, method = "ward")
+pltree(motif.clust2, cex = 0.05, hang = -1)
+```
+

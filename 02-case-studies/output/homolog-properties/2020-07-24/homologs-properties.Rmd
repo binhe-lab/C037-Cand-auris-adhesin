@@ -14,12 +14,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r load_libraries, echo = FALSE}
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-if (!requireNamespace("treeio", quietly = TRUE))
-    BiocManager::install("treeio")
-if (!requireNamespace("ggtree", quietly = TRUE))
-    BiocManager::install("ggtree")
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+#    install.packages("BiocManager")
+#if (!requireNamespace("treeio", quietly = TRUE))
+#    BiocManager::install("treeio")
+#if (!requireNamespace("ggtree", quietly = TRUE))
+#    BiocManager::install("ggtree")
 library(tidyverse)
 ```
 
@@ -47,7 +47,7 @@ seqInfo <- read_tsv("XP_028889033_homologs.tsv", comment = "#", col_types = "ccc
   mutate(species = factor(species, levels = c("Cduobushaemulonis","Cpseudohaemulonis","Chaemuloni","Cauris","Clusitaniae","Dhansenii","Cparapsilosis","Lelongisporus","Ctropicalis","Cdubliniensis","Calbicans","Sstipitis","Klactis","Ncastellii","Cglabrata","Nbracarensis","Ndelphensis","Nnivariensis")))
 ```
 
-```{r plot_prot_length, fig.width=8, fig.height=6}
+```{r plot_prot_length, fig.width=8, fig.height=5}
 # plot the length distribution of the homologs in each species
 ggplot(seqInfo, aes(x = species, y = length)) + 
   geom_point() + 
@@ -97,7 +97,9 @@ pred.gpi <- tmp %>%
   mutate(name = str_sub(name,2,-2), # remove > and the trailing space
          fp = as.numeric(str_sub(fp, 9, -2)), # extract the numeric part
          pred.gpi = fp <= 0.05,
-         omega = str_sub(omega, 7)
+         omega = str_sub(omega, 8),
+         cleaveRes = str_sub(omega, 1, 1),
+         cleavePos = str_sub(omega, 3)
          )
 
 if("pred.gpi" %in% names(seqInfo))
@@ -107,6 +109,25 @@ seqInfo <- left_join(seqInfo, pred.gpi %>% select(name, pred.gpi), by = c("name"
 seqInfo %>% 
   group_by(species) %>% 
   summarize(Total = n(), GPI_SOM = sum(gpi.som), GPI_Pred = sum(pred.gpi), Both = sum(gpi.som & pred.gpi))
+```
+
+### Build feature map for homologs
+
+The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
+
+```{r}
+# Signal peptide and GPI-anchor
+gpi.som <- read_tsv("raw-output/gpi-som-parsed.out", col_types = "ci")
+# GPI-anchor
+# use pred.gpi
+# Pfam domains
+pfam <- read_tsv("raw-output/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
+# save feature file for Jalview examination
+pfam %>% filter(grepl("XP_028889033",seq_id)) %>% select(hmm_name, seq_id, envelope_start, envelope_end) %>% mutate(featuretype = "domain") %>% write_tsv("XP_028889033_features.jalview")
+# 
+# feature set
+# structure: id  feature  start  end
+feature <- 
 ```
 
 ### Serine/Threonine content
