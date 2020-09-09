@@ -27,11 +27,11 @@ Bin and Lindsey presented their main findings from the case study.
     - along the line of evolutionary expansion, the rest of the protein sequence excluding the N-terminal domain appear to be fast-evolving. its length and presence of short repeats, especially the TANGO predicted $beta$-aggregation sequences are extremely dynamic during evolution. my (bin's) current model is that the NTD is ancient and has experienced repeated expansion and contraction during evolution. whatever its functions are, it seems it is most useful when anchored on the cell wall (hence Cell-Wall-Protein in the domain name). the diversification of the homologs' function may primarily be determined by the C-terminal sequences. Ser/Thr-rich region allows for O-glycosylation, which leads to a rigid stalk. combined with many repeats, this stalk elevates the NTD above the cell wall matrix, potentially fulfilling the adhesin functions.
 
 # Todo and next meeting topic
-- [ ] Seperately plot Ser and Thr frequencies -- Jan observed in her manual annotation differences in the distribution of the two types of residues.
-- [ ] Find a way to visualize the periodicity of the GVVIVTT and other similar short sequences identified by TANGO. do this separately from clustering the words.
-- [ ] Turn the S/T frequency and $beta$-aggregation sequence plots into a domain architecture schematic, by adding signal peptide, N-terminal Pfam domain and C-terminal predicted GPI-anchor.
-    - [ ] collect sequence feature maps for the above and store as a data frame
-    - [ ] figure out a way to combine these elements on the same plot
+- [x] Seperately plot Ser and Thr frequencies -- Jan observed in her manual annotation differences in the distribution of the two types of residues.
+- [x] Find a way to visualize the periodicity of the GVVIVTT and other similar short sequences identified by TANGO. do this separately from clustering the words.
+- [x] Turn the S/T frequency and $beta$-aggregation sequence plots into a domain architecture schematic, by adding signal peptide, N-terminal Pfam domain and C-terminal predicted GPI-anchor.
+    - [x] collect sequence feature maps for the above and store as a data frame
+    - [x] figure out a way to combine these elements on the same plot
 - [ ] Cluster TANGO sequences. Idea: just use local pairwise alignment algorithms and take its total score as a measure of distance. This way I can pick substitution and gap opening penalties and tweak them until I feel comfortable with the outcome.
 
 - [ ] Is the choice of two different templates a result of the structural distinction between CaIff4 and the two MDR clade homologs, or is it a result of some sort of built-in stochasticity because I-TASSER couldn't afford to thread the primary sequence through ALL possible model pipes?
