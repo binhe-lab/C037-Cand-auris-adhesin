@@ -172,3 +172,21 @@ The latter has some obvious connection to adhesion, based on its role in aggrega
 Based on the above results, I'm further convinced that the PF11765 domain is indeed an ancient one. This protein family has either been lost or evolved to perform different functions in most of the Saccharomycetaceae species, but has dramatically expanded in the MDR clade and _C. albicans_ clade to function as adhesins.
 
 I further asked if using the _C. glabrata_ domain sequence as query, I can recover hits in _S. cerevisiae_ and other Saccharomycetales yeasts. The answer is no.
+## 2020-09-13 [HB] Homologs in other _C. auris_ proteomes
+This analysis stems from Jan's question of what other homologs are there in the five _C. auris_ proteomes. To answer this question, I did the following:
+1. Bring over the proteome fasta files from the global analysis folder
+    ```bash
+    mkdir Cauris-strains; cd Cauris-strains
+    ln -s ../../../../01-global-adhesin-prediction/data/proteome-fasta/*Cand_auris* ./
+    cd ..
+    ```
+
+1. Construct blast database
+    ```bash
+    cat Cauris-strains/*.gz > Cauris-strains/Cand_auris_five_strains_protein.faa.gz
+    gunzip -c Cauris-strains/Cand_auris_five_strains_protein.faa.gz | \
+        makeblastdb -in - -parse_seqids -dbtype prot -title Cand_auris_five_strains -out blastdb/Cand_auris_five_strains
+    blastp -db ./blastdb/Cand_auris_five_strains -query XP_028889033_query.fasta -max_hsps 1 -outfmt "7" -num_threads 4 -out XP_028889033-Cauris-five-strains-blast.txt
+    ```
+
+1. Edited the output text file by adding a header. Then open that file in Excel and removed the comment lines along with several entries with E-value > 10E-5. The result is stored in an excel file of the same base name as above.

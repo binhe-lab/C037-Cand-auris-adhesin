@@ -19,7 +19,11 @@ Bin presented updates on the case study. Main points:
     ![ser/thr content](../02-case-studies/output/homolog-properties/2020-07-24/img/20200904-ST-freq-composite.png)
 
 - Jan mentioned a reason for the serine and threonine to be enriched in different parts of the protein.
+    - see Issues/Shared progress results
 - Rachel asked if the Serine-rich domain is folded or disordered. Bin has submitted the sequence to Phyre2 for homology modeling.
+    - the answer is that the region is likely disordered
+
+        ![Ser-rich region is disordered](img/20200910-XP_028889033-Ser-rich-domain-2nd-structure-Phyre2.png)
 
 ## TANGO sequences
 - Try excluding motifs found in the NTD (PF11765) before clustering.

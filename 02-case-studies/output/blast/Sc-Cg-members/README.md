@@ -11,3 +11,15 @@ My initial BLAST search didn't recover any hits in _S. cerevisiae_, bu did recov
 1. Use dot-plot to visualize the similarity between the _S. cerevisiae_ or _C. glabrata_ hits and XP_028889033.
 
 1. Submitted the sequences (`PF11765_full_sequences.fasta`) to [GPI-SOM](http://genomics.unibe.ch/cgi-bin/gpi.cgi) and [PredGPI](http://gpcr.biocomp.unibo.it/predgpi/pred.htm) and saved the results locally.
+
+_Results_
+
+1. Dot plot
+
+    ![dot plot](Polydotplot_wordsize8_S3.png)
+
+1. PredGPI
+
+    - highly probable: XP_028889033_Cauris, YOL155C_HPF1_Scerevisiae, CAGL0I07293g_Cglabrata
+    - probable: CAGL0E06600g_Cglabrata
+    - weakly probable: YIL169C_CSS1_Scerevisiae
