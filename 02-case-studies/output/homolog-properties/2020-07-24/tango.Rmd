@@ -26,7 +26,15 @@ if(!requireNamespace("RWebLogo", quietly = TRUE))
 suppressPackageStartupMessages(library("RWebLogo"))
 ```
 
-## Define function to extract information from  TANGO results
+## Goal
+
+- Analyze TANGO predictions to extract $/beta$-aggregation prone sequences in XP_028889033 homologs.
+- Attempt to cluster those sequences by amino acid sequence similarity, and explore the question of the evolution of the C-terminal portion (non Hyg_reg_CWP portion) of the protein homologs, from the perspective of the $\beta$-aggregation prone motifs. 
+
+    In other words, we are curious about whether homologs that are more closely related based on the N-terminal domain also share more similarity in their C-terminus sequences. The expectation is yes, which would support the evolutionary model where the ancestral gene was repeatedly duplicated independently in various lineages, and the duplicates subsequently went through fast evolution of their C-terminus, potentially through de novo mutations and repeat-mediated tandem duplications and losses, which led to different lengths and composition of the C-terminus. This, in turn, made the homologs show different total length and domain architecture, which either reflected species-specific requirement for the same function or evolution of distinct functions. For the former, one could imagine that for a homolog in one species to function as an adhesin, the NTD must protrude outside the cell wall matrix, and since different species have different cell wall matrix thickness and composition, the stalk of the protein must adjust itself so the NTD is raised enough to protrude outside.
+    
+## Analysis
+### Custom function to extract information from TANGO output
 
 This function extracts the information of interest from the TANGO output file. It is designed to be used on a single file. Looping through all files in a folder can be easily achieved with `sapply` over a list of files using `list.files`.
 
@@ -65,7 +73,7 @@ extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 
 }
 ```
 
-## Apply to my XP_028889033 homologs
+### Apply to my XP_028889033 homologs
 ```{r apply}
 getwd()
 tango.output.files <- list.files(path = "tango-output", pattern = ".txt|.txt.gz", full.names = T)
@@ -84,7 +92,8 @@ write_tsv(tango.res.df, "tango_summary_table.tsv.gz")
 # the split pattern is equivalent to the rsplit() function in python
 ```
 
-```{r eda, fig.width=10, fig.height=4}
+### Exploratory data analysis of TANGO motifs
+```{r}
 # find unique motifs and count the number of proteins and species represented
 motif.summary <- tango.res.df %>% 
     group_by(seq) %>% 
@@ -97,16 +106,25 @@ motif.summary <- tango.res.df %>%
     arrange(desc(n))
 print(motif.summary)
 
+# what is the level of cross-species use of the same motif?
+motif.summary %>% count(n.species)
+```
+_**Discussion**_
+
+1. As expected, the longer the motif, the higher the aggregation potential, at least until 18 bp.
+1. Most of the motifs are species specific.
+
+```{r eda, fig.width=10, fig.height=4}
 # Is there any relationship between the length of a motif and its aggregation value?
 p0 <- motif.summary %>% 
     ggplot(aes(x = nchar(seq), y = avg.q90)) + geom_jitter(width = 0.2, alpha = 0.6) + 
     stat_summary(fun.data = mean_cl_boot, geom = "crossbar", col = "red") +
-    labs(title = "Average of median Beta aggregation prob. for TANGO motifs of different lengths")
+    labs(title = "Average of 90th percentile Beta aggregation prob. for TANGO motifs of different lengths")
 
 p1 <- motif.summary %>% 
     ggplot(aes(x = nchar(seq), y = avg.median)) + geom_jitter(width = 0.2, alpha = 0.6) + 
     stat_summary(fun.data = mean_cl_boot, geom = "crossbar", col = "red") +
-    labs(title = "Average of 90th percentile of Beta aggregation prob. for TANGO motifs of different lengths")
+    labs(title = "Average of median of Beta aggregation prob. for TANGO motifs of different lengths")
 p0
 save_plot("img/20200727-motif-length-by-value-q90.png", p0, base_asp = 2)
 p1
@@ -142,17 +160,11 @@ p5 <- tango.res.df %>%
 
 plot_grid(p4, p5)
 ggsave("img/20200727-motif-location-group-by-length.png")
-
-# what is the level of cross-species use of the same motif?
-motif.summary %>% count(n.species)
 ```
-_**Discussion**_
 
-1. As expected, the longer the motif, the higher the aggregation potential, at least until 18 bp.
-1. Most of the motifs are species specific.
-
-## Cluster motifs by similarity
-Many motifs are similar to each other but are listed differently, such as "GVVIVTT" and "GVIVVTT" etc. Here we try to use string distance matrix method and hierarchical clustering to group them into sub-groups.
+### Cluster motifs by similarity
+Many motifs are similar to each other but are listed differently, such as "GVVIVTT" and "GVIVVTT" etc. Therefore, we wonder if we can group them based on the similarity. Almost all clusterin algorithms are based on a pairwise distance matrix. To caluate the distance between any two sequences, we have the following consideration:
+First, one can work with the Euclidian distance if the sequences are of the same length. Unfortunately, the TANGO predicted sequences are of different lengths, and thus we need a different measure. One such method is the edit distance, also called the [Levenshtein edit distance]()
 
 ### Levenshtein edit distance approach
 

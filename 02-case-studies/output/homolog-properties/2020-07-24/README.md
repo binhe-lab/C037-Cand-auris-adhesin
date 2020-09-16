@@ -97,7 +97,10 @@ seq0 x:15 y:10 map:G omega:21 oq:58
 
     This is based on the C-score from [SignalP](http://www.cbs.dtu.dk/services/SignalP-3.0/output.php), which has a value for each residue and should peak at the cleavage site. Note that in the SignalP output, the "peak" position actually points to the first residue in the mature protein. Hence it's the residue before that peak that is the "cleavage site". In this case it is residue 21.
 
-- Regarding the rest of the output, I suspect "x", "y" and "map" refer to the location of the sequence on their "self-organizing map"
+    Notice, however, the GPI-SOM output file doesn't report the probability of there being a signal peptide, as reported by SignalP. But it seems that the `gpi-anchor-list.txt`, which is from the fifth row on the result page, did remove sequences whose SignalP predicted probability is low (1x ~0.3 and 2x ~0.03). It's too bad that they don't make these things clear
+
+- In light of the above, I discarded the GPI-SOM results altogether and opted to use [SignalP 5.0 server](http://www.cbs.dtu.dk/services/SignalP-5.0/) to predict the N-terminal signal peptide, and use PredGPI (see below) to predict the C-terminal GPI anchor. The new SignalP 5.0 result is now in `raw-output/signalp_5.0.gff`.
+
 - To get the position of the GPI-anchor, I turn to the PredGPI result. An example is shown below:
 
     ```

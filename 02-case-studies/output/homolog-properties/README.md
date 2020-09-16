@@ -21,7 +21,7 @@ Submitted the fasta sequence to the [FungalRV server](http://fungalrv.igib.res.i
 ### FaaPred
 Split the fasta sequence file into subsets of 25 using `split -l 50 XP_028889033_homologs.fasta`. Submit the 5 subset files to the FaaPred [website app](http://bioinfo.icgeb.res.in/faap/query.html), copy and paste the results into Sublime Text and removed the first index column, resulting in the `raw-output/faapred_result.txt`.
 
-### Fungal GPI pattern
+### Fungal GPI pattern using a regular expression search
 There is a feature on the FungalRV server result, where each sequence has an associated "Search for GPI fungal pattern" link. Upon looking into it, I found it is a simple "fuzzy search" using a quasi-regular-expression very similar to the PROSITE patterns. I think this pattern is simply made by the FungalRV authors. The program used for the search is `fuzzpro`, which is part of the well-known `EMBOSS` suite. I implemented that search locally and get the result using the following command
 
 ```bash
@@ -64,7 +64,7 @@ python myfuzzpro.py
 1. Convert the output to a table format for plotting
     
     ```bash
-    python format_freak_out.py raw-output/ST_freq_100_10.freak
+    python format_freak_output.py raw-output/ST_freq_100_10.freak
     ```
 
 1. Compress the output for storage
@@ -74,3 +74,5 @@ python myfuzzpro.py
     ```
 
 1. For plotting, we would like to create a vector of sequence names in the same order as shown in the rooted gene tree. To do so, I loaded the `../gene-tree/20200723-raxml-hb/RAxML_bipartitions.muscle_4318866` in FigTree 1.4.4, rooted the tree on the Saccharomycotaceae, and rotated the auris and albicans groups, then saved the tree in Newick format. I then copied that file over to the current folder and edited in vim. By removing the branch lengths and other symbols such as parentheses, I got the sequence names in rows in the same order as the gene tree.
+
+1. At Jan's suggestion, I expanded the analysis above to separately document the frequency of Serine and Threonine. I also altered the window size and step size to 50 and 5 bp.

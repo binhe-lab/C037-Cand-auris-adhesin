@@ -1,7 +1,7 @@
 GPI	00ff00
 tango	ff00cc
 domain	00ffff
-repeat	999999
+repeat	666666
 
 Hyphal_reg_CWP	XP_028889033.1_Cauris	-1	12	327	domain
 SignalP	XP_028889033.1_Cauris	-1	1	21	GPI
