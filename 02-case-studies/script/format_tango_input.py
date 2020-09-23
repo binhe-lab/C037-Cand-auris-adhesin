@@ -2,6 +2,7 @@
    Parameters based on Rachel's notes in 01-global-analysis/output/TANGO/README.md
    Bin He
    2020-07-25
+   Update 2020-08-10: deprecated, use format_tango_batch.py
 """
 
 # import libraries

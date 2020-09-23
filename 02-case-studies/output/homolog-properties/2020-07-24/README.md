@@ -130,4 +130,13 @@ convert -delay 180 20200830*.png -loop 0 20200830-XP_028889033-annotated.gif
 
 ![XP_028889033 annotated](img/20200830-XP_028889033-annotated.gif)
 
+### Cluster TANGO sequences and draw their domain distribution
+_Goal_
+
+- Group TANGO sequences based on sequence similarity and plot their group # and distribution along each homolog
+
+_Background reading_
+
+See `00-misc-doc/2020-09-17-beta-aggregation.md`
+
 

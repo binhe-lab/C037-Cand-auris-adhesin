@@ -65,6 +65,7 @@ extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 
                   start = min(res), end = max(res), length = n(),
                   median = median(Aggregation),
                   q90 = quantile(Aggregation, probs = 0.9),
+                  ivt = sum(aa %in% c("I","V","T")) / length(aa),
                   .groups = "drop") %>% 
         mutate(interval = start - lag(end) - 1) %>% 
         filter(length >= required_in_serial) %>% 
@@ -93,28 +94,40 @@ write_tsv(tango.res.df, "tango_summary_table.tsv.gz")
 ```
 
 ### Exploratory data analysis of TANGO motifs
+We will group the TANGO sequences into two groups based on whether they are in within the N-terminal Hyp_reg_CWP domain or not.
 ```{r}
+# include the pfam domain information to classify the tango sequences
+pfam <- read_tsv("raw-output/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
+tango.res.df1 <- tango.res.df %>% 
+  left_join(pfam %>% 
+              filter(hmm_name == "Hyphal_reg_CWP") %>% 
+              select(name = seq_id, domain.start = envelope_start, domain.end = envelope_end), 
+            by = c("name" = "name")) %>% 
+  mutate(in.domain = (start >= domain.start-10 & end <= domain.end)) %>% 
+  select(-domain.start, -domain.end)
 # find unique motifs and count the number of proteins and species represented
-motif.summary <- tango.res.df %>% 
-    group_by(seq) %>% 
-    summarize(n = n(), n.protein = n_distinct(id), n.species = n_distinct(species),
-              avg.median = round(mean(median),1),
-              avg.q90 = round(mean(q90),1),
-              avg.intv = round(mean(interval, na.rm = T),1), sd.intv = round(sd(interval, na.rm = T),2),
-              pc.N300 = sum(start <= 300)/n()*100,
+motif.summary <- tango.res.df1 %>% 
+    group_by(in.domain, seq) %>% 
+    summarize(n = n(), n.prot = n_distinct(id), n.sps = n_distinct(species),
+              medScore = round(mean(median),1),
+              IVT = round(mean(ivt),2),
+              avg.intv = round(mean(interval, na.rm = T),1), sd.intv = round(sd(interval, na.rm = T),1),
               species = paste0(unique(species), collapse = ","), .groups = "drop") %>% 
     arrange(desc(n))
-print(motif.summary)
 
+# TANGO sequences inside the Hyphal_reg_CWP domain
+print(filter(motif.summary, in.domain) %>% select(-in.domain))
+# TANGO sequences outside the Hyphal_reg_CWP domain
+print(filter(motif.summary, !in.domain) %>% select(-in.domain))
 # what is the level of cross-species use of the same motif?
-motif.summary %>% count(n.species)
+motif.summary %>% count(n.sps)
 ```
 _**Discussion**_
 
-1. As expected, the longer the motif, the higher the aggregation potential, at least until 18 bp.
+1. TANGO sequences within the Hyphal_reg_CWP domain are distinct in their sequences from the ones outside and tend to be low in "IVT" content and low in beta-aggregations score.
 1. Most of the motifs are species specific.
 
-```{r eda, fig.width=10, fig.height=4}
+```{r eda, include=FALSE, fig.width=10, fig.height=4}
 # Is there any relationship between the length of a motif and its aggregation value?
 p0 <- motif.summary %>% 
     ggplot(aes(x = nchar(seq), y = avg.q90)) + geom_jitter(width = 0.2, alpha = 0.6) + 
@@ -172,7 +185,7 @@ Below are my first attempt, using the `stringdist` package.
 ```{r gather_motif}
 library(stringdist)
 # get the unique motif sets
-seqs <- motif.summary$seq
+seqs <- motif.summary %>% filter(!in.domain) %>% pull(seq)
 # compute distance matrix between strings using the full Damerau-Levenshtein method
 # reference: https://medium.com/my-datascience-journal/using-string-distance-to-group-text-variables-in-r-aa6d0f9226a6
 motif.dist <- stringdistmatrix(seqs, method = "dl", weight = c(d = 0.2, i = 0.2, s = 0.1, t = 1), useNames = TRUE)
