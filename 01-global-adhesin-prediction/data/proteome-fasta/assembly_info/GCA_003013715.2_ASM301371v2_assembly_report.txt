@@ -1,0 +1,35 @@
+# Assembly name:  ASM301371v2
+# Organism name:  [Candida] auris (budding yeasts)
+# Infraspecific name:  strain=B11220
+# Taxid:          498019
+# BioSample:      SAMN05379608
+# BioProject:     PRJNA328792
+# Submitter:      Centers for Disease Control and Prevention
+# Date:           2019-09-10
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Assembly method: Flye v. 2.4.2
+# Genome coverage: 51
+# Sequencing technology: Oxford_Nanopore
+# Relation to type material: assembly from type material
+# GenBank assembly accession: GCA_003013715.2
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003013725.2		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	CP043531.1	<>	na	Primary Assembly	3148135	na
+2	assembled-molecule	2	Chromosome	CP043532.1	<>	na	Primary Assembly	2554418	na
+3	assembled-molecule	3	Chromosome	CP043533.1	<>	na	Primary Assembly	2336890	na
+4	assembled-molecule	4	Chromosome	CP043534.1	<>	na	Primary Assembly	1318327	na
+5	assembled-molecule	5	Chromosome	CP043535.1	<>	na	Primary Assembly	1007026	na
+6	assembled-molecule	6	Chromosome	CP043536.1	<>	na	Primary Assembly	1004684	na
+7	assembled-molecule	7	Chromosome	CP043537.1	<>	na	Primary Assembly	880293	na

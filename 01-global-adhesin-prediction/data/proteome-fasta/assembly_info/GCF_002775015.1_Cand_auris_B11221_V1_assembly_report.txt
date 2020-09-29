@@ -1,0 +1,51 @@
+# Assembly name:  Cand_auris_B11221_V1
+# Organism name:  [Candida] auris (budding yeasts)
+# Infraspecific name:  strain=B11221
+# Taxid:          498019
+# BioSample:      SAMN05379609
+# BioProject:     PRJNA328792
+# Submitter:      Centers for Disease Control and Prevention
+# Date:           2017-11-15
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    PGLS01
+# Assembly method: HGAP v. 3
+# Genome coverage: 80x
+# Sequencing technology: PacBio
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_002775015.1
+# RefSeq assembly accession: GCF_002775015.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002775025.1	GCF_002775025.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold00001	unplaced-scaffold	na	na	PGLS01000004.1	=	NW_021640165.1	Primary Assembly	4303397	na
+scaffold00002	unplaced-scaffold	na	na	PGLS01000001.1	=	NW_021640162.1	Primary Assembly	2363944	na
+scaffold00003	unplaced-scaffold	na	na	PGLS01000002.1	=	NW_021640163.1	Primary Assembly	1552814	na
+scaffold00004	unplaced-scaffold	na	na	PGLS01000007.1	=	NW_021640168.1	Primary Assembly	1437120	na
+scaffold00005	unplaced-scaffold	na	na	PGLS01000006.1	=	NW_021640167.1	Primary Assembly	996432	na
+scaffold00006	unplaced-scaffold	na	na	PGLS01000005.1	=	NW_021640166.1	Primary Assembly	949235	na
+scaffold00007	unplaced-scaffold	na	na	PGLS01000003.1	=	NW_021640164.1	Primary Assembly	788955	na
+scaffold00008	unplaced-scaffold	na	na	PGLS01000014.1	=	NW_021640175.1	Primary Assembly	51479	na
+scaffold00009	unplaced-scaffold	na	na	PGLS01000017.1	=	NW_021640178.1	Primary Assembly	50837	na
+scaffold00010	unplaced-scaffold	na	na	PGLS01000016.1	=	NW_021640177.1	Primary Assembly	32410	na
+scaffold00011	unplaced-scaffold	na	na	PGLS01000015.1	=	NW_021640176.1	Primary Assembly	30471	na
+scaffold00012	unplaced-scaffold	na	na	PGLS01000012.1	=	NW_021640173.1	Primary Assembly	26795	na
+scaffold00013	unplaced-scaffold	na	na	PGLS01000018.1	=	NW_021640179.1	Primary Assembly	25403	na
+scaffold00014	unplaced-scaffold	na	na	PGLS01000010.1	=	NW_021640171.1	Primary Assembly	24303	na
+scaffold00015	unplaced-scaffold	na	na	PGLS01000011.1	=	NW_021640172.1	Primary Assembly	21981	na
+scaffold00016	unplaced-scaffold	na	na	PGLS01000009.1	=	NW_021640170.1	Primary Assembly	20623	na
+scaffold00017	unplaced-scaffold	na	na	PGLS01000019.1	=	NW_021640180.1	Primary Assembly	20143	na
+scaffold00018	unplaced-scaffold	na	na	PGLS01000013.1	=	NW_021640174.1	Primary Assembly	17854	na
+scaffold00019	unplaced-scaffold	na	na	PGLS01000020.1	=	NW_021640181.1	Primary Assembly	16270	na
+scaffold00020	unplaced-scaffold	na	na	PGLS01000008.1	=	NW_021640169.1	Primary Assembly	10712	na

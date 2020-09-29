@@ -1,0 +1,38 @@
+# Assembly name:  ASM18296v3
+# Organism name:  Candida albicans SC5314 (budding yeasts)
+# Infraspecific name:  strain=SC5314
+# Taxid:          237561
+# BioSample:      SAMN02953594
+# BioProject:     PRJNA10701
+# Submitter:      Stanford University
+# Date:           2016-10-12
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Assembly method: Bowtie v. 1.0
+# Genome coverage: 700x
+# Sequencing technology: Illumina GAIIx
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000182965.3
+# RefSeq assembly accession: GCF_000182965.3
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000182975.3	GCF_000182975.3	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	CP017623.1	=	NC_032089.1	Primary Assembly	3188341	na
+2	assembled-molecule	2	Chromosome	CP017624.1	=	NC_032090.1	Primary Assembly	2231883	na
+3	assembled-molecule	3	Chromosome	CP017625.1	=	NC_032091.1	Primary Assembly	1799298	na
+4	assembled-molecule	4	Chromosome	CP017626.1	=	NC_032092.1	Primary Assembly	1603259	na
+5	assembled-molecule	5	Chromosome	CP017627.1	=	NC_032093.1	Primary Assembly	1190845	na
+6	assembled-molecule	6	Chromosome	CP017628.1	=	NC_032094.1	Primary Assembly	1033292	na
+7	assembled-molecule	7	Chromosome	CP017629.1	=	NC_032095.1	Primary Assembly	949511	na
+R	assembled-molecule	R	Chromosome	CP017630.1	=	NC_032096.1	Primary Assembly	2286237	na

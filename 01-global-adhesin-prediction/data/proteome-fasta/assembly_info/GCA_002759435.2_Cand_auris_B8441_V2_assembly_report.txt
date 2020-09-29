@@ -1,0 +1,43 @@
+# Assembly name:  Cand_auris_B8441_V2
+# Organism name:  [Candida] auris (budding yeasts)
+# Infraspecific name:  strain=B8441
+# Taxid:          498019
+# BioSample:      SAMN05379624
+# BioProject:     PRJNA328792
+# Submitter:      Centers for Disease Control and Prevention
+# Date:           2017-11-15
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    PEKT02
+# Assembly method: HGAP v. 3
+# Genome coverage: 80x
+# Sequencing technology: PacBio
+# GenBank assembly accession: GCA_002759435.2
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002759455.2		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold00001	unplaced-scaffold	na	na	PEKT02000007.1	<>	na	Primary Assembly	3195935	na
+scaffold00002	unplaced-scaffold	na	na	PEKT02000010.1	<>	na	Primary Assembly	1402902	na
+scaffold00003	unplaced-scaffold	na	na	PEKT02000002.1	<>	na	Primary Assembly	1280737	na
+scaffold00004	unplaced-scaffold	na	na	PEKT02000001.1	<>	na	Primary Assembly	1083522	na
+scaffold00005	unplaced-scaffold	na	na	PEKT02000003.1	<>	na	Primary Assembly	1047474	na
+scaffold00006	unplaced-scaffold	na	na	PEKT02000009.1	<>	na	Primary Assembly	1007143	na
+scaffold00007	unplaced-scaffold	na	na	PEKT02000008.1	<>	na	Primary Assembly	898131	na
+scaffold00008	unplaced-scaffold	na	na	PEKT02000004.1	<>	na	Primary Assembly	887381	na
+scaffold00009	unplaced-scaffold	na	na	PEKT02000006.1	<>	na	Primary Assembly	776876	na
+scaffold00010	unplaced-scaffold	na	na	PEKT02000005.1	<>	na	Primary Assembly	639401	na
+scaffold00011	unplaced-scaffold	na	na	PEKT02000012.1	<>	na	Primary Assembly	65067	na
+scaffold00012	unplaced-scaffold	na	na	PEKT02000013.1	<>	na	Primary Assembly	38216	na
+scaffold00013	unplaced-scaffold	na	na	PEKT02000011.1	<>	na	Primary Assembly	20765	na
+scaffold00014	unplaced-scaffold	na	na	PEKT02000014.1	<>	na	Primary Assembly	11792	na
+scaffold00015	unplaced-scaffold	na	na	PEKT02000015.1	<>	na	Primary Assembly	10617	na
