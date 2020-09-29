@@ -1,0 +1,38 @@
+# Assembly name:  ASM14942v1
+# Organism name:  Meyerozyma guilliermondii ATCC 6260 (budding yeasts)
+# Infraspecific name:  strain=ATCC 6260
+# Taxid:          294746
+# BioSample:      SAMN02953607
+# BioProject:     PRJNA12729
+# Submitter:      Broad Institute
+# Date:           2007-05-08
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    AAFM01
+# Relation to type material: assembly from synonym type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000149425.1
+# RefSeq assembly accession: GCF_000149425.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000149435.1	GCF_000149435.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold_8	unplaced-scaffold	na	na	CH408162.1	=	NW_001809793.1	Primary Assembly	437292	na
+scaffold_7	unplaced-scaffold	na	na	CH408161.1	=	NW_001809794.1	Primary Assembly	887468	na
+scaffold_6	unplaced-scaffold	na	na	CH408160.1	=	NW_001809795.1	Primary Assembly	1022952	na
+scaffold_5	unplaced-scaffold	na	na	CH408159.1	=	NW_001809796.1	Primary Assembly	1224156	na
+scaffold_4	unplaced-scaffold	na	na	CH408158.1	=	NW_001809797.1	Primary Assembly	1255619	na
+scaffold_3	unplaced-scaffold	na	na	CH408157.1	=	NW_001809798.1	Primary Assembly	1701016	na
+scaffold_2	unplaced-scaffold	na	na	CH408156.1	=	NW_001809799.1	Primary Assembly	1964611	na
+scaffold_1	unplaced-scaffold	na	na	CH408155.1	=	NW_001809800.1	Primary Assembly	2092950	na
+scaffold_9	unplaced-scaffold	na	na	DS236883.1	=	NW_001809792.1	Primary Assembly	23890	na

@@ -1,0 +1,37 @@
+# Assembly name:  ASM383v1
+# Organism name:  Clavispora lusitaniae ATCC 42720 (budding yeasts)
+# Infraspecific name:  strain=ATCC 42720
+# Taxid:          306902
+# BioSample:      SAMN02953613
+# BioProject:     PRJNA12753
+# Submitter:      Broad Institute
+# Date:           2009-06-02
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    AAFT01
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000003835.1
+# RefSeq assembly accession: GCF_000003835.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000003845.1	GCF_000003845.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold_4	unplaced-scaffold	na	na	CH408079.1	=	NW_003101575.1	Primary Assembly	1787903	na
+scaffold_2	unplaced-scaffold	na	na	CH408077.1	=	NW_003101577.1	Primary Assembly	2215196	na
+scaffold_6	unplaced-scaffold	na	na	CH408081.1	=	NW_003101573.1	Primary Assembly	814710	na
+scaffold_7	unplaced-scaffold	na	na	CH408082.1	=	NW_003101572.1	Primary Assembly	779898	na
+scaffold_5	unplaced-scaffold	na	na	CH408080.1	=	NW_003101574.1	Primary Assembly	1456586	na
+scaffold_1	unplaced-scaffold	na	na	CH408076.1	=	NW_003101578.1	Primary Assembly	2423571	na
+scaffold_3	unplaced-scaffold	na	na	CH408078.1	=	NW_003101576.1	Primary Assembly	1874050	na
+scaffold_8	unplaced-scaffold	na	na	CH408083.1	=	NW_003101571.1	Primary Assembly	744036	na
+scaffold_9	unplaced-scaffold	na	na	GG670277.1	=	NW_003101579.1	Primary Assembly	18942	na

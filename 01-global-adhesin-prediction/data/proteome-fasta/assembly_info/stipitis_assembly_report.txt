@@ -1,0 +1,36 @@
+# Assembly name:  ASM20916v1
+# Organism name:  Scheffersomyces stipitis CBS 6054 (budding yeasts)
+# Infraspecific name:  strain=CBS 6054
+# Taxid:          322104
+# BioSample:      SAMN02746101
+# BioProject:     PRJNA16843
+# Submitter:      DOE Joint Genome Institute
+# Date:           2007-02-26
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    AAVQ01
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000209165.1
+# RefSeq assembly accession: GCF_000209165.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000209175.1	GCF_000209175.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	CM000437.1	=	NC_009068.1	Primary Assembly	3510247	na
+2	assembled-molecule	2	Chromosome	CP000496.1	=	NC_009042.1	Primary Assembly	2740984	na
+3	assembled-molecule	3	Chromosome	CP000497.1	=	NC_009043.1	Primary Assembly	1841851	na
+4	assembled-molecule	4	Chromosome	CP000498.1	=	NC_009044.1	Primary Assembly	1803401	na
+5	assembled-molecule	5	Chromosome	CP000499.1	=	NC_009045.1	Primary Assembly	1725948	na
+6	assembled-molecule	6	Chromosome	CP000500.1	=	NC_009046.1	Primary Assembly	1724953	na
+7	assembled-molecule	7	Chromosome	CP000501.1	=	NC_009047.1	Primary Assembly	1114415	na
+8	assembled-molecule	8	Chromosome	CP000502.1	=	NC_009048.1	Primary Assembly	979380	na
