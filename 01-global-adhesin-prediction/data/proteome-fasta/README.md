@@ -10,7 +10,14 @@
 | proteome | *Cand_glabrata* proteome for CBS138 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/protein?LinkName=bioproject_protein&from_uid=596126) | 2020-02-24 | Bin found a new genome release from the Cormack lab (note that this is CDS, i.e. DNA sequence) | 
 | proteome | *Cand_glabrata* proteome for CBS138 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_010111755.1) | 2020-06-23 | This is the protein sequence from the new CBS138 genome sequenced by Cormack lab | 
 | proteome | *Cand_albicans* proteome for SC5314 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000182965.3/) | 2020-02-10 | Rachel downloaded the current version of predicted proteins | 
-| proteome | *S_cerevisiae* proteome for S288C | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000146045.2/) | 2020-05-29 | Bin downloaded the latest (R64) version of the S288C proteins |
+| proteome | *Cand_pseudohaemulonii* proteome for B12108 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_003013735.1/) | 2020-07-12 | Rachel downloaded proteome and assembly information |
+| proteome | *Scheffersomyces stipitis* proteome for CBS 6054 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000209165.1/) | 2020-07-12 | Rachel downloaded proteome and assembly information |
+| proteome | *[Candida] duobushaemulonis* proteome for B09383 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_002926085.2/) | 2020-07-12 | Rachel downloaded proteome and assembly information |
+| proteome | *Meyerozyma guilliermondii* proteome for ATCC 6260 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000149425.1/) | 2020-07-12 | Rachel downloaded proteome and assembly information |
+| proteome | *[Candida] haemuloni* proteome for B11899 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_002926055.2/) | 2020-07-12 | Rachel downloaded proteome and assembly information |
+| proteome | *Debaryomyces hansenii* proteome for CBS767 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000006445.2/) | 2020-07-12 | Rachel downloaded proteome and assembly information |
+| proteome | *Clavispora lusitaniae* proteome for ATCC 42720 | [ncbi assembly](https://www.ncbi.nlm.nih.gov/assembly/GCF_000003835.1/) | 2020-07-12 | Rachel downloaded proteome and assembly information |
+
 
 # Notes
 ## 2020-02-12 New Cand_auris B11220 genome assembly
