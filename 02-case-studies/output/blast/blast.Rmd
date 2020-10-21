@@ -45,6 +45,7 @@ fungidb %>%
 ```
 70 sequences left
 
+**The python script below will extract those 70 sequences into a separate file for later.**
 ```{bash extract_filtered_sequences}
 /Users/bhe2/sw/miniconda3/bin/python ../../script/extract_fasta.py XP_028889033_homologs_fungidb.fasta fungidb_filter_list.txt
 mv fungidb_filter_list.faa XP_028889033_homologs_fungidb_use.fasta
@@ -70,13 +71,14 @@ names(fdb.refseqID) <- fdb.hits.blast.filtered %>% filter(perc_identity == 100) 
 _Discussion_
 
 1. Of the 70 sequence, 60 are present in the refseq database.
-1. Among the 10 sequences that didn't map, five belong to the _C. auris_ B8441 strain, which apparently are not in the refseq_protein database, although three other sequences in the same strain are identical with other _C. auris_ strains.
+1. Among the 10 sequences that didn't map, five belong to the _C. auris_ B8441 strain, which is the only strain of _C. auris_ present in the FungiDB, but apparently is not in the refseq_protein database. Another three sequences in B8441 apparently are identical with sequences in the other _C. auris_ strains included in the refseq database.
+1. Note that I should exclude the sequence(s) from _C. auris_ B8441 as the refseq blast results, which I used as the basis of my homolog table, contains B11221. Including this B8441 sequence would make _C. auris_ the only species represented by more than one strain in the homolog list.
 1. The remaining five sequences belong to _C. paradoxus_ (4) and _C. tropicalis_ (1)
 
 ## Refseq_protein BLAST hits and filtering
 
 I also blasted XP_028889033 using NCBI blast against the refseq_protein database. (See README.md for details). The taxonomy distribution is shown below:
-![taxonomy of refseq_protein blast](./20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
+![taxonomy of refseq_protein blast](img/20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
 ```{r refseq_protein_blast}
 # load table
 refseq <- read_csv("XP_028889033_homologs_refprot_tab.csv", col_types = "cddnnnc")
@@ -101,9 +103,9 @@ _Discussion_
 
 ## GRYC BLAST hits and filtering
 > **Update 2020-07-22**
-> The original blast to both the refseq_protein and fungiDB databases yielded no hits in the well represented _S. cerevisiae_ _sensu stricto_ or _sensu lato_ clade. The only hits were in _C. glabrata_ and _N. castellii_. I'm particularly curious why the other Nakaseomyces group species, e.g. _C. bracarensis_, _N. dephensis_ and _C. nivariensis_ had not hits. Turns out even the NCBI nr_protein database doesn't contain any protein entries for the Nakaseomyces -- I verified this by blast'ing Pho4 protein sequence against the nr_protein and limited the organisms to Nakaseomyces. I then found / remembered that the [Genome Resource for Yeast Chromosomes](http://gryc.inra.fr/index.php) site contains the Nakaseomyces genomes. I verified this by repeating the Pho4p blast. I then blast'ed the first 500 a.a. of XP_028889033 in GRYC, selecting the Nakaseomyces (6 sps)as well as _S. cerevisiae_ (1), Lachancea (12), Naumovozyma (1, _N. castellii_), Yarrowia (3 _Y. lipolytica_ strains). 
+> The original blast to both the refseq_protein and fungiDB databases yielded no hits in the well studied _S. cerevisiae_ _sensu stricto_ or _sensu lato_ clade. The only hits were in _C. glabrata_ and _N. castellii_. I'm particularly curious why the other Nakaseomyces group species, e.g. _C. bracarensis_, _N. dephensis_ and _C. nivariensis_ had no hits. Turns out even the NCBI nr_protein database doesn't contain any protein entries for the Nakaseomyces -- I verified this by blast'ing Pho4 protein sequence against the nr_protein and limited the organisms to Nakaseomyces. I then found / remembered that the [Genome Resource for Yeast Chromosomes](http://gryc.inra.fr/index.php) site contains the Nakaseomyces genomes. I verified this by repeating the Pho4p blast. I then blast'ed the first 500 a.a. of XP_028889033 in GRYC, selecting the Nakaseomyces (6 sps)as well as _S. cerevisiae_ (1), Lachancea (12), Naumovozyma (1, _N. castellii_), Yarrowia (3 _Y. lipolytica_ strains). 
 
-![gryc hits](./20200723-GRYC-BLAST-hits.png)
+![gryc hits](./img/20200723-GRYC-BLAST-hits.png)
 
 ```{r gryc_info}
 # load the manually edited blast table
@@ -116,7 +118,7 @@ _Discussion_
 
 1. For the Ref_seq and fungiDB hits, we applied two additional criteria on top of the E-value cutoff of 1e-5, which are >50% query coverage (280 a.a.) and the protein length > 500 a.a. Let's see which of the hits will be excluded if we apply the same criteria here. `r gryc %>% filter(query_cover < 50 | length < 500) %>% select(-ori_id, -max_bit_score, -description, description)`
 
-1. Among the potentially excluded sequences, I would rescue NADE0s05e04136g out of the pile because its short length could be due to the sequence being a "partial CDS".
+1. Among the potentially excluded sequences, I would rescue **NADE0s05e04136g** out of the pile because its short length could be due to the sequence being a "partial CDS". Another sequence potentially of interest is **CAGL0L00227g**, which has 47% query coverage, and is of similar length as XP_028889033.
 
 1. Lastly, I'll remove the hits from _L. fermentati_. This is arbitrary and the rationale is that I just want to get some representation from the Lanchancea genus, and I already have _L. kluyveri_.
 
@@ -124,6 +126,7 @@ _Discussion_
 First we need to find out which sequences were duplicates. To do so we will blast the fungidb and gryc hits against the refseq hits.
 
 ### FungiDB
+The `bash` script below is to make a blast database from the NCBI blast results so that we can map the FungiDB hits to it to identify redundant sequences.
 ```{bash blast}
 # make blast database from the NCBI blast results
 mkdir blastdb
@@ -136,7 +139,8 @@ blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_gryc.fast
 The typical protocol for identifying orthologs is to perform reciprocol blast. But our goal here is to identify identical sequences -- more like what the CDD hits program does -- and thus one sided blast should be fine. The analysis below is meant to identify the shared hits as well as the unique hits in each set.
 ```{r fungidb_match}
 # local blast the fungiDB hits against the library made from the refseq hits
-fdb2refseq <- read_tsv("XP_028889033_fungidb-refprot-blast.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
+fdb2refseq <- read_tsv("XP_028889033_fungidb-refprot-blast.txt", col_types = "ccnndnnnn")
+names(fdb2refseq) <- c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value")
 sprintf("There are a total of %i queries submitted", length(unique(fdb2refseq$query_id)))
 match <- fdb2refseq %>% filter(perc_identity > 90) %>% select(-score, -bitscore, -e_value)
 
@@ -154,7 +158,11 @@ fungidb %>%
   mutate(refseq_id = fdb.refseqID[gene_id]) %>% 
   select(gene_id, refseq_id, organism, e_value)
 ```
-Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. Of the remaining sequences in the refseq_protein database but not included in the refseq hits, all but CLUG_05233 have lower than 50% query coverage. CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. All in all, I think I can safely use the refseq hits as the base and add the _C. auris_ B9J08_004098, CLUG_05233 and the _C. paradoxus_ sequences (for some reason this species is not included in refseq). To do so, I'll use the `read.fasta()` function from the `seqinr` package to extract their sequences, and use the `write.fasta()` function to output the combined fasta.
+Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. The rest are in the refseq_protein database but not included in my blast search against that database. Among those, CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. Also, among those sequences all but CLUG_05233 have lower than 50% query coverage. All in all, I think I can safely use the refseq hits as the base and add the _C. auris_ B9J08_004098, CLUG_05233 and the _C. paradoxus_ sequences (for some reason this species is not included in refseq). To do so, I'll use the `read.fasta()` function from the `seqinr` package to extract their sequences, and use the `write.fasta()` function to output the combined fasta.
+
+>**Update 2020-10-18**
+> I realized that by including the one sequence from _C. auris_ B8441, the final dataset would contain two _C. auris_ strains, making it distinct from the other species, each of which is represented by one strain only. This wouldn't change the broader conclusions. But if there is a need to modify the homologs list and repeat the downstream analysis, I would like to remove this sequence (B9J08_004098)
+> I also would like to add CAGL0L00227g, as it is just below 50% coverage and has interesting features.
 
 ### GRYC
 ```{r gryc_match}
@@ -166,7 +174,10 @@ There are a total of `r length(unique(gryc2refseq$query_id))` queries submitted,
 
 ```{r gryc_filter}
 gryc1 <- gryc %>% 
-  filter(!ori_id %in% match.gryc$query_id, species_id != "Lfermentati", query_cover > 50, id != "CANI0s18e03223g") %>% # the last criterion is to remove the one sequence with length smaller than 500 a.a.
+  filter((!ori_id %in% match.gryc$query_id & species_id != "Lfermentati") & 
+           (query_cover > 50 & length >= 500) |
+           (id %in% c("NADE0s05e04136g", "CAGL0L00227g"))) %>% 
+  # the last criterion is to remove the one sequence with length smaller than 500 a.a.
   select(ori_id, id, species, species_id)
 ```
 
@@ -205,8 +216,8 @@ attributes(truncated) <- attributes(refseqdb.seq$XP_025344407.1)
 refseqdb.seq$XP_025344407.1 <- truncated
 
 # sequences to be added to the refseq list from fungidb hits
-fdb.list <- c("B9J08_004098","CLUG_05233",paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
-fdb.species <- c("Cauris", "Clusitaniae", rep("Cparapsilosis",times = 4))
+fdb.list <- c("CLUG_05233",  paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
+fdb.species <- c("Clusitaniae", rep("Cparapsilosis",times = 4))
 fdb.names <- paste(fdb.list, fdb.species, sep = "_")
 fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 
@@ -242,7 +253,7 @@ write.fasta(highE.seq, names = highE.names,
 
 When I submitted the `r length(highE.names)` sequences to the [CDD batch search site](https://www.ncbi.nlm.nih.gov/Structure/bwrpsb/bwrpsb.cgi) and downloaded the results. Below is a screenshot of the hits:
 
-![CDD hits](20200816-high-Evalue-CDD-hits.png)
+![CDD hits](img/20200816-high-Evalue-CDD-hits.png)
 We can see that all of them have the Hyphally regulated cell wall protein (Hyphal_reg_CWP) domain. Therefore I believe they are true homologs to XP_028889033. Below is the multiple sequence alignment in which I moved all the sequences with e-value > 1e-10 to the top. We can see that while they are more divergent from the rest of the sequences, the alignment appears to be credible.
 
-![sequence alignments with e-value > 1e-10](20200815-e-value-above-1E-10-alignment.png)
+![sequence alignments with e-value > 1e-10](img/20200815-e-value-above-1E-10-alignment.png)
