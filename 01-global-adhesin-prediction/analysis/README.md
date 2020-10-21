@@ -184,3 +184,7 @@ _Notes_
 ## 2020-10-19 [RS] protein location plots
 
 Added the html output and Rmd file for interactive protein location plots to the protein_location folder
+
+## 2020-10-21 [RS] protein location histograms
+
+Updated to add code/output for histograms aggregating relative position data to see if they favor ends - they do, but driven by the long-read glabrata
