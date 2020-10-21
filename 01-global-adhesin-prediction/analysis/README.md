@@ -180,3 +180,7 @@ _Reference_
 _Notes_
 
 1. More notes on how to use RAxML on my journal.org and in the `00-misc-docs` folder.
+
+## 2020-10-19 [RS] protein location plots
+
+Added the html output and Rmd file for interactive protein location plots to the protein_location folder

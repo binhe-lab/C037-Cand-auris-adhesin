@@ -1,0 +1,291 @@
+---
+title: "Protein location"
+author: "Rachel Smoak"
+date: "10/19/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Protein location in proteome
+
+```{r, include=FALSE}
+working_directory = "C:/Users/Rachel/OneDrive - University of Iowa/Fall 2019/Bioinformatics/Project work/Paper/Adhesin_Analysis"
+assembly_table <- NULL
+
+url_list <- c("https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_001189475.1_ASM118947v1_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_002759435.2_Cand_auris_B8441_V2_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_003013715.2_ASM301371v2_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_003014415.1_Cand_auris_B11243_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_010111755.1_ASM1011175v1_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_000002545.3_ASM254v2_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_000146045.2_R64_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_000182965.3_ASM18296v3_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_002775015.1_Cand_auris_B11221_V1_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/duobushaemulonis_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/guilliermondii_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/haemuloni_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/hansenii_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/lusitaniae_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/pseudohaemulonii_assembly_report.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/stipitis_assembly_report.txt")
+
+extract_assembly_table <- function(raw_assembly_url, working_directory = working_directory, assembly_table = assembly_table){
+    assembly_file <- paste(working_directory, "/","assembly_file.txt", sep = "")
+download.file(url = raw_assembly_url, destfile = assembly_file, quiet = TRUE)
+    assembly_info <- read_delim(assembly_file, "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE, comment = "#", skip_empty_rows = TRUE)
+    assembly_table <<- rbind(assembly_table, assembly_info)
+    unlink(assembly_file)
+     return(assembly_table)
+}
+
+for (i in 1:length(url_list)){
+    extract_assembly_table(raw_assembly_url = url_list[i], working_directory = working_directory, assembly_table = assembly_table)
+}
+
+assembly_table <- assembly_table[,c(1, 5, 7, 9)]
+names(assembly_table) <- c("seq_name", "genbank_accn", "refseq_accn", "seq_len")
+
+
+
+
+feature_table <- NULL
+
+url_list <- c("https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_001189475.1_ASM118947v1_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_002759435.2_Cand_auris_B8441_V2_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_003013715.2_ASM301371v2_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_003014415.1_Cand_auris_B11243_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCA_010111755.1_ASM1011175v1_feature_table%20(2).txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_000002545.3_ASM254v2_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_000146045.2_R64_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_000182965.3_ASM18296v3_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/GCF_002775015.1_Cand_auris_B11221_V1_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/duobushaemulonis_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/guilliermondii_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/haemuloni_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/hansenii_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/lusitaniae_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/pseudohaemulonii_feature_table.txt", "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/data/proteome-fasta/assembly_info/stipitis_feature_table.txt")
+
+extract_feature_table <- function(raw_feature_url, working_directory = working_directory, feature_table = feature_table){
+    feature_file <- paste(working_directory, "/","feature_file.txt", sep = "")
+download.file(url = raw_feature_url, destfile = feature_file, quiet = TRUE)
+    feature_info <- read_delim(feature_file, "\t", escape_double = FALSE, col_names = TRUE, trim_ws = TRUE, skip_empty_rows = TRUE)
+    feature_table <<- rbind(feature_table, feature_info)
+    unlink(feature_file)
+     return(feature_table)
+}
+
+for (i in 1:length(url_list)){
+    extract_feature_table(raw_feature_url = url_list[i], working_directory = working_directory, feature_table = feature_table)
+}
+
+feature_table <- feature_table[feature_table$'# feature' == "CDS", c(1, 3, 5, 6, 7, 8, 9, 11)]
+
+
+library(RSQLite)
+database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+conn <- dbConnect(RSQLite::SQLite(), database_file)
+
+short_strings <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string FROM fasta t1"))
+
+short_feature_table <- left_join(short_strings, feature_table, by = c("short_string" = "product_accession"))
+short_feature_table <- as.data.table(short_feature_table)
+assembly_table <- as.data.table(assembly_table)
+join1 <- left_join(short_feature_table, assembly_table, by = c("genomic_accession" = "genbank_accn"))
+join1 <- join1 %>% drop_na(seq_len)
+join2 <- left_join(short_feature_table, assembly_table, by = c("genomic_accession" = "refseq_accn"))
+join2 <- join2 %>% drop_na(seq_len)
+joined <- rbind(join1, join2, fill = TRUE)
+short_feature_table <- joined[,c("short_string", "seq_type", "start", "end", "seq_len", "seq_name")]
+short_feature_table$seq_name <- paste(short_feature_table$seq_type, short_feature_table$seq_name, sep = " ")
+short_feature_table <- short_feature_table[,c(1, 3, 4, 5, 6)]
+# short_feature_table
+
+```
+
+## All passes
+
+
+```{r, include=FALSE}
+library(ggplot2)
+library(plotly)
+htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
+library(RSQLite)
+
+database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+conn <- dbConnect(RSQLite::SQLite(), database_file)
+
+fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM fasta t1"))
+fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
+fasta_info <- fasta_info[,c(1,2)]
+features <- left_join(fasta_info, short_feature_table)
+features <- features %>% mutate(type = "protein")
+scaffolds <- features[!duplicated(features[,c("seq_name", "species")]),]
+scaffolds <- scaffolds %>% mutate(type = "entire scaffold", start = 1, end = seq_len+1, short_string = seq_name)
+features <- bind_rows(scaffolds, features)
+# features
+```
+
+
+```{r, warning=FALSE, echo=FALSE, results='asis'}
+features$type = ordered(features$type, levels = c("entire scaffold", "protein"))
+feature.colors <- c("grey", "#1f78b4")
+species_list <- unique(features$species)
+
+l <- htmltools::tagList()
+for (i in 1:length(species_list)){
+    data_list <- features[features$species == species_list[i],]
+    scaffold_info <- (data_list[data_list$type == "protein",] %>% count(seq_name))
+    scaffold_info$location <- (max(data_list$seq_len)+100000)
+
+p <- ggplot(data = data_list, aes(x = reorder(seq_name, desc(seq_name)), y = start-3000)) +
+    geom_segment(aes(xend = seq_name, yend = end+3000, color = type, name = short_string), size = 5) +
+    coord_flip() +
+    theme_classic() +
+    scale_color_manual(values = feature.colors) +
+    theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5), axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = "none") +
+    labs(y = "Nucleotide number", x = "Scaffolds", color = "Feature") +
+    ggtitle(paste("Protein position:", species_list[i], sep = " ")) +
+    geom_text(data = scaffold_info, aes(x = seq_name , y = location, label = n, name = seq_name))
+l[[i]] <- (ggplotly(p=p, tooltip = "name", x=rnorm(1)))
+
+}
+l
+```
+
+## All passes with length > 500 aa
+
+
+```{r, include=FALSE}
+library(ggplot2)
+library(plotly)
+htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
+library(RSQLite)
+
+database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+conn <- dbConnect(RSQLite::SQLite(), database_file)
+
+fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM fasta t1 WHERE t1.aa_length > 500"))
+fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
+fasta_info <- fasta_info[,c(1,2)]
+features <- left_join(fasta_info, short_feature_table)
+features <- features %>% mutate(type = "protein")
+scaffolds <- features[!duplicated(features[,c("seq_name", "species")]),]
+scaffolds <- scaffolds %>% mutate(type = "entire scaffold", start = 1, end = seq_len+1, short_string = seq_name)
+features <- bind_rows(scaffolds, features)
+# features
+```
+
+
+```{r, warning=FALSE, echo=FALSE, results='asis'}
+features$type = ordered(features$type, levels = c("entire scaffold", "protein"))
+feature.colors <- c("grey", "#1f78b4")
+species_list <- unique(features$species)
+
+l <- htmltools::tagList()
+for (i in 1:length(species_list)){
+    data_list <- features[features$species == species_list[i],]
+    scaffold_info <- (data_list[data_list$type == "protein",] %>% count(seq_name))
+    scaffold_info$location <- (max(data_list$seq_len)+100000)
+
+p <- ggplot(data = data_list, aes(x = reorder(seq_name, desc(seq_name)), y = start-3000)) +
+    geom_segment(aes(xend = seq_name, yend = end+3000, color = type, name = short_string), size = 5) +
+    coord_flip() +
+    theme_classic() +
+    scale_color_manual(values = feature.colors) +
+    theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5), axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = "none") +
+    labs(y = "Nucleotide number", x = "Scaffolds", color = "Feature") +
+    ggtitle(paste("Protein position:", species_list[i], sep = " ")) +
+    geom_text(data = scaffold_info, aes(x = seq_name , y = location, label = n, name = seq_name))
+l[[i]] <- (ggplotly(p=p, tooltip = "name", x=rnorm(1)))
+
+}
+l
+```
+
+## All FRV and FAA passes
+
+
+```{r, include=FALSE}
+library(ggplot2)
+library(plotly)
+htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
+library(RSQLite)
+
+database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+conn <- dbConnect(RSQLite::SQLite(), database_file)
+
+fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM faapred t2 LEFT JOIN fasta t1 ON t2.short_string = t1.short_string LEFT JOIN fungal_rv t3 ON t3.short_string = t1.short_string WHERE t2.faa_decision = 'Adhesin' AND t3.frv_score > 0.511 AND t3.frv_score <> 'Can''t be processed'"))
+fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
+fasta_info <- fasta_info[,c(1,2)]
+features <- left_join(fasta_info, short_feature_table)
+features <- features %>% mutate(type = "protein")
+scaffolds <- features[!duplicated(features[,c("seq_name", "species")]),]
+scaffolds <- scaffolds %>% mutate(type = "entire scaffold", start = 1, end = seq_len+1, short_string = seq_name)
+features <- bind_rows(scaffolds, features)
+# features
+```
+
+
+```{r, warning=FALSE, echo=FALSE, results='asis'}
+features$type = ordered(features$type, levels = c("entire scaffold", "protein"))
+feature.colors <- c("grey", "#1f78b4")
+species_list <- unique(features$species)
+
+l <- htmltools::tagList()
+for (i in 1:length(species_list)){
+    data_list <- features[features$species == species_list[i],]
+    scaffold_info <- (data_list[data_list$type == "protein",] %>% count(seq_name))
+    scaffold_info$location <- (max(data_list$seq_len)+100000)
+
+p <- ggplot(data = data_list, aes(x = reorder(seq_name, desc(seq_name)), y = start-3000)) +
+    geom_segment(aes(xend = seq_name, yend = end+3000, color = type, name = short_string), size = 5) +
+    coord_flip() +
+    theme_classic() +
+    scale_color_manual(values = feature.colors) +
+    theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5), axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = "none") +
+    labs(y = "Nucleotide number", x = "Scaffolds", color = "Feature") +
+    ggtitle(paste("Protein position:", species_list[i], sep = " ")) +
+    geom_text(data = scaffold_info, aes(x = seq_name , y = location, label = n, name = seq_name))
+l[[i]] <- (ggplotly(p=p, tooltip = "name", x=rnorm(1)))
+
+}
+l
+```
+
+## All FRV and FAA passes with length > 500 aa
+
+
+```{r, include=FALSE}
+library(ggplot2)
+library(plotly)
+htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
+library(RSQLite)
+
+database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+conn <- dbConnect(RSQLite::SQLite(), database_file)
+
+fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM faapred t2 LEFT JOIN fasta t1 ON t2.short_string = t1.short_string LEFT JOIN fungal_rv t3 ON t3.short_string = t1.short_string WHERE t1.aa_length > 500 AND t2.faa_decision = 'Adhesin' AND t3.frv_score > 0.511 AND t3.frv_score <> 'Can''t be processed'"))
+fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
+fasta_info <- fasta_info[,c(1,2)]
+features <- left_join(fasta_info, short_feature_table)
+features <- features %>% mutate(type = "protein")
+scaffolds <- features[!duplicated(features[,c("seq_name", "species")]),]
+scaffolds <- scaffolds %>% mutate(type = "entire scaffold", start = 1, end = seq_len+1, short_string = seq_name)
+features <- bind_rows(scaffolds, features)
+# features
+```
+
+
+```{r, warning=FALSE, echo=FALSE, results='asis'}
+features$type = ordered(features$type, levels = c("entire scaffold", "protein"))
+feature.colors <- c("grey", "#1f78b4")
+species_list <- unique(features$species)
+
+l <- htmltools::tagList()
+for (i in 1:length(species_list)){
+    data_list <- features[features$species == species_list[i],]
+    scaffold_info <- (data_list[data_list$type == "protein",] %>% count(seq_name))
+    scaffold_info$location <- (max(data_list$seq_len)+100000)
+
+p <- ggplot(data = data_list, aes(x = reorder(seq_name, desc(seq_name)), y = start-3000)) +
+    geom_segment(aes(xend = seq_name, yend = end+3000, color = type, name = short_string), size = 5) +
+    coord_flip() +
+    theme_classic() +
+    scale_color_manual(values = feature.colors) +
+    theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5), axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = "none") +
+    labs(y = "Nucleotide number", x = "Scaffolds", color = "Feature") +
+    ggtitle(paste("Protein position:", species_list[i], sep = " ")) +
+    geom_text(data = scaffold_info, aes(x = seq_name , y = location, label = n, name = seq_name))
+l[[i]] <- (ggplotly(p=p, tooltip = "name", x=rnorm(1)))
+
+}
+l
+```
