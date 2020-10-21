@@ -87,9 +87,9 @@ library(plotly)
 htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
 library(RSQLite)
 
-database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
-download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
-conn <- dbConnect(RSQLite::SQLite(), database_file)
+# database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+# download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+# conn <- dbConnect(RSQLite::SQLite(), database_file)
 
 fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM fasta t1"))
 fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
@@ -99,7 +99,21 @@ features <- features %>% mutate(type = "protein")
 scaffolds <- features[!duplicated(features[,c("seq_name", "species")]),]
 scaffolds <- scaffolds %>% mutate(type = "entire scaffold", start = 1, end = seq_len+1, short_string = seq_name)
 features <- bind_rows(scaffolds, features)
-# features
+
+```
+
+```{r, echo=FALSE}
+hist_data <- features[features$type == "protein",]
+hist_data <- hist_data %>% mutate(Rel.Pos=ifelse((1-end/seq_len) > start/seq_len, start/seq_len, end/seq_len))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos), binwidth = 0.05)
+print(p)
+print(p + facet_wrap(vars(species)))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos, y= ..ncount..), binwidth = 0.05)+
+    facet_wrap(vars(species))
+print(p)
+
 ```
 
 
@@ -135,14 +149,14 @@ l
 
 
 ```{r, include=FALSE}
-library(ggplot2)
-library(plotly)
-htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
-library(RSQLite)
+# library(ggplot2)
+# library(plotly)
+# htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
+# library(RSQLite)
 
-database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
-download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
-conn <- dbConnect(RSQLite::SQLite(), database_file)
+# database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+# download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+# conn <- dbConnect(RSQLite::SQLite(), database_file)
 
 fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM fasta t1 WHERE t1.aa_length > 500"))
 fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
@@ -155,6 +169,19 @@ features <- bind_rows(scaffolds, features)
 # features
 ```
 
+```{r, echo=FALSE}
+hist_data <- features[features$type == "protein",]
+hist_data <- hist_data %>% mutate(Rel.Pos=ifelse((1-end/seq_len) > start/seq_len, start/seq_len, end/seq_len))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos), binwidth = 0.05)
+print(p)
+print(p + facet_wrap(vars(species)))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos, y= ..ncount..), binwidth = 0.05)+
+    facet_wrap(vars(species))
+print(p)
+
+```
 
 ```{r, warning=FALSE, echo=FALSE, results='asis'}
 features$type = ordered(features$type, levels = c("entire scaffold", "protein"))
@@ -188,14 +215,14 @@ l
 
 
 ```{r, include=FALSE}
-library(ggplot2)
-library(plotly)
-htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
-library(RSQLite)
+# library(ggplot2)
+# library(plotly)
+# htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
+# library(RSQLite)
 
-database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
-download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
-conn <- dbConnect(RSQLite::SQLite(), database_file)
+# database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+# download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+# conn <- dbConnect(RSQLite::SQLite(), database_file)
 
 fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM faapred t2 LEFT JOIN fasta t1 ON t2.short_string = t1.short_string LEFT JOIN fungal_rv t3 ON t3.short_string = t1.short_string WHERE t2.faa_decision = 'Adhesin' AND t3.frv_score > 0.511 AND t3.frv_score <> 'Can''t be processed'"))
 fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
@@ -208,6 +235,19 @@ features <- bind_rows(scaffolds, features)
 # features
 ```
 
+```{r, echo=FALSE}
+hist_data <- features[features$type == "protein",]
+hist_data <- hist_data %>% mutate(Rel.Pos=ifelse((1-end/seq_len) > start/seq_len, start/seq_len, end/seq_len))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos), binwidth = 0.05)
+print(p)
+print(p + facet_wrap(vars(species)))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos, y= ..ncount..), binwidth = 0.05)+
+    facet_wrap(vars(species))
+print(p)
+
+```
 
 ```{r, warning=FALSE, echo=FALSE, results='asis'}
 features$type = ordered(features$type, levels = c("entire scaffold", "protein"))
@@ -241,14 +281,14 @@ l
 
 
 ```{r, include=FALSE}
-library(ggplot2)
-library(plotly)
-htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
-library(RSQLite)
+# library(ggplot2)
+# library(plotly)
+# htmltools::tagList(lapply(1:3, function(x) { plot_ly(x = rnorm(10)) }))
+# library(RSQLite)
 
-database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
-download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
-conn <- dbConnect(RSQLite::SQLite(), database_file)
+# database_file <- paste(working_directory, "/", "downloaded_adhesin_analysis.db", sep = "")
+# download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/database/adhesin_analysis.db?raw=true", destfile = database_file, mode = "wb")
+# conn <- dbConnect(RSQLite::SQLite(), database_file)
 
 fasta_info <- (dbGetQuery(conn = conn, statement = "SELECT t1.short_string, t1.species, t1.strain FROM faapred t2 LEFT JOIN fasta t1 ON t2.short_string = t1.short_string LEFT JOIN fungal_rv t3 ON t3.short_string = t1.short_string WHERE t1.aa_length > 500 AND t2.faa_decision = 'Adhesin' AND t3.frv_score > 0.511 AND t3.frv_score <> 'Can''t be processed'"))
 fasta_info$species <- paste(fasta_info$species, fasta_info$strain, sep = "_")
@@ -261,6 +301,19 @@ features <- bind_rows(scaffolds, features)
 # features
 ```
 
+```{r, echo=FALSE}
+hist_data <- features[features$type == "protein",]
+hist_data <- hist_data %>% mutate(Rel.Pos=ifelse((1-end/seq_len) > start/seq_len, start/seq_len, end/seq_len))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos), binwidth = 0.05)
+print(p)
+print(p + facet_wrap(vars(species)))
+p <- ggplot(data = hist_data)+
+    geom_histogram(mapping = aes(x=Rel.Pos, y= ..ncount..), binwidth = 0.05)+
+    facet_wrap(vars(species))
+print(p)
+
+```
 
 ```{r, warning=FALSE, echo=FALSE, results='asis'}
 features$type = ordered(features$type, levels = c("entire scaffold", "protein"))
