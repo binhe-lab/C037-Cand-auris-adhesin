@@ -1,0 +1,50 @@
+---
+title: "plot XP_028889033 features"
+author: Bin He
+date: 2020-10-11
+output: html_notebook
+---
+
+## Goal
+The goal of this script is to plot quantitative features for XP_028889033 (corresponding gene: CJI97_004172, _C. auris_ B11221)
+
+## Data
+The following data were extracted from `02-case-studies/output/homolog-properties/2020-07-24/raw-output` folder
+- Serine and threonine frequencies calculated in 100 bp windows with 10 bp increment.
+- TANGO predicted aggregation probabilities per amino acid.
+The output is saved in `protein-quant-properties.txt`
+
+## Plot
+```{r}
+library(tidyverse)
+library(cowplot)
+# quantitative features
+dat <- read_tsv("protein-quant-features.txt", col_types = "ffid")
+# dat$feature <- factor(dat$feature, labels = c("Ser/Thr frequency","beta-aggregation probability"))
+p1 <- dat %>% filter(feature == "ST_freq") %>% 
+  ggplot(aes(x = pos, y = value)) + geom_line(aes(color = type)) +
+  xlab("Amino acid position") + ylab("Ser/Thr frequency") + ylim(0,0.6) + xlim(1,3100) +
+  theme(legend.position = c(0.9, 0.8))
+
+p2 <- dat %>% filter(feature == "TANGO") %>% 
+  ggplot(aes(x = pos, y = value)) + geom_line(size = 0.3) + ylab("TANGO Score") +
+  theme(axis.title.x = element_blank(), axis.text.x = element_blank()) + xlim(1,3100) +
+  scale_y_continuous(breaks = c(0,50,100))
+  
+# domain features
+domain <- read_tsv("protein-domain-features.txt")
+domain$feature <- factor(domain$feature, levels = c("entire protein", "SignalP", "Hyphal_reg_CWP",
+                                                    "Hyr1", "GPI"))
+p3 <- ggplot(domain, aes(xmin = start, ymin = 0)) + 
+  geom_rect(aes(xmax = end, ymax = 1, fill = feature)) +
+  scale_fill_manual(values = c("grey50","#e41a1c", "#377eb8", "#ff7f00", "#984ea3")) +
+  ylab("") + xlab("") + xlim(1,3100) + ylim(-0.5,1) + labs(fill = "Domain") +
+  theme_classic() + theme(legend.position = "top") +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank())
+
+# assembling
+plot_grid(p3, p2, p1, nrow = 3, align = "v", rel_heights = c(2,2,4))
+ggsave("20201011-XP_028889033-features.png", width = 11, height = 5)
+ggsave("20201011-XP_028889033-ST-freq.png", p1 + theme_classic() + theme(legend.position = "top"), width = 6, height = 2)
+```
+
