@@ -6,9 +6,9 @@ date: 2020-07-14
 # Goal
 A repeat of the 2020-07-23 analysis (see sister folder) on an updated version of the homologs sequence.
 
-To align the sequences, I first did the ClustalO alignment with 50 iterations, which took 3 hours on 10 slots on ARGON. Instead of running Muscle on the unaligned sequences, I decided to use the `muscle -in <Aligned> -out <Refined> -refine` function. This took no time to complete, but upon inspecting the output, there seems to be very minimal changes. Nonetheless, I decided to run RAxML on both, this time only on the first 530 columns of both alignments.
+To align the sequences, I first did the ClustalO alignment with 50 iterations, which took only a few minutes on 30 slots on ARGON. Instead of running Muscle on the unaligned sequences, I decided to use the `muscle -in <Aligned> -out <Refined> -refine` function. This took no time to complete, but upon inspecting the output, there seems to be very minimal changes. Nonetheless, I decided to run RAxML on both, this time only on the first 480 columns of both alignments.
 
-To extract the first 500 columns in the alignment for tree reconstruction, I used the following commands.
+To extract the first 480 columns in the alignment for tree reconstruction, I used the following commands.
 
 ```bash
 bioawk -c fastx '{print ">"$name;print substr($seq, 1, 480)}' XP_028889033_homologs_N500_clustalo.faa > XP_028889033_clustalo_C480.faa
@@ -19,8 +19,8 @@ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 480)}' XP_028889033_homol
 # Results files
 file(s) | description | source 
 ------- | ----------- | ------
-XP_028889033_homologs_N500.faa | based on the same file in `../20200706-raxml-hb` but with _D. rugosa_ sequences removed | manually edited
-XP_028889033_homologs_N500_clustalo.faa | aligned fasta using clustalo | result from clustalo-align.sh, took 3 hrs on 10 cores
+XP_028889033_homologs_N500.faa | homologs sequences | copied from `../blast/`
+XP_028889033_homologs_N500_clustalo.faa | aligned fasta using clustalo | result from clustalo-align.sh
 XP_028889033_clustalo_C480.faa | Extracted first 480 columns from the above file | See above for command
 XP_028889033_homologs_N500_muscle_refined.faa | refined the above alignment using muscle | `muscle -in XP_028889033_homologs_N500.faa -out XP_028889033_homologs_N500_muscle_refined.faa -refine`
 XP_028889033_muscle_refined_C480.faa | Extracted first 480 columns from the above file | See above for command
