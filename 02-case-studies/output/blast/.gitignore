@@ -1,2 +1,4 @@
 blastdb/Cand_auris_five_strains.*
 Cauris-strains/Cand_auris_five_strains_protein.faa.gz
+assembly-info/*
+!assembly-info/README.md

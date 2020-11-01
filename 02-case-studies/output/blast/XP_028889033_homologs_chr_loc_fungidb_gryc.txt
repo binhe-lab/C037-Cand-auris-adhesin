@@ -1,0 +1,11 @@
+source	accession	species	species_id	strain	assemblyaccession	assemblystatus	n_seqs	gene_id	gene_name	chraccver	chr_name	chrstart	chrstop	chrL	relLoc
+GRYC	NA	Nakaseomyces delphensis	Ndelphensis	CBS 2170	NA	Scaffold	30	NADE0s05e04136g	NA	NADE0S05	NA	742855	744081	1177391	0.63
+GRYC	XP_452176.1	Kruyveromyces lactis	Klactis	CBS 2359	NA	Chromosome	6	KLLA0B14498g	NA	CR382122	B	1275022	1277322	1320834	0.97
+GRYC	NA	Nakaseomyces bracarensis	Nbracarensis	CBS 10154	NA	Scaffold	40	CABR0s21e03234g	NA	CABR0S21	NA	621302	623980	636867	0.98
+GRYC	NA	Candida glabrata	Cglabrata	CBS 138	GCF_000002545.3	Chromosome	13	CAGL0L00227g	NA	NC_006035.2	L	17811	27536	1455689	0.01
+GRYC	NA	Nakaseomyces nivariensis	Nnivariensis	CBS 9983	NA	Scaffold	29	CANI0s04e00110g	NA	CANI0S04	NA	398	3154	1422433	0
+FungiDB	XP_002614815.1	Clavispora lusitaniae	Clusitaniae	ATCC 42720	GCF_000003835.1	Scaffold	9	CLUG_05233	NA	NW_003101573.1	NA	806735	811063	814710	0.99
+FungiDB	NA	Candida parapsiolosis	Cparapsilosis	CDC317	GCA_000182765.2	Contig	9	CPAR2_600430	NA	Contig005504	NA	101302	105591	898305	0.11
+FungiDB	NA	Candida parapsiolosis	Cparapsilosis	CDC317	GCA_000182765.2	Contig	9	CPAR2_806390	NA	Contig005807	NA	1450527	1455449	"2,091,826"	0.69
+FungiDB	NA	Candida parapsiolosis	Cparapsilosis	CDC317	GCA_000182765.2	Contig	9	CPAR2_806410	NA	Contig005807	NA	"1,470,773"	"1,475,788"	"2,091,826"	0.7
+FungiDB	NA	Candida parapsiolosis	Cparapsilosis	CDC317	GCA_000182765.2	Contig	9	CPAR2_806420	NA	Contig005807	NA	"1,478,746"	"1,483,890"	"2,091,826"	0.71
