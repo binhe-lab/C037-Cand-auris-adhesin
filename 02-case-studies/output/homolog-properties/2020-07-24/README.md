@@ -139,4 +139,8 @@ _Background reading_
 
 See `00-misc-doc/2020-09-17-beta-aggregation.md`
 
+_Thoughts_
 
+I start to realize that the TANGO hit sequences are not the same as some other sequence-specific motifs such as Pho4 binding sites. The difference lies in that it's the proportion of hydrophobic residues, such as I/V/T, that are important for beta-aggregation. The order in which they appear in a motif matters far less. This means my distance measure could potentially be based on amino acid composition rather than edit or alignment distance. For example, we can quantify the number of I/V, T, G/A and other amino acids. The problem with this approach is that the rule is designed based on the GVVIVTT variants. As such, it won't necessarily cluster alternative motifs.
+
+An idea is to first summarize TANGO sequence within each protein, counting their number of instances and distribution, and see if some alternative patterns emerge.
