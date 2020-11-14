@@ -21,6 +21,7 @@ set_entrez_key("f4f01c220f3a0a162bada5b0bd5d4b131908")
 if (!requireNamespace("seqinr", quietly = TRUE))
     install.packages("seqinr")
 suppressPackageStartupMessages(library(seqinr))
+suppressPackageStartupMessages(library(XML))
 ```
 
 ## Fungidb BLAST hits and filtering the results
@@ -120,7 +121,7 @@ _Discussion_
 
 1. For the Ref_seq and fungiDB hits, we applied two additional criteria on top of the E-value cutoff of 1e-5, which are >50% query coverage (280 a.a.) and the protein length > 500 a.a. Let's see which of the hits will be excluded if we apply the same criteria here. `r gryc %>% filter(query_cover < 50 | length < 500) %>% select(-ori_id, -max_bit_score, -description, description)`
 
-1. Among the potentially excluded sequences, I would rescue **NADE0s05e04136g** out of the pile because its short length could be due to the sequence being a "partial CDS". Another sequence potentially of interest is **CAGL0L00227g**, which has 47% query coverage, and is of similar length as XP_028889033.
+1. Among the potentially excluded sequences, I would rescue **NADE0s05e04136g** out of the pile because its short length could be due to the sequence being a "partial CDS". Another sequence potentially of interest is **CAGL0L00227g**, which has 47% query coverage, and is of similar length as XP_028889033. But latter phylogenetic analysis showed that it appears to have diverged from the homologs with >50% coverage significantly. I therefore decided to maintain the criterion of query coverage over 50% and not to include it.
 
 1. Lastly, I'll remove the hits from _L. fermentati_. This is arbitrary and the rationale is that I just want to get some representation from the Lanchancea genus, and I already have _L. kluyveri_.
 
@@ -160,11 +161,10 @@ fungidb %>%
   mutate(refseq_id = fdb.refseqID[gene_id]) %>% 
   select(gene_id, refseq_id, organism, e_value)
 ```
-Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. The rest are in the refseq_protein database but not included in my blast search against that database. Among those, CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. Also, among those sequences all but CLUG_05233 have lower than 50% query coverage. All in all, I think I can safely use the refseq hits as the base and add the _C. auris_ B9J08_004098, CLUG_05233 and the _C. paradoxus_ sequences (for some reason this species is not included in refseq). To do so, I'll use the `read.fasta()` function from the `seqinr` package to extract their sequences, and use the `write.fasta()` function to output the combined fasta.
+Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. The rest are in the refseq_protein database but not included in my blast search against that database. Among those, CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. Also, among those sequences all but CLUG_05233 have lower than 50% query coverage. All in all, I think I can safely use the refseq hits as the base and add _C. auris_ B9J08_004098, CLUG_05233 and the _C. paradoxus_ sequences (for some reason this species is not included in refseq). To do so, I'll use the `read.fasta()` function from the `seqinr` package to extract their sequences, and use the `write.fasta()` function to output the combined fasta.
 
 >**Update 2020-10-18**
 > I realized that by including the one sequence from _C. auris_ B8441, the final dataset would contain two _C. auris_ strains, making it distinct from the other species, each of which is represented by one strain only. This wouldn't change the broader conclusions. But if there is a need to modify the homologs list and repeat the downstream analysis, I would like to remove this sequence (B9J08_004098)
-> I also would like to add CAGL0L00227g, as it is just below 50% coverage and has interesting features.
 
 ### GRYC
 ```{r gryc_match}
@@ -172,14 +172,15 @@ Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not 
 gryc2refseq <- read_tsv("XP_028889033_gryc-refprot-blast.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
 match.gryc <- gryc2refseq %>% filter(perc_identity > 90) %>% select(-score, -bitscore, -e_value)
 ```
-There are a total of `r length(unique(gryc2refseq$query_id))` queries submitted, among which `r nrow(match.gryc)` are redundant with the refseq hits, which are `r match.gryc` The rest are new entries, although some of them will be excluded (see analysis above). In the end we will just add 5 sequences to the total list.
+There are a total of `r length(unique(gryc2refseq$query_id))` queries submitted, among which `r nrow(match.gryc)` are redundant with the refseq hits, which are `r match.gryc` The rest are new entries, although some of them will be excluded (see analysis above). In the end we will just add four sequences to the total list.
 
 ```{r gryc_filter}
 gryc1 <- gryc %>% 
   filter((!ori_id %in% match.gryc$query_id & species_id != "Lfermentati") & 
            (query_cover > 50 & length >= 500) |
-           (id %in% c("NADE0s05e04136g", "CAGL0L00227g"))) %>% 
-  # the last criterion is to remove the one sequence with length smaller than 500 a.a.
+           (id %in% c("NADE0s05e04136g"))) %>% 
+  # the second criterion is to remove the one sequence with length smaller than 500 a.a.
+  # the last criterion is to add back the Ndelphensis sequence
   select(ori_id, id, species, species_id)
 ```
 
@@ -421,7 +422,7 @@ refseq3 <- bind_rows(refseq2s)
 
 4. Finally, we can combine the Refseq results with the mannually entered GRYC and FungiDB results
 ```{r}
-non.refseq <- read_tsv("XP_028889033_homologs_chr_loc_fungidb_gryc.txt")
+non.refseq <- read_tsv("XP_028889033_homologs_chr_loc_fungidb_gryc.txt", comment = "#")
 # decide the tibble structure:
 # accession (for protein from source); source: GRYC/FungiDB/Refseq; species; species_id; strain
 # assembly; assemblystatus; n_seqs; gene_id; gene_name; chraccver; chr_name; chrstart, chrstop;

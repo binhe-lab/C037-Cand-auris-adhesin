@@ -9,7 +9,7 @@ import sys
 
 # open file for storing the output
 infile = "./XP_028889033_homologs.fasta" # input file name
-outfile = "./XP_028889033_homologs.tsv" # output file name
+outfile = "./raw-output/XP_028889033_homologs.tsv" # output file name
 out = open(outfile, "w")
 
 # output the header
