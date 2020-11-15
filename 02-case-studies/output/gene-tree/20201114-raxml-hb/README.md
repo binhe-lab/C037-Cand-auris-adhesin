@@ -6,6 +6,7 @@ date: 2020-11-14
 # Goal
 A repeat of the 2020-07-23 analysis (see sister folder) on an updated version of the homologs sequence. The difference between this and the 20201023 analysis is the removal of CAGL0L00227g.
 
+# Notes
 To align the sequences, I first did the ClustalO alignment with 50 iterations, which took only a few minutes on 30 slots on ARGON. Instead of running Muscle on the unaligned sequences, I decided to use the `muscle -in <Aligned> -out <Refined> -refine` function as follows:
 ```bash
 muscle -in XP_028889033_homologs_N500_clustalo.faa -out ./XP_028889033_homologs_N500_muscle_refined.faa -refine
@@ -20,6 +21,7 @@ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 480)}' XP_028889033_homol
 bioawk -c fastx '{print ">"$name;print substr($seq, 1, 480)}' XP_028889033_homologs_N500_muscle_refined.faa > XP_028889033_muscle_refined_C480.faa
 ```
 
+Lastly I used Notung 2.9 to reconcile the resulting gene tree (used `RAxML_bipartitions.muscle_100381`) with the species tree (`../../../data/20200724-species-tree.nwk`). Rooting analysis was performed in Notung, which scored the the Saccharomycetaceae clade the most likely root. Rearrangement was performed with edge weight (based on rapid bootstrapping) cutoff of 90%. The resulting reconciled and rearranged tree had a total of 44 duplications and 14 losses.
 
 # Results files
 file(s) | description | source 
