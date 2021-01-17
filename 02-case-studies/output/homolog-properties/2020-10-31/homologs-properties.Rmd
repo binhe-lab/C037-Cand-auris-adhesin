@@ -264,7 +264,7 @@ The amyloid-like $\beta$-aggregation prone sequences have the ability to mediate
 TANGO predictions and the subsequent extraction of $\beta$-aggregation prone sequences were documented in separate Python script, README files and the `tango.Rmd`.
 ```{r tango_sequences, fig.width=10}
 # here we only look at the extracted tango sequences
-tango <- read_tsv("tango_summary_table.tsv.gz", col_types = "cciiiddicc")
+tango <- read_tsv("tango_summary_table.tsv.gz", col_types = "cciiidddicc")
 # reorder the sequences for plotting
 tango$name <- ordered(tango$name, levels = rev(genetreeOrder))
 # plot
@@ -280,8 +280,8 @@ p1 + p2 + p3 + coord_flip() + theme_classic() +
         legend.position = c(0.85,0.25),
         panel.background = element_rect(fill = alpha("lightblue",0.5))) +
   ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences") + 
-  ggtitle("TANGO predicted aggregation-prone sequences", subtitle = "Hyphal_reg_CWP domain masked")
-ggsave("img/20200910-tango-score-segment.png", width = 7, height = 7)
+  ggtitle("TANGO hits with Hyphal_reg_CWP domain masked")
+ggsave("img/20210110-tango-score-segment.png", width = 7, height = 7)
 ```
 
 ```{r, eval=FALSE, include=FALSE}

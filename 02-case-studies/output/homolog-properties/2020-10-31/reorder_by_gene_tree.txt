@@ -16,7 +16,6 @@ XP_024712318.1_Cpseudohaemulonis
 XP_028892406.1_Cauris
 XP_024716363.1_Cpseudohaemulonis
 XP_025343289.1_Chaemuloni
-B9J08_004098_Cauris
 XP_024711350.1_Cpseudohaemulonis
 XP_025338053.1_Cduobushaemulonis
 XP_024711351.1_Cpseudohaemulonis
@@ -96,5 +95,4 @@ XP_445977.1_Cglabrata
 CANI0s04e00110g_Nnivariensis
 CABR0s21e03234g_Nbracarensis
 NADE0s05e04136g_Ndelphensis
-CABR0s31e03938g_Nbracarensis
 XP_447567.2_Cglabrata
