@@ -42,6 +42,7 @@ date: 2020-07-01
 | XP_028889033_fungidb-refprot-blast.txt | fungiDB hits blasted against the refseq_protein database to identify matching sequences | NCBI BLAST | HB/2020 |
 | XP_028889033_homologs_refprot.fasta | XP_028889033 blast against refseq_protein database | NCBI refseq_protein | HB/2020 |
 | XP_028889033_homologs_refprot_tab.csv | Accompanying "description" table for the file above | NCBI BLAST | HB/2020 |
+| XP_028889033_homologs_refprot_all.gb | "Download" in Genbank format | NCBI BLAST | HB/2020 |
 | XP_028889033_homologs_refprot_length.txt | protein length | `bioawk -c fastx '{print $name, length($seq)}' XP_028889033_homologs_refprot.fasta` | HB/2020 |
 | XP_028889033_homologs_gryc.fasta | blast identified homologs in the Nakaseomyces group | [GRYC](http://gryc.inra.fr/index.php) | HB/2020 |
 | XP_028889033_homologs_gryc_blastp.out | accompanying blast alignment output for the above file | GRYC | HB/2020 |
@@ -58,7 +59,7 @@ Used the beta version of the new site on 2020-07-01
 - Used first 560 aa of XP_028889033 as query, e-value cutoff set to 1e-5, low complexity on, and limit the organisms to the CUG clade, _S. cerevisiae_, _C. glabrata_ and _S. pombe_
 - Downloaded 95 sequences along with a table with meta information.
 - After examining the meta data, I noticed that some sequences are much shorter than others. I then plotted protein length as a function of e-value, both in log scales, and it became apparent that those sequences below 500 amino acids are the ones with the lowest e-values. I thus removed them by printing a list of gene IDs, and used the `extract_fasta.py` program to output the filtered list.
-    <img src="img/20200701-XP_028889033-homologs-e-value-by-length.png" width="480">
+    <img src="img/20200701-XP_028889033-fungidb-hits-e-value-by-length.png" width="480">
 
 ### Retrieve ref_protein ID for FungiDB hits
 ```bash
@@ -78,6 +79,18 @@ $ cut -f1 fungidb_blast_refseq_protein.txt | sort | uniq | wc -l
 - For the `blastp` results, I further required the query coverage to be greater than 50%, which yielded 144 sequences. This cutoff was chosen subjectively as sequences with lower than 50% coverage appear uninteresting (in species that are not what I'm interested in).
 - I further excluded 6 species from consideration. These are "Metschnikowia bicuspidata var. bicuspidata NRRL YB-4993 (taxid:869754), Debaryomyces fabryi (taxid:58627), Suhomyces tanzawaensis NRRL Y-17324 (taxid:984487), Candida orthopsilosis Co 90-125 (taxid:1136231), Kazachstania (taxid:71245), Naumovozyma dairenensis CBS 421 (taxid:1071378), Meyerozyma guilliermondii (taxid:4929), Yamadazyma tenuis ATCC 10573 (taxid:590646)"
 - The resulting taxonomy is shown ![here](img/20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
+
+## 2021-01-09 [HB] Additional homologs through blastp against refseq_protein
+While writing up the blast results, I repeated the blast search on ncbi against the refseq_protein, and found that more species are found in the hit list, likely because the database has grown over the past few months. But the results won't change the major conclusions. Below is the taxonomy list of all species that contain hits with the same criteria (e-value < 1e-5 and query coverage > 50%)
+![](img/20210109-blastp-refseq-all-species-phylogeny.png)
+
+The red arrows point to species excluded from my homologs list. Among the ones I excluded, the following three are notable for different reasons:
+
+1. the single fission yeast hit from _Schizosaccharomyces cryophilus_. If verified, this would suggest the protein family originated at the root of all Ascomycetes.
+1. _Kazachstania africana_ is within the Saccharomycetacea and had 8 hits, more than any other species in the genus, including _C. glabrata_. If verified, this would suggest an independent expansion in the Saccharomycetaceae, in addition to the two expansions in the MDR and _albicans_ clade.
+1. _Candida orthopsilosis_ is most closely related to _C. parasiolosis_ and next closest to _L. elongisporus_, both of which harbored significantly fewer homologs than the neighboring _albicans_ clade (~3 vs \gt 10).
+
+In conclusion, the omission of the above species do not alter the main conclusions reached so far, except for the possibility that the PF11765 domain originated earlier at the root of the fission and budding yeasts.
 
 ### Merge the two datasets
 1. To merge the two datasets, I decide to blast the fungidb reduced set (a.a. length > 500) to the ref_protein dataset. To do so, I used the following commands
