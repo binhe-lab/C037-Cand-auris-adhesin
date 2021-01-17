@@ -21,8 +21,9 @@ date: 2020-07-01
       * [2020-08-19 [HB] Homologs in <em>S. cerevisiae</em>?](#2020-08-19-hb-homologs-in-s-cerevisiae)
       * [2020-09-13 [HB] Homologs in other <em>C. auris</em> proteomes](#2020-09-13-hb-homologs-in-other-c-auris-proteomes)
       * [2020-10-20 [HB] Correct GRYC mistakes](#2020-10-20-hb-correct-gryc-mistakes)
+      * [2021-01-09 [HB] Additional homologs through blastp against refseq_protein](#2021-01-09-hb-additional-homologs-through-blastp-against-refseq_protein)
 
-<!-- Added by: bhe2, at: Wed Oct 21 17:02:24 CDT 2020 -->
+<!-- Added by: bhe2, at: Sun Jan 17 10:46:52 CST 2021 -->
 
 <!--te-->
 
@@ -79,18 +80,6 @@ $ cut -f1 fungidb_blast_refseq_protein.txt | sort | uniq | wc -l
 - For the `blastp` results, I further required the query coverage to be greater than 50%, which yielded 144 sequences. This cutoff was chosen subjectively as sequences with lower than 50% coverage appear uninteresting (in species that are not what I'm interested in).
 - I further excluded 6 species from consideration. These are "Metschnikowia bicuspidata var. bicuspidata NRRL YB-4993 (taxid:869754), Debaryomyces fabryi (taxid:58627), Suhomyces tanzawaensis NRRL Y-17324 (taxid:984487), Candida orthopsilosis Co 90-125 (taxid:1136231), Kazachstania (taxid:71245), Naumovozyma dairenensis CBS 421 (taxid:1071378), Meyerozyma guilliermondii (taxid:4929), Yamadazyma tenuis ATCC 10573 (taxid:590646)"
 - The resulting taxonomy is shown ![here](img/20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
-
-## 2021-01-09 [HB] Additional homologs through blastp against refseq_protein
-While writing up the blast results, I repeated the blast search on ncbi against the refseq_protein, and found that more species are found in the hit list, likely because the database has grown over the past few months. But the results won't change the major conclusions. Below is the taxonomy list of all species that contain hits with the same criteria (e-value < 1e-5 and query coverage > 50%)
-![](img/20210109-blastp-refseq-all-species-phylogeny.png)
-
-The red arrows point to species excluded from my homologs list. Among the ones I excluded, the following three are notable for different reasons:
-
-1. the single fission yeast hit from _Schizosaccharomyces cryophilus_. If verified, this would suggest the protein family originated at the root of all Ascomycetes.
-1. _Kazachstania africana_ is within the Saccharomycetacea and had 8 hits, more than any other species in the genus, including _C. glabrata_. If verified, this would suggest an independent expansion in the Saccharomycetaceae, in addition to the two expansions in the MDR and _albicans_ clade.
-1. _Candida orthopsilosis_ is most closely related to _C. parasiolosis_ and next closest to _L. elongisporus_, both of which harbored significantly fewer homologs than the neighboring _albicans_ clade (~3 vs \gt 10).
-
-In conclusion, the omission of the above species do not alter the main conclusions reached so far, except for the possibility that the PF11765 domain originated earlier at the root of the fission and budding yeasts.
 
 ### Merge the two datasets
 1. To merge the two datasets, I decide to blast the fungidb reduced set (a.a. length > 500) to the ref_protein dataset. To do so, I used the following commands
@@ -210,3 +199,15 @@ During a discussion Rachel pointed out that the domain architecture figure showe
 
 **Update 2020-11-05**
 I reversed my decision and removed CAGL0L00227g. The reason is because when I included it in the homologs list, the alignment and gene tree analysis suggested that it is far removed from the existing homologs in the Nakaseomyces, and will throw off the gene tree. This suggested to me that this gene likely evolved from a more ancient duplication. If I want to include it in the tree and properly interpret the topology, I would need to lower my query coverary and/or e-value cutoff to include more potential homologs.
+## 2021-01-09 [HB] Additional homologs through blastp against refseq_protein
+While writing up the blast results, I repeated the blast search on ncbi against the refseq_protein, and found that more species are found in the hit list, likely because the database has grown over the past few months. But the results won't change the major conclusions. Below is the taxonomy list of all species that contain hits with the same criteria (e-value < 1e-5 and query coverage > 50%)
+![](img/20210109-blastp-refseq-all-species-phylogeny.png)
+
+The red arrows point to species excluded from my homologs list. Among the ones I excluded, the following three are notable for different reasons:
+
+1. the single fission yeast hit from _Schizosaccharomyces cryophilus_. If verified, this would suggest the protein family originated at the root of all Ascomycetes.
+1. _Kazachstania africana_ is within the Saccharomycetacea and had 8 hits, more than any other species in the genus, including _C. glabrata_. If verified, this would suggest an independent expansion in the Saccharomycetaceae, in addition to the two expansions in the MDR and _albicans_ clade.
+1. _Candida orthopsilosis_ is most closely related to _C. parasiolosis_ and next closest to _L. elongisporus_, both of which harbored significantly fewer homologs than the neighboring _albicans_ clade (~3 vs \gt 10).
+
+In conclusion, the omission of the above species do not alter the main conclusions reached so far, except for the possibility that the PF11765 domain originated earlier at the root of the fission and budding yeasts.
+
