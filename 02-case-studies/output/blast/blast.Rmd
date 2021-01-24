@@ -5,6 +5,7 @@ output:
     toc: yes
     toc_float: yes
     toc_depth: 5
+    code_folding: hide
 ---
 
 This analysis accompanies the BLAST search to identify homologs for XP_028889033
@@ -24,9 +25,55 @@ suppressPackageStartupMessages(library(seqinr))
 suppressPackageStartupMessages(library(XML))
 ```
 
+## Refseq_protein BLAST hits and filtering
+I blasted XP_028889033 using NCBI blast against the refseq_protein database. (See README.md for details). The taxonomy distribution is shown below:
+![taxonomy of refseq_protein blast](img/20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
+```{r refseq_protein_blast}
+# load table
+refseq <- read_csv("XP_028889033_homologs_refprot_select.csv", col_types = "cddnnnc")
+refseq.length <- read_tsv("XP_028889033_homologs_refprot_select_length.txt", col_names = c("accession","length"), col_types = "ci")
+refseq <- left_join(refseq, refseq.length) %>% select(accession, everything())
+# Do the refseq hits show similar relationship between e-value and protein length?
+refseq %>% 
+  ggplot(aes(x = -log10(e.value), y = log2(length), col = (length > 500))) + geom_point() +
+  theme(legend.position = "bottom")
+ggsave("20200723-XP_028889033-refseq-hits-e-value-by-length.png", width = 3, height = 3)
+# The answer is yes. So let's filter these out and show what they are
+refseq0 <- refseq %>% 
+  filter(length > 500)
+refseq %>% filter(length <= 500) %>% select(accession, query.cover, e.value, perc.ident, length, description)
+# the above script uses a strange way to move a column to the last, by first removing it and then adding it back
+# thanks to https://github.com/tidyverse/dplyr/issues/3051
+```
+_Discussion_
+
+1. We see that the excluded sequences not only have less significant e-values, but also have barely above 50% query coverage. In terms of species distribution, most of them are from _S. stipitis_ and _D. rugosa_. The second species will be removed anyways (see notes in the `output/gene-tree` folder)
+1. Even though a couple of the _S. stipitis_ sequences were annotated as "fungal hyphal regulated cell wall proteins", with less than 500 a.a., they are unlikely to encode the stalk and in a separate analysis, I also found them to not possess the GPI-anchor. All in all, I think these sequences are unlikely to be candidate adhesins.
 ## Fungidb BLAST hits and filtering the results
 Some of the identified homologs have less than 500 amino acids. I want to know if these hits also tend to have low _e-values_. If so, I'll exclude them from further analyses
 
+### _Update_ [HB 2021-01-23] NCBI blastp result
+I repeated the NCBI blastp search with the first 360 amino acid residues instead of the first 560. Because the 560 aa sequence contains a copy of the Hyr1 domain in addition to the PF11765 domain, it is possible that some of the hits bear similarity to the Hyr1 and not the Hyphal_reg_CWP domain. Also, when I applied the >50% query coverage filter on the resulting homolog list, the effective cutoff for the PF11765 domain would be higher, since most of the hits don't share the Hyr1 domain.
+
+Below is the taxonomy distribution of the hits:
+![taxonomy of refseq_protein blast](img/20210124-blastp-N360-refseq-all-species-phylogeny.png)
+To determine the effect of changing the query sequence from N560 to N360 amino acids, I downloaded the hits description and the fasta sequences from both searches. Now let's compare them.
+```{r, results="asis"}
+hitTabColNames <- c("description","sci.name","common.name","taxid","max.score",
+                    "total.score","query.cover","e.value","perc.iden","acc.len","acc")
+refseq.N360 <- read_csv("XP_028889033_homologs_refprot_N360.csv",  col_types = "ccccddcddic", col_names = hitTabColNames, skip = 1) %>% 
+  mutate(query.cover = parse_number(query.cover), 
+         accession = gsub('[")]','',str_split(acc, ",", simplify = T)[,2]))
+
+cat("**Sequences only in the N360 set after applying the 50% query coverage filter**")
+all.N360 <- refseq.N360 %>% filter(query.cover >= 50, acc.len > 500) %>% pull(accession)
+only.in.N360 <- setdiff(all.N360, refseq0$accession)
+refseq.N360 %>% filter(accession %in% only.in.N360) %>% 
+  select(accession, query.cover, e.value, perc.iden, acc.len, sci.name) %>% 
+  arrange(sci.name)
+```
+
+## Fungidb BLAST hits and filtering the results
 ```{r fungidb_plot}
 # load table
 fungidb <- read_tsv("XP_028889033_homologs_fungidb_table.tsv", col_types = "cccddcccdcc")
@@ -78,31 +125,6 @@ _Discussion_
 1. Note that I should exclude the sequence(s) from _C. auris_ B8441 as the refseq blast results, which I used as the basis of my homolog table, contains B11221. Including this B8441 sequence would make _C. auris_ the only species represented by more than one strain in the homolog list.
 1. The remaining five sequences belong to _C. paradoxus_ (4) and _C. tropicalis_ (1)
 
-## Refseq_protein BLAST hits and filtering
-
-I also blasted XP_028889033 using NCBI blast against the refseq_protein database. (See README.md for details). The taxonomy distribution is shown below:
-![taxonomy of refseq_protein blast](img/20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png)
-```{r refseq_protein_blast}
-# load table
-refseq <- read_csv("XP_028889033_homologs_refprot_tab.csv", col_types = "cddnnnc")
-refseq.length <- read_tsv("XP_028889033_homologs_refprot_length.txt", col_names = c("accession","length"), col_types = "ci")
-refseq <- left_join(refseq, refseq.length) %>% select(accession, everything())
-# Do the refseq hits show similar relationship between e-value and protein length?
-refseq %>% 
-  ggplot(aes(x = -log10(e.value), y = log2(length), col = (length > 500))) + geom_point() +
-  theme(legend.position = "bottom")
-ggsave("20200723-XP_028889033-refseq-hits-e-value-by-length.png", width = 3, height = 3)
-# The answer is yes. So let's filter these out and show what they are
-refseq0 <- refseq %>% 
-  filter(length > 500)
-refseq %>% filter(length < 500) %>% select(-description, -total.score, description)
-# the above script uses a strange way to move a column to the last, by first removing it and then adding it back
-# thanks to https://github.com/tidyverse/dplyr/issues/3051
-```
-_Discussion_
-
-1. We see that the excluded sequences not only have less significant e-values, but also have barely above 50% query coverage. In terms of species distribution, most of them are from _S. stipitis_ and _D. rugosa_. The second species will be removed anyways (see notes in the `output/gene-tree` folder)
-1. Even though a couple of the _S. stipitis_ sequences were annotated as "fungal hyphal regulated cell wall proteins", with less than 500 a.a., they are unlikely to encode the stalk and in a separate analysis, I also found them to not possess the GPI-anchor. All in all, I think these sequences are unlikely to be candidate adhesins.
 
 ## GRYC BLAST hits and filtering
 > **Update 2020-07-22**
@@ -133,7 +155,7 @@ The `bash` script below is to make a blast database from the NCBI blast results 
 ```{bash blast}
 # make blast database from the NCBI blast results
 mkdir blastdb
-makeblastdb -in XP_028889033_homologs_refprot.fasta -parse_seqids -dbtype prot -title XP_028889033_refprot -out blastdb/XP_028889033_refprot
+makeblastdb -in XP_028889033_homologs_refprot_N560.fasta -parse_seqids -dbtype prot -title XP_028889033_refprot -out blastdb/XP_028889033_refprot
 # blastp
 blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_fungidb_use.fasta -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1 -num_threads 4 -out XP_028889033_fungidb-refprot-blast.txt
 blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_gryc.fasta -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1 -num_threads 4 -out XP_028889033_gryc-refprot-blast.txt
@@ -208,7 +230,7 @@ refseq1 <- cbind(refseq.orgn, refseq0) %>%
 
 ```{r merge}
 # refseq hit sequences and their names
-refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
+refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot_N560.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 refseqdb.list <- refseq1$accession
 refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
 # in the "output/gene-tree/README.md", I documented an issue with a particular

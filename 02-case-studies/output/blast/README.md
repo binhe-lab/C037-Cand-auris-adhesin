@@ -6,7 +6,6 @@ date: 2020-07-01
 
 <!--ts-->
    * [Goal](#goal)
-   * [Content](#content)
    * [Notes](#notes)
       * [2020-07-01 [HB] Repeat BLAST to identify XP_028889033 homologs](#2020-07-01-hb-repeat-blast-to-identify-xp_028889033-homologs)
          * [FungiDB](#fungidb)
@@ -22,6 +21,7 @@ date: 2020-07-01
       * [2020-09-13 [HB] Homologs in other <em>C. auris</em> proteomes](#2020-09-13-hb-homologs-in-other-c-auris-proteomes)
       * [2020-10-20 [HB] Correct GRYC mistakes](#2020-10-20-hb-correct-gryc-mistakes)
       * [2021-01-09 [HB] Additional homologs through blastp against refseq_protein](#2021-01-09-hb-additional-homologs-through-blastp-against-refseq_protein)
+   * [Content](#content)
 
 <!-- Added by: bhe2, at: Sun Jan 17 10:46:52 CST 2021 -->
 
@@ -31,26 +31,6 @@ date: 2020-07-01
 
 - Repeat the blast step to clean up the homologs list.
     some species were missing while others, like _C. albicans_, had more than one strain represented in Lindsey's version.
-
-
-# Content
-
-| File | Description | Source | User/Date |
-| -----|-------------|--------|---------- |
-| XP_028889033_homologs_fungidb.fasta | New blast results, 95 sequences | fungidb, see notes below | HB/2020 |
-| XP_028889033_homologs_fungidb_table.tsv | Accompanying meta data for the file above | fungidb | HB/2020 |
-| XP_028889033_homologs_fungidb_use.fasta | filtered list with length > 500, 82 sequences | fungidb, see notes below | HB/2020 |
-| XP_028889033_fungidb-refprot-blast.txt | fungiDB hits blasted against the refseq_protein database to identify matching sequences | NCBI BLAST | HB/2020 |
-| XP_028889033_homologs_refprot.fasta | XP_028889033 blast against refseq_protein database | NCBI refseq_protein | HB/2020 |
-| XP_028889033_homologs_refprot_tab.csv | Accompanying "description" table for the file above | NCBI BLAST | HB/2020 |
-| XP_028889033_homologs_refprot_all.gb | "Download" in Genbank format | NCBI BLAST | HB/2020 |
-| XP_028889033_homologs_refprot_length.txt | protein length | `bioawk -c fastx '{print $name, length($seq)}' XP_028889033_homologs_refprot.fasta` | HB/2020 |
-| XP_028889033_homologs_gryc.fasta | blast identified homologs in the Nakaseomyces group | [GRYC](http://gryc.inra.fr/index.php) | HB/2020 |
-| XP_028889033_homologs_gryc_blastp.out | accompanying blast alignment output for the above file | GRYC | HB/2020 |
-| XP_028889033_homologs_gryc_table.txt | accompanying meta data for the above file | GRYC html, manually edited | HB/2020 |
-| 20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png | screenshot of the taxonomy distribution of the above blast result | NCBI blast | HB/2020 |
-| 20200701-XP_028889033-homologs-e-value-by-length.png | plot protein length by e-value | see `blast.Rmd` for details | HB/2020 |
-| blast.* and fungidb_* | script and intermediate files for merging the blast hits | see `blast.Rmd` for details | HB/2020 |
 
 # Notes
 ## 2020-07-01 [HB] Repeat BLAST to identify XP_028889033 homologs
@@ -210,4 +190,46 @@ The red arrows point to species excluded from my homologs list. Among the ones I
 1. _Candida orthopsilosis_ is most closely related to _C. parasiolosis_ and next closest to _L. elongisporus_, both of which harbored significantly fewer homologs than the neighboring _albicans_ clade (~3 vs \gt 10).
 
 In conclusion, the omission of the above species do not alter the main conclusions reached so far, except for the possibility that the PF11765 domain originated earlier at the root of the fission and budding yeasts.
+
+**Update 2021-01-21** Homolog in fission yeast unlikely to be real
+
+Turns out that both the fission yeast hit and the bacteria hit have query coverage lower than 50%. The fission yeast hit comes from a protein that is only 390 aa long, while the bacterial one is 91 amino acid. The reason they appeared in the taxonomy viewer even after I applied the query coverage filter is unexpected and likely a bug in the blast web tool. In any event, I took those two proteins and blast'ed them against the nr_protein database, restricting the taxonomy to Schizosaccharamycetes and eubacteria respectively, maintaining the same 1e-5 e-value cutoff. In both cases, the only hit recovered is the query protein itself. This suggests to me that the original hits are not worth following up with as they represent lone hits that are likely due to sequencing or annotation errors.
+
+## 2021-01-23 [HB] NCBI blastp with N-560 or N-360 aa
+
+_Issue_
+
+While writing up the results, I realized that my original search was done with the first 560 amino acids from XP_028889033, which includes both the N-terminal PF11765 domain (12-327) and also one the Hyr1 domain (PF15789) repeats. This alone wouldn't change the search result by a lot. But when I later applied the 50% query coverage filter, I was effectively applying a more stringent cutoff, because most of the hits only share similarity with the PF11765 domain and not the Hyr1 domain.
+
+_Investigation_
+
+I repeated the search using the first 360 amino acids from XP_028889033. The resulting hit table and fasta are downloaded. To distinguish these files from the original ones, I added the "N560" and "N360" suffixes. The original search with N-560 aa yielded 190 sequences, of which 154 passed the 50% query coverage cutoff. I excluded 9 species from this list (see notes above) and arrived at the final list. Below is the taxonomy for all hits (not filtered by query coverage cutoff). Species labeled by a red arrow are those not included in the final analysis.
+
+![N360 taxonomy](img/20210124-blastp-N360-refseq-all-species-phylogeny.png)
+
+I then compared the new list with the old one (see `blast.Rmd`) and decided to add 7 sequences to the original list. See `blast.Rmd` for details.
+
+# Content
+
+| File | Description | Source | User/Date |
+| -----|-------------|--------|---------- |
+| XP_028889033_homologs_fungidb.fasta | New blast results, 95 sequences | fungidb, see notes below | HB/2020 |
+| XP_028889033_homologs_fungidb_table.tsv | Accompanying meta data for the file above | fungidb | HB/2020 |
+| XP_028889033_homologs_fungidb_use.fasta | filtered list with length > 500, 82 sequences | fungidb, see notes below | HB/2020 |
+| XP_028889033_fungidb-refprot-blast.txt | fungiDB hits blasted against the refseq_protein database to identify matching sequences | NCBI BLAST | HB/2020 |
+| XP_028889033_homologs_refprot_N560.fasta | XP_028889033 first 560 aa blast against refseq_protein database | NCBI refseq_protein | HB/2020 |
+| XP_028889033_homologs_refprot_N560_select.fasta | XP_028889033 first 560 aa blast against refseq_protein database, some species removed, see notes above | NCBI refseq_protein | HB/2020 |
+| XP_028889033_homologs_refprot_N560.gb.gz | "Download" in Genbank format | NCBI BLAST | HB/2020 |
+| XP_028889033_homologs_refprot_N560_hit_tab.txt | Hit list in CSV format | NCBI BLAST | HB/2021 |
+| XP_028889033_homologs_refprot_length_N560.txt | protein length | `bioawk -c fastx '{print $name, length($seq)}' XP_028889033_homologs_refprot.fasta` | HB/2020 |
+| XP_028889033_homologs_refprot_N360.fasta | XP_028889033 first 360 aa blast against refseq_protein database, fasta sequences | NCBI refseq_protein | HB/2021 |
+| XP_028889033_homologs_refprot_N360.csv | XP_028889033 first 360 aa blast against refseq_protein database, hit table in CSV | NCBI refseq_protein | HB/2021 |
+| XP_028889033_homologs_refprot_N360_hit_tab.txt | Hit list in CSV format | NCBI BLAST | HB/2021 |
+| XP_028889033_homologs_refprot_length_N560.txt | protein length | `bioawk -c fastx '{print $name, length($seq)}' XP_028889033_homologs_refprot.fasta` | HB/2020 |
+| XP_028889033_homologs_gryc.fasta | blast identified homologs in the Nakaseomyces group | [GRYC](http://gryc.inra.fr/index.php) | HB/2020 |
+| XP_028889033_homologs_gryc_blastp.out | accompanying blast alignment output for the above file | GRYC | HB/2020 |
+| XP_028889033_homologs_gryc_table.txt | accompanying meta data for the above file | GRYC html, manually edited | HB/2020 |
+| 20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png | screenshot of the taxonomy distribution of the above blast result | NCBI blast | HB/2020 |
+| 20200701-XP_028889033-homologs-e-value-by-length.png | plot protein length by e-value | see `blast.Rmd` for details | HB/2020 |
+| blast.* and fungidb_* | script and intermediate files for merging the blast hits | see `blast.Rmd` for details | HB/2020 |
 
