@@ -10,7 +10,7 @@ The number of amino acids in each protein is calculated in the rmd file for incl
 
 # PredGPI for GPI anchor prediction
 
-Following Bin's method documented [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/output/homolog-properties/2020-10-31), I used the website tool to predict GPI anchors. Only header lines were retained in the uploaded [output](). GPI anchors are predicted when the false positive rate is less than 0.01, matching Bin's code [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/02-case-studies/output/homolog-properties/2020-10-31/homologs-properties.Rmd) and including the highly probable, probable, and lowly probable categories by the tool developers.
+Following Bin's method documented [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/output/homolog-properties/2020-10-31), I used the website tool to predict GPI anchors. Only header lines were retained in the uploaded [output](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/C_auris/PredGPIResults.txt). GPI anchors are predicted when the false positive rate is less than 0.01, matching Bin's code [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/02-case-studies/output/homolog-properties/2020-10-31/homologs-properties.Rmd) and including the highly probable, probable, and lowly probable categories by the tool developers.
 
 # hmmscan for pfam domain identification
 
