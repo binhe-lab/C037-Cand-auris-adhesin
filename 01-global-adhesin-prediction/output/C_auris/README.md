@@ -26,4 +26,4 @@ I created a [.bat file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blo
 
 ## freak for S/T frequency calculations
 
-Using Bin's [method](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/output/homolog-properties), I calculated the sliding window frequency of S & T, S, and T. Raw outputs are as .txt.gz files and formatted outputs are as .out.gz files [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/01-global-adhesin-prediction/output/C_auris/freak).
+Using Bin's [method](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/output/homolog-properties), I calculated the sliding window frequency of S & T, S, and T. Raw outputs are as .txt.gz files and formatted outputs are as .out.gz files [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/01-global-adhesin-prediction/output/C_auris/freak). The maximum frequencies for S/T, S, and T are summarized in the seqInfo table in the .rmd.
