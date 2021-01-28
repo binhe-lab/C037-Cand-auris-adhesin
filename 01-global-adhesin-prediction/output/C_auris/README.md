@@ -14,7 +14,7 @@ Following Bin's method documented [here](https://github.com/binhe-lab/C037-Cand-
 
 # hmmscan for pfam domain identification
 
-Using HmmerWeb version 2.41.1, I submitted all proteins for hmmscan to search for domains against the pfam database. The results came in the body of an email, so I collected them, ensured that all jobs submitted had results, and compiled just the results into an [output file]().
+Using HmmerWeb version 2.41.1, I submitted all proteins for hmmscan to search for domains against the pfam database. The results came in the body of an email, so I collected them, ensured that all jobs submitted had results, and compiled just the results into an [output file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/C_auris/hmmer_results.txt).
 
 # SignalP for signal peptide prediction
 
