@@ -18,7 +18,7 @@ Using HmmerWeb version 2.41.1, I submitted all proteins for hmmscan to search fo
 
 # SignalP for signal peptide prediction
 
-Following Bin's method documented [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/output/homolog-properties/2020-10-31), I used the SignalP 5.0 server to predict signal peptides. I compiled the resulting .gff3 files into one [output file]().
+Following Bin's method documented [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/output/homolog-properties/2020-10-31), I used the SignalP 5.0 server to predict signal peptides. I compiled the resulting .gff3 files into one [output file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/C_auris/SignalP.txt).
 
 # TANGO for aggregation sequence prediction
 
