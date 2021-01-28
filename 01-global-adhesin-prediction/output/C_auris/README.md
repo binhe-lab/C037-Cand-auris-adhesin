@@ -22,5 +22,5 @@ Following Bin's method documented [here](https://github.com/binhe-lab/C037-Cand-
 
 # TANGO for aggregation sequence prediction
 
-I created a [.bat file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/C_auris/tango_in.bat) to run TANGO on the proteins. Because each proteins outputs a single text file, I used gzip to compress all outputs and placed them [here]().
+I created a [.bat file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/C_auris/tango_in.bat) to run TANGO on the proteins. Because each proteins outputs a single text file, I used gzip to compress all outputs and placed them [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/01-global-adhesin-prediction/output/C_auris/tango-output).
 
