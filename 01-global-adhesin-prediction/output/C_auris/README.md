@@ -24,6 +24,10 @@ Following Bin's method documented [here](https://github.com/binhe-lab/C037-Cand-
 
 I created a [.bat file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blob/master/01-global-adhesin-prediction/output/C_auris/tango_in.bat) to run TANGO on the proteins. Because each proteins outputs a single text file, I used gzip to compress all outputs and placed them [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/01-global-adhesin-prediction/output/C_auris/tango-output).
 
+**update [HB] 2021-01-30**
+
+Rachel encountered a number of calculation errors when running tango on her machine. Bin took the bat sequence and modified it so it can be run on his machine using `tango2_3_1` compiled for linux/Mac OS. The 37 example ones ran without a problem, and upon further examination, it seems the other result files that Rachel didn't mention also contain the "-1.#IO" error in the Helix column of the output, and importantly, the Aggregation column values were also affected. So Bin reran all the sequences on his machine and put the output in the separate `tango-output-hb` folder.
+
 ## freak for S/T frequency calculations
 
 Using Bin's [method](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/output/homolog-properties), I calculated the sliding window frequency of S & T, S, and T. Raw outputs are as .txt.gz files and formatted outputs are as .out.gz files [here](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/01-global-adhesin-prediction/output/C_auris/freak). The maximum frequencies for S/T, S, and T are summarized in the seqInfo table in the .rmd.
