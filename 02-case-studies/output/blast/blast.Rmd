@@ -60,38 +60,83 @@ Below is the taxonomy distribution of the hits:
 To determine the effect of changing the query sequence from N560 to N360 amino acids, I downloaded the hits description and the fasta sequences from both searches. Now let's compare them.
 ```{r, results="asis"}
 hitTabColNames <- c("description","sci.name","common.name","taxid","max.score",
-                    "total.score","query.cover","e.value","perc.iden","acc.len","acc")
+                    "total.score","query.cover","e.value","perc.ident","length","acc")
 refseq.N360 <- read_csv("XP_028889033_homologs_refprot_N360.csv",  col_types = "ccccddcddic", col_names = hitTabColNames, skip = 1) %>% 
   mutate(query.cover = parse_number(query.cover), 
          accession = gsub('[")]','',str_split(acc, ",", simplify = T)[,2]))
 
 cat("**Sequences only in the N360 set after applying the 50% query coverage filter**")
-all.N360 <- refseq.N360 %>% filter(query.cover >= 50, acc.len > 500) %>% pull(accession)
+all.N360 <- refseq.N360 %>% filter(query.cover >= 50, length > 500) %>% pull(accession)
 only.in.N360 <- setdiff(all.N360, refseq0$accession)
 refseq.N360 %>% filter(accession %in% only.in.N360) %>% 
-  select(accession, query.cover, e.value, perc.iden, acc.len, sci.name) %>% 
+  select(accession, query.cover, e.value, perc.ident, length, sci.name) %>% 
   arrange(sci.name)
+
+cat("**Sequences only in the N560 set after applying the 50% query coverage filter**")
+only.in.N560 <- setdiff(refseq0$accession, all.N360)
+refseq0 %>% filter(accession %in% only.in.N560) %>% 
+  select(accession, query.cover, e.value, perc.ident, length)
 ```
 
+_Discussion_
+
+I would include the first 10 sequences in the table above, except for those from _C. orthopsilosis_, into the final list. The reason to include them is because the 50% query coverage cutoff was unfairly applied to them, since using the N360 amino acid as query, all of them passed the cutoff. The reason to not include _C. orthopsilosis_ is to limit the total number of species and sequences in the various plots. The main contribution of _C. orthopsilosis_, if I include it, is to enhance the conclusion that the number of homologs in _C. parapsilosis_ and _L. elongatus_ are low. The remaining 15 sequences are from species I'm not going to include.
+
+One sequence from the original blast search, XP_001383953.2 from _S. stipitis_ didn't make the cut in the new search. When I lowered the e-value cutoff to 1e-3, it appeared at the bottom of the hist list. For consistency's sake, I decided to exclude it from the new analysis.
+
+At the same time, I found that relaxing the e-value cutoff from 1e-5 to 1e-3 only resulted in four new sequences. This suggests that the list of homologs is not too sensitive to the arbitrary choice of the e-value cutoff. Looking at the three other sequences making the cut at 1e-3, one is from a species I am not including anyway. The other two were actually added from the FungiDB search result (see notes and analysis below). This made me realize that e-value cutoff is database-size-specific and thus using the same cutoff doesn't mean the same thing between refseq_db, fungidb and GRYC. But the resulting differences in the number of hits included or excluded are relatively small and thus don't affect the overall conclusions.
+
+![](img/20210131-blastp-e-value-1e-3-seqs.png)
+```{r include_additiona_seqs_refseq}
+refseq.add <- c("XP_024716365.1", "XP_717775.2", "XP_036665264.1", "XP_002547616.1", "XP_002545510.1", "XP_002614115.1", "XP_002770240.1")
+refseq.combined <- refseq.N360 %>% 
+  filter(accession %in% refseq.add) %>% 
+  select(accession, description, max.score, total.score, query.cover, e.value, perc.ident, length) %>% 
+  bind_rows(refseq0)
+```
+
+
 ## Fungidb BLAST hits and filtering the results
-```{r fungidb_plot}
-# load table
+
+### Update 2021-01-24 [HB] new search with N360 aa
+
+I repeated the search with either N360 or N560 aa, with e-value 1e-5 cutoff and low complexity filter on. The first search yielded 104 hits and the second 105. I downloaded the results from the first search and named them with "N360" in their filenames. Below I will compare the list to my previous list (filenames don't contain N560 but the query was the first 560 aa)
+
+```{r fungidb_old_vs_new, results="asis"}
+# old: load table
 fungidb <- read_tsv("XP_028889033_homologs_fungidb_table.tsv", col_types = "cccddcccdcc")
 fungidb$species_id <- map_chr(str_split(fungidb$organism, " "), function(x) paste0(substr(x[1],1,1), x[2]))
+# new: load table
+fungidb.new <- read_tsv("XP_028889033_homologs_fungidb_N360_table.tsv", col_types = "cccddcccccccd")
+fungidb.new$species_id <- map_chr(str_split(fungidb.new$organism, " "), function(x) paste0(substr(x[1],1,1), x[2]))
+# reveal differences
+cat("**sequences in the original list but not in the new one**")
+setdiff(fungidb$gene_id, fungidb.new$gene_id)
+cat("**sequences in the new list but not in the old one**")
+setdiff(fungidb.new$gene_id, fungidb$gene_id)
+```
+
+**_Discussion_**
+
+Using the N360 as query resulted in two fewer hits, one of which was excluded anyway later, i.e. CAGL0L00227g, while the other one probably just went slightly below the e-value cutoff. By contrast, using the N360 didn't result in any new hits (the CAWG ones are from the WO-1 strain of _C. albicans_). However, I should pay attension to the query coverage filter used below.
+
+### Filtering fungidb hits by length
+```{r fungidb_plot}
 # plot protein length as a function of e-value
 fungidb %>% 
   ggplot(aes(x = -log10(e_value), y = log2(length), col = (length > 500))) + geom_point() +
   theme(legend.position = "bottom")
 ggsave("20200701-XP_028889033-fungidb-hits-e-value-by-length.png", width = 3, height = 3)
 ```
-Based on the results, I will remove the sequences that are shorter than 500 amino acids.
+Based on the results, I will remove the sequences that are shorter than 500 amino acids. Note that the same 50% query coverage filter was not applied here (this was not even reported in the original blast search from fungidb).
 
 ```{r fungidb_filter}
 # output a list of IDs that correspond to sequences greater than 500 a.a.
-fungidb %>% 
+fdb.filtered <- fungidb %>% 
   filter(str_sub(gene_id, -2, -1) != "_B") %>%  # remove the B allele from C. albicans
-  filter(length > 500) %>%                      # require length greater than 500 amino acids
-  pull(gene_id) %>% cat(file = "fungidb_filter_list.txt", sep = "\n")
+  filter(length > 500)                          # require length greater than 500 amino acids
+
+cat(fdb.filtered$gene_id, file = "fungidb_filter_list.txt", sep = "\n")
 ```
 70 sequences left
 
@@ -104,7 +149,7 @@ mv fungidb_filter_list.faa XP_028889033_homologs_fungidb_use.fasta
 ### Translate fungiDB IDs to refseq_protein IDs
 Next we use BLAST to find out the corresponding refseq IDs for these sequences (see README.md for details on how I did BLAST)
 
-```{r refseq_id_for_fungidb_hits}
+```{r refseq_id_for_fungidb_hits, results="asis"}
 # load blast table
 fdb.hits.blast <- read_tsv("fungidb_blast_refseq_protein.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
 
@@ -116,14 +161,18 @@ fdb.hits.blast.filtered <-  fdb.hits.blast %>%
 # ID mapping for identical sequences (% identity = 100%)
 fdb.refseqID <- fdb.hits.blast.filtered %>% filter(perc_identity == 100) %>% pull(subject_id)
 names(fdb.refseqID) <- fdb.hits.blast.filtered %>% filter(perc_identity == 100) %>% pull(query_id)
+
+cat("**Hits not mapped to refseq_prot:**")
+fdb.filtered %>% filter(!gene_id %in% names(fdb.refseqID))
 ```
 
 _Discussion_
 
-1. Of the 70 sequence, 60 are present in the refseq database.
-1. Among the 10 sequences that didn't map, five belong to the _C. auris_ B8441 strain, which is the only strain of _C. auris_ present in the FungiDB, but apparently is not in the refseq_protein database. Another three sequences in B8441 apparently are identical with sequences in the other _C. auris_ strains included in the refseq database.
+1. Of the `r nrow(fdb.filtered)` sequence, `r length(fdb.refseqID)` are present in the refseq database.
+1. Among the sequences that didn't map, five belong to the _C. auris_ B8441 strain, which is the only strain of _C. auris_ present in the FungiDB, but apparently is not in the refseq_protein database. Another three sequences in B8441 apparently are identical to sequences from the other _C. auris_ strains included in the refseq database.
 1. Note that I should exclude the sequence(s) from _C. auris_ B8441 as the refseq blast results, which I used as the basis of my homolog table, contains B11221. Including this B8441 sequence would make _C. auris_ the only species represented by more than one strain in the homolog list.
 1. The remaining five sequences belong to _C. paradoxus_ (4) and _C. tropicalis_ (1)
+1. See the "Merge" section for choices to include some additional sequences.
 
 
 ## GRYC BLAST hits and filtering
@@ -143,47 +192,51 @@ _Discussion_
 
 1. For the Ref_seq and fungiDB hits, we applied two additional criteria on top of the E-value cutoff of 1e-5, which are >50% query coverage (280 a.a.) and the protein length > 500 a.a. Let's see which of the hits will be excluded if we apply the same criteria here. `r gryc %>% filter(query_cover < 50 | length < 500) %>% select(-ori_id, -max_bit_score, -description, description)`
 
-1. Among the potentially excluded sequences, I would rescue **NADE0s05e04136g** out of the pile because its short length could be due to the sequence being a "partial CDS". Another sequence potentially of interest is **CAGL0L00227g**, which has 47% query coverage, and is of similar length as XP_028889033. But latter phylogenetic analysis showed that it appears to have diverged from the homologs with >50% coverage significantly. I therefore decided to maintain the criterion of query coverage over 50% and not to include it.
+1. Among the potentially excluded sequences, I would rescue **NADE0s05e04136g** out of the pile because its short length could be due to the sequence being a "partial CDS". Another sequence potentially of interest is **CAGL0L00227g**, which has 47% query coverage, and is of similar length as XP_028889033. But latter phylogenetic analysis showed that it appears to have diverged from the homologs with >50% coverage significantly. I therefore decided to maintain the criterion of query coverage over 50% and not include it.
 
 1. Lastly, I'll remove the hits from _L. fermentati_. This is arbitrary and the rationale is that I just want to get some representation from the Lanchancea genus, and I already have _L. kluyveri_.
 
 ## Merge fungidb, gryc and ref_prot blast results
 First we need to find out which sequences were duplicates. To do so we will blast the fungidb and gryc hits against the refseq hits.
 
+**_update 2021-01-25_**
+
+Added new sequences from the refseq_prot search.
+
 ### FungiDB
 The `bash` script below is to make a blast database from the NCBI blast results so that we can map the FungiDB hits to it to identify redundant sequences.
 ```{bash blast}
 # make blast database from the NCBI blast results
 mkdir blastdb
-makeblastdb -in XP_028889033_homologs_refprot_N560.fasta -parse_seqids -dbtype prot -title XP_028889033_refprot -out blastdb/XP_028889033_refprot
+makeblastdb -in XP_028889033_homologs_refprot_N360.fasta -parse_seqids -dbtype prot -title XP_028889033_refprot -out blastdb/XP_028889033_refprot
 # blastp
-blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_fungidb_use.fasta -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1 -num_threads 4 -out XP_028889033_fungidb-refprot-blast.txt
-blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_gryc.fasta -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1 -num_threads 4 -out XP_028889033_gryc-refprot-blast.txt
+blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_fungidb_use.fasta -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1 -num_threads 4 -out XP_028889033_fungidb-refprot-N360-blast.txt
+blastp -db ./blastdb/XP_028889033_refprot -query XP_028889033_homologs_gryc.fasta -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1 -num_threads 4 -out XP_028889033_gryc-refprot-N360-blast.txt
 ```
 
 The typical protocol for identifying orthologs is to perform reciprocol blast. But our goal here is to identify identical sequences -- more like what the CDD hits program does -- and thus one sided blast should be fine. The analysis below is meant to identify the shared hits as well as the unique hits in each set.
-```{r fungidb_match}
+```{r fungidb_match, results='asis'}
 # local blast the fungiDB hits against the library made from the refseq hits
-fdb2refseq <- read_tsv("XP_028889033_fungidb-refprot-blast.txt", col_types = "ccnndnnnn")
-names(fdb2refseq) <- c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value")
+blast.header <- c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value")
+fdb2refseq <- read_tsv("XP_028889033_fungidb-refprot-N360-blast.txt", col_types = "ccnndnnnn", col_names = blast.header)
 sprintf("There are a total of %i queries submitted", length(unique(fdb2refseq$query_id)))
 match <- fdb2refseq %>% filter(perc_identity > 90) %>% select(-score, -bitscore, -e_value)
 
-# do we indeed have one entry per query?
+cat("do we indeed have one entry per query?")
 match %>% add_count(query_id) %>% filter(n > 1) %>% arrange(desc(n))
-# answer is yes
+cat("answer is yes")
 
-# which proteins are unique to the fungidb hits?
+cat("which proteins are unique to the fungidb hits?")
 uniq.fdb <- setdiff(fdb2refseq$query_id, match$query_id)
 paste(uniq.fdb, collapse = " ")
 
-# were they unqiue because the sequences were not in refseq or because they have low e-values?
+cat("were they unqiue because the sequences were not in refseq or because they have low e-values?")
 fungidb %>% 
   filter(gene_id %in% uniq.fdb) %>% 
   mutate(refseq_id = fdb.refseqID[gene_id]) %>% 
   select(gene_id, refseq_id, organism, e_value)
 ```
-Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. The rest are in the refseq_protein database but not included in my blast search against that database. Among those, CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. Also, among those sequences all but CLUG_05233 have lower than 50% query coverage. All in all, I think I can safely use the refseq hits as the base and add _C. auris_ B9J08_004098, CLUG_05233 and the _C. paradoxus_ sequences (for some reason this species is not included in refseq). To do so, I'll use the `read.fasta()` function from the `seqinr` package to extract their sequences, and use the `write.fasta()` function to output the combined fasta.
+Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not included in the refseq_protein database. The rest are in the refseq_protein database but not included in my blast search against that database. Among those, CAGL0L00227g and CLUG_05233 are both "provisional" refseq sequences, meaning that their records have not been submitted to NCBI for final review. Also, among those sequences all but CLUG_05233 have lower than 50% query coverage. All in all, I think I can safely use the refseq hits as the base and add _C. auris_ B9J08_004098, CLUG_05233 and the _C. parapsilosis_ sequences (for some reason this species is not included in refseq). To do so, I'll use the `read.fasta()` function from the `seqinr` package to extract their sequences, and use the `write.fasta()` function to output the combined fasta.
 
 >**Update 2020-10-18**
 > I realized that by including the one sequence from _C. auris_ B8441, the final dataset would contain two _C. auris_ strains, making it distinct from the other species, each of which is represented by one strain only. This wouldn't change the broader conclusions. But if there is a need to modify the homologs list and repeat the downstream analysis, I would like to remove this sequence (B9J08_004098)
@@ -191,7 +244,7 @@ Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not 
 ### GRYC
 ```{r gryc_match}
 # local blast the gryc hits against the library made from the refseq hits
-gryc2refseq <- read_tsv("XP_028889033_gryc-refprot-blast.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
+gryc2refseq <- read_tsv("XP_028889033_gryc-refprot-N360-blast.txt", col_names = c("query_id","subject_id","query_length","subject_length","perc_identity","mismatch","score","bitscore","e_value"), col_types = "ccnndnnnn")
 match.gryc <- gryc2refseq %>% filter(perc_identity > 90) %>% select(-score, -bitscore, -e_value)
 ```
 There are a total of `r length(unique(gryc2refseq$query_id))` queries submitted, among which `r nrow(match.gryc)` are redundant with the refseq hits, which are `r match.gryc` The rest are new entries, although some of them will be excluded (see analysis above). In the end we will just add four sequences to the total list.
@@ -204,6 +257,7 @@ gryc1 <- gryc %>%
   # the second criterion is to remove the one sequence with length smaller than 500 a.a.
   # the last criterion is to add back the Ndelphensis sequence
   select(ori_id, id, species, species_id)
+gryc1
 ```
 
 ### Merge
@@ -212,13 +266,13 @@ In order to make it easier for the downstream tree building and reconciliation, 
 Now let's do the renaming and gather some species/strain information as well.
 ```{r refseq_species}
 # use rentrez function to get the organism information
-tmp <- entrez_summary(db = "protein", id = refseq0$accession)
+tmp <- entrez_summary(db = "protein", id = refseq.combined$accession)
 refseq.orgn.extract <- extract_from_esummary(tmp, elements = c("organism","strain"), simplify = FALSE)
 refseq.orgn <- do.call(rbind, lapply(refseq.orgn.extract, unlist))
 # Rename the refseq names. The goal is to have SeqID_Species, like XP_028889033_Cauris
 # what we have now is a two word species name, which we will shorten to a capital first letter of 
 # the first word followed by the entire second word
-refseq1 <- cbind(refseq.orgn, refseq0) %>% 
+refseq1 <- cbind(refseq.orgn, refseq.combined) %>% 
   mutate(organism = word(str_replace_all(organism, "[\\x5B\\x5D]", ""), 1, 2),
          # \\x5B\\x5D are Hexadecimal representations of the square brackets
          species_id = paste0(str_sub(organism, 1, 1), word(organism, 2,2))) %>%
@@ -230,19 +284,13 @@ refseq1 <- cbind(refseq.orgn, refseq0) %>%
 
 ```{r merge}
 # refseq hit sequences and their names
-refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot_N560.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
+refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot_N360.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 refseqdb.list <- refseq1$accession
 refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
-# in the "output/gene-tree/README.md", I documented an issue with a particular
-# sequence, XP_025344407.1, which has a long N-terminal part that is not aligned 
-# to any other sequences. the solution is to remove the first 900 a.a. of it
-truncated <- str_sub(refseqdb.seq$XP_025344407.1, start = 901)
-attributes(truncated) <- attributes(refseqdb.seq$XP_025344407.1)
-refseqdb.seq$XP_025344407.1 <- truncated
 
 # sequences to be added to the refseq list from fungidb hits
-fdb.list <- c("CLUG_05233",  paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
-fdb.species <- c("Clusitaniae", rep("Cparapsilosis",times = 4))
+fdb.list <- c("CLUG_05233",  paste("CPAR2",c(600430,806390,806420),sep = "_"))
+fdb.species <- c("Clusitaniae", rep("Cparapsilosis",times = 3))
 fdb.names <- paste(fdb.list, fdb.species, sep = "_")
 fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 
@@ -255,6 +303,17 @@ gryc.names <- gryc1 %>% mutate(name = paste(id, species_id, sep = "_")) %>% pull
 combined.seq <- c(refseqdb.seq[refseqdb.list], fungidb.seq[fdb.list], gryc.seq[gryc.list])
 combined.names <- c(refseqdb.names, fdb.names, gryc.names)
 write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine.fasta")
+```
+
+```{r}
+# in the "output/gene-tree/README.md", I documented an issue with a particular
+# sequence, XP_025344407.1, which has a long N-terminal part that is not aligned 
+# to any other sequences. the solution is to remove the first 900 a.a. of it
+# and output a different version of fasta file just for gene tree analysis
+truncated <- str_sub(refseqdb.seq$XP_025344407.1, start = 901)
+attributes(truncated) <- attributes(refseqdb.seq$XP_025344407.1)
+combined.seq$XP_025344407.1 <- truncated
+write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine_for_gene_tree.fasta")
 ```
 
 ## Obtain the chromosomal locations for the homologous genes
