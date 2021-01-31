@@ -225,7 +225,6 @@ While re-assembling the list of homolog sequences using the new N360 search resu
 
 See `blast.Rmd`'s relevant section for more discussion.
 
->>>>>>> 4cc975ae05a9b3906f482d5a52490b3d8fd4291f
 # Content
 
 | File | Description | Source | User/Date |
