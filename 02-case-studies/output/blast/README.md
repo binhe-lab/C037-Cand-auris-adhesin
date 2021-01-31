@@ -195,7 +195,7 @@ In conclusion, the omission of the above species do not alter the main conclusio
 
 Turns out that both the fission yeast hit and the bacteria hit have query coverage lower than 50%. The fission yeast hit comes from a protein that is only 390 aa long, while the bacterial one is 91 amino acid. The reason they appeared in the taxonomy viewer even after I applied the query coverage filter is unexpected and likely a bug in the blast web tool. In any event, I took those two proteins and blast'ed them against the nr_protein database, restricting the taxonomy to Schizosaccharamycetes and eubacteria respectively, maintaining the same 1e-5 e-value cutoff. In both cases, the only hit recovered is the query protein itself. This suggests to me that the original hits are not worth following up with as they represent lone hits that are likely due to sequencing or annotation errors.
 
-## 2021-01-23 [HB] NCBI blastp with N-560 or N-360 aa
+## 2021-01-23 [HB] Repeat blast searches with N-360 aa from XP_028889033 (for writing up the results)
 
 _Issue_
 
@@ -208,6 +208,10 @@ I repeated the search using the first 360 amino acids from XP_028889033. The res
 ![N360 taxonomy](img/20210124-blastp-N360-refseq-all-species-phylogeny.png)
 
 I then compared the new list with the old one (see `blast.Rmd`) and decided to add 7 sequences to the original list. See `blast.Rmd` for details.
+
+_Procedure_
+
+I repeated all three searches (refseq_prot, GRYC, fungidb) with the N360 amino acids as query, so as to make the writing a little easier. The results didn't change for GRYC and fungidb, but a few more sequences are identified in the blastp search against the refseq_prot, which I will incorporate into our analysis.
 
 # Content
 

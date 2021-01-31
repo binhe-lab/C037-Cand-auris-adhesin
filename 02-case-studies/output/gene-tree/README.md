@@ -14,6 +14,9 @@ Gene geneaology analysis for the XP_028889033 protein family. The subfolders cor
 - `20200707-raxml-hb`: see above.
 - `20200714-raxml-hb`: remove _D. rugosa_ and repeat the alignment and tree construction.
 - `20200716-reconciled-hb`: reconcile the gene tree with the species tree above using Notung 2.9.
+- `20200723-reconciled-hb`: repeat of 7-14 analyses with updated homologous protein sequences.
+- `20201021-reconciled-hb`: repeat of 7-23 analyses with updated homologous protein sequences.
+- `20201114-reconciled-hb`: repeat of 10-21 analyses with CAGL0L00227g removed.
 
 ## Notes
 The notes are now kept closely to where the analysis results are. See enclosing sub-folders.
