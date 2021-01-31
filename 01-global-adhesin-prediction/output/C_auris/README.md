@@ -26,7 +26,7 @@ I created a [.bat file](https://github.com/binhe-lab/C037-Cand-auris-adhesin/blo
 
 **update [HB] 2021-01-30**
 
-Rachel encountered a number of calculation errors when running tango on her machine. Bin took the bat sequence and modified it so it can be run on his machine using `tango2_3_1` compiled for linux/Mac OS. The 37 example ones ran without a problem, and upon further examination, it seems the other result files that Rachel didn't mention also contain the "-1.#IO" error in the Helix column of the output, and importantly, the Aggregation column values were also affected. So Bin reran all the sequences on his machine and put the output in the separate `tango-output-hb` folder.
+Rachel encountered a number of calculation errors when running tango on her machine. Bin took the bat sequence and modified it so it can be run on his machine using `tango2_3_1` compiled for linux/Mac OS. The 37 example ones ran without a problem, and upon further examination, it seems the other result files that Rachel didn't mention also contain the "-1.#IO" error in the Helix column of the output, and importantly, the Aggregation column values were also affected. So Bin reran all the sequences on ARGON using and put the output in the separate `tango-output-hb` folder.
 
 ## freak for S/T frequency calculations
 
