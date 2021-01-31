@@ -71,12 +71,22 @@ only.in.N360 <- setdiff(all.N360, refseq0$accession)
 refseq.N360 %>% filter(accession %in% only.in.N360) %>% 
   select(accession, query.cover, e.value, perc.ident, length, sci.name) %>% 
   arrange(sci.name)
+
+cat("**Sequences only in the N560 set after applying the 50% query coverage filter**")
+only.in.N560 <- setdiff(refseq0$accession, all.N360)
+refseq0 %>% filter(accession %in% only.in.N560) %>% 
+  select(accession, query.cover, e.value, perc.ident, length)
 ```
 
 _Discussion_
 
 I would include the first 10 sequences in the table above, except for those from _C. orthopsilosis_, into the final list. The reason to include them is because the 50% query coverage cutoff was unfairly applied to them, since using the N360 amino acid as query, all of them passed the cutoff. The reason to not include _C. orthopsilosis_ is to limit the total number of species and sequences in the various plots. The main contribution of _C. orthopsilosis_, if I include it, is to enhance the conclusion that the number of homologs in _C. parapsilosis_ and _L. elongatus_ are low. The remaining 15 sequences are from species I'm not going to include.
 
+One sequence from the original blast search, XP_001383953.2 from _S. stipitis_ didn't make the cut in the new search. When I lowered the e-value cutoff to 1e-3, it appeared at the bottom of the hist list. For consistency's sake, I decided to exclude it from the new analysis.
+
+At the same time, I found that relaxing the e-value cutoff from 1e-5 to 1e-3 only resulted in four new sequences. This suggests that the list of homologs is not too sensitive to the arbitrary choice of the e-value cutoff. Looking at the three other sequences making the cut at 1e-3, one is from a species I am not including anyway. The other two were actually added from the FungiDB search result (see notes and analysis below). This made me realize that e-value cutoff is database-size-specific and thus using the same cutoff doesn't mean the same thing between refseq_db, fungidb and GRYC. But the resulting differences in the number of hits included or excluded are relatively small and thus don't affect the overall conclusions.
+
+![](img/20210131-blastp-e-value-1e-3-seqs.png)
 ```{r include_additiona_seqs_refseq}
 refseq.add <- c("XP_024716365.1", "XP_717775.2", "XP_036665264.1", "XP_002547616.1", "XP_002545510.1", "XP_002614115.1", "XP_002770240.1")
 refseq.combined <- refseq.N360 %>% 
@@ -277,16 +287,10 @@ refseq1 <- cbind(refseq.orgn, refseq.combined) %>%
 refseqdb.seq <- read.fasta("XP_028889033_homologs_refprot_N360.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 refseqdb.list <- refseq1$accession
 refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
-# in the "output/gene-tree/README.md", I documented an issue with a particular
-# sequence, XP_025344407.1, which has a long N-terminal part that is not aligned 
-# to any other sequences. the solution is to remove the first 900 a.a. of it
-truncated <- str_sub(refseqdb.seq$XP_025344407.1, start = 901)
-attributes(truncated) <- attributes(refseqdb.seq$XP_025344407.1)
-refseqdb.seq$XP_025344407.1 <- truncated
 
 # sequences to be added to the refseq list from fungidb hits
-fdb.list <- c("CLUG_05233",  paste("CPAR2",c(600430,806390,806410,806420),sep = "_"))
-fdb.species <- c("Clusitaniae", rep("Cparapsilosis",times = 4))
+fdb.list <- c("CLUG_05233",  paste("CPAR2",c(600430,806390,806420),sep = "_"))
+fdb.species <- c("Clusitaniae", rep("Cparapsilosis",times = 3))
 fdb.names <- paste(fdb.list, fdb.species, sep = "_")
 fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 
@@ -299,6 +303,17 @@ gryc.names <- gryc1 %>% mutate(name = paste(id, species_id, sep = "_")) %>% pull
 combined.seq <- c(refseqdb.seq[refseqdb.list], fungidb.seq[fdb.list], gryc.seq[gryc.list])
 combined.names <- c(refseqdb.names, fdb.names, gryc.names)
 write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine.fasta")
+```
+
+```{r}
+# in the "output/gene-tree/README.md", I documented an issue with a particular
+# sequence, XP_025344407.1, which has a long N-terminal part that is not aligned 
+# to any other sequences. the solution is to remove the first 900 a.a. of it
+# and output a different version of fasta file just for gene tree analysis
+truncated <- str_sub(refseqdb.seq$XP_025344407.1, start = 901)
+attributes(truncated) <- attributes(refseqdb.seq$XP_025344407.1)
+combined.seq$XP_025344407.1 <- truncated
+write.fasta(combined.seq, names = combined.names, file.out = "XP_028889033_homologs_combine_for_gene_tree.fasta")
 ```
 
 ## Obtain the chromosomal locations for the homologous genes
