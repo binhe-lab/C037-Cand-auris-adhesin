@@ -38,3 +38,6 @@ bioawk -c fastx -v l="$length" '{print ">"$name $comment;print substr($seq,1,l)}
 
 # align with clustalo
 clustalo -i $trunc -o $align --iter=5 --force --outfmt=fasta -v -v
+
+# refine the alignment with muscle
+muscle -in XP_028889033_homologs_N500_clustalo.faa -out ./XP_028889033_homologs_N500_muscle_refined.faa -refine
