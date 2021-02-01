@@ -1,0 +1,417 @@
+---
+title: "C_auris"
+author: "Rachel Smoak"
+date: "1/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(seqinr)
+library(dplyr)
+library(data.table)
+
+working_directory = "C:/Users/Rachel/OneDrive - University of Iowa/Fall 2019/Bioinformatics/Project work/Paper/Adhesin_Analysis"
+```
+
+
+## Get proteomes from ftp
+Retreive C. auris proteome files from NCBI ftp sites. 
+
+```{r get_proteomes}
+
+Caurisfasta.table <- NULL
+
+# Get data. seqinr package is new and seems powerful but has odd data forms so I have to extract then remake data frames
+url.list <- c("https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/759/435/GCA_002759435.2_Cand_auris_B8441_V2/GCA_002759435.2_Cand_auris_B8441_V2_protein.faa.gz", "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/013/715/GCA_003013715.2_ASM301371v2/GCA_003013715.2_ASM301371v2_protein.faa.gz", "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/775/015/GCF_002775015.1_Cand_auris_B11221_V1/GCF_002775015.1_Cand_auris_B11221_V1_protein.faa.gz", "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/008/275/145/GCA_008275145.1_ASM827514v1/GCA_008275145.1_ASM827514v1_protein.faa.gz")
+strain.list <- c("B8441", "B11220", "B11221", "B11245")
+
+extract.fasta.fn <- function(raw_url, strain_name, working_directory = working_directory, fasta_table = Caurisfasta.table){
+  proteome_file <- paste(working_directory, "/","proteome_file.txt.gz", sep = "")
+  download.file(url = raw_url, destfile = proteome_file, quiet = TRUE)
+  read.fasta.frame <- (read.fasta(file = proteome_file, seqtype = "AA", as.string = TRUE))
+  d <- as.data.frame(attr(read.fasta.frame, "names"))
+  f <- (as.data.frame(as.character(read.fasta.frame)))
+  read.fasta.frame <- (read.fasta(file = proteome_file, seqtype = "AA", as.string = TRUE, whole.header = TRUE))
+  e <- as.data.frame(attr(read.fasta.frame, "names"))
+  t1 <- as.data.table(cbind(d,e,f))
+  setnames(t1, c(1,2,3), c("fid", "annotation", "seq"))
+  t1 <- t1[,strain:= strain_name]
+  t1 <- t1[,species:= "C_auris"]
+  Caurisfasta.table <<- rbind(Caurisfasta.table, t1)
+  unlink(proteome_file)
+  return(Caurisfasta.table)
+}
+
+for (i in 1:length(url.list)){
+    extract.fasta.fn(raw_url = url.list[i],strain_name =  strain.list[i], working_directory = working_directory, fasta_table = Caurisfasta.table)
+}
+
+Caurisfasta.table[,fid:=as.character(fid)]
+Caurisfasta.table[, annotation:=as.character(annotation)]
+Caurisfasta.table[, seq:=as.character(seq)]
+Caurisfasta.table[, aaseqlen:=nchar(seq)]
+
+```
+
+## Write a fasta file
+
+I wrote a combined fasta file using the command fwrite(x = Caurisfasta.table[, c(1,3)], file = "Cauris.txt", sep = "\t", col.names = FALSE)
+
+Using Notepad++ I changed /n to /n> then /t to /n to put in conventional fasta format. Saved as Caurisfasta.txt. There are 27278 proteins.
+
+Note: I wrote a new fasta file to remove B11243 from the file. There are now 21772 proteins.
+
+## PredGPI
+
+Following Bin's method, I used PredGPI to predict GPI anchors. For PredGPI, the maximum number of sequences is 500. To split the file I used the command split Caurisfasta.txt -l 1000 in my Ubuntu instance, which made 55 new files. The output includes name | FPrate | most likely position and the sequence for each. GPI anchor is "highly probable" when FPrate < 0.001, "probable" when 0.001 < FPrate < 0.005, "lowly probable" when 0.005 < FPrate < 0.01. Retain only header lines with the command grep -h ">" GPIPE* > PredGPIResults.txt.
+
+
+
+This was done using the file that contained B11243. To remove duplicate results, I used the command grep ">" PredGPIResults.txt | sort -u > PredGPIResults2.txt. Then I renamed PredGPIResults2 PredGPIResults. It has 21772 proteins.
+
+```{r download gpi}
+seqInfo <- Caurisfasta.table
+setnames(seqInfo, c("fid", "aaseqlen"), c("name", "length"))
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/C_auris/PredGPIResults.txt", destfile = "predgpi_result.txt")
+```
+Bin's code:
+
+```{r gpi}
+tmp <- read_delim("predgpi_result.txt", delim = "|", col_names = c("name","fp","omega"))
+pred.gpi <- tmp %>% 
+  mutate(name = str_sub(name,2,-2), # remove > and the trailing space
+         fp = as.numeric(str_sub(fp, 9, -2)), # extract the numeric part
+         is.gpi = fp <= 0.01,    # based on the cutoff of the PredGPI server (prob < 99% -> not GPI-anchored)
+         omega = str_sub(omega, 8),
+         cleaveRes = str_sub(omega, 1, 1),
+         cleavePos = as.integer(str_sub(omega, 3))
+         ) %>% 
+  left_join(select(seqInfo, name, length), by = c("name" = "name"))
+
+# remove the column if it already exists
+if("pred.gpi" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -pred.gpi)
+seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi), by = c("name"="name"))
+
+View(seqInfo)
+
+```
+
+
+## hmmscan for pfam domains
+
+Using hmmscan to search the pfam database,the maximum allowed number of sequences is 500. I uploaded the same 55 files from PredGPI to hmmscan, providing my email address each time. HmmerWeb version 2.41.1. I resplit the new fasta into 44 files and reran. Copied and pasted results email into hmmer_results_emails.txt - checked to make sure that there were 44 and that each job id matched. Used the command grep ">" hmmer_results_emails.txt | sort > hmmer_results.txt. In Notepad++, copied and pasted header row from emails file.
+
+```{r download hmmscan}
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/C_auris/hmmer_results.txt", destfile = "hmmer_results.txt")
+```
+This chunk will add a column that lists all non-overlapping domains found in each protein. In cases of overlap, the highest-scoring domain wins (using the outcompeted column in the data).
+
+```{r hmmscan}
+hmm.names <- c("seq_id", "alignment_start", "alignment_end", "envelope_start", "envelope_end", "hmm_acc", "hmm_name", "hmm_start", "hmm_end", "hmm_length", "bit_score", "individual_e_value", "conditional_e_value", "database_significant", "outcompeted", "clan")
+hmmscan_pfam <- read_table2(file = "hmmer_results.txt", col_names = hmm.names, col_types = "ciiiicciiidddiic", skip = 1)
+
+hmmscan_pfam <- hmmscan_pfam[which(hmmscan_pfam$outcompeted != 1),] # remove lower-scored overlapping domains
+hmmscan_pfam <- hmmscan_pfam[,c("seq_id", "hmm_name")] %>%
+  mutate(seq_id = substring(seq_id, 2)) %>% # remove >
+  group_by(seq_id) %>% summarise(pfam_domains = paste(hmm_name, collapse = ", ")) # collapse into list of pfam domains for each protein
+
+
+# remove the column if it already exists
+if("pfam.domains" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -pfam.domains)
+seqInfo <- left_join(seqInfo, hmmscan_pfam, by = c("name"="seq_id"))
+
+View(seqInfo)
+
+```
+
+
+## SignalP for signal peptides
+
+Use SignalP 5.0 server to predict signal peptides. Maximum number of proteins is 5000, so I split the fasta file into 6 smaller files and submitted, providing my email each time. I used the old file with B11243 to run this. I resplit the new fasta into 5 files and reran. Downloaded .gff files as SignalP_(file #).gff3 and used command grep -v -h "##" SignalP* | sort > SignalP.txt
+
+
+```{r download signalP}
+download.file(url = "https://raw.githubusercontent.com/binhe-lab/C037-Cand-auris-adhesin/master/01-global-adhesin-prediction/output/C_auris/SignalP.txt", destfile = "SignalP.txt")
+```
+
+Modified file names, but otherwise Bin's code:
+
+```{r signalP, fig.width=5, fig.height=5}
+# Signal peptide
+gff.names <- c("id", "source", "name", "start", "end", "prob", "na1", "na2", "na3")
+signalp5 <- read_tsv("SignalP.txt", comment = "#", col_names = gff.names, col_types = "ccciidccc")
+
+# remove the column if it already exists
+if("signalp" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -signalp)
+seqInfo <- left_join(seqInfo, select(signalp5, name = id, prob), by = c("name" = "name")) %>% 
+  mutate(signalp = !is.na(prob)) %>% select(-prob)
+
+View(seqInfo)
+```
+
+## New problem
+B11243 and B11245 are identical. Because B11245 is assembled to the chromosome level, I will retain it and remove B11243 from the results.
+
+## tango
+
+Created a .bat file to run tango on the condensed fasta. Used the command fwrite(x = Caurisfasta.table[, c(1,3)], file = "Cauris.txt", sep = "\t", col.names = FALSE). Command file is tango_in.bat. Ran it and compressed all results using the command gzip *.txt.
+
+When I went to analyze I found that multiple files contained trash (columns with value -1.IO and values that didn't match if the single line from the .bat file was rerun). Upon looking in the TANGO documentation, it says that files can't be larger than 1000 sequences. Splitting it still induced errors, so I had Bin rerun all of the TANGO calculations and upload his error-free results to the github. 
+
+Note: Downloading all of these files takes a very long time. If you don't need to regenerate the results, just download the file tango_results_df.txt and read it in as tango.res.df1. Everything after extracting the results will work off of that. 
+```{r download files}
+url <- "https://github.com/binhe-lab/C037-Cand-auris-adhesin/raw/master/01-global-adhesin-prediction/output/C_auris/tango-output/"
+if(!dir.exists("tango-output"))
+{dir.create("tango-output")}
+setwd(paste0(working_directory, "/tango-output"))
+lapply(seqInfo$name, function(x) {
+  download.file(url = paste0(url, x, ".txt.gz"), destfile = paste0(x,".txt.gz"))
+})
+setwd(working_directory)
+```
+Using Bin's tango extraction functions
+
+```{r extract_tango_info}
+library(dplyr)
+extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 5) {
+    require(tidyverse)
+    tmp <- read_tsv(file = tango_output, col_types = "icddddd") %>% 
+        # a boolean vector for residues above threshold
+        mutate(pass = Aggregation > agg_threshold)
+    pass.rle <- rle(tmp$pass) # this creates a run length encoding that will be useful for identifying the sub-sequences in a run longer than certain length
+    # --- Explanation ---
+    # this rle object is at the core of this function
+    # an example of the rle looks like
+    #   lengths: int[1:10] 5 19 20 8 1 5 19 6 181 18
+    #   values: logi[1:10] F T  F  T F T F  T F   T
+    #   note that by definition the values will always be T/F interdigited
+    # our goal is to identify the sub-sequences that is defined as a stretch of 
+    # n consecutive positions with a score greater than the cutoff and record the
+    # sub-sequence, its length, start and end position, 90% quantile of the score
+    # --- End of explanation ---
+    # 1. assigns a unique id for each run of events
+    tmp$group <- rep(1:length(pass.rle$lengths), times = pass.rle$lengths)
+    # # 2. extract the subsequences
+    agg.seq <- tmp %>%
+        dplyr::filter(pass) %>% # drop residues not predicted to have aggregation potential
+        group_by(group) %>% # cluster by the runs
+        summarise(seq = paste0(aa, collapse = ""),
+                  start = min(res), end = max(res), length = n(),
+                  median = median(Aggregation),
+                  q90 = quantile(Aggregation, probs = 0.9),
+                  ivt = sum(aa %in% c("I","V","T")) / length(aa),
+                  .groups = "drop") %>%
+        mutate(interval = start - dplyr::lag(end) - 1) %>%
+        dplyr::filter(length >= required_in_serial) %>%
+        select(-group)
+    return(agg.seq)
+}
+
+```
+
+Apply to C auris proteomes
+
+```{r apply}
+setwd(paste0(working_directory, "/tango-output"))
+tango.output.files <- list.files(pattern = ".txt|.txt.gz", full.names = T)
+# the read_csv() function used in the custom function can automatically decompress gzipped files
+tango.res <- lapply(tango.output.files, extract_tango)
+names(tango.res) <- gsub(".txt|.txt.gz", "", basename(tango.output.files))
+# to add species information
+# seqInfo <- read_tsv("raw-output/XP_028889033_homologs.tsv", comment = "#", col_types = c("ccci"))
+tango.res.df <- bind_rows(tango.res, .id = "id")
+# tango.res.df <- bind_rows(tango.res, .id = "id") %>% 
+#   left_join(select(seqInfo, -length), by = c("id" = "id"))
+# # save the tango output
+# write_tsv(tango.res.df, "tango_summary_table.tsv.gz")
+# # mutate(species = str_split(id, "_(?!.*_)", simplify = TRUE)[,2]) 
+# # extract the species names
+# # credit: https://stackoverflow.com/questions/20454768/how-to-split-a-string-from-right-to-left-like-pythons-rsplit
+# # the split pattern is equivalent to the rsplit() function in python
+setwd(working_directory)
+```
+
+```{r unique motifs}
+tango.res.df1 <- tango.res.df %>% left_join(seqInfo %>% select(name, strain), by = c("id" = "name"))
+# find unique motifs and count the number of proteins and strains represented
+motif.summary <- tango.res.df1 %>% 
+    group_by(seq) %>% 
+    summarize(n = n(), n.prot = n_distinct(id), n.strains = n_distinct(strain),
+              medScore = round(mean(median),1),
+              IVT = round(mean(ivt),2),
+              avg.intv = round(mean(interval, na.rm = T),1), sd.intv = round(sd(interval, na.rm = T),1),
+              strain = paste0(unique(strain), collapse = ","), .groups = "drop") %>% 
+    arrange(desc(n))
+View(motif.summary)
+
+```
+
+#### Identify variants of "GVVIVTT"
+Since this is the dominant motif used in the MDR clade homologs, I want to determine
+1. What percent of the TANGO sequences in the MDR clade belong to this class?
+1. Are they used at all in homologs from non-MDR clade species?
+1. Among the remaining TANGO sequences, can we identify other clusters?
+
+To design the regular expression, I looked at both the TANGO sequences that "look similar" to "GVVIVTT" and also used the patterns summarized in the following reference:
+
+    Rousseau F, Schymkowitz J, Serrano L. 2006. Protein aggregation and amyloidosis: confusion of the kinds? Current Opinion in Structural Biology 16:118–126.
+
+![](img/Rousseau-et-al-2006-Fig3.png){width=75%}
+```{r, results='asis'}
+seqs <- motif.summary$seq
+# core group, must be G-[VI]x4-TT
+pat0 <- "G[VI]{4}TT"
+# version 1, requires G-[ALVI][VI][LVI][VI]-(either end of string or at least 1 suitable residue) 
+#                  OR (G not required)-[VI]x4-(two suitable residues)
+pat1 <- "G[ALVI][VI][LVI][VI]([LVIFAWYTM]{1,2}|$)|[VI]{4}[LVIFAWYTM]{2}"
+cat(paste("Identify the group of TANGO sequences most similar to 'GVVIVTT' using the pattern", pat0, sep = " "))
+match0 <- grep(pat0, seqs)
+motif.summary[match0,] %>% arrange(desc(n)) %>% select(seq, n, medScore, IVT, strain)
+cat(paste("Identify TANGO sequences with slightly more variation from 'GVVIVTT', using `", pat1, "`", sep = ""))
+match1 <- grep(pat1, seqs)
+# exclude those already identified with pattern 0
+motif.summary[setdiff(match1, match0),] %>% arrange(desc(n)) %>% select(seq, n, medScore, IVT, strain)
+```
+
+#### Number and spacing of TANGO hits in each protein sequence
+We first summarize the motif sequences within each protein, with the goal of identifying protein-specific patterns (e.g. frequently used motifs).
+
+```{r}
+motif.per.seq <- tango.res.df1 %>% 
+  # limit to sequences with median score >= 30
+  dplyr::filter(median >= 30) %>% 
+  group_by(id) %>% 
+  # recalculate the interval
+  mutate(interval = start - dplyr::lag(end) - 1) %>% 
+  group_by(seq, .add = TRUE) %>% 
+  summarize(strain = unique(strain),
+            n = n(),
+            medScore = round(mean(median),1),
+            IVT = round(mean(ivt),2),
+            avg.intv = round(mean(interval, na.rm = T),1),
+            sd.intv = round(sd(interval, na.rm = T),1),
+            # median absolute deviation is a robust measure of the scale parameter
+            # https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/mad
+            mad.intv = round(mad(interval, na.rm = T),1),
+            .groups = "drop_last") %>% 
+  arrange(desc(n), desc(medScore))
+View(motif.per.seq)
+```
+
+#### Summarize tango results for table
+Three metrics for the by protein tango results can be number of pat0 (GVVIVTT) sequences, pat1 (GVVIVTT-like) sequences, and total number of aggregation sequences with score > 30
+
+```{r summarize tango}
+# core group, must be G-[VI]x4-TT
+pat0 <- "G[VI]{4}TT"
+# version 1, requires G-[ALVI][VI][LVI][VI]-(either end of string or at least 1 suitable residue) 
+#                  OR (G not required)-[VI]x4-(two suitable residues)
+pat1 <- "G[ALVI][VI][LVI][VI]([LVIFAWYTM]{1,2}|$)|[VI]{4}[LVIFAWYTM]{2}"
+match0 <- grep(pat0, motif.per.seq$seq)
+match1 <- grep(pat1, motif.per.seq$seq)
+tango.summ <- seqInfo[,"name"] %>%
+  # add pat0 results
+  left_join(motif.per.seq[match0,] %>% group_by(id) %>% summarise(n.gvvivtt.seqs = sum(n)), by = c("name" = "id")) %>% 
+  # add pat1 results
+  left_join(motif.per.seq[setdiff(match1, match0),] %>% group_by(id) %>% summarise(n.gvvivtt.like.seqs = sum(n)), by = c("name" = "id")) %>% 
+  # add motif.per.seq results
+  left_join(motif.per.seq %>% group_by(id) %>% summarise(n.high.score.agg.seq = sum(n)), by = c("name" = "id"))
+# join to seqInfo table
+seqInfo <- left_join(seqInfo, tango.summ)
+seqInfo <- seqInfo %>% mutate(n.gvvivtt.seqs = replace_na(n.gvvivtt.seqs,0), n.gvvivtt.like.seqs = replace_na(n.gvvivtt.like.seqs,0), n.high.score.agg.seq = replace_na(n.high.score.agg.seq,0))
+```
+
+
+## S/T frequency
+
+Using Bin's method, I'm running EMBOSS freak for S/T, S, T with a stepping value of 10 and an averaging window of 100. The results were saved as freak_aminoacid(s)_100_10.txt. Using Bin's format_freaq_output.py script, each was converted to a readable .out file and all files were compressed for storage.
+
+```{r download freak files}
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/raw/master/01-global-adhesin-prediction/output/C_auris/freak/freak_st_100_10_freak.out.gz", destfile = "Cauris_st_freq.out.gz")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/raw/master/01-global-adhesin-prediction/output/C_auris/freak/freak_s_100_10_freak.out.gz", destfile = "Cauris_s_freq.out.gz")
+download.file(url = "https://github.com/binhe-lab/C037-Cand-auris-adhesin/raw/master/01-global-adhesin-prediction/output/C_auris/freak/freak_t_100_10_freak.out.gz", destfile = "Cauris_t_freq.out.gz")
+```
+
+```{r S_T_freq}
+# load data
+ST.freq <- read_tsv("Cauris_st_freq.out.gz", col_types = "cid")
+S.freq <- read_tsv("Cauris_s_freq.out.gz", col_types = "cid")
+T.freq <- read_tsv("Cauris_t_freq.out.gz", col_types = "cid")
+
+# retain maximum frequency for each category of each protein sequence
+ST.freq <- ST.freq[,c("id", "freq")] %>% 
+  group_by(id) %>% summarise(max.ST.freq = max(freq))
+S.freq <- S.freq[,c("id", "freq")] %>% 
+  group_by(id) %>% summarise(max.S.freq = max(freq))
+T.freq <- T.freq[,c("id", "freq")] %>% 
+  group_by(id) %>% summarise(max.T.freq = max(freq))
+
+View(ST.freq)
+
+#remove columns if present
+if("max.ST.freq" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -max.ST.freq)
+if("max.S.freq" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -max.S.freq)
+if("max.T.freq" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -max.T.freq)
+
+#join maximums back into seqInfo
+seqInfo <- left_join(seqInfo, ST.freq, by = c("name"="id"))
+seqInfo <- left_join(seqInfo, S.freq, by = c("name"="id"))
+seqInfo <- left_join(seqInfo, T.freq, by = c("name"="id"))
+
+
+View(seqInfo)
+```
+
+## Identify homolog tree proteins
+
+The seven C. auris homologs in Bin's homolog tree are: XP_028889033.1, XP_028888611.1, XP_028889034.1, XP_028887965.1, XP_028892406.1, XP_028892087.1, XP_028889361.1
+
+```{r id homolog tree}
+homologs <- c("XP_028889033.1", "XP_028888611.1", "XP_028889034.1", "XP_028887965.1", "XP_028892406.1", "XP_028892087.1", "XP_028889361.1")
+seqInfo <- seqInfo %>% mutate(homolog.tree = name %in% homologs)
+
+```
+
+## Summary info
+
+```{r}
+seqInfo %>% group_by(strain) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(pred.gpi & signalp) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(!pred.gpi & !signalp) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(pred.gpi & !signalp) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(!pred.gpi & signalp) %>% summarise(numproteins = n())
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=length), binwidth = 50)+
+    geom_vline(aes(xintercept = 500), color="blue", size=1)
+print(p)
+seqInfo %>% dplyr::filter(length >= 500) %>% summarise(numproteins = n())
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=max.ST.freq), binwidth = 0.01)+
+    geom_vline(aes(xintercept = 0.5), color="blue", size=1)
+print(p)
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=max.S.freq), binwidth = 0.01)+
+    geom_vline(aes(xintercept = 0.15), color="red", size=1)
+print(p)
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=max.T.freq), binwidth = 0.01)+
+    geom_vline(aes(xintercept = 0.1), color="green", size=1)
+print(p)
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=n.high.score.agg.seq), binwidth = 1)+
+    geom_vline(aes(xintercept = 2), color="blue", size=1)
+print(p)
+seqInfo %>% dplyr::filter(pred.gpi & signalp & length >= 500 & max.ST.freq >= 0.5 & n.high.score.agg.seq >= 2) %>% select(name, strain, pfam_domains, n.gvvivtt.seqs, n.gvvivtt.like.seqs, homolog.tree)
+write_tsv(x = (seqInfo %>% dplyr::filter(pred.gpi & signalp & length >= 500 & max.ST.freq >= 0.5 & n.high.score.agg.seq >= 2) %>% select(name, strain, pfam_domains, n.gvvivtt.seqs, n.gvvivtt.like.seqs, homolog.tree)), "filtered_results.txt")
+seqInfo %>% dplyr::filter(n.gvvivtt.seqs > 0) %>% group_by(strain) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(n.gvvivtt.like.seqs > 0) %>% group_by(strain) %>% summarise(numproteins = n())
+```
+
