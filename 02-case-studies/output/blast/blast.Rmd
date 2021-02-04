@@ -40,7 +40,7 @@ refseq %>%
 ggsave("20200723-XP_028889033-refseq-hits-e-value-by-length.png", width = 3, height = 3)
 # The answer is yes. So let's filter these out and show what they are
 refseq0 <- refseq %>% 
-  filter(length > 500)
+  filter(length > 500, !grepl("rugosa", description))
 refseq %>% filter(length <= 500) %>% select(accession, query.cover, e.value, perc.ident, length, description)
 # the above script uses a strange way to move a column to the last, by first removing it and then adding it back
 # thanks to https://github.com/tidyverse/dplyr/issues/3051
@@ -80,7 +80,7 @@ refseq0 %>% filter(accession %in% only.in.N560) %>%
 
 _Discussion_
 
-I would include the first 10 sequences in the table above, except for those from _C. orthopsilosis_, into the final list. The reason to include them is because the 50% query coverage cutoff was unfairly applied to them, since using the N360 amino acid as query, all of them passed the cutoff. The reason to not include _C. orthopsilosis_ is to limit the total number of species and sequences in the various plots. The main contribution of _C. orthopsilosis_, if I include it, is to enhance the conclusion that the number of homologs in _C. parapsilosis_ and _L. elongatus_ are low. The remaining 15 sequences are from species I'm not going to include.
+I would include 7 of the first 10 sequences in the table above, except for those from _C. orthopsilosis_, into the final list. The reason to include them is because the 50% query coverage cutoff was unfairly applied to them, since using the N360 amino acid as query, all of them passed the cutoff. The reason to not include _C. orthopsilosis_ is to limit the total number of species and sequences in the various plots. The main contribution of _C. orthopsilosis_, if I include it, is to enhance the conclusion that the number of homologs in _C. parapsilosis_ and _L. elongatus_ are low. The remaining 15 sequences are from species I'm not going to include.
 
 One sequence from the original blast search, XP_001383953.2 from _S. stipitis_ didn't make the cut in the new search. When I lowered the e-value cutoff to 1e-3, it appeared at the bottom of the hist list. For consistency's sake, I decided to exclude it from the new analysis.
 
@@ -89,6 +89,8 @@ At the same time, I found that relaxing the e-value cutoff from 1e-5 to 1e-3 onl
 ![](img/20210131-blastp-e-value-1e-3-seqs.png)
 ```{r include_additiona_seqs_refseq}
 refseq.add <- c("XP_024716365.1", "XP_717775.2", "XP_036665264.1", "XP_002547616.1", "XP_002545510.1", "XP_002614115.1", "XP_002770240.1")
+# remove one seq, see notes above
+refseq0 <- refseq0 %>% filter(accession != "XP_001383953.2")
 refseq.combined <- refseq.N360 %>% 
   filter(accession %in% refseq.add) %>% 
   select(accession, description, max.score, total.score, query.cover, e.value, perc.ident, length) %>% 
@@ -329,16 +331,18 @@ refseq.strain <- unique(with(refseq1, paste(species, strain, sep = " ")))
 names(refseq.strain) <- word(refseq.strain, 1, 2)
 refseq.strain["Naumovozyma castellii"] <- "Naumovozyma castellii CBS 4309"
 refseq.strain["Candida glabrata"] <- "Candida glabrata 138" # for some reason the original query wouldn't retrieve the result
-fdb.strain <- c("Clavispora lusitaniae ATCC 42720", "Candida parapsilosis CDC317")
+refseq.strain["Candida parapsilosis"] <- "ASM18276v2"       # using the species and strain name combo didn't retrieve the refseq assembly
+# fungidb didn't add any new species that refseq hits didn't already have
 gryc.strain <- unique(gryc1$species)
-all.strain <- unique(c(refseq.strain, fdb.strain, gryc.strain))
-tmp <- sapply(refseq.strain, function(i){
+names(gryc.strain) <- word(gryc.strain, 1, 2)
+all.strain <- c(refseq.strain, gryc.strain)
+tmp <- sapply(all.strain, function(i){
   #Sys.sleep(1) # added to avoid the API rate limitation error
   entrez_search(db = "assembly", term = i, use_history = T)$ids
 })
 assembly.info <- sapply(tmp, function(i){
-  #Sys.sleep(1)
-  entrez_summary(db = "assembly", id = i)
+  if(!is_empty(i))
+    entrez_summary(db = "assembly", id = i)
 })
 ```
 
@@ -406,7 +410,7 @@ refseq2s[[1]] %>% select(-gene_uid, -chraccver) %>% arrange(species, relLoc)
 3. Next let's deal with the partially assembled genomes. The idea is to first download the genome annotation files for the species/strains and then extract the genomic information from them. Because some species/strain could have multiple assemblies, we need to collect all of them and then identify the latest / representative one. I found that each species/strain has only one assembly that has the "refseq" status. Therefore I chose that as the representative assembly.
 ```{r chr_loc2}
 # 1. List the unique species in the dataset
-sps.list <- unique(refseq2$species)
+sps.list <- names(all.strain)
 sps.list
 # 2. Obtain assembly information
 ## explanation for the fields from the assembly record: https://www.ncbi.nlm.nih.gov/assembly/help/
@@ -429,8 +433,9 @@ for(s in sps.list){
     n.chr = getNodeSet(f, "//Stat[@category='chromosome_count']") %>% xmlValue %>% as.integer
     n.scaffold = getNodeSet(f, "//Stat[@category='scaffold_count' and @sequence_tag='all']") %>% xmlValue %>% as.integer
     n.contig = getNodeSet(f, "//Stat[@category='contig_count']") %>% xmlValue %>% as.integer
+    tmp.strain = ss$biosource$infraspecieslist$sub_value
     sps.stat <- sps.stat %>% 
-      add_row(species = s, strain = ss$biosource$infraspecieslist$sub_value, 
+      add_row(species = s, strain = ifelse(is.null(tmp.strain), ss$biosource$isolate, tmp.strain), 
               assemblyaccession = ss$assemblyaccession, assemblyname = ss$assemblyname, assemblystatus = ss$assemblystatus,
               n_chr = n.chr, n_scaffold = n.scaffold, n_contig = n.contig,
               lastupdate = ss$lastupdatedate, submitter = ss$submitterorganization,
@@ -468,6 +473,7 @@ for(f in c(ftpreport, ftpfeature)){
   download.file(f, paste0("./assembly-info/",last(str_split(f, "/")[[1]])))
 }
 ```
+Note that three genomes do not have feature tables at the time of downloading (2021-02-04). They are: Nakaseomyces delphensis CBS 2170, Nakaseomyces bracarensis CBS 10154, Nakaseomyces nivariensis CBS 9983.
 
 Instead of loading all the tables, I found it is easier to just search through them using `grep`. The idea is to iterate through the `refseq2s[[2]]`, which contains all the proteins with undetermined locations. For each entry, search the gene ID against the feature tables using `zgrep` and capture the output.
 ```{r}
