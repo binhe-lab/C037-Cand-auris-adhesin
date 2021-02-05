@@ -7,19 +7,32 @@ date: 2020-10-31
 ## Overview
 This folder was created to repeat the 2020-07-24 analysis with the updated homologs sequences.
 
-## Data
-`XP_028889033_homologs.fasta` was copied from `../../blast/XP_028889033_homologs_combine.fasta`, created on 2020-11-14, with the exception that the first 900 amino acid was added back to XP_025344407.1
+**Update 2021-02-05 [HB]**
 
-Compared to the 2020-07-24 version, this version has 99 instead of 100 sequences. Two sequences were dropped -- B9J08_004098_Cauris, which is from a different strain than the one the query is from, and CABR0s31e03938g_Nbracarensis, which is shorter than 500 amino acids but accidentally passed the filter in the previous analysis due to inconsistent metadata from the blast hit table. In the meantime, one _C. glabrata_ sequence was added, i.e. CAGL0L00227g_Cglabrata, whose query coverage is slightly lower than the 50% cutoff (47%) but has all the features of the query protein, including a highly repetitive and serine/threonine rich C-terminal region. Note that the additional _C. glabrata_ sequence was identified through GRYC. It does exist in NCBI database, but is in "provisional" status in the Refseq (XP_002999585).
+Since I didn't quite finish with this analysis when I revamped the homologs list, I decided to use this folder for the new 2021-02-05 analysis, which means I will update all the data and analysis in this folder.
+
+## Data
+`XP_028889033_homologs.fasta` was copied from `../../blast/XP_028889033_homologs_combine.fasta`, created on 2021-02-03, with the exception that the first 900 amino acid was added back to XP_025344407.1
+
+Compared to the 2020-07-24 version, this version has 103 instead of 99 sequences. Three sequences were dropped -- B9J08_004098_Cauris, which is from a different strain than the one the query is from, CABR0s31e03938g_Nbracarensis, which is shorter than 500 amino acids but accidentally passed the filter in the previous analysis due to inconsistent metadata from the blast hit table, and finally XP_001383953.2_Sstipitis, which didn't pass the e-value cutoff after I switched to using the N360 aa as query. In the meantime, one _C. glabrata_ sequence was added, i.e. CAGL0L00227g_Cglabrata, whose query coverage is slightly lower than the 50% cutoff (47%) but has all the features of the query protein, including a highly repetitive and serine/threonine rich C-terminal region. Note that the additional _C. glabrata_ sequence was identified through GRYC. It does exist in NCBI database, but is in "provisional" status in the Refseq (XP_002999585).
 
 **update 2020-11-15** CAGL0L00227g is removed. See README in `blast` folder for details.
 
+**update 2021-02-05** to help with generating results for the newly added sequences, I created a separate fasta file named XP_028889033_homologs_added.fasta, which contains 7 new sequences.
 ## Analysis
 ### FungalRV
-I found that the results obtained from the [FungalRV server](http://fungalrv.igib.res.in/query.php) has inconsistencies. The scores differ between the submission with fasta file vs through the input box. Instead, I ran the analysis locally (had to compile the source code for SVM light as the binary downloaded before no longer work on Catalina). I soft linked the homologs fasta file to the `01-global-analysis/script/FungalRV_adhesin_predictor` and generated the output there, and copied it back here.
+I found that the results obtained from the [FungalRV server](http://fungalrv.igib.res.in/query.php) has inconsistencies. The scores differ between the submission with fasta file vs through the input box. Instead, I ran the analysis locally (had to compile the source code for SVM light as the binary downloaded before no longer work on Catalina). I soft linked the homologs fasta file to the `01-global-analysis/script/FungalRV_adhesin_predictor` and generated the output there, and soft-linked it back here.
+
+While running the script as below, I found a mistake where XP_717775.2_Calbicans had an ambiguous residue "B", which stands for Asx, or N/D. To allow the prediction for this protein, I replaced B with N. To avoid editing the original file, I made a copy of the homologs file and named it "XP_028889033_homologs_frv.fasta".
+
+```bash
+perl run_fungalrv_adhesin_predictor.pl XP_028889033_homologs_frv.fasta XP_028889033_homologs_frv_res.txt y > XP_028889033_homologs_frv_log.txt 2>XP_028889033_homologs_frv_err.txt
+```
 
 ### FaaPred
 The FaaPred results is copied from the 2020-07-24 folder. I manually removed the two lines corresponding to the two sequences removed. The [FaaPred server](http://bioinfo.icgeb.res.in/faap/) was unavailable at the time of my writing. Thus I left it as "NA".
+
+**update 2021-02-05** the FaaPred server is back online. I submitted the seven additional sequences to it and added their results to the `faapred_result.txt`
 
 ### Fungal GPI pattern (skipped)
 > There is a feature on the FungalRV server result, where each sequence has an associated "Search for GPI fungal pattern" link. Upon looking into it, I found it is a simple "fuzzy search" using a quasi-regular-expression very similar to the PROSITE patterns. I think this pattern is simply made by the FungalRV authors. The program used for the search is `fuzzpro`, which is part of the well-known `EMBOSS` suite. I implemented that search locally and get the result using the following command
@@ -36,9 +49,13 @@ I decided to skip the GPI-SOM result and use PredGPI instead.
 ### PredGPI
 [Website](http://gpcr.biocomp.unibo.it/predgpi/pred.htm) tool provides a simple interface and the result can be directly downloaded. The result file contains the original fasta sequences, which we don't need. I just used `grep` to only retain the sequence name lines.
 
+**update 2021-02-05** submitted the additional 7 sequences and added the results to the bottom of the `PredGPI_result.txt`
+
 ### $\Beta$-aggregation sequence counts and intervals
 
-**Update 2020-10-31**
+**update 2021-02-05**
+Seven more sequences were added and I ran them separately and combined the results to the `tango-output` folder.
+**update 2020-10-31**
 For this updated analysis, since only three sequences were removed/added, I simply created soft links for all tango output files from the 2020-07-24 analysis, and then added the result for the new _C. glabrata_ sequence result. All notes below are from 2020-07-24
 
 _old notes_
@@ -66,6 +83,8 @@ The script used to parse and explore the TANGO results are in `tango.Rmd`
 
     ```bash
     freak XP_028889033_homologs.fasta -letters "ST" -window 100 -step 10 -outfile ST_freq_100_10.freak -odirectory raw-output
+    freak XP_028889033_homologs.fasta -letters "S" -window 100 -step 10 -outfile S_freq_100_10.freak -odirectory raw-output
+    freak XP_028889033_homologs.fasta -letters "T" -window 100 -step 10 -outfile T_freq_100_10.freak -odirectory raw-output
     ```
 1. Convert the output to a table format for plotting
     
@@ -82,7 +101,7 @@ The script used to parse and explore the TANGO results are in `tango.Rmd`
 
 1. For plotting, we would like to create a vector of sequence names in the same order as shown in the rooted gene tree. To do so, I loaded the `../gene-tree/20200723-raxml-hb/RAxML_bipartitions.muscle_4318866` in FigTree 1.4.4, rooted the tree on the Saccharomycotaceae, and rotated the auris and albicans groups, then saved the tree in Newick format. I then copied that file over to the current folder and edited in vim. By removing the branch lengths and other symbols such as parentheses, I got the sequence names in rows in the same order as the gene tree.
 
-1. At Jan's suggestion, I expanded the analysis above to separately document the frequency of Serine and Threonine. I also altered the window size and step size to 50 and 5 bp.
+1. At Jan's suggestion, I expanded the analysis above to separately document the frequency of Serine and Threonine.
 
 ### Collect feature profiles for a schematic plot for each homolog
 
@@ -109,6 +128,7 @@ Some thoughts are, the Pfam site has many of these sequences and have the Pfam c
 What I ended up doing is submitting the sequence to the [HMMSCAN tool](https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan) and selects pfam as the target profile-HMM database. The batch result page didn't provide a link to download the collected hit table. Luckily, I filled in my email address at the time of submission, and the result is emailed to me. This is saved as `raw-output/HMMER-HMMScan-Pfam-hits.tsv`. I edited the header to make it friendly for R.
 
 To understand the output file, I referred to the [HMMER v3 manual](http://eddylab.org/software/hmmer3/3.1b2/Userguide.pdf). When HMMER searches a profile-HMM database, e.g. pfam, with the user-input query sequence(s), it tries to identify the region that matches the domain profiles. In doing so, it will produce three sets of coordinates, two of which refer to the query and one to the profile in the database. For the latter, we have "model start/end/length", which tells us which part of the model (profile) the query matches. For the former, there are the "alignment start/end" and "envelope start/end". The first refers to the best guess of the start and end of the query that matches the domain profile. The second is a slightly wider region that captures most of the posterior probability mass in the HMM run. HMMER usually uses the envelope start and end to annotate the domains in the protein.
+
 ### Annotate XP_028889033 with Hyp_reg_CWP, Hyr1 and TANGO sequences
 _Goal_
 

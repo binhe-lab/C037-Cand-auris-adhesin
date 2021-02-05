@@ -96,3 +96,10 @@
 >XP_001386404.2_Sstipitis | FPrate:0.855 | OMEGA:V-532
 >XP_001386379.2_Sstipitis | FPrate:0.919 | OMEGA:S-480
 >CPAR2_806390_Cparapsilosis | FPrate:1.000 | OMEGA:Y-1615
+>XP_024716365.1_Cpseudohaemulonis | FPrate:0.000 | OMEGA:E-2246
+>XP_717775.2_Calbicans | FPrate:0.000 | OMEGA:N-1219
+>XP_002547616.1_Ctropicalis | FPrate:0.001 | OMEGA:N-1602
+>XP_002770240.1_Dhansenii | FPrate:0.001 | OMEGA:N-926
+>XP_036665264.1_Cparapsilosis | FPrate:0.001 | OMEGA:Y-1647
+>XP_002545510.1_Ctropicalis | FPrate:0.026 | OMEGA:S-636
+>XP_002614115.1_Clusitaniae | FPrate:0.627 | OMEGA:S-752

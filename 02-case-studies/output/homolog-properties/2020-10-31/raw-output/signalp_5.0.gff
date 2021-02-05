@@ -1,4 +1,8 @@
 ##gff-version 3
+XP_036665264.1_Cparapsilosis	SignalP-5.0	signal_peptide	1	19	0.878426	.	.	.
+XP_002770240.1_Dhansenii	SignalP-5.0	signal_peptide	1	19	0.874920	.	.	.
+XP_717775.2_Calbicans	SignalP-5.0	signal_peptide	1	19	0.992228	.	.	.
+XP_002614115.1_Clusitaniae	SignalP-5.0	signal_peptide	1	20	0.887569	.	.	.
 XP_028889033.1_Cauris	SignalP-5.0	signal_peptide	1	21	0.970808	.	.	.
 XP_028888611.1_Cauris	SignalP-5.0	signal_peptide	1	21	0.915690	.	.	.
 XP_025344416.1_Chaemuloni	SignalP-5.0	signal_peptide	1	19	0.954607	.	.	.
@@ -82,12 +86,10 @@ XP_002547904.1_Ctropicalis	SignalP-5.0	signal_peptide	1	17	0.964850	.	.	.
 XP_002614815.1_Clusitaniae	SignalP-5.0	signal_peptide	1	20	0.972690	.	.	.
 XP_447567.2_Cglabrata	SignalP-5.0	signal_peptide	1	21	0.940452	.	.	.
 XP_002614120.1_Clusitaniae	SignalP-5.0	signal_peptide	1	20	0.972231	.	.	.
-XP_001383953.2_Sstipitis	SignalP-5.0	signal_peptide	1	20	0.986886	.	.	.
 XP_445977.1_Cglabrata	SignalP-5.0	signal_peptide	1	23	0.848965	.	.	.
 CLUG_05233_Clusitaniae	SignalP-5.0	signal_peptide	1	20	0.858704	.	.	.
 CPAR2_600430_Cparapsilosis	SignalP-5.0	signal_peptide	1	20	0.995074	.	.	.
 CPAR2_806390_Cparapsilosis	SignalP-5.0	signal_peptide	1	20	0.964006	.	.	.
-CPAR2_806410_Cparapsilosis	SignalP-5.0	signal_peptide	1	19	0.878426	.	.	.
 CPAR2_806420_Cparapsilosis	SignalP-5.0	signal_peptide	1	19	0.983632	.	.	.
 NADE0s05e04136g_Ndelphensis	SignalP-5.0	signal_peptide	1	21	0.967371	.	.	.
 XP_452176.1_Klactis	SignalP-5.0	signal_peptide	1	21	0.980311	.	.	.
