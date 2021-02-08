@@ -507,7 +507,7 @@ refseq2s[[2]] <- rows_update(refseq2s[[2]], tmp1, by = "gene_id")
 refseq3 <- bind_rows(refseq2s)
 ```
 
-4. Finally, we can combine the Refseq results with the mannually entered GRYC and FungiDB results
+4. Finally, we can combine the Refseq results with the manually entered GRYC and FungiDB results
 ```{r}
 non.refseq <- read_tsv("XP_028889033_homologs_chr_loc_fungidb_gryc.txt", comment = "#")
 # decide the tibble structure:
