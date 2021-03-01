@@ -23,9 +23,10 @@ date: 2020-07-01
       * [2021-01-09 [HB] Additional homologs through blastp against refseq_protein](#2021-01-09-hb-additional-homologs-through-blastp-against-refseq_protein)
       * [2021-01-23 [HB] Repeat blast searches with N-360 aa from XP_028889033 (for writing up the results)](#2021-01-23-hb-repeat-blast-searches-with-n-360-aa-from-xp_028889033-for-writing-up-the-results)
       * [2021-01-31 [HB] Vary e-value cutoff with N-360 aa from XP_028889033](#2021-01-31-hb-vary-e-value-cutoff-with-n-360-aa-from-xp_028889033)
+      * [2021-03-01 [HB] <em>C. auris</em> clade III should have 8 members in this family](#2021-03-01-hb-c-auris-clade-iii-should-have-8-members-in-this-family)
    * [Content](#content)
 
-<!-- Added by: bhe2, at: Sun Jan 31 14:41:13 CST 2021 -->
+<!-- Added by: bhe2, at: Mon Mar  1 10:06:29 CST 2021 -->
 
 <!--te-->
 
@@ -225,6 +226,19 @@ While re-assembling the list of homolog sequences using the new N360 search resu
 
 See `blast.Rmd`'s relevant section for more discussion.
 
+
+## 2021-03-01 [HB] _C. auris_ clade III should have 8 members in this family
+While reading Muñoz 2020 Genetics, I noticed that they identified a total of 8 members of this family in Clade I and III of _C. auris_. Since the type strain we used for our analysis comes from Clade III (B11221), I wonder why we missed one.
+
+![iff member in cauris](./img/20210301-munoz-2021-genetics-iff-family-in-cauris.png)
+
+To investigate this, I performed blastp using the N-terminal 330 amino acids (using 360 should give the same result) against the non_redundant protein database on NCBI, restricting the taxonomy to _Candida auris_ (taxid:498019), and setting e-value cutoff to 0.05 (although everything that was returned had extrememly significant e-values).
+
+![blastp](./img/20210301-blastp-nr-identify-B8441-8th-member.png)
+
+As can be seen in the table above (only B8441 - B9J08 and B11221 - CJI97 hits were shown), one B8441 hit doesn't have a corresponding B11221 hit. The ID of it is B9J08_004098. The reason CJI97 had two hits per B9J08 hit is because the nr database contains both the refseq and non-refseq proteins. B11221 is the only _C. auris_ strain with a Refseq assembly, hence the duplicates.
+
+Looks like I might have to do the blastp again, this time adding the B9J08_004098 back to the homologs table. This will minimize the needed changes to other parts of the results, which were all based on our query protein XP_028889033 from B11221.
 # Content
 
 | File | Description | Source | User/Date |
