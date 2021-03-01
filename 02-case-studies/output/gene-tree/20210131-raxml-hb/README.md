@@ -3,10 +3,16 @@ title: Repeat gene tree analysis with new blast homologs
 author: Bin He
 date: 2021-01-31
 ---
+
 # Goal
 A repeat of the 2020-11-14 analysis (see sister folder) on an updated version of the homologs sequence. The difference between this and the 20201114 analysis is the addition of several refseq_prot hits that were missed previously due to the combination of query length and query coverage cutoff. See `blast/blast.nb.html` for details.
 
 # Notes
+
+**update 2021-02-14**
+
+> I reran the raxml analysis because the first run result deviates from my expectation. In particular, the outgroup is not as clear cut, with Clusitaniae sequences mixed with the Nakaseomyces and K. lactis being the outgroup. However, after I ran the reconciliation and rearrangement in Notung, the tree made a lot more sense. Nonetheless I'd like to examine how reproducible the initial problematic branches are in a rerun.
+
 To align the sequences, I first did the ClustalO alignment with 50 iterations, which took only a few minutes on 30 slots on ARGON. Instead of running Muscle on the unaligned sequences, I decided to use the `muscle -in <Aligned> -out <Refined> -refine` function as follows:
 
 ```bash
