@@ -120,7 +120,7 @@ setdiff(fungidb.new$gene_id, fungidb$gene_id)
 
 **_Discussion_**
 
-Using the N360 as query resulted in two fewer hits, one of which was excluded anyway later, i.e. CAGL0L00227g, while the other one probably just went slightly below the e-value cutoff. By contrast, using the N360 didn't result in any new hits (the CAWG ones are from the WO-1 strain of _C. albicans_). However, I should pay attension to the query coverage filter used below.
+Using the N360 as query resulted in two fewer hits, one of which was excluded anyway later, i.e. CAGL0L00227g, while the other one probably just went slightly below the e-value cutoff. By contrast, using the N360 didn't result in any new hits (the CAWG ones are from the WO-1 strain of _C. albicans_). However, I should pay attention to the query coverage filter used below.
 
 ### Filtering fungidb hits by length
 ```{r fungidb_plot}
@@ -176,6 +176,15 @@ _Discussion_
 1. The remaining five sequences belong to _C. paradoxus_ (4) and _C. tropicalis_ (1)
 1. See the "Merge" section for choices to include some additional sequences.
 
+**_Update 2021-03-01_**
+
+Muñoz et al 2021 reported 8 members in the Iff/Hyr1 family in _C. auris_ clades I and III.
+
+![Muñoz et al 2021 Fig. 5a, C. auris clade I and III have 8 members](./img/20210301-munoz-2021-genetics-iff-family-in-cauris.png)
+
+My own blastp only identified 7 members in the refseq_prot database, which includes B11221 but not B8441. A second blastp search against the nr_prot database, with taxonomy restricted to _C. auris_ confirmed that while B8441 showed 8 hits, B11221 only showed 7. This is inconsistent with the Muñoz 2021 report. The discrepancy could be due to the protein fasta file in the B11221 refseq assembly being incomplete. To keep our results consistent with the recent publication, I'll add this one B8441 sequence to the homolog database manually so we would have 8 members, which is the max size of the family among all know _C. auris_ strains. Although, note that the 8 genes do not all come from the same strain any more. I don't expect this to change any of our downstream analyses, since the two strains are closely related within the same clade in _C. auris_.
+
+![B11221 is missing one sequence](./img/20210301-blastp-nr-identify-B8441-8th-member.png)
 
 ## GRYC BLAST hits and filtering
 > **Update 2020-07-22**
@@ -201,9 +210,7 @@ _Discussion_
 ## Merge fungidb, gryc and ref_prot blast results
 First we need to find out which sequences were duplicates. To do so we will blast the fungidb and gryc hits against the refseq hits.
 
-**_update 2021-01-25_**
-
-Added new sequences from the refseq_prot search.
+> **_update 2021-01-25_** Added new sequences from the refseq_prot search.
 
 ### FungiDB
 The `bash` script below is to make a blast database from the NCBI blast results so that we can map the FungiDB hits to it to identify redundant sequences.
@@ -242,6 +249,9 @@ Note: any rows with "NA" in the "refseq_id" column means the fungidb hit is not 
 
 >**Update 2020-10-18**
 > I realized that by including the one sequence from _C. auris_ B8441, the final dataset would contain two _C. auris_ strains, making it distinct from the other species, each of which is represented by one strain only. This wouldn't change the broader conclusions. But if there is a need to modify the homologs list and repeat the downstream analysis, I would like to remove this sequence (B9J08_004098)
+
+>**Update 2021-03-01**
+> I will actually include B9J08_004098. See notes in the fungidb blast section above and also README.md in this folder for reasons.
 
 ### GRYC
 ```{r gryc_match}
@@ -291,8 +301,8 @@ refseqdb.list <- refseq1$accession
 refseqdb.names <- with(refseq1, paste(accession, species_id, sep = "_"))
 
 # sequences to be added to the refseq list from fungidb hits
-fdb.list <- c("CLUG_05233",  paste("CPAR2",c(600430,806390,806420),sep = "_"))
-fdb.species <- c("Clusitaniae", rep("Cparapsilosis",times = 3))
+fdb.list <- c("CLUG_05233", "B9J08_004098", paste("CPAR2",c(600430,806390,806420),sep = "_"))
+fdb.species <- c("Clusitaniae", "Cauris", rep("Cparapsilosis",times = 3))
 fdb.names <- paste(fdb.list, fdb.species, sep = "_")
 fungidb.seq <- read.fasta("XP_028889033_homologs_fungidb_use.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
 
