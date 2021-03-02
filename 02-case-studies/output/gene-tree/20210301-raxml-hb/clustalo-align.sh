@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################
 # author: Bin He
-# date: 2021-01-31
+# date: 2021-03-01
 # title: align
 # use: qsub clustalo-align.sh
 #----------------------

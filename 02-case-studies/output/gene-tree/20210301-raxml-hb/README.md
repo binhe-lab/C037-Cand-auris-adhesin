@@ -15,7 +15,7 @@ To align the sequences, I first did the ClustalO alignment with 50 iterations, w
 muscle -in XP_028889033_homologs_N500_clustalo.faa -out ./XP_028889033_homologs_N500_muscle_refined.faa -refine
 ```
 
-This took no time to complete, but upon inspecting the output, there seems to be very minimal changes. Nonetheless, I decided to run RAxML on the Muscle-aligned version, this time only on the first 480 columns of both alignments.
+Note that the above is now part of the `clustalo-align.sh` script. So it's no longer necessary to run it manually.
 
 To extract the first 480 columns in the alignment for tree reconstruction, I used the following commands (now part of the `raxml-muscle.sh`)
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################
 # author: Bin He
-# date: 2021-02-14
+# date: 2021-03-01
 # title: RAxML tree search
 # use: qsub raxml-clustalo.sh
 #----------------------
