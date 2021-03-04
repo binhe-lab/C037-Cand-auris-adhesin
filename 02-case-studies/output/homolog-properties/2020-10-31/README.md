@@ -11,14 +11,19 @@ This folder was created to repeat the 2020-07-24 analysis with the updated homol
 
 Since I didn't quite finish with this analysis when I revamped the homologs list, I decided to use this folder for the new 2021-02-05 analysis, which means I will update all the data and analysis in this folder.
 
+Update on update 2021-03-02: revived a previously discarded sequence, B9J08_004098, and repeat the analysis.
+
 ## Data
-`XP_028889033_homologs.fasta` was copied from `../../blast/XP_028889033_homologs_combine.fasta`, created on 2021-02-03, with the exception that the first 900 amino acid was added back to XP_025344407.1
+`XP_028889033_homologs.fasta` was copied from `../../blast/XP_028889033_homologs_combine.fasta`, created on 2021-03-01, with the exception that the first 900 amino acid was added back to XP_025344407.1
 
 Compared to the 2020-07-24 version, this version has 103 instead of 99 sequences. Three sequences were dropped -- B9J08_004098_Cauris, which is from a different strain than the one the query is from, CABR0s31e03938g_Nbracarensis, which is shorter than 500 amino acids but accidentally passed the filter in the previous analysis due to inconsistent metadata from the blast hit table, and finally XP_001383953.2_Sstipitis, which didn't pass the e-value cutoff after I switched to using the N360 aa as query. In the meantime, one _C. glabrata_ sequence was added, i.e. CAGL0L00227g_Cglabrata, whose query coverage is slightly lower than the 50% cutoff (47%) but has all the features of the query protein, including a highly repetitive and serine/threonine rich C-terminal region. Note that the additional _C. glabrata_ sequence was identified through GRYC. It does exist in NCBI database, but is in "provisional" status in the Refseq (XP_002999585).
 
 **update 2020-11-15** CAGL0L00227g is removed. See README in `blast` folder for details.
 
 **update 2021-02-05** to help with generating results for the newly added sequences, I created a separate fasta file named XP_028889033_homologs_added.fasta, which contains 7 new sequences.
+
+**update 2021-03-02** B9J08_004098 is added back
+
 ## Analysis
 ### FungalRV
 I found that the results obtained from the [FungalRV server](http://fungalrv.igib.res.in/query.php) has inconsistencies. The scores differ between the submission with fasta file vs through the input box. Instead, I ran the analysis locally (had to compile the source code for SVM light as the binary downloaded before no longer work on Catalina). I soft linked the homologs fasta file to the `01-global-analysis/script/FungalRV_adhesin_predictor` and generated the output there, and soft-linked it back here.
@@ -51,14 +56,23 @@ I decided to skip the GPI-SOM result and use PredGPI instead.
 
 **update 2021-02-05** submitted the additional 7 sequences and added the results to the bottom of the `PredGPI_result.txt`
 
+**update 2021-03-02** recovered the result for B9J08_004098 from 2020-07-24 folder and added the results to the top of the `PredGPI_result.txt`
+
 ### $\Beta$-aggregation sequence counts and intervals
 
-**update 2021-02-05**
-Seven more sequences were added and I ran them separately and combined the results to the `tango-output` folder.
 **update 2020-10-31**
 For this updated analysis, since only three sequences were removed/added, I simply created soft links for all tango output files from the 2020-07-24 analysis, and then added the result for the new _C. glabrata_ sequence result. All notes below are from 2020-07-24
 
-_old notes_
+**update 2021-02-05**
+Seven more sequences were added and I ran them separately and combined the results to the `tango-output` folder.
+
+**update 2021-03-02**
+B9J08_004098 was added and I simply soft-linked the result from 2020-07-24 to the `tango-output` folder.
+
+**update 2021-03-04**
+I found XP_717775.2_Calbicans was missing from the tango results. Upon careful check, I found it has a single ambiguous code in its sequence "B", standing for Asparagine or aspartic acid. To make it work, I manually edited the XP_028889033_homologs_added.fasta file to change the B to N.
+
+#### _old notes_
 
 Jan and Rachel's talks have shown that a $\Beta$ aggregation signature motif, in the form of "G[VI]{1,4}T{0,4}", is present in XP_028889033 as well as two other homologs. The goal here is to identify all such motifs among all homologs. Here I'll use the same `fuzzpro` program used above to identify GPIanchor to search for this pattern.
 
@@ -89,7 +103,7 @@ The script used to parse and explore the TANGO results are in `tango.Rmd`
 1. Convert the output to a table format for plotting
     
     ```bash
-    python format_freak_out.py raw-output/ST_freq_100_10.freak
+    for i in raw-output/*.freak; do python format_freak_output.py $i; done
     ```
 
 1. Compress the output for storage

@@ -1,0 +1,1 @@
+../../../../script/FungalRV_adhesin_predictor/output/XP_028889033_homologs_frv_log.txt

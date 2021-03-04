@@ -87,6 +87,7 @@ XP_447567.2_Cglabrata	0.72051894	Adhesin
 XP_002614120.1_Clusitaniae	-1.68552	Non-adhesin
 XP_001383953.2_Sstipitis	1.7574278	Adhesin
 XP_445977.1_Cglabrata	0.36653403	Adhesin
+B9J08_004098_Cauris	0.15825754	Adhesin
 CLUG_05233_Clusitaniae	-0.035072296	Adhesin
 CPAR2_600430_Cparapsilosis	-0.17956884	Adhesin
 CPAR2_806390_Cparapsilosis	0.10742111	Adhesin

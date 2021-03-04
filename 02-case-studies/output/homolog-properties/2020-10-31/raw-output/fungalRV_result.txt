@@ -1,1 +1,1 @@
-../../../../../01-global-adhesin-prediction/script/FungalRV_adhesin_predictor/output/XP_028889033_homologs_frv_res.txt
+XP_028889033_homologs_frv_res.txt
