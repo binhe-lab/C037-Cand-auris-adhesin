@@ -70,7 +70,7 @@ Seven more sequences were added and I ran them separately and combined the resul
 B9J08_004098 was added and I simply soft-linked the result from 2020-07-24 to the `tango-output` folder.
 
 **update 2021-03-04**
-I found XP_717775.2_Calbicans was missing from the tango results. Upon careful check, I found it has a single ambiguous code in its sequence "B", standing for Asparagine or aspartic acid. To make it work, I manually edited the XP_028889033_homologs_added.fasta file to change the B to N.
+I found XP_717775.2_Calbicans was missing from the tango results. Upon careful check, I found it has a single ambiguous code in its sequence "B", standing for Asparagine or aspartic acid. To make it work, I manually edited the `./tango-output/XP_028889033_homologs_added_tango.sh` file to change the B to N., but I left the `XP_028889033_homologs_added.fasta`	alone because it was also used for other purposes.
 
 #### _old notes_
 
