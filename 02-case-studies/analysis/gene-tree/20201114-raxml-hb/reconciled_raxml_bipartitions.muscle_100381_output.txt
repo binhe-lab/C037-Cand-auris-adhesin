@@ -1,0 +1,134 @@
+COST: 80.0
+
+
+Duplication         L. Bound            U. Bound
+=================== =================== ====================
+r44613              CUG-Ser1            Saccharomycetales
+r44638              MDR                 Clavispora
+n122                MDR                 Clavispora
+r44641              MDR                 Clavispora
+r44642              MDR                 Clavispora
+r44643              MDR                 Clavispora
+n176                MDR                 Clavispora
+n166                CpCd                haemuloni
+r44645              haemuloni           MDR
+r44646              haemuloni           MDR
+r44647              haemuloni           MDR
+n146                CpCd                haemuloni
+r44649              Chaemuloni          haemuloni
+r44650              Chaemuloni          haemuloni
+r44651              Chaemuloni          haemuloni
+n118                Dhansenii           DH
+r44616              SS                  CUG-Ser1
+r44618              Candida             SS
+r44666              CdCa                CtCdCa
+n48                 Cparapsilosis       CL
+r44626              Ctropicalis         CtCdCa
+r44627              Ctropicalis         CtCdCa
+r44628              Ctropicalis         CtCdCa
+r44629              Ctropicalis         CtCdCa
+r44630              Ctropicalis         CtCdCa
+r44631              Ctropicalis         CtCdCa
+n32                 Ctropicalis         CtCdCa
+n58                 Ctropicalis         CtCdCa
+n63                 Ctropicalis         CtCdCa
+n108                Sstipitis           SS
+n106                Sstipitis           SS
+n99                 CdCa                CtCdCa
+r44670              CdCa                CtCdCa
+r44671              CdCa                CtCdCa
+n75                 CdCa                CtCdCa
+n73                 CdCa                CtCdCa
+n96                 CdCa                CtCdCa
+n95                 CdCa                CtCdCa
+n90                 Calbicans           CdCa
+n93                 Cdubliniensis       CdCa
+n13                 Clusitaniae         Clavispora
+r44673              Clusitaniae         Clavispora
+n9                  Clusitaniae         Clavispora
+n24                 Nakaseomyces        WGD
+
+Duplications: 44 
+
+
+Species             No. of Losses       
+=================== ===================
+Klactis             0
+Ndelphensis         1
+WGD                 0
+Clavispora          0
+Cdubliniensis       1
+Chaemuloni          1
+SS                  0
+Clusitaniae         1
+Ncastellii          0
+NdNn                0
+CdCa                0
+Nakaseomyces        0
+Saccharomycetales   0
+CUG-Ser1            0
+MDR                 1
+Cauris              0
+DH                  0
+Sstipitis           0
+Cduobushaemulonis   1
+Ctropicalis         0
+CpCd                0
+Saccharomycetaceae  0
+Dhansenii           1
+Cpseudohaemulonis   1
+Cparapsilosis       0
+Cglabrata           0
+Nbracarensis        1
+CtCdCa              0
+CL                  0
+Nnivariensis        1
+Lelongisporus       2
+Calbicans           1
+Candida             1
+NbNdNn              0
+haemuloni           0
+
+Losses: 14
+
+
+Species             Duplications   Losses
+=================== ============== ==============
+Klactis             0              0              
+Ndelphensis         0              1              
+WGD                 0              0              
+Clavispora          0              0              
+Cdubliniensis       1              1              
+Chaemuloni          3              1              
+SS                  1              0              
+Clusitaniae         3              1              
+Ncastellii          0              0              
+NdNn                0              0              
+CdCa                8              0              
+Nakaseomyces        1              0              
+Saccharomycetales   0              0              
+CUG-Ser1            1              0              
+MDR                 6              1              
+Cauris              0              0              
+DH                  0              0              
+Sstipitis           2              0              
+Cduobushaemulonis   0              1              
+Ctropicalis         9              0              
+CpCd                2              0              
+Saccharomycetaceae  0              0              
+Dhansenii           1              1              
+Cpseudohaemulonis   0              1              
+Cparapsilosis       1              0              
+Cglabrata           0              0              
+Nbracarensis        0              1              
+CtCdCa              0              0              
+CL                  0              0              
+Nnivariensis        0              1              
+Lelongisporus       0              2              
+Calbicans           1              1              
+Candida             1              1              
+NbNdNn              0              0              
+haemuloni           3              0              
+
+Duplications: 44
+Losses: 14

@@ -1,0 +1,1 @@
+../../script/extract_fasta.py

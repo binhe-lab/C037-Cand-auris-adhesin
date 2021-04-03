@@ -1,0 +1,202 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=100;
+	taxlabels
+	B9J08_004098_Cauris
+	CABR0s21e03234g_Nbracarensis
+	CABR0s31e03938g_Nbracarensis
+	CANI0s04e00110g_Nnivariensis
+	CLUG_05233_Clusitaniae
+	CPAR2_600430_Cparapsilosis
+	CPAR2_806390_Cparapsilosis
+	CPAR2_806410_Cparapsilosis
+	CPAR2_806420_Cparapsilosis
+	NADE0s05e04136g_Ndelphensis
+	'XP_001383953.2_Sstipitis'
+	'XP_001385681.2_Sstipitis'
+	'XP_001385882.2_Sstipitis'
+	'XP_001386379.2_Sstipitis'
+	'XP_001386404.2_Sstipitis'
+	'XP_001523105.1_Lelongisporus'
+	'XP_002418802.1_Cdubliniensis'
+	'XP_002419002.1_Cdubliniensis'
+	'XP_002419003.1_Cdubliniensis'
+	'XP_002420246.1_Cdubliniensis'
+	'XP_002420375.1_Cdubliniensis'
+	'XP_002420471.1_Cdubliniensis'
+	'XP_002421505.1_Cdubliniensis'
+	'XP_002421668.1_Cdubliniensis'
+	'XP_002421681.1_Cdubliniensis'
+	'XP_002421924.1_Cdubliniensis'
+	'XP_002421951.1_Cdubliniensis'
+	'XP_002545452.1_Ctropicalis'
+	'XP_002546360.1_Ctropicalis'
+	'XP_002547615.1_Ctropicalis'
+	'XP_002547617.1_Ctropicalis'
+	'XP_002547620.1_Ctropicalis'
+	'XP_002547764.1_Ctropicalis'
+	'XP_002547891.1_Ctropicalis'
+	'XP_002547904.1_Ctropicalis'
+	'XP_002549927.1_Ctropicalis'
+	'XP_002550128.1_Ctropicalis'
+	'XP_002550387.1_Ctropicalis'
+	'XP_002550900.1_Ctropicalis'
+	'XP_002614120.1_Clusitaniae'
+	'XP_002614815.1_Clusitaniae'
+	'XP_002614829.1_Clusitaniae'
+	'XP_002770057.1_Dhansenii'
+	'XP_003678549.1_Ncastellii'
+	'XP_024711259.1_Cpseudohaemulonis'
+	'XP_024711300.1_Cpseudohaemulonis'
+	'XP_024711350.1_Cpseudohaemulonis'
+	'XP_024711351.1_Cpseudohaemulonis'
+	'XP_024712318.1_Cpseudohaemulonis'
+	'XP_024712323.1_Cpseudohaemulonis'
+	'XP_024713119.1_Cpseudohaemulonis'
+	'XP_024713121.1_Cpseudohaemulonis'
+	'XP_024713725.1_Cpseudohaemulonis'
+	'XP_024713752.1_Cpseudohaemulonis'
+	'XP_024716363.1_Cpseudohaemulonis'
+	'XP_025334498.1_Cduobushaemulonis'
+	'XP_025334500.1_Cduobushaemulonis'
+	'XP_025335681.1_Cduobushaemulonis'
+	'XP_025335682.1_Cduobushaemulonis'
+	'XP_025335995.1_Cduobushaemulonis'
+	'XP_025336343.1_Cduobushaemulonis'
+	'XP_025336698.1_Cduobushaemulonis'
+	'XP_025337648.1_Cduobushaemulonis'
+	'XP_025337653.1_Cduobushaemulonis'
+	'XP_025338053.1_Cduobushaemulonis'
+	'XP_025339494.1_Cduobushaemulonis'
+	'XP_025341634.1_Chaemuloni'
+	'XP_025341971.1_Chaemuloni'
+	'XP_025341988.1_Chaemuloni'
+	'XP_025342839.1_Chaemuloni'
+	'XP_025343289.1_Chaemuloni'
+	'XP_025343300.1_Chaemuloni'
+	'XP_025344020.1_Chaemuloni'
+	'XP_025344407.1_Chaemuloni'
+	'XP_025344412.1_Chaemuloni'
+	'XP_025344415.1_Chaemuloni'
+	'XP_025344416.1_Chaemuloni'
+	'XP_025344601.1_Chaemuloni'
+	'XP_028887965.1_Cauris'
+	'XP_028888611.1_Cauris'
+	'XP_028889033.1_Cauris'
+	'XP_028889034.1_Cauris'
+	'XP_028889361.1_Cauris'
+	'XP_028892087.1_Cauris'
+	'XP_028892406.1_Cauris'
+	'XP_445977.1_Cglabrata'
+	'XP_447567.2_Cglabrata'
+	'XP_452176.1_Klactis'
+	'XP_462630.1_Dhansenii'
+	'XP_711686.2_Calbicans'
+	'XP_714201.2_Calbicans'
+	'XP_714203.1_Calbicans'
+	'XP_714246.2_Calbicans'
+	'XP_715137.2_Calbicans'
+	'XP_715535.1_Calbicans'
+	'XP_717330.2_Calbicans'
+	'XP_717774.1_Calbicans'
+	'XP_717969.1_Calbicans'
+	'XP_718630.1_Calbicans'
+	'XP_722183.2_Calbicans'
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] (((('XP_002614829.1_Clusitaniae':0.441523,('XP_002614120.1_Clusitaniae':0.267387,('XP_002614815.1_Clusitaniae':0.090382,CLUG_05233_Clusitaniae:0.107165):0.411855):0.143491):0.660876,'XP_001383953.2_Sstipitis':0.81901):0.307094,(('XP_001523105.1_Lelongisporus':0.837127,(('XP_002550128.1_Ctropicalis':0.527736,'XP_002550387.1_Ctropicalis':1.111112):0.425805,(('XP_001385681.2_Sstipitis':0.652009,('XP_001386404.2_Sstipitis':0.152449,('XP_001386379.2_Sstipitis':0.131845,'XP_001385882.2_Sstipitis':0.128805):0.08014):0.193413):0.084369,((((CPAR2_600430_Cparapsilosis:0.593336,CPAR2_806390_Cparapsilosis:0.337377):0.485592,CPAR2_806410_Cparapsilosis:0.161761):0.141869,(((('XP_714203.1_Calbicans':0.177254,(('XP_002420375.1_Cdubliniensis':0.123179,'XP_714201.2_Calbicans':0.105906):0.297505,('XP_002420471.1_Cdubliniensis':0.170728,'XP_722183.2_Calbicans':0.578255):0.200136):0.123145):0.07454,(('XP_711686.2_Calbicans':0.023981,'XP_002421505.1_Cdubliniensis':0.044378):0.177692,(('XP_002421681.1_Cdubliniensis':0.094722,'XP_717969.1_Calbicans':0.084669):0.431118,(('XP_718630.1_Calbicans':0.047662,'XP_002421668.1_Cdubliniensis':0.036119):0.101134,(('XP_002420246.1_Cdubliniensis':0.013586,'XP_715535.1_Calbicans':0.035484):0.06854,(('XP_002421951.1_Cdubliniensis':0.002672,'XP_002421924.1_Cdubliniensis':0.005515):0.022688,('XP_717330.2_Calbicans':0.02722,'XP_715137.2_Calbicans':0.003349):0.028074):0.044945):0.092576):0.156438):0.045342):0.036684):0.084896,(('XP_002549927.1_Ctropicalis':0.219184,('XP_002547615.1_Ctropicalis':0.010862,'XP_002547617.1_Ctropicalis':1.0E-6):0.178687):0.058906,('XP_002547620.1_Ctropicalis':0.336572,('XP_002546360.1_Ctropicalis':0.063909,'XP_002550900.1_Ctropicalis':0.052513):0.116991):0.020261):0.059767):0.036953,('XP_002545452.1_Ctropicalis':0.413596,('XP_002547764.1_Ctropicalis':0.148808,'XP_002547904.1_Ctropicalis':0.935549):0.097365):0.066909):0.077197):0.048882,(('XP_002419002.1_Cdubliniensis':0.344316,('XP_002547891.1_Ctropicalis':0.584379,('XP_717774.1_Calbicans':0.030011,'XP_002419003.1_Cdubliniensis':0.038438):0.190468):0.105542):0.736729,(('XP_714246.2_Calbicans':0.022725,'XP_002418802.1_Cdubliniensis':0.017508):0.281681,CPAR2_806420_Cparapsilosis:0.460254):0.073033):0.109968):0.144433):0.140083):0.097272):0.274008,(('XP_002770057.1_Dhansenii':0.181039,'XP_462630.1_Dhansenii':0.174165):0.270483,(('XP_028892087.1_Cauris':0.124125,(('XP_024713752.1_Cpseudohaemulonis':0.042947,'XP_025336343.1_Cduobushaemulonis':0.036704):0.22205,'XP_025344020.1_Chaemuloni':0.073299):0.070191):0.569503,('XP_025341988.1_Chaemuloni':0.766971,(('XP_025343300.1_Chaemuloni':0.227119,('XP_025337648.1_Cduobushaemulonis':0.147408,'XP_024712318.1_Cpseudohaemulonis':0.174023):0.271925):0.089597,((((('XP_028892406.1_Cauris'[&!color=#00ff00]:0.187874,('XP_024716363.1_Cpseudohaemulonis'[&!color=#00ff00]:0.190811,'XP_025343289.1_Chaemuloni'[&!color=#00ff00]:0.199506)[&!color=#00ff00]:0.180534)[&!color=#00ff00]:0.143978,(B9J08_004098_Cauris[&!color=#00ff00]:0.149261,(('XP_024711350.1_Cpseudohaemulonis'[&!color=#00ff00]:0.604514,('XP_025338053.1_Cduobushaemulonis'[&!color=#00ff00]:0.072445,'XP_024711351.1_Cpseudohaemulonis'[&!color=#00ff00]:0.050226)[&!color=#00ff00]:0.074266)[&!color=#00ff00]:0.090382,'XP_025342839.1_Chaemuloni'[&!color=#00ff00]:0.134559)[&!color=#00ff00]:0.070854)[&!color=#00ff00]:0.027798)[&!color=#00ff00]:0.087846,(('XP_025344412.1_Chaemuloni':1.097644,('XP_025341634.1_Chaemuloni':0.237945,(('XP_025339494.1_Cduobushaemulonis':0.061434,'XP_024713725.1_Cpseudohaemulonis':0.104401):0.19598,'XP_028889361.1_Cauris':0.358545):0.12945):0.6081):0.172651,('XP_025344415.1_Chaemuloni':0.328939,(('XP_024711300.1_Cpseudohaemulonis':0.047779,'XP_025336698.1_Cduobushaemulonis':0.059153):0.163695,'XP_025335681.1_Cduobushaemulonis':0.232345):0.1762):0.591176):0.176633):0.087257,('XP_028887965.1_Cauris'[&!color=#ff0000]:0.211612,(((('XP_025335995.1_Cduobushaemulonis'[&!color=#ff0000]:0.022844,'XP_024711259.1_Cpseudohaemulonis'[&!color=#ff0000]:0.033529)[&!color=#ff0000]:0.15713,('XP_024712323.1_Cpseudohaemulonis'[&!color=#ff0000]:0.096373,'XP_025337653.1_Cduobushaemulonis'[&!color=#ff0000]:0.048943)[&!color=#ff0000]:0.103242)[&!color=#ff0000]:0.095391,(('XP_024713119.1_Cpseudohaemulonis'[&!color=#ff0000]:0.029708,'XP_025334500.1_Cduobushaemulonis'[&!color=#ff0000]:0.021915)[&!color=#ff0000]:0.17054,'XP_025341971.1_Chaemuloni'[&!color=#ff0000]:0.09272)[&!color=#ff0000]:0.055152)[&!color=#ff0000]:0.055895,'XP_028889034.1_Cauris'[&!color=#ff0000]:0.211547)[&!color=#ff0000]:0.040494)[&!color=#ff0000]:0.148616):0.031438,('XP_025344601.1_Chaemuloni'[&!color=#0000ff]:0.160855,(('XP_025344416.1_Chaemuloni'[&!color=#0000ff]:0.064219,'XP_025344407.1_Chaemuloni'[&!color=#0000ff]:0.201927)[&!color=#0000ff]:0.037226,(('XP_025335682.1_Cduobushaemulonis'[&!color=#0000ff]:0.164925,('XP_024713121.1_Cpseudohaemulonis'[&!color=#0000ff]:0.049298,'XP_025334498.1_Cduobushaemulonis'[&!color=#0000ff]:0.068072)[&!color=#0000ff]:0.104714)[&!color=#0000ff]:0.036439,('XP_028889033.1_Cauris'[&!color=#0000ff]:0.093459,'XP_028888611.1_Cauris'[&!color=#0000ff]:0.125232)[&!color=#0000ff]:0.075779)[&!color=#0000ff]:0.023526)[&!color=#0000ff]:0.049298)[&!color=#0000ff]:0.087605):0.05201):0.14372):0.196037):0.072583):0.524484)[&!rotate=true]:0.307712):0.06075,('XP_452176.1_Klactis':1.060556,('XP_003678549.1_Ncastellii':0.454487,(('XP_445977.1_Cglabrata':0.248992,(CANI0s04e00110g_Nnivariensis:0.137597,CABR0s21e03234g_Nbracarensis:0.220886):0.165826):0.327161,((NADE0s05e04136g_Ndelphensis:0.099531,CABR0s31e03938g_Nbracarensis:0.16061):0.166165,'XP_447567.2_Cglabrata':0.102094):0.222992):0.318175):0.607843):0.06075);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=2.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName=".SF NS Text";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute=null;
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="Branch lengths (raw)";
+	set nodeLabels.fontName=".SF NS Text";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=true;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute="User selection";
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute="Fixed";
+	set nodeShapeInternal.colourAttribute="User selection";
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute="Fixed";
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=true;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=0.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName=".SF NS Text";
+	set tipLabels.fontSize=8;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=false;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+

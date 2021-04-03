@@ -1,0 +1,13 @@
+# blastp
+# Iteration: 0
+# Query: XP_028889033
+# RID: JS83DKEP014
+# Database: nr
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score, % positives
+# 4 hits found
+XP_028889033	PYD84265.1	57.609	184	77	1	136	318	3	186	5.63e-70	226	76.63
+XP_028889033	WP_146232083.1	88.372	86	10	0	6	91	6	91	2.88e-40	146	95.35
+XP_028889033	CQB89545.1	35.912	181	96	7	166	330	1	177	5.17e-16	89.4	51.93
+XP_028889033	WP_138155303.1	31.757	148	69	5	86	201	284	431	2.1	42.4	46.62
+
+

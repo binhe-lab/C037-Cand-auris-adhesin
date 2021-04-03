@@ -1,0 +1,493 @@
+#Batch CD-search tool	NIH/NLM/NCBI
+#cdsid	QM3-qcdsearch-7251704E1167CAF4-4F9FCFABD3E41DF2
+#datatype	hitsFull Results
+#status	0
+#Start time	2020-08-15T16:01:21	Run time	0:00:00:54
+#status	success
+
+Query	Hit type	PSSM-ID	From	To	E-Value	Bitscore	Accession	Short name	Incomplete	Superfamily
+Q#1 - >XP_002547904.1Ctropicalis_	specific	371712	10	329	8.92387e-117	361.931	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#1 - >XP_002547904.1Ctropicalis_	superfamily	371712	10	329	8.92387e-117	361.931	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#1 - >XP_002547904.1Ctropicalis_	non-specific	282904	736	986	0.00484762	40.67	pfam05109	Herpes_BLLF1	N	cl37540
+Q#1 - >XP_002547904.1Ctropicalis_	superfamily	282904	736	986	0.00484762	40.67	cl37540	Herpes_BLLF1 superfamily	N	 - 
+Q#2 - >XP_002614815.1Clusitaniae_	specific	371712	13	329	1.85512e-89	281.424	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#2 - >XP_002614815.1Clusitaniae_	superfamily	371712	13	329	1.85512e-89	281.424	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	371712	14	326	1.00852e-81	272.18	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#3 - >XP_447567.2Cglabrata_	superfamily	371712	14	326	1.00852e-81	272.18	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	428	466	2.24398e-05	42.8804	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	428	466	2.24398e-05	42.8804	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	833	871	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	833	871	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	1193	1231	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	1193	1231	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	1148	1186	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	1148	1186	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	1103	1141	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	1103	1141	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	1058	1096	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	1058	1096	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	1013	1051	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	1013	1051	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	968	1006	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	968	1006	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	923	961	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	923	961	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	878	916	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	878	916	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	788	826	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	788	826	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	743	781	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	743	781	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	698	736	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	698	736	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	653	691	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	653	691	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	608	646	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	608	646	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	563	601	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	563	601	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	518	556	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	518	556	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	specific	366205	473	511	7.01139e-05	41.3396	pfam00624	Flocculin	 - 	cl09259
+Q#3 - >XP_447567.2Cglabrata_	superfamily	366205	473	511	7.01139e-05	41.3396	cl09259	Flocculin superfamily	 - 	 - 
+Q#3 - >XP_447567.2Cglabrata_	non-specific	367360	1546	1751	0.00013063	46.9374	pfam03154	Atrophin-1	C	cl38111
+Q#3 - >XP_447567.2Cglabrata_	superfamily	367360	1546	1751	0.00013063	46.9374	cl38111	Atrophin-1 superfamily	C	 - 
+Q#4 - >XP_002614120.1Clusitaniae_	specific	371712	14	329	8.08356e-82	260.239	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#4 - >XP_002614120.1Clusitaniae_	superfamily	371712	14	329	8.08356e-82	260.239	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#5 - >XP_001383953.2Sstipitis_	specific	371712	13	332	9.41168e-95	308.388	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#5 - >XP_001383953.2Sstipitis_	superfamily	371712	13	332	9.41168e-95	308.388	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#6 - >XP_445977.1Cglabrata_	specific	371712	16	333	3.06967e-84	274.106	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#6 - >XP_445977.1Cglabrata_	superfamily	371712	16	333	3.06967e-84	274.106	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#6 - >XP_445977.1Cglabrata_	specific	366205	482	520	2.35472e-06	44.8064	pfam00624	Flocculin	 - 	cl09259
+Q#6 - >XP_445977.1Cglabrata_	superfamily	366205	482	520	2.35472e-06	44.8064	cl09259	Flocculin superfamily	 - 	 - 
+Q#6 - >XP_445977.1Cglabrata_	specific	366205	392	430	3.22309e-06	44.4212	pfam00624	Flocculin	 - 	cl09259
+Q#6 - >XP_445977.1Cglabrata_	superfamily	366205	392	430	3.22309e-06	44.4212	cl09259	Flocculin superfamily	 - 	 - 
+Q#6 - >XP_445977.1Cglabrata_	specific	366205	347	385	1.08831e-05	42.8804	pfam00624	Flocculin	 - 	cl09259
+Q#6 - >XP_445977.1Cglabrata_	superfamily	366205	347	385	1.08831e-05	42.8804	cl09259	Flocculin superfamily	 - 	 - 
+Q#7 - >CLUG_05233Clusitaniae_	specific	371712	13	329	3.65668e-72	244.06	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#7 - >CLUG_05233Clusitaniae_	superfamily	371712	13	329	3.65668e-72	244.06	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	specific	371712	13	342	1.08288e-115	365.783	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	371712	13	342	1.08288e-115	365.783	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223021	643	1000	3.09826e-22	104.635	PHA03247	PHA03247	N	cl33720
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	223021	643	1000	3.09826e-22	104.635	cl33720	PHA03247 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223021	643	997	2.92956e-17	88.4568	PHA03247	PHA03247	N	cl33720
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223039	642	972	8.05823e-17	86.7636	PHA03307	PHA03307	C	cl33723
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	223039	642	972	8.05823e-17	86.7636	cl33723	PHA03307 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223021	669	1050	4.12259e-16	84.6048	PHA03247	PHA03247	N	cl33720
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	695	1008	7.0236e-15	80.0301	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	236090	695	1008	7.0236e-15	80.0301	cl35613	PRK07764 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	642	1000	1.15695e-13	75.7929	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	726	1017	4.87575e-13	73.8669	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	677	1048	2.47665e-12	71.5557	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	650	884	2.70766e-12	70.3847	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	223003	650	884	2.70766e-12	70.3847	cl27451	PHA03169 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	685	936	1.19199e-11	68.4587	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	367360	723	1012	1.93001e-11	68.8937	pfam03154	Atrophin-1	C	cl38111
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	367360	723	1012	1.93001e-11	68.8937	cl38111	Atrophin-1 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	752	1075	6.06265e-11	66.9333	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223039	678	1012	6.4068e-11	67.1185	PHA03307	PHA03307	C	cl33723
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	642	825	2.54031e-10	64.2216	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	1050	1286	2.78072e-10	65.0168	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	273344	1050	1286	2.78072e-10	65.0168	cl36772	2A1904 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223039	690	1131	5.47849e-10	64.4221	PHA03307	PHA03307	C	cl33723
+Q#8 - >CPAR2_600430Cparapsilosis_	specific	374168	999	1300	5.70666e-10	62.4485	pfam15847	Loricrin	 - 	cl25694
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	374168	999	1300	5.70666e-10	62.4485	cl25694	Loricrin superfamily	 - 	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227938	1067	1300	6.8334e-10	63.0237	COG5651	COG5651	N	cl35037
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	227938	1067	1300	6.8334e-10	63.0237	cl35037	COG5651 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227938	1004	1302	1.12818e-09	62.6385	COG5651	COG5651	N	cl35037
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	367360	642	1048	2.72591e-09	61.9601	pfam03154	Atrophin-1	C	cl38111
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227938	1032	1273	3.88004e-09	60.7125	COG5651	COG5651	N	cl35037
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	370676	887	1012	4.32123e-09	61.1938	pfam09770	PAT1	NC	cl37801
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	370676	887	1012	4.32123e-09	61.1938	cl37801	PAT1 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374168	1041	1332	4.65306e-09	59.7521	pfam15847	Loricrin	 - 	cl25694
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	681	889	6.3865e-09	60.3849	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374168	1060	1336	6.83582e-09	58.9817	pfam15847	Loricrin	 - 	cl25694
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	642	884	9.16725e-09	60.0092	TIGR00927	2A1904	N	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	273344	642	884	9.16725e-09	60.0092	cl36772	2A1904 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	742	968	1.08284e-08	59.214	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	793	1090	1.17729e-08	59.6145	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	642	848	1.24941e-08	59.6145	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	760	976	3.19205e-08	57.6732	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	891	925	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	282710	891	925	3.49741e-08	50.5536	cl04822	PT superfamily	 - 	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	971	1005	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	967	1001	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	963	997	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	959	993	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	975	1009	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	887	921	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	947	981	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	979	1013	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	895	929	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	899	933	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	955	989	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	951	985	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	903	937	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	943	977	3.49741e-08	50.5536	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223065	742	1016	4.01953e-08	58.1547	PHA03378	PHA03378	N	cl33729
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	223065	742	1016	4.01953e-08	58.1547	cl33729	PHA03378 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374168	1096	1377	4.14761e-08	56.6705	pfam15847	Loricrin	 - 	cl25694
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	907	941	5.07383e-08	50.1684	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	939	973	5.81935e-08	49.7832	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	883	917	5.81935e-08	49.7832	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	367360	738	1013	6.05685e-08	57.3378	pfam03154	Atrophin-1	C	cl38111
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	919	953	6.11138e-08	49.7832	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223039	830	1204	6.20846e-08	57.4885	PHA03307	PHA03307	C	cl33723
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	223039	830	1204	6.20846e-08	57.4885	cl33723	PHA03307 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	931	965	6.87346e-08	49.7832	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	923	957	7.28944e-08	49.398	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	911	945	7.36118e-08	49.398	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	935	969	7.43363e-08	49.398	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	915	949	7.50678e-08	49.398	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236669	801	1050	9.75528e-08	57.0171	PRK10263	PRK10263	NC	cl35903
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	236669	801	1050	9.75528e-08	57.0171	cl35903	PRK10263 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	927	961	1.01698e-07	49.0128	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	879	913	1.23705e-07	49.0128	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	918	1278	1.28018e-07	56.1477	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	236090	918	1278	1.28018e-07	56.1477	cl35613	PRK07764 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374168	1129	1387	1.58942e-07	54.7445	pfam15847	Loricrin	 - 	cl25694
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	781	1098	1.62375e-07	55.7625	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	875	909	2.43193e-07	48.2424	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	757	996	2.76186e-07	54.5916	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	165527	837	973	3.17525e-07	54.7344	PHA03269	PHA03269	C	cl29788
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	165527	837	973	3.17525e-07	54.7344	cl29788	PHA03269 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	796	1016	3.90957e-07	54.2064	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	373673	886	1012	4.02144e-07	51.1459	pfam15240	Pro-rich	N	cl26282
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	373673	886	1012	4.02144e-07	51.1459	cl26282	Pro-rich superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	370676	818	1001	4.16022e-07	54.6454	pfam09770	PAT1	C	cl37801
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	369943	823	1007	6.1217e-07	53.933	pfam08549	SWI-SNF_Ssr4	N	cl25487
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	369943	823	1007	6.1217e-07	53.933	cl25487	SWI-SNF_Ssr4 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	1043	1269	6.14322e-07	54.2312	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	983	1014	1.11093e-06	46.3164	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	373673	882	1008	1.13551e-06	49.9903	pfam15240	Pro-rich	N	cl26282
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	373673	890	1014	1.4405e-06	49.6051	pfam15240	Pro-rich	N	cl26282
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227938	1043	1340	1.49373e-06	52.2381	COG5651	COG5651	N	cl35037
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	373673	878	1004	1.51069e-06	49.6051	pfam15240	Pro-rich	N	cl26282
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	1089	1296	2.11211e-06	52.3052	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	165527	873	1013	2.79011e-06	51.6528	PHA03269	PHA03269	C	cl29788
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236669	872	980	3.11005e-06	52.0095	PRK10263	PRK10263	NC	cl35903
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	679	875	3.44951e-06	51.5348	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	165527	899	1016	3.73166e-06	51.2676	PHA03269	PHA03269	C	cl29788
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	1007	1229	4.37121e-06	51.5348	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	369943	871	1098	8.19976e-06	50.4662	pfam08549	SWI-SNF_Ssr4	N	cl25487
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	971	1211	1.00124e-05	50.3792	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	373673	898	1017	1.03012e-05	47.2939	pfam15240	Pro-rich	N	cl26282
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	873	905	1.21649e-05	43.2348	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374168	955	1251	1.33611e-05	48.9665	pfam15847	Loricrin	 - 	cl25694
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	165527	852	993	1.72389e-05	48.9564	PHA03269	PHA03269	C	cl29788
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	373673	818	968	2.0013e-05	46.1383	pfam15240	Pro-rich	 - 	cl26282
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237015	834	1018	2.04151e-05	48.1408	PRK11901	PRK11901	C	cl36081
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	237015	834	1018	2.04151e-05	48.1408	cl36081	PRK11901 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	367362	649	1013	2.22038e-05	48.7906	pfam03157	Glutenin_hmw	NC	cl26620
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	367362	649	1013	2.22038e-05	48.7906	cl26620	Glutenin_hmw superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223065	714	1004	2.42224e-05	48.91	PHA03378	PHA03378	N	cl33729
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236669	907	1015	2.72296e-05	48.9279	PRK10263	PRK10263	NC	cl35903
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	883	939	4.33456e-05	47.5616	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	315952	883	939	4.33456e-05	47.5616	cl25767	DUF4106 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	1142	1335	4.39765e-05	48.068	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	943	995	4.76655e-05	47.5616	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	947	999	4.76655e-05	47.5616	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	951	1003	4.76655e-05	47.5616	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	955	1007	4.76655e-05	47.5616	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237605	643	835	4.80707e-05	47.898	PRK14086	dnaA	C	cl36330
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	237605	643	835	4.80707e-05	47.898	cl36330	dnaA superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	specific	282710	987	1015	5.41029e-05	41.3088	pfam04886	PT	C	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	282710	987	1015	5.41029e-05	41.3088	cl04822	PT superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	939	991	5.52027e-05	47.1764	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282904	594	1012	5.5322e-05	47.6036	pfam05109	Herpes_BLLF1	N	cl37540
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	282904	594	1012	5.5322e-05	47.6036	cl37540	Herpes_BLLF1 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	312941	686	1055	6.40642e-05	47.3104	pfam09606	Med15	C	cl26621
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	312941	686	1055	6.40642e-05	47.3104	cl26621	Med15 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	646	813	6.71906e-05	47.2881	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237605	855	1008	6.99526e-05	47.1276	PRK14086	dnaA	C	cl36330
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	164795	1057	1197	7.78859e-05	46.0637	PHA00370	III	NC	cl31488
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	164795	1057	1197	7.78859e-05	46.0637	cl31488	III superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223029	682	797	8.18371e-05	46.5366	PHA03264	PHA03264	N	cl33721
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	223029	682	797	8.18371e-05	46.5366	cl33721	PHA03264 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	927	983	8.95215e-05	46.406	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	235906	676	924	9.42676e-05	46.7664	PRK07003	PRK07003	NC	cl35530
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	235906	676	924	9.42676e-05	46.7664	cl35530	PRK07003 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282904	658	1013	9.43519e-05	46.8332	pfam05109	Herpes_BLLF1	N	cl37540
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	840	955	0.000127527	46.0208	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227614	1031	1301	0.00013218	46.4033	COG5295	Hia	N	cl34974
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	227614	1031	1301	0.00013218	46.4033	cl34974	Hia superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	907	959	0.00013315	46.0208	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	911	963	0.00013315	46.0208	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	915	967	0.00013315	46.0208	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	919	971	0.00013315	46.0208	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	923	975	0.00013315	46.0208	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	315952	935	987	0.00013315	46.0208	pfam13388	DUF4106	NC	cl25767
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	370676	887	1013	0.000136538	46.5562	pfam09770	PAT1	C	cl37801
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236669	895	1000	0.000140037	46.6167	PRK10263	PRK10263	NC	cl35903
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	375359	746	1000	0.000141588	45.9183	pfam17823	DUF5585	C	cl39316
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	375359	746	1000	0.000141588	45.9183	cl39316	DUF5585 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	774	808	0.000153286	40.1532	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223029	871	966	0.000160497	45.7662	PHA03264	PHA03264	N	cl33721
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	312941	697	1069	0.000173123	46.1548	pfam09606	Med15	C	cl26621
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237605	776	967	0.000206521	45.5868	PRK14086	dnaA	C	cl36330
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	369943	1102	1294	0.000233714	45.4586	pfam08549	SWI-SNF_Ssr4	N	cl25487
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	369943	1102	1294	0.000233714	45.4586	cl25487	SWI-SNF_Ssr4 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227938	1068	1376	0.000245063	45.3045	COG5651	COG5651	N	cl35037
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374274	856	1012	0.000256164	44.5303	pfam15991	G_path_suppress	N	cl25765
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	374274	856	1012	0.000256164	44.5303	cl25765	G_path_suppress superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223029	697	811	0.000303973	44.9958	PHA03264	PHA03264	N	cl33721
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227614	1032	1417	0.000325406	45.2477	COG5295	Hia	NC	cl34974
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	367362	649	1054	0.000353234	44.9386	pfam03157	Glutenin_hmw	N	cl26620
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236940	861	947	0.00036652	43.4528	PRK11633	PRK11633	NC	cl25866
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	236940	861	947	0.00036652	43.4528	cl25866	PRK11633 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	226365	1079	1211	0.000385067	44.7451	COG3846	TrbL	N	cl01503
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	382568	1079	1211	0.000385067	44.7451	cl01503	TrbL superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223021	807	1012	0.00046606	44.9293	PHA03247	PHA03247	C	cl33720
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223029	782	898	0.000497038	44.2254	PHA03264	PHA03264	N	cl33721
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	253298	594	860	0.000526951	44.2867	pfam05642	Sporozoite_P67	C	cl28437
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	253298	594	860	0.000526951	44.2867	cl28437	Sporozoite_P67 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	368653	833	924	0.000552393	41.3159	pfam05887	Trypan_PARP	 - 	cl29137
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	392002	833	924	0.000552393	41.3159	cl29137	Trypan_PARP superfamily	 - 	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237537	1129	1250	0.000560652	44.129	PRK13875	PRK13875	N	cl28436
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	237537	1129	1250	0.000560652	44.129	cl28436	PRK13875 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	770	804	0.000561193	38.6124	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	312941	837	1089	0.000765556	43.8436	pfam09606	Med15	C	cl26621
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223003	792	1014	0.000806993	43.4208	PHA03169	PHA03169	C	cl27451
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	177646	876	1012	0.000808258	42.418	PHA03418	PHA03418	C	cl25519
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	177646	876	1012	0.000808258	42.418	cl25519	PHA03418 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236940	858	943	0.000886094	42.2972	PRK11633	PRK11633	NC	cl25866
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	368653	693	812	0.00092672	40.9307	pfam05887	Trypan_PARP	 - 	cl29137
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	369943	1042	1251	0.000933904	43.5326	pfam08549	SWI-SNF_Ssr4	N	cl25487
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374084	759	1015	0.00094238	43.4807	pfam15759	TMEM108	C	cl25499
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	374084	759	1015	0.00094238	43.4807	cl25499	TMEM108 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237284	681	849	0.000957961	43.4289	PRK13108	PRK13108	N	cl36218
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	237284	681	849	0.000957961	43.4289	cl36218	PRK13108 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237171	942	1159	0.000961322	43.3539	PRK12678	PRK12678	C	cl36163
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	237171	942	1159	0.000961322	43.3539	cl36163	PRK12678 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223029	653	753	0.000999366	43.0698	PHA03264	PHA03264	N	cl33721
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374435	1122	1236	0.00133042	40.3315	pfam16210	Keratin_2_tail	 - 	cl23814
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	374435	1122	1236	0.00133042	40.3315	cl23814	Keratin_2_tail superfamily	 - 	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	367360	757	1018	0.00133253	43.0854	pfam03154	Atrophin-1	C	cl38111
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223029	867	974	0.00137478	42.6846	PHA03264	PHA03264	N	cl33721
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237537	1083	1216	0.00139557	42.5882	PRK13875	PRK13875	N	cl28436
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237537	1068	1188	0.00170083	42.5882	PRK13875	PRK13875	N	cl28436
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	370723	966	1124	0.00179898	41.5996	pfam09849	DUF2076	N	cl26593
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	391571	966	1124	0.00179898	41.5996	cl26593	DUF2076 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374970	754	953	0.00198936	41.7453	pfam17061	PARM	C	cl37917
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	374970	754	953	0.00198936	41.7453	cl37917	PARM superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237874	888	1006	0.00205876	42.4551	PRK14971	PRK14971	NC	cl36455
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	237874	888	1006	0.00205876	42.4551	cl36455	PRK14971 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237874	900	1014	0.00207638	42.4551	PRK14971	PRK14971	NC	cl36455
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	184923	650	775	0.00207803	42.3595	PRK14959	PRK14959	NC	cl33044
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	184923	650	775	0.00207803	42.3595	cl33044	PRK14959 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223033	737	855	0.00217709	41.8641	PHA03291	PHA03291	NC	cl30053
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	223033	737	855	0.00217709	41.8641	cl30053	PHA03291 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	778	813	0.00247989	36.6864	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	368653	667	760	0.00248401	39.7751	pfam05887	Trypan_PARP	N	cl29137
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227614	1007	1302	0.00252199	42.1661	COG5295	Hia	NC	cl34974
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	226365	1118	1287	0.00263932	42.0487	COG3846	TrbL	N	cl01503
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	177614	650	945	0.00266281	42.3472	PHA03377	PHA03377	NC	cl31823
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	177614	650	945	0.00266281	42.3472	cl31823	PHA03377 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237171	1060	1269	0.0027599	42.1983	PRK12678	PRK12678	C	cl36163
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	373751	712	814	0.00289245	42.1214	pfam15324	TALPID3	N	cl25881
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	373751	712	814	0.00289245	42.1214	cl25881	TALPID3 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	282710	853	897	0.00353497	36.3012	pfam04886	PT	 - 	cl04822
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236090	612	800	0.00355564	41.8953	PRK07764	PRK07764	N	cl35613
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	223029	928	1014	0.00428661	41.1438	PHA03264	PHA03264	N	cl33721
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	778	971	0.00440743	41.5196	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	225751	1034	1336	0.00454978	41.6372	COG3210	FhaB	C	cl27105
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	225751	1034	1336	0.00454978	41.6372	cl27105	FhaB superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237874	840	962	0.00490836	41.2995	PRK14971	PRK14971	NC	cl36455
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374435	1134	1248	0.00496319	38.7907	pfam16210	Keratin_2_tail	 - 	cl23814
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	227614	1085	1420	0.00550993	41.0105	COG5295	Hia	C	cl34974
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	225483	1052	1301	0.0057633	40.7502	COG2931	COG2931	C	cl26960
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	225483	1052	1301	0.0057633	40.7502	cl26960	COG2931 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	368653	744	858	0.00587294	38.6195	pfam05887	Trypan_PARP	N	cl29137
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	225751	983	1384	0.00596398	41.252	COG3210	FhaB	C	cl27105
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	147458	1077	1219	0.00624406	40.1758	pfam05268	GP38	N	cl05026
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	147458	1077	1219	0.00624406	40.1758	cl05026	GP38 superfamily	N	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374435	1050	1172	0.00660553	38.4055	pfam16210	Keratin_2_tail	 - 	cl23814
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374084	651	957	0.00662742	40.7843	pfam15759	TMEM108	C	cl25499
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	367362	785	1296	0.00665064	40.7014	pfam03157	Glutenin_hmw	 - 	cl26620
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	367362	785	1296	0.00665064	40.7014	cl26620	Glutenin_hmw superfamily	 - 	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	185594	965	1275	0.00678367	40.8288	PTZ00395	PTZ00395	C	cl33180
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	185594	965	1275	0.00678367	40.8288	cl33180	PTZ00395 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236940	876	959	0.00699715	39.6008	PRK11633	PRK11633	NC	cl25866
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237284	711	883	0.00707662	40.3473	PRK13108	PRK13108	N	cl36218
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	312941	1076	1300	0.00732828	40.762	pfam09606	Med15	C	cl26621
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	312941	1076	1300	0.00732828	40.762	cl26621	Med15 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	368289	644	847	0.00762888	40.8295	pfam05110	AF-4	NC	cl25851
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	368289	644	847	0.00762888	40.8295	cl25851	AF-4 superfamily	NC	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	273344	766	967	0.00789703	40.7492	TIGR00927	2A1904	NC	cl36772
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374435	1091	1190	0.00830202	38.0203	pfam16210	Keratin_2_tail	 - 	cl23814
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237537	1054	1177	0.00834223	40.2771	PRK13875	PRK13875	N	cl28436
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	236940	916	1011	0.0086912	39.2156	PRK11633	PRK11633	NC	cl25866
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	237171	914	1113	0.00892302	40.2723	PRK12678	PRK12678	C	cl36163
+Q#8 - >CPAR2_600430Cparapsilosis_	superfamily	237171	914	1113	0.00892302	40.2723	cl36163	PRK12678 superfamily	C	 - 
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	374970	787	969	0.0089458	39.8193	pfam17061	PARM	C	cl37917
+Q#8 - >CPAR2_600430Cparapsilosis_	non-specific	225751	1055	1384	0.00999077	40.4816	COG3210	FhaB	N	cl27105
+Q#9 - >CPAR2_806420Cparapsilosis_	specific	371712	12	337	1.64968e-109	351.146	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	371712	12	337	1.64968e-109	351.146	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	367362	433	1028	7.74446e-13	73.4434	pfam03157	Glutenin_hmw	 - 	cl26620
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	367362	433	1028	7.74446e-13	73.4434	cl26620	Glutenin_hmw superfamily	 - 	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	367362	719	1294	1.81712e-11	69.2062	pfam03157	Glutenin_hmw	 - 	cl26620
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	367362	394	916	8.98622e-10	63.4282	pfam03157	Glutenin_hmw	N	cl26620
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	688	950	1.14899e-09	62.2956	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	223003	688	950	1.14899e-09	62.2956	cl27451	PHA03169 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	1097	1310	1.46782e-09	61.9104	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	223003	1097	1310	1.46782e-09	61.9104	cl27451	PHA03169 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	1135	1321	3.08541e-09	61.14	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	367362	817	1299	4.95534e-09	61.117	pfam03157	Glutenin_hmw	C	cl26620
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	367362	817	1299	4.95534e-09	61.117	cl26620	Glutenin_hmw superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	915	1163	9.59657e-09	59.5992	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	223003	915	1163	9.59657e-09	59.5992	cl27451	PHA03169 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	312941	605	981	1.18504e-07	56.5552	pfam09606	Med15	C	cl26621
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	312941	605	981	1.18504e-07	56.5552	cl26621	Med15 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	869	1081	1.48994e-07	55.7472	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	810	1050	1.55611e-07	55.7472	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	712	985	8.03026e-07	53.436	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	312941	392	723	8.15664e-07	53.8588	pfam09606	Med15	C	cl26621
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	977	1170	1.2962e-06	53.0906	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	227493	977	1170	1.2962e-06	53.0906	cl34925	SPT5 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	629	832	1.48634e-06	52.6656	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	511	801	1.77265e-06	52.0481	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	374168	511	801	1.77265e-06	52.0481	cl25694	Loricrin superfamily	 - 	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	446	696	2.33261e-06	51.8952	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	579	809	2.35291e-06	51.8952	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	778	1059	2.59209e-06	51.2777	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	626	870	2.82241e-06	51.51	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	555	792	2.94734e-06	51.51	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	418	709	3.9254e-06	50.8925	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	1228	1384	4.46655e-06	51.1248	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	937	1230	5.68618e-06	50.1221	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	374168	937	1230	5.68618e-06	50.1221	cl25694	Loricrin superfamily	 - 	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	383	563	6.42515e-06	50.3544	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	312941	472	841	7.74699e-06	50.7772	pfam09606	Med15	C	cl26621
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	1064	1290	1.01495e-05	50.3792	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	273344	1064	1290	1.01495e-05	50.3792	cl36772	2A1904 superfamily	NC	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	781	950	1.02963e-05	50.009	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	227493	781	950	1.02963e-05	50.009	cl34925	SPT5 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	1068	1234	1.04734e-05	50.009	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	227493	1068	1234	1.04734e-05	50.009	cl34925	SPT5 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	282904	348	743	1.10068e-05	50.3	pfam05109	Herpes_BLLF1	N	cl37540
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	282904	348	743	1.10068e-05	50.3	cl37540	Herpes_BLLF1 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	957	1128	1.19021e-05	50.009	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	493	700	1.36397e-05	49.584	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	385	587	1.66415e-05	49.1988	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	specific	374168	947	1267	2.13135e-05	48.5813	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	374168	947	1267	2.13135e-05	48.5813	cl25694	Loricrin superfamily	 - 	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	500	781	2.26672e-05	48.1961	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	886	1176	3.61233e-05	47.8109	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	1011	1310	3.67639e-05	47.8109	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223039	387	726	3.91589e-05	48.6289	PHA03307	PHA03307	C	cl33723
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	223039	387	726	3.91589e-05	48.6289	cl33723	PHA03307 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	842	1123	4.01409e-05	47.4257	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	433	630	4.57605e-05	48.083	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	1066	1250	4.9879e-05	47.658	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	597	899	6.33797e-05	47.0405	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	312941	875	1246	7.86754e-05	47.3104	pfam09606	Med15	C	cl26621
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	312941	875	1246	7.86754e-05	47.3104	cl26621	Med15 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223003	1027	1216	8.66919e-05	46.8876	PHA03169	PHA03169	C	cl27451
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	875	1122	9.43981e-05	47.2976	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	273344	875	1122	9.43981e-05	47.2976	cl36772	2A1904 superfamily	NC	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	312941	390	726	0.00011725	46.9252	pfam09606	Med15	C	cl26621
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	805	1021	0.000118579	46.9124	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	225751	377	1240	0.000120004	47.03	COG3210	FhaB	 - 	cl27105
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	225751	377	1240	0.000120004	47.03	cl27105	FhaB superfamily	 - 	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	626	801	0.000122954	46.5422	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	915	1088	0.000122954	46.5422	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	591	879	0.000127881	45.8849	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	879	1059	0.000186651	46.157	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	504	692	0.000191482	46.157	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	658	967	0.000234122	45.1145	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	223039	450	801	0.000267807	45.9325	PHA03307	PHA03307	C	cl33723
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	695	860	0.000273841	45.3866	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	555	795	0.000364639	45.3716	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	1146	1312	0.000365818	45.0014	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	453	661	0.000408648	45.0014	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	986	1216	0.000469786	44.9864	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	633	931	0.000488437	44.3441	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	854	1079	0.000546916	44.9864	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	390	668	0.000561818	43.9589	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	657	841	0.000569631	44.6162	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	1043	1272	0.000590108	44.6012	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	1135	1368	0.000704619	44.6012	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	482	575	0.000832375	43.9317	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	236504	482	575	0.000832375	43.9317	cl35824	PRK09418 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	615	708	0.000832375	43.9317	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	312941	389	661	0.00100377	43.8436	pfam09606	Med15	NC	cl26621
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	635	880	0.00106352	43.7391	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	237171	635	880	0.00106352	43.7391	cl36163	PRK12678 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	802	1109	0.00109181	43.1885	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	1044	1148	0.00113905	43.5465	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	236504	1044	1148	0.00113905	43.5465	cl35824	PRK09418 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	935	1168	0.0012726	43.4456	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	273344	935	1168	0.0012726	43.4456	cl36772	2A1904 superfamily	NC	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	826	935	0.00130451	43.5465	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	389	693	0.00132318	42.8033	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	910	1029	0.00140792	43.1613	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	544	763	0.00140832	43.4456	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	282904	495	870	0.00146762	43.3664	pfam05109	Herpes_BLLF1	N	cl37540
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	757	979	0.00150675	43.4456	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	646	868	0.00155852	43.4456	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	728	800	0.00155868	43.1613	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	1015	1087	0.00155868	43.1613	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	986	1058	0.00155868	43.1613	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	548	836	0.00167504	42.4181	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	544	646	0.00168225	43.1613	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	704	1001	0.00192616	42.4181	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	1084	1271	0.00199146	42.6902	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	369943	1101	1265	0.00202058	42.7622	pfam08549	SWI-SNF_Ssr4	N	cl25487
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	369943	1101	1265	0.00202058	42.7622	cl25487	SWI-SNF_Ssr4 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	385	476	0.00204437	42.7761	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	236504	385	476	0.00204437	42.7761	cl35824	PRK09418 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	422	513	0.00207933	42.7761	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236090	460	676	0.00228597	42.6657	PRK07764	PRK07764	N	cl35613
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	236090	460	676	0.00228597	42.6657	cl35613	PRK07764 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	413	628	0.00231784	42.6752	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	1093	1180	0.002592	42.3909	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	236504	1093	1180	0.002592	42.3909	cl35824	PRK09418 superfamily	N	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	757	861	0.002592	42.3909	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	490	721	0.00272123	42.6752	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	1125	1306	0.00349448	41.8131	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	237171	1125	1306	0.00349448	41.8131	cl36163	PRK12678 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	956	1200	0.00364612	41.8131	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	237171	956	1200	0.00364612	41.8131	cl36163	PRK12678 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	728	948	0.00365697	41.9048	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236090	593	790	0.00403211	41.8953	PRK07764	PRK07764	N	cl35613
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	646	733	0.0040619	42.0057	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	904	991	0.0040619	42.0057	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	513	600	0.0040619	42.0057	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	387	608	0.00408128	41.9048	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	282904	337	630	0.00408611	41.8256	pfam05109	Herpes_BLLF1	N	cl37540
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236090	726	940	0.00424231	41.8953	PRK07764	PRK07764	N	cl35613
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	677	762	0.00445881	41.6205	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	312941	1085	1310	0.00450644	41.5324	pfam09606	Med15	C	cl26621
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	312941	1085	1310	0.00450644	41.5324	cl26621	Med15 superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	374168	782	1088	0.00460868	41.2625	pfam15847	Loricrin	 - 	cl25694
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	826	1053	0.00475123	41.9048	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236090	784	991	0.00515471	41.5101	PRK07764	PRK07764	N	cl35613
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	884	1118	0.00534399	41.4279	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	698	895	0.00552871	41.4279	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	367362	977	1347	0.00564731	41.4718	pfam03157	Glutenin_hmw	C	cl26620
+Q#9 - >CPAR2_806420Cparapsilosis_	superfamily	367362	977	1347	0.00564731	41.4718	cl26620	Glutenin_hmw superfamily	C	 - 
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	227493	1026	1209	0.00567371	41.1494	COG5164	SPT5	N	cl34925
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	513	741	0.00576969	41.5196	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	796	997	0.00581782	41.4279	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	448	686	0.00596789	41.5196	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	621	742	0.00615303	41.2353	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	488	609	0.00615303	41.2353	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236504	855	966	0.0063652	41.2353	PRK09418	PRK09418	N	cl35824
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	565	811	0.00689522	41.0427	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	273344	581	832	0.00730857	41.1344	TIGR00927	2A1904	NC	cl36772
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236090	440	651	0.00735681	41.1249	PRK07764	PRK07764	N	cl35613
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	924	1180	0.00783227	40.6575	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	237171	826	1026	0.00845455	40.6575	PRK12678	PRK12678	C	cl36163
+Q#9 - >CPAR2_806420Cparapsilosis_	non-specific	236090	746	965	0.00924693	40.7397	PRK07764	PRK07764	N	cl35613
+Q#10 - >KLLA0B14498g1_1Klactis	specific	371712	24	336	9.5585e-76	247.912	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#10 - >KLLA0B14498g1_1Klactis	superfamily	371712	24	336	9.5585e-76	247.912	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#11 - >BN119_CABR0s21e03234g1_1Nbracarensis	specific	371712	13	331	8.36873e-69	231.349	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#11 - >BN119_CABR0s21e03234g1_1Nbracarensis	superfamily	371712	13	331	8.36873e-69	231.349	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#11 - >BN119_CABR0s21e03234g1_1Nbracarensis	specific	366205	346	382	6.76326e-05	40.5692	pfam00624	Flocculin	 - 	cl09259
+Q#11 - >BN119_CABR0s21e03234g1_1Nbracarensis	superfamily	366205	346	382	6.76326e-05	40.5692	cl09259	Flocculin superfamily	 - 	 - 
+Q#12 - >BN119_CABR0s31e03938g1_1Nbracarensis	specific	371712	19	328	1.81606e-82	254.075	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#12 - >BN119_CABR0s31e03938g1_1Nbracarensis	superfamily	371712	19	328	1.81606e-82	254.075	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#13 - >BN122_CANI0s04e00110g1_1Nnivariensis	specific	371712	13	330	5.49314e-65	221.333	pfam11765	Hyphal_reg_CWP	 - 	cl13246
+Q#13 - >BN122_CANI0s04e00110g1_1Nnivariensis	superfamily	371712	13	330	5.49314e-65	221.333	cl13246	Hyphal_reg_CWP superfamily	 - 	 - 
+Q#13 - >BN122_CANI0s04e00110g1_1Nnivariensis	specific	366205	345	381	1.21157e-05	42.8804	pfam00624	Flocculin	 - 	cl09259
+Q#13 - >BN122_CANI0s04e00110g1_1Nnivariensis	superfamily	366205	345	381	1.21157e-05	42.8804	cl09259	Flocculin superfamily	 - 	 - 
