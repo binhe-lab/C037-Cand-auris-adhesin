@@ -178,6 +178,15 @@ This analysis stems from Jan's question of what other homologs are there in the 
 
 1. Edited the output text file by adding a header. Then open that file in Excel and removed the comment lines along with several entries with E-value > 10E-5. The result is stored in an excel file of the same base name as above.
 
+1. Extract all blast-identified _C. auris_ homologs sequences using my custom script:
+    ```bash
+    cd Cauris-strains
+    awk '$1 ~ /^XP_028889033.1_PF11765/ && $4 > 60' XP_028889033-Cauris-five-strains-blast.txt | \
+    | cut -f2 | sort > list-Cauris-five-strains-homologs-blast.txt
+    python extract_fasta_gz.py Cand_auris_five_strains_protein.faa.gz list-Cauris-five-strains-homologs-blast.txt cauris-five-strains-homologs.fasta
+    cd ../../Cauris-polymorphism; ln -s ../../blast/Cauris-strains/cauris-five-strains-homologs.fasta ./
+    ```
+
 _Discussion (2021-04-03 [HB])_
 
 I subsequently did more blastp search to figure out why I'm missing the 8th member of the family in the clade IV strain B11221. I found several relevant things:

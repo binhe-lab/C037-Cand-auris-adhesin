@@ -1,0 +1,32 @@
+FungalRv adhesin Predictor Output
+Input File: cauris-five-strains-homologs.fasta
+
+>KND98529.2 hypothetical protein QG37_04422 [[Candida] auris]	0.64933053
+>KND98979.2 hypothetical protein QG37_04039 [[Candida] auris]	0.91335965
+>KND99597.2 hypothetical protein QG37_03387 [[Candida] auris]	1.8002139
+>PIS49865.1 hypothetical protein B9J08_004892 [[Candida] auris]	2.2423139
+>PIS50296.1 hypothetical protein B9J08_004109 [[Candida] auris]	2.0593818
+>PIS50297.1 hypothetical protein B9J08_004110 [[Candida] auris]	0.89112638
+>PIS50623.1 hypothetical protein B9J08_004451 [[Candida] auris]	0.64151113
+>PIS52481.1 hypothetical protein B9J08_004098 [[Candida] auris]	1.8499264
+>PIS52483.1 hypothetical protein B9J08_004100 [[Candida] auris]	1.3109319
+>PIS55432.1 hypothetical protein B9J08_001531 [[Candida] auris]	1.8002139
+>PIS56617.1 hypothetical protein B9J08_001155 [[Candida] auris]	1.0401109
+>PSK74847.1 hypothetical protein CJJ07_005382 [[Candida] auris]	2.3057606
+>PSK75908.1 hypothetical protein CJJ07_004272 [[Candida] auris]	1.1267264
+>PSK76051.1 hypothetical protein CJJ07_004124 [[Candida] auris]	1.7175595
+>PSK76857.1 hypothetical protein CJJ07_003305 [[Candida] auris]	2.0694483
+>PSK76858.1 hypothetical protein CJJ07_003306 [[Candida] auris]	0.93901564
+>PSK79346.1 hypothetical protein CJJ07_000849 [[Candida] auris]	1.8152158
+>PSK79348.1 hypothetical protein CJJ07_000851 [[Candida] auris]	1.3058736
+>PSK79720.1 hypothetical protein CJJ07_000343 [[Candida] auris]	0.63331895
+>QEO22143.1 hypothetical_protein [[Candida] auris]	1.0652341
+>QEO24213.1 hypothetical_protein [[Candida] auris]	0.89922949
+>QEO24533.1 hypothetical_protein [[Candida] auris]	0.63274301
+>XP_028887965.1 uncharacterized protein CJI97_005649 [[Candida] auris]	1.3597321
+>XP_028888611.1 uncharacterized protein CJI97_004560 [[Candida] auris]	2.2529493
+>XP_028889033.1 uncharacterized protein CJI97_004172 [[Candida] auris]	2.0716514
+>XP_028889034.1 uncharacterized protein CJI97_004173 [[Candida] auris]	0.91404456
+>XP_028889361.1 uncharacterized protein CJI97_004515 [[Candida] auris]	0.63070223
+>XP_028892087.1 uncharacterized protein CJI97_001451 [[Candida] auris]	1.0361986
+>XP_028892406.1 uncharacterized protein CJI97_001778 [[Candida] auris]	1.7933796

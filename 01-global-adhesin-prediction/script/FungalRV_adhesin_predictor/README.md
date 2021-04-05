@@ -78,3 +78,14 @@ Checking the results in R shows reasonable numbers of predicted adhesins
 ```
 ## 2020-07-25 Complile SVM light
 After upgrading to MacOS Catalina, the previously downloaded binary version of `svm_classify` no longer works. Instead, I downloaded the source file and compiled it locally. Things are fine now. Source file location: http://download.joachims.org/svm_light/current/svm_light.tar.gz 
+## 2021-04-05 reorganize files and run fungalRV locally for Cauris homologs
+I reorganized files in this folder so all the input and output files are now in the `data-output` folder, while the original fungalRV scripts and my custom scripts are in the level-1 folder. I then ran the script to process the newly extracted Cauris-homologs-fasta.
+
+```bash
+$ cd data-output
+$ perl ../run_fungalrv_adhesin_predictor.pl cauris-five-strains-homologs.fasta cauris-five-strains-homologs-frv-res.txt y > cauris-five-strains-homologs-frv-log.txt 2>cauris-five-strains-homologs-frv-err.txt
+$ grep "^>" cauris-five-strains-homologs-frv-res.txt| grep -v "QEO" | \
+	awk -F "\t" 'BEGIN{OFS="\t"} {split($0,name," "); gsub(">","",name[1]); split(name[4],strain,"_");\
+		print "Cauris",strain[1],name[1],$2}' > cauris-five-strains-homologs-frv-res-formatted.txt
+$ mv cauris-five-strains* data-output/
+```
