@@ -15,5 +15,10 @@ The questions we will further pursue in this analysis are:
 
 ## Analysis
 ### 1. Obtain sequences
-I have performed blast with 
+I performed blastp with the PF11765 domain sequence from XP_028889033 against the combined protein sequence library from five _C. auris_ strains (two clade II strains were used from the Muñoz et al 2018 paper). See `blast/README.md` for details. The resulting fasta file is soft linked to the `input` folder in this analysis.
+
+### 2. Sequence feature characterization
+1. FungalRV: use the locally installed script to process the input file. See `README.md` in the `FungalRV_adhesin_predictor` folder (linked inside the `script` folder two levels up this folder) for details. The result is symlinked to the `output` folder
+1. FaaPred: the server seems to be down again.
+1. 
 ## Misc notes
