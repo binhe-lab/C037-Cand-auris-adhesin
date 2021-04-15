@@ -85,13 +85,11 @@ XP_002547904.1_Ctropicalis	0.79890664	Adhesin
 XP_002614815.1_Clusitaniae	-0.29525122	Adhesin
 XP_447567.2_Cglabrata	0.72051894	Adhesin
 XP_002614120.1_Clusitaniae	-1.68552	Non-adhesin
-XP_001383953.2_Sstipitis	1.7574278	Adhesin
 XP_445977.1_Cglabrata	0.36653403	Adhesin
 B9J08_004098_Cauris	0.15825754	Adhesin
 CLUG_05233_Clusitaniae	-0.035072296	Adhesin
 CPAR2_600430_Cparapsilosis	-0.17956884	Adhesin
 CPAR2_806390_Cparapsilosis	0.10742111	Adhesin
-CPAR2_806410_Cparapsilosis	0.75661206	Adhesin
 CPAR2_806420_Cparapsilosis	-0.25005653	Adhesin
 NADE0s05e04136g_Ndelphensis	-1.1052618	Non-adhesin
 XP_452176.1_Klactis	-2.1340607	Non-adhesin
