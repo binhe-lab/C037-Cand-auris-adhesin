@@ -17,8 +17,18 @@ The questions we will further pursue in this analysis are:
 ### 1. Obtain sequences
 I performed blastp with the PF11765 domain sequence from XP_028889033 against the combined protein sequence library from five _C. auris_ strains (two clade II strains were used from the Muñoz et al 2018 paper). See `blast/README.md` for details. The resulting fasta file is soft linked to the `input` folder in this analysis.
 
+To make the sequences more easily identifiable, I'd like to standardize the sequence namesas ">STRAIN_ID alternative_name" as in ">B8441_PIS49865.1 B9J08_004892". See `./script/rename_seq.py`, used as `python3 ./script.rename_seq.py ./input/cauris-five-strains-homologs.fasta ./input/cauris-five-strains-renamed.fasta`.
+
 ### 2. Sequence feature characterization
 1. FungalRV: use the locally installed script to process the input file. See `README.md` in the `FungalRV_adhesin_predictor` folder (linked inside the `script` folder two levels up this folder) for details. The result is symlinked to the `output` folder
+
+    ```bash
+    # copy the fasta file to the FungalRV_adhesin_predictor folder under 01-global-analysis/script
+    perl ./run_fungalrv_adhesin_predictor.pl cauris-five-strains-renamed.fasta cauris-five-strains-renamed-res.txt y > cauris-five-strains-renamed-frv-log.txt 2>cauris-five-strains-renamed-frv-err.txt
+    mv cauris-five-strains-renamed* data-output/
+    # finally, copy or link the output file back to the output folder here
+    ```
+
 1. FaaPred: the server seems to be down again.
 1. 
 ## Misc notes

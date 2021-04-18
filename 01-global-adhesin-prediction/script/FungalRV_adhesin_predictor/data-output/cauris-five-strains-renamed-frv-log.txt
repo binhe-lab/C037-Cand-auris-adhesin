@@ -15,8 +15,8 @@ Classifying test examples..done
 Runtime (without IO) in cpu-seconds: 0.01
 Reading model...OK. (138 support vectors read)
 Classifying test examples..done
-Runtime (without IO) in cpu-seconds: 0.01
+Runtime (without IO) in cpu-seconds: 0.02
 Reading model...OK. (117 support vectors read)
 Classifying test examples..done
 Runtime (without IO) in cpu-seconds: 0.01
-time taken to execute :	1seconds
+time taken to execute :	0seconds
