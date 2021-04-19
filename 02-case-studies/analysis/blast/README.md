@@ -24,9 +24,10 @@ date: 2020-07-01
       * [2021-01-23 [HB] Repeat blast searches with N-360 aa from XP_028889033 (for writing up the results)](#2021-01-23-hb-repeat-blast-searches-with-n-360-aa-from-xp_028889033-for-writing-up-the-results)
       * [2021-01-31 [HB] Vary e-value cutoff with N-360 aa from XP_028889033](#2021-01-31-hb-vary-e-value-cutoff-with-n-360-aa-from-xp_028889033)
       * [2021-03-01 [HB] <em>C. auris</em> clade III should have 8 members in this family](#2021-03-01-hb-c-auris-clade-iii-should-have-8-members-in-this-family)
+      * [2021-04-03 [HB] Missing homolog in B11221](#2021-04-03-hb-missing-homolog-in-b11221)
    * [Content](#content)
 
-<!-- Added by: bhe2, at: Mon Mar  1 10:06:29 CST 2021 -->
+<!-- Added by: bhe2, at: Mon Apr 19 16:27:27 CDT 2021 -->
 
 <!--te-->
 
@@ -186,13 +187,6 @@ This analysis stems from Jan's question of what other homologs are there in the 
     python extract_fasta_gz.py Cand_auris_five_strains_protein.faa.gz list-Cauris-five-strains-homologs-blast.txt cauris-five-strains-homologs.fasta
     cd ../../Cauris-polymorphism; ln -s ../../blast/Cauris-strains/cauris-five-strains-homologs.fasta ./
     ```
-
-_Discussion (2021-04-03 [HB])_
-
-I subsequently did more blastp search to figure out why I'm missing the 8th member of the family in the clade IV strain B11221. I found several relevant things:
-
-1. If I use B9J08_004098's PF11765 domain (11-326) as query and blast the B11221 translated CDS (or protein) database, I could recover the seven identified previously and also three more hits. Two of them have very short alignment length (less than 50 amino acids), but a third one has 146 amino acids aligned, with ~20.5% identity. I then looked up this sequence in the ref_protein database by its ID (XP_028890323) and found it to be only 177 amino acids long. I did follow the link and found the corresponding gene (NW_021640165) and it appears to be a complete CDS with a stop codon. So it's still unclear why I only found 7 members in the B11221 genome, even though the latest Muñoz et al 2021 Genetics paper showed 8 (Figure 6).
-
 ## 2020-10-20 [HB] Correct GRYC mistakes
 During a discussion Rachel pointed out that the domain architecture figure showed a few sequences that are shorter than 500 a.a. I doubled checked and found that there are two of them. One is from _N. delphensis_ and in my notes I explained the reason why I included it, because it is a "partial CDS". The other is from _N. bracarensis_. It turned out that the length of the protein in the blast hit table is incorrect. I manually edited that file and most likely introduced the error in the process. So I just removed the latter in the new `XP_028889033_homologs_combine.fasta`. Also, I noticed that I included one sequence from _C. auris_ strain B8441, making _C. auris_ the only species with more than one strain represented in the homologs list. Moreover, I didn't systematically include _all_ hits from B8441. So I decided to remove that. Lastly, I decided to include CAGL0L00227g, which was originally excluded because query coverage of this hit was 47%, below the 50% cutoff I set. However, upon further looking, I found this sequence interesting as it is very long (~3kb, similar to the query) and has extremely high Serine content. Thus I decided to include it to demonstrate the evolution of this protein family in _C. glabrata_.
 
@@ -255,6 +249,30 @@ To investigate this, I performed blastp using the N-terminal 330 amino acids (us
 As can be seen in the table above (only B8441 - B9J08 and B11221 - CJI97 hits were shown), one B8441 hit doesn't have a corresponding B11221 hit. The ID of it is B9J08_004098. The reason CJI97 had two hits per B9J08 hit is because the nr database contains both the refseq and non-refseq proteins. B11221 is the only _C. auris_ strain with a Refseq assembly, hence the duplicates.
 
 Looks like I might have to do the blastp again, this time adding the B9J08_004098 back to the homologs table. This will minimize the needed changes to other parts of the results, which were all based on our query protein XP_028889033 from B11221.
+
+## 2021-04-03 [HB] Missing homolog in B11221
+I subsequently did more blastp search to figure out why I'm missing the 8th member of the family in the clade IV strain B11221. I found several relevant things:
+
+1. If I use B9J08_004098's PF11765 domain (11-326) as query and blast the B11221 translated CDS (or protein) database, I could recover the seven identified previously and also three more hits. Two of them have very short alignment length (less than 50 amino acids), but a third one has 146 amino acids aligned, with ~20.5% identity. I then looked up this sequence in the ref_protein database by its ID (XP_028890323) and found it to be only 177 amino acids long. I did follow the link and found the corresponding gene (NW_021640165) and it appears to be a complete CDS with a stop codon. So it's still unclear why I only found 7 members in the B11221 genome, even though the latest Muñoz et al 2021 Genetics paper showed 8 (Figure 6).
+
+_Discussion (2021-04-19 [HB])_
+
+Continuing to investigate the reason for the missing gene in B11221: this time I blast'ed the entire protein sequence using `tblastn` against either the B8441 or the B11221 assembly, using the default settings (e-value 0.05, word size 6, blosum 62 matrix, gap 11/1). This led to the following discoveries:
+
+- B9J08_004098 is located on scaffold01 in B8441 genome. According to the [supplementary table 1](https://gsajournals.figshare.com/articles/dataset/Supplemental_Material_for_Mu_oz_et_al_2021/13759276?file=26384548) of the Muñoz _et al._ 2021 (PMID: 33769478), scaffold00001 along with 00008 map to chromosome 1.
+
+    ![B8441](./img/20210419-B9J08_004098-blast-in-B8441.png)
+
+- `tblastn` against the B11221 genome resulted in the following hits (graphic summary)
+    
+    ![B11221 graphic](./img/20210419-B9J08_004098-blast-in-B11221-graphic.png)
+
+    The first three lines are continguous sequences matching the N-terminus and to a less extent the C-terminus, and they are almost surely among the other 7 homologs. The last line is interesting in that it is split into two discontinuous sequences with very high similarity. I checked the scaffolds they came from and they are from scaffolds00001 and 00015, where the former maps to chromosome 1 while the latter is not assembled into the genome.
+
+    ![B11221_table](./img/20210419-B9J08_004098-blast-in-B11221-table.png)
+
+    This suggests that the reason I couldn't find the homolog in B11221 is likely due to sequencing gaps in chromosome 1 that happened to overlap part of that gene.
+
 # Content
 
 | File | Description | Source | User/Date |
