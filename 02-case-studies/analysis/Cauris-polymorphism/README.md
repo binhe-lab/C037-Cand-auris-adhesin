@@ -31,4 +31,15 @@ To make the sequences more easily identifiable, I'd like to standardize the sequ
 
 1. FaaPred: the server seems to be down again.
 1. PredGPI: results from the [web server](http://gpcr.biocomp.unibo.it/predgpi/)
+
+### Alignment and gene tree
+_Goal_
+
+- Determine the gene geneaology of the _C. auris_ sequences.
+- Use as the order for plotting sequence traits
+
+_Approach_
+
+1. Add two _D. hansenii_ sequences as determined in previous studies to be the outgroup for the _C. auris_ homologs (XP_002770057.1, XP_462630.1) and make a new fasta file for alignment and gene tree inference.
+1. Align the sequences, using the script developed previously.
 ## Misc notes
