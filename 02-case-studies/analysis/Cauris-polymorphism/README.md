@@ -41,5 +41,14 @@ _Goal_
 _Approach_
 
 1. Add two _D. hansenii_ sequences as determined in previous studies to be the outgroup for the _C. auris_ homologs (XP_002770057.1, XP_462630.1) and make a new fasta file for alignment and gene tree inference.
+1. I decided to also add the homologs from _C. haemuloni_ and _C. pseudohaemuloni_, which would help reveal the gene family's evolutionary history within the _Clavispora_ genus.
+
+    ```bash
+    bioawk -c fastx '$name ~ /Chaemuloni/{print ">"$name; print $seq}' XP_028889033_homologs_combine.fasta >> cauris-five-strains-for-gene-tree.fasta
+    bioawk -c fastx '$name ~ /Cpseudohaemulonis/{print ">"$name; print $seq}' XP_028889033_homologs_combine.fasta >> cauris-five-strains-for-gene-tree.fasta
+    ```
+
+    I also added the results associated with these two species to the _C. auris_ results obtained above using `grep` and redirection.
+
 1. Align the sequences, using the script developed previously.
 ## Misc notes

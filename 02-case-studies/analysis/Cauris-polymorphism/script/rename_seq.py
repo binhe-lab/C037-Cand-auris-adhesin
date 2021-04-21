@@ -27,7 +27,7 @@ for record in SeqIO.parse(FA, "fasta"):
     id_vec = record.description.rsplit(" ")
     prefix = id_vec[0][0:3]
     strain = id_dict[prefix]
-    record.id = strain + "_" + id_vec[0]
+    record.id = id_vec[0] + "_" + strain + "_" + "Cauris"
     record.description = record.id + " " + id_vec[3]
     reformatted.append(record)
 

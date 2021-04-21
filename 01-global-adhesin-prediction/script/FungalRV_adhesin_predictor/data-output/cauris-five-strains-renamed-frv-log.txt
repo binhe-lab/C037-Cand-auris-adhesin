@@ -1,22 +1,22 @@
 y
-Total Proteins in NC_000964.faa : 29
-Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 29
+Total Proteins in NC_000964.faa : 55
+Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 55
 
-Total Proteins in NC_000964.faa : 29
-Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 29
+Total Proteins in NC_000964.faa : 55
+Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 55
 
-Total Proteins in NC_000964.faa : 29
-Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 29
+Total Proteins in NC_000964.faa : 55
+Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 55
 
-Total Proteins in NC_000964.faa : 29
-Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 29
+Total Proteins in NC_000964.faa : 55
+Total Proteins Processed (Proteins Without Sequence Ambiguity Like BJOUXZ): 55
 Reading model...OK. (136 support vectors read)
 Classifying test examples..done
-Runtime (without IO) in cpu-seconds: 0.01
+Runtime (without IO) in cpu-seconds: 0.03
 Reading model...OK. (138 support vectors read)
 Classifying test examples..done
-Runtime (without IO) in cpu-seconds: 0.02
+Runtime (without IO) in cpu-seconds: 0.04
 Reading model...OK. (117 support vectors read)
 Classifying test examples..done
-Runtime (without IO) in cpu-seconds: 0.01
+Runtime (without IO) in cpu-seconds: 0.02
 time taken to execute :	0seconds
