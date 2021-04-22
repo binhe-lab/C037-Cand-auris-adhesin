@@ -32,7 +32,7 @@ To make the sequences more easily identifiable, I'd like to standardize the sequ
 1. FaaPred: the server seems to be down again.
 1. PredGPI: results from the [web server](http://gpcr.biocomp.unibo.it/predgpi/)
 
-### Alignment and gene tree
+### 3. Alignment and gene tree
 _Goal_
 
 - Determine the gene geneaology of the _C. auris_ sequences.
@@ -50,5 +50,8 @@ _Approach_
 
     I also added the results associated with these two species to the _C. auris_ results obtained above using `grep` and redirection.
 
-1. Align the sequences, using the script developed previously.
+1. Align the sequences, using the script developed previously for the ARGON cluster.
+    - Based on RAxML's [user manual](https://cme.h-its.org/exelixis/resource/download/NewManual.pdf), which recommended to leave out the outgroup in the initial tree reconstruction and instead add them later using the [EPA](https://academic.oup.com/sysbio/article/60/3/291/1667010?login=true) pipeline.
+
+    - RAxML detected 12 sequences in the dataset that are identical to other sequences. These are 
 ## Misc notes
