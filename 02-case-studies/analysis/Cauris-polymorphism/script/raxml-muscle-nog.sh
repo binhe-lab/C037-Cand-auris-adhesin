@@ -3,14 +3,14 @@
 # author: Bin He
 # date: 2021-04-19
 # title: RAxML tree search
-# use: qsub raxml-clustalo.sh
+# use: qsub raxml-muscle-nog.sh
 #----------------------
 # scheduler parameters
-#$ -q BH,BIO-INSTR
+#$ -q BH
 #$ -M bhe2@uiowa.edu
 #$ -m ea
 #$ -pe orte 28
-#$ -N raxml-clustalo
+#$ -N raxml-muscle-nog
 #$ -cwd
 #$ -j y
 #$ -o ./log/
@@ -30,9 +30,9 @@ set -o pipefail
 length=560
 
 # set input file
-bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq, 1, l)}' ../output/gene-tree/cauris-five-strains-gene-tree_N500_clustalo.faa >| ../output/gene-tree/cauris-five-strains-clustalo-C${length}.faa
-align=../output/gene-tree/cauris-five-strains-clustalo-C${length}.faa
+bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq, 1, l)}' ../output/gene-tree/cauris-five-strains-gene-tree-nog_N500_muscle_refined.faa >| ../output/gene-tree/cauris-five-strains-nog-muscle-refined-C${length}.faa
+align=../output/gene-tree/cauris-five-strains-nog-muscle-refined-C${length}.faa
 
 # estimate the tree
 module load openmpi/2.1.2_gcc-8.3.0
-mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n clustalo_${JOB_ID}
+mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n nog-muscle_${JOB_ID}

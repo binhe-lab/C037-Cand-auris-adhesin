@@ -26,10 +26,13 @@ set -e
 set -u
 set -o pipefail
 
+# specify length of columns to be used for tree inference
+length=560
+
 # set input file
-bioawk -c fastx '{print ">"$name;print substr($seq, 1, 340)}' ../output/gene-tree/cauris-five-strains-gene-tree_N500_muscle_refined.faa > ../output/gene-tree/cauris-five-strains-muscle-refined-C340.faa
-align=../output/gene-tree/cauris-five-strains-muscle-refined-C340.faa
+bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq, 1, l)}' ../output/gene-tree/cauris-five-strains-gene-tree_N500_muscle_refined.faa >| ../output/gene-tree/cauris-five-strains-muscle-refined-C${length}.faa
+align=../output/gene-tree/cauris-five-strains-muscle-refined-C${length}.faa
 
 # estimate the tree
 module load openmpi/2.1.2_gcc-8.3.0
-mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n ../output/gene-tree/muscle_${JOB_ID}
+mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n muscle_${JOB_ID}
