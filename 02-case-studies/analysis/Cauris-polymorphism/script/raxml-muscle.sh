@@ -27,7 +27,7 @@ set -u
 set -o pipefail
 
 # specify length of columns to be used for tree inference
-length=560
+length=400
 
 # set input file
 bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq, 1, l)}' ../output/gene-tree/cauris-five-strains-gene-tree_N500_muscle_refined.faa >| ../output/gene-tree/cauris-five-strains-muscle-refined-C${length}.faa
