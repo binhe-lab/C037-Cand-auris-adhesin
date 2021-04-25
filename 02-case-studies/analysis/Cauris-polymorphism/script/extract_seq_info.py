@@ -8,8 +8,8 @@ from datetime import datetime
 import sys
 
 # open file for storing the output
-infile = "../input/cauris-five-strains-for-gene-tree.fasta" # input file name
-outfile = "../output/seq-feature/cauris-homologs-list.tsv" # output file name
+infile = "../input/cauris-five-strains-renamed.fasta" # input file name
+outfile = "../output/seq-feature/cauris-renamed-seqinfo.tsv" # output file name
 out = open(outfile, "w")
 
 # output the header
