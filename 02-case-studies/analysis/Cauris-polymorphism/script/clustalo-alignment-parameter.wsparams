@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><ns2:WebServiceParameterSet name="User Defaults" xmlns:ns2="www.jalview.org/xml/wsparamset"><Version>1.0</Version><description></description><serviceURL>http://www.compbio.dundee.ac.uk/jabaws/ClustalOWS</serviceURL><parameters>--max-guidetree-iterations 1
+--iter 5
+</parameters></ns2:WebServiceParameterSet>
