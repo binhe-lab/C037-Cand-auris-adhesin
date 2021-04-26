@@ -54,4 +54,10 @@ _Approach_
     - Based on RAxML's [user manual](https://cme.h-its.org/exelixis/resource/download/NewManual.pdf), which recommended to leave out the outgroup in the initial tree reconstruction and instead add them later using the [EPA](https://academic.oup.com/sysbio/article/60/3/291/1667010?login=true) pipeline.
 
     - RAxML detected 12 sequences in the dataset that are identical to other sequences. These are 
+
+### 4. TANGO prediction
+- copied the `tango2_3_1` executable from `../../../01-global-adhesin-prediction/output/C_auris/tango-output/`. The exectuable in the `01-global/script` folder doesn't work on ARGON, probably because it was compiled on a different platform (windows?)
+- used the `output/tango/format_tango_batch.py` to generate the shell script, and used `qsub -q BH -cwd output/tango/cauris-five-strains-for-tango_tango.sh` to run it on the computing node.
+- the resulting txt files were gzipped and commited
+- note that I ran the outgroup sequences as well instead of linking them from other places, just for convenience sake. better check that the results are the same.
 ## Misc notes
