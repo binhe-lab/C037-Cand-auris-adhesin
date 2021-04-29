@@ -142,7 +142,7 @@ genetreeColor <- tibble(name = genetreeOrder) %>%
     grepl("B8441", name) ~ "#0e8c07",
     grepl("B11220", name) ~ "#780a76",
     grepl("B11221", name) ~ "#0409fb",
-    grepl("B11243", name) ~ "#d84862",
+    grepl("B11243", name) ~ "#ff4c00",
     TRUE ~ "#000000"
     ))
 feature$id <- ordered(feature$id, levels = rev(genetreeOrder))
@@ -160,7 +160,7 @@ p + coord_flip() + theme_classic() + scale_color_manual(values = feature.colors)
         panel.background = element_rect(fill = alpha("lightblue",0.5))) +
   ylim(1, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Domain / Feature") + 
   ggtitle("Domain architecture")
-ggsave("output/figure/20210425-homologs-domains-schematics.png", bg = "transparent", width = u, height = 6)
+ggsave("output/figure/20210425-homologs-domains-schematics.png", bg = "transparent", width = 7, height = 6)
 ```
 
 ## TANGO prediction of $\beta$-aggregation prone sequences
