@@ -1,0 +1,17 @@
+
+Inactive Modules:
+  1) bzip2/1.0.8_gcc-9.3.0             12) py-biopython/1.78_gcc-9.3.0
+  2) expat/2.2.10_gcc-9.3.0            13) py-numpy/1.19.5_gcc-9.3.0
+  3) gdbm/1.19_gcc-9.3.0               14) py-setuptools/50.3.2_gcc-9.3.0
+  4) gettext/0.21_gcc-9.3.0            15) python/3.8.8_gcc-9.3.0
+  5) intel-mkl/2020.4.304_gcc-9.3.0    16) readline/8.1_gcc-9.3.0
+  6) libbsd/0.10.0_gcc-9.3.0           17) sqlite/3.35.3_gcc-9.3.0
+  7) libffi/3.3_gcc-9.3.0              18) tar/1.34_gcc-9.3.0
+  8) libiconv/1.16_gcc-9.3.0           19) util-linux-uuid/2.36.2_gcc-9.3.0
+  9) libxml2/2.9.10_gcc-9.3.0          20) xz/5.2.5_gcc-9.3.0
+ 10) ncurses/6.2_gcc-9.3.0             21) zlib/1.2.11_gcc-9.3.0
+ 11) openssl/1.1.1k_gcc-9.3.0
+
+The following have been reloaded with a version change:
+  1) stack/2021.1-base_arch => stack/2020.2
+
