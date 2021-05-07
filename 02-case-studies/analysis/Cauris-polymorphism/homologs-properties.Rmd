@@ -55,6 +55,7 @@ seqInfo <- read_tsv("output/seq-feature/cauris-renamed-seqinfo.tsv", comment = "
   mutate(species_id = factor(species, levels = sps.list), species = NULL)
 ```
 
+### Adhesin prediction
 ```{r adhesin_prediction}
 frv.th = 0.511 # recommended FungalRV score threshold
 frv <- read_tsv("output/seq-feature/cauris-renamed-fungalrv.txt", skip = 3, col_names = c("name","frv.score"), col_types = "cd") %>% 
@@ -69,7 +70,7 @@ seqInfo %>%
   summarize(n = n(), fungalRV = sum(frv.score > 0.511), faapred = sum(faa.pred, na.rm = T), 
             both = sum(frv.score > 0.511 & faa.pred))
 ```
-
+### SignalP and GPI prediction
 ```{r signalP, fig.width=5, fig.height=5}
 # Signal peptide
 gff.names <- c("id", "source", "name", "start", "end", "prob", "na1", "na2", "na3")
@@ -100,13 +101,13 @@ if("pred.gpi" %in% names(seqInfo))
 seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi), by = c("name"="name"))
 
 seqInfo %>% 
-  group_by(species_id) %>% 
+  group_by(species_id, strain) %>% 
   summarize(Total = n(), SignalP = sum(signalp), GPI_Pred = sum(pred.gpi), Both = sum(signalp & pred.gpi))
 
 write_tsv(seqInfo, "output/seq-feature/R-seqinfo-table.tsv", col_names = TRUE)
 ```
 
-### Plot feature map for homologs
+### Domain architecture
 
 The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
 
@@ -163,11 +164,11 @@ p + coord_flip() + theme_classic() + scale_color_manual(values = feature.colors)
 ggsave("output/figure/20210425-homologs-domains-schematics.png", bg = "transparent", width = 7, height = 6)
 ```
 
-## TANGO prediction of $\beta$-aggregation prone sequences
+### TANGO prediction of $\beta$-aggregation prone sequences
 
 The amyloid-like $\beta$-aggregation prone sequences have the ability to mediate self-aggregation, which boosts the local concentration of the adhesin molecules on the cell-surface. Similar to the S/T frequency above, we would like to use the output from the prediction algorithm, TANGO, to visulize the distribution of such sequence motifs along the length of the XP_028889033 homolog sequences.
 
-### Parse tango output
+#### Parse tango output
 ```{r extract_tango_info}
 extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 5) {
     require(tidyverse)
@@ -180,7 +181,7 @@ extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 
     # an example of the rle looks like
     #   lengths: int[1:10] 5 19 20 8 1 5 19 6 181 18
     #   values: logi[1:10] F T  F  T F T F  T F   T
-    #   note that by definition the values will always be T/F interdigited
+    #   note that by definition the values will always be T/F interdigitated
     # our goal is to identify the sub-sequences that is defined as a stretch of 
     # n consecutive positions with a score greater than the cutoff and record the
     # sub-sequence, its length, start and end position, 90% quantile of the score
@@ -220,6 +221,7 @@ write_tsv(tango.res.df, "output/tango/tango_summary_table.tsv.gz")
 # the split pattern is equivalent to the rsplit() function in python
 ```
 
+#### Plotting TANGO hits
 ```{r plot_tango_sequences, warning=FALSE, fig.height=6, fig.width=9}
 # add species and strain information for plotting
 tango <- left_join(select(seqInfo, name, id, species_id, strain),  tango.res.df, by = c("id" = "id"))
@@ -242,35 +244,87 @@ p1 + p2 + p3 + coord_flip() + theme_classic() +
 ggsave("output/figure/20210425-tango-score-segment.png", width = 7, height = 6)
 ```
 
-```{r, eval=FALSE, include=FALSE}
-# read in TANGO output
-# tango output are stored as gzipped files for each individual sequence. we need to read in all of the files into a list of tibbles
-tango.output.files <- list.files(path = "tango-output", pattern = "*.txt.gz", include.dirs = T)
-ltango <- lapply(tango.output.files, function(x) {
-  read_tsv(paste0("tango-output/",x), col_types = "icddddd") %>% select(res, aa, Aggregation)
-  })
-names(ltango) <- gsub(".txt.gz","",tango.output.files)
-tango.output <- bind_rows(ltango, .id = "id")
-# the id column stores only the refseq_id, without the species name portion. to make sure that the sequences
-# are plotted in the desirable order, we do the following
-names(genetreeOrder) <- gsub("_[A-Za-z]+$","", genetreeOrder, perl = TRUE)
-tango.ordered <- tango.output %>% 
-  mutate(new_id = genetreeOrder[id], ordered_id = ordered(new_id, levels = rev(genetreeOrder))) %>% 
-  select(ordered_id, res, aa, aggregation = Aggregation)
+### Tandem repeat structures
+
+The non-NTD portion of the proteins evolve rapidly and many of them contain tandem repeats. Therefore, characterizing and visualizing the type, number and spatial distribution of the tandem repeats serve to highlight the differences in the non-NTD part of the proteins in this family.
+
+To identify and group tandem repeats, I used [XSTREAM](https://amnewmanlab.stanford.edu/xstream) with the following parameters `java -Xmx1000m -Xms1000m -jar ~/sw/XSTREAM/xstream.jar $in -i.7 -I.7 -g3 -e2 -L15 -z -G -O`. The parameters were chosen to identify degenerate tandem repeats that occur at least two times and must be a minimum length of 5 a.a. or longer and the minimum length of a tandem repeat domain (=period x copy #) must be greater than 15 a.a. Please see `script/xstream.sh` for explanation of the parameters.
+
+```{r}
+tandem <- read_tsv("output/tandem-repeats/XSTREAM_cauris_outgr_i0.7_g3_m5_L15_chart.tsv", 
+                   col_types = "ciiifidcccd") %>% 
+  rename(name = identifier) %>% 
+  mutate(name = ordered(name, levels = rev(genetreeOrder)))
+# now let's create a tibble for plotting, which would contain each instance of the tandem repeat on a separate row
+tandem.div <- tandem %>% 
+  rowwise(name) %>% 
+  summarize(div = list(c(seq(from = start, to = end, by = period), end)), .groups = "drop") %>% 
+  unnest(div)
 ```
 
-Now we can plot them the same way as we plotted the S/T frequencies:
-```{r, eval=FALSE, include=FALSE}
-p <- ggplot(tango.ordered, aes(x = ordered_id, y = res)) + geom_tile(aes(fill = aggregation)) + 
-  scale_fill_gradient(limits = c(5,100), breaks = c(5,20,50,100), low = "white", high = "yellow", trans = "sqrt") +
-  coord_flip() +  theme_classic() +
-  theme(axis.text.y = element_text(size = 5),
+```{r plot_tandem_repeats, warning=FALSE, fig.height=7, fig.width=9}
+# plot
+require(RColorBrewer)
+n.col = nlevels(tandem$type)
+tr.col <- colorRampPalette(brewer.pal(12, "Paired")[3:12])(n.col)
+p1 <- ggplot(filter(feature, type == "entire protein"), aes(x = id, y = start)) + 
+  geom_segment(aes(xend = id, yend = end), size = 2.5, color = "grey40")
+p2 <- geom_segment(data = tandem, aes(x = name, xend = name,  y = start, yend = end, color = type, text = consensus_nogap), size = 2.5, alpha = 0.9)
+p3 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 2), size = 2.5)
+p4 <- geom_segment(data = filter(feature, type == "Hyphal_reg_CWP"), aes(x = id, y = start, xend = id, yend = end), color = "#1f78b4", size = 2.5)
+p <- p1 + p2 + p3 + p4 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = tr.col) +
+  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(), axis.ticks.x = element_blank(),
-        legend.position = c(0.9,0.8),
+        legend.position = "none",
         panel.background = element_rect(fill = alpha("lightblue",0.5))) +
-  ylim(1, 4500) + ylab("Position in sequence") + xlab("Sequences") + ggtitle("TANGO predicted aggregation score")
+  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Median TANGO score") + 
+  ggtitle("Tandem repeat domains with Hyphal_reg_CWP domain shown")
 p
-ggsave("img/20200811-tango-score-tile.png", p, bg = "transparent", width = 7, height = 7)
+ggsave("output/figure/20210506-tandem-repeats.png", width = 7, height = 6)
+```
+**Note** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
+
+```{r}
+DT::datatable(
+  tandem %>% 
+    rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
+    select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
+    arrange(desc(name)),
+  fillContainer = FALSE, options = list(pageLength = 10)
+)
+```
+
+```{r transform_tandem_feature_data}
+# combine sequence features with tandem repeats
+tr.feature <- rbind(
+  feature %>% 
+    filter(type %in% c("entire protein", "Hyphal_reg_CWP"), ) %>%
+    mutate(name = id, tip = ifelse(type == "entire protein", as.character(name), "PF11765")) %>% 
+    select(name, type, start, end, tip),
+  tandem %>% mutate(type = paste0("tandem", type)) %>% select(name, type, start, end, tip = consensus_nogap)
+) %>% mutate(type = droplevels(type))
+```
+
+```{r plotly_tandem_repeats, warning=FALSE, fig.height=7, fig.width=9}
+# plot
+require(RColorBrewer)
+require(plotly)
+n.col = nlevels(tr.feature$type)
+tr.col <- c("grey40", "#1f78b4", colorRampPalette(brewer.pal(12, "Paired")[3:12])(n.col-2))
+p1 <- ggplot(tr.feature, aes(x = name, y = start, xend = name, yend = end, color = type, text = tip)) + 
+  geom_segment(size = 2)
+p2 <- geom_segment(size = 2, alpha = 0.9)
+p <- p1 + p2 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = tr.col) +
+  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = "none",
+        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
+  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Median TANGO score") + 
+  ggtitle("Tandem repeat domains with Hyphal_reg_CWP domain shown")
+ggplotly(p, tooltip = "text")
 ```
 
