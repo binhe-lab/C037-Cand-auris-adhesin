@@ -2,51 +2,87 @@
 title: "plot XP_028889033 features"
 author: Bin He
 date: 2020-10-11
-output: html_notebook
+output: 
+  html_notebook:
+    code_folding: hide
 ---
 
 ## Goal
-The goal of this script is to plot quantitative features for XP_028889033 (corresponding gene: CJI97_004172, _C. auris_ B11221)
+Plot domain architecture, sequence features and predicted $\beta$-aggregation scores for XP_028889033 (corresponding gene: CJI97_004172, _C. auris_ B11221)
 
 ## Data
-The following data were extracted from `02-case-studies/output/homolog-properties/2020-07-24/raw-output` folder
+The following data were extracted from `../homolog-properties/2020-10-31/raw-output` folder
 - Serine and threonine frequencies calculated in 100 bp windows with 10 bp increment.
 - TANGO predicted aggregation probabilities per amino acid.
-The output is saved in `protein-quant-properties.txt`
+The output is saved in `input/XP_028889033-quant-properties.txt`
+
+The domain architecture, including tandem repeat domains, were based on the same folder above plus `../Cauris_polymorphism/output/tandem-repeats` and saved in `input/XP_028889033-domain-features.txt` and `input/XP_028889033-tandem*`
 
 ## Plot
-```{r}
+```{r message=FALSE}
 library(tidyverse)
 library(cowplot)
 ```
 
-```{r plot, fig.width=8}
+
+```{r read_data}
 # quantitative features
-dat <- read_tsv("protein-quant-features.txt", col_types = "ffid")
+dat <- read_tsv("input/XP_028889033-quant-features.txt", col_types = "ffid")
 # dat$feature <- factor(dat$feature, labels = c("Ser/Thr frequency","beta-aggregation probability"))
+
+# domain features
+domain <- read_tsv("input/XP_028889033-domain-features.txt")
+domain$feature <- factor(domain$feature, levels = c("entire protein", "SignalP", "Hyphal_reg_CWP", "Hyr1", "GPI"), labels = c("entire protein", "Signal Peptide", "Hyphal_reg_CWP", "Hyr1 (PF15789)", "GPI-anchor"))
+
+# tandem repeats
+tandem <- read_tsv("input/XP_028889033_tandem.tsv", col_types = cols())
+
+# combine tandem repeat domains with domain features
+feature <- bind_rows(
+  domain %>% filter(!grepl("Hyr1",feature)),
+  tandem %>% mutate(feature = paste0("TR", 1:nrow(tandem), " (", period, " aa x ", copyN, ")")) %>% 
+    select(feature, start, end)
+)
+
+# tandem repeat dividers
+tandem.div <- read_tsv("input/XP_028889033_tandem_div.tsv", col_types = cols())
+```
+
+```{r plot, fig.width=8}
 p1 <- dat %>% filter(feature == "ST_freq") %>% 
   ggplot(aes(x = pos, y = value)) + geom_line(aes(color = type)) +
   xlab("Amino acid position") + ylab("frequency") + ylim(0,0.6) + xlim(1,3100) +
   theme_cowplot() + theme(legend.position = c(0.8, 0.8), legend.text = element_text(size = rel(0.8)))
 
 p2 <- dat %>% filter(feature == "TANGO") %>% 
-  ggplot(aes(x = pos, y = value)) + geom_line(size = 0.3) + ylab("TANGO Score") +
+  ggplot(aes(x = pos, y = value)) + geom_line(size = 0.3) + ylab("TANGO") +
   theme_cowplot() + theme(axis.title.x = element_blank(), axis.text.x = element_blank()) + xlim(1,3100) +
   scale_y_continuous(breaks = c(0,50,100))
-  
-# domain features
-domain <- read_tsv("protein-domain-features.txt")
-domain$feature <- factor(domain$feature, levels = c("entire protein", "SignalP", "Hyphal_reg_CWP", "Hyr1", "GPI"), labels = c("entire protein", "Signal Peptide", "Hyphal_reg_CWP (PF11765)", "Repeated domain in Hyr1 (PF15789)", "GPI-anchor"))
-p3 <- ggplot(domain, aes(xmin = start, ymin = 0)) + 
+
+feature.col <- c("grey40", "#984ea3", "#377eb8", "#e41a1c", "#fdb863", "#e66101", "#c2a5cf", "#a6dba0", "#008837")
+p3 <- ggplot(feature, aes(xmin = start, ymin = 0)) + 
   geom_rect(aes(xmax = end, ymax = 1, fill = feature)) +
-  scale_fill_manual(values = c("grey50","#e41a1c", "#377eb8", "#ff7f00", "#984ea3")) +
+  scale_fill_manual(values = feature.col) +
   ylab("") + xlab("") + xlim(1,3100) + ylim(-0.5,1) + labs(fill = "Domain") + guides(fill = guide_legend(nrow = 2)) +
   theme_classic() + theme(legend.position = "top", legend.text = element_text(size = rel(0.8))) +
   theme(axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank())
 
+p4 <- geom_rect(data = tandem.div, aes(xmin = div, ymin = 0, xmax = div + 3, ymax = 1))
 # assembling
-plot_grid(p3, p2, p1, nrow = 3, align = "v", rel_heights = c(3,2,4))
-ggsave("20201011-XP_028889033-features.png", width = 11, height = 5)
-ggsave("20201011-XP_028889033-ST-freq.png", p1 + theme_classic() + theme(legend.position = "top"), width = 6, height = 2)
+plot_grid(p3+p4, p2, p1, nrow = 3, align = "v", rel_heights = c(2,1,3))
+ggsave("output/r-figure/20210507-XP_028889033-features.png", width = 11, height = 5)
+ggsave("output/r-figure/20210507-XP_028889033-ST-freq.png", p1 + theme_classic() + theme(legend.position = "top"), width = 6, height = 2)
+```
+
+```{r}
+DT::datatable(select(tandem, start, end, period, copyN, consensus_nogap), 
+              caption = "Tandem repeats in XP_028889033", 
+              options = list(
+                deferRender = TRUE,
+                scrollX = TRUE,
+                scroller = TRUE,
+                autoWidth = TRUE,
+                pageLength = 5,
+                columnDefs = list(list(width = '10%', targets = c(5)))))
 ```
 

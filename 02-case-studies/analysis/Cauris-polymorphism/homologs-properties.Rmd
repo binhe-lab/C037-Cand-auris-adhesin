@@ -262,6 +262,13 @@ tandem.div <- tandem %>%
   unnest(div)
 ```
 
+```{r write_XP_028889033_to_table}
+# this is for the purpose of drawing just XP_028889033
+tandem %>% filter(grepl("XP_028889033", name)) %>% write_tsv(file = "../XP_028889033_drawing/input/XP_028889033_tandem.tsv")
+tandem.div %>% filter(grepl("XP_028889033", name)) %>% 
+  write_tsv(file = "../XP_028889033_drawing/input/XP_028889033_tandem_div.tsv")
+```
+
 ```{r plot_tandem_repeats, warning=FALSE, fig.height=7, fig.width=9}
 # plot
 require(RColorBrewer)
