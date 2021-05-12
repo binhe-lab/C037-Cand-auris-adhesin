@@ -1,0 +1,43 @@
+# Job: FhaB vs SRRP
+# Query: 1rwrA
+# No:  Chain   Z    rmsd lali nres  %id PDB  Description
+   1:  5ny0-A 11.4  3.4  202   343    7   MOLECULE: L. REUTERIS SRRP BINDING REGION;                           
+
+# Structural equivalences
+   1: 1rwr-A 5ny0-A    14 -  17 <=>   29 -  32   (GLY   14  - LYS   17  <=> LEU  284  - ASN  287 )                          
+   1: 1rwr-A 5ny0-A    18 -  24 <=>   56 -  62   (VAL   18  - ALA   24  <=> TYR  311  - GLY  317 )                          
+   1: 1rwr-A 5ny0-A    31 -  37 <=>   63 -  69   (VAL   31  - GLN   37  <=> ASN  318  - HIS  324 )                          
+   1: 1rwr-A 5ny0-A    38 -  49 <=>   77 -  88   (GLN   38  - ASN   49  <=> ASN  332  - GLN  343 )                          
+   1: 1rwr-A 5ny0-A    74 -  77 <=>   89 -  92   (SER   74  - LEU   77  <=> SER  344  - GLY  347 )                          
+   1: 1rwr-A 5ny0-A    78 -  81 <=>   95 -  98   (ALA   78  - THR   81  <=> HIS  350  - ASP  353 )                          
+   1: 1rwr-A 5ny0-A    82 -  89 <=>  100 - 107   (ASP   82  - ALA   89  <=> GLY  355  - LYS  362 )                          
+   1: 1rwr-A 5ny0-A    90 -  94 <=>  109 - 113   (GLY   90  - VAL   94  <=> ILE  364  - GLY  368 )                          
+   1: 1rwr-A 5ny0-A    99 - 105 <=>  114 - 120   (ALA   99  - ASN  105  <=> GLY  369  - GLN  375 )                          
+   1: 1rwr-A 5ny0-A   106 - 112 <=>  125 - 131   (PRO  106  - ASN  112  <=> THR  380  - GLU  386 )                          
+   1: 1rwr-A 5ny0-A   113 - 119 <=>  133 - 139   (GLY  113  - ALA  119  <=> THR  388  - VAL  394 )                          
+   1: 1rwr-A 5ny0-A   121 - 127 <=>  161 - 167   (ASN  121  - GLY  127  <=> PRO  425  - ASN  431 )                          
+   1: 1rwr-A 5ny0-A   144 - 148 <=>  168 - 172   (THR  144  - GLU  148  <=> GLU  432  - ALA  436 )                          
+   1: 1rwr-A 5ny0-A   149 - 156 <=>  175 - 182   (ARG  149  - GLY  156  <=> ALA  439  - SER  446 )                          
+   1: 1rwr-A 5ny0-A   157 - 164 <=>  184 - 191   (LEU  157  - ALA  164  <=> THR  448  - ILE  455 )                          
+   1: 1rwr-A 5ny0-A   165 - 170 <=>  200 - 205   (ARG  165  - GLN  170  <=> THR  464  - ILE  469 )                          
+   1: 1rwr-A 5ny0-A   171 - 175 <=>  210 - 214   (GLY  171  - SER  175  <=> THR  474  - GLU  478 )                          
+   1: 1rwr-A 5ny0-A   180 - 183 <=>  217 - 220   (PRO  180  - ASP  183  <=> ASN  481  - ALA  484 )                          
+   1: 1rwr-A 5ny0-A   184 - 191 <=>  222 - 229   (ILE  184  - ASN  191  <=> ASN  486  - THR  493 )                          
+   1: 1rwr-A 5ny0-A   216 - 221 <=>  231 - 236   (ALA  216  - ALA  221  <=> ASN  495  - GLY  500 )                          
+   1: 1rwr-A 5ny0-A   222 - 229 <=>  240 - 247   (ALA  222  - HIS  229  <=> THR  504  - VAL  511 )                          
+   1: 1rwr-A 5ny0-A   230 - 236 <=>  249 - 255   (ILE  230  - ASP  236  <=> ASN  513  - TYR  519 )                          
+   1: 1rwr-A 5ny0-A   237 - 244 <=>  258 - 265   (SER  237  - LEU  244  <=> SER  522  - PHE  529 )                          
+   1: 1rwr-A 5ny0-A   245 - 252 <=>  271 - 278   (GLY  245  - ALA  252  <=> VAL  535  - GLY  542 )                          
+   1: 1rwr-A 5ny0-A   253 - 258 <=>  280 - 285   (ILE  253  - GLN  258  <=> ASN  544  - ALA  549 )                          
+   1: 1rwr-A 5ny0-A   259 - 262 <=>  288 - 291   (GLY  259  - ALA  262  <=> SER  552  - ILE  555 )                          
+   1: 1rwr-A 5ny0-A   264 - 270 <=>  297 - 303   (GLY  264  - ARG  270  <=> ALA  561  - SER  567 )                          
+   1: 1rwr-A 5ny0-A   272 - 276 <=>  310 - 314   (PRO  272  - LYS  276  <=> ASN  590  - LYS  594 )                          
+   1: 1rwr-A 5ny0-A   277 - 282 <=>  316 - 321   (GLY  277  - SER  282  <=> GLY  596  - ALA  601 )                          
+   1: 1rwr-A 5ny0-A   284 - 290 <=>  329 - 335   (GLY  284  - GLY  290  <=> VAL  609  - PRO  615 )                          
+   1: 1rwr-A 5ny0-A   291 - 297 <=>  337 - 343   (GLY  291  - GLY  297  <=> ALA  617  - TYR  623 )                          
+
+# Translation-rotation matrices
+-matrix  "1rwr-A 5ny0-A  U(1,.)   0.776218 -0.072398  0.626293           -3.208323"
+-matrix  "1rwr-A 5ny0-A  U(2,.)  -0.558667  0.381404  0.736493          -40.649078"
+-matrix  "1rwr-A 5ny0-A  U(3,.)  -0.292191 -0.921569  0.255607           23.619865"
+
