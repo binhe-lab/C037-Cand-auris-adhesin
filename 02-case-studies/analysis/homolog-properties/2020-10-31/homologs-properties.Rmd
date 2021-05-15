@@ -52,13 +52,13 @@ Load in the sequence information.
 sps.list <- c("Cduobushaemulonis","Cpseudohaemulonis","Chaemuloni","Cauris","Clusitaniae","Dhansenii","Cparapsilosis","Lelongisporus","Ctropicalis","Cdubliniensis","Calbicans","Sstipitis","Klactis","Ncastellii","Cglabrata","Nbracarensis","Ndelphensis","Nnivariensis")
 seqInfo <- read_tsv("raw-output/XP_028889033_homologs.tsv", comment = "#", col_types = "ccci") %>% 
   mutate(species_id = factor(species, levels = sps.list), species = NULL)
-chrLoc <- read_tsv("raw-output/XP_028889033_homologs_chr_loc.tsv") %>% 
+chrLoc <- read_tsv("raw-output/XP_028889033_homologs_chr_loc.tsv", col_types = cols()) %>% 
   mutate(id = ifelse(is.na(accession), gene_id, accession), 
          accession = NULL, 
          species_id = factor(species_id, levels = sps.list),
          relLoc = round(chrstart/chrL, 3))
 seqInfo <- seqInfo %>% 
-  left_join(chrLoc) %>% 
+  left_join(chrLoc) #%>% 
   mutate(assemblystatus = factor(assemblystatus, levels = c("Complete Genome","Chromosome","Contig","Scaffold"), 
                                  labels = c("Chromosome", "Chromosome", "Partial", "Partial")),
          species_gr = factor(species_id, labels = c(rep("MDR",4),rep("Clavispora",2),rep("albicans",5), "Sstipitis", "Klactis", rep("Nakaseomycetes",5)))) %>% 

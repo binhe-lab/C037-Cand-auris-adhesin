@@ -1,0 +1,38 @@
+---
+title: "Evolution of HIL family"
+subtitle: "gene tree and sequence features evolution"
+author: "Bin He"
+email: bin-he@uiowa.edu
+institute: "Biology Department, University of Iowa"
+date: "2021-05-03 (updated: `r Sys.Date()`)"
+linkcolor: blue
+output:
+  xaringan::moon_reader:
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.align="center",
+  eval.after="fig.cap"
+)
+```
+
+---
+class: inverse, center, middle
+
+# Data
+
+Through multiple rounds BLAST searches using the N-terminal PF11765 domain sequence from _C. auris_ XP_028889033 as query, and after de-duplication and post-processing, we identified a total of 104 homologs from 18 species 
+
+---
+
+# Homologs of HIL family
+
+
+--
