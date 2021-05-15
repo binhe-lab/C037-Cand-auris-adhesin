@@ -1,0 +1,1 @@
+Protein structural prediction results. [I-TASSER](https://zhanglab.ccmb.med.umich.edu/I-TASSER/), [DALI](http://ekhidna2.biocenter.helsinki.fi/dali/) and [Phyre2](http://www.sbg.bio.ic.ac.uk/phyre2/html/page.cgi?id=index).

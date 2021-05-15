@@ -1,0 +1,1 @@
+../../../01-global-adhesin-prediction/script/misc/extract_fasta.py

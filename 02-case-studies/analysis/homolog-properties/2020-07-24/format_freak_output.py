@@ -1,1 +1,0 @@
-../../../script/format_freak_output.py
