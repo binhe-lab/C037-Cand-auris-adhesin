@@ -34,5 +34,6 @@ bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq, 1, l)}' ../ou
 align=../output/gene-tree/cauris-four-strains-muscle-C${length}.faa
 
 # estimate the tree
+module load stack/legacy
 module load openmpi/2.1.2_gcc-8.3.0
 mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n muscle-cauris-four-strains

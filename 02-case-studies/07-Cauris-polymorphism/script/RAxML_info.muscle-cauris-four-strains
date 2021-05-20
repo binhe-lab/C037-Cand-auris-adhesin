@@ -1,0 +1,1744 @@
+Bootstrap[144]: Time 83.638194 seconds, bootstrap likelihood -14535.869949, best rearrangement setting 13
+
+Time for BS model parameter optimization on Process 1: 81.928986 seconds
+Bootstrap[487]: Time 9.414153 seconds, bootstrap likelihood -13904.485790, best rearrangement setting 13
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14782.810168 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14782.810167 with empirical base frequencies
+
+
+
+Time for BS model parameter optimization on Process 6: 82.639348 seconds
+
+Time for BS model parameter optimization on Process 15: 83.085399 seconds
+Bootstrap[396]: Time 84.937576 seconds, bootstrap likelihood -14389.322228, best rearrangement setting 5
+Bootstrap[0]: Time 85.072047 seconds, bootstrap likelihood -14887.295426, best rearrangement setting 13
+Bootstrap[199]: Time 7.301056 seconds, bootstrap likelihood -14381.598393, best rearrangement setting 6
+Bootstrap[180]: Time 85.234409 seconds, bootstrap likelihood -14030.379588, best rearrangement setting 10
+
+Time for BS model parameter optimization on Process 5: 83.464211 seconds
+
+Time for BS model parameter optimization on Process 25: 83.961136 seconds
+Bootstrap[217]: Time 9.322760 seconds, bootstrap likelihood -15224.411958, best rearrangement setting 7
+Bootstrap[252]: Time 87.033402 seconds, bootstrap likelihood -14515.724032, best rearrangement setting 5
+Bootstrap[74]: Time 9.195494 seconds, bootstrap likelihood -14293.829986, best rearrangement setting 5
+Bootstrap[360]: Time 88.010339 seconds, bootstrap likelihood -14473.822387, best rearrangement setting 8
+Bootstrap[56]: Time 10.158500 seconds, bootstrap likelihood -14717.114289, best rearrangement setting 15
+Bootstrap[308]: Time 9.373151 seconds, bootstrap likelihood -14243.037306, best rearrangement setting 6
+Bootstrap[126]: Time 89.239463 seconds, bootstrap likelihood -14044.939505, best rearrangement setting 15
+Bootstrap[324]: Time 89.548671 seconds, bootstrap likelihood -14050.908838, best rearrangement setting 10
+Bootstrap[380]: Time 9.545451 seconds, bootstrap likelihood -14822.813788, best rearrangement setting 10
+Bootstrap[344]: Time 8.382475 seconds, bootstrap likelihood -14741.675517, best rearrangement setting 8
+Bootstrap[164]: Time 9.744802 seconds, bootstrap likelihood -15430.638275, best rearrangement setting 10
+Bootstrap[288]: Time 91.295995 seconds, bootstrap likelihood -15070.065466, best rearrangement setting 13
+Bootstrap[234]: Time 91.512722 seconds, bootstrap likelihood -14668.511508, best rearrangement setting 6
+Bootstrap[416]: Time 10.193079 seconds, bootstrap likelihood -14954.653515, best rearrangement setting 11
+Bootstrap[468]: Time 92.011251 seconds, bootstrap likelihood -15127.996949, best rearrangement setting 11
+Bootstrap[200]: Time 7.618060 seconds, bootstrap likelihood -14310.593415, best rearrangement setting 11
+Bootstrap[18]: Time 93.160640 seconds, bootstrap likelihood -14836.573431, best rearrangement setting 12
+Bootstrap[432]: Time 93.493475 seconds, bootstrap likelihood -14820.774508, best rearrangement setting 13
+Bootstrap[488]: Time 10.258567 seconds, bootstrap likelihood -13960.733644, best rearrangement setting 15
+Bootstrap[108]: Time 94.031009 seconds, bootstrap likelihood -14348.372696, best rearrangement setting 5
+Bootstrap[36]: Time 94.474587 seconds, bootstrap likelihood -14455.567403, best rearrangement setting 10
+Bootstrap[181]: Time 9.596333 seconds, bootstrap likelihood -14493.366851, best rearrangement setting 6
+Bootstrap[145]: Time 11.304981 seconds, bootstrap likelihood -15499.471160, best rearrangement setting 5
+Bootstrap[1]: Time 9.999395 seconds, bootstrap likelihood -15685.697116, best rearrangement setting 13
+Bootstrap[397]: Time 10.612240 seconds, bootstrap likelihood -14791.137525, best rearrangement setting 11
+Bootstrap[218]: Time 9.831269 seconds, bootstrap likelihood -14069.491380, best rearrangement setting 12
+Bootstrap[270]: Time 96.057704 seconds, bootstrap likelihood -14498.219770, best rearrangement setting 15
+Bootstrap[90]: Time 96.831793 seconds, bootstrap likelihood -14992.767466, best rearrangement setting 6
+Bootstrap[361]: Time 9.161938 seconds, bootstrap likelihood -15415.161047, best rearrangement setting 10
+Bootstrap[450]: Time 97.275492 seconds, bootstrap likelihood -15745.300461, best rearrangement setting 12
+Bootstrap[75]: Time 10.104252 seconds, bootstrap likelihood -15730.138998, best rearrangement setting 11
+Bootstrap[165]: Time 7.588012 seconds, bootstrap likelihood -14052.820182, best rearrangement setting 9
+Bootstrap[253]: Time 11.178363 seconds, bootstrap likelihood -14725.597351, best rearrangement setting 7
+Bootstrap[309]: Time 10.041016 seconds, bootstrap likelihood -14958.246557, best rearrangement setting 13
+Bootstrap[57]: Time 10.266186 seconds, bootstrap likelihood -14349.130265, best rearrangement setting 10
+Bootstrap[381]: Time 9.692274 seconds, bootstrap likelihood -14816.414619, best rearrangement setting 9
+Bootstrap[345]: Time 9.626566 seconds, bootstrap likelihood -14380.744224, best rearrangement setting 5
+Bootstrap[417]: Time 8.265261 seconds, bootstrap likelihood -14360.229860, best rearrangement setting 13
+Bootstrap[127]: Time 11.342862 seconds, bootstrap likelihood -15001.918443, best rearrangement setting 5
+Bootstrap[469]: Time 9.671691 seconds, bootstrap likelihood -15361.358832, best rearrangement setting 12
+Bootstrap[325]: Time 12.870539 seconds, bootstrap likelihood -14189.573787, best rearrangement setting 9
+Bootstrap[201]: Time 9.580850 seconds, bootstrap likelihood -15407.680072, best rearrangement setting 13
+Bootstrap[289]: Time 11.233588 seconds, bootstrap likelihood -14805.207159, best rearrangement setting 8
+Bootstrap[489]: Time 8.792736 seconds, bootstrap likelihood -14636.608754, best rearrangement setting 9
+Bootstrap[235]: Time 11.425398 seconds, bootstrap likelihood -14495.557247, best rearrangement setting 7
+Bootstrap[19]: Time 11.581638 seconds, bootstrap likelihood -14164.343272, best rearrangement setting 13
+Bootstrap[2]: Time 9.671418 seconds, bootstrap likelihood -15002.432988, best rearrangement setting 12
+Bootstrap[219]: Time 9.123229 seconds, bootstrap likelihood -15705.585212, best rearrangement setting 15
+Bootstrap[433]: Time 11.981132 seconds, bootstrap likelihood -14598.790135, best rearrangement setting 12
+Bootstrap[146]: Time 11.050252 seconds, bootstrap likelihood -14420.613638, best rearrangement setting 9
+Bootstrap[76]: Time 8.697970 seconds, bootstrap likelihood -14927.353054, best rearrangement setting 6
+Bootstrap[109]: Time 12.679526 seconds, bootstrap likelihood -15109.661775, best rearrangement setting 15
+Bootstrap[37]: Time 12.639561 seconds, bootstrap likelihood -13868.589260, best rearrangement setting 13
+Bootstrap[182]: Time 12.599283 seconds, bootstrap likelihood -14505.317774, best rearrangement setting 11
+Bootstrap[398]: Time 12.156903 seconds, bootstrap likelihood -14188.244867, best rearrangement setting 10
+Bootstrap[418]: Time 8.079613 seconds, bootstrap likelihood -14766.058187, best rearrangement setting 13
+Bootstrap[254]: Time 9.778072 seconds, bootstrap likelihood -14116.359878, best rearrangement setting 14
+Bootstrap[310]: Time 9.400872 seconds, bootstrap likelihood -14538.470194, best rearrangement setting 13
+Bootstrap[451]: Time 10.884148 seconds, bootstrap likelihood -15011.747209, best rearrangement setting 12
+Bootstrap[271]: Time 12.211125 seconds, bootstrap likelihood -15387.737938, best rearrangement setting 8
+Bootstrap[58]: Time 9.577914 seconds, bootstrap likelihood -14619.234788, best rearrangement setting 10
+Bootstrap[166]: Time 10.383126 seconds, bootstrap likelihood -14899.093171, best rearrangement setting 10
+Bootstrap[362]: Time 11.385068 seconds, bootstrap likelihood -13881.300324, best rearrangement setting 9
+Bootstrap[346]: Time 9.203501 seconds, bootstrap likelihood -15128.176181, best rearrangement setting 6
+Bootstrap[382]: Time 9.511021 seconds, bootstrap likelihood -15359.375830, best rearrangement setting 9
+Bootstrap[91]: Time 12.164853 seconds, bootstrap likelihood -14605.924026, best rearrangement setting 15
+Bootstrap[490]: Time 8.482601 seconds, bootstrap likelihood -14534.099985, best rearrangement setting 9
+Bootstrap[202]: Time 9.359290 seconds, bootstrap likelihood -14140.208042, best rearrangement setting 13
+Bootstrap[128]: Time 11.226468 seconds, bootstrap likelihood -13905.530945, best rearrangement setting 8
+Bootstrap[290]: Time 10.398426 seconds, bootstrap likelihood -14661.605723, best rearrangement setting 5
+Bootstrap[236]: Time 10.957512 seconds, bootstrap likelihood -14600.229501, best rearrangement setting 13
+Bootstrap[220]: Time 9.576184 seconds, bootstrap likelihood -13875.360039, best rearrangement setting 10
+Bootstrap[326]: Time 12.657595 seconds, bootstrap likelihood -14882.542378, best rearrangement setting 7
+Bootstrap[470]: Time 13.930518 seconds, bootstrap likelihood -14454.903730, best rearrangement setting 14
+Bootstrap[20]: Time 10.966399 seconds, bootstrap likelihood -14773.747735, best rearrangement setting 13
+Bootstrap[77]: Time 9.832031 seconds, bootstrap likelihood -14983.443272, best rearrangement setting 15
+Bootstrap[147]: Time 11.000054 seconds, bootstrap likelihood -14754.770280, best rearrangement setting 8
+Bootstrap[3]: Time 12.669251 seconds, bootstrap likelihood -15698.839009, best rearrangement setting 15
+Bootstrap[434]: Time 12.074396 seconds, bootstrap likelihood -14403.560122, best rearrangement setting 12
+Bootstrap[419]: Time 9.732910 seconds, bootstrap likelihood -14400.077333, best rearrangement setting 15
+Bootstrap[311]: Time 9.688839 seconds, bootstrap likelihood -14672.945103, best rearrangement setting 8
+Bootstrap[59]: Time 9.386058 seconds, bootstrap likelihood -14567.009662, best rearrangement setting 13
+Bootstrap[38]: Time 11.485655 seconds, bootstrap likelihood -15164.912322, best rearrangement setting 14
+Bootstrap[183]: Time 11.151786 seconds, bootstrap likelihood -14364.045439, best rearrangement setting 11
+Bootstrap[167]: Time 10.021428 seconds, bootstrap likelihood -14435.298697, best rearrangement setting 10
+Bootstrap[383]: Time 9.826618 seconds, bootstrap likelihood -14995.216134, best rearrangement setting 13
+Bootstrap[255]: Time 10.786330 seconds, bootstrap likelihood -14702.983018, best rearrangement setting 7
+Bootstrap[347]: Time 10.354014 seconds, bootstrap likelihood -14626.371637, best rearrangement setting 11
+Bootstrap[272]: Time 11.089543 seconds, bootstrap likelihood -15546.228174, best rearrangement setting 15
+Bootstrap[92]: Time 10.391182 seconds, bootstrap likelihood -14073.749671, best rearrangement setting 6
+Bootstrap[452]: Time 11.354821 seconds, bootstrap likelihood -15421.295219, best rearrangement setting 13
+Bootstrap[203]: Time 7.944015 seconds, bootstrap likelihood -14301.511254, best rearrangement setting 12
+Bootstrap[110]: Time 13.277568 seconds, bootstrap likelihood -14593.444024, best rearrangement setting 7
+Bootstrap[363]: Time 12.390035 seconds, bootstrap likelihood -14022.917826, best rearrangement setting 7
+Bootstrap[491]: Time 9.683942 seconds, bootstrap likelihood -14586.742895, best rearrangement setting 9
+Bootstrap[399]: Time 14.090563 seconds, bootstrap likelihood -14805.084499, best rearrangement setting 11
+Bootstrap[129]: Time 10.017621 seconds, bootstrap likelihood -13641.951633, best rearrangement setting 6
+Bootstrap[221]: Time 8.901830 seconds, bootstrap likelihood -14537.806774, best rearrangement setting 13
+Bootstrap[291]: Time 10.830749 seconds, bootstrap likelihood -14761.136490, best rearrangement setting 11
+Bootstrap[327]: Time 9.629165 seconds, bootstrap likelihood -14555.060623, best rearrangement setting 15
+Bootstrap[237]: Time 11.002231 seconds, bootstrap likelihood -14771.582177, best rearrangement setting 6
+Bootstrap[78]: Time 9.287604 seconds, bootstrap likelihood -14645.394401, best rearrangement setting 11
+Bootstrap[21]: Time 10.454717 seconds, bootstrap likelihood -14501.377309, best rearrangement setting 6
+Bootstrap[60]: Time 8.812954 seconds, bootstrap likelihood -15518.761366, best rearrangement setting 7
+Bootstrap[420]: Time 9.166525 seconds, bootstrap likelihood -13980.485312, best rearrangement setting 12
+Bootstrap[471]: Time 11.472467 seconds, bootstrap likelihood -14804.631264, best rearrangement setting 7
+Bootstrap[4]: Time 10.127701 seconds, bootstrap likelihood -14273.338535, best rearrangement setting 10
+Bootstrap[168]: Time 8.994814 seconds, bootstrap likelihood -14297.643774, best rearrangement setting 10
+Bootstrap[348]: Time 8.842090 seconds, bootstrap likelihood -14440.424159, best rearrangement setting 7
+Bootstrap[312]: Time 10.033979 seconds, bootstrap likelihood -14246.372097, best rearrangement setting 9
+Bootstrap[204]: Time 8.535627 seconds, bootstrap likelihood -14888.765561, best rearrangement setting 7
+Bootstrap[384]: Time 10.026243 seconds, bootstrap likelihood -14412.793719, best rearrangement setting 15
+Bootstrap[184]: Time 10.320083 seconds, bootstrap likelihood -14077.869597, best rearrangement setting 6
+Bootstrap[39]: Time 10.324878 seconds, bootstrap likelihood -14352.580992, best rearrangement setting 8
+Bootstrap[435]: Time 11.487608 seconds, bootstrap likelihood -14658.345106, best rearrangement setting 14
+Bootstrap[492]: Time 8.352785 seconds, bootstrap likelihood -14729.113780, best rearrangement setting 6
+Bootstrap[453]: Time 10.226698 seconds, bootstrap likelihood -14966.025538, best rearrangement setting 5
+Bootstrap[148]: Time 12.762962 seconds, bootstrap likelihood -15057.616196, best rearrangement setting 14
+Bootstrap[111]: Time 10.358143 seconds, bootstrap likelihood -14580.289568, best rearrangement setting 15
+Bootstrap[273]: Time 11.997756 seconds, bootstrap likelihood -15042.273073, best rearrangement setting 9
+Bootstrap[256]: Time 12.949838 seconds, bootstrap likelihood -15250.877480, best rearrangement setting 13
+Bootstrap[93]: Time 12.863670 seconds, bootstrap likelihood -15704.336043, best rearrangement setting 13
+Bootstrap[364]: Time 11.474311 seconds, bootstrap likelihood -15023.834010, best rearrangement setting 13
+Bootstrap[222]: Time 8.851929 seconds, bootstrap likelihood -14638.802200, best rearrangement setting 11
+Bootstrap[400]: Time 10.974377 seconds, bootstrap likelihood -14118.304172, best rearrangement setting 6
+Bootstrap[130]: Time 11.753436 seconds, bootstrap likelihood -14876.966172, best rearrangement setting 6
+Bootstrap[79]: Time 9.137127 seconds, bootstrap likelihood -14290.428974, best rearrangement setting 5
+Bootstrap[421]: Time 8.707504 seconds, bootstrap likelihood -14242.121451, best rearrangement setting 5
+Bootstrap[292]: Time 12.433430 seconds, bootstrap likelihood -13933.385616, best rearrangement setting 6
+Bootstrap[61]: Time 9.445248 seconds, bootstrap likelihood -14834.818297, best rearrangement setting 10
+Bootstrap[349]: Time 8.663844 seconds, bootstrap likelihood -13694.996649, best rearrangement setting 15
+Bootstrap[238]: Time 11.892273 seconds, bootstrap likelihood -14125.210345, best rearrangement setting 6
+Bootstrap[328]: Time 12.454964 seconds, bootstrap likelihood -13353.356005, best rearrangement setting 9
+Bootstrap[5]: Time 9.604365 seconds, bootstrap likelihood -14520.014298, best rearrangement setting 10
+Bootstrap[313]: Time 9.435560 seconds, bootstrap likelihood -14062.569618, best rearrangement setting 15
+Bootstrap[169]: Time 9.967601 seconds, bootstrap likelihood -14840.691876, best rearrangement setting 12
+Bootstrap[385]: Time 9.086123 seconds, bootstrap likelihood -14817.531763, best rearrangement setting 5
+Bootstrap[205]: Time 9.721474 seconds, bootstrap likelihood -14314.592225, best rearrangement setting 13
+Bootstrap[472]: Time 11.257212 seconds, bootstrap likelihood -14797.296004, best rearrangement setting 13
+Bootstrap[493]: Time 9.362574 seconds, bootstrap likelihood -14340.032074, best rearrangement setting 7
+Bootstrap[22]: Time 13.180038 seconds, bootstrap likelihood -14537.505093, best rearrangement setting 7
+Bootstrap[40]: Time 10.982940 seconds, bootstrap likelihood -14552.648582, best rearrangement setting 14
+Bootstrap[185]: Time 11.077880 seconds, bootstrap likelihood -14291.290707, best rearrangement setting 11
+Bootstrap[436]: Time 11.325155 seconds, bootstrap likelihood -14909.813807, best rearrangement setting 9
+Bootstrap[112]: Time 10.091825 seconds, bootstrap likelihood -14370.185687, best rearrangement setting 10
+Bootstrap[454]: Time 11.588257 seconds, bootstrap likelihood -14911.100447, best rearrangement setting 5
+Bootstrap[257]: Time 10.861835 seconds, bootstrap likelihood -15672.144005, best rearrangement setting 5
+Bootstrap[149]: Time 12.866413 seconds, bootstrap likelihood -15048.449344, best rearrangement setting 8
+Bootstrap[223]: Time 10.091662 seconds, bootstrap likelihood -15918.266257, best rearrangement setting 7
+Bootstrap[274]: Time 11.365655 seconds, bootstrap likelihood -14910.422803, best rearrangement setting 10
+Bootstrap[80]: Time 9.405327 seconds, bootstrap likelihood -14194.926877, best rearrangement setting 12
+Bootstrap[422]: Time 8.378607 seconds, bootstrap likelihood -15256.826862, best rearrangement setting 11
+Bootstrap[401]: Time 12.508434 seconds, bootstrap likelihood -15871.591472, best rearrangement setting 14
+Bootstrap[170]: Time 7.730703 seconds, bootstrap likelihood -14421.526349, best rearrangement setting 9
+Bootstrap[94]: Time 13.198608 seconds, bootstrap likelihood -14979.997772, best rearrangement setting 14
+Bootstrap[62]: Time 9.250883 seconds, bootstrap likelihood -14685.644038, best rearrangement setting 10
+Bootstrap[131]: Time 12.262395 seconds, bootstrap likelihood -14842.230955, best rearrangement setting 7
+Bootstrap[206]: Time 7.992200 seconds, bootstrap likelihood -15363.323952, best rearrangement setting 13
+Bootstrap[365]: Time 13.635810 seconds, bootstrap likelihood -15871.980246, best rearrangement setting 12
+Bootstrap[350]: Time 9.701992 seconds, bootstrap likelihood -15508.735156, best rearrangement setting 15
+Bootstrap[386]: Time 8.576980 seconds, bootstrap likelihood -15106.429297, best rearrangement setting 7
+Bootstrap[494]: Time 7.824588 seconds, bootstrap likelihood -14884.906145, best rearrangement setting 6
+Bootstrap[293]: Time 12.010566 seconds, bootstrap likelihood -13892.768568, best rearrangement setting 7
+Bootstrap[314]: Time 10.915937 seconds, bootstrap likelihood -15377.824738, best rearrangement setting 12
+Bootstrap[239]: Time 12.622767 seconds, bootstrap likelihood -13928.606874, best rearrangement setting 14
+Bootstrap[6]: Time 12.587329 seconds, bootstrap likelihood -14966.560338, best rearrangement setting 6
+Bootstrap[473]: Time 11.934610 seconds, bootstrap likelihood -15205.554208, best rearrangement setting 8
+Bootstrap[186]: Time 10.521189 seconds, bootstrap likelihood -14016.493203, best rearrangement setting 14
+Bootstrap[329]: Time 13.780430 seconds, bootstrap likelihood -15844.730606, best rearrangement setting 9
+Bootstrap[23]: Time 11.975696 seconds, bootstrap likelihood -14200.972132, best rearrangement setting 11
+Bootstrap[455]: Time 10.312536 seconds, bootstrap likelihood -14441.093553, best rearrangement setting 7
+Bootstrap[224]: Time 8.995111 seconds, bootstrap likelihood -15550.281771, best rearrangement setting 14
+Bootstrap[437]: Time 11.459680 seconds, bootstrap likelihood -13842.651643, best rearrangement setting 6
+Bootstrap[41]: Time 12.212696 seconds, bootstrap likelihood -13775.194919, best rearrangement setting 12
+Bootstrap[81]: Time 11.329576 seconds, bootstrap likelihood -14743.266675, best rearrangement setting 6
+Bootstrap[258]: Time 14.909499 seconds, bootstrap likelihood -14885.060711, best rearrangement setting 8
+Bootstrap[63]: Time 11.997029 seconds, bootstrap likelihood -14479.325657, best rearrangement setting 12
+Bootstrap[495]: Time 10.978358 seconds, bootstrap likelihood -14446.653241, best rearrangement setting 8
+Bootstrap[275]: Time 14.775741 seconds, bootstrap likelihood -14984.925707, best rearrangement setting 6
+Bootstrap[387]: Time 11.105297 seconds, bootstrap likelihood -14566.379343, best rearrangement setting 9
+Bootstrap[294]: Time 9.323748 seconds, bootstrap likelihood -14804.841772, best rearrangement setting 5
+Bootstrap[402]: Time 12.246931 seconds, bootstrap likelihood -14580.127624, best rearrangement setting 8
+Bootstrap[351]: Time 11.352769 seconds, bootstrap likelihood -14633.681769, best rearrangement setting 9
+Bootstrap[150]: Time 14.874363 seconds, bootstrap likelihood -15388.625041, best rearrangement setting 6
+Bootstrap[207]: Time 11.515362 seconds, bootstrap likelihood -14694.982923, best rearrangement setting 10
+Bootstrap[315]: Time 9.303249 seconds, bootstrap likelihood -14621.324304, best rearrangement setting 9
+Bootstrap[171]: Time 12.180174 seconds, bootstrap likelihood -14322.463006, best rearrangement setting 11
+Bootstrap[132]: Time 11.596319 seconds, bootstrap likelihood -14135.107849, best rearrangement setting 13
+Bootstrap[95]: Time 12.048124 seconds, bootstrap likelihood -14429.274643, best rearrangement setting 5
+Bootstrap[423]: Time 13.525101 seconds, bootstrap likelihood -15604.739860, best rearrangement setting 8
+Bootstrap[113]: Time 17.060401 seconds, bootstrap likelihood -15345.444097, best rearrangement setting 6
+Bootstrap[366]: Time 11.589611 seconds, bootstrap likelihood -15100.221578, best rearrangement setting 11
+Bootstrap[187]: Time 9.250369 seconds, bootstrap likelihood -14221.331438, best rearrangement setting 7
+Bootstrap[7]: Time 10.080154 seconds, bootstrap likelihood -14330.320756, best rearrangement setting 14
+Bootstrap[474]: Time 10.450534 seconds, bootstrap likelihood -14689.046030, best rearrangement setting 13
+Bootstrap[240]: Time 11.857085 seconds, bootstrap likelihood -14053.449435, best rearrangement setting 15
+Bootstrap[225]: Time 9.647176 seconds, bootstrap likelihood -14615.165571, best rearrangement setting 5
+Bootstrap[330]: Time 10.661598 seconds, bootstrap likelihood -14363.141719, best rearrangement setting 13
+Bootstrap[24]: Time 10.476991 seconds, bootstrap likelihood -14711.605293, best rearrangement setting 10
+Bootstrap[42]: Time 9.993095 seconds, bootstrap likelihood -14633.507006, best rearrangement setting 14
+Bootstrap[456]: Time 10.544710 seconds, bootstrap likelihood -15053.429731, best rearrangement setting 9
+Bootstrap[438]: Time 10.692324 seconds, bootstrap likelihood -14725.347428, best rearrangement setting 5
+Bootstrap[424]: Time 8.703086 seconds, bootstrap likelihood -14275.881816, best rearrangement setting 6
+Bootstrap[496]: Time 8.721956 seconds, bootstrap likelihood -14336.347983, best rearrangement setting 6
+Bootstrap[64]: Time 9.089775 seconds, bootstrap likelihood -16071.350532, best rearrangement setting 5
+Bootstrap[208]: Time 9.126987 seconds, bootstrap likelihood -14455.655730, best rearrangement setting 5
+Bootstrap[316]: Time 9.192247 seconds, bootstrap likelihood -15170.230300, best rearrangement setting 11
+Bootstrap[352]: Time 9.199194 seconds, bootstrap likelihood -14663.335950, best rearrangement setting 6
+Bootstrap[367]: Time 10.175340 seconds, bootstrap likelihood -13438.379937, best rearrangement setting 10
+Bootstrap[172]: Time 10.283433 seconds, bootstrap likelihood -13997.816975, best rearrangement setting 11
+Bootstrap[388]: Time 10.401592 seconds, bootstrap likelihood -15462.936292, best rearrangement setting 11
+Bootstrap[259]: Time 11.014796 seconds, bootstrap likelihood -14030.943324, best rearrangement setting 8
+Bootstrap[114]: Time 11.319144 seconds, bootstrap likelihood -14957.123894, best rearrangement setting 9
+Bootstrap[82]: Time 11.722225 seconds, bootstrap likelihood -15245.759652, best rearrangement setting 7
+Bootstrap[96]: Time 12.105573 seconds, bootstrap likelihood -15013.123501, best rearrangement setting 5
+Bootstrap[295]: Time 12.365897 seconds, bootstrap likelihood -14442.883746, best rearrangement setting 9
+Bootstrap[403]: Time 12.530311 seconds, bootstrap likelihood -15404.305797, best rearrangement setting 11
+Bootstrap[8]: Time 10.436109 seconds, bootstrap likelihood -15064.425260, best rearrangement setting 5
+Bootstrap[151]: Time 12.848417 seconds, bootstrap likelihood -14165.562382, best rearrangement setting 6
+Bootstrap[226]: Time 9.316379 seconds, bootstrap likelihood -14794.497822, best rearrangement setting 8
+Bootstrap[475]: Time 10.028003 seconds, bootstrap likelihood -14082.959899, best rearrangement setting 12
+Bootstrap[276]: Time 13.296724 seconds, bootstrap likelihood -15195.551961, best rearrangement setting 12
+Bootstrap[133]: Time 13.612313 seconds, bootstrap likelihood -15113.163621, best rearrangement setting 11
+Bootstrap[188]: Time 12.142546 seconds, bootstrap likelihood -14955.051820, best rearrangement setting 11
+Bootstrap[331]: Time 12.461374 seconds, bootstrap likelihood -14438.093133, best rearrangement setting 9
+Bootstrap[497]: Time 8.261769 seconds, bootstrap likelihood -14712.338675, best rearrangement setting 8
+Bootstrap[25]: Time 12.793830 seconds, bootstrap likelihood -14994.082746, best rearrangement setting 9
+Bootstrap[43]: Time 12.786978 seconds, bootstrap likelihood -15378.496246, best rearrangement setting 15
+Bootstrap[241]: Time 14.292083 seconds, bootstrap likelihood -14533.314575, best rearrangement setting 13
+Bootstrap[65]: Time 9.026891 seconds, bootstrap likelihood -14799.734355, best rearrangement setting 9
+Bootstrap[173]: Time 7.953826 seconds, bootstrap likelihood -15168.725634, best rearrangement setting 6
+Bootstrap[425]: Time 9.576390 seconds, bootstrap likelihood -15534.429480, best rearrangement setting 13
+Bootstrap[317]: Time 9.197788 seconds, bootstrap likelihood -15395.296745, best rearrangement setting 5
+Bootstrap[439]: Time 13.478972 seconds, bootstrap likelihood -14409.953549, best rearrangement setting 11
+Bootstrap[389]: Time 8.223114 seconds, bootstrap likelihood -14271.340713, best rearrangement setting 11
+Bootstrap[457]: Time 14.160817 seconds, bootstrap likelihood -15341.014479, best rearrangement setting 6
+Bootstrap[353]: Time 9.778586 seconds, bootstrap likelihood -15131.002248, best rearrangement setting 8
+Bootstrap[209]: Time 10.681972 seconds, bootstrap likelihood -14691.816715, best rearrangement setting 8
+Bootstrap[83]: Time 9.673115 seconds, bootstrap likelihood -14348.701473, best rearrangement setting 10
+Bootstrap[368]: Time 12.005252 seconds, bootstrap likelihood -14531.817964, best rearrangement setting 6
+Bootstrap[227]: Time 9.479976 seconds, bootstrap likelihood -13792.486325, best rearrangement setting 10
+Bootstrap[260]: Time 12.198806 seconds, bootstrap likelihood -14815.206434, best rearrangement setting 7
+Bootstrap[97]: Time 11.578448 seconds, bootstrap likelihood -14516.640609, best rearrangement setting 11
+Bootstrap[404]: Time 11.812495 seconds, bootstrap likelihood -14618.493203, best rearrangement setting 9
+Bootstrap[296]: Time 12.100846 seconds, bootstrap likelihood -13904.184066, best rearrangement setting 10
+Bootstrap[115]: Time 13.472438 seconds, bootstrap likelihood -14612.001847, best rearrangement setting 5
+Bootstrap[498]: Time 7.965323 seconds, bootstrap likelihood -14731.590944, best rearrangement setting 14
+Bootstrap[9]: Time 12.492897 seconds, bootstrap likelihood -15669.577478, best rearrangement setting 7
+Bootstrap[152]: Time 12.409627 seconds, bootstrap likelihood -14751.576873, best rearrangement setting 8
+Bootstrap[476]: Time 12.159231 seconds, bootstrap likelihood -14722.714382, best rearrangement setting 5
+Bootstrap[277]: Time 12.193029 seconds, bootstrap likelihood -14029.784116, best rearrangement setting 14
+Bootstrap[66]: Time 8.250940 seconds, bootstrap likelihood -15305.948465, best rearrangement setting 7
+Bootstrap[318]: Time 8.033165 seconds, bootstrap likelihood -14863.371628, best rearrangement setting 13
+Bootstrap[134]: Time 12.955581 seconds, bootstrap likelihood -14950.339606, best rearrangement setting 6
+Bootstrap[174]: Time 8.400470 seconds, bootstrap likelihood -14214.405912, best rearrangement setting 14
+Bootstrap[189]: Time 12.656302 seconds, bootstrap likelihood -14388.796531, best rearrangement setting 5
+Bootstrap[426]: Time 9.029451 seconds, bootstrap likelihood -15154.729811, best rearrangement setting 9
+Bootstrap[210]: Time 8.021634 seconds, bootstrap likelihood -13815.754186, best rearrangement setting 5
+Bootstrap[354]: Time 8.962353 seconds, bootstrap likelihood -14480.035373, best rearrangement setting 15
+Bootstrap[390]: Time 9.322926 seconds, bootstrap likelihood -13876.806473, best rearrangement setting 7
+Bootstrap[44]: Time 11.595433 seconds, bootstrap likelihood -14419.668169, best rearrangement setting 9
+Bootstrap[26]: Time 12.285070 seconds, bootstrap likelihood -14714.668768, best rearrangement setting 7
+Bootstrap[84]: Time 8.554220 seconds, bootstrap likelihood -15694.514127, best rearrangement setting 13
+Bootstrap[332]: Time 13.506153 seconds, bootstrap likelihood -15307.264034, best rearrangement setting 13
+Bootstrap[242]: Time 13.436942 seconds, bootstrap likelihood -14772.178691, best rearrangement setting 5
+Bootstrap[228]: Time 9.070404 seconds, bootstrap likelihood -14280.145221, best rearrangement setting 12
+Bootstrap[440]: Time 13.495512 seconds, bootstrap likelihood -15789.140137, best rearrangement setting 12
+Bootstrap[458]: Time 13.530336 seconds, bootstrap likelihood -15167.205827, best rearrangement setting 14
+Bootstrap[369]: Time 11.415216 seconds, bootstrap likelihood -14670.858980, best rearrangement setting 14
+Bootstrap[499]: Time 9.045566 seconds, bootstrap likelihood -15439.547861, best rearrangement setting 15
+Bootstrap[175]: Time 8.049639 seconds, bootstrap likelihood -14750.853377, best rearrangement setting 13
+Bootstrap[153]: Time 9.505581 seconds, bootstrap likelihood -15522.305283, best rearrangement setting 5
+Bootstrap[319]: Time 8.475619 seconds, bootstrap likelihood -15021.963871, best rearrangement setting 7
+Bootstrap[67]: Time 8.805667 seconds, bootstrap likelihood -14500.603383, best rearrangement setting 12
+Bootstrap[98]: Time 11.561526 seconds, bootstrap likelihood -15053.832964, best rearrangement setting 14
+Bootstrap[10]: Time 10.276726 seconds, bootstrap likelihood -14569.423318, best rearrangement setting 7
+Bootstrap[261]: Time 12.402260 seconds, bootstrap likelihood -14593.770156, best rearrangement setting 15
+Bootstrap[211]: Time 7.946574 seconds, bootstrap likelihood -14795.339260, best rearrangement setting 6
+Bootstrap[297]: Time 11.349956 seconds, bootstrap likelihood -14759.211165, best rearrangement setting 15
+Bootstrap[405]: Time 11.669591 seconds, bootstrap likelihood -14224.664010, best rearrangement setting 14
+Bootstrap[477]: Time 10.685741 seconds, bootstrap likelihood -13579.324581, best rearrangement setting 13
+Bootstrap[427]: Time 8.769162 seconds, bootstrap likelihood -13923.410496, best rearrangement setting 7
+Bootstrap[355]: Time 8.317993 seconds, bootstrap likelihood -15207.404474, best rearrangement setting 10
+Bootstrap[116]: Time 11.659301 seconds, bootstrap likelihood -14802.947866, best rearrangement setting 15
+Bootstrap[278]: Time 11.999656 seconds, bootstrap likelihood -14731.884374, best rearrangement setting 8
+Bootstrap[135]: Time 11.123565 seconds, bootstrap likelihood -14148.592294, best rearrangement setting 11
+Bootstrap[190]: Time 10.723062 seconds, bootstrap likelihood -15145.327527, best rearrangement setting 13
+Bootstrap[391]: Time 10.600495 seconds, bootstrap likelihood -15532.035300, best rearrangement setting 14
+Bootstrap[45]: Time 9.764643 seconds, bootstrap likelihood -16264.882409, best rearrangement setting 6
+Bootstrap[85]: Time 9.432861 seconds, bootstrap likelihood -14772.296826, best rearrangement setting 14
+Bootstrap[229]: Time 8.570307 seconds, bootstrap likelihood -14824.410711, best rearrangement setting 8
+Bootstrap[333]: Time 10.848123 seconds, bootstrap likelihood -14971.586051, best rearrangement setting 15
+Bootstrap[27]: Time 11.695118 seconds, bootstrap likelihood -14575.569078, best rearrangement setting 12
+Bootstrap[441]: Time 11.292484 seconds, bootstrap likelihood -14121.227132, best rearrangement setting 14
+Bootstrap[459]: Time 11.067917 seconds, bootstrap likelihood -14790.586162, best rearrangement setting 8
+Bootstrap[500]: Time 9.470738 seconds, bootstrap likelihood -14041.781791, best rearrangement setting 14
+Bootstrap[320]: Time 8.622253 seconds, bootstrap likelihood -14248.682109, best rearrangement setting 7
+Bootstrap[243]: Time 12.142964 seconds, bootstrap likelihood -15047.711758, best rearrangement setting 10
+Bootstrap[176]: Time 8.914527 seconds, bootstrap likelihood -14200.731840, best rearrangement setting 6
+Bootstrap[11]: Time 8.544628 seconds, bootstrap likelihood -14422.004347, best rearrangement setting 5
+Bootstrap[68]: Time 8.925680 seconds, bootstrap likelihood -14409.317164, best rearrangement setting 10
+Bootstrap[428]: Time 8.508918 seconds, bootstrap likelihood -13643.765021, best rearrangement setting 14
+Bootstrap[356]: Time 8.407081 seconds, bootstrap likelihood -14961.362349, best rearrangement setting 13
+Bootstrap[212]: Time 9.286176 seconds, bootstrap likelihood -14210.894751, best rearrangement setting 11
+Bootstrap[154]: Time 10.766913 seconds, bootstrap likelihood -14562.273330, best rearrangement setting 8
+Bootstrap[370]: Time 12.013279 seconds, bootstrap likelihood -14993.320413, best rearrangement setting 9
+Bootstrap[298]: Time 9.875722 seconds, bootstrap likelihood -14299.655672, best rearrangement setting 8
+Bootstrap[117]: Time 9.634203 seconds, bootstrap likelihood -14381.230789, best rearrangement setting 6
+Bootstrap[99]: Time 11.413714 seconds, bootstrap likelihood -14253.019489, best rearrangement setting 11
+Bootstrap[262]: Time 11.083011 seconds, bootstrap likelihood -14620.487139, best rearrangement setting 14
+Bootstrap[478]: Time 10.853333 seconds, bootstrap likelihood -14607.823117, best rearrangement setting 15
+Bootstrap[406]: Time 11.003241 seconds, bootstrap likelihood -15001.484443, best rearrangement setting 14
+Bootstrap[392]: Time 9.904472 seconds, bootstrap likelihood -14508.740529, best rearrangement setting 8
+Bootstrap[86]: Time 9.497795 seconds, bootstrap likelihood -15269.534098, best rearrangement setting 13
+Bootstrap[191]: Time 11.343612 seconds, bootstrap likelihood -15053.982294, best rearrangement setting 7
+Bootstrap[230]: Time 9.354426 seconds, bootstrap likelihood -14259.247209, best rearrangement setting 14
+Bootstrap[136]: Time 11.840295 seconds, bootstrap likelihood -15191.418073, best rearrangement setting 5
+Bootstrap[46]: Time 11.115247 seconds, bootstrap likelihood -15460.153054, best rearrangement setting 13
+Bootstrap[279]: Time 12.398840 seconds, bootstrap likelihood -15309.717705, best rearrangement setting 10
+Bootstrap[334]: Time 10.174670 seconds, bootstrap likelihood -14199.095827, best rearrangement setting 14
+Bootstrap[321]: Time 8.020521 seconds, bootstrap likelihood -15091.126809, best rearrangement setting 6
+Bootstrap[28]: Time 10.818654 seconds, bootstrap likelihood -14126.163914, best rearrangement setting 10
+Bootstrap[442]: Time 9.348358 seconds, bootstrap likelihood -13612.155758, best rearrangement setting 9
+Bootstrap[501]: Time 9.844262 seconds, bootstrap likelihood -14652.612776, best rearrangement setting 12
+Bootstrap[213]: Time 8.577626 seconds, bootstrap likelihood -13969.433543, best rearrangement setting 9
+Bootstrap[69]: Time 9.865162 seconds, bootstrap likelihood -14166.957671, best rearrangement setting 13
+Bootstrap[357]: Time 9.340045 seconds, bootstrap likelihood -15602.488587, best rearrangement setting 5
+Bootstrap[460]: Time 11.541951 seconds, bootstrap likelihood -14922.029795, best rearrangement setting 12
+Bootstrap[177]: Time 11.485868 seconds, bootstrap likelihood -14762.758093, best rearrangement setting 10
+Bootstrap[429]: Time 10.679672 seconds, bootstrap likelihood -15272.925916, best rearrangement setting 14
+Bootstrap[12]: Time 11.594707 seconds, bootstrap likelihood -16012.955323, best rearrangement setting 8
+Bootstrap[244]: Time 12.556314 seconds, bootstrap likelihood -15086.021097, best rearrangement setting 11
+Bootstrap[393]: Time 8.097610 seconds, bootstrap likelihood -14659.969280, best rearrangement setting 15
+Bootstrap[371]: Time 11.030583 seconds, bootstrap likelihood -14866.747436, best rearrangement setting 9
+Bootstrap[299]: Time 12.223284 seconds, bootstrap likelihood -14471.537946, best rearrangement setting 15
+Bootstrap[118]: Time 11.881321 seconds, bootstrap likelihood -16070.400511, best rearrangement setting 13
+Bootstrap[87]: Time 9.243651 seconds, bootstrap likelihood -14636.773756, best rearrangement setting 13
+Bootstrap[100]: Time 11.877957 seconds, bootstrap likelihood -14459.935655, best rearrangement setting 10
+Bootstrap[155]: Time 13.013971 seconds, bootstrap likelihood -15103.461504, best rearrangement setting 15
+Bootstrap[479]: Time 11.871831 seconds, bootstrap likelihood -14633.528187, best rearrangement setting 6
+Bootstrap[263]: Time 12.223818 seconds, bootstrap likelihood -14296.250520, best rearrangement setting 12
+Bootstrap[231]: Time 9.477310 seconds, bootstrap likelihood -14153.238899, best rearrangement setting 9
+Bootstrap[407]: Time 12.083200 seconds, bootstrap likelihood -15362.454913, best rearrangement setting 12
+Bootstrap[322]: Time 8.550944 seconds, bootstrap likelihood -13505.599053, best rearrangement setting 14
+Bootstrap[280]: Time 10.973162 seconds, bootstrap likelihood -15193.179410, best rearrangement setting 5
+Bootstrap[47]: Time 11.721430 seconds, bootstrap likelihood -15072.678946, best rearrangement setting 7
+Bootstrap[137]: Time 12.143123 seconds, bootstrap likelihood -14519.202262, best rearrangement setting 14
+Bootstrap[214]: Time 8.781042 seconds, bootstrap likelihood -13390.649023, best rearrangement setting 12
+Bootstrap[29]: Time 10.861971 seconds, bootstrap likelihood -15155.241520, best rearrangement setting 6
+Bootstrap[443]: Time 10.107794 seconds, bootstrap likelihood -15502.062366, best rearrangement setting 15
+Bootstrap[192]: Time 13.652809 seconds, bootstrap likelihood -14186.653162, best rearrangement setting 10
+Bootstrap[502]: Time 9.688931 seconds, bootstrap likelihood -15791.742949, best rearrangement setting 8
+Bootstrap[335]: Time 12.478328 seconds, bootstrap likelihood -14965.082035, best rearrangement setting 7
+Bootstrap[358]: Time 9.483988 seconds, bootstrap likelihood -15139.397342, best rearrangement setting 15
+Bootstrap[70]: Time 9.955204 seconds, bootstrap likelihood -14723.007969, best rearrangement setting 8
+Bootstrap[430]: Time 8.712674 seconds, bootstrap likelihood -14757.610579, best rearrangement setting 6
+Bootstrap[178]: Time 8.971590 seconds, bootstrap likelihood -15383.802254, best rearrangement setting 11
+Bootstrap[461]: Time 9.978929 seconds, bootstrap likelihood -15018.322404, best rearrangement setting 5
+Bootstrap[394]: Time 9.511292 seconds, bootstrap likelihood -14388.980161, best rearrangement setting 5
+Bootstrap[13]: Time 10.560001 seconds, bootstrap likelihood -15623.882330, best rearrangement setting 7
+Bootstrap[88]: Time 8.917643 seconds, bootstrap likelihood -14667.868099, best rearrangement setting 14
+Bootstrap[245]: Time 11.142139 seconds, bootstrap likelihood -14938.561582, best rearrangement setting 11
+Bootstrap[232]: Time 9.317145 seconds, bootstrap likelihood -14980.632484, best rearrangement setting 7
+Bootstrap[372]: Time 13.050970 seconds, bootstrap likelihood -15550.208414, best rearrangement setting 11
+Bootstrap[119]: Time 12.181023 seconds, bootstrap likelihood -14862.426984, best rearrangement setting 13
+Bootstrap[323]: Time 10.107942 seconds, bootstrap likelihood -15021.739220, best rearrangement setting 12
+Bootstrap[480]: Time 12.115005 seconds, bootstrap likelihood -14491.022928, best rearrangement setting 8
+Bootstrap[408]: Time 11.756501 seconds, bootstrap likelihood -14821.444349, best rearrangement setting 14
+Bootstrap[101]: Time 12.710051 seconds, bootstrap likelihood -14661.567788, best rearrangement setting 11
+Bootstrap[264]: Time 12.626792 seconds, bootstrap likelihood -14901.478829, best rearrangement setting 15
+Bootstrap[300]: Time 13.769252 seconds, bootstrap likelihood -15094.305772, best rearrangement setting 6
+Bootstrap[156]: Time 13.811552 seconds, bootstrap likelihood -14350.791856, best rearrangement setting 7
+Bootstrap[503]: Time 9.753947 seconds, bootstrap likelihood -14140.688143, best rearrangement setting 13
+Bootstrap[215]: Time 10.454584 seconds, bootstrap likelihood -13991.100531, best rearrangement setting 12
+Bootstrap[444]: Time 10.609427 seconds, bootstrap likelihood -15112.412355, best rearrangement setting 5
+Bootstrap[193]: Time 10.728177 seconds, bootstrap likelihood -13493.177924, best rearrangement setting 15
+Bootstrap[431]: Time 9.486796 seconds, bootstrap likelihood -14433.323709, best rearrangement setting 12
+Bootstrap[179]: Time 9.679053 seconds, bootstrap likelihood -14946.297925, best rearrangement setting 12
+Bootstrap[71]: Time 9.893331 seconds, bootstrap likelihood -14622.757400, best rearrangement setting 12
+Bootstrap[48]: Time 12.556072 seconds, bootstrap likelihood -14158.957544, best rearrangement setting 11
+Bootstrap[281]: Time 13.497566 seconds, bootstrap likelihood -13883.649632, best rearrangement setting 14
+Bootstrap[359]: Time 10.908897 seconds, bootstrap likelihood -14344.699408, best rearrangement setting 12
+Bootstrap[89]: Time 7.857320 seconds, bootstrap likelihood -13736.467588, best rearrangement setting 12
+Bootstrap[395]: Time 9.548142 seconds, bootstrap likelihood -14807.414569, best rearrangement setting 12
+Bootstrap[138]: Time 14.482403 seconds, bootstrap likelihood -14683.770875, best rearrangement setting 12
+Bootstrap[30]: Time 13.926901 seconds, bootstrap likelihood -15383.106757, best rearrangement setting 15
+Bootstrap[462]: Time 12.032362 seconds, bootstrap likelihood -14017.631008, best rearrangement setting 12
+Bootstrap[336]: Time 13.833666 seconds, bootstrap likelihood -14397.694029, best rearrangement setting 9
+Bootstrap[233]: Time 9.006406 seconds, bootstrap likelihood -14758.635021, best rearrangement setting 12
+Bootstrap[14]: Time 12.198208 seconds, bootstrap likelihood -15369.113883, best rearrangement setting 12
+Bootstrap[246]: Time 11.555471 seconds, bootstrap likelihood -15193.598614, best rearrangement setting 8
+Bootstrap[373]: Time 11.302173 seconds, bootstrap likelihood -14652.985202, best rearrangement setting 12
+Bootstrap[120]: Time 11.099330 seconds, bootstrap likelihood -14355.928244, best rearrangement setting 5
+Bootstrap[301]: Time 10.731596 seconds, bootstrap likelihood -14993.075861, best rearrangement setting 5
+Bootstrap[409]: Time 11.576316 seconds, bootstrap likelihood -13996.761506, best rearrangement setting 5
+Bootstrap[102]: Time 12.023257 seconds, bootstrap likelihood -14863.689300, best rearrangement setting 9
+Bootstrap[481]: Time 12.707084 seconds, bootstrap likelihood -15328.084039, best rearrangement setting 13
+Bootstrap[265]: Time 12.019080 seconds, bootstrap likelihood -13620.326760, best rearrangement setting 12
+Bootstrap[157]: Time 11.434512 seconds, bootstrap likelihood -14284.318916, best rearrangement setting 11
+Bootstrap[445]: Time 10.997882 seconds, bootstrap likelihood -13932.099513, best rearrangement setting 9
+Bootstrap[194]: Time 11.161252 seconds, bootstrap likelihood -14496.994179, best rearrangement setting 8
+Bootstrap[282]: Time 11.254955 seconds, bootstrap likelihood -14377.302972, best rearrangement setting 10
+Bootstrap[49]: Time 11.560290 seconds, bootstrap likelihood -14401.735229, best rearrangement setting 10
+Bootstrap[31]: Time 11.429312 seconds, bootstrap likelihood -15366.497920, best rearrangement setting 9
+Bootstrap[139]: Time 12.234421 seconds, bootstrap likelihood -15194.492402, best rearrangement setting 9
+Bootstrap[463]: Time 12.280513 seconds, bootstrap likelihood -13584.187074, best rearrangement setting 11
+Bootstrap[15]: Time 10.853871 seconds, bootstrap likelihood -15168.557392, best rearrangement setting 15
+Bootstrap[337]: Time 12.688348 seconds, bootstrap likelihood -16017.601149, best rearrangement setting 8
+Bootstrap[247]: Time 12.315178 seconds, bootstrap likelihood -13516.029347, best rearrangement setting 10
+Bootstrap[374]: Time 11.255764 seconds, bootstrap likelihood -15669.099719, best rearrangement setting 5
+Bootstrap[103]: Time 9.911238 seconds, bootstrap likelihood -14590.425396, best rearrangement setting 5
+Bootstrap[121]: Time 12.106582 seconds, bootstrap likelihood -14675.095498, best rearrangement setting 7
+Bootstrap[410]: Time 11.524621 seconds, bootstrap likelihood -15550.964612, best rearrangement setting 11
+Bootstrap[302]: Time 11.990535 seconds, bootstrap likelihood -15435.618459, best rearrangement setting 15
+Bootstrap[446]: Time 11.083692 seconds, bootstrap likelihood -14269.070856, best rearrangement setting 6
+Bootstrap[482]: Time 12.236771 seconds, bootstrap likelihood -15157.182060, best rearrangement setting 11
+Bootstrap[158]: Time 12.180692 seconds, bootstrap likelihood -14854.867435, best rearrangement setting 14
+Bootstrap[283]: Time 10.614307 seconds, bootstrap likelihood -15135.575819, best rearrangement setting 14
+Bootstrap[266]: Time 12.666446 seconds, bootstrap likelihood -14187.863161, best rearrangement setting 9
+Bootstrap[195]: Time 12.326923 seconds, bootstrap likelihood -14173.366926, best rearrangement setting 10
+Bootstrap[50]: Time 12.252407 seconds, bootstrap likelihood -14945.250818, best rearrangement setting 7
+Bootstrap[464]: Time 10.358505 seconds, bootstrap likelihood -14824.288692, best rearrangement setting 8
+Bootstrap[32]: Time 11.627963 seconds, bootstrap likelihood -14798.987889, best rearrangement setting 15
+Bootstrap[16]: Time 12.459709 seconds, bootstrap likelihood -14959.742217, best rearrangement setting 12
+Bootstrap[140]: Time 13.502795 seconds, bootstrap likelihood -12945.863003, best rearrangement setting 11
+Bootstrap[338]: Time 12.395764 seconds, bootstrap likelihood -13766.861951, best rearrangement setting 10
+Bootstrap[248]: Time 11.607959 seconds, bootstrap likelihood -14138.615687, best rearrangement setting 6
+Bootstrap[104]: Time 10.038153 seconds, bootstrap likelihood -14704.843222, best rearrangement setting 5
+Bootstrap[411]: Time 9.312592 seconds, bootstrap likelihood -15280.594106, best rearrangement setting 14
+Bootstrap[375]: Time 11.802979 seconds, bootstrap likelihood -14736.503953, best rearrangement setting 15
+Bootstrap[303]: Time 9.915969 seconds, bootstrap likelihood -15112.987697, best rearrangement setting 6
+Bootstrap[122]: Time 11.953022 seconds, bootstrap likelihood -14210.124756, best rearrangement setting 8
+Bootstrap[447]: Time 10.903750 seconds, bootstrap likelihood -13967.870826, best rearrangement setting 13
+Bootstrap[284]: Time 10.207568 seconds, bootstrap likelihood -14949.897314, best rearrangement setting 12
+Bootstrap[267]: Time 10.743170 seconds, bootstrap likelihood -14738.976326, best rearrangement setting 8
+Bootstrap[483]: Time 11.330568 seconds, bootstrap likelihood -14469.550758, best rearrangement setting 12
+Bootstrap[196]: Time 11.610515 seconds, bootstrap likelihood -14797.495347, best rearrangement setting 6
+Bootstrap[51]: Time 12.045062 seconds, bootstrap likelihood -15292.323347, best rearrangement setting 14
+Bootstrap[159]: Time 14.087159 seconds, bootstrap likelihood -15873.134450, best rearrangement setting 11
+Bootstrap[33]: Time 12.160985 seconds, bootstrap likelihood -14054.240206, best rearrangement setting 14
+Bootstrap[465]: Time 12.389272 seconds, bootstrap likelihood -14892.524157, best rearrangement setting 13
+Bootstrap[412]: Time 10.517904 seconds, bootstrap likelihood -14657.973533, best rearrangement setting 11
+Bootstrap[17]: Time 12.562364 seconds, bootstrap likelihood -14568.941399, best rearrangement setting 12
+Bootstrap[105]: Time 11.217110 seconds, bootstrap likelihood -14413.467765, best rearrangement setting 12
+Bootstrap[249]: Time 11.867368 seconds, bootstrap likelihood -14193.317984, best rearrangement setting 8
+Bootstrap[339]: Time 12.886972 seconds, bootstrap likelihood -15374.190905, best rearrangement setting 5
+Bootstrap[141]: Time 13.976976 seconds, bootstrap likelihood -15701.818416, best rearrangement setting 11
+Bootstrap[376]: Time 13.259234 seconds, bootstrap likelihood -14571.137897, best rearrangement setting 10
+Bootstrap[448]: Time 11.948237 seconds, bootstrap likelihood -14023.531053, best rearrangement setting 12
+Bootstrap[304]: Time 13.922600 seconds, bootstrap likelihood -15268.633633, best rearrangement setting 8
+Bootstrap[123]: Time 12.940974 seconds, bootstrap likelihood -15180.680020, best rearrangement setting 12
+Bootstrap[197]: Time 10.129892 seconds, bootstrap likelihood -14060.846126, best rearrangement setting 12
+Bootstrap[285]: Time 12.556885 seconds, bootstrap likelihood -15127.360337, best rearrangement setting 7
+Bootstrap[268]: Time 12.709061 seconds, bootstrap likelihood -14493.551631, best rearrangement setting 8
+Bootstrap[484]: Time 12.623982 seconds, bootstrap likelihood -14012.981100, best rearrangement setting 13
+Bootstrap[52]: Time 11.165868 seconds, bootstrap likelihood -14787.940037, best rearrangement setting 13
+Bootstrap[160]: Time 11.169613 seconds, bootstrap likelihood -14637.966754, best rearrangement setting 5
+Bootstrap[466]: Time 10.338779 seconds, bootstrap likelihood -14777.388350, best rearrangement setting 7
+Bootstrap[34]: Time 11.973312 seconds, bootstrap likelihood -13927.238349, best rearrangement setting 7
+Bootstrap[413]: Time 11.788441 seconds, bootstrap likelihood -15178.683632, best rearrangement setting 12
+Bootstrap[250]: Time 10.985657 seconds, bootstrap likelihood -14071.562372, best rearrangement setting 13
+Bootstrap[340]: Time 10.555137 seconds, bootstrap likelihood -14916.486078, best rearrangement setting 9
+Bootstrap[106]: Time 11.513665 seconds, bootstrap likelihood -14358.281931, best rearrangement setting 9
+Bootstrap[286]: Time 9.145239 seconds, bootstrap likelihood -14454.828894, best rearrangement setting 14
+Bootstrap[142]: Time 12.620881 seconds, bootstrap likelihood -15089.657808, best rearrangement setting 10
+Bootstrap[377]: Time 11.262230 seconds, bootstrap likelihood -15342.864271, best rearrangement setting 12
+Bootstrap[305]: Time 10.613334 seconds, bootstrap likelihood -15377.660371, best rearrangement setting 12
+Bootstrap[124]: Time 10.979950 seconds, bootstrap likelihood -14269.367841, best rearrangement setting 15
+Bootstrap[449]: Time 11.525858 seconds, bootstrap likelihood -15463.251156, best rearrangement setting 12
+Bootstrap[161]: Time 9.709793 seconds, bootstrap likelihood -15067.911578, best rearrangement setting 12
+Bootstrap[467]: Time 8.678032 seconds, bootstrap likelihood -15204.725092, best rearrangement setting 12
+Bootstrap[53]: Time 10.702140 seconds, bootstrap likelihood -14526.382097, best rearrangement setting 12
+Bootstrap[485]: Time 12.104218 seconds, bootstrap likelihood -14751.650374, best rearrangement setting 13
+Bootstrap[269]: Time 12.148185 seconds, bootstrap likelihood -15165.766954, best rearrangement setting 12
+Bootstrap[35]: Time 9.906302 seconds, bootstrap likelihood -14338.453164, best rearrangement setting 12
+Bootstrap[251]: Time 10.059658 seconds, bootstrap likelihood -15055.720452, best rearrangement setting 12
+Bootstrap[107]: Time 11.105025 seconds, bootstrap likelihood -14355.647676, best rearrangement setting 12
+Bootstrap[341]: Time 11.434908 seconds, bootstrap likelihood -15106.342914, best rearrangement setting 12
+Bootstrap[287]: Time 10.623128 seconds, bootstrap likelihood -14496.074700, best rearrangement setting 12
+Bootstrap[143]: Time 10.394204 seconds, bootstrap likelihood -15004.592782, best rearrangement setting 12
+Bootstrap[125]: Time 13.011614 seconds, bootstrap likelihood -14593.921799, best rearrangement setting 12
+
+
+Overall Time for 504 Rapid Bootstraps 299.973704 seconds
+Average Time per Rapid Bootstrap 0.595186 seconds
+
+Starting ML Search ...
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14807.004325 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14786.725892 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14783.643525 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14771.582777 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14781.973453 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14770.997779 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14760.999587 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14764.214717 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14805.890037 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14809.278318 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14805.948781 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14784.825427 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14781.046120 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14806.340459 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14769.301309 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14773.853610 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14756.379191 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14787.627900 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14802.600892 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14817.679592 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14772.728953 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14771.387258 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14772.436628 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14778.015850 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14772.457898 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14783.162242 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14782.098509 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14809.252316 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14803.314203 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14783.234809 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14779.892693 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14767.568815 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14756.495489 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14760.418736 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14767.902487 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14778.391008 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14801.845546 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14805.714266 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14801.915266 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14769.673386 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14798.441671 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14776.193002 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14765.054852 with empirical base frequencies
+
+
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14781.059012 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14752.002776 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14783.954000 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14813.891845 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14803.270887 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14773.624529 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14768.600958 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14768.047387 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14768.899651 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14767.269873 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14779.515231 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14778.266746 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14806.295405 with empirical base frequencies
+
+
+Fast ML search on Process 4: Time 90.634642 seconds
+
+Fast ML search on Process 11: Time 92.902462 seconds
+
+Fast ML search on Process 27: Time 96.783003 seconds
+
+Fast ML search on Process 12: Time 103.896107 seconds
+
+Fast ML search on Process 19: Time 106.748290 seconds
+
+Fast ML search on Process 23: Time 107.404648 seconds
+
+Fast ML search on Process 10: Time 118.473025 seconds
+
+Fast ML search on Process 21: Time 119.925588 seconds
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615652 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Fast ML search on Process 3: Time 122.201414 seconds
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615622 with empirical base frequencies
+
+
+Fast ML search on Process 15: Time 124.066797 seconds
+
+Fast ML search on Process 26: Time 124.857918 seconds
+
+Fast ML search on Process 13: Time 125.538339 seconds
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615692 with empirical base frequencies
+
+
+Fast ML search on Process 18: Time 127.057801 seconds
+
+Fast ML search on Process 22: Time 127.473636 seconds
+
+Fast ML search on Process 17: Time 130.574163 seconds
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615658 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615648 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615627 with empirical base frequencies
+
+
+Fast ML search on Process 1: Time 137.737117 seconds
+
+Fast ML optimization finished
+
+Fast ML search on Process 0: Time 138.304863 seconds
+
+Fast ML search on Process 16: Time 139.122680 seconds
+
+Fast ML search on Process 6: Time 142.438832 seconds
+
+Fast ML search on Process 20: Time 142.787873 seconds
+
+Fast ML search on Process 2: Time 142.802615 seconds
+
+Fast ML search on Process 14: Time 143.096998 seconds
+
+Fast ML search on Process 8: Time 144.459653 seconds
+
+Fast ML search on Process 9: Time 144.964411 seconds
+
+Fast ML search on Process 5: Time 145.939848 seconds
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.338015 with empirical base frequencies
+Automatic protein model assignment algorithm using ML criterion:
+
+
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615670 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615623 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615619 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615600 with empirical base frequencies
+
+
+Fast ML search on Process 25: Time 161.491064 seconds
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615733 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Fast ML search on Process 7: Time 163.970495 seconds
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615636 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615720 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615646 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615634 with empirical base frequencies
+
+
+Fast ML search on Process 24: Time 167.572127 seconds
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615589 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615675 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615601 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615653 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615591 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615590 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615626 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615644 with empirical base frequencies
+
+
+Slow ML Search 486 Likelihood: -14750.332513
+Slow ML search on Process 27: Time 87.708937 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615599 with empirical base frequencies
+
+
+Slow ML Search 198 Likelihood: -14750.332412
+Slow ML search on Process 11: Time 93.056909 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Slow ML Search 72 Likelihood: -14750.332412
+Slow ML search on Process 4: Time 95.774792 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615650 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Slow ML Search 216 Likelihood: -14750.332412
+Slow ML search on Process 12: Time 93.591677 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615604 with empirical base frequencies
+
+
+Slow ML Search 342 Likelihood: -14750.332412
+Slow ML search on Process 19: Time 95.116118 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Slow ML Search 414 Likelihood: -14750.332412
+Slow ML search on Process 23: Time 95.963346 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.338013 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615601 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.338013 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615592 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337913 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Slow ML Search 378 Likelihood: -14750.332412
+Slow ML search on Process 21: Time 97.417905 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Slow ML Search 306 Likelihood: -14750.332413
+Slow ML search on Process 17: Time 89.393196 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Slow ML Search 54 Likelihood: -14750.332412
+Slow ML search on Process 3: Time 109.093769 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Slow ML Search 162 Likelihood: -14750.332412
+Slow ML search on Process 9: Time 97.773604 seconds
+Slow ML Search 180 Likelihood: -14750.332412
+Slow ML search on Process 10: Time 126.527390 seconds
+Slow ML Search 468 Likelihood: -14750.332412
+Slow ML search on Process 26: Time 125.675019 seconds
+Slow ML Search 234 Likelihood: -14750.332513
+Slow ML search on Process 13: Time 126.025142 seconds
+Slow ML Search 270 Likelihood: -14750.332513
+Slow ML search on Process 15: Time 127.547339 seconds
+Slow ML Search 396 Likelihood: -14750.332412
+Slow ML search on Process 22: Time 125.292398 seconds
+Slow ML Search 324 Likelihood: -14750.332412
+Slow ML search on Process 18: Time 126.720810 seconds
+Slow ML Search 0 Likelihood: -14750.332412
+Slow ML optimization finished
+
+Slow ML search on Process 0: Time 115.498714 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615652 with empirical base frequencies
+
+
+Slow ML Search 360 Likelihood: -14750.332412
+Slow ML search on Process 20: Time 118.562952 seconds
+Slow ML Search 108 Likelihood: -14750.332412
+Slow ML search on Process 6: Time 119.074747 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615622 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615589 with empirical base frequencies
+
+
+Slow ML Search 288 Likelihood: -14750.332412
+Slow ML search on Process 16: Time 124.387564 seconds
+Slow ML Search 18 Likelihood: -14750.332412
+Slow ML search on Process 1: Time 126.286891 seconds
+Slow ML Search 36 Likelihood: -14750.332412
+Slow ML search on Process 2: Time 123.691993 seconds
+Slow ML Search 252 Likelihood: -14750.332412
+Slow ML search on Process 14: Time 126.707660 seconds
+Slow ML Search 90 Likelihood: -14750.332412
+Slow ML search on Process 5: Time 125.283248 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615658 with empirical base frequencies
+
+
+Slow ML Search 144 Likelihood: -14750.332412
+Slow ML search on Process 8: Time 129.047063 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615627 with empirical base frequencies
+
+
+Slow ML Search 450 Likelihood: -14750.332412
+Slow ML search on Process 25: Time 119.541094 seconds
+Slow ML Search 126 Likelihood: -14750.332413
+Slow ML search on Process 7: Time 119.379260 seconds
+Slow ML Search 432 Likelihood: -14750.332412
+Slow ML search on Process 24: Time 117.071544 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615648 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337915 with empirical base frequencies
+
+
+Thorough ML search on Process 27: Time 103.299818 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 4: Time 103.600925 seconds
+Thorough ML search on Process 11: Time 104.888224 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615670 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615599 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 12: Time 103.626488 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 23: Time 102.175364 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615623 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 19: Time 113.182760 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615675 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 17: Time 101.187069 seconds
+Thorough ML search on Process 21: Time 104.059252 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615619 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615636 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615616 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615646 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615589 with empirical base frequencies
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615630 with empirical base frequencies
+Thorough ML search on Process 3: Time 117.813893 seconds
+
+
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615633 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615591 with empirical base frequencies
+
+
+
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615601 with empirical base frequencies
+
+
+
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337913 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615653 with empirical base frequencies
+
+
+
+
+
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615590 with empirical base frequencies
+
+
+Thorough ML search on Process 9: Time 112.297022 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615626 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615644 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615599 with empirical base frequencies
+
+
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615650 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615601 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615604 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14754.615592 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Thorough ML search on Process 0: Time 132.508448 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Thorough ML search on Process 10: Time 141.663553 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+Thorough ML search on Process 6: Time 126.277144 seconds
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Thorough ML search on Process 20: Time 129.296552 seconds
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+
+
+
+
+
+
+
+
+
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 22: Time 140.640022 seconds
+Thorough ML search on Process 16: Time 129.993098 seconds
+Thorough ML search on Process 1: Time 129.562595 seconds
+Thorough ML search on Process 15: Time 142.007130 seconds
+Thorough ML search on Process 13: Time 142.093107 seconds
+Thorough ML search on Process 18: Time 139.947937 seconds
+Thorough ML search on Process 26: Time 143.291060 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 2: Time 129.857910 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+Thorough ML search on Process 5: Time 130.009102 seconds
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+
+
+Thorough ML search on Process 14: Time 138.027157 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+Thorough ML search on Process 8: Time 134.487842 seconds
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337911 with empirical base frequencies
+
+
+
+
+Automatic protein model assignment algorithm using ML criterion:
+
+	Partition: 0 best-scoring AA model: WAG likelihood -14750.337912 with empirical base frequencies
+
+
+Thorough ML search on Process 7: Time 125.977318 seconds
+Thorough ML search on Process 24: Time 124.691869 seconds
+Thorough ML search on Process 25: Time 128.380943 seconds
+
+Final ML Optimization Likelihood: -14750.332412
+
+Model Information:
+
+Model Parameters of Partition 0, Name: No Name Provided, Type of Data: AA
+alpha: 1.262308
+Tree-Length: 13.257957
+rate A <-> R: 0.705217
+rate A <-> N: 0.651871
+rate A <-> D: 0.944853
+rate A <-> C: 1.313132
+rate A <-> Q: 1.161697
+rate A <-> E: 2.023768
+rate A <-> G: 1.811361
+rate A <-> H: 0.405245
+rate A <-> I: 0.247190
+rate A <-> L: 0.508758
+rate A <-> K: 1.158714
+rate A <-> M: 1.142388
+rate A <-> F: 0.269129
+rate A <-> P: 1.839272
+rate A <-> S: 4.309757
+rate A <-> T: 2.711966
+rate A <-> W: 0.144647
+rate A <-> Y: 0.307794
+rate A <-> V: 2.564804
+rate R <-> N: 0.812328
+rate R <-> D: 0.188337
+rate R <-> C: 0.675324
+rate R <-> Q: 3.881068
+rate R <-> E: 0.561488
+rate R <-> G: 0.747529
+rate R <-> H: 2.732474
+rate R <-> I: 0.239064
+rate R <-> L: 0.636302
+rate R <-> K: 6.842111
+rate R <-> M: 0.873463
+rate R <-> F: 0.131322
+rate R <-> P: 0.868767
+rate R <-> S: 1.565200
+rate R <-> T: 0.708850
+rate R <-> W: 1.488141
+rate R <-> Y: 0.487813
+rate R <-> V: 0.322004
+rate N <-> D: 6.941838
+rate N <-> C: 0.339146
+rate N <-> Q: 1.973636
+rate N <-> E: 1.211049
+rate N <-> G: 1.439096
+rate N <-> H: 5.058353
+rate N <-> I: 0.708624
+rate N <-> L: 0.168166
+rate N <-> K: 3.851035
+rate N <-> M: 0.253437
+rate N <-> F: 0.122949
+rate N <-> P: 0.249423
+rate N <-> S: 5.081291
+rate N <-> T: 2.595553
+rate N <-> W: 0.091950
+rate N <-> Y: 1.388516
+rate N <-> V: 0.250912
+rate D <-> C: 0.038734
+rate D <-> Q: 0.788594
+rate D <-> E: 7.894033
+rate D <-> G: 1.106701
+rate D <-> H: 1.189925
+rate D <-> I: 0.050423
+rate D <-> L: 0.108428
+rate D <-> K: 0.613523
+rate D <-> M: 0.132656
+rate D <-> F: 0.059748
+rate D <-> P: 0.542089
+rate D <-> S: 1.370309
+rate D <-> T: 0.479289
+rate D <-> W: 0.165915
+rate D <-> Y: 0.416441
+rate D <-> V: 0.194769
+rate C <-> Q: 0.126345
+rate C <-> E: 0.027300
+rate C <-> G: 0.392101
+rate C <-> H: 0.318326
+rate C <-> I: 0.217528
+rate C <-> L: 0.491334
+rate C <-> K: 0.094657
+rate C <-> M: 0.499255
+rate C <-> F: 0.508892
+rate C <-> P: 0.139880
+rate C <-> S: 1.799778
+rate C <-> T: 0.655881
+rate C <-> W: 0.916817
+rate C <-> Y: 0.695323
+rate C <-> V: 1.281296
+rate Q <-> E: 6.993045
+rate Q <-> G: 0.421991
+rate Q <-> H: 5.490277
+rate Q <-> I: 0.145650
+rate Q <-> L: 1.111694
+rate Q <-> K: 4.979863
+rate Q <-> M: 1.975707
+rate Q <-> F: 0.127755
+rate Q <-> P: 1.193372
+rate Q <-> S: 1.315472
+rate Q <-> T: 1.096912
+rate Q <-> W: 0.275833
+rate Q <-> Y: 0.291141
+rate Q <-> V: 0.385206
+rate E <-> G: 0.725860
+rate E <-> H: 0.728811
+rate E <-> I: 0.162882
+rate E <-> L: 0.197234
+rate E <-> K: 3.304348
+rate E <-> M: 0.402905
+rate E <-> F: 0.103735
+rate E <-> P: 0.872432
+rate E <-> S: 0.901307
+rate E <-> T: 1.051954
+rate E <-> W: 0.200167
+rate E <-> Y: 0.250985
+rate E <-> V: 0.752728
+rate G <-> H: 0.318886
+rate G <-> I: 0.038932
+rate G <-> L: 0.078380
+rate G <-> K: 0.477616
+rate G <-> M: 0.222597
+rate G <-> F: 0.063840
+rate G <-> P: 0.311419
+rate G <-> S: 1.715597
+rate G <-> T: 0.288741
+rate G <-> W: 0.430853
+rate G <-> Y: 0.132464
+rate G <-> V: 0.239406
+rate H <-> I: 0.176684
+rate H <-> L: 0.638592
+rate H <-> K: 1.138471
+rate H <-> M: 0.516718
+rate H <-> F: 0.868616
+rate H <-> P: 0.890131
+rate H <-> S: 0.946350
+rate H <-> T: 0.605151
+rate H <-> W: 0.335710
+rate H <-> Y: 4.952425
+rate H <-> V: 0.151328
+rate I <-> L: 4.054275
+rate I <-> K: 0.414039
+rate I <-> M: 5.443417
+rate I <-> F: 1.354596
+rate I <-> P: 0.127765
+rate I <-> S: 0.408423
+rate I <-> T: 1.864345
+rate I <-> W: 0.271672
+rate I <-> Y: 0.537212
+rate I <-> V: 10.000000
+rate L <-> K: 0.329299
+rate L <-> M: 6.206155
+rate L <-> F: 2.704371
+rate L <-> P: 0.531681
+rate L <-> S: 0.440769
+rate L <-> T: 0.417606
+rate L <-> W: 0.850637
+rate L <-> Y: 0.509657
+rate L <-> V: 2.301842
+rate K <-> M: 1.194528
+rate K <-> F: 0.113582
+rate K <-> P: 0.712025
+rate K <-> S: 1.236534
+rate K <-> T: 1.773337
+rate K <-> W: 0.175808
+rate K <-> Y: 0.170386
+rate K <-> V: 0.390516
+rate M <-> F: 1.522292
+rate M <-> P: 0.219054
+rate M <-> S: 0.631487
+rate M <-> T: 1.938450
+rate M <-> W: 0.659361
+rate M <-> Y: 0.547782
+rate M <-> V: 2.631851
+rate F <-> P: 0.206416
+rate F <-> S: 0.698005
+rate F <-> T: 0.219788
+rate F <-> W: 1.955736
+rate F <-> Y: 8.252183
+rate F <-> V: 0.830926
+rate P <-> S: 2.062675
+rate P <-> T: 1.016946
+rate P <-> W: 0.178238
+rate P <-> Y: 0.276228
+rate P <-> V: 0.402602
+rate S <-> T: 5.597561
+rate S <-> W: 0.669635
+rate S <-> Y: 1.006218
+rate S <-> V: 0.297571
+rate T <-> W: 0.141746
+rate T <-> Y: 0.372250
+rate T <-> V: 1.774935
+rate W <-> Y: 3.177720
+rate W <-> V: 0.467146
+rate Y <-> V: 0.402401
+
+freq pi(A): 0.055657
+freq pi(R): 0.019042
+freq pi(N): 0.082457
+freq pi(D): 0.045959
+freq pi(C): 0.013165
+freq pi(Q): 0.029210
+freq pi(E): 0.031913
+freq pi(G): 0.109727
+freq pi(H): 0.006230
+freq pi(I): 0.072230
+freq pi(L): 0.094916
+freq pi(K): 0.026389
+freq pi(M): 0.011108
+freq pi(F): 0.049662
+freq pi(P): 0.033382
+freq pi(S): 0.118072
+freq pi(T): 0.084807
+freq pi(W): 0.015398
+freq pi(Y): 0.034264
+freq pi(V): 0.066412
+
+
+ML search took 409.547284 secs or 0.113763 hours
+
+Combined Bootstrap and ML search took 709.519815 secs or 0.197089 hours
+
+Drawing Bootstrap Support Values on best-scoring ML tree ...
+
+
+
+Found 1 tree in File /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_bestTree.muscle-cauris-four-strains
+
+
+
+Found 1 tree in File /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_bestTree.muscle-cauris-four-strains
+
+Program execution info written to /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_info.muscle-cauris-four-strains
+All 504 bootstrapped trees written to: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_bootstrap.muscle-cauris-four-strains
+
+Best-scoring ML tree written to: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_bestTree.muscle-cauris-four-strains
+
+Best-scoring ML tree with support values written to: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_bipartitions.muscle-cauris-four-strains
+
+Best-scoring ML tree with support values as branch labels written to: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_bipartitionsBranchLabels.muscle-cauris-four-strains
+
+Overall execution time for full ML analysis: 709.568910 secs or 0.197102 hours or 0.008213 days
+

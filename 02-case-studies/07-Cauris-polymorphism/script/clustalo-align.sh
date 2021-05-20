@@ -13,7 +13,7 @@
 #$ -N clustalo-align.sh
 #$ -cwd
 #$ -j y
-#$ -o ./log
+#$ -o ./log/
 #----------------------
 # -m ea will email the 
 #    user when the job
@@ -26,7 +26,6 @@ set -e
 set -u
 set -o pipefail
 
-mkdir -p log ../output/gene-tree
 # run the truncate_align.sh to generate the alignment
 in=../input/cauris-four-strains-for-gene-tree.fasta
 length=500
@@ -41,4 +40,4 @@ bioawk -c fastx -v l="$length" '{print ">"$name $comment;print substr($seq,1,l)}
 clustalo -i $trunc -o $align --iter=5 --force --outfmt=fasta -v -v
 
 # refine the alignment with muscle
-muscle -in $align -out ${align/clustal/muscle} -refine
+muscle -in $align -out ${align/clustalo/muscle} -refine
