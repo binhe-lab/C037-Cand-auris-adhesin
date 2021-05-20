@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################
 # author: Bin He
-# date: 2021-04-19
+# date: 2021-05-20
 # title: align
 # use: qsub clustalo-align.sh
 #----------------------
@@ -28,9 +28,9 @@ set -o pipefail
 
 mkdir -p log ../output/gene-tree
 # run the truncate_align.sh to generate the alignment
-in=../input/cauris-five-strains-for-gene-tree.fasta
+in=../input/cauris-four-strains-for-gene-tree.fasta
 length=500
-base=../output/gene-tree/cauris-five-strains-gene-tree
+base=../output/gene-tree/cauris-four-strains-gene-tree
 trunc=${base}_N${length}.faa
 align=${base}_N${length}_clustalo.faa
 
@@ -41,4 +41,4 @@ bioawk -c fastx -v l="$length" '{print ">"$name $comment;print substr($seq,1,l)}
 clustalo -i $trunc -o $align --iter=5 --force --outfmt=fasta -v -v
 
 # refine the alignment with muscle
-muscle -in ../output/gene-tree/cauris-five-strains-gene-tree_N500_clustalo.faa -out ../output/gene-tree/cauris-five-strains-gene-tree_N500_muscle_refined.faa -refine
+muscle -in $align -out ${align/clustal/muscle} -refine

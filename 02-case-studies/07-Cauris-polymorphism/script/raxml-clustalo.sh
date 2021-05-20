@@ -1,7 +1,7 @@
 #!/bin/bash
 ############################
 # author: Bin He
-# date: 2021-04-19
+# date: 2021-05-20
 # title: RAxML tree search
 # use: qsub raxml-clustalo.sh
 #----------------------
@@ -30,9 +30,9 @@ set -o pipefail
 length=400
 
 # set input file
-bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq, 1, l)}' ../output/gene-tree/cauris-five-strains-gene-tree_N500_clustalo.faa >| ../output/gene-tree/cauris-five-strains-clustalo-C${length}.faa
-align=../output/gene-tree/cauris-five-strains-clustalo-C${length}.faa
+bioawk -c fastx -v l="$length" '{print ">"$name;print substr($seq, 1, l)}' ../output/gene-tree/cauris-four-strains-gene-tree_N500_clustalo.faa >| ../output/gene-tree/cauris-four-strains-clustalo-C${length}.faa
+align=../output/gene-tree/cauris-four-strains-clustalo-C${length}.faa
 
 # estimate the tree
 module load openmpi/2.1.2_gcc-8.3.0
-mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n clustalo_${JOB_ID}
+mpirun /Users/bhe2/bin/raxmlHPC-MPI-AVX -f a -x 12345 -p 12345 -# 500 -m PROTGAMMAAUTO -s $align -n clustalo-cauris-four-strains
