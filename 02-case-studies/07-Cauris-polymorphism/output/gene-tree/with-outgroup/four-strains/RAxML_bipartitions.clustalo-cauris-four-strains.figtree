@@ -1,0 +1,156 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=52;
+	taxlabels
+	'PIS49865.1_B8441_Cauris'[&!color=#008000]
+	'PIS50296.1_B8441_Cauris'[&!color=#008000]
+	'PIS50297.1_B8441_Cauris'[&!color=#008000]
+	'PIS50623.1_B8441_Cauris'[&!color=#008000]
+	'PIS52481.1_B8441_Cauris'[&!color=#008000]
+	'PIS52483.1_B8441_Cauris'[&!color=#008000]
+	'PIS55432.1_B8441_Cauris'[&!color=#008000]
+	'PIS56617.1_B8441_Cauris'[&!color=#008000]
+	'PSK74847.1_B11243_Cauris'[&!color=#d84862]
+	'PSK75908.1_B11243_Cauris'[&!color=#d84862]
+	'PSK76051.1_B11243_Cauris'[&!color=#d84862]
+	'PSK76857.1_B11243_Cauris'[&!color=#d84862]
+	'PSK76858.1_B11243_Cauris'[&!color=#d84862]
+	'PSK79346.1_B11243_Cauris'[&!color=#d84862]
+	'PSK79348.1_B11243_Cauris'[&!color=#d84862]
+	'PSK79720.1_B11243_Cauris'[&!color=#d84862]
+	'QEO22143.1_B11220_Cauris'[&!color=#780a76]
+	'QEO24213.1_B11220_Cauris'[&!color=#780a76]
+	'QEO24533.1_B11220_Cauris'[&!color=#780a76]
+	'XP_002770057.1_Dhansenii'
+	'XP_024711259.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024711300.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024711350.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024711351.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024712318.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024712323.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024713119.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024713121.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024713725.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024713752.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024716363.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_024716365.1_Cpseudohaemulonis'[&!color=#5ac5f4]
+	'XP_025341634.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025341971.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025341988.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025342839.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025343289.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025343300.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025344020.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025344407.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025344412.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025344415.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025344416.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_025344601.1_Chaemuloni'[&!color=#5ac5f4]
+	'XP_028887965.1_B11221_Cauris'[&!color=#0000ff]
+	'XP_028888611.1_B11221_Cauris'[&!color=#0000ff]
+	'XP_028889033.1_B11221_Cauris'[&!color=#0000ff]
+	'XP_028889034.1_B11221_Cauris'[&!color=#0000ff]
+	'XP_028889361.1_B11221_Cauris'[&!color=#0000ff]
+	'XP_028892087.1_B11221_Cauris'[&!color=#0000ff]
+	'XP_028892406.1_B11221_Cauris'[&!color=#0000ff]
+	'XP_462630.1_Dhansenii'
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] ('XP_025344020.1_Chaemuloni':0.065394,((('PSK75908.1_B11243_Cauris':1.0E-6,'QEO22143.1_B11220_Cauris':0.005581)[&rbs=65]:0.002785,('PIS56617.1_B8441_Cauris':1.0E-6,'XP_028892087.1_B11221_Cauris':1.0E-6)[&rbs=73]:1.0E-6)[&rbs=100]:0.11742,(('XP_025341988.1_Chaemuloni':0.868749,(((('XP_025344601.1_Chaemuloni':0.163781,(('XP_025344416.1_Chaemuloni':0.04735,'XP_025344407.1_Chaemuloni':0.19672)[&rbs=40]:0.039154,('XP_024713121.1_Cpseudohaemulonis':0.168724,((('PIS49865.1_B8441_Cauris':1.0E-6,'XP_028888611.1_B11221_Cauris':1.0E-6)[&rbs=88]:0.005772,'PSK74847.1_B11243_Cauris':1.0E-6)[&rbs=100]:0.104672,('PSK76857.1_B11243_Cauris':0.00373,('PIS50296.1_B8441_Cauris':0.002887,'XP_028889033.1_B11221_Cauris':1.0E-6)[&rbs=78]:0.002065)[&rbs=99]:0.106649)[&rbs=75]:0.051411)[&rbs=18]:0.027937)[&rbs=51]:0.055125)[&rbs=70]:0.078909,(('PIS52483.1_B8441_Cauris':1.0E-6,('XP_028887965.1_B11221_Cauris':1.0E-6,'PSK79348.1_B11243_Cauris':1.0E-6)[&rbs=31]:1.0E-6)[&rbs=100]:0.232822,(((('PSK76858.1_B11243_Cauris':1.0E-6,'PIS50297.1_B8441_Cauris':1.0E-6)[&rbs=23]:1.0E-6,'XP_028889034.1_B11221_Cauris':1.0E-6)[&rbs=18]:1.0E-6,'QEO24213.1_B11220_Cauris':1.0E-6)[&rbs=100]:0.225078,(('XP_024711259.1_Cpseudohaemulonis':0.178131,'XP_024712323.1_Cpseudohaemulonis':0.186859)[&rbs=99]:0.078683,('XP_024713119.1_Cpseudohaemulonis':0.203433,'XP_025341971.1_Chaemuloni':0.085082)[&rbs=74]:0.056702)[&rbs=67]:0.057149)[&rbs=36]:0.018508)[&rbs=98]:0.174381)[&rbs=26]:0.020135,((('XP_024716365.1_Cpseudohaemulonis':0.295103,(('XP_025343289.1_Chaemuloni':0.193453,'XP_024716363.1_Cpseudohaemulonis':0.191568)[&rbs=100]:0.175082,(('XP_028892406.1_B11221_Cauris':0.003002,'PIS55432.1_B8441_Cauris':1.0E-6)[&rbs=85]:0.006637,'PSK76051.1_B11243_Cauris':0.005502)[&rbs=100]:0.171126)[&rbs=67]:0.045909)[&rbs=90]:0.09101,((('XP_024711350.1_Cpseudohaemulonis':0.589685,'XP_024711351.1_Cpseudohaemulonis':0.104727)[&rbs=84]:0.100606,'XP_025342839.1_Chaemuloni':0.132171)[&rbs=81]:0.076475,('PSK79346.1_B11243_Cauris':1.0E-6,'PIS52481.1_B8441_Cauris':1.0E-6)[&rbs=100]:0.137208)[&rbs=23]:0.030391)[&rbs=83]:0.104873,(('XP_025344415.1_Chaemuloni':0.329667,'XP_024711300.1_Cpseudohaemulonis':0.312336)[&rbs=100]:0.643551,('XP_025344412.1_Chaemuloni':1.122188,('XP_025341634.1_Chaemuloni':0.24168,(('XP_028889361.1_B11221_Cauris':0.002805,('PIS50623.1_B8441_Cauris':0.002803,('PSK79720.1_B11243_Cauris':1.0E-6,'QEO24533.1_B11220_Cauris':1.0E-6)[&rbs=52]:1.0E-6)[&rbs=57]:1.0E-6)[&rbs=100]:0.343506,'XP_024713725.1_Cpseudohaemulonis':0.283466)[&rbs=76]:0.159896)[&rbs=100]:0.584033)[&rbs=84]:0.240307)[&rbs=67]:0.17675)[&rbs=63,!rotate=true]:0.086025)[&rbs=47,!rotate=true]:0.045452,('XP_024712318.1_Cpseudohaemulonis':0.424796,'XP_025343300.1_Chaemuloni':0.246787)[&rbs=49]:0.073438)[&rbs=45]:0.099939)[&rbs=100,!rotate=true]:0.253395,('XP_462630.1_Dhansenii':0.154237,'XP_002770057.1_Dhansenii':0.185938)[&rbs=100]:0.313654)[&rbs=100]:0.618449)[&rbs=79]:0.079914,'XP_024713752.1_Cpseudohaemulonis':0.234387);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=3.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="rbs";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName=".SF NS Text";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set colour.order.rbs="rbs:18,23,26,31,36,40,45,47,49,51,52,57,63,65,67,70,73,74,75,76,78,79,81,83,84,85,88,90,98,99,100";
+	set colour.scheme.rbs="rbs:HSBDiscrete{hue,1,0.293,0.832,0.5,0.6,0.4,0.8}";
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute="rbs";
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="rbs";
+	set nodeLabels.displayAttribute="rbs";
+	set nodeLabels.fontName=".SF NS Text";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=true;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute="User selection";
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute="Fixed";
+	set nodeShapeInternal.colourAttribute="User selection";
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute="Fixed";
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=0.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName=".SF NS Text";
+	set tipLabels.fontSize=10;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=true;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+

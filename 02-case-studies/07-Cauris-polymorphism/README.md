@@ -7,9 +7,10 @@
       * [4. TANGO prediction](#4-tango-prediction)
       * [5. Confirm C-terminal repeat number variation with additional strains' genomes](#5-confirm-c-terminal-repeat-number-variation-with-additional-strains-genomes)
          * [tblastn to identify orthologs of XP_028889033 in additional <em>C. auris</em> genomes](#tblastn-to-identify-orthologs-of-xp_028889033-in-additional-c-auris-genomes)
-         * [Build fasta sequence from the blast results](#build-fasta-sequence-from-the-blast-results)
+         * [Build fasta sequence from the blast results and align](#build-fasta-sequence-from-the-blast-results-and-align)
+      * [6. Identify tandem repeat](#6-identify-tandem-repeat)
 
-<!-- Added by: bhe2, at: Fri Apr 30 12:53:29 CDT 2021 -->
+<!-- Added by: bhe2, at: Thu May 20 17:24:53 CDT 2021 -->
 
 <!--te-->
 # Introduction
