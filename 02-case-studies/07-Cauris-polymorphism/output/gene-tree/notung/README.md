@@ -10,3 +10,5 @@ author: Bin He
 1. Ran rooting analysis, which identified _D. hansenii_ as the outgroup as expected
 1. Rearranged the tree with 80% bootstrapping value cutoff.
 1. Colored the _C. auris_ strains based on the scheme used in Muñoz et al. 2021 Genetics paper.
+
+**Update 2021-05-20 [HB] Removed 6684**
