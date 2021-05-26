@@ -1,7 +1,7 @@
 ---
 title: "Analyze XP_028889033 homologs in C. auris strains"
 author: "Bin He"
-date: "04/23/2021"
+date: "04/23/2021  (updated: `r Sys.Date()`)"
 output: 
   html_notebook:
     toc: yes
@@ -17,6 +17,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load_libraries, echo = FALSE}
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(cowplot))
+suppressPackageStartupMessages(library(treeio))
+suppressPackageStartupMessages(library(ggtree))
+suppressPackageStartupMessages(library(plotly))
 ```
 
 ## Goal
@@ -26,29 +29,82 @@ Analyze the evolution of sequence features of the XP_028889033 homologs within _
 ## Homologs identification
 Homologs of the PF11765 domain containing proteins were identified in the five strains of _C. auris_ used in Muñoz _et al._ 2018 Nat. Genet. Homologs from _C. pseudohaemulonis_ and _C. haemuloni_ were added to help provide the evolutionary context, e.g. timing of gene duplication and sequence evolution both within and between closely related species. Finally, two homologs from the outrgroup species _D. hansenii_ were added to root the gene tree. A third _D. hansenii_ sequencing with the PF11765 domain was not included as it belong to the Clavispora/Candida duplicate 2 branch, which didn't include any _C. auris_ sequences.
 
+**Update 2021-05-21 [HB] Clade I strain 6684 is removed from this analysis, leaving four strains repesenting one of the four clades**
+
+As shown in Muñoz _et al._ 2021 Genetics, _C. auris_ as a species has a total of eight members in this family. The number of members present in each strain varies. In particular, Clade II strains, represented by B11220 in our dataset, has only three. Below we will show the domain architecture for the eight members from the clade I strain B8441. The data for this plot is actually generated in the [latter part](#B8441) of this R markdown file
+
+```{r, fig.width=8, fig.height=4}
+# read in data
+len <- read_tsv("input/B8441-homologs-length-name.tsv", col_types = cols())
+B8441 <- read_tsv("output/seq-feature/B8441-homologs-feature-table.tsv", col_types = cols()) %>% 
+  mutate(type = ifelse(grepl("TR-",type), "Tandem Repeat", type), type = ordered(type, levels = unique(type))) %>% 
+  left_join(select(len, shortName = name, gID, pID), by = c("name" = "pID")) %>% 
+  select(shortName, gID, pID = name, type, start, end)
+#B8441.tandem.div <- read_tsv("output/seq-feature/B8441-homologs-tandem_sub_div.tsv", col_types = cols()) %>% 
+#  left_join(select(len, shortName = name, gID, pID), by = c("name" = "pID")) %>% 
+#  select(shortName, gID, pID = name, div)
+
+# sort the sequences by protein length
+seq.order <- len$gID
+B8441$gID <- ordered(B8441$gID, levels = seq.order)
+
+# plot
+colors <- c("grey", "#1f78b4", "#e31a1c", "#6a3d9a", "orange4")
+p1 <- ggplot(B8441, aes(x = gID, y = start)) +  geom_segment(aes(xend = gID, yend = end), color = "black", size = 7)
+p2 <- geom_segment(aes(x = gID, y = start + 1, xend = gID, yend = end - 1, color = type), size = 6.5)
+p3 <- p1 + p2 + coord_flip() + theme_cowplot() + 
+  scale_color_manual(values = colors) + scale_x_discrete(labels = paste0(len$gID, " (", len$name, ")")) +
+  labs(y = "Position in sequence", x = NULL, color = "FEATURES") + 
+  theme(legend.position = c(0.65,0.3),
+        legend.box.margin = margin(6,6,6,6),
+        legend.box.background = element_rect(size = 0.5, linetype = "solid", color = 1))
+p3
+ggsave("output/figure/20210526-B8441-domain-tandem-repeats.png", width = 8, height = 4)
+```
+**Fig. 1 Domain schematic of the eight homologs in the Hyr/Iff-like (Hil) family in _C. auris_ strain B8441**. The gene name is shown to the left and sorted based on the length of the predicted proteins. Various features were shown as colored blocks, including the Hyphal_reg_CWP (PF11765) domain, Signal Peptide as predicted by SignalP 5.0 server, GPI-anchor predicted by PredGPI server and tandem repeats predicted by XSTREAM (see Materials and Methods).
+
+`r len %>% arrange(desc(length))`
+
 ## Evolution (duplications and losses)
 ### Gene tree
 The gene tree inferred based on the PF11765 domain in each sequence is presented below:
 
-![gene tree](output/gene-tree/with-outgroup/RAxML_bipartitions.clustalo_4921862.png)
-**Figure 1. RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in _C. auris_, two MDR clade species _C. pseudohaemulonis_ and _C. haemuloni_, as well as an outgroup _D. hansenii_.** The branch thickness is shown proportional to the value of the rapid bootstrapping value. The tree is manually rooted on the two _D. hansenii_ sequences. The root choice is based on the gene tree including homologs from across the Ascomycetes. The short terminal branch lengths among the _C. auris_ strains indicate that there had been little divergence in the PF11765 domain in these sequences. Lastly, the colors of the leaf node names for the _C. auris_ strains are based on Muñoz _et al._ 2018 Nat. Genet.
+![gene tree](output/gene-tree/with-outgroup/four-strains/RAxML_bipartitions.clustalo-cauris-four-strains.figtree-anno.png)
+**Fig. 2 RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in _C. auris_, two MDR clade species _C. pseudohaemulonis_ and _C. haemuloni_, as well as an outgroup _D. hansenii_.** The branch thickness is shown proportional to the value of the rapid bootstrapping value. The tree is manually rooted on the two _D. hansenii_ sequences. The root choice is based on the gene tree including homologs from across the Ascomycetes. The short terminal branch lengths among the _C. auris_ strains indicate that there had been little divergence in the PF11765 domain in these sequences. Lastly, the colors of the leaf node names for the _C. auris_ strains are based on Muñoz _et al._ 2018 Nat. Genet.
 
 ### Reconciliation and rearrangement
 To infer the timing of gene duplication and loss events, the gene tree is reconciled with the species tree in Notung 2.9. Rearrangement of the reconciled gene tree was performed in the same software, allowing for swapping of branches with rapid bootstrapping values lower than **90%**. The rearranged tree has a total of **15** duplication and **13** losses. Note that the clade I strain 6684 appeared to have experienced several losses, but this is very likely due to the relatively poor assembly status of the strain, not real evolutionary losses.
 
+![reconciled gene tree](output/gene-tree/notung/RAxML_bipartitions.clustalo-cauris-four-strains_rearranged90.png)
+**Fig. 3 The same tree in Fig. 3 after reconciliation and rearrangement using Notung v2.9.** The species/strains tree and the gene tree as shown in Fig. 3 were used as input for reconciliation in Notung v2.9. Rooting and reconciliation were performed in a single step, after which the tree is rearranged by allowing branches with < 90% rapid bootstrap support to be swapped in order to reduce the total number of events (duplications and losses), resulting in the rearranged tree. Because of the rearrangement, branch lengths do not always correspond to the estimated substitution number. Red nodes indicate inferred duplication events. Losses were not shown explicitly. Sequence names were colored in the same way as in Fig. 2
+
+We can summarize the inferred gains and losses on the species/strains tree.
+
+1. Read in the tree in Newick format
+1. Read in the parsable statistic (copied from Notung "events summary" output)
+1. Plot using ggtree
+
+```{r parse_stats}
+sps.tree <- read.tree("input/cauris-four-strains-outgroup-tree.nwk")
+notung.stat <- read_tsv("output/gene-tree/notung/RAxML_bipartitions.clustalo-cauris-four-strains_rearranged90_stats.txt", col_types = 'cii')
+sps.tree.tb <- as_tibble(sps.tree) %>% 
+  full_join(notung.stat, by = "label")
+sps.tree <- as.treedata(sps.tree.tb)
+```
+
+```{r, warning=FALSE, message=FALSE, fig.height=3, fig.width=4}
+sps.tree %>%
+  ggtree() + 
+  geom_tiplab(as_ylab = TRUE, size = 12, face = 3) +
+  geom_text(aes(x = branch, label = duplications), vjust = -.5, size = 3, color = "red") +
+  geom_text(aes(x = branch, label = losses), vjust = 1.5, size = 3, color = "grey20")
+```
+**Fig. 4 Summary of inferred duplication and loss events in _C. auris_ strains and selected outgroups.** The tree topology is based on Muñoz _et al._ 2018 PMID: 30559369. The number of duplications (red) and losses (black) were inferred using Notung 2.9 and labeled on the top and bottom of the branches respectively. 
+
+> Note that all seven duplications that led to the eight members of the Hil family in _C. auris_ occurred in the ancestor of the MDR clade, which includes _C. pseudohamulonis_, _C. haemuloni_ and _C. duobushaemulonis_, the last of which was not included in this tree. Additional duplications were inferred in the MDR clade but not on the _C. auris_ branches. In terms of losses, the most notable branch is the _C. auris_ B11220 strain, which belongs to clade II, that has lost five of the eight members. This is consistent with previous studies, e.g. Muñoz _et al._ 2021 Genetics. The single loss event in the _C. auris_ strain B11221 was inconsistent with the study just mentioned. Further investigations suggested that this was most likely due to incomplete assembly of its genome.
+
 ## Evolution of sequence features
-### Build datasets
-1. Sequence IDs, species and strain information.
-1. Adhesin prediction results
-
-    FungalRV threshold: 0.51; FaaPred using ACHM model with the recommended -0.8 threshold.
-    
-1. GPI-anchor prediction (including signal peptide)
-
-    GPI-anchored proteins are characterized by an N-terminal signal peptide, which would direct the protein to the secretary pathway, and a C-terminal GPI-anchor peptide, which would be cleaved and replaced by the GPI-anchor, allowing the protein to be tethered to the cell wall. For signal peptide, I used SignalP server. Its latest version is 5.0. But I also ran the sequences through their 4.1 version, with two settings. The results of the latter two are almost identical, except for one sequence "XP_024711350.1", which is only included in the sensitive version, and has a probability lower than 0.5.
-    For GPI-anchor prediction, I used the [PredGPI server](http://gpcr.biocomp.unibo.it/predgpi/).
-    For signal peptide prediction, I used the [SignalP 5.0 server](http://www.cbs.dtu.dk/services/SignalP/)
-
+### Sequence IDs, species and strain information.
 ```{r load_seq_info}
 sps.list <- c("Cauris","Cpseudohaemulonis","Chaemuloni","Dhansenii")
 seqInfo <- read_tsv("output/seq-feature/cauris-renamed-seqinfo.tsv", comment = "#", col_types = "cccci") %>% 
@@ -56,6 +112,9 @@ seqInfo <- read_tsv("output/seq-feature/cauris-renamed-seqinfo.tsv", comment = "
 ```
 
 ### Adhesin prediction
+
+    FungalRV threshold: 0.51; FaaPred using ACHM model with the recommended -0.8 threshold.
+    
 ```{r adhesin_prediction}
 frv.th = 0.511 # recommended FungalRV score threshold
 frv <- read_tsv("output/seq-feature/cauris-renamed-fungalrv.txt", skip = 3, col_names = c("name","frv.score"), col_types = "cd") %>% 
@@ -70,7 +129,14 @@ seqInfo %>%
   summarize(n = n(), fungalRV = sum(frv.score > 0.511), faapred = sum(faa.pred, na.rm = T), 
             both = sum(frv.score > 0.511 & faa.pred))
 ```
+
 ### SignalP and GPI prediction
+
+GPI-anchored proteins are characterized by an N-terminal signal peptide, which would direct the protein to the secretary pathway, and a C-terminal GPI-anchor peptide, which would be cleaved and replaced by the GPI-anchor, allowing the protein to be tethered to the cell wall. For signal peptide, I used SignalP server. Its latest version is 5.0. But I also ran the sequences through their 4.1 version, with two settings. The results of the latter two are almost identical, except for one sequence "XP_024711350.1", which is only included in the sensitive version, and has a probability lower than 0.5.
+
+- For GPI-anchor prediction, I used the [PredGPI server](http://gpcr.biocomp.unibo.it/predgpi/).
+- For signal peptide prediction, I used the [SignalP 5.0 server](http://www.cbs.dtu.dk/services/SignalP/)
+
 ```{r signalP, fig.width=5, fig.height=5}
 # Signal peptide
 gff.names <- c("id", "source", "name", "start", "end", "prob", "na1", "na2", "na3")
@@ -84,7 +150,7 @@ seqInfo <- left_join(seqInfo, select(signalp5, name = id, prob), by = c("name" =
 ```
 
 ```{r gpi}
-tmp <- read_delim("output/seq-feature/cauris-renamed-predgpi.txt", delim = "|", col_names = c("name","fp","omega"))
+tmp <- read_delim("output/seq-feature/cauris-renamed-predgpi.txt", delim = "|", col_names = c("name","fp","omega"), col_types = cols())
 pred.gpi <- tmp %>%  
   mutate(name = str_sub(name, 2, -2), # remove > and the trailing space
          fp = as.numeric(str_sub(fp, 9, -2)), # extract the numeric part
@@ -102,15 +168,66 @@ seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi), by = c(
 
 seqInfo %>% 
   group_by(species_id, strain) %>% 
-  summarize(Total = n(), SignalP = sum(signalp), GPI_Pred = sum(pred.gpi), Both = sum(signalp & pred.gpi))
+  summarize(Total = n(), SignalP = sum(signalp), GPI_Pred = sum(pred.gpi), Both = sum(signalp & pred.gpi), .groups = "drop")
 
 write_tsv(seqInfo, "output/seq-feature/R-seqinfo-table.tsv", col_names = TRUE)
 ```
 
-### Domain architecture
+### Tandem repeat structures
 
-The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
+The non-NTD portion of the proteins evolve rapidly and many of them contain tandem repeats. Therefore, characterizing and visualizing the type, number and spatial distribution of the tandem repeats serve to highlight the differences in the non-NTD part of the proteins in this family.
 
+To identify and group tandem repeats, I used [XSTREAM](https://amnewmanlab.stanford.edu/xstream) with the following parameters `java -Xmx1000m -Xms1000m -jar ~/sw/XSTREAM/xstream.jar $in -i.7 -I.7 -g3 -e2 -L15 -z -G -O -Asub.txt`. The parameters were chosen to identify degenerate tandem repeats that occur at least two times and must be a minimum length of 5 a.a. or longer and the minimum length of a tandem repeat domain (=period x copy #) must be greater than 15 a.a. Please see `script/xstream.sh` for explanation of the parameters.
+
+```{r}
+tandem <- read_tsv("output/tandem-repeats/XSTREAM_cauris_outgr_sub_i0.7_g3_m5_L15_chart.tsv", 
+                   col_types = "ciiifidcccd", comment = "#") %>% 
+  rename(name = identifier)
+# now let's create a tibble for plotting, which would contain each instance of the tandem repeat on a separate row
+tandem.div <- tandem %>% 
+  rowwise(name) %>% 
+  summarize(div = list(c(seq(from = start, to = end, by = period), end)), .groups = "drop") %>% 
+  unnest(div)
+```
+
+```{r, fig.width=6, fig.height=5}
+# summarize stats of tandem repeats
+repeats <- tandem %>% 
+  group_by(type, period) %>% 
+  summarize(n = n(), copyMean = mean(copyN), .groups = "drop") %>% 
+  mutate(length = period * copyMean)
+ggplot(repeats, aes(x = period, y = copyMean)) + geom_hex(binwidth = c(3,2)) + 
+  scale_fill_gradient(low = "grey10", high = "yellow2", breaks = seq(1,17,2)) +
+  scale_x_continuous(breaks = seq(0,100,6)) + 
+  scale_y_continuous(breaks = seq(0,100,4)) + 
+  ylab("Mean copy number per sequence") + theme_bw()
+```
+**Fig. 4 Tandem Repeats (TRs) identified among the protein sequences.** A total of `r nrow(repeats)` types of TRs were identified by the XSTREAM program as described above. The period (unit length) of the TRs are plotted against the mean copy number per sequence for the same TRs. Data are binned by 3 for the period and 2 for the mean copy number, and the number of TRs in each bin is shown in dark-gray to yellow gradient. Note that many TRs are both short (<= 15 a.a.) and have few copies per sequence (< 4). There are, however, a number of TRs that are long (> 30 a.a.) and repeat for more than 10 times per sequence. Those are potentially of more interest.
+```{r, fig.width=5, fig.asp=0.8}
+repeats %>%
+  ggplot(aes(x = length)) + stat_ecdf(geom = "step") + 
+  scale_x_continuous(breaks = c(10,20,40,80,160,320,640,1280), trans = "log2") +
+  ylab("Probability") + xlab("length (= period * mean copies)") + 
+  theme_cowplot() + background_grid()
+```
+**Fig. 5 Tandem Repeat domain length cumulative distribution.** Empirical cumulative distribution is calculated for the length of each tandem repeat domain, defined as the period (unit length) of a domain multiplied by the mean copy number in all sequences that contain this domain. The x-axis is log2 transformed. Note that ~50% of the domains have a length < 40 residues and ~80% < 160 residues.
+
+```{r write_XP_028889033_to_table}
+# this is for the purpose of drawing just XP_028889033
+tandem %>% filter(grepl("XP_028889033", name)) %>% write_tsv(file = "../01-XP_028889033_drawing/input/XP_028889033_tandem_sub.tsv")
+tandem.div %>% filter(grepl("XP_028889033", name)) %>% 
+  write_tsv(file = "../01-XP_028889033_drawing/input/XP_028889033_tandem_sub_div.tsv")
+
+# also export the subset belonging to the B8441 homologs
+tandem.div %>% filter(grepl("PIS", name)) %>% 
+  write_tsv(file = "output/seq-feature/B8441-homologs-tandem_sub_div.tsv")
+```
+
+### Domain architecture {#B8441}
+
+The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the pfam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, types and distribution of tandem repeats. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
+
+organize the non-TR features
 ```{r}
 # GPI-anchor
 # use pred.gpi
@@ -124,45 +241,112 @@ pfam <- read_tsv("output/seq-feature/cauris-renamed-hmmer-scan.txt", col_types =
 # feature set
 # structure: id  feature  start  end
 feature <- bind_rows(
-  seqInfo %>% mutate(type = "entire protein", start = 1) %>% select(id = name, type, start, end = length),
-  pfam %>% select(id = seq_id, type = hmm_name, start = envelope_start, end = envelope_end),
+  seqInfo %>% mutate(type = "entire protein", start = 1) %>% select(name, type, start, end = length),
+  pfam %>% select(name = seq_id, type = hmm_name, start = envelope_start, end = envelope_end) %>% 
+    filter(type == "Hyphal_reg_CWP"),
   # extend the signal peptide segment by 10 amino acids to make it more visible
-  signalp5 %>% mutate(type = "SignalP", end = end + 10) %>% select(id, type, start = start, end),
+  signalp5 %>% mutate(type = "SignalP", end = end + 10) %>% select(name = id, type, start = start, end),
   # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
   pred.gpi %>% filter(is.gpi) %>% mutate(type = "GPI-anchor", start = cleavePos-10) %>% 
-    select(id = name, type, start, end = length)
-)
-feature$type = ordered(feature$type, levels = c("entire protein", "Hyphal_reg_CWP", "Asp", "Hyr1", "SignalP", "GPI-anchor"))
-feature.colors <- c("grey", "#1f78b4", "#b2df8a", "#ff7f00", "#e31a1c", "#6a3d9a")
+    select(name, type, start, end = length)
+  ) %>% filter(!grepl("KND", name)) %>% # remove strain 6684
+  mutate(tip = ifelse(type == "entire protein", as.character(name), as.character(type)))
+#feature$type = ordered(feature$type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor"))
+feature.colors <- c("grey", "#1f78b4","#e31a1c", "#6a3d9a")
+```
+
+organize the tandem repeats features
+```{r}
+tr <- tandem %>% 
+  left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
+  mutate(type = paste("TR", type, sep = "-"), 
+         tip = paste0(consensus_nogap,
+                      "\ntype: ", type,
+                      "\nperiod: ", period, 
+                      "\ncopyN: ", copyMean)) %>% 
+  select(name, type, start, end, tip)
+require(RColorBrewer)
+tr.col <- character(nrow(repeats)) # create a color vector
+short.rp <- which(repeats$length < 40) # identify the short repeats indices
+long.rp <- setdiff(1:nrow(repeats), short.rp) # the long repeats indices
+set.seed(123) # for reproducibly shuffling the order before assigning the colors
+short.rp <- sample(short.rp)
+tr.col[short.rp] <- colorRampPalette(
+  brewer.pal(12, "Paired")[seq(3,11,by=2)])(length(short.rp)
+                                     ) # assign the short repeats a lower contrast color
+set.seed(231) # for reproducibly shuffling the order before assigning the colors
+long.rp <- sample(long.rp)
+tr.col[long.rp] <- colorRampPalette(
+  brewer.pal(12, "Paired")[seq(4,12,by=2)])(length(long.rp)
+                                     ) # assign the long repeats a higher contrast color
+repeats$color <- tr.col
+```
+
+Combine domains, SP and GPI-anchor with TR features.
+```{r transform_tandem_feature_data}
+# combine sequence features with tandem repeats
+tr.feature <- bind_rows(feature, tr) %>% 
+  mutate(type = ordered(type, levels = unique(type)))
+comb.col <- c(feature.colors, tr.col)
+
+# Extract the subset from _C. auris_ B8441 for the schematic plot in the beginning.
+B8441 <- tr.feature %>% 
+  filter(grepl("PIS", name))
+write_tsv(B8441, file = "output/seq-feature/B8441-homologs-feature-table.tsv", col_names = TRUE)
+```
+
+reorder the sequences by their positions in the gene tree
+```{r}
 # in order to plot properties of the sequences in an order that is consistent with the sequences' position in the gene tree
-genetreeOrder <- scan("output/seq-feature/cauris-reorder-by-gene-tree.txt", what = "character")
+genetreeOrder <- scan("input/cauris-four-strains-reorder-by-gene-tree.txt", what = "character")
 genetreeColor <- tibble(name = genetreeOrder) %>% 
   mutate(color = case_when(
     grepl("haemuloni", name) ~ "#2596be70",
-    grepl("6684", name) ~ "#0e8c07",
     grepl("B8441", name) ~ "#0e8c07",
     grepl("B11220", name) ~ "#780a76",
     grepl("B11221", name) ~ "#0409fb",
     grepl("B11243", name) ~ "#ff4c00",
     TRUE ~ "#000000"
     ))
-feature$id <- ordered(feature$id, levels = rev(genetreeOrder))
-write_tsv(feature, file = "output/seq-feature/R-feature-table.tsv", col_names = TRUE)
+#feature$name <- ordered(feature$name, levels = rev(genetreeOrder))
+tr.feature$name <- ordered(tr.feature$name, levels = rev(genetreeOrder))
+write_tsv(tr.feature, file = "output/seq-feature/R-feature-table.tsv", col_names = TRUE)
 ```
 
-```{r plot_features, fig.height=6, fig.width=9, warning=FALSE}
-p <- ggplot(feature, aes(x = id, y = start)) + 
-  geom_segment(aes(xend = id, yend = end, color = type), size = 2)
-p + coord_flip() + theme_classic() + scale_color_manual(values = feature.colors) +
-  theme(axis.text.y = element_text(size = 6, colour = rev(genetreeColor$color)),
+```{r plotly_tandem_repeats, warning=FALSE, fig.height=7, fig.width=9}
+# plot
+p1 <- ggplot(tr.feature, aes(x = name, y = start, xend = name, yend = end)) + 
+  geom_segment(aes(color = type, text = tip), size = 2.5)
+p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2.5, color = "white")
+p3 <- p1 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = comb.col) +
+  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(), axis.ticks.x = element_blank(),
-        legend.position = c(0.8,0.8),
+        legend.position = "none",
         panel.background = element_rect(fill = alpha("lightblue",0.5))) +
-  ylim(1, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Domain / Feature") + 
-  ggtitle("Domain architecture")
-ggsave("output/figure/20210425-homologs-domains-schematics.png", bg = "transparent", width = 7, height = 6)
+  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "FEATURES") + 
+  ggtitle("Protein sequence features")
+p3 + p2
+ggsave("output/figure/20210524-domain-tandem-repeats.png", width = 7, height = 6)
 ```
+
+```{r}
+DT::datatable(
+  tandem %>% 
+    rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
+    select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
+    arrange(desc(name)),
+  fillContainer = FALSE, options = list(pageLength = 10)
+)
+```
+
+```{r plot_tandem_repeats, warning=FALSE, fig.height=9, fig.width=9}
+# plot
+require(plotly)
+ggplotly(p3, tooltip = "text", width = 800, height = 700)
+```
+**Note** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
 
 ### TANGO prediction of $\beta$-aggregation prone sequences
 
@@ -222,116 +406,27 @@ write_tsv(tango.res.df, "output/tango/tango_summary_table.tsv.gz")
 ```
 
 #### Plotting TANGO hits
-```{r plot_tango_sequences, warning=FALSE, fig.height=6, fig.width=9}
+```{r plot_tango_sequences, warning=FALSE, fig.height=7, fig.width=9}
 # add species and strain information for plotting
 tango <- left_join(select(seqInfo, name, id, species_id, strain),  tango.res.df, by = c("id" = "id"))
 # reorder the sequences for plotting
+feature1 <- feature %>% 
+  mutate(name = ordered(name, levels = rev(genetreeOrder)))
 tango$name <- ordered(tango$name, levels = rev(genetreeOrder))
 # plot
-p1 <- ggplot(filter(feature, type == "entire protein"), aes(x = id, y = start)) + 
-  geom_segment(aes(xend = id, yend = end), size = 2, color = "grey40")
-p2 <- geom_segment(data = tango, aes(x = name, xend = name,  y = ifelse(start-4 >= 0, start-4, 0), yend = end + 4, color = median), size = 2)
-p3 <- geom_segment(data = filter(feature, type == "Hyphal_reg_CWP"), aes(x = id, y = start, xend = id, yend = end), size = 2, color = "#1f78b4")
+p1 <- ggplot(filter(feature1, type == "entire protein")) + 
+  geom_segment(aes(x = name, y = start, xend = name, yend = end), size = 2.5, color = "grey40")
+p2 <- geom_segment(data = filter(feature1, type == "Hyphal_reg_CWP"), aes(x = name, y = start, xend = name, yend = end), size = 2.5, color = "#1f78b4")
+p3 <- geom_segment(data = tango, aes(x = name, xend = name,  y = ifelse(start-4 >= 0, start-4, 0), yend = end + 4, color = median), size = 2.5)
 p1 + p2 + p3 + coord_flip() + theme_classic() + 
   scale_color_distiller(type = "seq", palette = 17, direction = 1) +
-  theme(axis.text.y = element_text(size = 6, colour = rev(genetreeColor$color)),
+  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(), axis.ticks.x = element_blank(),
         legend.position = c(0.8,0.8),
         panel.background = element_rect(fill = alpha("lightblue",0.5))) +
   ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Median TANGO score") + 
-  ggtitle("TANGO hits with Hyphal_reg_CWP domain masked")
-ggsave("output/figure/20210425-tango-score-segment.png", width = 7, height = 6)
-```
-
-### Tandem repeat structures
-
-The non-NTD portion of the proteins evolve rapidly and many of them contain tandem repeats. Therefore, characterizing and visualizing the type, number and spatial distribution of the tandem repeats serve to highlight the differences in the non-NTD part of the proteins in this family.
-
-To identify and group tandem repeats, I used [XSTREAM](https://amnewmanlab.stanford.edu/xstream) with the following parameters `java -Xmx1000m -Xms1000m -jar ~/sw/XSTREAM/xstream.jar $in -i.7 -I.7 -g3 -e2 -L15 -z -G -O`. The parameters were chosen to identify degenerate tandem repeats that occur at least two times and must be a minimum length of 5 a.a. or longer and the minimum length of a tandem repeat domain (=period x copy #) must be greater than 15 a.a. Please see `script/xstream.sh` for explanation of the parameters.
-
-```{r}
-tandem <- read_tsv("output/tandem-repeats/XSTREAM_cauris_outgr_i0.7_g3_m5_L15_chart.tsv", 
-                   col_types = "ciiifidcccd") %>% 
-  rename(name = identifier) %>% 
-  mutate(name = ordered(name, levels = rev(genetreeOrder)))
-# now let's create a tibble for plotting, which would contain each instance of the tandem repeat on a separate row
-tandem.div <- tandem %>% 
-  rowwise(name) %>% 
-  summarize(div = list(c(seq(from = start, to = end, by = period), end)), .groups = "drop") %>% 
-  unnest(div)
-```
-
-```{r write_XP_028889033_to_table}
-# this is for the purpose of drawing just XP_028889033
-tandem %>% filter(grepl("XP_028889033", name)) %>% write_tsv(file = "../XP_028889033_drawing/input/XP_028889033_tandem.tsv")
-tandem.div %>% filter(grepl("XP_028889033", name)) %>% 
-  write_tsv(file = "../XP_028889033_drawing/input/XP_028889033_tandem_div.tsv")
-```
-
-```{r plot_tandem_repeats, warning=FALSE, fig.height=7, fig.width=9}
-# plot
-require(RColorBrewer)
-n.col = nlevels(tandem$type)
-tr.col <- colorRampPalette(brewer.pal(12, "Paired")[3:12])(n.col)
-p1 <- ggplot(filter(feature, type == "entire protein"), aes(x = id, y = start)) + 
-  geom_segment(aes(xend = id, yend = end), size = 2.5, color = "grey40")
-p2 <- geom_segment(data = tandem, aes(x = name, xend = name,  y = start, yend = end, color = type, text = consensus_nogap), size = 2.5, alpha = 0.9)
-p3 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 2), size = 2.5)
-p4 <- geom_segment(data = filter(feature, type == "Hyphal_reg_CWP"), aes(x = id, y = start, xend = id, yend = end), color = "#1f78b4", size = 2.5)
-p <- p1 + p2 + p3 + p4 + coord_flip() + theme_classic() + 
-  scale_color_manual(values = tr.col) +
-  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
-        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
-        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
-        legend.position = "none",
-        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
-  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Median TANGO score") + 
-  ggtitle("Tandem repeat domains with Hyphal_reg_CWP domain shown")
-p
-ggsave("output/figure/20210506-tandem-repeats.png", width = 7, height = 6)
-```
-**Note** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
-
-```{r}
-DT::datatable(
-  tandem %>% 
-    rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
-    select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
-    arrange(desc(name)),
-  fillContainer = FALSE, options = list(pageLength = 10)
-)
-```
-
-```{r transform_tandem_feature_data}
-# combine sequence features with tandem repeats
-tr.feature <- rbind(
-  feature %>% 
-    filter(type %in% c("entire protein", "Hyphal_reg_CWP"), ) %>%
-    mutate(name = id, tip = ifelse(type == "entire protein", as.character(name), "PF11765")) %>% 
-    select(name, type, start, end, tip),
-  tandem %>% mutate(type = paste0("tandem", type)) %>% select(name, type, start, end, tip = consensus_nogap)
-) %>% mutate(type = droplevels(type))
-```
-
-```{r plotly_tandem_repeats, warning=FALSE, fig.height=7, fig.width=9}
-# plot
-require(RColorBrewer)
-require(plotly)
-n.col = nlevels(tr.feature$type)
-tr.col <- c("grey40", "#1f78b4", colorRampPalette(brewer.pal(12, "Paired")[3:12])(n.col-2))
-p1 <- ggplot(tr.feature, aes(x = name, y = start, xend = name, yend = end, color = type, text = tip)) + 
-  geom_segment(size = 2)
-p2 <- geom_segment(size = 2, alpha = 0.9)
-p <- p1 + p2 + coord_flip() + theme_classic() + 
-  scale_color_manual(values = tr.col) +
-  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
-        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
-        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
-        legend.position = "none",
-        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
-  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Median TANGO score") + 
-  ggtitle("Tandem repeat domains with Hyphal_reg_CWP domain shown")
-ggplotly(p, tooltip = "text")
+  ggtitle("TANGO hits with Hyphal_reg_CWP domain shown behind")
+ggsave("output/figure/20210526-tango-score-segment.png", width = 7, height = 6)
 ```
 

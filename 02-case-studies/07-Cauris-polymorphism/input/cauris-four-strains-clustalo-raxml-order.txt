@@ -1,1 +1,0 @@
-../output/gene-tree/with-outgroup/four-strains/cauris-four-strains-clustalo-raxml-order.txt

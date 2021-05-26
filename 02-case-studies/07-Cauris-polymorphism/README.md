@@ -28,6 +28,10 @@ The questions we will further pursue in this analysis are:
 1. Variability in the TANGO predicted Beta-aggregation sequences.
 1. TBD
 
+# Updates
+## 2021-05-22 [HB]
+Removed strain 6684 from the analysis. I manually commented out the three rows in `output/seq-feature/cauris-renamed-seqinfo.tsv` and since the R script I wrote for assembling the data and plotting them starts with this result file, editing this one file is sufficient to remove the three strains from the R analysis.
+
 # Analysis
 ## 1. Obtain sequences
 I performed blastp with the PF11765 domain sequence from XP_028889033 against the combined protein sequence library from five _C. auris_ strains (two clade II strains were used from the Muñoz et al 2018 paper). See `blast/README.md` for details. The resulting fasta file is soft linked to the `input` folder in this analysis.
