@@ -31,21 +31,22 @@ dat <- read_tsv("input/XP_028889033-quant-features.txt", col_types = "ffid")
 # dat$feature <- factor(dat$feature, labels = c("Ser/Thr frequency","beta-aggregation probability"))
 
 # domain features
-domain <- read_tsv("input/XP_028889033-domain-features.txt")
-domain$feature <- factor(domain$feature, levels = c("entire protein", "SignalP", "Hyphal_reg_CWP", "Hyr1", "GPI"), labels = c("entire protein", "Signal Peptide", "Hyphal_reg_CWP", "Hyr1 (PF15789)", "GPI-anchor"))
+domain <- read_tsv("input/XP_028889033-domain-features.txt", col_types = 'ccii') %>% 
+  filter(!grepl("TR", type)) %>% 
+  mutate(type = factor(type, levels = c("entire protein", "SignalP", "Hyphal_reg_CWP", "GPI-anchor")))
 
 # tandem repeats
-tandem <- read_tsv("input/XP_028889033_tandem.tsv", col_types = cols())
+tandem <- read_tsv("input/XP_028889033_tandem_sub.tsv", col_types = cols())
 
 # combine tandem repeat domains with domain features
 feature <- bind_rows(
-  domain %>% filter(!grepl("Hyr1",feature)),
-  tandem %>% mutate(feature = paste0("TR", 1:nrow(tandem), " (", period, " aa x ", copyN, ")")) %>% 
-    select(feature, start, end)
+  domain,
+  tandem %>% mutate(type = paste0("TR", 1:nrow(tandem), " (", period, " aa x ", copyN, ")")) %>% 
+    select(type, start, end)
 )
 
 # tandem repeat dividers
-tandem.div <- read_tsv("input/XP_028889033_tandem_div.tsv", col_types = cols())
+tandem.div <- read_tsv("input/XP_028889033_tandem_sub_div.tsv", col_types = cols())
 ```
 
 ```{r plot, fig.width=8}
@@ -59,17 +60,20 @@ p2 <- dat %>% filter(feature == "TANGO") %>%
   theme_cowplot() + theme(axis.title.x = element_blank(), axis.text.x = element_blank()) + xlim(1,3100) +
   scale_y_continuous(breaks = c(0,50,100))
 
-feature.col <- c("grey40", "#984ea3", "#377eb8", "#e41a1c", "#fdb863", "#e66101", "#c2a5cf", "#a6dba0", "#008837")
+feature.col <- c("grey40", "#984ea3", "#377eb8", "#e41a1c", "#e66101", "#a6dba0", "#008837")
 p3 <- ggplot(feature, aes(xmin = start, ymin = 0)) + 
-  geom_rect(aes(xmax = end, ymax = 1, fill = feature)) +
+  geom_rect(aes(xmax = end, ymax = 1, fill = type)) +
   scale_fill_manual(values = feature.col) +
-  ylab("") + xlab("") + xlim(1,3100) + ylim(-0.5,1) + labs(fill = "Domain") + guides(fill = guide_legend(nrow = 2)) +
+  ylab("") + xlab("") + xlim(1,3100) + ylim(-0.5,1) + labs(fill = "Feature") + guides(fill = guide_legend(nrow = 2)) +
   theme_classic() + theme(legend.position = "top", legend.text = element_text(size = rel(0.8))) +
   theme(axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank())
 
-p4 <- geom_rect(data = tandem.div, aes(xmin = div, ymin = 0, xmax = div + 3, ymax = 1))
+p4 <- geom_rect(data = tandem.div, aes(xmin = div, ymin = 0, xmax = div + 3, ymax = 1), fill = "gray30")
 # assembling
 plot_grid(p3+p4, p2, p1, nrow = 3, align = "v", rel_heights = c(2,1,3))
+```
+
+```{r save_figures}
 ggsave("output/r-figure/20210507-XP_028889033-features.png", width = 11, height = 5)
 ggsave("output/r-figure/20210507-XP_028889033-ST-freq.png", p1 + theme_classic() + theme(legend.position = "top"), width = 6, height = 2)
 ```

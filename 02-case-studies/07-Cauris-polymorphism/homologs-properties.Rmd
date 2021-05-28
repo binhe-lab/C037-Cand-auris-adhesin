@@ -36,32 +36,36 @@ As shown in Muñoz _et al._ 2021 Genetics, _C. auris_ as a species has a total o
 ```{r, fig.width=8, fig.height=4}
 # read in data
 len <- read_tsv("input/B8441-homologs-length-name.tsv", col_types = cols())
-B8441 <- read_tsv("output/seq-feature/B8441-homologs-feature-table.tsv", col_types = cols()) %>% 
+B8441 <- read_tsv("input/B8441-homologs-feature-table.tsv", col_types = cols()) %>% 
   mutate(type = ifelse(grepl("TR-",type), "Tandem Repeat", type), type = ordered(type, levels = unique(type))) %>% 
   left_join(select(len, shortName = name, gID, pID), by = c("name" = "pID")) %>% 
   select(shortName, gID, pID = name, type, start, end)
-#B8441.tandem.div <- read_tsv("output/seq-feature/B8441-homologs-tandem_sub_div.tsv", col_types = cols()) %>% 
-#  left_join(select(len, shortName = name, gID, pID), by = c("name" = "pID")) %>% 
-#  select(shortName, gID, pID = name, div)
+B8441.tango <- read_tsv("input/B8441-homologs-tango.tsv", col_types = cols()) %>% 
+  left_join(select(len, shortName = name, gID, pID), by = c("name" = "pID"))
 
 # sort the sequences by protein length
 seq.order <- len$gID
 B8441$gID <- ordered(B8441$gID, levels = seq.order)
+B8441.tango$gID <- ordered(B8441.tango$gID, levels = seq.order)
 
 # plot
 colors <- c("grey", "#1f78b4", "#e31a1c", "#6a3d9a", "orange4")
 p1 <- ggplot(B8441, aes(x = gID, y = start)) +  geom_segment(aes(xend = gID, yend = end), color = "black", size = 7)
 p2 <- geom_segment(aes(x = gID, y = start + 1, xend = gID, yend = end - 1, color = type), size = 6.5)
-p3 <- p1 + p2 + coord_flip() + theme_cowplot() + 
-  scale_color_manual(values = colors) + scale_x_discrete(labels = paste0(len$gID, " (", len$name, ")")) +
+p3 <- geom_segment(data = B8441.tango, aes(xend = gID,  y = ifelse(start-3 >= 0, start-3, 0),  yend = end + 3, alpha = median),
+                   position = position_nudge(x = -0.35, y = 0), color = "darkred", size = 2)
+p4 <- p1 + p2 + p3 + coord_flip() + theme_cowplot() + 
+  scale_color_manual(values = colors) + 
+  scale_x_discrete(labels = paste0(len$gID, " (", len$name, ")")) +
+  scale_alpha(guide = "none") +
   labs(y = "Position in sequence", x = NULL, color = "FEATURES") + 
   theme(legend.position = c(0.65,0.3),
         legend.box.margin = margin(6,6,6,6),
         legend.box.background = element_rect(size = 0.5, linetype = "solid", color = 1))
-p3
+p4
 ggsave("output/figure/20210526-B8441-domain-tandem-repeats.png", width = 8, height = 4)
 ```
-**Fig. 1 Domain schematic of the eight homologs in the Hyr/Iff-like (Hil) family in _C. auris_ strain B8441**. The gene name is shown to the left and sorted based on the length of the predicted proteins. Various features were shown as colored blocks, including the Hyphal_reg_CWP (PF11765) domain, Signal Peptide as predicted by SignalP 5.0 server, GPI-anchor predicted by PredGPI server and tandem repeats predicted by XSTREAM (see Materials and Methods).
+**Fig. 1 Domain schematic of the eight homologs in the Hyr/Iff-like (Hil) family in _C. auris_ strain B8441**. The gene name is shown to the left and sorted based on the length of the predicted proteins. Various features were shown as colored blocks, including the Hyphal_reg_CWP (PF11765) domain, Signal Peptide as predicted by SignalP 5.0 server, GPI-anchor predicted by PredGPI server and tandem repeats predicted by XSTREAM (see Materials and Methods). The short bars behind each sequence's schematic represents TANGO predicted β-aggregation motifs, whose predicted strength (score) is proportional to the transparency of the bar.
 
 `r len %>% arrange(desc(length))`
 
@@ -289,8 +293,14 @@ tr.feature <- bind_rows(feature, tr) %>%
   mutate(type = ordered(type, levels = unique(type)))
 comb.col <- c(feature.colors, tr.col)
 
+# Extract the subset for XP_028889033 for plotting
+tr.feature %>%  select(-tip) %>% 
+  filter(grepl("XP_028889033", name)) %>%
+  write_tsv(file = "../01-XP_028889033_drawing/input/XP_028889033-domain-features.txt")
+
 # Extract the subset from _C. auris_ B8441 for the schematic plot in the beginning.
 B8441 <- tr.feature %>% 
+  select(-tip) %>% 
   filter(grepl("PIS", name))
 write_tsv(B8441, file = "output/seq-feature/B8441-homologs-feature-table.tsv", col_names = TRUE)
 ```
@@ -409,6 +419,8 @@ write_tsv(tango.res.df, "output/tango/tango_summary_table.tsv.gz")
 ```{r plot_tango_sequences, warning=FALSE, fig.height=7, fig.width=9}
 # add species and strain information for plotting
 tango <- left_join(select(seqInfo, name, id, species_id, strain),  tango.res.df, by = c("id" = "id"))
+# write results to file for B8441 for plotting
+tango %>% filter(grepl("PIS", name)) %>% write_tsv(file = "./input/B8441-homologs-tango.tsv")
 # reorder the sequences for plotting
 feature1 <- feature %>% 
   mutate(name = ordered(name, levels = rev(genetreeOrder)))
