@@ -60,7 +60,7 @@ p2 <- dat %>% filter(feature == "TANGO") %>%
   theme_cowplot() + theme(axis.title.x = element_blank(), axis.text.x = element_blank()) + xlim(1,3100) +
   scale_y_continuous(breaks = c(0,50,100))
 
-feature.col <- c("grey40", "#984ea3", "#377eb8", "#e41a1c", "#e66101", "#a6dba0", "#008837")
+feature.col <- c("grey40", "#984ea3", "#377eb8", "#e41a1c", "#e28743", "#a6dba0", "#008837")
 p3 <- ggplot(feature, aes(xmin = start, ymin = 0)) + 
   geom_rect(aes(xmax = end, ymax = 1, fill = type)) +
   scale_fill_manual(values = feature.col) +

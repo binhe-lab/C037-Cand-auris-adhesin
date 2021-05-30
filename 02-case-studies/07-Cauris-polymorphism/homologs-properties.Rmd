@@ -442,3 +442,48 @@ p1 + p2 + p3 + coord_flip() + theme_classic() +
 ggsave("output/figure/20210526-tango-score-segment.png", width = 7, height = 6)
 ```
 
+### Serine/Threonine frequencies
+
+S/T sites are potential sites for O-glycosylation, which could increase the rididity of the stalk of the protein and allow the N-terminal domain to protrude out of the cell wall facing the exterior. More evidence for the importance of O-glycosylation in a serine/threonine-rich domain can be found [here](https://ec.asm.org/content/10/10/1317.long).
+
+To determine the S/T frequency in the XP_028889033 homologs, I ran the program `freak` from the EMBOSS suite with the parameters of 100 aa sliding window and a step size of 10 aa. After reformating the output, the rest of the analysis is accomplished below.
+
+```{r S_T_freq}
+# load data
+ST.freq <- read_tsv("output/seq-feature/ST_freq_100_10_freak.out.gz", col_types = "cid")
+S.freq <- read_tsv("output/seq-feature/S_freq_100_10_freak.out.gz", col_types = "cid")
+T.freq <- read_tsv("output/seq-feature/T_freq_100_10_freak.out.gz", col_types = "cid")
+# convert sequence name column to an ordered list sorted based on the gene tree sequence
+ST.freq <- ST.freq %>%  mutate(id = ordered(id, levels = rev(genetreeOrder))) # this will produce the desired order
+S.freq <- S.freq %>%  mutate(id = ordered(id, levels = rev(genetreeOrder))) # this will produce the desired order
+T.freq <- T.freq %>%  mutate(id = ordered(id, levels = rev(genetreeOrder))) # this will produce the desired order
+```
+
+```{r plot_ST_freq, fig.height=7, fig.width=9}
+ggplot(ST.freq, aes(x = id, y = pos)) +  geom_tile(aes(fill = freq)) +
+  coord_flip() + theme_classic() + scale_fill_distiller(palette = "RdGy", limits = c(0, 0.8), oob = scales::squish, breaks = seq(0, 0.6, by = 0.2)) +
+  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = c(0.8,0.8),
+        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
+  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Frequency") + 
+  ggtitle("Serine/Threonine frequency in 100 aa sliding windows")
+ggsave("output/figure/20210530-homologs-ST-freq-100aa-window.png", bg = "transparent", width = 7, height = 6)
+```
+```{r, fig.width=10}
+ST.comb <- bind_rows("S/T" = ST.freq, S = S.freq, T = T.freq, .id = "Var") %>% 
+  mutate(Var = ordered(Var, levels = c("S/T","S","T")))
+ggplot(ST.comb, aes(x = id, y = pos)) + geom_tile(aes(fill = freq)) + 
+  facet_wrap(~Var, scales = "fixed") + theme_minimal() + coord_flip() + 
+  scale_fill_distiller(palette = "RdGy", limits = c(-0.05, 0.55), oob = scales::squish, breaks = seq(0,0.5,by=0.1)) +
+  #scale_fill_gradient2(low = "#1a1a1a", high = "#b30000", midpoint = 0.2) +
+  theme(axis.text.y = element_text(size = 7, colour = rev(genetreeColor$color)),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = c(0.95,0.8),
+        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
+  ylim(1, 4500) + ylab("Position in sequence") + xlab("Sequences") + 
+  ggtitle("Ser/Thr frequency in 100 aa windows (frequency > 0.55 replaced by 0.55)")
+ggsave("output/figure/20210530-ST-freq-composite.png", width = 10, height = 6)
+```
