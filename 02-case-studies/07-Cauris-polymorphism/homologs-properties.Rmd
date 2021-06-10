@@ -92,7 +92,8 @@ gene.tree <- read.nhx("output/gene-tree/notung/RAxML_bipartitions.clustalo-cauri
 #  groupOTU()
 gene.tree %>%
   as.treedata() %>% 
-  ggtree() +  geom_tiplab(aes(colour = strains), fontface = 3, size = 3) + xlim(0,20) +
+  ggtree() +  geom_tiplab(aes(colour = strains), fontface = 3, size = 3) +
+  xlim(0,20) +
   scale_color_manual(name = "LEGEND", values = c("#345714", "#952395", "#0030ff", "#ff2900", 
                                                  "#008ab8", "#008ab8", "#000000")) +
   geom_hilight(node = 98,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-1

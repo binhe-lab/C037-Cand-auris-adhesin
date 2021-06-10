@@ -14,7 +14,7 @@ set -o pipefail
 
 # parameters
 in=../input/XP_028889033-query.fasta
-base=../output/blast-out/cauris-no-clade-ii-XP_028889033-full.tblastn
+base=../output/copynum-var/cauris-no-clade-ii-XP_028889033-full.tblastn
 
 # tblastn (assumes the blast+ package has been installed locally)
 echo "tblastn XP_028889033 full sequence against C. auris genome sequences..."

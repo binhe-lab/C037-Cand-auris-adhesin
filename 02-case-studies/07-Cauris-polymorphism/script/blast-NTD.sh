@@ -14,7 +14,7 @@ set -o pipefail
 
 # parameters
 in=../input/XP_028889033-query.fasta
-base=../output/blast-out/cauris-no-clade-ii-XP_028889033-NTD.tblastn
+base=../output/copynum-var/cauris-no-clade-ii-XP_028889033-NTD.tblastn
 
 # tblastn (assumes the blast+ package has been installed locally)
 echo "tblastn XP_028889033 NTD sequence against C. auris genome sequences..."

@@ -85,6 +85,8 @@ _Approach_
 
 ## 5. Confirm C-terminal repeat number variation with additional strains' genomes
 
+(results are in `output/copynum-var` folder)
+
 _Motivation_
 
 During my presentation of the _C. auris_ polymorphism results, Rachel raised the question over the observed variation in the tandem repeat copy number in the XP028889033 group, where the clade I strain (B8441) homolog appears to have missed two complete repeat units (44 a.a. each). Her question is whether this difference is real or due to sequencing or assembly errors. 
