@@ -39,6 +39,19 @@ color green, Hil7 AND ss S
 # labeling the β-strands
 set label_size, -1.5
 
+# set view: cross section
+set_view (\
+		0.238507941,   -0.954743385,   -0.177700624,\
+		-0.285257429,    0.106033862,   -0.952565074,\
+		0.928302348,    0.277883291,   -0.247060001,\
+		0.000000000,    0.000000000, -164.778106689,\
+		61.921691895,   61.908172607,   61.914581299,\
+		66.238456726,  263.316131592,  -20.000000000 )
+
+scene cross, store 
+#ray 2400, 1400
+#png ../output/XP_028889361_1-327/20210609-side-by-side-align-to-Hil1-cross.png
+
 # set view, longitudinal
 set_view (\
 	-0.697869956,    0.322520554,   -0.639497042,\
@@ -48,16 +61,11 @@ set_view (\
 	61.921691895,   61.908172607,   61.914581299,\
 	66.238456726,  263.316131592,  -20.000000000 )
 
-ray 1200, 800
-png ../output/XP_028889361_1-327/20210609-side-by-side-align-to-Hil1.png
+scene long, store
+#ray 2400, 1600
+#png ../output/XP_028889361_1-327/20210609-side-by-side-align-to-Hil1-long.png
 
-# set view: cross section
-set_view (\
-		0.238507941,   -0.954743385,   -0.177700624,\
-		-0.285257429,    0.106033862,   -0.952565074,\
-		0.928302348,    0.277883291,   -0.247060001,\
-		0.000000000,    0.000000000, -164.778106689,\
-		61.921691895,   61.908172607,   61.914581299,\
-		66.238456726,  263.316131592,  -20.000000000 )
-ray 1200, 700
-png ../output/XP_028889361_1-327/20210609-side-by-side-align-to-Hil1-cross.png
+# color the loop by rainbow from N-to-C
+spectrum resi, rainbow, ss L
+#ray 2400, 1600
+#png ../output/XP_028889361_1-327/20210609-side-by-side-align-to-Hil1-long-rainbow.png
