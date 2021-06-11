@@ -69,6 +69,18 @@ ggsave("output/figure/20210526-B8441-domain-tandem-repeats.png", width = 8, heig
 
 `r len %>% arrange(desc(length))`
 
+**TANGO predicted β-aggregation sequences (prob > 25%):**
+
+```{r}
+B8441.tango %>% 
+  select(pID = name, species_id, strain, seq, median) %>% 
+  left_join(select(len, -length), by = "pID") %>% 
+  filter(median > 25) %>% 
+  group_by(name, gID, seq) %>% # reorder columns
+  summarize(n = n(), avg.median = mean(median), .groups = "drop") %>% 
+  arrange(name, desc(n))
+```
+
 ## Evolution (duplications and losses)
 ### Gene tree
 The gene tree inferred based on the PF11765 domain in each sequence is presented below:
