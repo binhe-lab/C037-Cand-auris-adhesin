@@ -58,6 +58,7 @@ I repeated the NCBI blastp search with the first 360 amino acid residues instead
 Below is the taxonomy distribution of the hits:
 ![taxonomy of refseq_protein blast](img/20210124-blastp-N360-refseq-all-species-phylogeny.png)
 To determine the effect of changing the query sequence from N560 to N360 amino acids, I downloaded the hits description and the fasta sequences from both searches. Now let's compare them.
+
 ```{r, results="asis"}
 hitTabColNames <- c("description","sci.name","common.name","taxid","max.score",
                     "total.score","query.cover","e.value","perc.ident","length","acc")
@@ -229,7 +230,7 @@ _Discussion_
 The above search only identifies fungidb hits that are don't even have a match in the refseq_prot database. Here we are being more specific and ask which FungiDB hits do not already exist among the refseq_prot hits.
 
 The `bash` script below is to make a blast database from the NCBI blast results and search the FungiDB hits in it to identify matching sequences. Note that we are using all of the N360 hits, including the ones that were filtered out. This is because we are only interested in those FungiDB hits that don't already exist in the refseq hits at all. So if a hit matches a refseq hit that was later filtered, it would still be excluded.
-```{bash blast}
+```bash
 # make blast database from the NCBI blast results
 cd data
 mkdir blastdb
@@ -448,6 +449,9 @@ names(tmp.chr.len) = tmp.chr.id
 tmp.assembly.lnk <- entrez_link(dbfrom = "nuccore", id = tmp.chr.id, db = "assembly", by_id = T)
 # some sequences map to more than one assembly. use the first one
 tmp.assembly.id <- sapply(tmp.assembly.lnk, function(i) i$links$nuccore_assembly[1])
+# 2021-06-18 for unknown reasons, one of the chromosomes failed to get a link even though 
+#   searches on the NCBI website gives the expected result. Manually add it in
+tmp.assembly.id[[8]] <- "277478"
 tmp.assembly <- map_chr(tmp.assembly.id, function(x)
   entrez_summary(db = "assembly", id = x)$assemblyaccession)
 names(tmp.assembly) <- tmp.chr.id
@@ -587,28 +591,31 @@ refseq3 <- bind_rows(refseq2s)
 ```{r search_fdb_gryc}
 tmp2 <- map_dfr(fdb.list[-2], search_chr_loc) # the B9J08 sequence is ignored since its genome is not the refseq assembly
 tmp2 <- tmp2 %>% 
-  mutate(chrstart = as.integer(chrstart), chrstop = as.integer(chrstop), chrL = as.integer(chrL),
-         relLoc = round(chrstart/chrL, 2))
+  mutate(chrstart = as.integer(chrstart), chrstop = as.integer(chrstop), 
+         chrL = as.integer(chrL), relLoc = round(chrstart/chrL, 2))
 ```
 
 5. Finally, we can combine the above results with the manually entered GRYC results
 ```{r}
-non.refseq <- read_tsv("XP_028889033_homologs_chr_loc_fungidb_gryc.txt", comment = "#")
+non.refseq <- read_tsv("data/GRYC/XP_028889033_homologs_chr_loc_fungidb_gryc.txt", comment = "#") %>% 
+  rows_update(tmp2, by = "gene_id") # update the list with the search results above for the fungidb ones
+
 # decide the tibble structure:
 # accession (for protein from source); source: GRYC/FungiDB/Refseq; species; species_id; strain
 # assembly; assemblystatus; n_seqs; gene_id; gene_name; chraccver; chr_name; chrstart, chrstop;
 # chrL; relLoc
 refseq4 <- refseq3 %>% 
-  rename(gene_id = alias, gene_name = gene_id, chr_name = chrloc, assemblyaccession = assembly) %>% 
+  rename(gene_id = alias, gene_name = gene_id, chr_name = chrloc) %>% 
   left_join(sps.stat %>% filter(refseq !=  "na") %>% 
-              select(species, strain, assemblyaccession, assemblystatus, starts_with("n_"))) %>% 
+              select(organism = species, strain, assembly = assemblyaccession, assemblystatus, starts_with("n_")),
+            by = c("organism", "assembly")) %>% 
   mutate(source = "Refseq", species_id = paste0(substr(species,1,1),word(species, 2, 2)), 
          # https://stackoverflow.com/questions/28070878/r-use-min-within-dplyrmutate
          n_seqs = pmin(n_chr, n_scaffold, n_contig, na.rm = T)) %>% 
-  select(source, accession, species, species_id, strain, assemblyaccession, assemblystatus, n_seqs, gene_id, gene_name,
+  select(source, accession, species, species_id, strain, assembly, assemblystatus, n_seqs, gene_id, gene_name,
          chraccver, chr_name, chrstart, chrstop, chrL, relLoc)
 all.genes <- bind_rows(refseq4, non.refseq)
-write_tsv(all.genes, "./XP_028889033_homologs_chr_loc.tsv")
+write_tsv(all.genes, "output/XP_028889033_homologs_chr_loc.tsv")
 ```
 
 ## Evaluate e-value cutoff
@@ -627,7 +634,7 @@ highE.names <- c(paste(refseq.highE$accession, refseq.highE$species_id, sep = "_
                  paste(fdb.highE$gene_id, fdb.highE$species_id, sep = "_"),
                  paste(gryc.highE$ori_id, gryc.highE$species_id, sep = "_"))
 write.fasta(highE.seq, names = highE.names, 
-            file.out = "XP_028889033_homologs_high_Evalue.fasta")
+            file.out = "output/XP_028889033_homologs_high_Evalue.fasta")
 ```
 
 When I submitted the `length(highE.names)` sequences to the [CDD batch search site](https://www.ncbi.nlm.nih.gov/Structure/bwrpsb/bwrpsb.cgi) and downloaded the results. Below is a screenshot of the hits:
