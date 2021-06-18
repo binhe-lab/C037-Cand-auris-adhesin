@@ -1,0 +1,67 @@
+# Assembly name:  Cand_pseudohaemulonii_B12108
+# Organism name:  [Candida] pseudohaemulonis (budding yeasts)
+# Infraspecific name:  strain=B12108
+# Taxid:          418784
+# BioSample:      SAMN08714088
+# BioProject:     PRJNA438484
+# Submitter:      Broad Institute of MIT and Harvard
+# Date:           2018-03-22
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    PYFQ01
+# Assembly method: Spades v. 3.1.1
+# Genome coverage: 77x
+# Sequencing technology: Illumina
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_003013735.1
+# RefSeq assembly accession: GCF_003013735.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_003013755.1	GCF_003013755.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+scaffold00001	unplaced-scaffold	na	na	PYFQ01000001.1	=	NW_020194435.1	Primary Assembly	3024950	na
+scaffold00002	unplaced-scaffold	na	na	PYFQ01000002.1	=	NW_020194436.1	Primary Assembly	965926	na
+scaffold00003	unplaced-scaffold	na	na	PYFQ01000003.1	=	NW_020194437.1	Primary Assembly	844016	na
+scaffold00004	unplaced-scaffold	na	na	PYFQ01000004.1	=	NW_020194438.1	Primary Assembly	808384	na
+scaffold00005	unplaced-scaffold	na	na	PYFQ01000005.1	=	NW_020194439.1	Primary Assembly	645958	na
+scaffold00006	unplaced-scaffold	na	na	PYFQ01000006.1	=	NW_020194440.1	Primary Assembly	641003	na
+scaffold00007	unplaced-scaffold	na	na	PYFQ01000007.1	=	NW_020194441.1	Primary Assembly	604049	na
+scaffold00008	unplaced-scaffold	na	na	PYFQ01000008.1	=	NW_020194442.1	Primary Assembly	541754	na
+scaffold00009	unplaced-scaffold	na	na	PYFQ01000009.1	=	NW_020194443.1	Primary Assembly	519638	na
+scaffold00010	unplaced-scaffold	na	na	PYFQ01000010.1	=	NW_020194444.1	Primary Assembly	512048	na
+scaffold00011	unplaced-scaffold	na	na	PYFQ01000011.1	=	NW_020194445.1	Primary Assembly	444438	na
+scaffold00012	unplaced-scaffold	na	na	PYFQ01000012.1	=	NW_020194446.1	Primary Assembly	366565	na
+scaffold00013	unplaced-scaffold	na	na	PYFQ01000013.1	=	NW_020194447.1	Primary Assembly	363221	na
+scaffold00014	unplaced-scaffold	na	na	PYFQ01000014.1	=	NW_020194448.1	Primary Assembly	315520	na
+scaffold00015	unplaced-scaffold	na	na	PYFQ01000015.1	=	NW_020194449.1	Primary Assembly	253690	na
+scaffold00016	unplaced-scaffold	na	na	PYFQ01000016.1	=	NW_020194450.1	Primary Assembly	236150	na
+scaffold00017	unplaced-scaffold	na	na	PYFQ01000017.1	=	NW_020194451.1	Primary Assembly	229984	na
+scaffold00018	unplaced-scaffold	na	na	PYFQ01000018.1	=	NW_020194452.1	Primary Assembly	227325	na
+scaffold00019	unplaced-scaffold	na	na	PYFQ01000019.1	=	NW_020194453.1	Primary Assembly	206017	na
+scaffold00020	unplaced-scaffold	na	na	PYFQ01000020.1	=	NW_020194454.1	Primary Assembly	186565	na
+scaffold00021	unplaced-scaffold	na	na	PYFQ01000021.1	=	NW_020194455.1	Primary Assembly	177867	na
+scaffold00022	unplaced-scaffold	na	na	PYFQ01000022.1	=	NW_020194456.1	Primary Assembly	151541	na
+scaffold00023	unplaced-scaffold	na	na	PYFQ01000023.1	=	NW_020194457.1	Primary Assembly	126682	na
+scaffold00024	unplaced-scaffold	na	na	PYFQ01000024.1	=	NW_020194458.1	Primary Assembly	95039	na
+scaffold00025	unplaced-scaffold	na	na	PYFQ01000025.1	=	NW_020194459.1	Primary Assembly	55655	na
+scaffold00026	unplaced-scaffold	na	na	PYFQ01000026.1	=	NW_020194460.1	Primary Assembly	15396	na
+scaffold00027	unplaced-scaffold	na	na	PYFQ01000027.1	=	NW_020194461.1	Primary Assembly	7301	na
+scaffold00028	unplaced-scaffold	na	na	PYFQ01000028.1	=	NW_020194462.1	Primary Assembly	4863	na
+scaffold00029	unplaced-scaffold	na	na	PYFQ01000029.1	=	NW_020194463.1	Primary Assembly	4778	na
+scaffold00030	unplaced-scaffold	na	na	PYFQ01000030.1	=	NW_020194464.1	Primary Assembly	4380	na
+scaffold00031	unplaced-scaffold	na	na	PYFQ01000031.1	=	NW_020194465.1	Primary Assembly	2348	na
+scaffold00032	unplaced-scaffold	na	na	PYFQ01000032.1	=	NW_020194466.1	Primary Assembly	2226	na
+scaffold00033	unplaced-scaffold	na	na	PYFQ01000033.1	=	NW_020194467.1	Primary Assembly	2213	na
+scaffold00034	unplaced-scaffold	na	na	PYFQ01000034.1	=	NW_020194468.1	Primary Assembly	1438	na
+scaffold00035	unplaced-scaffold	na	na	PYFQ01000035.1	=	NW_020194469.1	Primary Assembly	1193	na
+scaffold00036	unplaced-scaffold	na	na	PYFQ01000036.1	=	NW_020194470.1	Primary Assembly	1154	na

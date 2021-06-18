@@ -1,0 +1,48 @@
+# Assembly name:  JHU_Cniv_v1
+# Organism name:  [Candida] nivariensis (budding yeasts)
+# Infraspecific name:  strain=CBS 9983
+# Taxid:          418086
+# BioSample:      SAMN17131863
+# BioProject:     PRJNA686979
+# Submitter:      Johns Hopkins University
+# Date:           2021-03-09
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    JAEVGP01
+# Assembly method: Canu v. 2.1
+# Expected final version: yes
+# Genome coverage: 296.0x
+# Sequencing technology: Oxford Nanopore MinION; Illumina iSeq
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_017309295.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_017309305.1		Primary Assembly
+## GCA_017309315.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+tig01	unplaced-scaffold	na	na	JAEVGP010000001.1	<>	na	Primary Assembly	1423475	na
+tig02	unplaced-scaffold	na	na	JAEVGP010000002.1	<>	na	Primary Assembly	1283968	na
+tig03	unplaced-scaffold	na	na	JAEVGP010000003.1	<>	na	Primary Assembly	1060011	na
+tig04	unplaced-scaffold	na	na	JAEVGP010000004.1	<>	na	Primary Assembly	933062	na
+tig05	unplaced-scaffold	na	na	JAEVGP010000005.1	<>	na	Primary Assembly	1010854	na
+tig06	unplaced-scaffold	na	na	JAEVGP010000006.1	<>	na	Primary Assembly	885783	na
+tig07	unplaced-scaffold	na	na	JAEVGP010000007.1	<>	na	Primary Assembly	879540	na
+tig08	unplaced-scaffold	na	na	JAEVGP010000008.1	<>	na	Primary Assembly	763992	na
+tig09	unplaced-scaffold	na	na	JAEVGP010000009.1	<>	na	Primary Assembly	714796	na
+tig10	unplaced-scaffold	na	na	JAEVGP010000010.1	<>	na	Primary Assembly	675194	na
+tig11	unplaced-scaffold	na	na	JAEVGP010000011.1	<>	na	Primary Assembly	594828	na
+tig12	unplaced-scaffold	na	na	JAEVGP010000012.1	<>	na	Primary Assembly	617546	na
+tig13	unplaced-scaffold	na	na	JAEVGP010000013.1	<>	na	Primary Assembly	481613	na
+tig14	unplaced-scaffold	na	na	JAEVGP010000014.1	<>	na	Primary Assembly	434809	na
+tig24	unplaced-scaffold	na	na	JAEVGP010000015.1	<>	na	Primary Assembly	44616	na
+JHU_Cniv_v1_mito	assembled-molecule	MT	Mitochondrion	CM029591.1	<>	na	non-nuclear	28512	na

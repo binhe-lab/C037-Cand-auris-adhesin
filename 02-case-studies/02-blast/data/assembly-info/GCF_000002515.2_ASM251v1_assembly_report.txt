@@ -1,0 +1,35 @@
+# Assembly name:  ASM251v1
+# Organism name:  Kluyveromyces lactis (budding yeasts)
+# Infraspecific name:  strain=NRRL Y-1140
+# Taxid:          28985
+# BioSample:      SAMEA3138170
+# BioProject:     PRJNA13835
+# Submitter:      Genolevures Consortium
+# Date:           2004-07-02
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000002515.1
+# RefSeq assembly accession: GCF_000002515.2
+# RefSeq assembly and GenBank assemblies identical: no
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000000695.1	GCF_000000695.2	Primary Assembly
+## 	GCF_000246915.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+A	assembled-molecule	A	Chromosome	CR382121.1	=	NC_006037.1	Primary Assembly	1062590	na
+B	assembled-molecule	B	Chromosome	CR382122.1	=	NC_006038.1	Primary Assembly	1320834	na
+C	assembled-molecule	C	Chromosome	CR382123.1	=	NC_006039.1	Primary Assembly	1753957	na
+D	assembled-molecule	D	Chromosome	CR382124.1	=	NC_006040.1	Primary Assembly	1715506	na
+E	assembled-molecule	E	Chromosome	CR382125.1	=	NC_006041.1	Primary Assembly	2234072	na
+F	assembled-molecule	F	Chromosome	CR382126.1	=	NC_006042.1	Primary Assembly	2602197	na
+MT	assembled-molecule	MT	Mitochondrion	na	<>	NC_006077.1	non-nuclear	40291	na

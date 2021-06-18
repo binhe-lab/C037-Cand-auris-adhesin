@@ -1,0 +1,38 @@
+# Assembly name:  ASM23734v1
+# Organism name:  Naumovozyma castellii CBS 4309 (budding yeasts)
+# Infraspecific name:  strain=type strain:CBS 4309
+# Taxid:          1064592
+# BioSample:      SAMEA2271985
+# BioProject:     PRJEA70625
+# Submitter:      Wolfe Laboratory, Smurfit Institute of Genetics, Trinity College Dublin
+# Date:           2011-08-01
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000237345.1
+# RefSeq assembly accession: GCF_000237345.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000237355.1	GCF_000237355.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	HE576752.1	=	NC_016491.1	Primary Assembly	3019861	na
+2	assembled-molecule	2	Chromosome	HE576753.1	=	NC_016492.1	Primary Assembly	1756361	na
+3	assembled-molecule	3	Chromosome	HE576754.1	=	NC_016493.1	Primary Assembly	1245273	na
+4	assembled-molecule	4	Chromosome	HE576755.1	=	NC_016494.1	Primary Assembly	958728	na
+5	assembled-molecule	5	Chromosome	HE576756.1	=	NC_016495.1	Primary Assembly	835708	na
+6	assembled-molecule	6	Chromosome	HE576757.1	=	NC_016496.1	Primary Assembly	828437	na
+7	assembled-molecule	7	Chromosome	HE576758.1	=	NC_016497.1	Primary Assembly	804126	na
+8	assembled-molecule	8	Chromosome	HE576759.1	=	NC_016498.1	Primary Assembly	699326	na
+9	assembled-molecule	9	Chromosome	HE576760.1	=	NC_016499.1	Primary Assembly	603245	na
+10	assembled-molecule	10	Chromosome	HE576761.1	=	NC_016500.1	Primary Assembly	468474	na

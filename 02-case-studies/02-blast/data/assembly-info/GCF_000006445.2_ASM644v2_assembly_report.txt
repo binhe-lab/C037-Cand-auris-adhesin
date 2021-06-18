@@ -1,0 +1,37 @@
+# Assembly name:  ASM644v2
+# Organism name:  Debaryomyces hansenii CBS767 (budding yeasts)
+# Infraspecific name:  strain=CBS767
+# Taxid:          284592
+# BioSample:      SAMEA3138183
+# BioProject:     PRJNA13832
+# Submitter:      Genolevures Consortium
+# Date:           2008-09-16
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000006445.2
+# RefSeq assembly accession: GCF_000006445.2
+# RefSeq assembly and GenBank assemblies identical: no
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000006455.2	GCF_000006455.2	Primary Assembly
+## 	GCF_000525755.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+A	assembled-molecule	A	Chromosome	CR382133.2	=	NC_006043.2	Primary Assembly	1249940	na
+B	assembled-molecule	B	Chromosome	CR382134.2	=	NC_006044.2	Primary Assembly	1344482	na
+C	assembled-molecule	C	Chromosome	CR382135.2	=	NC_006045.2	Primary Assembly	1587442	na
+D	assembled-molecule	D	Chromosome	CR382136.2	=	NC_006046.2	Primary Assembly	1606296	na
+E	assembled-molecule	E	Chromosome	CR382137.2	=	NC_006047.2	Primary Assembly	2007515	na
+F	assembled-molecule	F	Chromosome	CR382138.2	=	NC_006048.2	Primary Assembly	2305761	na
+G	assembled-molecule	G	Chromosome	CR382139.2	=	NC_006049.2	Primary Assembly	2051050	na
+MT	assembled-molecule	MT	Mitochondrion	na	<>	NC_010166.1	non-nuclear	29462	na

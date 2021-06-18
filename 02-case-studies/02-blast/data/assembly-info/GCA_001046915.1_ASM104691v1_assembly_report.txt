@@ -1,0 +1,150 @@
+# Assembly name:  ASM104691v1
+# Organism name:  [Candida] nivariensis CBS 9983 (budding yeasts)
+# Infraspecific name:  strain=CBS 9983
+# Taxid:          1279115
+# BioSample:      SAMEA3146320
+# BioProject:     PRJEB148
+# Submitter:      LabRI
+# Date:           2013-08-29
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAPV01
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_001046915.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001046925.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+CAPV01000001.1	unplaced-scaffold	na	na	CAPV01000001.1	<>	na	Primary Assembly	7410	na
+CAPV01000002.1	unplaced-scaffold	na	na	CAPV01000002.1	<>	na	Primary Assembly	7815	na
+CAPV01000003.1	unplaced-scaffold	na	na	CAPV01000003.1	<>	na	Primary Assembly	18141	na
+CAPV01000004.1	unplaced-scaffold	na	na	CAPV01000004.1	<>	na	Primary Assembly	33727	na
+CAPV01000005.1	unplaced-scaffold	na	na	CAPV01000005.1	<>	na	Primary Assembly	4175	na
+CAPV01000006.1	unplaced-scaffold	na	na	CAPV01000006.1	<>	na	Primary Assembly	33346	na
+CAPV01000007.1	unplaced-scaffold	na	na	CAPV01000007.1	<>	na	Primary Assembly	15289	na
+CAPV01000008.1	unplaced-scaffold	na	na	CAPV01000008.1	<>	na	Primary Assembly	1990	na
+CAPV01000009.1	unplaced-scaffold	na	na	CAPV01000009.1	<>	na	Primary Assembly	5849	na
+CAPV01000010.1	unplaced-scaffold	na	na	CAPV01000010.1	<>	na	Primary Assembly	2121	na
+CAPV01000011.1	unplaced-scaffold	na	na	CAPV01000011.1	<>	na	Primary Assembly	248381	na
+CAPV01000012.1	unplaced-scaffold	na	na	CAPV01000012.1	<>	na	Primary Assembly	78020	na
+CAPV01000013.1	unplaced-scaffold	na	na	CAPV01000013.1	<>	na	Primary Assembly	306916	na
+CAPV01000014.1	unplaced-scaffold	na	na	CAPV01000014.1	<>	na	Primary Assembly	28528	na
+CAPV01000015.1	unplaced-scaffold	na	na	CAPV01000015.1	<>	na	Primary Assembly	2966	na
+CAPV01000016.1	unplaced-scaffold	na	na	CAPV01000016.1	<>	na	Primary Assembly	228993	na
+CAPV01000017.1	unplaced-scaffold	na	na	CAPV01000017.1	<>	na	Primary Assembly	17379	na
+CAPV01000018.1	unplaced-scaffold	na	na	CAPV01000018.1	<>	na	Primary Assembly	40179	na
+CAPV01000019.1	unplaced-scaffold	na	na	CAPV01000019.1	<>	na	Primary Assembly	136909	na
+CAPV01000020.1	unplaced-scaffold	na	na	CAPV01000020.1	<>	na	Primary Assembly	86603	na
+CAPV01000021.1	unplaced-scaffold	na	na	CAPV01000021.1	<>	na	Primary Assembly	78487	na
+CAPV01000022.1	unplaced-scaffold	na	na	CAPV01000022.1	<>	na	Primary Assembly	2786	na
+CAPV01000023.1	unplaced-scaffold	na	na	CAPV01000023.1	<>	na	Primary Assembly	2511	na
+CAPV01000024.1	unplaced-scaffold	na	na	CAPV01000024.1	<>	na	Primary Assembly	393611	na
+CAPV01000025.1	unplaced-scaffold	na	na	CAPV01000025.1	<>	na	Primary Assembly	162347	na
+CAPV01000026.1	unplaced-scaffold	na	na	CAPV01000026.1	<>	na	Primary Assembly	2251	na
+CAPV01000027.1	unplaced-scaffold	na	na	CAPV01000027.1	<>	na	Primary Assembly	205176	na
+CAPV01000028.1	unplaced-scaffold	na	na	CAPV01000028.1	<>	na	Primary Assembly	578375	na
+CAPV01000029.1	unplaced-scaffold	na	na	CAPV01000029.1	<>	na	Primary Assembly	71779	na
+CAPV01000030.1	unplaced-scaffold	na	na	CAPV01000030.1	<>	na	Primary Assembly	22350	na
+CAPV01000031.1	unplaced-scaffold	na	na	CAPV01000031.1	<>	na	Primary Assembly	4767	na
+CAPV01000032.1	unplaced-scaffold	na	na	CAPV01000032.1	<>	na	Primary Assembly	256210	na
+CAPV01000033.1	unplaced-scaffold	na	na	CAPV01000033.1	<>	na	Primary Assembly	147331	na
+CAPV01000034.1	unplaced-scaffold	na	na	CAPV01000034.1	<>	na	Primary Assembly	48077	na
+CAPV01000035.1	unplaced-scaffold	na	na	CAPV01000035.1	<>	na	Primary Assembly	106791	na
+CAPV01000036.1	unplaced-scaffold	na	na	CAPV01000036.1	<>	na	Primary Assembly	5823	na
+CAPV01000037.1	unplaced-scaffold	na	na	CAPV01000037.1	<>	na	Primary Assembly	82231	na
+CAPV01000038.1	unplaced-scaffold	na	na	CAPV01000038.1	<>	na	Primary Assembly	244493	na
+CAPV01000039.1	unplaced-scaffold	na	na	CAPV01000039.1	<>	na	Primary Assembly	91438	na
+CAPV01000040.1	unplaced-scaffold	na	na	CAPV01000040.1	<>	na	Primary Assembly	1038	na
+CAPV01000041.1	unplaced-scaffold	na	na	CAPV01000041.1	<>	na	Primary Assembly	1179	na
+CAPV01000042.1	unplaced-scaffold	na	na	CAPV01000042.1	<>	na	Primary Assembly	991	na
+CAPV01000043.1	unplaced-scaffold	na	na	CAPV01000043.1	<>	na	Primary Assembly	3093	na
+CAPV01000044.1	unplaced-scaffold	na	na	CAPV01000044.1	<>	na	Primary Assembly	902	na
+CAPV01000045.1	unplaced-scaffold	na	na	CAPV01000045.1	<>	na	Primary Assembly	72446	na
+CAPV01000046.1	unplaced-scaffold	na	na	CAPV01000046.1	<>	na	Primary Assembly	4642	na
+CAPV01000047.1	unplaced-scaffold	na	na	CAPV01000047.1	<>	na	Primary Assembly	98775	na
+CAPV01000048.1	unplaced-scaffold	na	na	CAPV01000048.1	<>	na	Primary Assembly	70761	na
+CAPV01000049.1	unplaced-scaffold	na	na	CAPV01000049.1	<>	na	Primary Assembly	200463	na
+CAPV01000050.1	unplaced-scaffold	na	na	CAPV01000050.1	<>	na	Primary Assembly	233340	na
+CAPV01000051.1	unplaced-scaffold	na	na	CAPV01000051.1	<>	na	Primary Assembly	5509	na
+CAPV01000052.1	unplaced-scaffold	na	na	CAPV01000052.1	<>	na	Primary Assembly	828	na
+CAPV01000053.1	unplaced-scaffold	na	na	CAPV01000053.1	<>	na	Primary Assembly	4312	na
+CAPV01000054.1	unplaced-scaffold	na	na	CAPV01000054.1	<>	na	Primary Assembly	42326	na
+CAPV01000055.1	unplaced-scaffold	na	na	CAPV01000055.1	<>	na	Primary Assembly	122358	na
+CAPV01000056.1	unplaced-scaffold	na	na	CAPV01000056.1	<>	na	Primary Assembly	4731	na
+CAPV01000057.1	unplaced-scaffold	na	na	CAPV01000057.1	<>	na	Primary Assembly	44121	na
+CAPV01000058.1	unplaced-scaffold	na	na	CAPV01000058.1	<>	na	Primary Assembly	158410	na
+CAPV01000059.1	unplaced-scaffold	na	na	CAPV01000059.1	<>	na	Primary Assembly	221156	na
+CAPV01000060.1	unplaced-scaffold	na	na	CAPV01000060.1	<>	na	Primary Assembly	332441	na
+CAPV01000061.1	unplaced-scaffold	na	na	CAPV01000061.1	<>	na	Primary Assembly	38772	na
+CAPV01000062.1	unplaced-scaffold	na	na	CAPV01000062.1	<>	na	Primary Assembly	20351	na
+CAPV01000063.1	unplaced-scaffold	na	na	CAPV01000063.1	<>	na	Primary Assembly	165188	na
+CAPV01000064.1	unplaced-scaffold	na	na	CAPV01000064.1	<>	na	Primary Assembly	64051	na
+CAPV01000065.1	unplaced-scaffold	na	na	CAPV01000065.1	<>	na	Primary Assembly	4695	na
+CAPV01000066.1	unplaced-scaffold	na	na	CAPV01000066.1	<>	na	Primary Assembly	207115	na
+CAPV01000067.1	unplaced-scaffold	na	na	CAPV01000067.1	<>	na	Primary Assembly	35101	na
+CAPV01000068.1	unplaced-scaffold	na	na	CAPV01000068.1	<>	na	Primary Assembly	268201	na
+CAPV01000069.1	unplaced-scaffold	na	na	CAPV01000069.1	<>	na	Primary Assembly	24070	na
+CAPV01000070.1	unplaced-scaffold	na	na	CAPV01000070.1	<>	na	Primary Assembly	203059	na
+CAPV01000071.1	unplaced-scaffold	na	na	CAPV01000071.1	<>	na	Primary Assembly	17388	na
+CAPV01000072.1	unplaced-scaffold	na	na	CAPV01000072.1	<>	na	Primary Assembly	6013	na
+CAPV01000073.1	unplaced-scaffold	na	na	CAPV01000073.1	<>	na	Primary Assembly	11512	na
+CAPV01000074.1	unplaced-scaffold	na	na	CAPV01000074.1	<>	na	Primary Assembly	15084	na
+CAPV01000075.1	unplaced-scaffold	na	na	CAPV01000075.1	<>	na	Primary Assembly	44814	na
+CAPV01000076.1	unplaced-scaffold	na	na	CAPV01000076.1	<>	na	Primary Assembly	145085	na
+CAPV01000077.1	unplaced-scaffold	na	na	CAPV01000077.1	<>	na	Primary Assembly	17402	na
+CAPV01000078.1	unplaced-scaffold	na	na	CAPV01000078.1	<>	na	Primary Assembly	4566	na
+CAPV01000079.1	unplaced-scaffold	na	na	CAPV01000079.1	<>	na	Primary Assembly	1613	na
+CAPV01000080.1	unplaced-scaffold	na	na	CAPV01000080.1	<>	na	Primary Assembly	3145	na
+CAPV01000081.1	unplaced-scaffold	na	na	CAPV01000081.1	<>	na	Primary Assembly	2122	na
+CAPV01000082.1	unplaced-scaffold	na	na	CAPV01000082.1	<>	na	Primary Assembly	2397	na
+CAPV01000083.1	unplaced-scaffold	na	na	CAPV01000083.1	<>	na	Primary Assembly	3073	na
+CAPV01000084.1	unplaced-scaffold	na	na	CAPV01000084.1	<>	na	Primary Assembly	18841	na
+CAPV01000085.1	unplaced-scaffold	na	na	CAPV01000085.1	<>	na	Primary Assembly	46663	na
+CAPV01000086.1	unplaced-scaffold	na	na	CAPV01000086.1	<>	na	Primary Assembly	9465	na
+CAPV01000087.1	unplaced-scaffold	na	na	CAPV01000087.1	<>	na	Primary Assembly	25078	na
+CAPV01000088.1	unplaced-scaffold	na	na	CAPV01000088.1	<>	na	Primary Assembly	44146	na
+CAPV01000089.1	unplaced-scaffold	na	na	CAPV01000089.1	<>	na	Primary Assembly	56816	na
+CAPV01000090.1	unplaced-scaffold	na	na	CAPV01000090.1	<>	na	Primary Assembly	288929	na
+CAPV01000091.1	unplaced-scaffold	na	na	CAPV01000091.1	<>	na	Primary Assembly	16927	na
+CAPV01000092.1	unplaced-scaffold	na	na	CAPV01000092.1	<>	na	Primary Assembly	56231	na
+CAPV01000093.1	unplaced-scaffold	na	na	CAPV01000093.1	<>	na	Primary Assembly	361639	na
+CAPV01000094.1	unplaced-scaffold	na	na	CAPV01000094.1	<>	na	Primary Assembly	344090	na
+CAPV01000095.1	unplaced-scaffold	na	na	CAPV01000095.1	<>	na	Primary Assembly	3885	na
+CAPV01000096.1	unplaced-scaffold	na	na	CAPV01000096.1	<>	na	Primary Assembly	666	na
+CAPV01000097.1	unplaced-scaffold	na	na	CAPV01000097.1	<>	na	Primary Assembly	7707	na
+CAPV01000098.1	unplaced-scaffold	na	na	CAPV01000098.1	<>	na	Primary Assembly	63039	na
+CAPV01000099.1	unplaced-scaffold	na	na	CAPV01000099.1	<>	na	Primary Assembly	152067	na
+CAPV01000100.1	unplaced-scaffold	na	na	CAPV01000100.1	<>	na	Primary Assembly	76907	na
+CAPV01000101.1	unplaced-scaffold	na	na	CAPV01000101.1	<>	na	Primary Assembly	40458	na
+CAPV01000102.1	unplaced-scaffold	na	na	CAPV01000102.1	<>	na	Primary Assembly	297308	na
+CAPV01000103.1	unplaced-scaffold	na	na	CAPV01000103.1	<>	na	Primary Assembly	62740	na
+CAPV01000104.1	unplaced-scaffold	na	na	CAPV01000104.1	<>	na	Primary Assembly	6915	na
+CAPV01000105.1	unplaced-scaffold	na	na	CAPV01000105.1	<>	na	Primary Assembly	126615	na
+CAPV01000106.1	unplaced-scaffold	na	na	CAPV01000106.1	<>	na	Primary Assembly	34290	na
+CAPV01000107.1	unplaced-scaffold	na	na	CAPV01000107.1	<>	na	Primary Assembly	170446	na
+CAPV01000108.1	unplaced-scaffold	na	na	CAPV01000108.1	<>	na	Primary Assembly	98679	na
+CAPV01000109.1	unplaced-scaffold	na	na	CAPV01000109.1	<>	na	Primary Assembly	278938	na
+CAPV01000110.1	unplaced-scaffold	na	na	CAPV01000110.1	<>	na	Primary Assembly	29763	na
+CAPV01000111.1	unplaced-scaffold	na	na	CAPV01000111.1	<>	na	Primary Assembly	3698	na
+CAPV01000112.1	unplaced-scaffold	na	na	CAPV01000112.1	<>	na	Primary Assembly	83784	na
+CAPV01000113.1	unplaced-scaffold	na	na	CAPV01000113.1	<>	na	Primary Assembly	42791	na
+CAPV01000114.1	unplaced-scaffold	na	na	CAPV01000114.1	<>	na	Primary Assembly	807234	na
+CAPV01000115.1	unplaced-scaffold	na	na	CAPV01000115.1	<>	na	Primary Assembly	486555	na
+CAPV01000116.1	unplaced-scaffold	na	na	CAPV01000116.1	<>	na	Primary Assembly	2787	na
+CAPV01000117.1	unplaced-scaffold	na	na	CAPV01000117.1	<>	na	Primary Assembly	8400	na
+CAPV01000118.1	unplaced-scaffold	na	na	CAPV01000118.1	<>	na	Primary Assembly	16286	na
+CAPV01000119.1	unplaced-scaffold	na	na	CAPV01000119.1	<>	na	Primary Assembly	31520	na
+CAPV01000120.1	unplaced-scaffold	na	na	CAPV01000120.1	<>	na	Primary Assembly	36897	na
+CAPV01000121.1	unplaced-scaffold	na	na	CAPV01000121.1	<>	na	Primary Assembly	572815	na
+CAPV01000122.1	unplaced-scaffold	na	na	CAPV01000122.1	<>	na	Primary Assembly	2785	na
+CAPV01000123.1	unplaced-scaffold	na	na	CAPV01000123.1	<>	na	Primary Assembly	2403	na

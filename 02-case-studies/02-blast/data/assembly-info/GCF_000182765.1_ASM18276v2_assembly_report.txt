@@ -1,0 +1,37 @@
+# Assembly name:  ASM18276v2
+# Organism name:  Candida parapsilosis (budding yeasts)
+# Infraspecific name:  strain=CDC317
+# Taxid:          5480
+# BioProject:     PRJEA32889
+# Submitter:      Wellcome Trust Sanger Institute
+# Date:           2011-10-26
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000182765.2
+# RefSeq assembly accession: GCF_000182765.1
+# RefSeq assembly and GenBank assemblies identical: no
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000182775.2	GCF_000182775.1	Primary Assembly
+## GCA_001499795.1	GCF_014931545.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+HE605202.1	unplaced-scaffold	na	na	HE605202.1	=	NW_023503277.1	Primary Assembly	898305	na
+HE605203.1	unplaced-scaffold	na	na	HE605203.1	=	NW_023503278.1	Primary Assembly	2235583	na
+HE605204.1	unplaced-scaffold	na	na	HE605204.1	=	NW_023503279.1	Primary Assembly	1039767	na
+HE605205.1	unplaced-scaffold	na	na	HE605205.1	=	NW_023503280.1	Primary Assembly	2091826	na
+HE605206.1	unplaced-scaffold	na	na	HE605206.1	=	NW_023503281.1	Primary Assembly	3023470	na
+HE605207.1	unplaced-scaffold	na	na	HE605207.1	=	NW_023503282.1	Primary Assembly	962442	na
+HE605208.1	unplaced-scaffold	na	na	HE605208.1	=	NW_023503283.1	Primary Assembly	1789679	na
+HE605209.1	unplaced-scaffold	na	na	HE605209.1	=	NW_023503284.1	Primary Assembly	957321	na
+MT	assembled-molecule	MT	Mitochondrion	na	<>	NC_005253.2	non-nuclear	32745	na
+HE605210.1	unlocalized-scaffold	MT	Mitochondrion	HE605210.1	<>	na	non-nuclear	31781	na

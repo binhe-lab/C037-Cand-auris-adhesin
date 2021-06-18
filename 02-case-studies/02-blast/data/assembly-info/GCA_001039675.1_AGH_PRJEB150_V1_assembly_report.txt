@@ -1,0 +1,207 @@
+# Assembly name:  AGH_PRJEB150_V1
+# Organism name:  Nakaseomyces delphensis CBS 2170 (budding yeasts)
+# Infraspecific name:  strain=CBS 2170
+# Taxid:          1279113
+# BioSample:      SAMEA3146334
+# BioProject:     PRJEB150
+# Submitter:      LabRI
+# Date:           2013-08-29
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    CAPT01
+# Genome coverage: 100x
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_001039675.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_001039685.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+CAPT01000001	unplaced-scaffold	na	na	CAPT01000001.1	<>	na	Primary Assembly	2859	na
+CAPT01000002	unplaced-scaffold	na	na	CAPT01000002.1	<>	na	Primary Assembly	2008	na
+CAPT01000003	unplaced-scaffold	na	na	CAPT01000003.1	<>	na	Primary Assembly	1818	na
+CAPT01000004	unplaced-scaffold	na	na	CAPT01000004.1	<>	na	Primary Assembly	386659	na
+CAPT01000005	unplaced-scaffold	na	na	CAPT01000005.1	<>	na	Primary Assembly	41013	na
+CAPT01000006	unplaced-scaffold	na	na	CAPT01000006.1	<>	na	Primary Assembly	147840	na
+CAPT01000007	unplaced-scaffold	na	na	CAPT01000007.1	<>	na	Primary Assembly	10493	na
+CAPT01000008	unplaced-scaffold	na	na	CAPT01000008.1	<>	na	Primary Assembly	387870	na
+CAPT01000009	unplaced-scaffold	na	na	CAPT01000009.1	<>	na	Primary Assembly	4658	na
+CAPT01000010	unplaced-scaffold	na	na	CAPT01000010.1	<>	na	Primary Assembly	8493	na
+CAPT01000011	unplaced-scaffold	na	na	CAPT01000011.1	<>	na	Primary Assembly	6751	na
+CAPT01000012	unplaced-scaffold	na	na	CAPT01000012.1	<>	na	Primary Assembly	48999	na
+CAPT01000013	unplaced-scaffold	na	na	CAPT01000013.1	<>	na	Primary Assembly	32594	na
+CAPT01000014	unplaced-scaffold	na	na	CAPT01000014.1	<>	na	Primary Assembly	95057	na
+CAPT01000015	unplaced-scaffold	na	na	CAPT01000015.1	<>	na	Primary Assembly	135277	na
+CAPT01000016	unplaced-scaffold	na	na	CAPT01000016.1	<>	na	Primary Assembly	60870	na
+CAPT01000017	unplaced-scaffold	na	na	CAPT01000017.1	<>	na	Primary Assembly	36615	na
+CAPT01000018	unplaced-scaffold	na	na	CAPT01000018.1	<>	na	Primary Assembly	8815	na
+CAPT01000019	unplaced-scaffold	na	na	CAPT01000019.1	<>	na	Primary Assembly	25015	na
+CAPT01000020	unplaced-scaffold	na	na	CAPT01000020.1	<>	na	Primary Assembly	78635	na
+CAPT01000021	unplaced-scaffold	na	na	CAPT01000021.1	<>	na	Primary Assembly	7198	na
+CAPT01000022	unplaced-scaffold	na	na	CAPT01000022.1	<>	na	Primary Assembly	41188	na
+CAPT01000023	unplaced-scaffold	na	na	CAPT01000023.1	<>	na	Primary Assembly	14983	na
+CAPT01000024	unplaced-scaffold	na	na	CAPT01000024.1	<>	na	Primary Assembly	3477	na
+CAPT01000025	unplaced-scaffold	na	na	CAPT01000025.1	<>	na	Primary Assembly	2444	na
+CAPT01000026	unplaced-scaffold	na	na	CAPT01000026.1	<>	na	Primary Assembly	2113	na
+CAPT01000027	unplaced-scaffold	na	na	CAPT01000027.1	<>	na	Primary Assembly	1534	na
+CAPT01000028	unplaced-scaffold	na	na	CAPT01000028.1	<>	na	Primary Assembly	2938	na
+CAPT01000029	unplaced-scaffold	na	na	CAPT01000029.1	<>	na	Primary Assembly	53908	na
+CAPT01000030	unplaced-scaffold	na	na	CAPT01000030.1	<>	na	Primary Assembly	203761	na
+CAPT01000031	unplaced-scaffold	na	na	CAPT01000031.1	<>	na	Primary Assembly	2906	na
+CAPT01000032	unplaced-scaffold	na	na	CAPT01000032.1	<>	na	Primary Assembly	99943	na
+CAPT01000033	unplaced-scaffold	na	na	CAPT01000033.1	<>	na	Primary Assembly	39775	na
+CAPT01000034	unplaced-scaffold	na	na	CAPT01000034.1	<>	na	Primary Assembly	131554	na
+CAPT01000035	unplaced-scaffold	na	na	CAPT01000035.1	<>	na	Primary Assembly	145883	na
+CAPT01000036	unplaced-scaffold	na	na	CAPT01000036.1	<>	na	Primary Assembly	139881	na
+CAPT01000037	unplaced-scaffold	na	na	CAPT01000037.1	<>	na	Primary Assembly	68112	na
+CAPT01000038	unplaced-scaffold	na	na	CAPT01000038.1	<>	na	Primary Assembly	1153	na
+CAPT01000039	unplaced-scaffold	na	na	CAPT01000039.1	<>	na	Primary Assembly	4517	na
+CAPT01000040	unplaced-scaffold	na	na	CAPT01000040.1	<>	na	Primary Assembly	78810	na
+CAPT01000041	unplaced-scaffold	na	na	CAPT01000041.1	<>	na	Primary Assembly	2718	na
+CAPT01000042	unplaced-scaffold	na	na	CAPT01000042.1	<>	na	Primary Assembly	1511	na
+CAPT01000043	unplaced-scaffold	na	na	CAPT01000043.1	<>	na	Primary Assembly	5599	na
+CAPT01000044	unplaced-scaffold	na	na	CAPT01000044.1	<>	na	Primary Assembly	108	na
+CAPT01000045	unplaced-scaffold	na	na	CAPT01000045.1	<>	na	Primary Assembly	57238	na
+CAPT01000046	unplaced-scaffold	na	na	CAPT01000046.1	<>	na	Primary Assembly	16788	na
+CAPT01000047	unplaced-scaffold	na	na	CAPT01000047.1	<>	na	Primary Assembly	1115	na
+CAPT01000048	unplaced-scaffold	na	na	CAPT01000048.1	<>	na	Primary Assembly	1857	na
+CAPT01000049	unplaced-scaffold	na	na	CAPT01000049.1	<>	na	Primary Assembly	56143	na
+CAPT01000050	unplaced-scaffold	na	na	CAPT01000050.1	<>	na	Primary Assembly	79853	na
+CAPT01000051	unplaced-scaffold	na	na	CAPT01000051.1	<>	na	Primary Assembly	63275	na
+CAPT01000052	unplaced-scaffold	na	na	CAPT01000052.1	<>	na	Primary Assembly	43015	na
+CAPT01000053	unplaced-scaffold	na	na	CAPT01000053.1	<>	na	Primary Assembly	76316	na
+CAPT01000054	unplaced-scaffold	na	na	CAPT01000054.1	<>	na	Primary Assembly	29272	na
+CAPT01000055	unplaced-scaffold	na	na	CAPT01000055.1	<>	na	Primary Assembly	73560	na
+CAPT01000056	unplaced-scaffold	na	na	CAPT01000056.1	<>	na	Primary Assembly	76487	na
+CAPT01000057	unplaced-scaffold	na	na	CAPT01000057.1	<>	na	Primary Assembly	145440	na
+CAPT01000058	unplaced-scaffold	na	na	CAPT01000058.1	<>	na	Primary Assembly	69218	na
+CAPT01000059	unplaced-scaffold	na	na	CAPT01000059.1	<>	na	Primary Assembly	14888	na
+CAPT01000060	unplaced-scaffold	na	na	CAPT01000060.1	<>	na	Primary Assembly	1712	na
+CAPT01000061	unplaced-scaffold	na	na	CAPT01000061.1	<>	na	Primary Assembly	115155	na
+CAPT01000062	unplaced-scaffold	na	na	CAPT01000062.1	<>	na	Primary Assembly	78441	na
+CAPT01000063	unplaced-scaffold	na	na	CAPT01000063.1	<>	na	Primary Assembly	90127	na
+CAPT01000064	unplaced-scaffold	na	na	CAPT01000064.1	<>	na	Primary Assembly	5105	na
+CAPT01000065	unplaced-scaffold	na	na	CAPT01000065.1	<>	na	Primary Assembly	6897	na
+CAPT01000066	unplaced-scaffold	na	na	CAPT01000066.1	<>	na	Primary Assembly	12194	na
+CAPT01000067	unplaced-scaffold	na	na	CAPT01000067.1	<>	na	Primary Assembly	33742	na
+CAPT01000068	unplaced-scaffold	na	na	CAPT01000068.1	<>	na	Primary Assembly	25204	na
+CAPT01000069	unplaced-scaffold	na	na	CAPT01000069.1	<>	na	Primary Assembly	4514	na
+CAPT01000070	unplaced-scaffold	na	na	CAPT01000070.1	<>	na	Primary Assembly	7335	na
+CAPT01000071	unplaced-scaffold	na	na	CAPT01000071.1	<>	na	Primary Assembly	449	na
+CAPT01000072	unplaced-scaffold	na	na	CAPT01000072.1	<>	na	Primary Assembly	8001	na
+CAPT01000073	unplaced-scaffold	na	na	CAPT01000073.1	<>	na	Primary Assembly	58442	na
+CAPT01000074	unplaced-scaffold	na	na	CAPT01000074.1	<>	na	Primary Assembly	49478	na
+CAPT01000075	unplaced-scaffold	na	na	CAPT01000075.1	<>	na	Primary Assembly	47231	na
+CAPT01000076	unplaced-scaffold	na	na	CAPT01000076.1	<>	na	Primary Assembly	77241	na
+CAPT01000077	unplaced-scaffold	na	na	CAPT01000077.1	<>	na	Primary Assembly	172959	na
+CAPT01000078	unplaced-scaffold	na	na	CAPT01000078.1	<>	na	Primary Assembly	19820	na
+CAPT01000079	unplaced-scaffold	na	na	CAPT01000079.1	<>	na	Primary Assembly	269088	na
+CAPT01000080	unplaced-scaffold	na	na	CAPT01000080.1	<>	na	Primary Assembly	5073	na
+CAPT01000081	unplaced-scaffold	na	na	CAPT01000081.1	<>	na	Primary Assembly	17828	na
+CAPT01000082	unplaced-scaffold	na	na	CAPT01000082.1	<>	na	Primary Assembly	37073	na
+CAPT01000083	unplaced-scaffold	na	na	CAPT01000083.1	<>	na	Primary Assembly	210824	na
+CAPT01000084	unplaced-scaffold	na	na	CAPT01000084.1	<>	na	Primary Assembly	97162	na
+CAPT01000085	unplaced-scaffold	na	na	CAPT01000085.1	<>	na	Primary Assembly	6323	na
+CAPT01000086	unplaced-scaffold	na	na	CAPT01000086.1	<>	na	Primary Assembly	37421	na
+CAPT01000087	unplaced-scaffold	na	na	CAPT01000087.1	<>	na	Primary Assembly	7829	na
+CAPT01000088	unplaced-scaffold	na	na	CAPT01000088.1	<>	na	Primary Assembly	36214	na
+CAPT01000089	unplaced-scaffold	na	na	CAPT01000089.1	<>	na	Primary Assembly	21556	na
+CAPT01000090	unplaced-scaffold	na	na	CAPT01000090.1	<>	na	Primary Assembly	82589	na
+CAPT01000091	unplaced-scaffold	na	na	CAPT01000091.1	<>	na	Primary Assembly	28197	na
+CAPT01000092	unplaced-scaffold	na	na	CAPT01000092.1	<>	na	Primary Assembly	30723	na
+CAPT01000093	unplaced-scaffold	na	na	CAPT01000093.1	<>	na	Primary Assembly	2297	na
+CAPT01000094	unplaced-scaffold	na	na	CAPT01000094.1	<>	na	Primary Assembly	15897	na
+CAPT01000095	unplaced-scaffold	na	na	CAPT01000095.1	<>	na	Primary Assembly	12371	na
+CAPT01000096	unplaced-scaffold	na	na	CAPT01000096.1	<>	na	Primary Assembly	6470	na
+CAPT01000097	unplaced-scaffold	na	na	CAPT01000097.1	<>	na	Primary Assembly	3787	na
+CAPT01000098	unplaced-scaffold	na	na	CAPT01000098.1	<>	na	Primary Assembly	22024	na
+CAPT01000099	unplaced-scaffold	na	na	CAPT01000099.1	<>	na	Primary Assembly	60870	na
+CAPT01000100	unplaced-scaffold	na	na	CAPT01000100.1	<>	na	Primary Assembly	116312	na
+CAPT01000101	unplaced-scaffold	na	na	CAPT01000101.1	<>	na	Primary Assembly	39265	na
+CAPT01000102	unplaced-scaffold	na	na	CAPT01000102.1	<>	na	Primary Assembly	95608	na
+CAPT01000103	unplaced-scaffold	na	na	CAPT01000103.1	<>	na	Primary Assembly	84293	na
+CAPT01000104	unplaced-scaffold	na	na	CAPT01000104.1	<>	na	Primary Assembly	52755	na
+CAPT01000105	unplaced-scaffold	na	na	CAPT01000105.1	<>	na	Primary Assembly	68457	na
+CAPT01000106	unplaced-scaffold	na	na	CAPT01000106.1	<>	na	Primary Assembly	44621	na
+CAPT01000107	unplaced-scaffold	na	na	CAPT01000107.1	<>	na	Primary Assembly	16366	na
+CAPT01000108	unplaced-scaffold	na	na	CAPT01000108.1	<>	na	Primary Assembly	8140	na
+CAPT01000109	unplaced-scaffold	na	na	CAPT01000109.1	<>	na	Primary Assembly	26382	na
+CAPT01000110	unplaced-scaffold	na	na	CAPT01000110.1	<>	na	Primary Assembly	10048	na
+CAPT01000111	unplaced-scaffold	na	na	CAPT01000111.1	<>	na	Primary Assembly	26286	na
+CAPT01000112	unplaced-scaffold	na	na	CAPT01000112.1	<>	na	Primary Assembly	44041	na
+CAPT01000113	unplaced-scaffold	na	na	CAPT01000113.1	<>	na	Primary Assembly	96310	na
+CAPT01000114	unplaced-scaffold	na	na	CAPT01000114.1	<>	na	Primary Assembly	22291	na
+CAPT01000115	unplaced-scaffold	na	na	CAPT01000115.1	<>	na	Primary Assembly	118828	na
+CAPT01000116	unplaced-scaffold	na	na	CAPT01000116.1	<>	na	Primary Assembly	35029	na
+CAPT01000117	unplaced-scaffold	na	na	CAPT01000117.1	<>	na	Primary Assembly	22072	na
+CAPT01000118	unplaced-scaffold	na	na	CAPT01000118.1	<>	na	Primary Assembly	5052	na
+CAPT01000119	unplaced-scaffold	na	na	CAPT01000119.1	<>	na	Primary Assembly	7541	na
+CAPT01000120	unplaced-scaffold	na	na	CAPT01000120.1	<>	na	Primary Assembly	1880	na
+CAPT01000121	unplaced-scaffold	na	na	CAPT01000121.1	<>	na	Primary Assembly	133835	na
+CAPT01000122	unplaced-scaffold	na	na	CAPT01000122.1	<>	na	Primary Assembly	92425	na
+CAPT01000123	unplaced-scaffold	na	na	CAPT01000123.1	<>	na	Primary Assembly	3543	na
+CAPT01000124	unplaced-scaffold	na	na	CAPT01000124.1	<>	na	Primary Assembly	374347	na
+CAPT01000125	unplaced-scaffold	na	na	CAPT01000125.1	<>	na	Primary Assembly	26484	na
+CAPT01000126	unplaced-scaffold	na	na	CAPT01000126.1	<>	na	Primary Assembly	23318	na
+CAPT01000127	unplaced-scaffold	na	na	CAPT01000127.1	<>	na	Primary Assembly	19968	na
+CAPT01000128	unplaced-scaffold	na	na	CAPT01000128.1	<>	na	Primary Assembly	18038	na
+CAPT01000129	unplaced-scaffold	na	na	CAPT01000129.1	<>	na	Primary Assembly	113038	na
+CAPT01000130	unplaced-scaffold	na	na	CAPT01000130.1	<>	na	Primary Assembly	163396	na
+CAPT01000131	unplaced-scaffold	na	na	CAPT01000131.1	<>	na	Primary Assembly	66280	na
+CAPT01000132	unplaced-scaffold	na	na	CAPT01000132.1	<>	na	Primary Assembly	41706	na
+CAPT01000133	unplaced-scaffold	na	na	CAPT01000133.1	<>	na	Primary Assembly	71012	na
+CAPT01000134	unplaced-scaffold	na	na	CAPT01000134.1	<>	na	Primary Assembly	16999	na
+CAPT01000135	unplaced-scaffold	na	na	CAPT01000135.1	<>	na	Primary Assembly	8308	na
+CAPT01000136	unplaced-scaffold	na	na	CAPT01000136.1	<>	na	Primary Assembly	2448	na
+CAPT01000137	unplaced-scaffold	na	na	CAPT01000137.1	<>	na	Primary Assembly	51309	na
+CAPT01000138	unplaced-scaffold	na	na	CAPT01000138.1	<>	na	Primary Assembly	59090	na
+CAPT01000139	unplaced-scaffold	na	na	CAPT01000139.1	<>	na	Primary Assembly	317617	na
+CAPT01000140	unplaced-scaffold	na	na	CAPT01000140.1	<>	na	Primary Assembly	99229	na
+CAPT01000141	unplaced-scaffold	na	na	CAPT01000141.1	<>	na	Primary Assembly	412106	na
+CAPT01000142	unplaced-scaffold	na	na	CAPT01000142.1	<>	na	Primary Assembly	232191	na
+CAPT01000143	unplaced-scaffold	na	na	CAPT01000143.1	<>	na	Primary Assembly	556	na
+CAPT01000144	unplaced-scaffold	na	na	CAPT01000144.1	<>	na	Primary Assembly	9999	na
+CAPT01000145	unplaced-scaffold	na	na	CAPT01000145.1	<>	na	Primary Assembly	26122	na
+CAPT01000146	unplaced-scaffold	na	na	CAPT01000146.1	<>	na	Primary Assembly	165699	na
+CAPT01000147	unplaced-scaffold	na	na	CAPT01000147.1	<>	na	Primary Assembly	24379	na
+CAPT01000148	unplaced-scaffold	na	na	CAPT01000148.1	<>	na	Primary Assembly	37544	na
+CAPT01000149	unplaced-scaffold	na	na	CAPT01000149.1	<>	na	Primary Assembly	139566	na
+CAPT01000150	unplaced-scaffold	na	na	CAPT01000150.1	<>	na	Primary Assembly	233394	na
+CAPT01000151	unplaced-scaffold	na	na	CAPT01000151.1	<>	na	Primary Assembly	54391	na
+CAPT01000152	unplaced-scaffold	na	na	CAPT01000152.1	<>	na	Primary Assembly	39436	na
+CAPT01000153	unplaced-scaffold	na	na	CAPT01000153.1	<>	na	Primary Assembly	129090	na
+CAPT01000154	unplaced-scaffold	na	na	CAPT01000154.1	<>	na	Primary Assembly	115513	na
+CAPT01000155	unplaced-scaffold	na	na	CAPT01000155.1	<>	na	Primary Assembly	151418	na
+CAPT01000156	unplaced-scaffold	na	na	CAPT01000156.1	<>	na	Primary Assembly	5504	na
+CAPT01000157	unplaced-scaffold	na	na	CAPT01000157.1	<>	na	Primary Assembly	192593	na
+CAPT01000158	unplaced-scaffold	na	na	CAPT01000158.1	<>	na	Primary Assembly	90546	na
+CAPT01000159	unplaced-scaffold	na	na	CAPT01000159.1	<>	na	Primary Assembly	88028	na
+CAPT01000160	unplaced-scaffold	na	na	CAPT01000160.1	<>	na	Primary Assembly	15027	na
+CAPT01000161	unplaced-scaffold	na	na	CAPT01000161.1	<>	na	Primary Assembly	16863	na
+CAPT01000162	unplaced-scaffold	na	na	CAPT01000162.1	<>	na	Primary Assembly	47589	na
+CAPT01000163	unplaced-scaffold	na	na	CAPT01000163.1	<>	na	Primary Assembly	7012	na
+CAPT01000164	unplaced-scaffold	na	na	CAPT01000164.1	<>	na	Primary Assembly	4394	na
+CAPT01000165	unplaced-scaffold	na	na	CAPT01000165.1	<>	na	Primary Assembly	100686	na
+CAPT01000166	unplaced-scaffold	na	na	CAPT01000166.1	<>	na	Primary Assembly	11528	na
+CAPT01000167	unplaced-scaffold	na	na	CAPT01000167.1	<>	na	Primary Assembly	340269	na
+CAPT01000168	unplaced-scaffold	na	na	CAPT01000168.1	<>	na	Primary Assembly	19704	na
+CAPT01000169	unplaced-scaffold	na	na	CAPT01000169.1	<>	na	Primary Assembly	29297	na
+CAPT01000170	unplaced-scaffold	na	na	CAPT01000170.1	<>	na	Primary Assembly	3841	na
+CAPT01000171	unplaced-scaffold	na	na	CAPT01000171.1	<>	na	Primary Assembly	4559	na
+CAPT01000172	unplaced-scaffold	na	na	CAPT01000172.1	<>	na	Primary Assembly	47841	na
+CAPT01000173	unplaced-scaffold	na	na	CAPT01000173.1	<>	na	Primary Assembly	10266	na
+CAPT01000174	unplaced-scaffold	na	na	CAPT01000174.1	<>	na	Primary Assembly	7851	na
+CAPT01000175	unplaced-scaffold	na	na	CAPT01000175.1	<>	na	Primary Assembly	72349	na
+CAPT01000176	unplaced-scaffold	na	na	CAPT01000176.1	<>	na	Primary Assembly	25578	na
+CAPT01000177	unplaced-scaffold	na	na	CAPT01000177.1	<>	na	Primary Assembly	49000	na
+CAPT01000178	unplaced-scaffold	na	na	CAPT01000178.1	<>	na	Primary Assembly	15673	na
+CAPT01000179	unplaced-scaffold	na	na	CAPT01000179.1	<>	na	Primary Assembly	37831	na

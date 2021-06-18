@@ -1,0 +1,69 @@
+# BLASTP 2.11.0+
+# Query: NCAS_0J02330-1_1
+# Database: blastdb/XP_028889033_refprot
+# Fields: query id, subject id, query length, subject length, % identity, mismatches, score, bit score, evalue
+# 1 hits found
+NCAS_0J02330-1_1	ref|XP_003678549.1|	773	773	100.000	0	3953	1527	0.0
+# BLASTP 2.11.0+
+# Query: LAFE0D00122g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: LAFE0A00122g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: BN124_NADE0s05e04136g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: CAGL0I07293g1_1
+# Database: blastdb/XP_028889033_refprot
+# Fields: query id, subject id, query length, subject length, % identity, mismatches, score, bit score, evalue
+# 1 hits found
+CAGL0I07293g1_1	ref|XP_447567.2|	1771	1771	100.000	0	9116	3516	0.0
+# BLASTP 2.11.0+
+# Query: BN122_CANI0s18e03223g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: KLLA0B14498g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: CAGL0E06600g1_1
+# Database: blastdb/XP_028889033_refprot
+# Fields: query id, subject id, query length, subject length, % identity, mismatches, score, bit score, evalue
+# 1 hits found
+CAGL0E06600g1_1	ref|XP_445977.1|	965	965	100.000	0	5028	1941	0.0
+# BLASTP 2.11.0+
+# Query: BN121_CACA0s29e00143g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: BN121_CACA0s05e11539g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: BN119_CABR0s21e03234g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: SAKL0C00330g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: CAGL0L00227g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: BN119_CABR0s31e03938g1_1
+# Database: blastdb/XP_028889033_refprot
+# 0 hits found
+# BLASTP 2.11.0+
+# Query: BN122_CANI0s04e00110g1_1
+# Database: blastdb/XP_028889033_refprot
+# Fields: query id, subject id, query length, subject length, % identity, mismatches, score, bit score, evalue
+# 1 hits found
+BN122_CANI0s04e00110g1_1	ref|XP_445977.1|	918	965	51.592	284	1647	639	0.0
+# BLAST processed 15 queries

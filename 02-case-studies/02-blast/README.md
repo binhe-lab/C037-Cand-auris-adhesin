@@ -25,9 +25,8 @@ date: 2020-07-01
       * [2021-01-31 [HB] Vary e-value cutoff with N-360 aa from XP_028889033](#2021-01-31-hb-vary-e-value-cutoff-with-n-360-aa-from-xp_028889033)
       * [2021-03-01 [HB] <em>C. auris</em> clade III should have 8 members in this family](#2021-03-01-hb-c-auris-clade-iii-should-have-8-members-in-this-family)
       * [2021-04-03 [HB] Missing homolog in B11221](#2021-04-03-hb-missing-homolog-in-b11221)
-   * [Content](#content)
 
-<!-- Added by: bhe2, at: Mon Apr 19 16:27:27 CDT 2021 -->
+<!-- Added by: bhe2, at: Thu Jun 17 19:45:02 CDT 2021 -->
 
 <!--te-->
 
@@ -52,8 +51,8 @@ $ blastp -db refseq_protein -query XP_028889033_homologs_fungidb_use.fasta -outf
 ```
 However, for some reason this command didn't work (2020-07-04: I think it actually just takes a long time. Instead of returning an ID for later retrieval of the results, it appears that the user actually have to wait until the search finishes). Instead, I submitted the XP_028889033_homologs_fungidb_use.fasta to NCBI blastp with the same parameters. The result is registered with RID: G2HK3CWK014. I then downloaded the results with a local command
 ```bash
-$ blast_formatter -rid G2HK3CWK014 -out fungidb_blast_refseq_protein.txt -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1
-$ cut -f1 fungidb_blast_refseq_protein.txt | sort | uniq | wc -l
+$ blast_formatter -rid G2HK3CWK014 -out fungidb_N560_blast_refseq_protein.txt -outfmt "6 qseqid sseqid qlen slen pident mismatch score bitscore evalue" -max_target_seqs 1
+$ cut -f1 fungidb_N560_blast_refseq_protein.txt | sort | uniq | wc -l
 # 70, correct
 ```
 
@@ -74,6 +73,8 @@ $ cut -f1 fungidb_blast_refseq_protein.txt | sort | uniq | wc -l
     Explanation
     - -outfmt 6: tabular output, no comments
     - -max_target_seqs 1: only output one (best-scoring) match per sequence
+      - **update 2021-06-17**: this option should be avoided as it doesn't do what it sounds like. See [this paper](https://academic.oup.com/bioinformatics/article/35/9/1613/5106166)
+      - In the new analysis (script in the rmarkdown), I used `-evalue 1e-180` instead.
     - -num_threads 4: use 4 cpus to perform the search
 
 ## 2020-07-22 [HB] Identify homologs in Nakaseomyces
@@ -95,13 +96,15 @@ I repeated the search using blastp with e-value cutoff of 10, and taxonomy restr
 
 ![blastp nr hits](img/20200806-blastp-bacteria-nr-hits.png)
 
-| query acc.ver | subject acc.ver | % identity | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score | % positives 
-| --------------|-----------------| ---------- | ---------------- | ---------- | --------- | -------- | ------ | -------- | ------ | ------ | --------- | -----------
-| XP_028889033 | PYD84265.1 | 57.609 | 184 | 77 | 1 | 136 | 318 | 3 | 186 | 5.63e-70 | 226 | 76.63
-| XP_028889033 | WP_146232083.1 | 88.372 | 86 | 10 | 0 | 6 | 91 | 6 | 91 | 2.88e-40 | 146 | 95.35
-| XP_028889033 | CQB89545.1 | 35.912 | 181 | 96 | 7 | 166 | 330 | 1 | 177 | 5.17e-16 | 89.4 | 51.93
+| query acc.ver | subject acc.ver | % identity | alignment length | mismatches | gap opens | q. start | q. end | s. start | s. end | evalue | bit score | % positives |
+| --------------|-----------------| ---------- | ---------------- | ---------- | --------- | -------- | ------ | -------- | ------ | ------ | --------- | -----------|
+| XP_028889033 | [PYD84265.1](https://www.ncbi.nlm.nih.gov/protein/PYD84265.1/) | 57.609 | 184 | 77 | 1 | 136 | 318 | 3 | 186 | 5.63e-70 | 226 | 76.63 |
+| XP_028889033 | [WP_146232083.1](https://www.ncbi.nlm.nih.gov/protein/WP_146232083.1) | 88.372 | 86 | 10 | 0 | 6 | 91 | 6 | 91 | 2.88e-40 | 146 | 95.35 |
+| XP_028889033 | [CQB89545.1](https://www.ncbi.nlm.nih.gov/protein/CQB89545.1) | 35.912 | 181 | 96 | 7 | 166 | 330 | 1 | 177 | 5.17e-16 | 89.4 | 51.93 |
 
-As one can see from the query coverage and evalue columns, the first and second matches are quite significant. The second hit, while short, has high sequence identity. Wondering why I got 3 bacterial hits -- I expect either none or a lot -- I took the sequence of the first hit and repeated the blastp search. This produced two significant hits, including itself and the 3rd hit above. What does this mean? Are these highly species-specific sequences coming from fungi? Are they ancient proteins that have been lost in many many bacteria except for a few? Could these be annotation errors, namely the sample used to identify these bacterial sequences may be contaminated with fungal material?
+As one can see from the query coverage and evalue columns, the first and second matches are quite significant. Both hits are from the species _Pseudomonas syringae_, which belongs to the class gammaproteobacteria. The third hit is from _Chlamydia trachomatis_, which belongs to a completely different phylum, Chlamydiae. Since it is a lot less similar to our query, we will focus just on the first two.
+
+The second hit, while short, has high sequence identity. Wondering why I got 3 bacterial hits -- I expect either none or a lot -- I took the sequence of the first hit and repeated the blastp search. This produced two significant hits, including itself and the 3rd hit above. What does this mean? Are these highly species-specific sequences coming from fungi? Are they ancient proteins that have been lost in many many bacteria except for a few? Could these be annotation errors, namely the sample used to identify these bacterial sequences may be contaminated with fungal material?
 
 ## 2020-08-09 [HB] Homologs in Bacteria?
 
@@ -114,9 +117,9 @@ The other suspicious sign is when I blast the _Pseudomonas syringae_ hit, which 
 1. The hits represent false positives, likely due to fungal contamination of the bacterial sample.
 1. The hits represent true sequeces in a _particular_ strain of the bacterium, possibly as a result of horizontal gene transfer from fungi.
 
-In either case, I would conclude that XP_028889033 belongs to a fungi-specific protein family.
-
 ![conclusion of the protein family being fungal specific](img/20200809-XP_028889033-nr-bacteria-hits-likely-spurious.png)
+
+Despite all the suspicious signs and the fact that the two database searches above yielded hits from bacterial species that are very distant from each other, I don't think we can completely rule out the possibility of a more ancient origin of the domain (alternatively, this could result from convergent evolution). A paper studying the Hyr1 protein in _C. albicans_ showed that it is structrually similar to a bacterial adhesin. The bacteria that they identified are of the species _A. baumannii_, which belongs to gammaproteobacteria. But the fact that we get so few hits that are inconsistent between databases suggests that whichever hypothesis is true, the similarity is very low and the Hyphal_reg_CWP domain that we are concerned about is yeast specific.
 
 ## 2020-08-19 [HB] Homologs in _S. cerevisiae_?
 
@@ -148,7 +151,7 @@ Another way to visualize the similarity/difference between the domain sequences 
 python flexidot_v1.06.py -i PF11765_domains_only.fasta -p 2 -t 0 -k 7 -S 3
 ```
 
-![polydot plot](Sc-Cg-members/Polydotplot_wordsize7_S2.png)
+![polydot plot](analysis/Sc-Cg-members/Polydotplot_wordsize7_S2.png)
 
 To gain more insight into the potential functions of the two _S. cerevisiae_ hits, I looked at their annotations on SGD:
 
@@ -159,12 +162,13 @@ The latter has some obvious connection to adhesion, based on its role in aggrega
 
 Based on the above results, I'm further convinced that the PF11765 domain is indeed an ancient one. This protein family has either been lost or evolved to perform different functions in most of the Saccharomycetaceae species, but has dramatically expanded in the MDR clade and _C. albicans_ clade to function as adhesins.
 
-I further asked if using the _C. glabrata_ domain sequence as query, I can recover hits in _S. cerevisiae_ and other Saccharomycetales yeasts. The answer is no.
+I further asked if using the _C. glabrata_ domain sequence as query, I can recover hits in _S. cerevisiae_ and other Saccharomycetales yeasts. **The answer is no.**
 ## 2020-09-13 [HB] Homologs in other _C. auris_ proteomes
 This analysis stems from Jan's question of what other homologs are there in the five _C. auris_ proteomes. To answer this question, I did the following:
+
 1. Bring over the proteome fasta files from the global analysis folder
     ```bash
-    mkdir Cauris-strains; cd Cauris-strains
+    mkdir data/Cauris-strains; cd data/Cauris-strains
     ln -s ../../../../01-global-adhesin-prediction/data/proteome-fasta/*Cand_auris* ./
     cd ..
     ```
@@ -174,7 +178,7 @@ This analysis stems from Jan's question of what other homologs are there in the 
     cat Cauris-strains/*.gz > Cauris-strains/Cand_auris_five_strains_protein.faa.gz
     gunzip -c Cauris-strains/Cand_auris_five_strains_protein.faa.gz | \
         makeblastdb -in - -parse_seqids -dbtype prot -title Cand_auris_five_strains -out blastdb/Cand_auris_five_strains
-    blastp -db ./blastdb/Cand_auris_five_strains -query XP_028889033_query.fasta -max_hsps 1 -outfmt "7" -num_threads 4 -out XP_028889033-Cauris-five-strains-blast.txt
+    blastp -db ./blastdb/Cand_auris_five_strains -query XP_028889033_query.fasta -max_hsps 1 -outfmt "7" -num_threads 4 -out ../output/XP_028889033-Cauris-five-strains-blast.txt
     ```
 
 1. Edited the output text file by adding a header. Then open that file in Excel and removed the comment lines along with several entries with E-value > 10E-5. The result is stored in an excel file of the same base name as above.
@@ -184,8 +188,8 @@ This analysis stems from Jan's question of what other homologs are there in the 
     cd Cauris-strains
     awk '$1 ~ /^XP_028889033.1_PF11765/ && $4 > 60' XP_028889033-Cauris-five-strains-blast.txt | \
     | cut -f2 | sort > list-Cauris-five-strains-homologs-blast.txt
-    python extract_fasta_gz.py Cand_auris_five_strains_protein.faa.gz list-Cauris-five-strains-homologs-blast.txt cauris-five-strains-homologs.fasta
-    cd ../../Cauris-polymorphism; ln -s ../../blast/Cauris-strains/cauris-five-strains-homologs.fasta ./
+    python ../../script/extract_fasta_gz.py Cand_auris_five_strains_protein.faa.gz list-Cauris-five-strains-homologs-blast.txt cauris-five-strains-homologs.fasta
+    cd ../../07-Cauris-polymorphism/input; ln -s ../../02-blast/data/Cauris-strains/cauris-five-strains-homologs.fasta ./
     ```
 ## 2020-10-20 [HB] Correct GRYC mistakes
 During a discussion Rachel pointed out that the domain architecture figure showed a few sequences that are shorter than 500 a.a. I doubled checked and found that there are two of them. One is from _N. delphensis_ and in my notes I explained the reason why I included it, because it is a "partial CDS". The other is from _N. bracarensis_. It turned out that the length of the protein in the blast hit table is incorrect. I manually edited that file and most likely introduced the error in the process. So I just removed the latter in the new `XP_028889033_homologs_combine.fasta`. Also, I noticed that I included one sequence from _C. auris_ strain B8441, making _C. auris_ the only species with more than one strain represented in the homologs list. Moreover, I didn't systematically include _all_ hits from B8441. So I decided to remove that. Lastly, I decided to include CAGL0L00227g, which was originally excluded because query coverage of this hit was 47%, below the 50% cutoff I set. However, upon further looking, I found this sequence interesting as it is very long (~3kb, similar to the query) and has extremely high Serine content. Thus I decided to include it to demonstrate the evolution of this protein family in _C. glabrata_.
@@ -264,7 +268,7 @@ Continuing to investigate the reason for the missing gene in B11221: this time I
     ![B8441](./img/20210419-B9J08_004098-blast-in-B8441.png)
 
 - `tblastn` against the B11221 genome resulted in the following hits (graphic summary)
-    
+  
     ![B11221 graphic](./img/20210419-B9J08_004098-blast-in-B11221-graphic.png)
 
     The first three lines are continguous sequences matching the N-terminus and to a less extent the C-terminus, and they are almost surely among the other 7 homologs. The last line is interesting in that it is split into two discontinuous sequences with very high similarity. I checked the scaffolds they came from and they are from scaffolds00001 and 00015, where the former maps to chromosome 1 while the latter is not assembled into the genome.
@@ -272,28 +276,3 @@ Continuing to investigate the reason for the missing gene in B11221: this time I
     ![B11221_table](./img/20210419-B9J08_004098-blast-in-B11221-table.png)
 
     This suggests that the reason I couldn't find the homolog in B11221 is likely due to sequencing gaps in chromosome 1 that happened to overlap part of that gene.
-
-# Content
-
-| File | Description | Source | User/Date |
-| -----|-------------|--------|---------- |
-| XP_028889033_homologs_fungidb.fasta | New blast results, 95 sequences | fungidb, see notes below | HB/2020 |
-| XP_028889033_homologs_fungidb_table.tsv | Accompanying meta data for the file above | fungidb | HB/2020 |
-| XP_028889033_homologs_fungidb_use.fasta | filtered list with length > 500, 82 sequences | fungidb, see notes below | HB/2020 |
-| XP_028889033_fungidb-refprot-blast.txt | fungiDB hits blasted against the refseq_protein database to identify matching sequences | NCBI BLAST | HB/2020 |
-| XP_028889033_homologs_refprot_N560.fasta | XP_028889033 first 560 aa blast against refseq_protein database | NCBI refseq_protein | HB/2020 |
-| XP_028889033_homologs_refprot_N560_select.fasta | XP_028889033 first 560 aa blast against refseq_protein database, some species removed, see notes above | NCBI refseq_protein | HB/2020 |
-| XP_028889033_homologs_refprot_N560.gb.gz | "Download" in Genbank format | NCBI BLAST | HB/2020 |
-| XP_028889033_homologs_refprot_N560_hit_tab.txt | Hit list in CSV format | NCBI BLAST | HB/2021 |
-| XP_028889033_homologs_refprot_length_N560.txt | protein length | `bioawk -c fastx '{print $name, length($seq)}' XP_028889033_homologs_refprot.fasta` | HB/2020 |
-| XP_028889033_homologs_refprot_N360.fasta | XP_028889033 first 360 aa blast against refseq_protein database, fasta sequences | NCBI refseq_protein | HB/2021 |
-| XP_028889033_homologs_refprot_N360.csv | XP_028889033 first 360 aa blast against refseq_protein database, hit table in CSV | NCBI refseq_protein | HB/2021 |
-| XP_028889033_homologs_refprot_N360_hit_tab.txt | Hit list in CSV format | NCBI BLAST | HB/2021 |
-| XP_028889033_homologs_refprot_length_N560.txt | protein length | `bioawk -c fastx '{print $name, length($seq)}' XP_028889033_homologs_refprot.fasta` | HB/2020 |
-| XP_028889033_homologs_gryc.fasta | blast identified homologs in the Nakaseomyces group | [GRYC](http://gryc.inra.fr/index.php) | HB/2020 |
-| XP_028889033_homologs_gryc_blastp.out | accompanying blast alignment output for the above file | GRYC | HB/2020 |
-| XP_028889033_homologs_gryc_table.txt | accompanying meta data for the above file | GRYC html, manually edited | HB/2020 |
-| 20200704-ncbi-blastp-XP_028889033-taxonmy-distribution.png | screenshot of the taxonomy distribution of the above blast result | NCBI blast | HB/2020 |
-| 20200701-XP_028889033-homologs-e-value-by-length.png | plot protein length by e-value | see `blast.Rmd` for details | HB/2020 |
-| blast.* and fungidb_* | script and intermediate files for merging the blast hits | see `blast.Rmd` for details | HB/2020 |
-

@@ -1,0 +1,45 @@
+# Assembly name:  CanHae_1.0
+# Organism name:  [Candida] haemuloni (budding yeasts)
+# Infraspecific name:  strain=B11899
+# Taxid:          45357
+# BioSample:      SAMN08161437
+# BioProject:     PRJNA421961
+# Submitter:      Centers for Disease Control and Prevention
+# Date:           2018-02-13
+# Assembly type:  haploid
+# Release type:   minor
+# Assembly level: Contig
+# Genome representation: full
+# WGS project:    PKFO01
+# Assembly method: Canu v. 1.6
+# Expected final version: yes
+# Genome coverage: 191.0x
+# Sequencing technology: PacBio
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_002926055.1
+# RefSeq assembly accession: GCF_002926055.2
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_002926095.1	GCF_002926095.1	Primary Assembly
+## GCA_002926135.1	GCF_002926135.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+B_2014730914	unplaced-scaffold	na	na	PKFO01000001.1	=	NW_020289902.1	Primary Assembly	1961621	na
+E_2014730914	unplaced-scaffold	na	na	PKFO01000002.1	=	NW_020289903.1	Primary Assembly	1272517	na
+C_2014730914	unplaced-scaffold	na	na	PKFO01000003.1	=	NW_020289904.1	Primary Assembly	1810202	na
+G_2014730914	unplaced-scaffold	na	na	PKFO01000004.1	=	NW_020289905.1	Primary Assembly	1123113	na
+A_2014730914	unplaced-scaffold	na	na	PKFO01000005.1	=	NW_020289906.1	Primary Assembly	2075488	na
+H_2014730914	unplaced-scaffold	na	na	PKFO01000006.1	=	NW_020289907.1	Primary Assembly	952121	na
+J_2014730914	unplaced-scaffold	na	na	PKFO01000007.1	=	NW_020289908.1	Primary Assembly	251693	na
+I_2014730914	unplaced-scaffold	na	na	PKFO01000008.1	=	NW_020289909.1	Primary Assembly	875491	na
+K_2014730914	unplaced-scaffold	na	na	PKFO01000009.1	=	NW_020289910.1	Primary Assembly	96418	na
+D_2014730914	unplaced-scaffold	na	na	PKFO01000010.1	=	NW_020289911.1	Primary Assembly	1730876	na
+F_2014730914	unplaced-scaffold	na	na	PKFO01000011.1	=	NW_020289912.1	Primary Assembly	1125264	na
+mito_2014730914	unlocalized-scaffold	MT	Mitochondrion	PKFO01000012.1	=	NW_021316577.1	non-nuclear	39519	na

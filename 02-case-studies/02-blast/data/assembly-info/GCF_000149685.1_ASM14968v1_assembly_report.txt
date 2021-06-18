@@ -1,0 +1,58 @@
+# Assembly name:  ASM14968v1
+# Organism name:  Lodderomyces elongisporus NRRL YB-4239 (budding yeasts)
+# Infraspecific name:  strain=NRRL YB-4239
+# Taxid:          379508
+# BioSample:      SAMN02953647
+# BioProject:     PRJNA12899
+# Submitter:      Broad Institute
+# Date:           2007-05-07
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    AAPO01
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000149685.1
+# RefSeq assembly accession: GCF_000149685.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000149695.1	GCF_000149695.1	Primary Assembly
+## GCA_000149705.1	GCF_000149705.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+supercont1.1	unplaced-scaffold	na	na	CH981524.1	=	NW_001813685.1	Primary Assembly	3549218	na
+supercont1.2	unplaced-scaffold	na	na	CH981525.1	=	NW_001813684.1	Primary Assembly	2574663	na
+supercont1.3	unplaced-scaffold	na	na	CH981526.1	=	NW_001813683.1	Primary Assembly	2011058	na
+supercont1.4	unplaced-scaffold	na	na	CH981527.1	=	NW_001813682.1	Primary Assembly	1671299	na
+supercont1.5	unplaced-scaffold	na	na	CH981528.1	=	NW_001813681.1	Primary Assembly	1263166	na
+supercont1.6	unplaced-scaffold	na	na	CH981529.1	=	NW_001813680.1	Primary Assembly	1248858	na
+supercont1.7	unplaced-scaffold	na	na	CH981530.1	=	NW_001813679.1	Primary Assembly	1045478	na
+supercont1.8	unplaced-scaffold	na	na	CH981531.1	=	NW_001813678.1	Primary Assembly	572011	na
+supercont1.9	unplaced-scaffold	na	na	CH981532.1	=	NW_001813677.1	Primary Assembly	544997	na
+supercont1.10	unplaced-scaffold	na	na	CH981533.1	=	NW_001813676.1	Primary Assembly	462782	na
+supercont1.11	unplaced-scaffold	na	na	CH981534.1	=	NW_001813675.1	Primary Assembly	406919	na
+supercont1.12	unplaced-scaffold	na	na	DS236866.1	=	NW_001813702.1	Primary Assembly	16821	na
+supercont1.13	unplaced-scaffold	na	na	DS236867.1	=	NW_001813701.1	Primary Assembly	14976	na
+supercont1.14	unplaced-scaffold	na	na	DS236868.1	=	NW_001813700.1	Primary Assembly	14420	na
+supercont1.15	unplaced-scaffold	na	na	DS236869.1	=	NW_001813699.1	Primary Assembly	14243	na
+supercont1.16	unplaced-scaffold	na	na	DS236870.1	=	NW_001813698.1	Primary Assembly	12584	na
+supercont1.17	unplaced-scaffold	na	na	DS236871.1	=	NW_001813697.1	Primary Assembly	12022	na
+supercont1.18	unplaced-scaffold	na	na	DS236872.1	=	NW_001813696.1	Primary Assembly	11858	na
+supercont1.19	unplaced-scaffold	na	na	DS236873.1	=	NW_001813695.1	Primary Assembly	10393	na
+supercont1.20	unplaced-scaffold	na	na	DS236874.1	=	NW_001813694.1	Primary Assembly	9141	na
+supercont1.21	unplaced-scaffold	na	na	DS236875.1	=	NW_001813693.1	Primary Assembly	8009	na
+supercont1.22	unplaced-scaffold	na	na	DS236876.1	=	NW_001813692.1	Primary Assembly	7399	na
+supercont1.23	unplaced-scaffold	na	na	DS236877.1	=	NW_001813691.1	Primary Assembly	6870	na
+supercont1.24	unplaced-scaffold	na	na	DS236878.1	=	NW_001813690.1	Primary Assembly	6470	na
+supercont1.25	unplaced-scaffold	na	na	DS236879.1	=	NW_001813689.1	Primary Assembly	5930	na
+supercont1.26	unplaced-scaffold	na	na	DS236880.1	=	NW_001813688.1	Primary Assembly	5520	na
+supercont1.27	unplaced-scaffold	na	na	DS236881.1	=	NW_001813687.1	Primary Assembly	4566	na
+supercont1.28	unlocalized-scaffold	MT	Mitochondrion	DS236882.1	=	NW_001813686.1	non-nuclear	35601	na

@@ -1,0 +1,55 @@
+# Assembly name:  ASM633v3
+# Organism name:  Candida tropicalis MYA-3404 (budding yeasts)
+# Infraspecific name:  strain=MYA-3404
+# Taxid:          294747
+# BioSample:      SAMN02953608
+# BioProject:     PRJNA13675
+# Submitter:      Broad Institute
+# Date:           2009-06-18
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Scaffold
+# Genome representation: full
+# WGS project:    AAFN02
+# Genome coverage: 8.85x
+# Sequencing technology: ABI
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000006335.3
+# RefSeq assembly accession: GCF_000006335.3
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000006345.3	GCF_000006345.3	Primary Assembly
+## GCA_000348035.1	GCF_000348035.1	non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+supercont3.1	unplaced-scaffold	na	na	GG692395.1	=	NW_003020038.1	Primary Assembly	2474448	na
+supercont3.2	unplaced-scaffold	na	na	GG692396.1	=	NW_003020049.1	Primary Assembly	2308670	na
+supercont3.3	unplaced-scaffold	na	na	GG692397.1	=	NW_003020055.1	Primary Assembly	2216334	na
+supercont3.4	unplaced-scaffold	na	na	GG692398.1	=	NW_003020056.1	Primary Assembly	1654078	na
+supercont3.5	unplaced-scaffold	na	na	GG692399.1	=	NW_003020057.1	Primary Assembly	1368217	na
+supercont3.6	unplaced-scaffold	na	na	GG692400.1	=	NW_003020058.1	Primary Assembly	1255791	na
+supercont3.7	unplaced-scaffold	na	na	GG692401.1	=	NW_003020059.1	Primary Assembly	920995	na
+supercont3.8	unplaced-scaffold	na	na	GG692402.1	=	NW_003020060.1	Primary Assembly	802573	na
+supercont3.9	unplaced-scaffold	na	na	GG692403.1	=	NW_003020061.1	Primary Assembly	498422	na
+supercont3.10	unplaced-scaffold	na	na	GG692404.1	=	NW_003020039.1	Primary Assembly	430102	na
+supercont3.11	unplaced-scaffold	na	na	GG692405.1	=	NW_003020040.1	Primary Assembly	419327	na
+supercont3.12	unplaced-scaffold	na	na	GG692406.1	=	NW_003020041.1	Primary Assembly	125861	na
+supercont3.13	unplaced-scaffold	na	na	GG692407.1	=	NW_003020042.1	Primary Assembly	22644	na
+supercont3.14	unplaced-scaffold	na	na	GG692408.1	=	NW_003020043.1	Primary Assembly	12816	na
+supercont3.15	unplaced-scaffold	na	na	GG692409.1	=	NW_003020044.1	Primary Assembly	11214	na
+supercont3.16	unplaced-scaffold	na	na	GG692410.1	=	NW_003020045.1	Primary Assembly	11104	na
+supercont3.17	unplaced-scaffold	na	na	GG692411.1	=	NW_003020046.1	Primary Assembly	8471	na
+supercont3.18	unplaced-scaffold	na	na	GG692412.1	=	NW_003020047.1	Primary Assembly	8448	na
+supercont3.19	unplaced-scaffold	na	na	GG692413.1	=	NW_003020048.1	Primary Assembly	7285	na
+supercont3.20	unplaced-scaffold	na	na	GG692414.1	=	NW_003020050.1	Primary Assembly	6389	na
+supercont3.21	unplaced-scaffold	na	na	GG692415.1	=	NW_003020051.1	Primary Assembly	6342	na
+supercont3.22	unplaced-scaffold	na	na	GG692416.1	=	NW_003020052.1	Primary Assembly	5408	na
+supercont3.23	unplaced-scaffold	na	na	GG692417.1	=	NW_003020053.1	Primary Assembly	4896	na
+supercont3.24	unlocalized-scaffold	MT	Chromosome	GG692418.1	=	NW_003020054.1	non-nuclear	50304	na
