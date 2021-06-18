@@ -11,12 +11,18 @@ This folder was created to repeat the 2020-07-24 analysis with the updated homol
 
 Since I didn't quite finish with this analysis when I revamped the homologs list, I decided to use this folder for the new 2021-02-05 analysis, which means I will update all the data and analysis in this folder.
 
-Update on update 2021-03-02: revived a previously discarded sequence, B9J08_004098, and repeat the analysis.
+**Update 2021-03-02 [HB]**
+
+revived a previously discarded sequence, B9J08_004098, and repeat the analysis.
+
+**Update 2021-06-18 [HB]**
+
+Reorganize the folder and go through everything again for the write up.
 
 ## Data
-`XP_028889033_homologs.fasta` was copied from `../../blast/XP_028889033_homologs_combine.fasta`, created on 2021-03-01, with the exception that the first 900 amino acid was added back to XP_025344407.1
+`XP_028889033_homologs.fasta` was copied from `../../02-blast/XP_028889033_homologs_combine.fasta`, created on 2021-06-17 (the first 900 amino acid was added back to XP_025344407.1)
 
-Compared to the 2020-07-24 version, this version has 103 instead of 99 sequences. Three sequences were dropped -- B9J08_004098_Cauris, which is from a different strain than the one the query is from, CABR0s31e03938g_Nbracarensis, which is shorter than 500 amino acids but accidentally passed the filter in the previous analysis due to inconsistent metadata from the blast hit table, and finally XP_001383953.2_Sstipitis, which didn't pass the e-value cutoff after I switched to using the N360 aa as query. In the meantime, one _C. glabrata_ sequence was added, i.e. CAGL0L00227g_Cglabrata, whose query coverage is slightly lower than the 50% cutoff (47%) but has all the features of the query protein, including a highly repetitive and serine/threonine rich C-terminal region. Note that the additional _C. glabrata_ sequence was identified through GRYC. It does exist in NCBI database, but is in "provisional" status in the Refseq (XP_002999585).
+See `02-blast/README.md` for details on how the sequences were identified.
 
 **update 2020-11-15** CAGL0L00227g is removed. See README in `blast` folder for details.
 
@@ -58,7 +64,7 @@ I decided to skip the GPI-SOM result and use PredGPI instead.
 
 **update 2021-03-02** recovered the result for B9J08_004098 from 2020-07-24 folder and added the results to the top of the `PredGPI_result.txt`
 
-### $\Beta$-aggregation sequence counts and intervals
+### β-aggregation sequence counts and intervals
 
 **update 2020-10-31**
 For this updated analysis, since only three sequences were removed/added, I simply created soft links for all tango output files from the 2020-07-24 analysis, and then added the result for the new _C. glabrata_ sequence result. All notes below are from 2020-07-24
@@ -74,7 +80,7 @@ I found XP_717775.2_Calbicans was missing from the tango results. Upon careful c
 
 #### _old notes_
 
-Jan and Rachel's talks have shown that a $\Beta$ aggregation signature motif, in the form of "G[VI]{1,4}T{0,4}", is present in XP_028889033 as well as two other homologs. The goal here is to identify all such motifs among all homologs. Here I'll use the same `fuzzpro` program used above to identify GPIanchor to search for this pattern.
+Jan and Rachel's talks have shown that a β-aggregation signature motif, in the form of "G[VI]{1,4}T{0,4}", is present in XP_028889033 as well as two other homologs. The goal here is to identify all such motifs among all homologs. Here I'll use the same `fuzzpro` program used above to identify GPIanchor to search for this pattern.
 
 To be able to run TANGO myself, I registered an account on the author's [website](http://tango.crg.es/examples.jsp), downloaded the binary for Mac, and wrote a simple python script to format the intput file (`format_tango_input.py`). I used the parameters that Rachel decided based on the literature (see `01-global-adhesin-prediction/output/TANGO` for details). The input file is stored as `XP_028889033_homologs_tango.txt`. In doing so, I found that the tango v2.3.1 I downloaded didn't expect the "tf" parameter. So I removed that part in the input file. This resulted in some differences in the output. To be safe, I asked Rachel to run the same file through her Windows binary and saved the file as a zip archive under the `2020-07-24` folder.
 
@@ -101,7 +107,7 @@ The script used to parse and explore the TANGO results are in `tango.Rmd`
     freak XP_028889033_homologs.fasta -letters "T" -window 100 -step 10 -outfile T_freq_100_10.freak -odirectory raw-output
     ```
 1. Convert the output to a table format for plotting
-    
+   
     ```bash
     for i in raw-output/*.freak; do python format_freak_output.py $i; done
     ```

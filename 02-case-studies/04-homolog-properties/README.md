@@ -12,6 +12,7 @@ The overall question in the phylogenetic analysis of the protein family is to un
 | ------ | ------- |
 | 2020-07-17| version 1 of the analysis|
 | 2020-07-24| version 2, with new homologs in the Saccharomycetaceae family (e.g. Nakaseomyces)|
+| 2020-10-31 | version 3, current analysis updated to 2021-06-18 |
 
 Below are notes for the original analysis. Updated notes will be in the respective folder.
 
@@ -32,6 +33,7 @@ The output includes the sequence name, what looks like a FDR-adjusted _P_-value 
 
 ### GPI anchor by GPI-SOM
 [Website](http://genomics.unibe.ch/cgi-bin/gpi.cgi) tool provides four downloadable outputs:
+
 - `raw-output/gpi-som.txt`: GPI-SOM log file, includes the names of all the sequences with a predicted C-terminal GPI signal sequence.
 - a list of sequences with undetermined results -- not applicable to our case.
 - `raw-output/gpi-anchored-list.txt`: Names of the sequences predicted to be "GPI-anchored", because "they have both C- and N-terminal signal sequences". I removed the amino acid sequences from the output with `grep`.
@@ -41,8 +43,8 @@ My understanding is that for a protein to be "GPI-anchored", it needs to have tw
 
 86 / 110 submitted sequences were found to encode a C-terminal GPI-signal sequence, and 83 of them also have a predicted N-terminal signal peptide.
 
-### $\Beta$-aggregation sequence counts and intervals
-Jan and Rachel's talks have shown that a $\Beta$ aggregation signature motif, in the form of "G[VI]{1,4}T{0,4}", is present in XP_028889033 as well as two other homologs. The goal here is to identify all such motifs among all homologs. Here I'll use the same `fuzzpro` program used above to identify GPIanchor to search for this pattern.
+### β-aggregation sequence counts and intervals
+Jan and Rachel's talks have shown that a β-aggregation signature motif, in the form of "G[VI]{1,4}T{0,4}", is present in XP_028889033 as well as two other homologs. The goal here is to identify all such motifs among all homologs. Here I'll use the same `fuzzpro` program used above to identify GPIanchor to search for this pattern.
 
 I also got Rachel's help to run TANGO locally on all the sequences. See `01-global-adhesin-prediction/output/TANGO` for details. The input file is stored as `XP_028889033_homologs_TANGO.bat` and the output is a zip file in `raw-output/`. The script to parse the result is in `01-global-adhesin-prediction/script/R%20TANGO_summaries.Rmd`.
 
@@ -62,7 +64,7 @@ python myfuzzpro.py
     freak XP_028889033_homologs.fasta -letters "ST" -window 100 -step 10 -outfile ST_freq_100_10.freak -odirectory raw-output
     ```
 1. Convert the output to a table format for plotting
-    
+   
     ```bash
     python format_freak_output.py raw-output/ST_freq_100_10.freak
     ```
@@ -76,3 +78,4 @@ python myfuzzpro.py
 1. For plotting, we would like to create a vector of sequence names in the same order as shown in the rooted gene tree. To do so, I loaded the `../gene-tree/20200723-raxml-hb/RAxML_bipartitions.muscle_4318866` in FigTree 1.4.4, rooted the tree on the Saccharomycotaceae, and rotated the auris and albicans groups, then saved the tree in Newick format. I then copied that file over to the current folder and edited in vim. By removing the branch lengths and other symbols such as parentheses, I got the sequence names in rows in the same order as the gene tree.
 
 1. At Jan's suggestion, I expanded the analysis above to separately document the frequency of Serine and Threonine. I also altered the window size and step size to 50 and 5 bp.
+
