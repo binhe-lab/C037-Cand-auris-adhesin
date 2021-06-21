@@ -596,6 +596,8 @@ tmp2 <- tmp2 %>%
          chrL = as.integer(chrL), relLoc = round(chrstart/chrL, 2))
 ```
 
+> The B9J08 sequence is the missing homolog from B11221. As shown in the README.md of this blast folder, I found that the "missing homolog" is actually present, but was broken into two fragments due to incomplete assembly. The C-terminus of the B9J08 sequence aligns to a fragment NW_021640165.1, which corresponds to scaffold00001. Its length is 4,303,397 bp, which is nearly the same as the reported chromosome 1 length from Muñoz _et al_. 2021 (Fig. 1). I therefore believe that this homolog (Hil4) is located at the 3' tip of chromosome 1 of B11221.
+
 5. Finally, we can combine the above results with the manually entered GRYC results
 ```{r}
 non.refseq <- read_tsv("data/GRYC/XP_028889033_homologs_chr_loc_fungidb_gryc.txt", comment = "#") %>% 
