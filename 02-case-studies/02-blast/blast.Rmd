@@ -567,8 +567,8 @@ search_chr_loc <- function(gene){
   if(length(res1) > 1)
     stop(sprintf('More than one record found for "%s"', gene[7]))
   chr <- str_split(res1, "\t")[[1]]
-  # 7: refseq_acc; 9: length
-  final <- tibble(gene_id = gene, assembly = gInfo[3], chraccver = gInfo[7], 
+  # 1: seq_name; 7: refseq_acc; 9: length
+  final <- tibble(gene_id = gene, assembly = gInfo[3], chrloc = chr[1], chraccver = gInfo[7], 
                   chrstart = gInfo[8], chrstop = gInfo[9], chrL = chr[9])
   return(final)
 }
@@ -591,6 +591,7 @@ refseq3 <- bind_rows(refseq2s)
 ```{r search_fdb_gryc}
 tmp2 <- map_dfr(fdb.list[-2], search_chr_loc) # the B9J08 sequence is ignored since its genome is not the refseq assembly
 tmp2 <- tmp2 %>% 
+  rename(chr_name = chrloc) %>% 
   mutate(chrstart = as.integer(chrstart), chrstop = as.integer(chrstop), 
          chrL = as.integer(chrL), relLoc = round(chrstart/chrL, 2))
 ```
