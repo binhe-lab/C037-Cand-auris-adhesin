@@ -15,14 +15,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r load_libraries, echo = FALSE}
-#if (!requireNamespace("BiocManager", quietly = TRUE))
-#    install.packages("BiocManager")
-#if (!requireNamespace("treeio", quietly = TRUE))
-#    BiocManager::install("treeio")
-#if (!requireNamespace("ggtree", quietly = TRUE))
-#    BiocManager::install("ggtree")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+if (!requireNamespace("treeio", quietly = TRUE))
+    BiocManager::install("treeio")
+if (!requireNamespace("ggtree", quietly = TRUE))
+    BiocManager::install("ggtree")
 library(tidyverse)
 library(cowplot)
+library(RColorBrewer)
+library(ggtree)
+library(treeio)
 ```
 
 ## Goal
@@ -57,22 +60,83 @@ chrLoc <- read_tsv("data/XP_028889033_homologs_chr_loc.tsv", col_types = cols())
          accession = NULL, 
          species_id = factor(species_id, levels = sps.list),
          relLoc = round(chrstart/chrL, 3))
+
 seqInfo <- seqInfo %>% 
-  left_join(chrLoc) #%>% 
+  left_join(chrLoc) %>% 
   mutate(assemblystatus = factor(assemblystatus, levels = c("Complete Genome","Chromosome","Contig","Scaffold"), 
                                  labels = c("Chromosome", "Chromosome", "Partial", "Partial")),
-         species_gr = factor(species_id, labels = c(rep("MDR",4),rep("Clavispora",2),rep("albicans",5), "Sstipitis", "Klactis", rep("Nakaseomycetes",5)))) %>% 
+         species_gr = factor(species_id, labels = 
+                               c(rep("MDR",3),"Cauris","Clusitaniae","Dhansenii", rep("parapsilosis",2),
+                                 rep("albicans",3), "Sstipitis", rep("Saccharomycetaceae",6)))) %>% 
   select(name, id, source, starts_with("gene"), starts_with("species"), strain, starts_with("assembly"),
          length, n_seqs, starts_with("chr"), relLoc)
 ```
 
+## Species tree
+Below is the relationship between the species studied in this analysis.
+```{r, fig.width=6, fig.height = 5, warning=FALSE}
+sps.tree <- read.tree(file = "data/20200724-species-tree.nwk")
+p <- ggtree(sps.tree, ladderize = FALSE) + xlim(0,12) + scale_y_reverse() +
+  geom_tiplab(size = 4, align = TRUE, linesize = .5, fontface = 4) +
+  geom_cladelabel(node = 22,  label = "Clavispora", offset = 3.7, color = "magenta", 
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
+  geom_cladelabel(node = 23,  label = "MDR", offset = 4.5, color = "purple", fontface = 2,
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # MDR
+  geom_cladelabel(node = 27,  label = "Candida", offset = 2.7, color = "salmon", 
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Candida
+  geom_cladelabel(node = 29,  label = "albicans", offset = 3.5, color = "red", fontface = 2,
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # albicans
+  geom_cladelabel(node = 31,  label = "Saccharomycetaceae", offset = 2.7, color = "grey20", 
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) # Sacchromycetaceae
+p
+```
+**Fig. 1 Phylogenetic relationship of the species analyzed in this study.** This species tree is mostly based on the Maximum likelihood phylogeny from Muñoz _et al._ 2018 (PMID: 30559369), which used 1570 core genes. The relationships among the Saccharomycetaceae family is based on Gabaldón _et al._ 2016 (PMID: 27493146). The placement of _Debaryomyces hansenii_ differs between the above two publications. We based ours on the first publication. Note that in the latter publication as in Shen _et al._ 2018 (PMID: 30415838), which also places _D. hansenii_ closer to the Candida genus than to the Clavispora genus, the support for the part of the tree involving _D. hansenii_ is relatively low suggesting uncertainty in resolving the relationship. We chose to place _D. hansenii_ closer to the Clavispora genus because this is more congruent with the gene tree for the Hil family proteins we inferred below.
+
+```{r}
+p.tree <- ggtree(sps.tree, ladderize = FALSE) + xlim(0,12) + scale_y_reverse() +
+  geom_tiplab(size = 4, align = TRUE, linesize = .5, face = 4) +
+  geom_hilight(node = 22, fill = "hotpink", alpha = 0.2) + # Clavispora
+  geom_hilight(node = 23, fill = "purple", alpha = 0.2)  + # MDR
+  geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
+  geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
+  geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
+```
+
+## Gene tree
+### RAxML tree before reconciliation
+```{r}
+gene.tree <- read.tree("data/RAxML_gene_tree.clustalo_3701250_rooted.nwk")
+df <- seqInfo %>% select(label = name, species_id, species_gr)
+gene.tree <- full_join(gene.tree, df, by = "label")
+```
+```{r, fig.width=8, fig.height=6}
+ggtree(gene.tree, ladderize = TRUE) + 
+  #scale_y_reverse() +
+  geom_tippoint(aes(color = species_gr)) +
+  scale_color_manual(name = "Clades",
+                     values = c("MDR" = "purple",
+                                "Cauris" = "plum2",
+                                "Clusitaniae" = "magenta", 
+                                "Dhansenii" = "gray50",
+                                "Sstipitis" = "steelblue",
+                                "parapsilosis" = "salmon", 
+                                "albicans" = "red", 
+                                "Saccharomycetaceae" = "grey20")) +
+  theme(text = element_text(size = 14))
+```
+**Fig. 2 RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in _C. auris_, two MDR clade species _C. pseudohaemulonis_ and _C. haemuloni_, as well as an outgroup _D. hansenii_.** The branch thickness is shown proportional to the value of the rapid bootstrapping value. The tree is manually rooted on the two _D. hansenii_ sequences. The root choice is based on the gene tree including homologs from across the Ascomycetes. The short terminal branch lengths among the _C. auris_ strains indicate that there had been little divergence in the PF11765 domain in these sequences. Lastly, the colors of the leaf node names for the _C. auris_ strains are based on Muñoz _et al._ 2018 Nat. Genet.
 ## Homologous protein length
 ```{r plot_prot_length, fig.width=8, fig.height=5}
 # plot the length distribution of the homologs in each species
-ggplot(seqInfo, aes(x = species, y = length)) + 
-  geom_boxplot() + geom_hline(yintercept = 500, linetype = 2) +
-  coord_flip() +
-  labs(title = "Distribution of XP_028889033 homologs' protein length")
+p <- ggplot(seqInfo, aes(x = reorder(species_id, desc(species_id)), y = length)) + 
+  geom_boxplot(outlier.shape = NA) + geom_hline(yintercept = 500, linetype = 2) +
+  geom_dotplot(binwidth = 100, binaxis = "y", stackdir = "center", dotsize = 0.5, 
+               binpositions = "all", fill = rgb(0,0,0,0.5), color = rgb(0,0,0,0.6)) + 
+  coord_flip() + 
+  labs(title = "Distribution of XP_028889033 homologs' protein length") +
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank())
+  
+plot_grid(p.tree, p, align = "h", ncol = 2, rel_widths = c(1,2), scale = c(1.08,1))
 ```
 _Discussion_
 
@@ -96,7 +160,7 @@ p + coord_flip() + theme_classic() + scale_color_manual(values = c("grey50", "gr
         panel.background = element_rect(fill = alpha("lightblue",0.5))) +
   labs(y = "Position on chromosome or scaffold", x = "Chromosomes / Scaffolds", color = "Assembly Status") + 
   ggtitle("Chromosomal locations of XP_028889033 homologs")
-ggsave("img/20210213-homologs-chr-loc.png", bg = "transparent", width = 6, height = 5)
+ggsave("output/img/20210213-homologs-chr-loc.png", bg = "transparent", width = 6, height = 5)
 ```
 
 ```{r, fig.width = 8, fig.height = 4}
@@ -106,9 +170,9 @@ p <- seqInfo %>% filter(!(chrL < 1e6 & assemblystatus == "Partial")) %>%
   xlab("Distance from Chromosome or Scaffold Ends") + labs(fill = "Species group") + 
   scale_x_continuous(breaks = seq(0,0.5,by = 0.1))
 p + geom_histogram(binwidth = 0.05)
-ggsave("img/20210213-distribution-on-chromosome-or-scaffolds-histogram-grey.png", width = 5, height = 3)
+ggsave("output/img/20210213-distribution-on-chromosome-or-scaffolds-histogram-grey.png", width = 5, height = 3)
 p + geom_histogram(aes(fill = species_gr), binwidth = 0.05) + scale_fill_brewer(palette = "Paired")
-ggsave("img/20210213-distribution-on-chromosome-or-scaffolds-histogram.png", width = 6, height = 3)
+ggsave("output/img/20210213-distribution-on-chromosome-or-scaffolds-histogram.png", width = 6, height = 3)
 ```
 
 **Discussion**
@@ -122,12 +186,20 @@ A recent long-read sequencing study for _C. glabrata_ annotated 31 novel ORFs, o
 
 To formally test this hypothesis, I need to account for the background gene density differences along the chromosomes. The idea is to compare the chromosomal positions for this group of proteins compared with the gene densities on the chromosomes they reside on. We will restrict our analysis to those genomes with a chromosomal level assembly status for obvious reasons.
 
+>**Update 2021-06-21** We will also include C. auris B11221 as we know its assembly is nearly at the chromosomal level
+
 ```{r decide_which_species_to_use}
-use.sps <- seqInfo %>% filter(assemblystatus == "Chromosome") %>% select(species_id, assemblyaccession) %>% unique()
+use.sps <- seqInfo %>% 
+  filter(assemblystatus == "Chromosome" | species_id == "Cauris") %>% 
+  select(species_id, assembly) %>% unique()
 use.sps
 # now let's also create a new tibble for our homologs from these species
 fg.freq <- chrLoc %>% 
-  filter(species_id %in% use.sps$species_id)
+  filter(species_id %in% use.sps$species_id) %>% 
+  # remove the one C. auris gene located on an unassembled fragment
+  filter(!(species_id == "Cauris" & chr_name == "scaffold00015")) %>% 
+  # change the scaffold name to chromosome name (they correspond)
+  mutate(chr_name = gsub("scaffold0+", "", chr_name))
 ```
 
 To conduct this test, we first need to prepare and compute the background gene densities. To do this, we will gather the genome assembly files for the selected species, read them into R, and generate a table that contains one row for each gene, with its gene ID, chromosome number, chromosome length and the start position expressed as a percentage measured from the chromosome ends.
@@ -135,17 +207,17 @@ To conduct this test, we first need to prepare and compute the background gene d
 ```{r compute_background_freq}
 # 1. prepare file names
 #   get all file names that ends with "feature_table.txt.gz", which contain the gene annotation
-feature.files <- list.files(path = "./assembly-info/", pattern = "*feature_table.txt.gz$")
+feature.files <- list.files(path = "data/assembly-info/", pattern = "*feature_table.txt.gz$")
 names(feature.files) <- sapply(str_split(feature.files, pattern = "_"), function(x) {
   paste(x[1], x[2], sep = "_")
 })
 #   get all file names that ends with "assembly_report.txt", which contain the chromosomal length
-assembly.files <- list.files(path = "./assembly-info/", pattern = "*assembly_report.txt$")
+assembly.files <- list.files(path = "data/assembly-info/", pattern = "*assembly_report.txt$")
 names(assembly.files) <- sapply(str_split(assembly.files, pattern = "_"), function(x) {
   paste(x[1], x[2], sep = "_")
 })
-use.sps$FeatureFile <- feature.files[use.sps$assemblyaccession]
-use.sps$AssemblyFile <- assembly.files[use.sps$assemblyaccession]
+use.sps$FeatureFile <- feature.files[use.sps$assembly]
+use.sps$AssemblyFile <- assembly.files[use.sps$assembly]
 
 # 2. read in the assembly information
 feature.col.names <- c("feature","class","assembly","assembly_unit","seq_type","chromosome","genomic_accession","start","end","strand","product_accession","non_redundant_refseq","related_accession","name","symbol","GeneID","locus_tag","feature_interval_length","product_length","attributes")
@@ -153,10 +225,10 @@ assembly.col.names <- c("chromosome","seq_role","assign_molecule","type","gb_acc
                         "chraccver","assembly_unit","seqL","ucsc_name")
 compute.bg.freq <- function(row){
   assembly.file <- row["AssemblyFile"]
-  assembly <- read_tsv(paste0("./assembly-info/",assembly.file), comment = "#",
+  assembly <- read_tsv(paste0("data/assembly-info/",assembly.file), comment = "#",
                        col_names = assembly.col.names, col_types = "ccccccccic")
   feature.file <- row["FeatureFile"]
-  feature <- read_tsv(paste0("./assembly-info/",feature.file), col_names = feature.col.names,
+  feature <- read_tsv(paste0("data/assembly-info/",feature.file), col_names = feature.col.names,
                       col_types = "ccccccciicccccccciic", skip = 1)
   res <- feature %>% 
     filter(feature == "mRNA") %>% 
@@ -170,8 +242,33 @@ compute.bg.freq <- function(row){
     mutate(relLoc = round(start / seqL, 3))
   return(res)
 }
-bg.freq <- apply(use.sps, MARGIN = 1, compute.bg.freq)
-names(bg.freq) <- use.sps$species_id
+# apply the function to the genomes, but leave out C. auris
+bg.freq <- apply(filter(use.sps, species_id != "Cauris"), MARGIN = 1, compute.bg.freq)
+names(bg.freq) <- use.sps %>% filter(species_id != "Cauris") %>% pull(species_id)
+```
+
+Separately calculate the background frequency for _C. auris_
+```{r}
+compute.bg.freq.cau <- function(){
+  assembly.col.names <- c("chromosome","seq_role","assign_molecule","type","gb_acc","relationship",
+                        "chraccver","assembly_unit","seqL","ucsc_name")
+  row = use.sps %>% filter(species_id == "Cauris") # C. auris entry
+  assembly.file <- row["AssemblyFile"]
+  assembly <- read_tsv(paste0("data/assembly-info/",assembly.file), comment = "#",
+                       col_names = assembly.col.names, col_types = "ccccccccic") %>% 
+    filter(as.integer(str_sub(chromosome, -2, -1)) <= 7)
+  feature.file <- row["FeatureFile"]
+  feature <- read_tsv(paste0("data/assembly-info/",feature.file), col_names = feature.col.names,
+                      col_types = "ccccccciicccccccciic", skip = 1)
+  res <- feature %>% 
+    filter(feature == "mRNA") %>% 
+    select(chraccver = genomic_accession, start, end) %>% 
+    right_join(select(assembly, chromosome, chraccver, seqL), by = "chraccver") %>%
+    mutate(relLoc = round(start / seqL, 3),
+           chromosome = gsub("scaffold0+","",chromosome))
+  return(res)
+}
+bg.freq$Cauris <- compute.bg.freq.cau()
 ```
 
 Let's take a look at the gene density in one of the genomes, e.g. _C. albicans_
@@ -189,7 +286,7 @@ Below I use the `geom_histogram` function instead, with breaks specified manuall
 bg.freq$Dhansenii %>% ggplot(aes(x = relLoc)) + 
   geom_histogram(breaks = seq(0,1,0.05)) +
   facet_wrap(~ chromosome) + ggtitle("D. hansenii") + theme(plot.title = element_text(hjust = 0.5))
-ggsave("./img/20210303-dhansenii-chromosome-gene-density-histogram.png", width = 6, height = 4)
+ggsave("output/img/20210303-dhansenii-chromosome-gene-density-histogram.png", width = 6, height = 4)
 ```
 
 In order to compare the distribution of _all_ genes in different bins of the chromosomes to the homologs in our case study, we can divide each chromosome in the `nrow(use.sps)` genomes into an arbitrary number of bins after "folding" them in half, e.g. 0-10%, 10-20%, 20-30%, 30-40% and 40-50%. To be able to visually compare the distribution of our homologs and the genome background, we will create a special "chromosome" class that will be our homologs and combine them with the `bg.freq` table.
@@ -215,7 +312,7 @@ freq.plot %>%
   facet_wrap(~ species, scales = "free_x") + scale_fill_brewer(type = "qual", palette = 3) +
   scale_y_continuous(name = "Proportion", trans = "reverse") + theme_cowplot() + panel_border()
 
-ggsave("img/20210303-compare-homologs-chromosomal-locations-to-bg.png", width = 8, height = 6)
+ggsave("output/img/20210303-compare-homologs-chromosomal-locations-to-bg.png", width = 8, height = 6)
 ```
 In the plot above, "X" is a special category that collects our homologs. We can see that the distribution of these proteins on the chromosome deviate from the background. Note that a few of the seven species contain only 1-2 PF11765 homologs -- these include the three in the middle row -- and we should interpret their homologs distribution with caution.
 
@@ -237,37 +334,42 @@ Note that the three _P_-values correspond to three approaches of testing the goo
 
 The test above assumes that the gene density along all chromosomes in the seven species follow the same distribution. The empirical observation supports that hypothesis. Should that to be not the case, we could also account for the variability in gene density distribution between species or even between chromosomes within a species. The idea is to first collect the chromosomes that our homologs come from, and then randomly sample the **same** number of genes as the number of our homologs on that chromosome. Do this for all of the homolog-containing chromosomes, we would obtain one random sample. Repeat this process 1000 times or more, we will then get the pseudosample, which we can use to compare with our observations. Here we need to come up with a statistic that summarizes each of our observation or pseudosample. For example, we could calculate the median % location for each sample, and ask where our observation lie relative to the pseudosamples. I'll skip this approach for now since the first appraoch appears to be OK given the similar gene density distribution across chromosomes and species.
 
-I could also apply the same procedure above to the partially assembled chromosomes that are longer than 1e6 bp.
-```{r}
-use.sps2 <- seqInfo %>% filter(assemblystatus == "Partial", chrL > 1e6) %>% select(species_id, assemblyaccession) %>% unique()
-use.sps2$FeatureFile <- feature.files[use.sps2$assemblyaccession]
-use.sps2$AssemblyFile <- assembly.files[use.sps2$assemblyaccession]
-use.sps2
-
-# now let's also create a new tibble for our homologs from these species
-fg.freq2 <- chrLoc %>% 
-  filter(species_id %in% use.sps2$species_id)
-
-```
-
 ## Adhesin predictors
 Now let's import the fungalRV and FaaPred results.
 ```{r adhesin_prediction}
 frv.th = 0.511 # recommended FungalRV score threshold
-frv <- read_tsv("raw-output/fungalRV_result.txt", skip = 3, col_names = c("name","frv.score"), col_types = "cd") %>% 
+frv <- read_tsv("output/FungalRV/fungalRV_result.txt", skip = 3, col_names = c("name","frv.score"), col_types = "cd") %>% 
   mutate(name = str_sub(name, 2), frv.pred = frv.score > frv.th)
-faa <- read_tsv("raw-output/faapred_result.txt", col_names = c("name","faa.score","faa.pred"), col_types = "cdc") %>% 
+faa <- read_tsv("output/web-download/faapred_result.txt", col_names = c("name","faa.score","faa.pred"), col_types = "cdc") %>% 
   mutate(faa.pred = ifelse(faa.pred == "Adhesin", TRUE, FALSE))
 if("frv.score" %in% names(seqInfo))
   seqInfo <- select(seqInfo, -frv.score, -frv.pred, -faa.score, -faa.pred)
 seqInfo <- seqInfo %>% left_join(frv) %>% left_join(faa)
-seqInfo %>% 
+df <- seqInfo %>% 
   group_by(species_id) %>% 
-  summarize(n = n(), mean.frv = mean(frv.score), mean.faa = mean(faa.score, na.rm = T), 
+  summarize(n = n(), 
             fungalRV = sum(frv.score > 0.511), faapred = sum(faa.pred, na.rm = T), 
-            both = sum(frv.score > 0.511 & faa.pred))
+            both = sum(frv.score > 0.511 & faa.pred),
+            mean.frv = round(mean(frv.score), 2), mean.faa = round(mean(faa.score, na.rm = T), 2))
+dt <- DT::datatable(df, options = list(dom = 't', pageLength = 20, ordering = FALSE), 
+                caption = "Summary of Adhesin Prediction Results")
+# the following code is from https://www.r-bloggers.com/2020/05/mimic-excels-conditional-formatting-in-r-2/
+brks <- stats::quantile(x <- df[[2]], probs = seq(.05, .95, .05), na.rm = TRUE)
+#clrs <- colorRampPalette(c("#fcdbdb", "#ff1515"))(length(brks)+1)
+clrs <- colorRampPalette(brewer.pal(n = 4, name = "Reds"))(length(brks)+1)
+for (j in 2:5){
+  # Create breaks for shading column values high to low
+  # Create shades of green for backgrounds
+  # Format cells in j-th column
+  dt <- DT::formatStyle(dt, j, backgroundColor = DT::styleInterval(brks, clrs))
+}
+dt
 ```
-
+```{r}
+# see https://yulab-smu.top/treedata-book/chapter7.html#attach-operator
+# the attach operator "%<+%" works on ggtree objects and requires the first column
+# of the data frame to contain the tip labels
+```
 
 ## GPI-anchor prediction
 GPI-anchored proteins are characterized by an N-terminal signal peptide, which would direct the protein to the secretary pathway, and a C-terminal GPI-anchor peptide, which would be cleaved and replaced by the GPI-anchor, allowing the protein to be tethered to the cell wall. For signal peptide, I used SignalP server. Its latest version is 5.0. But I also ran the sequences through their 4.1 version, with two settings. The results of the latter two are almost identical, except for one sequence "XP_024711350.1", which is only included in the sensitive version, and has a probability lower than 0.5.
