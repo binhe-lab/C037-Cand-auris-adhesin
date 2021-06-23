@@ -351,8 +351,9 @@
       "Package": "ggtree",
       "Version": "3.0.2",
       "Source": "Bioconductor",
+      "RemoteType": "bioconductor",
       "Remotes": "GuangchuangYu/treeio",
-      "Hash": "d40b77638096a53b9012627e2a9aadb8"
+      "Hash": "fbde6fb19d51f818f58110a515f454c8"
     },
     "glue": {
       "Package": "glue",
@@ -804,9 +805,15 @@
     },
     "treeio": {
       "Package": "treeio",
-      "Version": "1.16.1",
-      "Source": "Bioconductor",
-      "Hash": "c739b150d5003917a73105e75bea41a6"
+      "Version": "1.17.2",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "GuangchuangYu",
+      "RemoteRepo": "treeio",
+      "RemoteRef": "master",
+      "RemoteSha": "ca7af290571dcb6d6f1a9953265b2a00255ad4b9",
+      "Hash": "076c16e7701301b9d28519bbceb68699"
     },
     "utf8": {
       "Package": "utf8",

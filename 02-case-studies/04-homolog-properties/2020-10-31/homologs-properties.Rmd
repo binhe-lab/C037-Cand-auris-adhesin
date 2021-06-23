@@ -94,16 +94,6 @@ p
 
 > Note that he placement of _Debaryomyces hansenii_ differs between the above two publications. The former placed it closer to the Clavispora genus while the latter placed it closer to the Candida genus. We based ours on the first publication. Another large scale phylogenetic analysis (Shen _et al._ 2018 (PMID: 30415838)), also placed _D. hansenii_ closer to the Candida genus. However, in both studies, which reported bootstrap support values in addition to the phylogeny, the support for the part of the tree involving _D. hansenii_ is relatively low suggesting uncertainty in resolving the relationship. We chose to place _D. hansenii_ closer to the Clavispora genus because this is more congruent with the gene tree for the Hil family proteins we inferred below.
 
-```{r}
-p.tree <- ggtree(sps.tree, ladderize = FALSE) + xlim(0,12) + scale_y_reverse() +
-  geom_tiplab(size = 4, align = TRUE, linesize = .5, face = 4) +
-  geom_hilight(node = 22, fill = "hotpink", alpha = 0.2) + # Clavispora
-  geom_hilight(node = 23, fill = "purple", alpha = 0.2)  + # MDR
-  geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
-  geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
-  geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
-```
-
 ## Gene tree
 ### RAxML tree before reconciliation
 ```{r, fig.width=8, fig.height=6}
@@ -163,9 +153,9 @@ sps.tree %>%
   geom_hilight(node = 29, fill = "red", alpha = 0.15)     + # albicans
   geom_hilight(node = 31, fill = "grey20", alpha = 0.15)  + # Sacchromycetaceae
   geom_text(aes(label = duplications), hjust = 3, vjust = -.3,
-            size = 3, color = "red", face = 2) +
+            size = 3, color = "red", fontface = 2) +
   geom_text(aes(label = paste0("/", losses)), hjust = 1.3, vjust = -.3,
-            size = 3, color = "grey20", face = 2) +
+            size = 3, color = "grey20", fontface = 2) +
   geom_label(aes(label = ifelse(duplications >= 3, duplications, NA)), hjust = 2.1,
              vjust = -.11, size = 3, color = "red", fill = "yellow1", fontface = 2,
              label.size = 0, label.padding = unit(0.12, "lines"))
@@ -173,7 +163,23 @@ ggsave("output/img/20210622-species-tree-with-gains-losses.png", width = 5, heig
 ```
 **Fig. 4 Inferred gene duplications and losses in the Hyr/Iff-Like (HIL) family in Ascomycetes.** The cladogram shows the species relationship with shadings as in Figure 1. The numbers on top of each branch are the inferred duplications (red) and losses (black) using Notung 2.9. Yellow highlight emphasize the branches that experience three or more duplications.
 
+_**Conclusions**_
+
+1. The Hil family **independently** expanded in the Candida and Clavispora genera. The most significant expansion occurred within the albicans clade in the Candida genus and the MDR clade in the Clavispora genus.
+1. Many species in the Saccharomycetaceae family have no homologs in this family based on our blast criteria. This suggests that the gene family has contracted and any remaining homologs are shorter than 500 amino acid and thus likely to not play an adhesin function.
 ## Homologous protein length
+```{r}
+p.tree <- sps.tree %>% as_tibble() %>% 
+  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
+  as.treedata() %>% ggtree(ladderize = FALSE) + xlim(0,14) + scale_y_reverse() +
+  geom_tiplab(size = 4, align = TRUE, linesize = .5, fontface = "italic", offset = 0.1) +
+  geom_hilight(node = 22, fill = "hotpink", alpha = 0.2) + # Clavispora
+  geom_hilight(node = 23, fill = "purple", alpha = 0.2)  + # MDR
+  geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
+  geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
+  geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
+```
+
 ```{r plot_prot_length, fig.width=8, fig.height=5}
 # plot the length distribution of the homologs in each species
 p <- ggplot(seqInfo, aes(x = reorder(species_id, desc(species_id)), y = length)) + 
@@ -184,12 +190,13 @@ p <- ggplot(seqInfo, aes(x = reorder(species_id, desc(species_id)), y = length))
   labs(title = "Distribution of XP_028889033 homologs' protein length") +
   theme(axis.title.y = element_blank(), axis.text.y = element_blank())
   
-plot_grid(p.tree, p, align = "h", ncol = 2, rel_widths = c(1,2), scale = c(1.08,1))
+plot_grid(p.tree, p, align = "h", ncol = 2, rel_widths = c(1,1.5), scale = c(1.08,1))
 ```
-_Discussion_
+_**Discussion**_
 
 - The one sequence below 500 a.a. is from _N. delphensis_, which is labeled as a partial CDS.
 - Majority of the proteins in the list are 500-2000 a.a., with a few exceptionally long
+- Not only do Saccharomycetaceae species have fewer Hil family homologs, the ones they have are also short (< 1000 a.a.) with the exception of _C. glabrata_
 
 ## Chromosomal locations
 While I was performing BLAST on FungiDB to identify homologs of our protein, I noticed that many of the hits appear to be at the beginning and end of the chromosomes. To see if there is a systematic trend in the chromosomal locations, I collected this information for all 99 homologs in the list. Note however, not all genomes are assembled to the chromosomal level, and as a result, the locations for the proteins in those species/strains would be relative to a contig or scaffold. My rationale is that if the contig or scaffold is close to choromosomal length (although that varies by at least an order of magnitude), I could at least look at them separately.
@@ -382,8 +389,9 @@ Note that the three _P_-values correspond to three approaches of testing the goo
 
 The test above assumes that the gene density along all chromosomes in the seven species follow the same distribution. The empirical observation supports that hypothesis. Should that to be not the case, we could also account for the variability in gene density distribution between species or even between chromosomes within a species. The idea is to first collect the chromosomes that our homologs come from, and then randomly sample the **same** number of genes as the number of our homologs on that chromosome. Do this for all of the homolog-containing chromosomes, we would obtain one random sample. Repeat this process 1000 times or more, we will then get the pseudosample, which we can use to compare with our observations. Here we need to come up with a statistic that summarizes each of our observation or pseudosample. For example, we could calculate the median % location for each sample, and ask where our observation lie relative to the pseudosamples. I'll skip this approach for now since the first appraoch appears to be OK given the similar gene density distribution across chromosomes and species.
 
-## Adhesin predictors
-Now let's import the fungalRV and FaaPred results.
+## Adhesin predictions
+### SVM based predictions
+[FungalRV](http://fungalrv.igib.res.in/) and [FaaPred](http://bioinfo.icgeb.res.in/faap/) are two Support Vector Machine (SVM) based prediction algorithms that use sequence features such as amino acid composition (frequency, physiochemical properties etc.) as input and train Machine Learning models to distinguish fungal adhesins from non-adhesins.
 ```{r adhesin_prediction}
 frv.th = 0.511 # recommended FungalRV score threshold
 frv <- read_tsv("output/FungalRV/fungalRV_result.txt", skip = 3, col_names = c("name","frv.score"), col_types = "cd") %>% 
@@ -393,12 +401,16 @@ faa <- read_tsv("output/web-download/faapred_result.txt", col_names = c("name","
 if("frv.score" %in% names(seqInfo))
   seqInfo <- select(seqInfo, -frv.score, -frv.pred, -faa.score, -faa.pred)
 seqInfo <- seqInfo %>% left_join(frv) %>% left_join(faa)
+```
+
+```{r}
 df <- seqInfo %>% 
   group_by(species_id) %>% 
   summarize(n = n(), 
             fungalRV = sum(frv.score > 0.511), faapred = sum(faa.pred, na.rm = T), 
             both = sum(frv.score > 0.511 & faa.pred),
             mean.frv = round(mean(frv.score), 2), mean.faa = round(mean(faa.score, na.rm = T), 2))
+
 dt <- DT::datatable(df, options = list(dom = 't', pageLength = 20, ordering = FALSE), 
                 caption = "Summary of Adhesin Prediction Results")
 # the following code is from https://www.r-bloggers.com/2020/05/mimic-excels-conditional-formatting-in-r-2/
@@ -419,13 +431,15 @@ dt
 # of the data frame to contain the tip labels
 ```
 
-## GPI-anchor prediction
-GPI-anchored proteins are characterized by an N-terminal signal peptide, which would direct the protein to the secretary pathway, and a C-terminal GPI-anchor peptide, which would be cleaved and replaced by the GPI-anchor, allowing the protein to be tethered to the cell wall. For signal peptide, I used SignalP server. Its latest version is 5.0. But I also ran the sequences through their 4.1 version, with two settings. The results of the latter two are almost identical, except for one sequence "XP_024711350.1", which is only included in the sensitive version, and has a probability lower than 0.5.
+### GPI-anchor prediction
+GPI-anchored proteins are characterized by an N-terminal signal peptide, which would direct the protein to the secretary pathway, and a C-terminal GPI-anchor peptide, which would be cleaved and replaced by the GPI-anchor, allowing the protein to be tethered to the cell wall.
+
+For signal peptide, I used SignalP server. Its latest version is 5.0. But I also ran the sequences through their 4.1 version, with two settings. The results of the latter two are almost identical, except for one sequence "XP_024711350.1", which is only included in the sensitive version, and has a probability lower than 0.5.
 
 ```{r signalP, fig.width=5, fig.height=5}
 # Signal peptide
 gff.names <- c("id", "source", "name", "start", "end", "prob", "na1", "na2", "na3")
-signalp5 <- read_tsv("raw-output/signalp_5.0.gff", comment = "#", col_names = gff.names, col_types = "ccciidccc")
+signalp5 <- read_tsv("output/web-download/signalp_5.0.gff", comment = "#", col_names = gff.names, col_types = "ccciidccc")
 
 if("signalp" %in% names(seqInfo))
   seqInfo <- select(seqInfo, -signalp)
@@ -436,7 +450,7 @@ seqInfo <- left_join(seqInfo, select(signalp5, name = id, prob), by = c("name" =
 
 For GPI-anchor prediction, I used the [PredGPI server](http://gpcr.biocomp.unibo.it/predgpi/).
 ```{r gpi}
-tmp <- read_delim("raw-output/predgpi_result.txt", delim = "|", col_names = c("name","fp","omega"))
+tmp <- read_delim("output/web-download/predgpi_result.txt", delim = "|", col_names = c("name","fp","omega"))
 pred.gpi <- tmp %>% 
   mutate(name = str_sub(name,2,-2), # remove > and the trailing space
          fp = as.numeric(str_sub(fp, 9, -2)), # extract the numeric part
@@ -451,10 +465,39 @@ pred.gpi <- tmp %>%
 if("pred.gpi" %in% names(seqInfo))
   seqInfo <- select(seqInfo, -pred.gpi)
 seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi), by = c("name"="name"))
+```
 
-seqInfo %>% 
+```{r}
+df1 <- seqInfo %>% 
   group_by(species_id) %>% 
-  summarize(Total = n(), SignalP = sum(signalp), GPI_Pred = sum(pred.gpi), Both = sum(signalp & pred.gpi))
+  summarize(SignalP = sum(signalp), GPI_Pred = sum(pred.gpi), Pass = sum(frv.score > 0.511 & signalp & pred.gpi)) %>% 
+  right_join(df) %>% 
+  select(species = species_id, Total = n, Pass, FungalRV = fungalRV, FaaPred = faapred, SignalP, GPI_Pred)
+
+dt1 <- DT::datatable(df1, options = list(dom = 't', pageLength = 20, ordering = FALSE), 
+                caption = "Summary of Adhesin Prediction Results")
+# the following code is from https://www.r-bloggers.com/2020/05/mimic-excels-conditional-formatting-in-r-2/
+brks <- stats::quantile(x <- df1[[2]], probs = seq(.05, .95, .05), na.rm = TRUE)
+#clrs <- colorRampPalette(c("#fcdbdb", "#ff1515"))(length(brks)+1)
+clrs <- colorRampPalette(brewer.pal(n = 4, name = "Reds"))(length(brks)+1)
+for (j in 2:8){
+  # Create breaks for shading column values high to low
+  # Create shades of green for backgrounds
+  # Format cells in j-th column
+  dt1 <- DT::formatStyle(dt1, j, backgroundColor = DT::styleInterval(brks, clrs))
+}
+dt1
+```
+
+**Summary**
+
+- Most of the Hil homologs in Ascomycetes passed both the GPI-anchor predictions and also the FungalRV predictor, suggesting that they are likely to be cell wall proteins and may play an adhesin function (FaaPred predicted fewer adhesins, but the overall pattern doesn't change).
+- 
+```{r}
+# saving the table output to a png file 
+# https://stackoverflow.com/questions/60287652/how-to-save-a-table-i-created-with-dt-datatable-into-a-high-quality-image
+DT::saveWidget(dt1, "output/misc/tmp.html")
+webshot::webshot("output/misc/tmp.html", "output/img/20210623-homologs-prediction-summary.png")
 ```
 
 ## Build feature map for homologs
