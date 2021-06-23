@@ -1,0 +1,28 @@
+id	species	e_value	query_cover	perc_ident	length
+XP_001386767.2	Scheffersomyces stipitis CBS 6054	3e-37	87	34.87	399
+XP_001383276.2	Scheffersomyces stipitis CBS 6054	5.0000000000000005e-37	89	32.65	411
+XP_001387297.2	Scheffersomyces stipitis CBS 6054	2.0000000000000003e-34	85	32.82	488
+XP_001386047.2	Scheffersomyces stipitis CBS 6054	6e-33	88	31.21	392
+XP_001387240.2	Scheffersomyces stipitis CBS 6054	5e-31	88	30.97	397
+XP_001385682.2	Scheffersomyces stipitis CBS 6054	3e-30	86	32.93	408
+XP_001523310.1	Lodderomyces elongisporus NRRL YB-4239	2e-27	51	38.62	203
+XP_001386218.2	Scheffersomyces stipitis CBS 6054	4e-27	87	32.16	473
+XP_001526001.1	Lodderomyces elongisporus NRRL YB-4239	1.9999999999999998e-26	50	39.57	196
+XP_001382756.2	Scheffersomyces stipitis CBS 6054	1.9999999999999998e-26	84	33.33	392
+XP_001382762.1	Scheffersomyces stipitis CBS 6054	2.0000000000000002e-24	88	29.6	416
+XP_001386216.2	Scheffersomyces stipitis CBS 6054	2e-22	86	29.52	412
+XP_001385024.2	Scheffersomyces stipitis CBS 6054	1e-20	90	27.78	420
+XP_001386602.2	Scheffersomyces stipitis CBS 6054	5e-20	88	30.47	382
+XP_036668412.1	Candida parapsilosis	1e-15	88	25.21	418
+XP_036667770.1	Candida parapsilosis	5e-14	80	25.65	410
+XP_036663837.1	Candida parapsilosis	6e-14	88	26.42	438
+XP_002614819.1	Clavispora lusitaniae ATCC 42720	8e-14	86	29.73	402
+XP_002546744.1	Candida tropicalis MYA-3404	2e-13	89	26.71	328
+XP_036664320.1	Candida parapsilosis	9e-13	82	25.86	411
+XP_036664318.1	Candida parapsilosis	3e-12	87	26.01	439
+XP_036663836.1	Candida parapsilosis	5e-12	73	25.35	404
+XP_036667771.1	Candida parapsilosis	2e-11	88	25	420
+XP_036664321.1	Candida parapsilosis	6e-11	88	25.43	419
+XP_036664319.1	Candida parapsilosis	6e-10	82	25.61	414
+XP_036664322.1	Candida parapsilosis	5e-9	78	23.84	437
+XP_002550768.1	Candida tropicalis MYA-3404	5e-8	85	27.04	455

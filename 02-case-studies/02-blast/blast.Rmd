@@ -339,7 +339,7 @@ refseq1 <- cbind(refseq.orgn, refseq.combined) %>%
   select(accession, species, species_id, everything())
 ```
 
-
+Merge the three datasets and export the fasta sequences and blast results.
 ```{r merge}
 # refseq hit sequences and their names
 refseqdb.seq <- read.fasta("data/ncbi-refseq/XP_028889033_homologs_refprot_N360.fasta", seqtype = "AA", as.string = TRUE, strip.desc = TRUE)
@@ -362,6 +362,35 @@ combined.seq <- c(refseqdb.seq[refseqdb.list], fungidb.seq[fdb.list], gryc.seq[g
 combined.names <- c(refseqdb.names, fdb.names, gryc.names)
 write.fasta(combined.seq, names = combined.names, file.out = "output/XP_028889033_homologs_combine.fasta")
 ```
+
+```{r}
+# merge blast hit table
+refseq.stat <-  refseq1 %>% 
+  select(id = accession, species, strain, e_value = e.value, query_cover = query.cover, perc_ident = perc.ident, length)
+fdb.stat <- fdb.filtered %>% 
+  filter(gene_id %in% fdb.list) %>% 
+  mutate(organism = gsub("strain ", "", organism),
+         species = word(organism, 1, 2),
+         strain = word(organism, 3, -1),
+         query_cover = NA, perc_ident = NA) %>% 
+  select(id = gene_id, species, strain, e_value, query_cover, perc_ident, length)
+gryc.stat <- gryc %>% 
+  filter(ori_id %in% gryc.list) %>% 
+  mutate(organism = species,
+         species = word(organism, 1, 2),
+         strain = word(organism, 3, -1)) %>% 
+  select(id, species, strain, e_value = min_e_value, query_cover, perc_ident = max_ident, length)
+combined.blast <- bind_rows(list(refseq = refseq.stat, FungiDB = fdb.stat, GRYC = gryc.stat), .id = "source")
+write_tsv(combined.blast, "output/XP_028889033_homologs_combine_blast_stat.tsv")
+
+# also export the rejected list from refseq
+refseq.rejected <- refseq.N360 %>% 
+  filter(length < 500, sci.name %in% c("Candida parapsilosis", "Candida tropicalis MYA-3404", "Clavispora lusitaniae ATCC 42720",
+                                       "Lodderomyces elongisporus NRRL YB-4239", "Scheffersomyces stipitis CBS 6054")) %>% 
+  select(id = accession, species = sci.name, e_value = e.value, query_cover = query.cover, perc_ident = perc.ident, length)
+write_tsv(refseq.rejected, "output/XP_028889033_homologs_length_filtered_blast_stat.tsv")
+```
+
 
 ```{r}
 # in the "output/gene-tree/README.md", I documented an issue with a particular
