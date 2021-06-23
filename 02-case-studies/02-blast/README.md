@@ -271,8 +271,16 @@ Continuing to investigate the reason for the missing gene in B11221: this time I
   
     ![B11221 graphic](./img/20210419-B9J08_004098-blast-in-B11221-graphic.png)
 
-    The first three lines are continguous sequences matching the N-terminus and to a less extent the C-terminus, and they are almost surely among the other 7 homologs. The last line is interesting in that it is split into two discontinuous sequences with very high similarity. I checked the scaffolds they came from and they are from scaffolds00001 and 00015, where the former maps to chromosome 1 while the latter is not assembled into the genome.
+    The first three lines are continguous sequences matching the N-terminus and to a less extent the C-terminus, and they are almost surely among the other 7 homologs. The last line is interesting in that it is split into two discontinuous sequences with very high similarity. I checked the scaffolds they came from and they are from scaffolds00001 and 00015, where the former maps to chromosome 1 while the latter is not assembled into the genome. Notably, the match to scaffold00001, which corresponds to the C-terminus of the protein, is nearly 100% identical, with one amino acid mismatch that could result from technical artifacts. I thus determine that the missing Hil4 homolog in B11221 is located on chromosome 1 (scaffold0001) and is located at the 3' end of the sequence (the coding sequence is on the minus strand, explaining why the N-terminal region is missing).
 
-    ![B11221_table](./img/20210419-B9J08_004098-blast-in-B11221-table.png)
+    ![scaffold00001 alignment](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/02-blast/img/20210621-B9J08_004098-blast-in-B11221-scaffold00001-align.png)
 
-    This suggests that the reason I couldn't find the homolog in B11221 is likely due to sequencing gaps in chromosome 1 that happened to overlap part of that gene.
+    ![scaffold00015 alignment](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/02-blast/img/20210621-B9J08_004098-blast-in-B11221-scaffold00015-align.png)
+    
+    The lonely match to the N-terminus region on scaffold00015 had only 59% identity. The scaffold00015 sequence itself is only 21,981 bp. To figure out what this match corresponds to, I took the subject sequence `ALLLQKARSLTITEDTVLVSPVNLEIGELNINPGVYFSIVNNVLTVLGGNLNNDGAFYVTSTNGLAASVTIASGSIINRGDLAFNSLKANVITNFNLDSVGTFSNTGNMWLGVPIFSAVPPIILGSALDWENKGMIYLRQELGGASPITISQVLGAIDNSGTICIERLNWLQTTTINGAGCVNVQADGHLQLQISPWSVGEDQTIYLSTPTSALSVLGLEPSLLGTKTYNVVGFGGGNTIGINLGFTSYSYSGSTLTLSFFLGVFKINFNIGEGYSADGFSTNGPGNSGTQITYDGPYPGSVPDKCLCKDF` and searched it either using `tblastn` against the refseq genome (B11221) or using `blastp` against the refseq_prot database. The latter search identified a perfect match in CJI97_005649 (XP_028887965.1), which corresponds to Hil6. The former again hit the scaffold00015 sequence. So I could confirm that this hit is Hil6.
+    
+    My analysis above led me to the following conclusions:
+    
+    1. Hil4 homolog is present in B11221 and is located at the 3' tip of chromosome 1 (scaffold00001).
+    2. Chromosome 1 in B11221 is incomplete at the 3' tip and there doesn't appear to be an unassembled scaffold that corresponds to that piece. Instead, it may just be missing.
+    3. For my downstream chromosomal location analysis, it would be convenient to convert the B9J08_004098 locations to the locations in the B11221 genome. What I can do is to modify the chromosomal information during that analysis to correspond to the scaffold0001 hit here.

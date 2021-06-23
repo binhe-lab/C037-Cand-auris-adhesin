@@ -6,8 +6,9 @@ GRYC	CABR0s21e03234g	Nakaseomyces bracarensis	Nbracarensis	CBS 10154	GCA_0010773
 # GRYC	NA	Candida glabrata	Cglabrata	CBS 138	GCF_000002545.3	Chromosome	13	CAGL0L00227g	NA	NC_006035.2	L	17811	27536	1455689	0.01
 GRYC	CANI0s04e00110g	Nakaseomyces nivariensis	Nnivariensis	CBS 9983	GCA_001046915.1	Scaffold	29	CANI0s04e00110g	NA	CANI0S04	NA	398	3154	1422433	0
 FungiDB	CLUG_05233	Clavispora lusitaniae	Clusitaniae	ATCC 42720	GCF_000003835.1	Scaffold	9	CLUG_05233	NA	NW_003101573.1	NA	806735	811063	814710	0.99
-FungiDB	CPAR2_600430	Candida parapsiolosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_600430	NA	Contig005504	NA	101302	105591	898305	0.11
-FungiDB	CPAR2_806390	Candida parapsiolosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806390	NA	Contig005807	NA	1450527	1455449	"2,091,826"	0.69
-# FungiDB	NA	Candida parapsiolosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806410	NA	Contig005807	NA	"1,470,773"	"1,475,788"	"2,091,826"	0.7
-FungiDB	CPAR2_806420	Candida parapsiolosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806420	NA	Contig005807	NA	"1,478,746"	"1,483,890"	"2,091,826"	0.71
-FungiDB	B9J08_004098	Candida auris	Cauris	B8441	GCA_002759435.2	Scaffold	15	B9J08_004098	NA	PEKT02000007.1	NA	3178011	3195935	3195935	0.99
+FungiDB	CPAR2_600430	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_600430	NA	Contig005504	NA	101302	105591	898305	0.11
+FungiDB	CPAR2_806390	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806390	NA	Contig005807	NA	1450527	1455449	"2,091,826"	0.69
+# FungiDB	NA	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806410	NA	Contig005807	NA	"1,470,773"	"1,475,788"	"2,091,826"	0.7
+# FungiDB	CPAR2_806420	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806420	NA	Contig005807	NA	"1,478,746"	"1,483,890"	"2,091,826"	0.71
+FungiDB	B9J08_004098	Candida auris	Cauris	B11221	GCF_002775015.1	Scaffold	20	B9J08_004098	NA	NW__021640165.1	scaffold00001	4303238	4302039	4303397	0.99
+# note that the above entry is manually edited. the relative location of 0.99 is not calculated the same way as the others -- it was a rough estimate taking into account that the chromosome tip is missing (<1Mb?)

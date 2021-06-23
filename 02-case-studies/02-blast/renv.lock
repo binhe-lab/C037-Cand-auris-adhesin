@@ -58,6 +58,20 @@
       "Repository": "CRAN",
       "Hash": "dbb5e436998a7eba5a9d682060533338"
     },
+    "XML": {
+      "Package": "XML",
+      "Version": "3.99-0.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "59b7d0a3d18303ae30ba1246e77faa83"
+    },
+    "ade4": {
+      "Package": "ade4",
+      "Version": "1.7-17",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "dd151b78c19c121431545c277a74b61b"
+    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.1",
@@ -443,6 +457,13 @@
       "Repository": "CRAN",
       "Hash": "8672ae02bd20f6479bce2d06c7ff1401"
     },
+    "pixmap": {
+      "Package": "pixmap",
+      "Version": "0.4-12",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ff0e0b97265ced0db4d13d0005334d78"
+    },
     "pkgconfig": {
       "Package": "pkgconfig",
       "Version": "2.0.3",
@@ -583,12 +604,33 @@
       "Repository": "CRAN",
       "Hash": "6f76f71042411426ec8df6c54f34e6dd"
     },
+    "segmented": {
+      "Package": "segmented",
+      "Version": "1.3-4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "69c8364de576f1e4455800d6183fc88e"
+    },
     "selectr": {
       "Package": "selectr",
       "Version": "0.4-2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "3838071b66e0c566d55cc26bd6e27bf4"
+    },
+    "seqinr": {
+      "Package": "seqinr",
+      "Version": "4.2-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "487529ff4c174fb9a83d6ffce74f9d62"
+    },
+    "sp": {
+      "Package": "sp",
+      "Version": "1.4-5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "dfd843ee98246cf932823acf613b05dd"
     },
     "stringi": {
       "Package": "stringi",
