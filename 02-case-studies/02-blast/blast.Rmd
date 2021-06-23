@@ -451,7 +451,7 @@ tmp.assembly.lnk <- entrez_link(dbfrom = "nuccore", id = tmp.chr.id, db = "assem
 tmp.assembly.id <- sapply(tmp.assembly.lnk, function(i) i$links$nuccore_assembly[1])
 # 2021-06-18 for unknown reasons, one of the chromosomes failed to get a link even though 
 #   searches on the NCBI website gives the expected result. Manually add it in
-tmp.assembly.id[[8]] <- "277478"
+# tmp.assembly.id[[8]] <- "277478"
 tmp.assembly <- map_chr(tmp.assembly.id, function(x)
   entrez_summary(db = "assembly", id = x)$assemblyaccession)
 names(tmp.assembly) <- tmp.chr.id
