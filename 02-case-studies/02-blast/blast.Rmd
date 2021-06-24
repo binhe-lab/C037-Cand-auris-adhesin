@@ -364,6 +364,17 @@ write.fasta(combined.seq, names = combined.names, file.out = "output/XP_02888903
 ```
 
 ```{r}
+# in the "output/gene-tree/README.md", I documented an issue with a particular
+# sequence, XP_025344407.1, which has a long N-terminal part that is not aligned 
+# to any other sequences. the solution is to remove the first 900 a.a. of it
+# and output a different version of fasta file just for gene tree analysis
+truncated <- str_sub(refseqdb.seq$XP_025344407.1, start = 901)
+attributes(truncated) <- attributes(refseqdb.seq$XP_025344407.1)
+combined.seq$XP_025344407.1 <- truncated
+write.fasta(combined.seq, names = combined.names, file.out = "output/XP_028889033_homologs_combine_for_gene_tree.fasta")
+```
+
+```{r}
 # merge blast hit table
 refseq.stat <-  refseq1 %>% 
   select(id = accession, species, strain, e_value = e.value, query_cover = query.cover, perc_ident = perc.ident, length)
