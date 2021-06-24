@@ -113,6 +113,7 @@ ggtree(gene.tree, ladderize = TRUE) +
                                 "albicans" = "red", 
                                 "Saccharomycetaceae" = "grey20")) +
   theme(text = element_text(size = 14))
+ggsave("output/img/20210624-raxml-gene-tree-color.png", width = 7, height = 6)
 ```
 **Fig. 2 RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The branch length is proportional to the inferred substitions per site. The tree is manually rooted on the Saccharomycetaceae family, which is the outgroup to both the Candida and Clavispora genera and whose Hil homologs form a distinct group. Protein sequence names are not shown for brevity, but are color coded based on the species (groups) they belong to. The clade color code is nested such that if a sequence belongs to both a species and a clade, e.g. _C. auris_ and the MDR clade, the sequence will be colored based on the smaller phylogenetic unit, i.e. _C. auris_.
 
@@ -120,7 +121,7 @@ ggtree(gene.tree, ladderize = TRUE) +
 We reconciled the gene tree with the species tree in Notung 2.9. The purpose of this step is to reconstruct the history of gene duplications and losses (transfers don't apply to this case) and to rearrange weakly supported parts of the gene tree to reduce the total event score in accordance with the evolutionary parsimony principal.
 
 Briefly, after both the gene tree and the rooted species tree (see above) were loaded into the graphic user interface, the rooting analysis was run and the branch receiving the highest root score was the same as the manually chosen branch as shown in Fig. 2, namely the ancestral branch for all the Saccharomycetaceae proteins. After rooting and reconciliation, a total of 59 duplications and 47 losses were inferred. The reconciled gene tree was then rearranged. In this step, weakly supported branches -- those with rapid bootstrap score < 90% -- were allowed to be swapped and the event score, calculated as a weighted sum of the total loss and duplication events, was calculated for each rearrangement. Among all rearranged gene tree topologies, the one with the lowest event score had 42 duplications and 12 losses. This is the gene tree that is shown below.
-```{r, fig.width=8, fig.height=7}
+```{r, fig.width=9, fig.height=6}
 gene.tree.rec <- read.nhx(file = "output/notung/RAxML_bipartitions.clustalo_3701250_rearranged90.nhx")
 gene.tree.rec <- full_join(gene.tree.rec, df, by = "label")
 ggtree(gene.tree.rec, ladderize = TRUE, branch.length = "none") + 
@@ -133,6 +134,7 @@ ggtree(gene.tree.rec, ladderize = TRUE, branch.length = "none") +
                                 "Sstipitis" = "steelblue", "parapsilosis" = "salmon", 
                                 "albicans" = "red",  "Saccharomycetaceae" = "grey20")) +
   theme(text = element_text(size = 14))
+ggsave("output/img/20210624-reconciled-rearranged90-gene-tree-color.png", width = 9, height = 7)
 ```
 **Fig. 3 Reconciled and rearranged gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The cladogram shows only the topology of the tree, with endpoints colored in the same way as in Fig. 2. A red "D" next to an internal node indicates an inferred gene duplication event at that node. The labels with gray background highlight the main features of the tree: 1) the Saccharomycetaceae sequences form the outgroup, suggesting there was no ancient duplication prior to the divergence of the family and the remaining species; 2) the CUG-Ser1 clade, which contains both the Candida and Clavispora genera, forms two duplicate groups, suggesting an early duplication event in the clade; 3) the top CUG-Ser1 branch further experienced extensive duplications _independently_ in the Clavispora genus, labeled by the outgroup _D. hansenii_ (DH), and the Candida genus, labeled by the outgroup _S. stipitis_ (SS). 
 
@@ -178,6 +180,7 @@ p.tree <- sps.tree %>% as_tibble() %>%
   geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
   geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
   geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
+ggsave("output/img/20210624-species-tree-side.png", p.tree, width = 4, height = 6)
 ```
 
 ```{r plot_prot_length, fig.width=8, fig.height=5}
@@ -472,9 +475,14 @@ df1 <- seqInfo %>%
   group_by(species_id) %>% 
   summarize(SignalP = sum(signalp), GPI_Pred = sum(pred.gpi), Pass = sum(frv.score > 0.511 & signalp & pred.gpi)) %>% 
   right_join(df) %>% 
-  select(species = species_id, Total = n, Pass, FungalRV = fungalRV, FaaPred = faapred, SignalP, GPI_Pred)
+  select(species = species_id, Total = n, Pass, FungalRV = fungalRV, SignalP, GPI_Pred)
 
-dt1 <- DT::datatable(df1, options = list(dom = 't', pageLength = 20, ordering = FALSE), 
+dt1 <- DT::datatable(df1, 
+                     options = list(dom = 't', pageLength = 20, ordering = FALSE, 
+                                    autowidth = TRUE,
+                                    # https://rstudio.github.io/DT/options.html
+                                    columnDefs = list(list(width = "150", targets = 1),
+                                                      list(width = '50', className = "dt-center", targets = 2:6))), 
                 caption = "Summary of Adhesin Prediction Results")
 # the following code is from https://www.r-bloggers.com/2020/05/mimic-excels-conditional-formatting-in-r-2/
 brks <- stats::quantile(x <- df1[[2]], probs = seq(.05, .95, .05), na.rm = TRUE)
