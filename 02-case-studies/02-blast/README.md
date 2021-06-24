@@ -202,15 +202,15 @@ While writing up the blast results, I repeated the blast search on ncbi against 
 
 The red arrows point to species excluded from my homologs list. Among the ones I excluded, the following three are notable for different reasons:
 
-1. the single fission yeast hit from _Schizosaccharomyces cryophilus_. If verified, this would suggest the protein family originated at the root of all Ascomycetes.
+1. the single fission yeast hit ([XP_013021368](https://www.ncbi.nlm.nih.gov/protein/891576397)) from _Schizosaccharomyces cryophilus_. It has decent query coverage (76%) and somewhat low but not terrible percent identity (~28%). The protein description page did describe it as a hyphally regulated cell wall protein, based on the presence of the PF11765 domain. If verified, this would suggest the protein family originated at the root of all Ascomycetes.
 1. _Kazachstania africana_ is within the Saccharomycetacea and had 8 hits, more than any other species in the genus, including _C. glabrata_. If verified, this would suggest an independent expansion in the Saccharomycetaceae, in addition to the two expansions in the MDR and _albicans_ clade.
 1. _Candida orthopsilosis_ is most closely related to _C. parasiolosis_ and next closest to _L. elongisporus_, both of which harbored significantly fewer homologs than the neighboring _albicans_ clade (~3 vs > 10).
 
 In conclusion, the omission of the above species do not alter the main conclusions reached so far, except for the possibility that the PF11765 domain originated earlier at the root of the fission and budding yeasts.
 
-**Update 2021-01-21** Homolog in fission yeast unlikely to be real
+**Update 2021-01-21** Hits in fission yeast and bacteria are questionable
 
-Turns out that both the fission yeast hit and the bacteria hit have query coverage lower than 50%. The fission yeast hit comes from a protein that is only 390 aa long, while the bacterial one is 91 amino acid. The reason they appeared in the taxonomy viewer even after I applied the query coverage filter is unexpected and likely a bug in the blast web tool. In any event, I took those two proteins and blast'ed them against the nr_protein database, restricting the taxonomy to Schizosaccharamycetes and eubacteria respectively, maintaining the same 1e-5 e-value cutoff. In both cases, the only hit recovered is the query protein itself. This suggests to me that the original hits are not worth following up with as they represent lone hits that are likely due to sequencing or annotation errors.
+The fission yeast hit comes from a protein that is only 393 aa long, while the bacterial one is 91 amino acid. I took those two proteins and blast'ed them against the nr_protein database, restricting the taxonomy to Schizosaccharamycetes and eubacteria respectively, maintaining the same 1e-5 e-value cutoff. In both cases, the only hit recovered is the query protein itself. This suggests to me that the original hits are not worth following up with as they represent lone hits that are likely due to sequencing or annotation errors.
 
 ## 2021-01-23 [HB] Repeat blast searches with N-360 aa from XP_028889033 (for writing up the results)
 
