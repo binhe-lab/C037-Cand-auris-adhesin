@@ -3,7 +3,7 @@ title: "Analyze XP_028889033 family evolution and adhesin properties"
 author: "Bin He"
 date: "11/01/2020"
 output: 
-  html_notebook:
+  html_notebook: 
     toc: yes
     toc_float: yes
     toc_depth: 5
@@ -11,7 +11,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.retina = 2)
 ```
 
 ```{r load_libraries, echo = FALSE}
@@ -66,15 +66,16 @@ seqInfo <- seqInfo %>%
   mutate(assemblystatus = factor(assemblystatus, levels = c("Complete Genome","Chromosome","Contig","Scaffold"), 
                                  labels = c("Chromosome", "Chromosome", "Partial", "Partial")),
          species_gr = factor(species_id, labels = 
-                               c(rep("MDR",3),"Cauris","Clusitaniae","Dhansenii", rep("parapsilosis",2),
-                                 rep("albicans",3), "Sstipitis", rep("Saccharomycetaceae",6)))) %>% 
+                               c(rep("MDR clade",3),"C. auris","C. lusitaniae","D. hansenii",
+                                 rep("parapsilosis clade",2), rep("albicans clade",3),
+                                 "S. stipitis", rep("Saccharomycetaceae",6)))) %>% 
   select(name, id, source, starts_with("gene"), starts_with("species"), strain, starts_with("assembly"),
          length, n_seqs, starts_with("chr"), relLoc)
 ```
 
 ## Species tree
 Below is the relationship between the species studied in this analysis.
-```{r, fig.width=6, fig.height = 5, warning=FALSE}
+```{r, fig.width=3.5, warning=FALSE}
 sps.tree <- read.tree(file = "data/20200724-species-tree.nwk")
 p <- ggtree(sps.tree, ladderize = FALSE) + xlim(0,12) + scale_y_reverse() +
   geom_tiplab(size = 4, align = TRUE, linesize = .5, fontface = 4) +
@@ -96,7 +97,7 @@ p
 
 ## Gene tree
 ### RAxML tree before reconciliation
-```{r, fig.width=8, fig.height=6}
+```{r}
 gene.tree <- read.tree("data/RAxML_gene_tree.clustalo_3701250_rooted.nwk")
 df <- seqInfo %>% select(label = name, species_id, species_gr)
 gene.tree <- full_join(gene.tree, df, by = "label")
@@ -104,13 +105,13 @@ ggtree(gene.tree, ladderize = TRUE) +
   #scale_y_reverse() +
   geom_tippoint(aes(color = species_gr)) +
   scale_color_manual(name = "Clades",
-                     values = c("MDR" = "purple",
-                                "Cauris" = "plum2",
-                                "Clusitaniae" = "magenta", 
-                                "Dhansenii" = "gray50",
-                                "Sstipitis" = "steelblue",
-                                "parapsilosis" = "salmon", 
-                                "albicans" = "red", 
+                     values = c("MDR clade"   = "purple",
+                                "C. auris"    = "plum2",
+                                "C. lusitaniae" = "magenta", 
+                                "D. hansenii" = "gray50",
+                                "S. stipitis" = "steelblue",
+                                "parapsilosis clade" = "salmon", 
+                                "albicans clade" = "red", 
                                 "Saccharomycetaceae" = "grey20")) +
   theme(text = element_text(size = 14))
 ggsave("output/img/20210624-raxml-gene-tree-color.png", width = 7, height = 6)
@@ -121,7 +122,7 @@ ggsave("output/img/20210624-raxml-gene-tree-color.png", width = 7, height = 6)
 We reconciled the gene tree with the species tree in Notung 2.9. The purpose of this step is to reconstruct the history of gene duplications and losses (transfers don't apply to this case) and to rearrange weakly supported parts of the gene tree to reduce the total event score in accordance with the evolutionary parsimony principal.
 
 Briefly, after both the gene tree and the rooted species tree (see above) were loaded into the graphic user interface, the rooting analysis was run and the branch receiving the highest root score was the same as the manually chosen branch as shown in Fig. 2, namely the ancestral branch for all the Saccharomycetaceae proteins. After rooting and reconciliation, a total of 59 duplications and 47 losses were inferred. The reconciled gene tree was then rearranged. In this step, weakly supported branches -- those with rapid bootstrap score < 90% -- were allowed to be swapped and the event score, calculated as a weighted sum of the total loss and duplication events, was calculated for each rearrangement. Among all rearranged gene tree topologies, the one with the lowest event score had 42 duplications and 12 losses. This is the gene tree that is shown below.
-```{r, fig.width=9, fig.height=6}
+```{r}
 gene.tree.rec <- read.nhx(file = "output/notung/RAxML_bipartitions.clustalo_3701250_rearranged90.nhx")
 gene.tree.rec <- full_join(gene.tree.rec, df, by = "label")
 ggtree(gene.tree.rec, ladderize = TRUE, branch.length = "none") + 
@@ -129,10 +130,10 @@ ggtree(gene.tree.rec, ladderize = TRUE, branch.length = "none") +
   geom_text(aes(label = ifelse(D == "Y", "D", NA)), hjust = -0.4, size = 2, color = "red") +
   geom_tippoint(aes(color = species_gr)) +
   scale_color_manual(name = "Clades",
-                     values = c("MDR" = "purple",          "Cauris" = "plum2",
-                                "Clusitaniae" = "magenta", "Dhansenii" = "gray50",
-                                "Sstipitis" = "steelblue", "parapsilosis" = "salmon", 
-                                "albicans" = "red",  "Saccharomycetaceae" = "grey20")) +
+                     values = c("MDR clade" = "purple", "C. auris" = "plum2",
+                                "C. lusitaniae" = "magenta", "D. hansenii"  = "gray50",
+                                "S. stipitis" = "steelblue", "parapsilosis clade" = "salmon", 
+                                "albicans clade" = "red",  "Saccharomycetaceae" = "grey20")) +
   theme(text = element_text(size = 14))
 ggsave("output/img/20210624-reconciled-rearranged90-gene-tree-color.png", width = 9, height = 7)
 ```
@@ -195,6 +196,8 @@ p <- ggplot(seqInfo, aes(x = reorder(species_id, desc(species_id)), y = length))
   
 plot_grid(p.tree, p, align = "h", ncol = 2, rel_widths = c(1,1.5), scale = c(1.08,1))
 ```
+**Fig. 5 Distribution of Hil family homologs' length across species.** The shadings in the species tree on the left is the same as in Figure 1. Protein lengths are plotted both as a dotplot (binned in 100 a.a. bins) and a boxplot, where the box represents the interquartile range, the middle bar indicates the median and the whisker 1.5 times the interquartile range.
+
 _**Discussion**_
 
 - The one sequence below 500 a.a. is from _N. delphensis_, which is labeled as a partial CDS.
@@ -508,15 +511,41 @@ DT::saveWidget(dt1, "output/misc/tmp.html")
 webshot::webshot("output/misc/tmp.html", "output/img/20210623-homologs-prediction-summary.png")
 ```
 
-## Build feature map for homologs
 
+## Build feature map for homologs
+### Tandem repeat structures
+
+The non-NTD portion of the proteins evolve rapidly and many of them contain tandem repeats. Therefore, characterizing and visualizing the type, number and spatial distribution of the tandem repeats serve to highlight the differences in the non-NTD part of the proteins in this family.
+
+To identify and group tandem repeats, I used [XSTREAM](https://amnewmanlab.stanford.edu/xstream) with the following parameters `java -Xmx1000m -Xms1000m -jar ~/sw/XSTREAM/xstream.jar $in -i.7 -I.7 -g3 -e2 -L15 -z -G -O -Asub.txt`. The parameters were chosen to identify degenerate tandem repeats that occur at least two times and must be a minimum length of 5 a.a. or longer and the minimum length of a tandem repeat domain (=period x copy #) must be greater than 15 a.a. Please see `script/xstream.sh` for explanation of the parameters.
+
+```{r}
+tandem <- read_tsv("output/xstream/XSTREAM_XP_028889033_homologs_sub_i0.7_g3_m5_L15_chart.tsv", 
+                   col_types = "ciiifidcccd", comment = "#") %>% 
+  rename(name = identifier)
+# now let's create a tibble for plotting, which would contain each instance of the tandem repeat on a separate row
+tandem.div <- tandem %>% 
+  rowwise(name) %>% 
+  summarize(div = list(c(seq(from = start, to = end, by = period), end)), .groups = "drop") %>% 
+  unnest(div)
+```
+
+```{r, fig.width=6, fig.height=5}
+# summarize stats of tandem repeats
+repeats <- tandem %>% 
+  group_by(type, period) %>% 
+  summarize(n = n(), copyMean = mean(copyN), .groups = "drop") %>% 
+  mutate(length = period * copyMean)
+```
+
+### Domain diagram
 The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
 
 ```{r}
 # GPI-anchor
 # use pred.gpi
 # Pfam domains
-pfam <- read_tsv("raw-output/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
+pfam <- read_tsv("output/web-download/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
 # save feature file for Jalview examination
 # pfam %>% filter(grepl("XP_028889033",seq_id)) %>% select(hmm_name, seq_id, envelope_start, envelope_end) %>% mutate(featuretype = "domain") %>% write_tsv("XP_028889033_features.jalview")
 # I manually edited the feature file, so I commented out the line above to avoid accidentally 
@@ -525,33 +554,101 @@ pfam <- read_tsv("raw-output/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicci
 # feature set
 # structure: id  feature  start  end
 feature <- bind_rows(
-  seqInfo %>% mutate(type = "entire protein", start = 1) %>% select(id = name, type, start, end = length),
-  pfam %>% select(id = seq_id, type = hmm_name, start = envelope_start, end = envelope_end),
+  seqInfo %>% mutate(type = "entire protein", start = 1) %>% select(name, type, start, end = length),
+  pfam %>% select(name = seq_id, type = hmm_name, start = envelope_start, end = envelope_end) %>% 
+    filter(type == "Hyphal_reg_CWP"),
   # extend the signal peptide segment by 10 amino acids to make it more visible
-  signalp5 %>% mutate(type = "SignalP", end = end + 10) %>% select(id, type, start = start, end),
+  signalp5 %>% mutate(type = "SignalP", end = end + 10) %>% select(name = id, type, start = start, end),
   # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
   pred.gpi %>% filter(is.gpi) %>% mutate(type = "GPI-anchor", start = cleavePos-10) %>% 
-    select(id = name, type, start, end = length)
-)
-feature$type = ordered(feature$type, levels = c("entire protein", "Hyphal_reg_CWP", "Asp", "Candida_ALS", "Flocculin", "Flocculin_t3", "Hyr1", "PT", "SignalP", "GPI-anchor"))
-feature.colors <- c("grey", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "#cab2d6", "#e31a1c", "#6a3d9a")
-# in order to plot properties of the sequences in an order that is consistent with the sequences' position in the gene tree
-genetreeOrder <- scan("reorder_by_gene_tree.txt", what = "character")
-feature$id <- ordered(feature$id, levels = rev(genetreeOrder))
+    select(name, type, start, end = length)
+) %>% mutate(tip = ifelse(type == "entire protein", as.character(name), as.character(type)))
+#feature$type = ordered(feature$type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor"))
+feature.colors <- c("grey", "#1f78b4","#e31a1c", "#6a3d9a")
+
+# feature <- bind_rows(
+#   seqInfo %>% mutate(type = "entire protein", start = 1) %>% select(id = name, type, start, end = length),
+#   pfam %>% select(id = seq_id, type = hmm_name, start = envelope_start, end = envelope_end) %>% 
+#     filter(type == "Hyphal_reg_CWP"),
+#   # extend the signal peptide segment by 10 amino acids to make it more visible
+#   signalp5 %>% mutate(type = "SignalP", end = end + 10) %>% select(id, type, start = start, end),
+#   # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
+#   pred.gpi %>% filter(is.gpi) %>% mutate(type = "GPI-anchor", start = cleavePos-10) %>% 
+#     select(id = name, type, start, end = length)
+# )
+# feature$type = ordered(feature$type, levels = c("entire protein", "Hyphal_reg_CWP", "Asp", "Candida_ALS", "Flocculin", "Flocculin_t3", "Hyr1", "PT", "SignalP", "GPI-anchor"))
+# feature.colors <- c("grey", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "#cab2d6", "#e31a1c", "#6a3d9a")
 ```
 
-```{r plot_features, fig.height=8, fig.width=10}
-p <- ggplot(feature, aes(x = id, y = start)) + 
-  geom_segment(aes(xend = id, yend = end, color = type), size = 2)
-p + coord_flip() + theme_classic() + scale_color_manual(values = feature.colors) +
-  theme(axis.text.y = element_text(size = 5),
+organize the tandem repeats features
+```{r}
+tr <- tandem %>% 
+  left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
+  mutate(type = ifelse(period * copyMean < 40, "TR-short (<40 aa)", "TR-long (>40 aa)"),
+         tip = paste0(consensus_nogap,
+                      "\ntype: ", type,
+                      "\nperiod: ", period, 
+                      "\ncopyN: ", copyMean)) %>% 
+  select(name, type, start, end, tip)
+```
+
+Combine domains, SP and GPI-anchor with TR features.
+```{r transform_tandem_feature_data}
+# combine sequence features with tandem repeats
+tr.feature <- bind_rows(feature, tr) %>% 
+  mutate(type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor", "TR-long (>40 aa)", "TR-short (<40 aa)")))
+comb.col <- c(feature.colors, "#a87b00bb", "#ffbb00bb")
+```
+
+reorder the sequences by their positions in the gene tree
+```{r}
+# in order to plot properties of the sequences in an order that is consistent with the sequences' position in the gene tree
+genetreeOrder <- scan("data/reorder_by_gene_tree.txt", what = "character")
+
+#feature$name <- ordered(feature$name, levels = rev(genetreeOrder))
+tr.feature$name <- ordered(tr.feature$name, levels = rev(genetreeOrder))
+write_tsv(tr.feature, file = "output/misc/R-feature-table.tsv", col_names = TRUE)
+```
+```{r, fig.width=3, fig.height=5}
+p.gtree <- ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + 
+  scale_y_reverse() +
+  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
+  geom_tippoint(aes(color = species_gr), show.legend = FALSE) +
+  scale_color_manual(name = "Clades",
+                     values = c("MDR" = "purple",          "Cauris" = "plum2",
+                                "Clusitaniae" = "magenta", "Dhansenii" = "gray50",
+                                "Sstipitis" = "steelblue", "parapsilosis" = "salmon", 
+                                "albicans" = "red",  "Saccharomycetaceae" = "grey20")) +
+  theme(text = element_text(size = 14))
+```
+
+```{r plot_tandem_repeats, warning=FALSE, fig.height=9, fig.width=10}
+# plot
+p1 <- ggplot(tr.feature, aes(x = name, y = start, xend = name, yend = end)) + 
+  geom_segment(aes(color = type, text = tip), size = 2)
+p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2, color = "white")
+p3 <- p1 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = comb.col) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
+  theme(axis.text.y = element_blank(), axis.title.y = element_blank(),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(), axis.ticks.x = element_blank(),
-        legend.position = c(0.85,0.35),
+        legend.position = c(0.7, 0.4),
         panel.background = element_rect(fill = alpha("lightblue",0.5))) +
-  ylim(1, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Domain / Feature") + 
-  ggtitle("Domain architecture")
-ggsave("img/20210214-homologs-domains-schematics.png", bg = "transparent", width = 7, height = 7)
+  labs(title = "Domain schematics of Hil family proteins", y = "Position in sequence", x = "Sequences", color = "FEATURES")
+plot_grid(p.gtree, p3, ncol = 2, align = 'v', rel_widths = c(1.5,4), scale = c(1.02,1))
+ggsave("output/img/20210625-domain-tandem-repeats.png", width = 7, height = 7.5)
+```
+**Fig. ?** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
+
+```{r}
+DT::datatable(
+  tandem %>% 
+    rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
+    select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
+    arrange(desc(name)),
+  fillContainer = FALSE, options = list(pageLength = 10)
+)
 ```
 
 ## Serine/Threonine content
@@ -665,4 +762,3 @@ p <- ggplot(tango.ordered, aes(x = ordered_id, y = res)) + geom_tile(aes(fill = 
 p
 ggsave("img/20200811-tango-score-tile.png", p, bg = "transparent", width = 7, height = 7)
 ```
-

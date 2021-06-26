@@ -1,0 +1,206 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=104;
+	taxlabels
+	B9J08_004098_Cauris
+	CABR0s21e03234g_Nbracarensis
+	CANI0s04e00110g_Nnivariensis
+	CLUG_05233_Clusitaniae
+	CPAR2_600430_Cparapsilosis
+	CPAR2_806390_Cparapsilosis
+	CPAR2_806420_Cparapsilosis
+	NADE0s05e04136g_Ndelphensis
+	'XP_001385681.2_Sstipitis'
+	'XP_001385882.2_Sstipitis'
+	'XP_001386379.2_Sstipitis'
+	'XP_001386404.2_Sstipitis'
+	'XP_001523105.1_Lelongisporus'
+	'XP_002418802.1_Cdubliniensis'
+	'XP_002419002.1_Cdubliniensis'
+	'XP_002419003.1_Cdubliniensis'
+	'XP_002420246.1_Cdubliniensis'
+	'XP_002420375.1_Cdubliniensis'
+	'XP_002420471.1_Cdubliniensis'
+	'XP_002421505.1_Cdubliniensis'
+	'XP_002421668.1_Cdubliniensis'
+	'XP_002421681.1_Cdubliniensis'
+	'XP_002421924.1_Cdubliniensis'
+	'XP_002421951.1_Cdubliniensis'
+	'XP_002545452.1_Ctropicalis'
+	'XP_002545510.1_Ctropicalis'
+	'XP_002546360.1_Ctropicalis'
+	'XP_002547615.1_Ctropicalis'
+	'XP_002547616.1_Ctropicalis'
+	'XP_002547617.1_Ctropicalis'
+	'XP_002547620.1_Ctropicalis'
+	'XP_002547764.1_Ctropicalis'
+	'XP_002547891.1_Ctropicalis'
+	'XP_002547904.1_Ctropicalis'
+	'XP_002549927.1_Ctropicalis'
+	'XP_002550128.1_Ctropicalis'
+	'XP_002550387.1_Ctropicalis'
+	'XP_002550900.1_Ctropicalis'
+	'XP_002614115.1_Clusitaniae'
+	'XP_002614120.1_Clusitaniae'
+	'XP_002614815.1_Clusitaniae'
+	'XP_002614829.1_Clusitaniae'
+	'XP_002770057.1_Dhansenii'
+	'XP_002770240.1_Dhansenii'
+	'XP_003678549.1_Ncastellii'
+	'XP_024711259.1_Cpseudohaemulonis'
+	'XP_024711300.1_Cpseudohaemulonis'
+	'XP_024711350.1_Cpseudohaemulonis'
+	'XP_024711351.1_Cpseudohaemulonis'
+	'XP_024712318.1_Cpseudohaemulonis'
+	'XP_024712323.1_Cpseudohaemulonis'
+	'XP_024713119.1_Cpseudohaemulonis'
+	'XP_024713121.1_Cpseudohaemulonis'
+	'XP_024713725.1_Cpseudohaemulonis'
+	'XP_024713752.1_Cpseudohaemulonis'
+	'XP_024716363.1_Cpseudohaemulonis'
+	'XP_024716365.1_Cpseudohaemulonis'
+	'XP_025334498.1_Cduobushaemulonis'
+	'XP_025334500.1_Cduobushaemulonis'
+	'XP_025335681.1_Cduobushaemulonis'
+	'XP_025335682.1_Cduobushaemulonis'
+	'XP_025335995.1_Cduobushaemulonis'
+	'XP_025336343.1_Cduobushaemulonis'
+	'XP_025336698.1_Cduobushaemulonis'
+	'XP_025337648.1_Cduobushaemulonis'
+	'XP_025337653.1_Cduobushaemulonis'
+	'XP_025338053.1_Cduobushaemulonis'
+	'XP_025339494.1_Cduobushaemulonis'
+	'XP_025341634.1_Chaemuloni'
+	'XP_025341971.1_Chaemuloni'
+	'XP_025341988.1_Chaemuloni'
+	'XP_025342839.1_Chaemuloni'
+	'XP_025343289.1_Chaemuloni'
+	'XP_025343300.1_Chaemuloni'
+	'XP_025344020.1_Chaemuloni'
+	'XP_025344407.1_Chaemuloni'
+	'XP_025344412.1_Chaemuloni'
+	'XP_025344415.1_Chaemuloni'
+	'XP_025344416.1_Chaemuloni'
+	'XP_025344601.1_Chaemuloni'
+	'XP_028887965.1_Cauris'
+	'XP_028888611.1_Cauris'
+	'XP_028889033.1_Cauris'
+	'XP_028889034.1_Cauris'
+	'XP_028889361.1_Cauris'
+	'XP_028892087.1_Cauris'
+	'XP_028892406.1_Cauris'
+	'XP_036665264.1_Cparapsilosis'
+	'XP_445977.1_Cglabrata'
+	'XP_447567.2_Cglabrata'
+	'XP_452176.1_Klactis'
+	'XP_462630.1_Dhansenii'
+	'XP_711686.2_Calbicans'
+	'XP_714201.2_Calbicans'
+	'XP_714203.1_Calbicans'
+	'XP_714246.2_Calbicans'
+	'XP_715137.2_Calbicans'
+	'XP_715535.1_Calbicans'
+	'XP_717330.2_Calbicans'
+	'XP_717774.1_Calbicans'
+	'XP_717775.2_Calbicans'
+	'XP_717969.1_Calbicans'
+	'XP_718630.1_Calbicans'
+	'XP_722183.2_Calbicans'
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] (('XP_025343289.1_Chaemuloni':0.219139,'XP_024716363.1_Cpseudohaemulonis':0.220196)[&rbs=99]:0.218717,('XP_024716365.1_Cpseudohaemulonis':0.336822,((B9J08_004098_Cauris:0.16465,(((('XP_025335681.1_Cduobushaemulonis':0.257648,('XP_024711300.1_Cpseudohaemulonis':0.051594,'XP_025336698.1_Cduobushaemulonis':0.060556)[&rbs=100]:0.178934)[&rbs=80]:0.197522,'XP_025344415.1_Chaemuloni':0.389528)[&rbs=100]:0.761879,('XP_025344412.1_Chaemuloni':1.333922,('XP_025341634.1_Chaemuloni':0.313243,('XP_028889361.1_Cauris':0.425275,('XP_025339494.1_Cduobushaemulonis':0.075165,'XP_024713725.1_Cpseudohaemulonis':0.122425)[&rbs=100]:0.235968)[&rbs=77]:0.147256)[&rbs=100]:0.681896)[&rbs=72]:0.243445)[&rbs=47]:0.201343,(('XP_028887965.1_Cauris':0.280951,(((('XP_024712323.1_Cpseudohaemulonis':0.093566,'XP_025337653.1_Cduobushaemulonis':0.048617)[&rbs=100]:0.115413,('XP_024711259.1_Cpseudohaemulonis':0.035794,'XP_025335995.1_Cduobushaemulonis':0.031458)[&rbs=100]:0.156591)[&rbs=99]:0.112209,(('XP_024713119.1_Cpseudohaemulonis':0.038435,'XP_025334500.1_Cduobushaemulonis':0.024784)[&rbs=100]:0.182006,'XP_025341971.1_Chaemuloni':0.110216)[&rbs=77]:0.073673)[&rbs=67]:0.066803,'XP_028889034.1_Cauris':0.246026)[&rbs=46]:0.02794)[&rbs=98]:0.193246,((((('XP_028892087.1_Cauris':0.137361,('XP_025344020.1_Chaemuloni':0.076399,('XP_025336343.1_Cduobushaemulonis':0.046624,'XP_024713752.1_Cpseudohaemulonis':0.049366)[&rbs=100]:0.252876)[&rbs=77]:0.07219)[&rbs=100]:0.698177,(('XP_002770240.1_Dhansenii':1.733307,(((('XP_002614815.1_Clusitaniae':0.106351,CLUG_05233_Clusitaniae:0.094525)[&rbs=98]:0.302356,('XP_002614120.1_Clusitaniae':0.284846,('XP_002614115.1_Clusitaniae':0.265991,'XP_002614829.1_Clusitaniae':0.452802)[&rbs=81]:0.233219)[&rbs=66]:0.180195)[&rbs=100]:1.396207,(('XP_003678549.1_Ncastellii':0.612581,((NADE0s05e04136g_Ndelphensis:0.274854,'XP_447567.2_Cglabrata':0.147939)[&rbs=93]:0.193087,('XP_445977.1_Cglabrata':0.303532,(CANI0s04e00110g_Nnivariensis:0.142208,CABR0s21e03234g_Nbracarensis:0.27801)[&rbs=100]:0.197383)[&rbs=100]:0.377988)[&rbs=88]:0.301081)[&rbs=100]:0.804997,'XP_452176.1_Klactis':1.255285)[&rbs=60]:0.1246)[&rbs=66]:0.251578,((('XP_717775.2_Calbicans':0.126034,'XP_002419002.1_Cdubliniensis':0.0893)[&rbs=100]:0.355774,('XP_002547891.1_Ctropicalis':0.772161,('XP_717774.1_Calbicans':0.037171,'XP_002419003.1_Cdubliniensis':0.046135)[&rbs=97]:0.144061)[&rbs=76]:0.161148)[&rbs=100]:0.776165,(('XP_001523105.1_Lelongisporus':1.061609,('XP_002550387.1_Ctropicalis':1.354394,'XP_002550128.1_Ctropicalis':0.725635)[&rbs=73]:0.353044)[&rbs=22]:0.167725,((CPAR2_806390_Cparapsilosis:0.465799,CPAR2_600430_Cparapsilosis:0.677519)[&rbs=100]:0.553577,(((CPAR2_806420_Cparapsilosis:0.538447,('XP_714246.2_Calbicans':0.023331,'XP_002418802.1_Cdubliniensis':0.024473)[&rbs=100]:0.326124)[&rbs=85]:0.183844,((((((('XP_002421681.1_Cdubliniensis':0.09435,'XP_717969.1_Calbicans':0.107486)[&rbs=100]:0.488126,(((('XP_715137.2_Calbicans':0.005429,'XP_717330.2_Calbicans':0.008654)[&rbs=100]:0.038076,('XP_002421951.1_Cdubliniensis':0.003469,'XP_002421924.1_Cdubliniensis':0.007082)[&rbs=100]:0.01639)[&rbs=93]:0.043046,('XP_715535.1_Calbicans':0.039883,'XP_002420246.1_Cdubliniensis':0.015898)[&rbs=100]:0.090957)[&rbs=100]:0.119775,('XP_002421668.1_Cdubliniensis':0.045948,'XP_718630.1_Calbicans':0.050605)[&rbs=100]:0.12079)[&rbs=100]:0.187036)[&rbs=81]:0.069986,('XP_711686.2_Calbicans':0.027031,'XP_002421505.1_Cdubliniensis':0.053384)[&rbs=100]:0.206893)[&rbs=47]:0.044737,('XP_714203.1_Calbicans':0.223586,(('XP_002420471.1_Cdubliniensis':0.200807,'XP_722183.2_Calbicans':0.655042)[&rbs=99]:0.261286,('XP_002420375.1_Cdubliniensis':0.106082,'XP_714201.2_Calbicans':0.111035)[&rbs=100]:0.367385)[&rbs=90]:0.117754)[&rbs=86]:0.090638)[&rbs=68]:0.082325,(('XP_002549927.1_Ctropicalis':0.272455,('XP_002547617.1_Ctropicalis':1.0E-6,('XP_002547615.1_Ctropicalis':1.0E-6,'XP_002547616.1_Ctropicalis':0.036807)[&rbs=61]:0.013949)[&rbs=98]:0.19796)[&rbs=57]:0.079275,(('XP_002545510.1_Ctropicalis':0.032432,'XP_002547620.1_Ctropicalis':0.065982)[&rbs=100]:0.32402,('XP_002550900.1_Ctropicalis':0.064964,'XP_002546360.1_Ctropicalis':0.074095)[&rbs=85]:0.14887)[&rbs=22]:0.02376)[&rbs=39]:0.072092)[&rbs=34]:0.05348,(('XP_002547904.1_Ctropicalis':1.243161,'XP_002547764.1_Ctropicalis':0.178469)[&rbs=37]:0.118106,'XP_002545452.1_Ctropicalis':0.487589)[&rbs=34]:0.077335)[&rbs=67]:0.116358,'XP_036665264.1_Cparapsilosis':0.311985)[&rbs=23]:0.051907)[&rbs=31]:0.104733,('XP_001385681.2_Sstipitis':0.835925,(('XP_001385882.2_Sstipitis':0.139682,'XP_001386379.2_Sstipitis':0.16491)[&rbs=86]:0.090267,'XP_001386404.2_Sstipitis':0.198042)[&rbs=97]:0.210466)[&rbs=58]:0.162607)[&rbs=16]:0.110115)[&rbs=16]:0.056466)[&rbs=24]:0.177333)[&rbs=76]:0.355633)[&rbs=64]:0.231911)[&rbs=92]:0.508871,('XP_462630.1_Dhansenii':0.211101,'XP_002770057.1_Dhansenii':0.19774)[&rbs=98]:0.236474)[&rbs=53]:0.141257)[&rbs=85]:0.220602,'XP_025341988.1_Chaemuloni':0.900406)[&rbs=47]:0.14275,('XP_025343300.1_Chaemuloni':0.273149,('XP_025337648.1_Cduobushaemulonis':0.146727,'XP_024712318.1_Cpseudohaemulonis':0.208973)[&rbs=100]:0.311057)[&rbs=60]:0.108151)[&rbs=44]:0.068819,('XP_025344601.1_Chaemuloni':0.192954,(('XP_025344407.1_Chaemuloni':0.228296,'XP_025344416.1_Chaemuloni':0.046113)[&rbs=61]:0.044399,(('XP_025335682.1_Cduobushaemulonis':0.197043,('XP_024713121.1_Cpseudohaemulonis':0.056887,'XP_025334498.1_Cduobushaemulonis':0.065617)[&rbs=96]:0.120775)[&rbs=76]:0.046123,('XP_028889033.1_Cauris':0.125813,'XP_028888611.1_Cauris':0.133563)[&rbs=82]:0.080643)[&rbs=26]:0.026384)[&rbs=52]:0.065712)[&rbs=47]:0.094537)[&rbs=15]:0.03126)[&rbs=49]:0.101139)[&rbs=52]:0.119701)[&rbs=25]:0.032597,('XP_025342839.1_Chaemuloni':0.176735,(('XP_025338053.1_Cduobushaemulonis':0.066987,'XP_024711351.1_Cpseudohaemulonis':0.061908)[&rbs=89]:0.079833,'XP_024711350.1_Cpseudohaemulonis':0.702152)[&rbs=63]:0.100876)[&rbs=62]:0.080721)[&rbs=76]:0.110781)[&rbs=77]:0.074837,'XP_028892406.1_Cauris':0.200086);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=1.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="sansserif";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute=null;
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="Node ages";
+	set nodeLabels.fontName="sansserif";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=false;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute=null;
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute=null;
+	set nodeShapeInternal.colourAttribute=null;
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute=null;
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=0.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="sansserif";
+	set tipLabels.fontSize=8;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=true;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+
