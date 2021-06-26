@@ -9,6 +9,6 @@ FungiDB	CLUG_05233	Clavispora lusitaniae	Clusitaniae	ATCC 42720	GCF_000003835.1	
 FungiDB	CPAR2_600430	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_600430	NA	Contig005504	NA	101302	105591	898305	0.11
 FungiDB	CPAR2_806390	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806390	NA	Contig005807	NA	1450527	1455449	"2,091,826"	0.69
 # FungiDB	NA	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806410	NA	Contig005807	NA	"1,470,773"	"1,475,788"	"2,091,826"	0.7
-# FungiDB	CPAR2_806420	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806420	NA	Contig005807	NA	"1,478,746"	"1,483,890"	"2,091,826"	0.71
-FungiDB	B9J08_004098	Candida auris	Cauris	B11221	GCF_002775015.1	Scaffold	20	B9J08_004098	NA	NW__021640165.1	scaffold00001	4303238	4302039	4303397	0.99
+FungiDB	CPAR2_806420	Candida parapsilosis	Cparapsilosis	CDC317	GCF_000182765.1	Contig	9	CPAR2_806420	NA	Contig005807	NA	"1,478,746"	"1,483,890"	"2,091,826"	0.71
+FungiDB	B9J08_004098	Candida auris	Cauris	B11221	GCF_002775015.1	Scaffold	20	B9J08_004098	NA	NW_021640165.1	scaffold00001	4303238	4302039	4303397	0.99
 # note that the above entry is manually edited. the relative location of 0.99 is not calculated the same way as the others -- it was a rough estimate taking into account that the chromosome tip is missing (<1Mb?)
