@@ -11,7 +11,7 @@ output:
 ---
 
 ```{r setup}
-suppressPackageStartupMessages(library(Biostrings))   # for pairwise alignment and calculating distance
+#suppressPackageStartupMessages(library(Biostrings))   # for pairwise alignment and calculating distance
 suppressPackageStartupMessages(library(tidyverse))    # for data wrangling and visualization
 #suppressPackageStartupMessages(library(Hmisc))       # for summary functions
 suppressPackageStartupMessages(library(cowplot))      # supplement ggplot
@@ -22,13 +22,13 @@ suppressPackageStartupMessages(library(dynamicTreeCut))     # for cutting trees
 
 The libraries below are used for deriving and plotting weblogos
 ```{r install_library}
-if(!requireNamespace("msa", quietly = TRUE))
-  BiocManager::install("msa")
-suppressPackageStartupMessages(library("msa"))
-
-if(!requireNamespace("RWebLogo", quietly = TRUE))
-  install.packages("RWebLogo")
-suppressPackageStartupMessages(library("RWebLogo"))
+# if(!requireNamespace("msa", quietly = TRUE))
+#   BiocManager::install("msa")
+# suppressPackageStartupMessages(library("msa"))
+# 
+# if(!requireNamespace("RWebLogo", quietly = TRUE))
+#   install.packages("RWebLogo")
+# suppressPackageStartupMessages(library("RWebLogo"))
 ```
 
 ## Background
@@ -87,18 +87,18 @@ extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 
 
 **Apply to my XP_028889033 homologs**
 
-```{r apply}
+```{r apply, eval=FALSE}
 getwd()
-tango.output.files <- list.files(path = "tango-output", pattern = ".txt|.txt.gz", full.names = T)
+tango.output.files <- list.files(path = "../output/tango", pattern = ".txt|.txt.gz", full.names = T)
 # the read_csv() function used in the custom function can automatically decompress gzipped files
 tango.res <- lapply(tango.output.files, extract_tango)
 names(tango.res) <- gsub(".txt|.txt.gz", "", basename(tango.output.files))
 # to add species information
-seqInfo.tango <- read_tsv("raw-output/XP_028889033_homologs.tsv", comment = "#", col_types = c("ccci"))
+seqInfo.tango <- read_tsv("../data/XP_028889033_homologs.tsv", comment = "#", col_types = c("ccci"))
 tango.res.df <- bind_rows(tango.res, .id = "id") %>% 
   left_join(select(seqInfo.tango, -length), by = c("id" = "id"))
 # save the tango output
-write_tsv(tango.res.df, "tango_summary_table.tsv.gz")
+write_tsv(tango.res.df, "../data/tango_summary_table.tsv.gz")
 # mutate(species = str_split(id, "_(?!.*_)", simplify = TRUE)[,2]) 
 # extract the species names
 # credit: https://stackoverflow.com/questions/20454768/how-to-split-a-string-from-right-to-left-like-pythons-rsplit
@@ -109,7 +109,7 @@ write_tsv(tango.res.df, "tango_summary_table.tsv.gz")
 We will group the TANGO sequences into two groups based on whether they are in within the N-terminal Hyp_reg_CWP domain or not.
 ```{r, results='asis'}
 # include the pfam domain information to classify the tango sequences
-pfam <- read_tsv("raw-output/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
+pfam <- read_tsv("../output/web-download/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
 tango.res.df1 <- tango.res.df %>% 
   left_join(pfam %>% 
               filter(hmm_name == "Hyphal_reg_CWP") %>% 
@@ -153,7 +153,7 @@ To design the regular expression, I looked at both the TANGO sequences that "loo
 
     Rousseau F, Schymkowitz J, Serrano L. 2006. Protein aggregation and amyloidosis: confusion of the kinds? Current Opinion in Structural Biology 16:118–126.
 
-![](img/Rousseau-et-al-2006-Fig3.png){width=75%}
+![](../output/img/Rousseau-et-al-2006-Fig3.png){width=75%}
 ```{r, results='asis'}
 seqs <- motif.summary$seq
 # core group, must be G-[VI]x4-TT
