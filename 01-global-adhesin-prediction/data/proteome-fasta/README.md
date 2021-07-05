@@ -1,0 +1,1 @@
+faa.gz files linked from the `archive` folder, originally downloaded from NCBI. note that B11245 replaces B11243 as the representative of Clade IV in this analysis (B11243 was used for the case study).
