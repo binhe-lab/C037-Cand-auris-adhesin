@@ -1,1 +1,1 @@
-../../../01-global-adhesin-prediction/script/misc/truncate_align.sh
+../../../01-global-adhesin-prediction/archive/script/misc/truncate_align.sh
