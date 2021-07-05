@@ -1,4 +1,5 @@
 sandbox/*
+transfer/*
 .Rhistory
 .python-version
 .ipynb_checkpoints
