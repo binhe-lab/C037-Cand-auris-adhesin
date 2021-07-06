@@ -1,0 +1,59 @@
+# BLASTP 2.12.0+
+# Query: PSK74847.1
+# Database: blastdb/Cand_auris_B11245
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 4 hits found
+PSK74847.1	QEL62736.1	100.000	1456	0	0	1	1456	1	1456	0.0	2740
+PSK74847.1	QEL57973.1	47.764	1476	464	32	10	1441	9	1221	0.0	810
+PSK74847.1	QEL63124.1	81.807	786	133	5	483	1263	719	1499	0.0	787
+PSK74847.1	QEL59874.1	44.008	1477	403	28	12	1441	8	1107	0.0	723
+# BLASTP 2.12.0+
+# Query: PSK75908.1
+# Database: blastdb/Cand_auris_B11245
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 1 hits found
+PSK75908.1	QEL61272.1	99.733	375	1	0	1	375	1	375	0.0	746
+# BLASTP 2.12.0+
+# Query: PSK76051.1
+# Database: blastdb/Cand_auris_B11245
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 3 hits found
+PSK76051.1	QEL59874.1	99.910	1107	1	0	1	1107	1	1107	0.0	2097
+PSK76051.1	QEL57973.1	51.503	1264	404	25	3	1106	6	1220	0.0	829
+PSK76051.1	QEL62736.1	43.960	1490	414	29	8	1121	12	1456	0.0	791
+# BLASTP 2.12.0+
+# Query: PSK76857.1
+# Database: blastdb/Cand_auris_B11245
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 6 hits found
+PSK76857.1	QEL63124.1	71.069	2423	422	12	638	3010	10	2203	0.0	2231
+PSK76857.1	QEL62736.1	62.671	1385	466	10	6	1353	6	1376	0.0	1154
+PSK76857.1	QEL62736.1	74.367	909	206	10	1553	2457	511	1396	0.0	846
+PSK76857.1	QEL63125.1	99.801	503	1	0	1	503	1	503	0.0	974
+PSK76857.1	QEL57973.1	48.044	1278	503	25	1	1227	1	1168	0.0	704
+PSK76857.1	QEL59874.1	45.974	1242	408	19	12	1183	8	1056	0.0	660
+# BLASTP 2.12.0+
+# Query: PSK76858.1
+# Database: blastdb/Cand_auris_B11245
+# 0 hits found
+# BLASTP 2.12.0+
+# Query: PSK79346.1
+# Database: blastdb/Cand_auris_B11245
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 3 hits found
+PSK79346.1	QEL57973.1	99.038	1247	0	1	1	1247	1	1235	0.0	2307
+PSK79346.1	QEL62736.1	48.868	1502	462	28	3	1247	4	1456	0.0	870
+PSK79346.1	QEL59874.1	52.016	1265	408	23	6	1232	3	1106	0.0	793
+# BLASTP 2.12.0+
+# Query: PSK79348.1
+# Database: blastdb/Cand_auris_B11245
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 1 hits found
+PSK79348.1	QEL57971.1	94.875	722	15	2	1	722	1	700	0.0	1232
+# BLASTP 2.12.0+
+# Query: PSK79720.1
+# Database: blastdb/Cand_auris_B11245
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 1 hits found
+PSK79720.1	QEL62783.1	100.000	717	0	0	1	717	1	717	0.0	1388
+# BLAST processed 8 queries

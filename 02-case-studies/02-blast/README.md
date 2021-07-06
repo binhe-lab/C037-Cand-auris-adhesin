@@ -25,8 +25,9 @@ date: 2020-07-01
       * [2021-01-31 [HB] Vary e-value cutoff with N-360 aa from XP_028889033](#2021-01-31-hb-vary-e-value-cutoff-with-n-360-aa-from-xp_028889033)
       * [2021-03-01 [HB] <em>C. auris</em> clade III should have 8 members in this family](#2021-03-01-hb-c-auris-clade-iii-should-have-8-members-in-this-family)
       * [2021-04-03 [HB] Missing homolog in B11221](#2021-04-03-hb-missing-homolog-in-b11221)
+      * [2021-07-05 [HB] <em>C. auris</em> B11245 homologs](#2021-07-05-hb-c-auris-b11245-homologs)
 
-<!-- Added by: bhe2, at: Thu Jun 17 19:45:02 CDT 2021 -->
+<!-- Added by: bhe2, at: Tue Jul  6 08:43:34 CDT 2021 -->
 
 <!--te-->
 
@@ -284,3 +285,40 @@ Continuing to investigate the reason for the missing gene in B11221: this time I
     1. Hil4 homolog is present in B11221 and is located at the 3' tip of chromosome 1 (scaffold00001).
     2. Chromosome 1 in B11221 is incomplete at the 3' tip and there doesn't appear to be an unassembled scaffold that corresponds to that piece. Instead, it may just be missing.
     3. For my downstream chromosomal location analysis, it would be convenient to convert the B9J08_004098 locations to the locations in the B11221 genome. What I can do is to modify the chromosomal information during that analysis to correspond to the scaffold0001 hit here.
+
+## 2021-07-05 [HB] _C. auris_ B11245 homologs
+As I work through Rachel's analysis to identify additional proteins in _C. auris_ that share the features of the Hil family, I found that she swapped B11245 for B11243 as the representative for Clade IV. This is partly because B11245 was sequenced and assembled to a more complete degree. According to Rachel's notes, most of the sequences in the two strains are identical. However, when I try to determine if a sequence in Rachel's analysis is part of the Hil family, I realized that I don't have the IDs for the B11245 homologs. Hence I need to perform blast on this strain separately, following the procedures below:
+
+```bash
+# prepare blast database
+gunzip -c Cauris-strains/Cand_auris_five_strains_protein.faa.gz | makeblastdb -in - -parse_seqids -dbtype prot -title B11245 -out blastdb/Cand_auris_B11245
+# use XP_028889033's PF11765 domain to identify all Hil homologs in B11245
+blastp -db ./blastdb/Cand_auris_B11245 -query Cauris-strains/B11243-homologs.fasta -max_hsps 1 -evalue 1e-180 -outfmt "7" -num_threads 8 -out ../output/B11245-Hil-homologs-blast.txt
+# to identify for each Hil homolog in B11243 its ortholog in B11245
+# we extract the 8 Hil homologs from B11245 as identified above and use the 
+# blast2seq function to correspond them with those in B11243
+bioawk -c fastx '$name ~ /PSK/{print ">"$name;print $seq}' Cauris-strains/cauris-five-strains-homologs.fasta > Cauris-strains/B11243-homologs.fasta
+python ../../script/extract_fasta_gz.py GCA_008275145.1_Cand_auris_B11245_protein.faa.gz B11245-homologs-id.txt B11245-homologs.fasta
+# submit the two sequence fasta files to the blast 2 seq app on ncbi
+
+# also blast the 8 Hil proteins from B11243 in the proteome database of B11245
+blastp -db blastdb/Cand_auris_B11245 -query Cauris-strains/B11243-homologs.fasta -evalue 1e-180 -use_sw_tback -soft_masking true -outfmt "7" -num_threads 8 -out ../output/B11245-Hil-homologs-blast.txt
+# Hil 8 homolog appears to be missing...
+```
+
+From the result we can assemble the following:
+
+| Hil | B11243 | B11245 |
+|-----|--------|--------|
+| 1 | PSK76857 | QEL63125 |
+| 2 | PSK74847 | QEL62736 |
+| 3 | PSK76051 | QEL59874 |
+| 4 | PSK79346 | QEL57973 |
+| 5 | PSK75908 | QEL61272 |
+| 6 | PSK79348 | QEL57971 |
+| 7 | PSK79720 | QEL62783 |
+| 8 | PSK76858 | missing? |
+
+From the B11221 Hil8 ortholog (XP_028889034), I found that this gene is expected to be located on chromosome 6. When I used PSK76858 as the query and performed tblastn against the B11245 genome, I can identify nearly the entire gene in broken pieces on its chromosome 6, suggesting that the reason it is missing in the blastp search is because the incomplete assembly of that chromosome, which led to the protein to be unidentified.
+
+![B11245 Hil8](img/20210706-B11245-missing-Hil8-on-chromosome6-tblastn.png)
