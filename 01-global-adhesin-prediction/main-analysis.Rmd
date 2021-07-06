@@ -15,16 +15,16 @@ knitr::opts_chunk$set(echo = TRUE)
 library(RSQLite)
 library(seqinr)
 library(tidyverse)
-#library(data.table)
+library(cowplot)
 library(stringr)
 #working_directory = "C:/Users/Rachel/OneDrive - University of Iowa/Fall 2019/Bioinformatics/Project work/Paper/Adhesin_Analysis"
 ```
 
 # Prepare data
 ## Get proteomes from ftp
-_C. auris_ proteome files were retrieved from NCBI ftp sites and stored in the `data/proteome-fasta` folder. Below we read all the files in, store them in a tibble, and calculate their sequence length.
+_C. auris_ proteome files were retrieved from NCBI ftp sites and stored in the `data/proteome-fasta` folder. The concatenated fasta file is stored in the same folder.
 
-```{r get_proteomes}
+```{r get_proteomes, include=FALSE, eval=FALSE}
 Caurisfasta.table <- NULL
 
 # Get data. seqinr package is new and seems powerful but has odd data forms so I have to extract then remake data frames
@@ -45,6 +45,7 @@ extract.fasta.fn <- function(file, working_directory = "sandbox"){
 
 Caurisfasta.table <- map_dfr(file.list, ~extract.fasta.fn(.), .id = "strain") %>% 
   mutate(length = nchar(seq))
+write_tsv(select(Caurisfasta.table, strain, name = id, length), file = "data/Cauris-four-proteomes-seqLen.tsv")
 ```
 
 ## Write a fasta file
@@ -57,6 +58,44 @@ Note: I wrote a new fasta file to remove B11243 from the file. There are now 217
 
 > **Update 2021-07-04 HB** skipped this step as the concatenated file can be created by `cat *.faa.gz > concatenated_cand_auris.faa.gz` if needed
 
+```{r initiate_seqInfo}
+# we want to include the information about whether a protein is in our homologs list
+# for that we will important the list of protein ids that were analyzed
+Hil <- read_tsv("data/Hil-family-Cauris-homologs-id.txt", col_names = c("name", "strain"), col_types = "cc")
+
+# initiate the seqInfo table
+seqInfo <- read_tsv("data/Cauris-four-proteomes-seqLen.tsv", col_types = cols()) %>% 
+  mutate(isHIL = name %in% Hil$name)
+
+# number of Hil homologs by strain
+seqInfo %>% 
+  group_by(strain) %>% 
+  summarize(Hil = sum(isHIL))
+```
+
+A total of `r sum(seqInfo$isHIL)` proteins in the four strains belong to the Hil family. B11221 misses Hil4 and B11245 misses Hil8. In both cases the reason is because of incomplete genome assembly rather than gene loss. B11220, the representative of clade II, indeed misses 5/8 homologs.
+
+## SignalP for signal peptides
+
+Use SignalP 5.0 server to predict signal peptides. Maximum number of proteins is 5000, so I split the fasta file into 6 smaller files and submitted, providing my email each time. I used the old file with B11243 to run this. I resplit the new fasta into 5 files and reran. Downloaded .gff files as SignalP_(file #).gff3 and used command `grep -v -h "##" SignalP* | sort > SignalP.txt`
+
+
+Modified file names, but otherwise Bin's code:
+
+```{r signalP, fig.width=5, fig.height=5}
+# Signal peptide
+gff.names <- c("id", "source", "name", "start", "end", "prob", "na1", "na2", "na3")
+signalp5 <- read_tsv("output/SignalP.txt", comment = "#", col_names = gff.names, col_types = "ccciidccc")
+
+# remove the column if it already exists
+if("signalp" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -signalp)
+seqInfo <- left_join(seqInfo, select(signalp5, name = id, prob), by = c("name" = "name")) %>% 
+  mutate(signalp = !is.na(prob)) %>% select(-prob)
+```
+
+> **New problem** B11243 and B11245 are identical. Because B11245 is assembled to the chromosome level, I will retain it and remove B11243 from the results.
+
 ## PredGPI
 
 Following Bin's method, I used PredGPI to predict GPI anchors. For PredGPI, the maximum number of sequences is 500. To split the file I used the command split Caurisfasta.txt -l 1000 in my Ubuntu instance, which made 55 new files. The output includes name | FPrate | most likely position and the sequence for each. GPI anchor is "highly probable" when FPrate < 0.001, "probable" when 0.001 < FPrate < 0.005, "lowly probable" when 0.005 < FPrate < 0.01. Retain only header lines with the command grep -h ">" GPIPE* > PredGPIResults.txt.
@@ -66,8 +105,7 @@ This was done using the file that contained B11243. To remove duplicate results,
 Bin's code:
 
 ```{r gpi}
-seqInfo <- as.tibble(Caurisfasta.table) %>% select(name = id, strain, length)
-tmp <- read_delim("output/PredGPIResults.txt", delim = "|", col_names = c("name","fp","omega"))
+tmp <- read_delim("output/PredGPIResults.txt", delim = "|", col_names = c("name","fp","omega"), col_types = cols())
 pred.gpi <- tmp %>% 
   mutate(name = str_sub(name,2,-2), # remove > and the trailing space
          fp = as.numeric(str_sub(fp, 9, -2)), # extract the numeric part
@@ -112,27 +150,6 @@ if("pfam_domains" %in% names(seqInfo))
 seqInfo <- left_join(seqInfo, df, by = c("name"="seq_id"))
 ```
 
-## SignalP for signal peptides
-
-Use SignalP 5.0 server to predict signal peptides. Maximum number of proteins is 5000, so I split the fasta file into 6 smaller files and submitted, providing my email each time. I used the old file with B11243 to run this. I resplit the new fasta into 5 files and reran. Downloaded .gff files as SignalP_(file #).gff3 and used command `grep -v -h "##" SignalP* | sort > SignalP.txt`
-
-
-Modified file names, but otherwise Bin's code:
-
-```{r signalP, fig.width=5, fig.height=5}
-# Signal peptide
-gff.names <- c("id", "source", "name", "start", "end", "prob", "na1", "na2", "na3")
-signalp5 <- read_tsv("output/SignalP.txt", comment = "#", col_names = gff.names, col_types = "ccciidccc")
-
-# remove the column if it already exists
-if("signalp" %in% names(seqInfo))
-  seqInfo <- select(seqInfo, -signalp)
-seqInfo <- left_join(seqInfo, select(signalp5, name = id, prob), by = c("name" = "name")) %>% 
-  mutate(signalp = !is.na(prob)) %>% select(-prob)
-```
-
-> **New problem** B11243 and B11245 are identical. Because B11245 is assembled to the chromosome level, I will retain it and remove B11243 from the results.
-
 ## TANGO
 
 Created a .bat file to run tango on the condensed fasta. Used the command `fwrite(x = Caurisfasta.table[, c(1,3)], file = "Cauris.txt", sep = "\t", col.names = FALSE)`. Command file is tango_in.bat. Ran it and compressed all results using the command gzip *.txt.
@@ -143,8 +160,8 @@ When I went to analyze I found that multiple files contained trash (columns with
 
 Using Bin's tango extraction functions
 
-```{r extract_tango_info}
-library(dplyr)
+```{r extract_tango_info, eval=FALSE}
+require(dplyr)
 extract_tango <- function(tango_output, agg_threshold = 5, required_in_serial = 5) {
     require(tidyverse)
     tmp <- read_tsv(file = tango_output, col_types = "icddddd") %>% 
@@ -201,7 +218,8 @@ tango.res.df <- bind_rows(tango.res, .id = "id")
 # # the split pattern is equivalent to the rsplit() function in python
 ```
 
-```{r unique motifs}
+Top 20 TANGO hits ranked by number of occurrences in all proteins, restricted to the strong hits with a median score >= 30%.
+```{r unique_motifs}
 # tango.res.df1 <- tango.res.df %>% left_join(seqInfo %>% select(name, strain), by = c("id" = "name"))
 tango.res.df1 <- read_tsv("output/tango_results_df.txt.gz", col_types = cols())
 
@@ -214,7 +232,9 @@ motif.summary <- tango.res.df1 %>%
               avg.intv = round(mean(interval, na.rm = T),1), mad.intv = round(mad(interval, na.rm = T),1),
               strain = paste0(unique(strain), collapse = ","), .groups = "drop") %>% 
     arrange(desc(n))
-motif.summary
+motif.summary %>% 
+  filter(round(medScore,0) >= 30) %>% 
+  head(20)
 ```
 **_Discussion_**
 
@@ -223,11 +243,8 @@ motif.summary
 ### Identify variants of "GVVIVTT"
 Since this is the dominant motif in the _C. auris_ proteome, we want to determine what percent of the TANGO sequences in the _C. auris_ proteome belong to this class?
 
-To design the regular expression, we looked at both the TANGO sequences that "look similar" to "GVVIVTT" and also used the patterns summarized in the following reference:
+To design the regular expression, we looked at both the TANGO sequences that "look similar" to "GVVIVTT". In particular, Jan manually went through the TANGO hits in _C. lusitaneae, C. auris, C. haemulonis, C. pseudohaemulonis, C. duohaemulonis, S. stipitis, S. cerevisiae_, and _C. glabrata_ and summarized the following pattern: `[VI][VIVM[VI][VI]T`
 
-    Rousseau F, Schymkowitz J, Serrano L. 2006. Protein aggregation and amyloidosis: confusion of the kinds? Current Opinion in Structural Biology 16:118–126.
-
-![](data/img/Rousseau-et-al-2006-Fig3.png){width=75%}
 Below we will restrict the patterns to those with a median TANGO probability above 30.
 ```{r, results='asis'}
 seqs <- motif.summary$seq
@@ -235,18 +252,98 @@ seqs <- motif.summary$seq
 pat0 <- "G[VI]{4}TT"
 # version 1, requires G-[ALVI][VI][LVI][VI]-(either end of string or at least 1 suitable residue) 
 #                  OR (G not required)-[VI]x4-(two suitable residues)
-pat1 <- "G[ALVI][VI][LVI][VI]([LVIFAWYTM]{1,2}|$)|[VI]{4}[LVIFAWYTM]{2}"
+# pat1 <- "G[ALVI][VI][LVI][VI]([LVIFAWYTM]{1,2}|$)|[VI]{4}[LVIFAWYTM]{2}"
+# version 2, based on Jan's manual inspection of TANGO hits in the following species:
+# C. lusitaneae, C. auris, C. haemulonis, C. pseudohaemulonis, C. duohaemulonis, S. stipitis, S. cerevisiae, and C. glabrata
+pat.jan <- "[VI][VIVM[VI][VI]T"
 cat(paste("Identify the group of TANGO sequences most similar to 'GVVIVTT' using the pattern", pat0, sep = " "))
 match0 <- grep(pat0, seqs)
 motif.summary[match0,] %>% filter(round(medScore,0) >= 30) %>% arrange(desc(n)) %>% select(seq, n, medScore, IVT, strain)
-cat(paste("Identify TANGO sequences with slightly more variation from 'GVVIVTT', using `", pat1, "`", sep = ""))
-match1 <- grep(pat1, seqs)
+cat(paste("Identify TANGO sequences with slightly more variation from 'GVVIVTT', using `", pat.jan, "`", sep = ""))
+match.jan <- grep(pat.jan, seqs)
 # exclude those already identified with pattern 0
-motif.summary[setdiff(match1, match0),] %>% filter(round(medScore,0) >= 30) %>% arrange(desc(n)) %>% select(seq, n, medScore, IVT, strain)
+motif.summary[setdiff(match.jan, match0),] %>% filter(round(medScore,0) >= 30) %>% arrange(desc(n)) %>% select(seq, n, medScore, IVT, strain)
+
+# export the list of motifs for manual inspection
+motif.summary[union(match.jan, match0),] %>% 
+  filter(round(medScore,0) >= 30) %>% 
+  arrange(desc(n)) %>% 
+  select(-strain) %>% 
+  write_csv("output/TANGO-GVVIVTT-like-sequences.csv")
+
 ```
 
 #### Number and spacing of TANGO hits in each protein sequence
-We first summarize the motif sequences within each protein, with the goal of identifying protein-specific patterns (e.g. frequently used motifs).
+We first summarize the motif sequences within each protein and then use that to determine the distribution of TANGO hit # and spacing in the entire proteome, with or without the Hil family.
+```{r}
+# first count the number of tango hits with median score >= 30 hits for each protein
+# motif.per.seq <- tango.res.df1 %>% 
+#   group_by(id) %>% 
+#   summarize(n.all = sum(round(median, 0) >= 30))
+
+# next we will filter the tango dataset in order to recalculate the intervals
+# this will result in 14 sequences to be dropped since they have 0 hits meeting
+# the criteria. we will add them back by right_join() with the tibble above
+motif.per.seq <- tango.res.df1 %>% 
+  # limit to sequences with median score >= 30
+  filter(round(median,0) >= 30) %>% 
+  group_by(id) %>% 
+  # recalculate the interval since we are now limiting the hits to >= 30
+  mutate(interval = start - lag(end) - 1) %>% 
+  # summarize the results at a sequence level
+  summarize(n.all = n(),
+            n.type = length(unique(seq)),
+            medScore = round(mean(median),1),
+            IVT = round(mean(ivt),2),
+            avg.intv = round(mean(interval, na.rm = T),1), 
+            IQR.intv = round(IQR(interval, na.rm = T)/1.349 ,1),
+            # median absolute deviation is a robust measure of the scale parameter
+            # https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/mad
+            mad.intv = round(mad(interval, na.rm = T),1),
+            seqs = paste(unique(seq), collapse = ","),
+            .groups = "drop") %>% 
+  right_join(select(seqInfo, strain, id = name, length, isHIL), by = "id") %>% 
+  mutate(n.all = ifelse(is.na(n.all), 0, n.all), n.type = ifelse(is.na(n.type), 0, n.type)) %>% 
+  arrange(desc(n.all), desc(mad.intv))
+#motif.per.seq
+```
+
+Distribution of the number of TANGO hits per kilo amino acids protein across the proteome.
+```{r}
+ggplot(motif.per.seq, aes(x = strain, y = n.all/length*1000)) + 
+  geom_boxplot(fill = "gray70", alpha = 0.7, outlier.alpha = 0.2) + ylab("# of TANGO hits per 1000 amino acids") + 
+  geom_point(data = filter(motif.per.seq, isHIL), aes(color = length), position = position_jitter(0.05), size = 1.5) +
+  scale_color_viridis_c() +
+  theme_cowplot()
+```
+We can see that the 8 Hil orthologs fall into two groups. Hil1-4, which are longer than 1000 amino acids, have relatively high number of TANGO hits relative to their length. In fact, they are all above 89% percentile of the data.
+
+Compare the distribution of TANGO hits # and score in the Hil family vs the proteome
+```{r fig.width=5, fig.height=4.5}
+ggplot(motif.per.seq, aes(x = length, y = n.all/length*1000)) + 
+  geom_bin_2d(binwidth = c(200, 2)) + scale_fill_viridis_c() + 
+  geom_point(data = filter(motif.per.seq, isHIL), color = "red") +
+  xlab("Protein length") + ylab("# of TANGO hits per 1000 amino acids") + 
+  facet_wrap(~strain, nrow = 2)
+```
+
+**_Discussion_**
+
+- this is another way of plotting the same data, again showing that Hil1-4 are exceptional in the proteome in that they harbor a very high amount of TANGO hits per 1000 amino acid residues relative to proteins of similar length to them.
+
+Next we add the TANGO information to the seqInfo dataset.
+```{r}
+motif.per.seq <- motif.per.seq %>% 
+  right_join(select(seqInfo, species_id, species_gr, name), by = "name") %>% 
+  mutate(reg.spaced = ifelse(n.all > 3 & mad.intv < 5, TRUE, FALSE),
+         mad.intv = ifelse(n.all > 2, mad.intv, NA),
+         species = ordered(species_id, levels = levels(species_id), labels = 
+                             paste0(str_sub(levels(species_id),1,1), ". ", 
+                                    str_sub(levels(species_id), 2))
+         ),
+         species = reorder(species, desc(species)),
+         species_id = NULL) 
+```
 
 ```{r}
 motif.per.seq <- tango.res.df1 %>% 
@@ -267,7 +364,6 @@ motif.per.seq <- tango.res.df1 %>%
             mad.intv = round(mad(interval, na.rm = T),1),
             .groups = "drop_last") %>% 
   arrange(desc(n), desc(medScore))
-View(motif.per.seq)
 ```
 
 #### Summarize tango results for table
