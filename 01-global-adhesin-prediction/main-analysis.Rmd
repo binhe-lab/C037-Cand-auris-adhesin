@@ -225,13 +225,17 @@ tango.res.df1 <- read_tsv("output/tango_results_df.txt.gz", col_types = cols())
 
 # find unique motifs and count the number of proteins and strains represented
 motif.summary <- tango.res.df1 %>% 
-    group_by(seq) %>% 
-    summarize(n = n(), n.prot = n_distinct(id), n.strains = n_distinct(strain),
-              medScore = round(mean(median),1),
-              IVT = round(mean(ivt),2),
-              avg.intv = round(mean(interval, na.rm = T),1), mad.intv = round(mad(interval, na.rm = T),1),
-              strain = paste0(unique(strain), collapse = ","), .groups = "drop") %>% 
-    arrange(desc(n))
+  left_join(select(seqInfo, id = name, isHIL)) %>% 
+  group_by(seq) %>% 
+  summarize(n = n(), n.HIL = sum(isHIL),
+            n.prot = n_distinct(id), 
+            n.strains = n_distinct(strain),
+            medScore = round(mean(median),1),
+            IVT = round(mean(ivt),2),
+            avg.intv = round(mean(interval, na.rm = T),1), 
+            mad.intv = round(mad(interval, na.rm = T),1),
+            .groups = "drop") %>% 
+  arrange(desc(n))
 motif.summary %>% 
   filter(round(medScore,0) >= 30) %>% 
   head(20)
@@ -258,21 +262,22 @@ pat0 <- "G[VI]{4}TT"
 pat.jan <- "[VI][VIVM[VI][VI]T"
 cat(paste("Identify the group of TANGO sequences most similar to 'GVVIVTT' using the pattern", pat0, sep = " "))
 match0 <- grep(pat0, seqs)
-motif.summary[match0,] %>% filter(round(medScore,0) >= 30) %>% arrange(desc(n)) %>% select(seq, n, medScore, IVT, strain)
+motif.summary[match0,] %>% filter(round(medScore,0) >= 30) %>% arrange(desc(n)) %>% select(seq, n, n.HIL, medScore, IVT)
 cat(paste("Identify TANGO sequences with slightly more variation from 'GVVIVTT', using `", pat.jan, "`", sep = ""))
 match.jan <- grep(pat.jan, seqs)
 # exclude those already identified with pattern 0
-motif.summary[setdiff(match.jan, match0),] %>% filter(round(medScore,0) >= 30) %>% arrange(desc(n)) %>% select(seq, n, medScore, IVT, strain)
+motif.summary[setdiff(match.jan, match0),] %>% filter(round(medScore,0) >= 30) %>% arrange(desc(n)) %>% select(seq, n, n.HIL, medScore, IVT)
 
 # export the list of motifs for manual inspection
 motif.summary[union(match.jan, match0),] %>% 
   filter(round(medScore,0) >= 30) %>% 
   arrange(desc(n)) %>% 
-  select(-strain) %>% 
   write_csv("output/TANGO-GVVIVTT-like-sequences.csv")
-
 ```
+_**Discussion**_
 
+- We can see that the vast majority of GVVIVTT-like sequences are within the Hil family proteins
+- There is one prominent exception: GVVIVT motif is present in a different protein, PIS58185 in B8441 (and its orthologs in the other strains). This protein is very interesting: it no longer has the PF11765 domain but otherwise shows a high degree of sequence similarity with 
 #### Number and spacing of TANGO hits in each protein sequence
 We first summarize the motif sequences within each protein and then use that to determine the distribution of TANGO hit # and spacing in the entire proteome, with or without the Hil family.
 ```{r}
@@ -333,37 +338,15 @@ ggplot(motif.per.seq, aes(x = length, y = n.all/length*1000)) +
 
 Next we add the TANGO information to the seqInfo dataset.
 ```{r}
-motif.per.seq <- motif.per.seq %>% 
-  right_join(select(seqInfo, species_id, species_gr, name), by = "name") %>% 
-  mutate(reg.spaced = ifelse(n.all > 3 & mad.intv < 5, TRUE, FALSE),
-         mad.intv = ifelse(n.all > 2, mad.intv, NA),
-         species = ordered(species_id, levels = levels(species_id), labels = 
-                             paste0(str_sub(levels(species_id),1,1), ". ", 
-                                    str_sub(levels(species_id), 2))
-         ),
-         species = reorder(species, desc(species)),
-         species_id = NULL) 
-```
-
-```{r}
-motif.per.seq <- tango.res.df1 %>% 
-  # limit to sequences with median score >= 30
-  dplyr::filter(median >= 30) %>% 
-  group_by(id) %>% 
-  # recalculate the interval
-  mutate(interval = start - dplyr::lag(end) - 1) %>% 
-  group_by(seq, .add = TRUE) %>% 
-  summarize(strain = unique(strain),
-            n = n(),
-            medScore = round(mean(median),1),
-            IVT = round(mean(ivt),2),
-            avg.intv = round(mean(interval, na.rm = T),1),
-            sd.intv = round(sd(interval, na.rm = T),1),
-            # median absolute deviation is a robust measure of the scale parameter
-            # https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/mad
-            mad.intv = round(mad(interval, na.rm = T),1),
-            .groups = "drop_last") %>% 
-  arrange(desc(n), desc(medScore))
+if("n.tango" %in% names(seqInfo)){
+  seqInfo <- seqInfo %>% 
+    select(-n.tango, -reg.spaced)
+}
+seqInfo <- seqInfo %>% 
+  left_join(select(motif.per.seq, name = id, n.tango = n.all, mad.intv), by = "name") %>% 
+  mutate(mad.intv = ifelse(n.tango > 2, mad.intv, NA),
+         reg.spaced = ifelse(n.tango > 3 & mad.intv < 5, TRUE, FALSE)) %>% 
+  select(-mad.intv)
 ```
 
 #### Summarize tango results for table
