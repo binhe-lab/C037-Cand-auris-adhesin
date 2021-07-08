@@ -277,7 +277,10 @@ motif.summary[union(match.jan, match0),] %>%
 _**Discussion**_
 
 - We can see that the vast majority of GVVIVTT-like sequences are within the Hil family proteins
-- There is one prominent exception: GVVIVT motif is present in a different protein, PIS58185 in B8441 (and its orthologs in the other strains). This protein is very interesting: it no longer has the PF11765 domain but otherwise shows a high degree of sequence similarity with 
+- There is one prominent exception: GVVIVT motif is present in a different protein, PIS58185 in B8441 (and its orthologs in the other strains). This protein is very interesting: it no longer has the PF11765 domain but otherwise shows a high degree of sequence similarity with the latter.
+
+![align](output/PIS58185/PIS58185-XP_028889033-alignment.png)
+
 #### Number and spacing of TANGO hits in each protein sequence
 We first summarize the motif sequences within each protein and then use that to determine the distribution of TANGO hit # and spacing in the entire proteome, with or without the Hil family.
 ```{r}
