@@ -12,8 +12,9 @@
          * [Build fasta sequence from the blast results and align](#build-fasta-sequence-from-the-blast-results-and-align)
       * [6. Identify tandem repeat](#6-identify-tandem-repeat)
       * [7. ST frequency](#7-st-frequency)
+      * [8. Dotplot for Hil1-8](#8-dotplot-for-hil1-8)
 
-<!-- Added by: bhe2, at: Sun May 30 14:30:46 CDT 2021 -->
+<!-- Added by: bhe2, at: Fri Jul  9 16:40:30 CDT 2021 -->
 
 <!--te-->
 # Introduction
@@ -220,3 +221,6 @@ _Approach_
 
 ## 7. ST frequency
 I wrote a script stored in the `script` folder called `ST-freq.sh`.
+
+## 8. Dotplot for Hil1-8
+The goal of this analysis is to investigate the similarity and infer the evolutionary process that led to the variable length central domains in Hil1-8 in _C. auris_. The results are documented in `output/dot-plot/` and the revealed a potentially common origin of the main tandem repeat unit, which includes the GVVIVTT motif, in Hil1-4 and Hil7-8.
