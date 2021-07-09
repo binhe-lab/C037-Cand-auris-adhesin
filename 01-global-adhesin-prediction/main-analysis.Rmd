@@ -277,9 +277,20 @@ motif.summary[union(match.jan, match0),] %>%
 _**Discussion**_
 
 - We can see that the vast majority of GVVIVTT-like sequences are within the Hil family proteins
-- There is one prominent exception: GVVIVT motif is present in a different protein, PIS58185 in B8441 (and its orthologs in the other strains). This protein is very interesting: it no longer has the PF11765 domain but otherwise shows a high degree of sequence similarity with the latter.
+- Which non-Hil proteins have GVVIVTT sequences?
+        
+    `r motif.per.seq %>% filter(grepl(pat0,seqs), !isHIL)`
+    
+    Note that XP_028891378.1 is a partial protein entry that I have determined to be the C-termianl fragment of Hil4 in B11221. So really only QEL63124.1 contains GVVIVTT outside of the Hil family.
+- In the second table that lists GVVIVTT-like sequences that are captured by Jan's more inclusive regex and not my strict one, there is a notable outlier, namely GVVIVT, which is both so close to GVVIVTT and yet **only** present in a group of nonHil sequences, including PIS58185 in B8441 and others.
+    
+    `r tango.res.df1 %>% filter(seq == "GVVIVT") %>% select(id, strain) %>% left_join(seqInfo, by = c("id" = "name", "strain")) %>% unique()`
+    
+    I analyzed this group of sequences further -- see `README.md` in this folder.
+    
+- This protein is very interesting: it no longer has the PF11765 domain but otherwise shows a high degree of sequence similarity with the latter.
 
-![align](output/PIS58185/PIS58185-XP_028889033-alignment.png)
+    ![align](output/PIS58185/PIS58185-XP_028889033-alignment.png)
 
 #### Number and spacing of TANGO hits in each protein sequence
 We first summarize the motif sequences within each protein and then use that to determine the distribution of TANGO hit # and spacing in the entire proteome, with or without the Hil family.
