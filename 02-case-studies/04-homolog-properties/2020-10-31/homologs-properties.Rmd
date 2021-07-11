@@ -159,7 +159,7 @@ sps.tree %>%
   mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
   as.treedata() %>% 
   ggtree(ladderize = FALSE) + scale_y_reverse() +
-  geom_tiplab(size = 4, fontface = "italic", offset = 0.1) + xlim(0,11) +
+  geom_tiplab(size = 3.5, fontface = "italic", offset = 0.1) + xlim(0,11) +
   geom_hilight(node = 22, fill = "hotpink", alpha = 0.15) + # Clavispora
   geom_hilight(node = 23, fill = "purple", alpha = 0.15)  + # MDR
   geom_hilight(node = 27, fill = "hotpink", alpha = 0.15) + # Candida
