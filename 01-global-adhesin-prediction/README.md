@@ -18,7 +18,14 @@ In the case of QEL63124, we found that it is highly similar to Hil1 except it la
 
 ![QEL63124.1 aligned to XP_028889033](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/output/PIS58185/QEL63124-XP_028889033-alignment.png)
 
-Interestingly this protein seems to only exist in the clade IV strains and it is on the same chromosome 6 as Hil1 is. Upon inspecting its [chromosomal location](https://www.ncbi.nlm.nih.gov/protein/qel63124).
+Upon inspecting its [chromosomal location](https://www.ncbi.nlm.nih.gov/protein/qel63124), we found it is right next to the Hil1 protein in this strain, which is [QEL63125.1](https://www.ncbi.nlm.nih.gov/protein/QEL63125.1/). Their chromosomal locations are 
+
+| Gene     | Chr  | CDS translated from                                          |
+| -------- | ---- | ------------------------------------------------------------ |
+| QEL63124 | 6    | complement(join(CP043447.1:935929..941539, 941629..942091,942537..943049, 943123..943147)) |
+| QEL63125 | 6    | complement(CP043447.1:943433..944956)                        |
+
+If these coordinates accurate (assembly is correct), they would suggest a tandem partial duplication. But given the highly repetitive nature of the C-terminal sequence, we cannot rule out the possibility of assembly error leading to a phantom protein...
 
 ### PIS58185
 
@@ -38,7 +45,7 @@ This is rather interesting: Hil1-4 are the longer than 1000 amino acids and have
 
 ![PIS58185 aligned to XP_028889033](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/output/PIS58185/PIS58185-XP_028889033-alignment.png)
 
-The result revealed that PIS58185 has significant similarity with XP_028889033 in the non-NTD portion. They even share the same tandem repeat unit, but with the key distinction that we identified above: one has GVVIVTT while the other has GVVIVT. Its similarity to Hil2,3 and 4 are less significant. But a separate [analysis](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/07-Cauris-polymorphism/output/dot-plot) showed that the tandem repeat unit, which contains the GVVIVTT motif, likely had a common origin during evolution among Hil1-4 and Hil7-8, which, after subsequent evolution, now contained different copies and also diverged in the repeat unit. Combined with the results above, we hypothesize that the C-terminal tandem repeats in PIS58185 has the same evolutionary origin as those in the Hil family. It's not possible to determine the exact evolutionary process without further analyses of the tandem repeats themselves though.
+The result revealed that PIS58185 has significant similarity with XP_028889033 in the non-NTD portion. Unlike in the case of QEL63124 however, there is substantial sequence differences behind the similarity, and therefore we can be pretty confident that this is not due to misassembly, as we suspected for QEL63124. Interestingly, Hil1-4 has GVVIVTT while PIS58185 has GVVIVT. A separate [analysis](https://github.com/binhe-lab/C037-Cand-auris-adhesin/tree/master/02-case-studies/07-Cauris-polymorphism/output/dot-plot) that included Hil1-8 showed that the tandem repeat unit, which contains the GVVIVTT motif, likely had a common origin during evolution among Hil1-4 and Hil7-8, which, after subsequent evolution, now contained different copies and also diverged in the repeat unit. Combined with the results above, we hypothesize that the C-terminal tandem repeats in PIS58185 has the same evolutionary origin as those in the Hil family. It's not possible to determine the exact evolutionary process without further analyses of the tandem repeats themselves though.
 
 ### Additional sequences
 
