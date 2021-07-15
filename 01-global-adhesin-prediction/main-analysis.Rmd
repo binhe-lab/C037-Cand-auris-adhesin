@@ -366,7 +366,8 @@ seqInfo <- seqInfo %>%
 #### Summarize tango results for table
 Three metrics for the by protein tango results can be number of pat0 (GVVIVTT) sequences, pat1 (GVVIVTT-like) sequences, and total number of aggregation sequences with score > 30
 
-```{r summarize tango}
+**Update 2021-07-15 [HB]** The code below is no longer included because the above analysese have shown that GVVIVTT and its variants are highly specific to the Hil family, which appears to be an outlier in terms of TANGO hits per protein in the entire proteome. In predicting additional adhesins, we will only look at the total number of TANGO hits.
+```{r eval=FALSE, include=FALSE}
 # core group, must be G-[VI]x4-TT
 pat0 <- "G[VI]{4}TT"
 # version 1, requires G-[ALVI][VI][LVI][VI]-(either end of string or at least 1 suitable residue) 
@@ -391,4 +392,120 @@ if("n.gvvivtt.seqs" %in% names(seqInfo))
   seqInfo <- select(seqInfo, -n.gvvivtt.seqs, -n.gvvivtt.like.seqs, -n.vvvvt.seqs, -n.high.score.agg.seq)
 seqInfo <- left_join(seqInfo, tango.summ)
 seqInfo <- seqInfo %>% mutate(n.gvvivtt.seqs = replace_na(n.gvvivtt.seqs,0), n.gvvivtt.like.seqs = replace_na(n.gvvivtt.like.seqs,0), n.vvvvt.seqs = replace_na(n.vvvvt.seqs,0), n.high.score.agg.seq = replace_na(n.high.score.agg.seq,0))
+```
+
+## S/T frequency
+
+Using Bin's method, I'm running EMBOSS freak for S/T, S, T with a stepping value of 10 and an averaging window of 100. The results were saved as freak_aminoacid(s)_100_10.txt. Using Bin's format_freaq_output.py script, each was converted to a readable .out file and all files were compressed for storage.
+
+```{r S_T_freq}
+# load data
+ST.freq <- read_tsv("output/freak/freak_st_100_10_freak.out.gz", col_types = "cid")
+S.freq <- read_tsv("output/freak/freak_s_100_10_freak.out.gz", col_types = "cid")
+T.freq <- read_tsv("output/freak/freak_t_100_10_freak.out.gz", col_types = "cid")
+
+# retain maximum frequency for each category of each protein sequence
+ST.freq <- ST.freq %>% 
+  group_by(id) %>% 
+  summarise(max.ST.freq = max(freq))
+S.freq <- S.freq %>% 
+  group_by(id) %>% summarise(max.S.freq = max(freq))
+T.freq <- T.freq %>% 
+  group_by(id) %>% summarise(max.T.freq = max(freq))
+```
+
+In order to summarize the sliding window data for each protein down to a single or a couple of numbers, so we can make predictions, our idea is to set a threshold value and calculate the percent of the protein with a Ser/Thr frequency above that threshold. We previous found that the proteome-wide frequency of Ser and Thr per protein (entire length, not sliding window) is about 10% and 5% respectively. Here we will use the same sliding window statistic so our measure matches our case study analysis. Below we manually vary the threshold and settle on a value that appears to distinguish the Hil family and the rest of the proteome.
+```{r fig.width=9, fig.height=4.5}
+ST.th <- c("ST" = 0.25, "S" = 0.15, "T" = 0.1)
+ST.freq.sum <- ST.freq %>% 
+  mutate(flag = freq >= ST.th["ST"]) %>% 
+  group_by(id) %>% 
+  summarize(perc = sum(flag)/n()) %>% 
+  left_join(select(seqInfo, id = name, isHIL), by = "id")
+p0 <- ST.freq.sum %>% 
+  ggplot(aes(x = perc)) + geom_histogram(binwidth = 0.05) + 
+  xlab(paste0("Part of protein > ", ST.th["ST"]*100, "% S/T")) +
+  facet_wrap(~isHIL, nrow = 2, scales = "free_y", labeller = "label_both")
+  
+S.freq.sum <- S.freq %>% 
+  mutate(flag = freq >= ST.th["S"]) %>% 
+  group_by(id) %>% 
+  summarize(perc = sum(flag)/n()) %>% 
+  left_join(select(seqInfo, id = name, isHIL), by = "id")
+p1 <- S.freq.sum %>% 
+  ggplot(aes(x = perc)) + geom_histogram(binwidth = 0.05) + xlab(paste0("Part of protein > ", ST.th["S"]*100, "% S")) +
+  facet_wrap(~isHIL, nrow = 2, scales = "free_y", labeller = "label_both")
+
+T.freq.sum <- T.freq %>% 
+  mutate(flag = freq >= ST.th["T"]) %>% 
+  group_by(id) %>% 
+  summarize(perc = sum(flag)/n()) %>% 
+  left_join(select(seqInfo, id = name, isHIL), by = "id")
+p2 <- T.freq.sum %>% 
+  ggplot(aes(x = perc)) + geom_histogram(binwidth = 0.05) + xlab(paste0("Part of protein > ", ST.th["T"]*100, "% T")) +
+  facet_wrap(~isHIL, nrow = 2, scales = "free_y", labeller = "label_both")
+
+plot_grid(p0, p1, p2, labels = c("S/T","Ser", "Thr"), ncol = 3)
+```
+From the above we can see that the Hil family proteins have >30% of the protein length with a Ser/Thr frequency of >25%, or Serine alone of >15%. 25% or more of the Hil family proteins have a threonine frequency of 10% or more. Let's try using these three thresholds to summarize the Ser/Thr frequencies.
+
+```{r}
+#remove columns if present
+if("ST.freq" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -ST.freq)
+if("S.freq" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -S.freq)
+if("T.freq" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -T.freq)
+
+#join maximums back into seqInfo
+seqInfo <- seqInfo %>% 
+  left_join(select(ST.freq.sum, name = id, ST.freq = perc), by = "name") %>% 
+  left_join(select(S.freq.sum, name = id, S.freq = perc), by = "name") %>% 
+  left_join(select(T.freq.sum, name = id, T.freq = perc), by = "name")
+```
+
+## Identify homolog tree proteins
+
+The seven C. auris homologs in Bin's homolog tree are: XP_028889033.1, XP_028888611.1, XP_028889034.1, XP_028887965.1, XP_028892406.1, XP_028892087.1, XP_028889361.1
+
+```{r id homolog tree}
+homologs <- c("XP_028889033.1", "XP_028888611.1", "XP_028889034.1", "XP_028887965.1", "XP_028892406.1", "XP_028892087.1", "XP_028889361.1")
+seqInfo <- seqInfo %>% mutate(homolog.tree = name %in% homologs)
+
+```
+
+## Summary info
+
+```{r}
+seqInfo %>% group_by(strain) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(pred.gpi & signalp) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(!pred.gpi & !signalp) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(pred.gpi & !signalp) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(!pred.gpi & signalp) %>% summarise(numproteins = n())
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=length), binwidth = 50)+
+    geom_vline(aes(xintercept = 500), color="blue", size=1)
+print(p)
+seqInfo %>% dplyr::filter(length >= 500) %>% summarise(numproteins = n())
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=max.ST.freq), binwidth = 0.01)+
+    geom_vline(aes(xintercept = 0.5), color="blue", size=1)
+print(p)
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=max.S.freq), binwidth = 0.01)+
+    geom_vline(aes(xintercept = 0.15), color="red", size=1)
+print(p)
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=max.T.freq), binwidth = 0.01)+
+    geom_vline(aes(xintercept = 0.1), color="green", size=1)
+print(p)
+p <- ggplot(data = seqInfo)+
+    geom_histogram(mapping = aes(x=n.high.score.agg.seq), binwidth = 1)+
+    geom_vline(aes(xintercept = 2), color="blue", size=1)
+print(p)
+seqInfo %>% dplyr::filter(pred.gpi & signalp & length >= 500 & max.ST.freq >= 0.5 & n.high.score.agg.seq >= 2) %>% select(name, strain, pfam_domains, n.gvvivtt.seqs, n.gvvivtt.like.seqs, homolog.tree)
+write_tsv(x = (seqInfo %>% dplyr::filter(pred.gpi & signalp & length >= 500 & max.ST.freq >= 0.5 & n.high.score.agg.seq >= 2) %>% select(name, strain, pfam_domains, n.gvvivtt.seqs, n.gvvivtt.like.seqs, homolog.tree)), "filtered_results.txt")
+seqInfo %>% dplyr::filter(n.gvvivtt.seqs > 0) %>% group_by(strain) %>% summarise(numproteins = n())
+seqInfo %>% dplyr::filter(n.gvvivtt.like.seqs > 0) %>% group_by(strain) %>% summarise(numproteins = n())
 ```
