@@ -398,113 +398,158 @@ seqInfo <- seqInfo %>% mutate(n.gvvivtt.seqs = replace_na(n.gvvivtt.seqs,0), n.g
 
 Using Bin's method, I'm running EMBOSS freak for S/T, S, T with a stepping value of 10 and an averaging window of 100. The results were saved as freak_aminoacid(s)_100_10.txt. Using Bin's format_freaq_output.py script, each was converted to a readable .out file and all files were compressed for storage.
 
+**Update 2021-07-16 [HB]** we will use two types of statistics to summarize the serine/threonine frequencies here. 1) frequency of the residues over the entire protein; 2) maximum frequency of serine or threnonine in a 100 amino acid sliding window (which will ignore any proteins < 100 residues). in the second measure, we reason that a 100 amino acid window is a reasonable size to capture a genuine "hike" in Serine or Threonine frequency. For one thing, it is large enough to avoid capturing just a small cluster of S/T, and for another thing the Serine rich cluster we observe in Hil1 is ~200 amino acids long and with a consistently elevated Serine content, suggesting that a 100 amino acid window is not too large to lead to diluted signals by flanking residues.
 ```{r S_T_freq}
 # load data
-ST.freq <- read_tsv("output/freak/freak_st_100_10_freak.out.gz", col_types = "cid")
-S.freq <- read_tsv("output/freak/freak_s_100_10_freak.out.gz", col_types = "cid")
-T.freq <- read_tsv("output/freak/freak_t_100_10_freak.out.gz", col_types = "cid")
-
-# retain maximum frequency for each category of each protein sequence
-ST.freq <- ST.freq %>% 
-  group_by(id) %>% 
-  summarise(max.ST.freq = max(freq))
-S.freq <- S.freq %>% 
-  group_by(id) %>% summarise(max.S.freq = max(freq))
-T.freq <- T.freq %>% 
-  group_by(id) %>% summarise(max.T.freq = max(freq))
+ST.protein <- read_tsv("output/ST-freq/Cauris-ST-freq-per-protein.txt.gz", col_types = cols())
+ST.freq <- read_tsv("output/ST-freq/freak_st_100_10_freak.out.gz", col_types = "cid")
+S.freq <- read_tsv("output/ST-freq/freak_s_100_10_freak.out.gz", col_types = "cid")
+T.freq <- read_tsv("output/ST-freq/freak_t_100_10_freak.out.gz", col_types = "cid")
+ST.window <- bind_rows("ST" = ST.freq, "S" = S.freq, "T" = T.freq, .id = "residue") %>% 
+  group_by(id, residue) %>% 
+  summarize(max = max(freq))
+rm(list = c("ST.freq", "S.freq", "T.freq"))
 ```
 
-In order to summarize the sliding window data for each protein down to a single or a couple of numbers, so we can make predictions, our idea is to set a threshold value and calculate the percent of the protein with a Ser/Thr frequency above that threshold. We previous found that the proteome-wide frequency of Ser and Thr per protein (entire length, not sliding window) is about 10% and 5% respectively. Here we will use the same sliding window statistic so our measure matches our case study analysis. Below we manually vary the threshold and settle on a value that appears to distinguish the Hil family and the rest of the proteome.
 ```{r fig.width=9, fig.height=4.5}
 ST.th <- c("ST" = 0.25, "S" = 0.15, "T" = 0.1)
-ST.freq.sum <- ST.freq %>% 
-  mutate(flag = freq >= ST.th["ST"]) %>% 
-  group_by(id) %>% 
-  summarize(perc = sum(flag)/n()) %>% 
-  left_join(select(seqInfo, id = name, isHIL), by = "id")
-p0 <- ST.freq.sum %>% 
-  ggplot(aes(x = perc)) + geom_histogram(binwidth = 0.05) + 
-  xlab(paste0("Part of protein > ", ST.th["ST"]*100, "% S/T")) +
-  facet_wrap(~isHIL, nrow = 2, scales = "free_y", labeller = "label_both")
-  
-S.freq.sum <- S.freq %>% 
-  mutate(flag = freq >= ST.th["S"]) %>% 
-  group_by(id) %>% 
-  summarize(perc = sum(flag)/n()) %>% 
-  left_join(select(seqInfo, id = name, isHIL), by = "id")
-p1 <- S.freq.sum %>% 
-  ggplot(aes(x = perc)) + geom_histogram(binwidth = 0.05) + xlab(paste0("Part of protein > ", ST.th["S"]*100, "% S")) +
-  facet_wrap(~isHIL, nrow = 2, scales = "free_y", labeller = "label_both")
-
-T.freq.sum <- T.freq %>% 
-  mutate(flag = freq >= ST.th["T"]) %>% 
-  group_by(id) %>% 
-  summarize(perc = sum(flag)/n()) %>% 
-  left_join(select(seqInfo, id = name, isHIL), by = "id")
-p2 <- T.freq.sum %>% 
-  ggplot(aes(x = perc)) + geom_histogram(binwidth = 0.05) + xlab(paste0("Part of protein > ", ST.th["T"]*100, "% T")) +
-  facet_wrap(~isHIL, nrow = 2, scales = "free_y", labeller = "label_both")
-
-plot_grid(p0, p1, p2, labels = c("S/T","Ser", "Thr"), ncol = 3)
+ST.window %>% 
+  left_join(select(seqInfo, id = name, isHIL), by = "id") %>% 
+  mutate(residue = factor(residue, levels = c("ST", "S", "T"), labels = c("Ser/Thr", "Ser", "Thr")),
+         `Hil family` = ifelse(isHIL, "Yes", "No")) %>% 
+  ggplot(aes(x = max)) + geom_histogram(binwidth = 0.02) + 
+  xlab("Max frequency of Ser/Thr in 100 amino acid window") +
+  facet_grid(`Hil family` ~ residue, scales = "free_y", labeller = "label_both") +
+  theme_cowplot() + panel_border()
 ```
-From the above we can see that the Hil family proteins have >30% of the protein length with a Ser/Thr frequency of >25%, or Serine alone of >15%. 25% or more of the Hil family proteins have a threonine frequency of 10% or more. Let's try using these three thresholds to summarize the Ser/Thr frequencies.
+From the above we can see that the not all Hil family proteins have well-above-average Serine or Threonine content alone. But when both residues are counted together, they consistently rank above the majority of the proteome.
+
+```{r}
+ST.protein %>% 
+  left_join(select(seqInfo, ID = name, isHIL), by = "ID") %>% 
+  mutate(`Ser/Thr` = (Ser+Thr)/length, Ser = Ser/length, Thr = Thr/length) %>% 
+  pivot_longer(cols = c(`Ser/Thr`, Ser, Thr), names_to = "residue", values_to = "value") %>% 
+  mutate(residue = factor(residue, levels = c("Ser/Thr", "Ser", "Thr")),
+         `Hil family` = ifelse(isHIL, "Yes", "No")) %>% 
+  ggplot(aes(x = value)) + geom_histogram(binwidth = 0.02) + 
+  xlab("Frequency of Ser/Thr in the whole protein") +
+  facet_grid(`Hil family` ~ residue, scales = "free_y", labeller = "label_both") +
+  theme_cowplot() + panel_border()
+```
+Similar as above, we see that the combined Ser/Thr frequency appear to better distinguish the Hil family from the rest of the proteins. For this reason let's add the max S/T frequency in 100 amino acid windows and the overall S/T frequency per protein to `seqInfo`
 
 ```{r}
 #remove columns if present
-if("ST.freq" %in% names(seqInfo))
-  seqInfo <- select(seqInfo, -ST.freq)
-if("S.freq" %in% names(seqInfo))
-  seqInfo <- select(seqInfo, -S.freq)
-if("T.freq" %in% names(seqInfo))
-  seqInfo <- select(seqInfo, -T.freq)
+if("ST.protein" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -ST.protein, -ST.window.max)
 
 #join maximums back into seqInfo
-seqInfo <- seqInfo %>% 
-  left_join(select(ST.freq.sum, name = id, ST.freq = perc), by = "name") %>% 
-  left_join(select(S.freq.sum, name = id, S.freq = perc), by = "name") %>% 
-  left_join(select(T.freq.sum, name = id, T.freq = perc), by = "name")
+tmp <- ST.protein %>% 
+  mutate(ST.protein = (Ser+Thr)/length) %>% 
+  select(name = ID, ST.protein) %>% 
+  left_join(ST.window %>% filter(residue == "ST") %>% select(name = id, ST.window.max = max), by = "name")
+seqInfo <- seqInfo %>% left_join(tmp, by = "name")
 ```
 
-## Identify homolog tree proteins
+# Prediction
+Here we try to use the sequence properties collected above to identify additional proteins outside of the Hil family that may function as adhesins.
 
-The seven C. auris homologs in Bin's homolog tree are: XP_028889033.1, XP_028888611.1, XP_028889034.1, XP_028887965.1, XP_028892406.1, XP_028892087.1, XP_028889361.1
-
-```{r id homolog tree}
-homologs <- c("XP_028889033.1", "XP_028888611.1", "XP_028889034.1", "XP_028887965.1", "XP_028892406.1", "XP_028892087.1", "XP_028889361.1")
-seqInfo <- seqInfo %>% mutate(homolog.tree = name %in% homologs)
-
+## Cell wall proteins
+How many proteins are likely to be GPI-anchored cell wall proteins?
+```{r}
+# summarize the number of proteins passing the SignalP and Pred.GPI filters
+cwp <- with(seqInfo, table(signalp, pred.gpi, dnn = c("SignalP", "Pred-GPI")))
+cat("Count")
+print(cwp)
+cat("Percentage")
+print(round(cwp / sum(cwp), 3))
 ```
 
-## Summary info
+We see that only a very small fraction (1.5%) of the proteome pass both the SignalP and PredGPI tests. By comparison, all eight _C. auris_ Hil proteins pass both tests, and the vast majority of Hil homologs pass both tests as well. So far this is the most stringent (aka effective) filter to reduce the number of candidate proteins.
+
+## Protein length
+```{r}
+p <- ggplot(data = seqInfo) + 
+  geom_histogram(mapping = aes(x=length), binwidth = 50)+
+  geom_vline(aes(xintercept = 500), color="blue", size=1) +
+  annotate("text", x = 3000, y = 1500, label = paste0("# of proteins >= 500 residues: ", sum(seqInfo$length >= 500)), size = 5) +
+  xlab("Protein length (amino acids)") + ylab("# of proteins") + theme_cowplot()
+print(p)
+```
+
+## Ser/Thr frequency
+```{r}
+seqInfo %>% 
+  pivot_longer(cols = starts_with("ST."), names_to = "type", names_prefix = "ST.", values_to = "value") %>% 
+  mutate(type = factor(type, levels = c("protein", "window.max"), labels = c("whole protein", "max in 100 a.a. windows"))) %>% 
+  ggplot(aes(x = value, color = isHIL)) + stat_ecdf() + facet_wrap(~type) + 
+  scale_x_continuous(limits = c(0,0.8)) + scale_color_manual("Hil family", values = c("black", "gold3")) +
+  xlab("frequency") + ylab("Cumulative probability") + 
+  theme_cowplot() + background_grid()
+```
+
+## Step-wise classification
+The idea here is to apply filters in a step-wise manner and watch if all Hil proteins are still retained and how many non-Hil proteins remain in the dataset.
+
+### Cell wall protein: SignalP and GPI
+```{r}
+# Load function
+# reference: http://rstudio-pubs-static.s3.amazonaws.com/6975_c4943349b6174f448104a5513fed59a9.html
+source("http://pcwww.liv.ac.uk/~william/R/crosstab.r")
+
+filter1 <- seqInfo %>% 
+  mutate(`Hil_family` = ifelse(isHIL, "Yes", "No"), 
+         `cell_wall` = ifelse(signalp & pred.gpi, "Yes", "No")) %>% 
+  select(-signalp, -pred.gpi, -isHIL)
+
+crosstab(filter1, row.vars = "cell_wall", col.vars = "Hil_family", addmargins = FALSE)
+```
+The two proteins that dropped out `r filter1 %>% filter(cell_wall == "no", Hil_family == "yes")` are both in the clade IV strain B11245 and appear to be missing the C-terminal sequence, hence failed the PredGPI test.
+
+### Protein length
+```{r}
+filter2 <- filter1 %>% 
+  mutate(length = ifelse(length >= 500, ">=500", "<500"))
+
+crosstab(filter2, row.vars = c("cell_wall", "length"), col.vars = "Hil_family", addmargins = FALSE)
+```
+
+### Ser/Thr frequency
+```{r}
+filter2 %>% 
+  mutate(group = ifelse(Hil_family == "Yes", "Hil", ifelse(length == ">=500" & cell_wall == "Yes", "Candidate", "Others"))) %>% 
+  pivot_longer(cols = starts_with("ST."), names_to = "type", names_prefix = "ST.", values_to = "value") %>% 
+  mutate(type = factor(type, levels = c("protein", "window.max"), labels = c("whole protein", "max in 100 a.a. window")),
+         group = factor(group, levels = c("Hil", "Candidate", "Others"))) %>% 
+  ggplot(aes(x = type, y = value, fill = group)) + geom_boxplot(outlier.size = 0.5, outlier.shape = 1) +
+  scale_fill_brewer(type = "qual", palette = 7) +
+  xlab("") + ylab("Ser/Thr frequency") + theme_gray(base_size = 14)
+```
 
 ```{r}
-seqInfo %>% group_by(strain) %>% summarise(numproteins = n())
-seqInfo %>% dplyr::filter(pred.gpi & signalp) %>% summarise(numproteins = n())
-seqInfo %>% dplyr::filter(!pred.gpi & !signalp) %>% summarise(numproteins = n())
-seqInfo %>% dplyr::filter(pred.gpi & !signalp) %>% summarise(numproteins = n())
-seqInfo %>% dplyr::filter(!pred.gpi & signalp) %>% summarise(numproteins = n())
-p <- ggplot(data = seqInfo)+
-    geom_histogram(mapping = aes(x=length), binwidth = 50)+
-    geom_vline(aes(xintercept = 500), color="blue", size=1)
-print(p)
-seqInfo %>% dplyr::filter(length >= 500) %>% summarise(numproteins = n())
-p <- ggplot(data = seqInfo)+
-    geom_histogram(mapping = aes(x=max.ST.freq), binwidth = 0.01)+
-    geom_vline(aes(xintercept = 0.5), color="blue", size=1)
-print(p)
-p <- ggplot(data = seqInfo)+
-    geom_histogram(mapping = aes(x=max.S.freq), binwidth = 0.01)+
-    geom_vline(aes(xintercept = 0.15), color="red", size=1)
-print(p)
-p <- ggplot(data = seqInfo)+
-    geom_histogram(mapping = aes(x=max.T.freq), binwidth = 0.01)+
-    geom_vline(aes(xintercept = 0.1), color="green", size=1)
-print(p)
-p <- ggplot(data = seqInfo)+
-    geom_histogram(mapping = aes(x=n.high.score.agg.seq), binwidth = 1)+
-    geom_vline(aes(xintercept = 2), color="blue", size=1)
-print(p)
-seqInfo %>% dplyr::filter(pred.gpi & signalp & length >= 500 & max.ST.freq >= 0.5 & n.high.score.agg.seq >= 2) %>% select(name, strain, pfam_domains, n.gvvivtt.seqs, n.gvvivtt.like.seqs, homolog.tree)
+filter2 %>% 
+  mutate(group = ifelse(Hil_family == "Yes", "Hil", ifelse(length == ">=500" & cell_wall == "Yes", "Candidate", "Others")),
+         `S/T protein` = ST.protein > 0.18,
+         `S/T max window` = ST.window.max > 0.28) %>% 
+  crosstab(row.vars = c("S/T protein", "S/T max window"), col.vars = "group", subtotals = FALSE)
+```
+
+Based on the above, we will 
+### TANGO hits
+```{r}
+filter2 %>% 
+  mutate(group = ifelse(Hil_family == "Yes", "Hil", 
+                        ifelse(length == ">=500" & cell_wall == "Yes", "Candidate", "Others")),
+         group = factor(group, levels = c("Hil", "Candidate", "Others"))) %>% 
+  ggplot(aes(x = n.tango, fill = group)) + geom_histogram(binwidth = 1) +
+  facet_wrap(~group, nrow = 3, scales = "free_y") +
+  scale_fill_brewer(type = "qual", palette = 7) +
+  xlab("# of strong TANGO hits") + theme_cowplot() + panel_border()
+```
+
+```{r}
+seqInfo %>% filter(pred.gpi, signalp, length >= 500, n.tango >= 2) %>% select(-pfam_domains, -signalp, -pred.gpi, pfam_domains) %>% 
+  arrange(isHIL, desc(length), desc(n.tango))
 write_tsv(x = (seqInfo %>% dplyr::filter(pred.gpi & signalp & length >= 500 & max.ST.freq >= 0.5 & n.high.score.agg.seq >= 2) %>% select(name, strain, pfam_domains, n.gvvivtt.seqs, n.gvvivtt.like.seqs, homolog.tree)), "filtered_results.txt")
 seqInfo %>% dplyr::filter(n.gvvivtt.seqs > 0) %>% group_by(strain) %>% summarise(numproteins = n())
 seqInfo %>% dplyr::filter(n.gvvivtt.like.seqs > 0) %>% group_by(strain) %>% summarise(numproteins = n())
