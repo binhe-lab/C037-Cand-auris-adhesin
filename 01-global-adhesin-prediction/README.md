@@ -31,17 +31,25 @@ If these coordinates accurate (assembly is correct), they would suggest a tandem
 
 A total of four proteins contained the "GVVIVT" sequences and all are outside of the Hil family. They are:
 
-| pID            | gID          | Length | Chromosome | Strain | Clade |
-| -------------- | ------------ | ------ | ---------- | ------ | ----- |
-| PIS58185.1     | B9J08_000675 | 2608   | Chr2       | B8441  | I     |
-| QEO22553.1     | NA           | 970    | Chr3       | B11220 | II    |
-| XP_028893057.1 | CJI97_000676 | 1385   | Chr2       | B11221 | III   |
-| QEL60526.1     | CJJ09_002636 | 1600   | Chr2       | B11245 | IV    |
+| pID            | gID          | Length | Chromosome                     | Strain | Clade |
+| -------------- | ------------ | ------ | ------------------------------ | ------ | ----- |
+| PIS58185.1     | B9J08_000675 | 2608   | Chr2(scaffold3):351970..359796 | B8441  | I     |
+| QEO22553.1     | NA           | 970    | Chr3:1752934..1755846          | B11220 | II    |
+| XP_028893057.1 | CJI97_000676 | 1385   | Chr2:1465685-1470012           | B11221 | III   |
+| QEL60526.1     | CJJ09_002636 | 1600   | Chr2:1449654..1454456          | B11245 | IV    |
 
-From this table our guess is that except for QEO22553.1, the others are probably orthologs. We then used PIS58185.1 as query and searched against the non-redundant proteome database with blastsp. The result is stored in `output/PIS58185/20210709-PIS58185-blastp-in-cauris.txt`. Below is a graphic annotation of the search result:
+From this table our guess is that except for QEO22553.1, the others are probably orthologs.
+
+**Update 2021-07-19 [HB]** Further investigation suggested that proteins #3 and #4 are likely orthologs as they are both on chromosome 2 in different strains, with similar coordinates. The shorter length of the B11221 protein is because it is translated from a partial mRNA, which lacks the C-terminal portion. This also leads to it missing the C-terminal GPI-anchor signal peptide, which I expect it to have. PS58185 is different in that it is much longer, and because chromosome 1 in B8441 is split between two scaffolds, it is unclear whether its chromosomal location is syntenic with the ones in B11221 and B11245. Finally, QEO22553 is on a different chromosome and is much shorter. Below is the [COBALT](https://www.ncbi.nlm.nih.gov/tools/cobalt/cobalt.cgi) MSA result:
+
+![COBALT alignment](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/output/PIS58185/20210719-PIS58185-four-seq-cobalt-aln.png)
+
+_red color indicates highly conserved columns while blue color indicates less conserved ones._
+
+We then used PIS58185.1 as query and searched against the non-redundant proteome database with blastsp. The result is stored in `output/PIS58185/20210709-PIS58185-blastp-in-cauris.txt`. Below is a graphic annotation of the search result:
 ![blastp search for PIS58185 in _C. auris_](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/output/PIS58185/20210709-PIS58185-blastp-in-cauris.png)
 
-This is rather interesting: Hil1-4 are the longer than 1000 amino acids and have regularly spaced GVVIVTT sequences, and they are the ones that showed up in this search, suggesting that the C-terminal sequence of PIS58185 bear significant similarity with Hil1-4. To see how similar is PIS58185 to Hil1-4, we aligned it to the Hil1 sequence XP_028889033 and got the following:
+This is rather interesting: Hil1-4 are the longer Hil family members in _C. Auris_, which also have regularly spaced GVVIVTT sequences, and they are the ones that showed up in this search, suggesting that the C-terminal sequence of PIS58185 bear significant similarity with Hil1-4. To see how similar is PIS58185 to Hil1-4, we aligned it to the Hil1 sequence XP_028889033 and got the following:
 
 ![PIS58185 aligned to XP_028889033](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/01-global-adhesin-prediction/output/PIS58185/PIS58185-XP_028889033-alignment.png)
 
