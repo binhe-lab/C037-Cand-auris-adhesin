@@ -81,7 +81,9 @@ A total of `r sum(seqInfo$isHIL)` proteins in the four strains belong to the Hil
 
 ## SignalP for signal peptides
 
-Use SignalP 5.0 server to predict signal peptides. Maximum number of proteins is 5000, so I split the fasta file into 6 smaller files and submitted, providing my email each time. I used the old file with B11243 to run this. I resplit the new fasta into 5 files and reran. Downloaded .gff files as SignalP\_(file \#).gff3 and used command `grep -v -h "##" SignalP* | sort > SignalP.txt`
+Use SignalP 5.0 server to predict signal peptides. Maximum number of proteins is 5000, so I split the fasta file into 6 smaller files and submitted, providing my email each time. I used the old file with B11243 to run this. (HB: seems like the current result file contains B11245 instead). I resplit the new fasta into 5 files and reran. Downloaded .gff files as SignalP\_(file \#).gff3 and used command `grep -v -h "##" SignalP* | sort > SignalP.txt`
+
+**Note [HB]**: SignalP output in GFF3 format only includes the input proteins that are predicted to have a signal peptide. There is a total of 1183 entried in the result file, from a total of >20,000 proteins submitted.
 
 Modified file names, but otherwise Bin's code:
 
@@ -515,7 +517,7 @@ crosstab(filter1, row.vars = "cell_wall", col.vars = "Hil_family", addmargins = 
 The two proteins that dropped out `r filter1 %>% filter(cell_wall == "No", Hil_family == "Yes")` are both in the clade IV strain B11245 and appear to be missing the C-terminal sequence, hence failed the PredGPI test.
 
 ## Protein length
-
+Below we show the distribution of protein length in the proteome.
 ```{r}
 p <- ggplot(data = seqInfo) + 
   geom_histogram(mapping = aes(x=length), binwidth = 50)+
@@ -525,7 +527,7 @@ p <- ggplot(data = seqInfo) +
 print(p)
 ```
 
-We classify the CWP hits into two groups based on their length. Those with more than 500 a.a. are labeled as "CWP long" and those smaller than 500 a.a. as "CWP short"
+We classify the CWP hits into two groups based on their length. Those with more than 500 a.a. are labeled as "CWP long" and those smaller than 500 a.a. as "CWP short".
 
 ```{r}
 filter2 <- filter1 %>% 
@@ -698,37 +700,108 @@ candidates <- filter3 %>%
 
 candidates %>% filter(is.leader) %>% select(-pfam_domains, pfam_domains)
 ```
+**_Discussion_**
 
+1. In the table above, rows 1, 3 and 4, along with XP_028893057, which is not in the candidates list because it misses the C-terminal GPI-anchor sequence (this is a partial mRNA missing the 3' portion), are the only ones containing the "GVVIVT" sequence (see README.md in this folder). They all have the GLEYA domain in the N-terminus, and had very similar central domain repeat units as the Hil1/2 protein.
+1. Rows 2, 5 and 6 all have the Candida_ALS_N domain, and they are the ALS family members.
+1. Examining the N-terminal Pfam domains among the rest candidate revealed Flo11, Asp, PLA2_B, CFEM, Glyco_hydro_72, SRP1_tIP1 and KRE1. Many of these domains have connections to adhesion.
+
+## Tandem repeats
+We didn't want to perform the tandem repeat analysis on >20,000 proteins. Now that we have narrowed the list down to a much more manageable one, the code below will perform XSTREAM analysis on the group of candidate proteins identified above.
 ```{bash}
 cd script
 sh xstream.sh ../data/20210718-cwp-proteins.faa cwp-proteins ../output/tandem-repeats
 cd ..
 ```
-
-## Examine the list of candidates so far
-
-Here we will show one strain to avoid redundancy (later we will merge the proteins using `CD-hit`). First let's look at the "CWP long" group.
-
 ```{r}
-#write_tsv(filter3 %>% filter(group != "Others"), file = "output/Rmd-out/filter3-feature-output.tsv")
-filter3 %>% 
-  filter(group == "CWP long", strain == "B8441") %>% 
-  mutate(`Ser+Thr` = round(ST.prot, 2), ST.prot = NULL) %>% 
-  relocate(`Ser+Thr`, .before = n.tango) %>% 
-  select(-Hil_family, -group, -cell_wall, -strain, strain) %>% 
-  arrange(desc(length)) %>% 
-  DT::datatable(options = list(dom = "tip"), rownames = FALSE, caption = "CWP long in B8441")
+repeats <- read_tsv("output/tandem-repeats/XSTREAM_cwp-proteins_i0.7_g3_m5_L15_chart.tsv", col_types = cols())
 ```
 
-Here is the "CWP short" group.
+## Schematic plot for leaders
+The goal is to create a domain schematic plot for all the leader proteins. The desired plot will include the following features: SignalP, GPI-anchor, any pfam domain (except for the Hyr1, Flocculin_t3 and Candida_ALS repeat domains), tandem repeats as identified by xstream, and the plot should be ordered by protein length from large to small.
+
+**Update 2021-07-20 [HB]** I decide to remove the clusters whose leader protein length is less than 100 a.a. This helps to shorten the list, making the plot more readable, and the four proteins removed are spectaculously uninteresting (no pfam domain, no tandem repeats, etc.)
 
 ```{r}
-#write_tsv(filter3 %>% filter(group != "Others"), file = "output/Rmd-out/filter3-feature-output.tsv")
-filter3 %>% 
-  filter(group == "CWP short", strain == "B8441") %>% 
-  mutate(`Ser+Thr` = round(ST.prot, 2), ST.prot = NULL) %>% 
-  relocate(`Ser+Thr`, .before = n.tango) %>% 
-  select(-Hil_family, -group, -cell_wall, -strain, strain) %>% 
-  arrange(desc(length)) %>% 
-  DT::datatable(options = list(dom = "tip"), rownames = FALSE, caption = "CWP short in B8441")
+# get the ids to plot
+id.to.plot <- candidates %>% filter(is.leader, length >= 100) %>% pull(name)
+
+# we will be building the plot in layers: 1) whole protein (grey); 2) tandem repeats; 3) pfam domains; 4) signalp and pred.gpi; 5) if possible, tango hits
+# the relevant data can be assembled separately
+
+df.whole <- candidates %>% 
+  filter(name %in% id.to.plot) %>% 
+  mutate(start = 1, end = length, feature = "whole protein",
+         name = ordered(name, levels = id.to.plot)) %>% 
+  select(name, feature, start, end, group)
+
+df.repeats <- repeats %>% 
+  mutate(feature = paste("TR", type, "-")) %>% 
+  select(name = identifier, feature, start, end, period, type, copyN, consensus_nogap, consensus_error) %>% 
+  filter(name %in% id.to.plot)
+
+df.pfam <- hmmscan_pfam %>% 
+  filter(!outcompeted,  # remove lower-scored overlapping domains
+         !hmm_name %in% c("Hyr1", "Candida_ALS", "Flocculin_t3")) %>% # remove two repeat domains
+  mutate(name = str_sub(seq_id, 2), # remove > from seq.id
+         feature = paste0(hmm_name, " (", gsub("\\.[0-9]", "", hmm_acc), ")")) %>% # feature name
+  filter(name %in% id.to.plot) %>% 
+  select(name, feature, start = envelope_start, end = envelope_end)
+
+df.signalp <- signalp5 %>% 
+  filter(id %in% id.to.plot) %>% 
+  mutate(feature = "SignalP") %>% 
+  select(name = id, start, end)
+
+df.gpi <- pred.gpi %>% 
+  filter(name %in% id.to.plot, is.gpi) %>% 
+  mutate(feature = "GPI-anchor") %>% 
+  select(name, feature, start = cleavePos, end = length)
+
+df.tango <- tango.res.df1 %>% 
+  filter(id %in% id.to.plot) %>% 
+  mutate(feature = "tango") %>% 
+  select(name = id, feature, start, end, median, seq)
 ```
+
+Build the plot
+```{r, fig.height=6.5, fig.width=5}
+# protein backbone
+p0 <- ggplot(df.whole, aes(x = name, y = start, xend = name, yend = end)) + 
+  geom_hline(yintercept = 500, color = "grey80", size = 0.2) + # add a visual divider to distinguish between long and short
+  geom_segment(color = "grey", size = 2)
+# tandem repeats
+p1 <- geom_segment(data = df.repeats, aes(size = "Tandem Repeats"), color = "orange4", alpha = 0.7)
+
+# pfam
+require(RColorBrewer)
+feature.col <- colorRampPalette(brewer.pal(12, "Paired")[-12])(length(unique(df.pfam$feature))) # define the colors
+p2 <- geom_segment(data = df.pfam, aes(color = feature), size = 2)
+
+# signalp and gpi
+p3 <- geom_segment(data = df.signalp, aes(size = "SignalP"), color = "#e31a1c")
+p4 <- geom_segment(data = df.gpi, aes(size = "GPI-anchor"), color = "#6a3d9a")
+
+# tango
+p5 <- geom_segment(data = df.tango, aes(y = start-1,  yend = end + 1, alpha = median),
+                   position = position_nudge(x = -0.4, y = 0), color = "darkred", size = 1)
+
+# plot
+p0 + p1 + p2 + p3 + p4 + p5 + coord_flip() + 
+  scale_color_manual(values = c(feature.col)) + 
+  scale_size_manual(
+    "Other features", values=rep(2,3),
+    guide=guide_legend(override.aes = list(colour=c("#6a3d9a", "#e31a1c", "orange4")))
+  ) +
+  guides(alpha = "none") +
+  scale_y_continuous(breaks = seq(0,2500,500)) +
+  theme_classic(base_size = 12) + background_grid(major = "x") +
+  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
+        panel.background = element_rect(fill = alpha("lightblue",0.5)),
+        legend.position = c(0.7,0.55)) +
+  labs(y = "Position in sequence", x = "Sequences", color = "Pfam domains")
+ggsave("output/figure/20210720-cwp-candidates-domain-schematic.png", width = 5, height = 6.5)
+```
+
