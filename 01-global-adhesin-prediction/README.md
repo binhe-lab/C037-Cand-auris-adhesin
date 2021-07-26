@@ -25,7 +25,9 @@ Upon inspecting its [chromosomal location](https://www.ncbi.nlm.nih.gov/protein/
 | QEL63124 | 6    | complement(join(CP043447.1:935929..941539, 941629..942091,942537..943049, 943123..943147)) |
 | QEL63125 | 6    | complement(CP043447.1:943433..944956)                        |
 
-If these coordinates accurate (assembly is correct), they would suggest a tandem partial duplication. But given the highly repetitive nature of the C-terminal sequence, we cannot rule out the possibility of assembly error leading to a phantom protein...
+QEL63125 is identified as the Hil1 homolog in B11245 but it is only 507 amino acids long. Given that QEL63124 is right next to QEL63125 and matches nearly perfectly to the central and C-terminal domain of Hil1 in B11221, I think it is almost certain that QEL63125+QEL63124 = Hil1 in B11245.
+
+![QEL63125+QEL63125=Hil1 in B11245](output/PIS58185/QEL63124+QEL63125=Hil1.png)
 
 ### PIS58185
 
@@ -62,3 +64,85 @@ Three additional sequences also showed up. Two of them, PSK75098 and QEO22553, b
 ![dot-dot-plot](output/PIS58185/nonHil-proteins-to-investigate.jpg)
 
 It appears that the first two proteins share the N-terminal domain but the latter has more repeats. The third one lacks any N-terminal domain and only has the repeats. It's not clear yet what the evolutionary relationship is among these proteins. What is clear is that they share significant similarities in their repeat content.
+
+## 2021-07-23 Pfam domains in candidate GPI-anchored CWPs
+
+*Goal*
+
+- Read and learn about the Pfam domains present in our candidate adhesin list.
+
+*Approach*
+
+- Search pfam and related databases and keep notes for each domain
+
+*Notes*
+
+| Domain         | Pfam ID                                                      | # proteins | Representative    | Function                                                     |
+| -------------- | ------------------------------------------------------------ | ---------- | ----------------- | ------------------------------------------------------------ |
+| GLEYA          | [PF10528](https://pfam.xfam.org/family/GLEYA)                | 3          | ScFlo5, CgEpa1    | Adhesion, mannose-binding                                    |
+| Candida_ALS_N  | [PF11766](https://pfam.xfam.org/family/PF11766)              | 3          | CaAls1-9          | Adhesion<sup>1</sup>                                         |
+| Collagen       | [PF01391](https://pfam.xfam.org/family/PF01391#tabview=tab0) | 1          | NA                | NA                                                           |
+| Flo11          | [PF10182](https://pfam.xfam.org/family/PF10182)              | 1          | Flo11             | homotypic binding, cell adhesion                             |
+| PLA2_B         | [PF01735](https://pfam.xfam.org/family/PLA2_B)               | 1          | CaPlb5            | GPI-anchored Phospholipase B                                 |
+| Asp            | [PF00026](https://pfam.xfam.org/family/PF00026)              | 7          | CaSap9 (aka Yps1) | GPI-anchored aspartyl protease                               |
+| CFEM           | [PF05730](https://pfam.xfam.org/family/PF05730)              | 5          | CaRbt5            | cell surface receptors or adhesins                           |
+| Glyco_hydro_72 | [PF03198](https://pfam.xfam.org/family/PF03198)              | 2          | CaPhr1            | glycosidases with a role in proper cross-linking of β-1,3- and β-1,6-glucans |
+| X8             | [PF07983](https://pfam.xfam.org/family/PF07983)              | 2          | CaPhr1            | glycolsyl hydrolase, bind carbohydrates                      |
+| Glyco_hydro_16 | [PF00722](https://pfam.xfam.org/family/PF00722)              | 2          | CaCrh11           | transglycosylase                                             |
+| Zip            | [PF02535](https://pfam.xfam.org/family/PF02535)              | 1          |                   |                                                              |
+
+1. Donohue, Dagmara S., Francesco S. Ielasi, Katty V. Y. Goossens, and Ronnie G. Willaert. “The N-Terminal Part of Als1 Protein from Candida Albicans Specifically Binds Fucose-Containing Glycans.” *Molecular Microbiology* 80, no. 6 (June 2011): 1667–79. https://doi.org/10.1111/j.1365-2958.2011.07676.x.
+2. Based on Pfam description of the protein domain being an enzyme acting on the lysophospholipids
+3. 
+
+### GLEYA
+
+*Pfam*
+
+... related to lectin-like binding domains found in the *S. cerevisiae* Flo proteins and the *C. glabrata* Epa proteins. rich in β-strands.
+
+*SCOP*
+
+belongs to the PA14 superfamily
+
+### Candida_ALS_N
+
+*pfam*
+
+This N-terminal domain is likely to be the sugar or ligand binding domain of yeast alpha-agglutinin [1] and agglutinin-like (ALS) proteins.
+
+### Collagen
+
+*pfam*
+
+Members of this family belong to the collagen superfamily. Collagens are generally extracellular structural proteins involved in formation of connective tissue structure. The sequence is predominantly repeats of the G-X-Y and the polypeptide chains form a triple helix. The first position of the repeat is glycine, the second and third positions can be any residue but are frequently proline and hydroxyproline. Collagens are post-translationally modified by proline hydroxylase to form the hydroxyproline residues.
+
+### Flo11
+
+*pfam*
+
+This presumed domain is found at the N-terminus of the S. cerevisiae Flo11 protein. Flo11 is required for diploid pseudohyphal formation and haploid invasive growth. It belongs to a family of proteins involved in invasive growth, cell-cell adhesion, and mating, many of which can substitute for each other under abnormal conditions
+
+### PLA2_B
+
+*pfam*
+
+Lysophospholipase, catalyse the release of fatty acids from lysophsopholipids and are capable *in vitro* of hydrolyzing all phospholipids extractable from yeast cells. Therefore this one may be a CWP that doesn't function as an adhesin.
+
+### Asp
+
+*pfam*
+
+Aspartyl proteases (APs), also known as acid proteases, ([intenz:3.4.23.-]) are a widely distributed family of proteolytic enzymes
+
+### CFEM
+
+*pfam*
+
+The CFEM (Common in several fungal extracellular matrix) domain is a fungal-specific domain that contains eight cysteines and is found in some proteins with proposed roles in fungal pathogenesis.
+
+### Glyco_hydro_72
+
+*pfam*
+
+a widespread group of enzymes that hydrolyse the glycosidic bond between two or more carbohydrates, or between a carbohydrate and a non-carbohydrate moiety.

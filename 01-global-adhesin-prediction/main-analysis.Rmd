@@ -292,7 +292,7 @@ motif.summary[union(match.jan, match0),] %>%
 
     `r motif.per.seq %>% filter(grepl(pat0,seqs), !isHIL)`
 
-    Note that XP_028891378.1 is a partial protein entry that I have determined to be the C-termianl fragment of Hil4 in B11221. So really only QEL63124.1 contains GVVIVTT outside of the Hil family.
+    Note that XP_028891378.1 is a partial protein entry that I have determined to be the C-termianl fragment of Hil4 in B11221. Looking closely at the sequence and the chromosomal locations of QEL63124 and its neighboring QEL63125, I found that the latter, at ~500 a.a. is the N-terminal domain of Hil1 in B11245 while QEL63124 is the remaining part of that protein. So in conclusion, **ALL "GVVIVTT" like sequences, based on Bin's regex, are within the Hil family.
 
 -   In the second table that lists GVVIVTT-like sequences that are captured by Jan's more inclusive regex and not my strict one, there is a notable outlier, namely GVVIVT, which is both so close to GVVIVTT and yet **only** present in a group of nonHil sequences, including PIS58185 in B8441 and others.
 
@@ -481,6 +481,14 @@ seqInfo <- seqInfo %>% left_join(tmp, by = "name")
 # rm(list = c("ST.protein", "ST.window"))
 ```
 
+Write the `seqInfo` to a file to be included as supplementary data
+```{r}
+seqInfo %>% 
+  mutate(ST.protein = round(ST.prot, 2), ST.prot = NULL) %>% 
+  select(-pfam_domains, pfam_domains) %>% 
+  write_tsv(file = "output/Rmd-out/seqInfo_table.txt.gz")
+```
+
 # Prediction
 
 Here we try to use the sequence properties collected above to identify additional proteins outside of the Hil family that may function as adhesins. The idea here is to apply filters in a step-wise manner and watch if all Hil proteins are still retained and how many non-Hil proteins remain in the dataset.
@@ -554,11 +562,13 @@ seqInfo %>%
 ```
 
 ```{r}
-filter2 %>% 
+p <- filter2 %>% 
   pivot_longer(cols = starts_with("ST."), names_to = "type", names_prefix = "ST.", values_to = "value") %>% 
   mutate(type = factor(type, levels = c("prot", "window.max"), labels = c("whole protein", "max in 100 a.a. window"))) %>% 
   ggplot(aes(x = type, y = value, fill = group)) + geom_boxplot(outlier.size = 0.5, outlier.shape = 1) +
-  scale_fill_viridis_d() + xlab("") + ylab("Ser/Thr frequency") + theme_grey(base_size = 14)
+  scale_fill_viridis_d() + xlab("") + ylab("Ser/Thr frequency") + theme_cowplot()
+p
+ggsave(file = "output/figure/20210721-ST-boxplot-compare-cwp-to-rest.png", plot = p + theme(legend.position = "bottom"), width = 5, height = 4.5)
 ```
 
 ```{r}
@@ -586,7 +596,7 @@ mutate_cond <- function(.data, condition, ..., envir = parent.frame()) {
 }
 
 filter3 <- filter2 %>%
-  mutate(`S/T protein` = ST.prot > 0.18, ST.window.max = NULL) %>% 
+  mutate(`S/T protein` = ST.prot > 0.18, ST.prot = round(ST.prot, 2)) %>% 
   mutate_cond(str_sub(group,1,3) == "CWP" & !`S/T protein`, group = "Others") %>% 
   select(-Len, -`S/T protein`)
 ```
@@ -594,36 +604,54 @@ filter3 <- filter2 %>%
 ## TANGO hits
 
 ```{r}
-filter3 %>% 
+p <- filter3 %>% 
   ggplot(aes(x = n.tango, fill = group)) + geom_histogram(binwidth = 1) +
   facet_wrap(~group, nrow = 4, scales = "free_y") +
+  scale_y_continuous(n.breaks = 3) +
   scale_fill_viridis_d() +
   xlab("# of strong TANGO hits") + theme_cowplot() + panel_border()
+p
+ggsave("output/figure/20210721-tango-hits-distribution-compare.png", plot = p, width = 6, height = 4.5)
 ```
 
 As we already showed before, the number and spacing of strong TANGO hits is a divisive feature that separate the Hil family proteins in *C. auris* into two groups -- those that are longer than 1000 a.a. have a lot of them and have them regularly spaced, while the four shorter members have few. We see a similar picture when we look at the candidate adhesin proteins in our analysis up to this point: the cell-wall protein long group showed above average number of TANGO hits while the short ones have very few. I predict if we quantified the amount of tandem repeats, we would see a correlation between length, tandem repeat content and \# of strong TANGO hits.
 
-## Cluster by similarity
+## Tandem repeats
+We didn't want to perform the tandem repeat analysis on >20,000 proteins. Now that we have narrowed the list down to a much more manageable one, the code below will perform XSTREAM analysis on the group of candidate proteins identified above.
 
-Now that we settled on the "CWP long" and "CWP short" lists, we would like to look at the domain architecture and tandem repeat content of them more closely. Since we started with four proteomes, with the goal of capturing a "species-wide" set of candidates, we have presumably four alleles of each protein (may be fewer) in the list. To make it easier to examine the domain features, let's cluster the proteins and assemble a representative list.
-
-1.  Export the protein IDs
+1. Export the protein IDs
 
 ```{r}
 cat(filter3 %>% filter(str_sub(group, 1, 3) == "CWP") %>% pull(name), file = "data/20210718-cwp-proteins-id.txt", sep = "\n")
 ```
 
-2.  Extract the fasta, run the following code at the command line
+2. Extract the fasta, run the following code at the command line
 
 ```{bash}
 /Users/bhe2/sw/miniconda3/bin/python script/extract_fasta_gz.py data/proteome-fasta/Caurisfasta.faa.gz data/20210718-cwp-proteins-id.txt data/20210718-cwp-proteins.faa
 ```
 
-3.  Submit the fasta to [CD-hit](https://github.com/weizhongli/cdhit) [webserver](http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/).
+3. Execute the xstream program
+```{bash}
+cd script
+sh xstream.sh ../data/20210718-cwp-proteins.faa cwp-proteins ../output/tandem-repeats
+cd ..
+```
 
-4.  Reformat the CD-hit output
+4. Import the xstream results
+```{r}
+repeats <- read_tsv("output/tandem-repeats/XSTREAM_cwp-proteins_i0.7_g3_m5_L15_chart.tsv", col_types = cols())
+```
 
-``` {.bash}
+## Cluster by similarity
+
+Now that we settled on the "CWP long" and "CWP short" lists, we would like to visualize their domain architecture. Since we started with four proteomes, with the goal of capturing a "species-wide" set of candidates, we have presumably four alleles of each protein (may be fewer) in the list. To make it easier to examine the domain features, let's cluster the proteins and assemble a representative list.
+
+1.  Submit the fasta to [CD-hit](https://github.com/weizhongli/cdhit) [webserver](http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/).
+
+2.  Reformat the CD-hit output
+
+``` bash
 /Users/bhe2/sw/miniconda3/bin/python script/format_cd-hit_output.py output/cd-hit/20210718-CD-hit-0.85/1626635903.fas.1.clstr.sorted output/cd-hit/formatted-cd-hit-0.85.tsv
 /Users/bhe2/sw/miniconda3/bin/python script/format_cd-hit_output.py output/cd-hit/20210718-CD-hit-0.6/1626636351.fas.1.clstr.sorted output/cd-hit/formatted-cd-hit-0.6.tsv
 ```
@@ -668,13 +696,13 @@ To determine if the extra clusters identified with the 85% threshold is real, I 
 
 : **Table.** Determine the orthology of the cluster leaders using the two thresholds
 
-Based on the results above, we will manually update the `cdhit` table
+3. Based on the results above, we will manually update the `cdhit` table
 
 ```{r}
 write_tsv(cdhit, file = "output/cd-hit/20210719-cdhit-cluster-for-manual-editing.tsv")
 ```
 
-Then load the updated table and merge the information to produce the final candidate table. Only the leaders (longest representative in each cluster) are shown below.
+4. Then load the updated table and merge the information to produce the final candidate table.Only the leaders (longest representative in each cluster) are shown below.
 ```{r}
 cdhit1 <- read_tsv("output/cd-hit/20210719-cdhit-cluster-for-manually-edited.tsv", col_types = cols()) %>% 
   left_join(select(seqInfo, id = name, length), by = "id") %>% 
@@ -690,41 +718,67 @@ cdhit1 <- cdhit1 %>%
   mutate(cluster = seq_along(leader)) %>% 
   right_join(cdhit1, by = c("leader", "leader.len")) %>%
   select(cluster, n, leader, leader.len, id, identity, length, is.leader)
+```
+
+5. We will merge the cluster information with other sequence features
+```{r}
+# calculate the per sequence repeat content and add to the candidates list
+tmp <- repeats %>% 
+  mutate(len = end - start + 1) %>% 
+  group_by(identifier) %>% 
+  summarize(perc = round(sum(len/seqLength),3)) %>% 
+  rename(name = identifier, repeats = perc)
 
 candidates <- filter3 %>% 
   filter(str_sub(group,1,3) == "CWP") %>% 
-  left_join(select(cdhit1, name = id, cluster, n, is.leader), by = "name") %>% 
-  mutate(`Ser/Thr` = round(ST.prot,2)) %>% 
-  select(-ST.prot, -Hil_family, -cell_wall) %>% 
+  rename(ST.win = ST.window.max) %>% 
+  left_join(tmp, by = "name") %>% 
+  replace_na(list(repeats = 0)) %>% 
+  left_join(select(cdhit1, name = id, cluster, cluster.size = n, is.leader), by = "name") %>% 
+  select(-Hil_family, -cell_wall) %>% 
   arrange(cluster)
-
-candidates %>% filter(is.leader) %>% select(-pfam_domains, pfam_domains)
 ```
+
+6. Count the number of leaders in each group
+```{r}
+candidates %>% filter(is.leader) %>% count(group)
+```
+
+7. Show their sequence features for the CWP long and CWP short groups separately
+
+```{r}
+cwp.long <- candidates %>% filter(is.leader, group == "CWP long") %>% select(-group, -is.leader, -pfam_domains, pfam_domains)
+cwp.short <- candidates %>% filter(is.leader, group == "CWP short") %>% select(-group, -is.leader, -pfam_domains, pfam_domains)
+cat("CWP long")
+cwp.long
+cat("CWP short")
+cwp.short
+```
+    
 **_Discussion_**
 
-1. In the table above, rows 1, 3 and 4, along with XP_028893057, which is not in the candidates list because it misses the C-terminal GPI-anchor sequence (this is a partial mRNA missing the 3' portion), are the only ones containing the "GVVIVT" sequence (see README.md in this folder). They all have the GLEYA domain in the N-terminus, and had very similar central domain repeat units as the Hil1/2 protein.
+1. In the first table above, rows 1, 3 and 4, along with XP_028893057, which is not in the candidates list because it misses the C-terminal GPI-anchor sequence (this is a partial mRNA missing the 3' portion), are the only ones containing the "GVVIVT" sequence (see README.md in this folder). They all have the GLEYA domain in the N-terminus, and had very similar central domain repeat units as the Hil1/2 protein.
 1. Rows 2, 5 and 6 all have the Candida_ALS_N domain, and they are the ALS family members.
 1. Examining the N-terminal Pfam domains among the rest candidate revealed Flo11, Asp, PLA2_B, CFEM, Glyco_hydro_72, SRP1_tIP1 and KRE1. Many of these domains have connections to adhesion.
 
-## Tandem repeats
-We didn't want to perform the tandem repeat analysis on >20,000 proteins. Now that we have narrowed the list down to a much more manageable one, the code below will perform XSTREAM analysis on the group of candidate proteins identified above.
-```{bash}
-cd script
-sh xstream.sh ../data/20210718-cwp-proteins.faa cwp-proteins ../output/tandem-repeats
-cd ..
-```
+8. Write the candidates info to files
 ```{r}
-repeats <- read_tsv("output/tandem-repeats/XSTREAM_cwp-proteins_i0.7_g3_m5_L15_chart.tsv", col_types = cols())
+candidates %>% 
+  filter(is.leader) %>% 
+  select(-is.leader, -pfam_domains, pfam_domains) %>% 
+  relocate(group, .after = name) %>% 
+  write_tsv(file = "output/Rmd-out/20210722-candidate-leaders-seqinfo.tsv")
 ```
+
 
 ## Schematic plot for leaders
 The goal is to create a domain schematic plot for all the leader proteins. The desired plot will include the following features: SignalP, GPI-anchor, any pfam domain (except for the Hyr1, Flocculin_t3 and Candida_ALS repeat domains), tandem repeats as identified by xstream, and the plot should be ordered by protein length from large to small.
 
-**Update 2021-07-20 [HB]** I decide to remove the clusters whose leader protein length is less than 100 a.a. This helps to shorten the list, making the plot more readable, and the four proteins removed are spectaculously uninteresting (no pfam domain, no tandem repeats, etc.)
+**Update 2021-07-20 [HB]** I decide to remove the clusters whose leader protein length is less than 200 a.a. This helps to shorten the list, making the plot more readable.
 
 ```{r}
 # get the ids to plot
-id.to.plot <- candidates %>% filter(is.leader, length >= 100) %>% pull(name)
+id.to.plot <- candidates %>% filter(is.leader, length >= 200) %>% pull(name)
 
 # we will be building the plot in layers: 1) whole protein (grey); 2) tandem repeats; 3) pfam domains; 4) signalp and pred.gpi; 5) if possible, tango hits
 # the relevant data can be assembled separately
@@ -732,13 +786,14 @@ id.to.plot <- candidates %>% filter(is.leader, length >= 100) %>% pull(name)
 df.whole <- candidates %>% 
   filter(name %in% id.to.plot) %>% 
   mutate(start = 1, end = length, feature = "whole protein",
-         name = ordered(name, levels = id.to.plot)) %>% 
+         name = ordered(name, levels = rev(id.to.plot))) %>% 
   select(name, feature, start, end, group)
 
 df.repeats <- repeats %>% 
   mutate(feature = paste("TR", type, "-")) %>% 
-  select(name = identifier, feature, start, end, period, type, copyN, consensus_nogap, consensus_error) %>% 
-  filter(name %in% id.to.plot)
+  select(name = identifier, feature, start, end) %>% 
+  filter(name %in% id.to.plot) %>% 
+  left_join(select(df.whole, name, group), by = "name")
 
 df.pfam <- hmmscan_pfam %>% 
   filter(!outcompeted,  # remove lower-scored overlapping domains
@@ -746,36 +801,41 @@ df.pfam <- hmmscan_pfam %>%
   mutate(name = str_sub(seq_id, 2), # remove > from seq.id
          feature = paste0(hmm_name, " (", gsub("\\.[0-9]", "", hmm_acc), ")")) %>% # feature name
   filter(name %in% id.to.plot) %>% 
-  select(name, feature, start = envelope_start, end = envelope_end)
+  left_join(select(df.whole, name, group), by = "name") %>% 
+  select(name, feature, start = envelope_start, end = envelope_end, group)
 
 df.signalp <- signalp5 %>% 
   filter(id %in% id.to.plot) %>% 
   mutate(feature = "SignalP") %>% 
-  select(name = id, start, end)
+  select(name = id, start, end) %>% 
+  left_join(select(df.whole, name, group), by = "name")
 
 df.gpi <- pred.gpi %>% 
   filter(name %in% id.to.plot, is.gpi) %>% 
   mutate(feature = "GPI-anchor") %>% 
-  select(name, feature, start = cleavePos, end = length)
+  select(name, feature, start = cleavePos, end = length) %>% 
+  left_join(select(df.whole, name, group), by = "name")
 
 df.tango <- tango.res.df1 %>% 
   filter(id %in% id.to.plot) %>% 
   mutate(feature = "tango") %>% 
-  select(name = id, feature, start, end, median, seq)
+  select(name = id, feature, start, end, median, seq) %>% 
+  left_join(select(df.whole, name, group), by = "name")
 ```
 
 Build the plot
-```{r, fig.height=6.5, fig.width=5}
+```{r, fig.height=5.4, fig.width=7.2}
 # protein backbone
 p0 <- ggplot(df.whole, aes(x = name, y = start, xend = name, yend = end)) + 
   geom_hline(yintercept = 500, color = "grey80", size = 0.2) + # add a visual divider to distinguish between long and short
-  geom_segment(color = "grey", size = 2)
+  geom_segment(color = "grey80", size = 2)
 # tandem repeats
-p1 <- geom_segment(data = df.repeats, aes(size = "Tandem Repeats"), color = "orange4", alpha = 0.7)
+p1 <- geom_segment(data = df.repeats, aes(size = "Tandem Repeats"), color = "orange4", alpha = 0.5)
 
 # pfam
 require(RColorBrewer)
-feature.col <- colorRampPalette(brewer.pal(12, "Paired")[-12])(length(unique(df.pfam$feature))) # define the colors
+feature.col <- c(brewer.pal(12, "Paired")[c(9,2,4,3,5,7,11,8)], brewer.pal(8, "Dark2")[c(2,8,3,4,6)], "skyblue")
+#(length(unique(df.pfam$feature))) # define the colors
 p2 <- geom_segment(data = df.pfam, aes(color = feature), size = 2)
 
 # signalp and gpi
@@ -783,25 +843,26 @@ p3 <- geom_segment(data = df.signalp, aes(size = "SignalP"), color = "#e31a1c")
 p4 <- geom_segment(data = df.gpi, aes(size = "GPI-anchor"), color = "#6a3d9a")
 
 # tango
-p5 <- geom_segment(data = df.tango, aes(y = start-1,  yend = end + 1, alpha = median),
-                   position = position_nudge(x = -0.4, y = 0), color = "darkred", size = 1)
+p5 <- geom_segment(data = df.tango, aes(y = start,  yend = end + 1, alpha = median),
+                   position = position_nudge(x = -0.42, y = 0), color = "darkred", size = .8)
 
 # plot
 p0 + p1 + p2 + p3 + p4 + p5 + coord_flip() + 
+  #facet_wrap(~group, scales = "free_y") +
   scale_color_manual(values = c(feature.col)) + 
   scale_size_manual(
     "Other features", values=rep(2,3),
-    guide=guide_legend(override.aes = list(colour=c("#6a3d9a", "#e31a1c", "orange4")))
+    guide=guide_legend(override.aes = list(colour=c("#6a3d9a", "#e31a1c", alpha("orange4",.5))))
   ) +
   guides(alpha = "none") +
-  scale_y_continuous(breaks = seq(0,2500,500)) +
+  scale_y_continuous(breaks = seq(0,2500,500), expand = expansion(mult = 0.02)) +
   theme_classic(base_size = 12) + background_grid(major = "x") +
-  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
-        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
-        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
-        panel.background = element_rect(fill = alpha("lightblue",0.5)),
-        legend.position = c(0.7,0.55)) +
+  theme(axis.text.y = element_text(size = 5), axis.title.y = element_blank(),
+        axis.line.y = element_blank(),# axis.ticks.y = element_blank(),
+        #axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
+        legend.position = c(0.65, 0.45), legend.box = "horizontal",
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
   labs(y = "Position in sequence", x = "Sequences", color = "Pfam domains")
-ggsave("output/figure/20210720-cwp-candidates-domain-schematic.png", width = 5, height = 6.5)
+ggsave("output/figure/20210720-cwp-candidates-domain-schematic.png", width = 7.2, height = 5.4)
 ```
 
