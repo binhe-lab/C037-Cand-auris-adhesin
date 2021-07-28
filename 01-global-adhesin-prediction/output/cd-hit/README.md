@@ -9,3 +9,6 @@ To reformat the output, I wrote a script `../../script/format_cd-hit_output.py` 
 python format_cd-hit_output.py ../output/cd-hit/20210718-CD-hit-0.85/1626635903.fas.1.clstr.sorted ../output/cd-hit/formatted-cd-hit-0.85.tsv
 python format_cd-hit_output.py ../output/cd-hit/20210718-CD-hit-0.6/1626636351.fas.1.clstr.sorted ../output/cd-hit/formatted-cd-hit-0.6.tsv
 ```
+
+**Update 2021-07-27 [HB]** updated the list of candidate proteins, rerun the analysis.
+Processed as above and overwrote the formatted files

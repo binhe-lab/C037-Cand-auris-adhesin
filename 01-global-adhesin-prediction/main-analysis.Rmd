@@ -101,16 +101,20 @@ seqInfo <- left_join(seqInfo, select(signalp5, name = id, prob), by = c("name" =
 
 > **New problem** B11243 and B11245 are identical. Because B11245 is assembled to the chromosome level, I will retain it and remove B11243 from the results.
 
-## PredGPI
+## PredGPI {#predgpi}
 
 Following Bin's method, I used PredGPI to predict GPI anchors. For PredGPI, the maximum number of sequences is 500. To split the file I used the command split Caurisfasta.txt -l 1000 in my Ubuntu instance, which made 55 new files. The output includes name \| FPrate \| most likely position and the sequence for each. GPI anchor is "highly probable" when FPrate \< 0.001, "probable" when 0.001 \< FPrate \< 0.005, "lowly probable" when 0.005 \< FPrate \< 0.01. Retain only header lines with the command grep -h "\>" GPIPE\* \> PredGPIResults.txt.
 
 This was done using the file that contained B11243. To remove duplicate results, I used the command grep "\>" PredGPIResults.txt \| sort -u \> PredGPIResults2.txt. Then I renamed PredGPIResults2 PredGPIResults. It has 21772 proteins.
 
-Bin's code:
+**Update 2021-07-27 [HB]**
 
+It turns out that GPI-anchored proteins can be divided into two categories: those that are retained in the plasma membrane and those that are subsequently released and then covalently linked to the cell wall components (β-1,6-glucan). The latter, named cell wall proteins (CWP) account for the majority of the GPI-anchored proteins while the former, named plasma membrane proteins (PMP) are the minority. Based on Caro _et al._ 1997 (PMID: 9434352), the PMPs usually have a dibasic motif prior to (within 12 residues from) the cleavage site, or ω-site. Frieman and Cormack 2004 (PMID: 15470092) further showed that an elevated Ser/Thr frequency in the body of the protein can override the dibasic motif signal. In particular, they empirically showed that a group of known PMPs with dibasic motifs all have Ser/Thr frequencies lower than 30%, while the CWPs don't have the dibasic motifs and 28/41 (68%) have a Ser/Thr frequency > 30%.
+
+To remove the PMPs from consideration (from all I can glean from the literature, adhesins are CWPs and not PMPs), I determined the presence of a dibasic motif ("KK/RR/KR/RK") in the 12 residues immediately prior to the ω-site, using a custom Python script (realized later that I could have used the `pred.gpi` tibble and `seqinr` package to do the same thing right here). Below I'll read that in and merge it into the `pred.gpi` table.
 ```{r gpi}
 tmp <- read_delim("output/PredGPIResults.txt", delim = "|", col_names = c("name","fp","omega"), col_types = cols())
+tmp1 <- read_tsv("output/PredGPI_dibasic.tsv", col_types = cols())
 pred.gpi <- tmp %>% 
   mutate(name = str_sub(name,2,-2), # remove > and the trailing space
          fp = as.numeric(str_sub(fp, 9, -2)), # extract the numeric part
@@ -119,12 +123,13 @@ pred.gpi <- tmp %>%
          cleaveRes = str_sub(omega, 1, 1),
          cleavePos = as.integer(str_sub(omega, 3))
          ) %>% 
-  left_join(select(seqInfo, name, length), by = c("name" = "name"))
+  left_join(tmp1, by = "name")
 
 # remove the column if it already exists
 if("pred.gpi" %in% names(seqInfo))
-  seqInfo <- select(seqInfo, -pred.gpi)
-seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi), by = c("name"="name"))
+  seqInfo <- select(seqInfo, -pred.gpi, -dibasic)
+seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi, dibasic), by = c("name"="name")) %>% 
+  relocate(pred.gpi, dibasic, .after = signalp)
 ```
 
 ## hmmscan for pfam domains
@@ -387,7 +392,7 @@ Three metrics for the by protein tango results can be number of pat0 (GVVIVTT) s
 
 **Update 2021-07-15 [HB]** The code below is no longer included because the above analysese have shown that GVVIVTT and its variants are highly specific to the Hil family, which appears to be an outlier in terms of TANGO hits per protein in the entire proteome. In predicting additional adhesins, we will only look at the total number of TANGO hits.
 
-```{r eval=FALSE, include=FALSE}
+```r
 # core group, must be G-[VI]x4-TT
 pat0 <- "G[VI]{4}TT"
 # version 1, requires G-[ALVI][VI][LVI][VI]-(either end of string or at least 1 suitable residue) 
@@ -466,12 +471,12 @@ Similar as above, we see that the combined Ser/Thr frequency appear to better di
 
 ```{r}
 #remove columns if present
-if("ST.protein" %in% names(seqInfo))
-  seqInfo <- select(seqInfo, -ST.prot -ST.window.max)
+if("ST.prot" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -ST.prot, -ST.window.max)
 
 #join maximums back into seqInfo
 tmp <- ST.protein %>% 
-  mutate(ST.prot = (Ser+Thr)/length) %>% 
+  mutate(ST.prot = round((Ser+Thr)/length, 3)) %>% 
   select(name = ID, ST.prot) %>% 
   left_join(ST.window %>% filter(residue == "ST") %>% select(name = id, ST.window.max = max), by = "name") %>% 
   # for proteins shorter than 100 a.a., the sliding window estimate would be NA. replace it with whole protein estimate in ST.protein
@@ -484,9 +489,8 @@ seqInfo <- seqInfo %>% left_join(tmp, by = "name")
 Write the `seqInfo` to a file to be included as supplementary data
 ```{r}
 seqInfo %>% 
-  mutate(ST.protein = round(ST.prot, 2), ST.prot = NULL) %>% 
   select(-pfam_domains, pfam_domains) %>% 
-  write_tsv(file = "output/Rmd-out/seqInfo_table.txt.gz")
+  write_tsv(file = "output/Rmd-out/seqInfo_table_all.tsv")
 ```
 
 # Prediction
@@ -496,33 +500,31 @@ Here we try to use the sequence properties collected above to identify additiona
 ## Cell wall proteins
 
 How many proteins are likely to be GPI-anchored cell wall proteins?
-
 ```{r}
 # Load function
 # reference: http://rstudio-pubs-static.s3.amazonaws.com/6975_c4943349b6174f448104a5513fed59a9.html
 source("http://pcwww.liv.ac.uk/~william/R/crosstab.r")
 
 crosstab(seqInfo, row.vars = "signalp", col.vars = "pred.gpi", type = c("f", "t"), dec.places = 1, addmargins = FALSE)
-# summarize the number of proteins passing the SignalP and Pred.GPI filters
-# cwp <- with(seqInfo, table(signalp, pred.gpi, dnn = c("SignalP", "Pred-GPI")))
-# cat("Count")
-# print(cwp)
-# cat("Percentage")
-# print(round(cwp / sum(cwp), 3))
 ```
 
 We see that only a very small fraction (1.5%) of the proteome pass both the SignalP and PredGPI tests. By comparison, all eight *C. auris* Hil proteins pass both tests, and the vast majority of Hil homologs pass both tests as well. So far this is the most stringent (aka effective) filter to reduce the number of candidate proteins.
 
+**Update 2021-07-27 [HB]** Following the discussion on GPI-CWP vs GPI-PMP (see notes in the [PredGPI](#predgpi) section above), we will additionally test whether proteins with Signal Peptide and GPI-anchor also have low (<30%) Ser/Thr frequency and the presence of a dibasic motif
+
 ```{r}
 filter1 <- seqInfo %>% 
   mutate(`Hil_family` = ifelse(isHIL, "Yes", "No"), 
-         `cell_wall` = ifelse(signalp & pred.gpi, "Yes", "No")) %>% 
+         `GPI` = ifelse(signalp & pred.gpi, ifelse(ST.prot < 0.3 & !is.na(dibasic), "PMP", "CWP"), 'No'),
+         `GPI` = factor(GPI, levels = c("No", "CWP", "PMP"))) %>% 
   select(-signalp, -pred.gpi, -isHIL)
 
-crosstab(filter1, row.vars = "cell_wall", col.vars = "Hil_family", addmargins = FALSE)
+crosstab(filter1, row.vars = "GPI", col.vars = "Hil_family", addmargins = FALSE)
 ```
 
-The two proteins that dropped out `r filter1 %>% filter(cell_wall == "No", Hil_family == "Yes")` are both in the clade IV strain B11245 and appear to be missing the C-terminal sequence, hence failed the PredGPI test.
+The two proteins that dropped out `r filter1 %>% filter(GPI == "No", Hil_family == "Yes")` are both in the clade IV strain B11245 and appear to be missing the C-terminal sequence, hence failed the PredGPI test.
+
+And the PMPs are shown below `r filter1 %>% filter(GPI == "PMP")`
 
 ## Protein length
 Below we show the distribution of protein length in the proteome.
@@ -540,13 +542,24 @@ We classify the CWP hits into two groups based on their length. Those with more 
 ```{r}
 filter2 <- filter1 %>% 
   mutate(Len = ifelse(length >= 500, ">=500", "<500"),
-         group = ifelse(Hil_family == "Yes",              # group 1: Hil family
-                        "Hil", ifelse(cell_wall == "Yes", # group 2&3: cell wall long / short
-                                      ifelse(length >=500, "CWP long", "CWP short"), 
-                                      "Others")),         # group 4: Others
-         group = factor(group, levels = c("Hil", "CWP long", "CWP short", "Others")))
+         # group1 is the old definition
+         # group1 = ifelse(Hil_family == "Yes",             # group 1: Hil family
+         #                "Hil", ifelse(GPI != "No",        # group 2&3: cell wall long / short
+         #                              ifelse(length >=500, "CWP long", "CWP short"), 
+         #                              "Others")),         # group 4: Others
+         # group1 = factor(group1, levels = c("Hil", "CWP long", "CWP short", "Others")),
+         # group is the new definition
+         GPI = as.character(GPI), # necessary for the case_when() statements
+         group = case_when(
+           Hil_family == "Yes" ~ "Hil",
+           GPI == "CWP" & length >= 500 ~ "CWP long",
+           GPI == "CWP" & length < 500  ~ "CWP short",
+           GPI == "PMP" ~ "PMP",
+           GPI == "No" ~ "Others",
+         ),
+         group = factor(group, levels = c("Hil", "CWP long", "CWP short", "PMP", "Others")))
 
-crosstab(filter2, row.vars = c("cell_wall", "Len"), col.vars = "Hil_family", type = c("f", "c"), dec.places = 0, addmargins = FALSE)
+crosstab(filter2, row.vars = "group")
 ```
 
 ## Ser/Thr frequency
@@ -571,21 +584,19 @@ p
 ggsave(file = "output/figure/20210721-ST-boxplot-compare-cwp-to-rest.png", plot = p + theme(legend.position = "bottom"), width = 5, height = 4.5)
 ```
 
-```{r}
-ST.th <- c("ST.protein" = 0.18, "ST.window" = 0.28)
-ST.th
-```
-
 Seems like the two measures behave very similarly. Let's see how they compare by applying the above cutoffs.
 
 ```{r}
+ST.th = c("ST.protein" = 0.15, "ST.window" = 0.25)
+cat("Thresholds for whole protein or sliding window frequencies of Ser/Thr")
+print(ST.th)
 filter2 %>% 
   mutate(`S/T protein` = ST.prot > ST.th["ST.protein"],
          `S/T max window` = ST.window.max > ST.th["ST.window"]) %>% 
   crosstab(row.vars = c("S/T protein", "S/T max window"), col.vars = "group", addmargins = FALSE)
 ```
 
-Based on the above, we will apply a third filter of S/T frequency in the whole protein \> 18%, which is slightly more inclusive (liberal) than the `ST.window > 0.28` filter.
+Based on the above, we will apply a third filter of S/T frequency in the whole protein \> 15%, which is roughly the lower cutoff for the group of CWPs in the Caro _et al._ 1997 paper.
 
 ```{r}
 # ref: https://stackoverflow.com/questions/34096162/dplyr-mutate-replace-several-columns-on-a-subset-of-rows
@@ -596,17 +607,23 @@ mutate_cond <- function(.data, condition, ..., envir = parent.frame()) {
 }
 
 filter3 <- filter2 %>%
-  mutate(`S/T protein` = ST.prot > 0.18, ST.prot = round(ST.prot, 2)) %>% 
+  mutate(`S/T protein` = ST.prot > 0.15) %>% 
   mutate_cond(str_sub(group,1,3) == "CWP" & !`S/T protein`, group = "Others") %>% 
   select(-Len, -`S/T protein`)
+
+cat("Genes removed due to the S/T cutoff")
+filter2 %>% filter(group %in% c("CWP long", "CWP short"), ST.prot <= 0.15)
 ```
+We can see that all the proteins that fall out are within the "CWP short" category, which are less likely to function as adhesins to begin with. Thus this cutoff could help reduce the number of proteins we have to manually look at without losing many potential hits.
+
+After this step we have a total of `r with(filter3, sum(str_sub(group, 1, 3) == "CWP"))` proteins left.
 
 ## TANGO hits
 
 ```{r}
 p <- filter3 %>% 
   ggplot(aes(x = n.tango, fill = group)) + geom_histogram(binwidth = 1) +
-  facet_wrap(~group, nrow = 4, scales = "free_y") +
+  facet_wrap(~group, nrow = 5, scales = "free_y") +
   scale_y_continuous(n.breaks = 3) +
   scale_fill_viridis_d() +
   xlab("# of strong TANGO hits") + theme_cowplot() + panel_border()
@@ -614,7 +631,7 @@ p
 ggsave("output/figure/20210721-tango-hits-distribution-compare.png", plot = p, width = 6, height = 4.5)
 ```
 
-As we already showed before, the number and spacing of strong TANGO hits is a divisive feature that separate the Hil family proteins in *C. auris* into two groups -- those that are longer than 1000 a.a. have a lot of them and have them regularly spaced, while the four shorter members have few. We see a similar picture when we look at the candidate adhesin proteins in our analysis up to this point: the cell-wall protein long group showed above average number of TANGO hits while the short ones have very few. I predict if we quantified the amount of tandem repeats, we would see a correlation between length, tandem repeat content and \# of strong TANGO hits.
+As we already showed before, the number and spacing of strong TANGO hits is a divisive feature that separate the Hil family proteins in *C. auris* into two groups -- those that are longer than 1000 a.a. have a lot of them and have them regularly spaced, while the four shorter members have few. We see a similar picture when we look at the candidate adhesin proteins in our analysis up to this point: the cell-wall protein long group showed above average number of TANGO hits while the short ones have very few. The PMPs, despite most of them being shorter than 500 amino acids, actually have relatively high number of TANGO hits.
 
 ## Tandem repeats
 We didn't want to perform the tandem repeat analysis on >20,000 proteins. Now that we have narrowed the list down to a much more manageable one, the code below will perform XSTREAM analysis on the group of candidate proteins identified above.
@@ -652,8 +669,8 @@ Now that we settled on the "CWP long" and "CWP short" lists, we would like to vi
 2.  Reformat the CD-hit output
 
 ``` bash
-/Users/bhe2/sw/miniconda3/bin/python script/format_cd-hit_output.py output/cd-hit/20210718-CD-hit-0.85/1626635903.fas.1.clstr.sorted output/cd-hit/formatted-cd-hit-0.85.tsv
-/Users/bhe2/sw/miniconda3/bin/python script/format_cd-hit_output.py output/cd-hit/20210718-CD-hit-0.6/1626636351.fas.1.clstr.sorted output/cd-hit/formatted-cd-hit-0.6.tsv
+/Users/bhe2/sw/miniconda3/bin/python script/format_cd-hit_output.py output/cd-hit/20210727-CD-hit-0.85/1627438838.fas.1.clstr.sorted output/cd-hit/formatted-cd-hit-0.85.tsv
+/Users/bhe2/sw/miniconda3/bin/python script/format_cd-hit_output.py output/cd-hit/20210727-CD-hit-0.6/1627439988.fas.1.clstr.sorted output/cd-hit/formatted-cd-hit-0.6.tsv
 ```
 
 ```{r}

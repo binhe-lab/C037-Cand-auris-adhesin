@@ -146,3 +146,7 @@ The CFEM (Common in several fungal extracellular matrix) domain is a fungal-spec
 *pfam*
 
 a widespread group of enzymes that hydrolyse the glycosidic bond between two or more carbohydrates, or between a carbohydrate and a non-carbohydrate moiety.
+
+## 2021-07-26 Discussion and reading notes
+
+The adhesin group met today. Both Jan and 
