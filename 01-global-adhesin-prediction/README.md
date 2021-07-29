@@ -48,6 +48,10 @@ From this table our guess is that except for QEO22553.1, the others are probably
 
 _red color indicates highly conserved columns while blue color indicates less conserved ones._
 
+**Update 2021-07-28 [HB]** It turns out that there were many chromosomal translocation events in the clade II strains, including in B11220. As a result, the Chr3 region that contains QEO22553 (1.1-2.1Mb) actually maps to the 1.0-2.0 Mb region on chromosome 2 of B8441. Therefore all four genes are likely orthologs of each other.
+
+![chromosomal translocation in B11220](output/cd-hit/img/20210728-translocation-affects-synteny-in-clustering.png) 
+
 We then used PIS58185.1 as query and searched against the non-redundant proteome database with blastsp. The result is stored in `output/PIS58185/20210709-PIS58185-blastp-in-cauris.txt`. Below is a graphic annotation of the search result:
 ![blastp search for PIS58185 in _C. auris_](output/PIS58185/20210709-PIS58185-blastp-in-cauris.png)
 

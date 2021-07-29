@@ -700,28 +700,33 @@ cdhit %>% group_by(cluster.lo) %>% filter(length(unique(cluster.hi)) > 1, leader
 
 To determine if the extra clusters identified with the 85% threshold is real, I used blastp (ncbi server) to align each of the additional leader sequence to the shared leader sequence identified with the 60% threshold. When necessary, I also checked the protein's chromosomal location to determine if they indeed come from different loci.
 
-| leader.lo      | leader.hi  | %qcov | %ident | len.lo | len.hi | chromosome.lo                | chromosome.hi                    | conclusion       | comments                                    |
-|:---------------|:-----------|:------|:-------|:-------|:-------|:-----------------------------|:---------------------------------|:-----------------|:--------------------------------------------|
-| PIS51179.1     | PIS54714.1 | 83%   | 70%    | 91     | 82     | chr1                         | chr7                             | different        | both in B8441                               |
-| PIS48171.1     | PIS48170.1 | 100%  | 67%    | 176    | 166    | chr6:40562-41092             | chr6:39307-39807                 | different        | tandem duplicates                           |
-| PIS48171.1     | PIS48172.1 | 100%  | 66%    | 176    | 173    | chr6:40562-41092             | chr6:41619-42140                 | different        | tandem duplicates                           |
-| PIS54802.1     | QEL63474.1 | 100%  | 93%    | 861    | 834    | chr7:767294-769879           | chr7:760044-760968,761039-762618 | orthologs        | B8441 and B11245                            |
-| PIS56912.1     | QEO20379.1 | NA    | NA     | 765    | 747    | chr3,scaffold5:864995-867292 | chr1:2549461-2551704             | likely orthologs | B8441 and B11220                            |
-| QEL58520.1     | PIS51941.1 | 97%   | 88%    | 457    | 440    | chr1                         | chr1,scaffold1                   | orthologs        | B11245 and B8441                            |
-| XP_028890844.1 | QEO21242.1 | 100%  | 85%    | 790    | 755    | chr1:3100225-3102597         | chr2:1361822-1364089             | different        | B11221 and B11220, on different chromosomes |
-| PIS58185.1     | QEO22553.1 | 100%  | 94%    | 2608   | 970    | chr2                         | chr3                             | different        | see README.md in this folder                |
+| leader.lo      | leader.hi  | %qcov | %ident | len.lo | len.hi | chromosome.lo                | chromosome.hi                    | conclusion       | comments                       |
+|:---------------|:-----------|:------|:-------|:-------|:-------|:-----------------------------|:---------------------------------|:-----------------|:-------------------------------|
+| PIS51179.1     | PIS54714.1 | 83%   | 70%    | 91     | 82     | chr1                         | chr7                             | different        | both in B8441                  |
+| PIS48171.1     | PIS48170.1 | 100%  | 67%    | 176    | 166    | chr6:40562-41092             | chr6:39307-39807                 | different        | tandem duplicates              |
+| PIS48171.1     | PIS48172.1 | 100%  | 66%    | 176    | 173    | chr6:40562-41092             | chr6:41619-42140                 | different        | tandem duplicates              |
+| PIS54802.1     | QEL63474.1 | 100%  | 93%    | 861    | 834    | chr7:767294-769879           | chr7:760044-760968,761039-762618 | orthologs        | B8441 and B11245               |
+| PIS56912.1     | QEO20379.1 | NA    | NA     | 765    | 747    | chr3,scaffold5:864995-867292 | chr1:2549461-2551704             | likely orthologs | B8441 and B11220               |
+| XP_028890844.1 | QEO21242.1 | 100%  | 85%    | 790    | 755    | chr1:3100225-3102597         | chr2:1361822-1364089             | likely orthologs | B11221 and B11220 <sup>1</sup> |
+| QEL58520.1     | PIS51941.1 | 97%   | 88%    | 457    | 440    | chr1                         | chr1,scaffold1                   | orthologs        | B11245 and B8441               |
+| PIS58185.1     | QEO22553.1 | 100%  | 94%    | 2608   | 970    | chr2                         | chr3                             | orthologs        | B8441 and B11220 <sup>1</sup>  |
 
 : **Table.** Determine the orthology of the cluster leaders using the two thresholds
 
+<sup>1</sup> According to Muñoz _et al._ 2021, there is a large scale translocation between chromosome 1 and 2 in the clade II strains and the chromosome 1 location for XP_028890844 is within the translocated region and matches the coordinates of QEO21242 in the translocated region in its chromosome 2.
+![translocation between chr1 and 2 in B11220](output/cd-hit/img/20210728-translocation-affects-synteny-in-clustering.png)
 3. Based on the results above, we will manually update the `cdhit` table
 
 ```{r}
-write_tsv(cdhit, file = "output/cd-hit/20210719-cdhit-cluster-for-manual-editing.tsv")
+write_tsv(cdhit, file = "output/cd-hit/20210727-cdhit-cluster-for-manual-editing.tsv")
 ```
+In addition to the changes mentioned in the table above, I also manually merged QEO60526 into the PIS58185 cluster (see README.md in this folder for the rationale); I merged QEO21241 from B11220 to the PIS51941 cluster. My goal here is to manually check the single gene clusters and determine if they actually belong to an existing cluster. All three remaining single gene clusters cannot be merged to any existing cluster, because their orthologs (by BLASTP) are either missing the signal peptide and/or GPI-anchor.
+
+Lastly, CD-hit by default chooses the longest protein in a cluster as the representative. I manually changed the representative (aka leader) sequence to the B8441 protein if one exists. This way the final list will be mostly represented by sequences from a single strain (with some exceptions).
 
 4. Then load the updated table and merge the information to produce the final candidate table.Only the leaders (longest representative in each cluster) are shown below.
 ```{r}
-cdhit1 <- read_tsv("output/cd-hit/20210719-cdhit-cluster-for-manually-edited.tsv", col_types = cols()) %>% 
+cdhit1 <- read_tsv("output/cd-hit/20210727-cdhit-cluster-manually-edited.tsv", col_types = cols()) %>% 
   left_join(select(seqInfo, id = name, length), by = "id") %>% 
   select(-ends_with(c(".hi",".lo"))) %>% 
   group_by(leader) %>% 
@@ -734,7 +739,7 @@ cdhit1 <- cdhit1 %>%
   arrange(desc(leader.len)) %>% 
   mutate(cluster = seq_along(leader)) %>% 
   right_join(cdhit1, by = c("leader", "leader.len")) %>%
-  select(cluster, n, leader, leader.len, id, identity, length, is.leader)
+  select(cluster, n, leader, leader.len, id, length, is.leader)
 ```
 
 5. We will merge the cluster information with other sequence features
@@ -752,7 +757,7 @@ candidates <- filter3 %>%
   left_join(tmp, by = "name") %>% 
   replace_na(list(repeats = 0)) %>% 
   left_join(select(cdhit1, name = id, cluster, cluster.size = n, is.leader), by = "name") %>% 
-  select(-Hil_family, -cell_wall) %>% 
+  select(-Hil_family) %>% 
   arrange(cluster)
 ```
 
@@ -774,9 +779,9 @@ cwp.short
     
 **_Discussion_**
 
-1. In the first table above, rows 1, 3 and 4, along with XP_028893057, which is not in the candidates list because it misses the C-terminal GPI-anchor sequence (this is a partial mRNA missing the 3' portion), are the only ones containing the "GVVIVT" sequence (see README.md in this folder). They all have the GLEYA domain in the N-terminus, and had very similar central domain repeat units as the Hil1/2 protein.
-1. Rows 2, 5 and 6 all have the Candida_ALS_N domain, and they are the ALS family members.
-1. Examining the N-terminal Pfam domains among the rest candidate revealed Flo11, Asp, PLA2_B, CFEM, Glyco_hydro_72, SRP1_tIP1 and KRE1. Many of these domains have connections to adhesion.
+1. In the first table above, cluster 1 along with XP_028893057, which is not in the candidates list because it misses the C-terminal GPI-anchor sequence (this is a partial mRNA missing the 3' portion), are the only ones containing the "GVVIVT" sequence (see README.md in this folder). They all have the GLEYA domain in the N-terminus, and had very similar central domain repeat units as the Hil1/2 protein.
+1. Rows 2, 3 and 4 all have the Candida_ALS_N domain, and they are the ALS family members.
+1. Examining the N-terminal Pfam domains among the rest candidate revealed Flo11, Asp, PLA2_B, CFEM, Glyco_hydro_72 and X8. Many of these domains have connections to adhesion.
 
 8. Write the candidates info to files
 ```{r}
@@ -784,18 +789,18 @@ candidates %>%
   filter(is.leader) %>% 
   select(-is.leader, -pfam_domains, pfam_domains) %>% 
   relocate(group, .after = name) %>% 
-  write_tsv(file = "output/Rmd-out/20210722-candidate-leaders-seqinfo.tsv")
+  write_tsv(file = "output/Rmd-out/20210729-candidate-leaders-seqinfo.tsv")
 ```
 
 
 ## Schematic plot for leaders
 The goal is to create a domain schematic plot for all the leader proteins. The desired plot will include the following features: SignalP, GPI-anchor, any pfam domain (except for the Hyr1, Flocculin_t3 and Candida_ALS repeat domains), tandem repeats as identified by xstream, and the plot should be ordered by protein length from large to small.
 
-**Update 2021-07-20 [HB]** I decide to remove the clusters whose leader protein length is less than 200 a.a. This helps to shorten the list, making the plot more readable.
+**Update 2021-07-20 [HB]** I decide to remove the clusters whose leader protein length is less than 195 a.a. This helps to shorten the list, making the plot more readable.
 
 ```{r}
 # get the ids to plot
-id.to.plot <- candidates %>% filter(is.leader, length >= 200) %>% pull(name)
+id.to.plot <- candidates %>% filter(is.leader, length >= 195) %>% pull(name)
 
 # we will be building the plot in layers: 1) whole protein (grey); 2) tandem repeats; 3) pfam domains; 4) signalp and pred.gpi; 5) if possible, tango hits
 # the relevant data can be assembled separately
@@ -814,7 +819,7 @@ df.repeats <- repeats %>%
 
 df.pfam <- hmmscan_pfam %>% 
   filter(!outcompeted,  # remove lower-scored overlapping domains
-         !hmm_name %in% c("Hyr1", "Candida_ALS", "Flocculin_t3")) %>% # remove two repeat domains
+         !hmm_name %in% c("Hyr1", "Candida_ALS")) %>% # remove two repeat domains , "Flocculin_t3"
   mutate(name = str_sub(seq_id, 2), # remove > from seq.id
          feature = paste0(hmm_name, " (", gsub("\\.[0-9]", "", hmm_acc), ")")) %>% # feature name
   filter(name %in% id.to.plot) %>% 
@@ -830,8 +835,8 @@ df.signalp <- signalp5 %>%
 df.gpi <- pred.gpi %>% 
   filter(name %in% id.to.plot, is.gpi) %>% 
   mutate(feature = "GPI-anchor") %>% 
-  select(name, feature, start = cleavePos, end = length) %>% 
-  left_join(select(df.whole, name, group), by = "name")
+  left_join(select(df.whole, name, group, end), by = "name") %>% 
+  select(name, feature, start = cleavePos, end, group)
 
 df.tango <- tango.res.df1 %>% 
   filter(id %in% id.to.plot) %>% 
@@ -851,7 +856,7 @@ p1 <- geom_segment(data = df.repeats, aes(size = "Tandem Repeats"), color = "ora
 
 # pfam
 require(RColorBrewer)
-feature.col <- c(brewer.pal(12, "Paired")[c(9,2,4,3,5,7,11,8)], brewer.pal(8, "Dark2")[c(2,8,3,4,6)], "skyblue")
+feature.col <- c(brewer.pal(12, "Paired")[c(9,2,4,3,5,7,11,8)], brewer.pal(8, "Dark2")[c(2,8,3,4,6)],"brown3", "navyblue", "skyblue")
 #(length(unique(df.pfam$feature))) # define the colors
 p2 <- geom_segment(data = df.pfam, aes(color = feature), size = 2)
 
@@ -882,4 +887,3 @@ p0 + p1 + p2 + p3 + p4 + p5 + coord_flip() +
   labs(y = "Position in sequence", x = "Sequences", color = "Pfam domains")
 ggsave("output/figure/20210720-cwp-candidates-domain-schematic.png", width = 7.2, height = 5.4)
 ```
-
