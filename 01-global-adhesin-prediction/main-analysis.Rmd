@@ -821,7 +821,7 @@ df.pfam <- hmmscan_pfam %>%
   filter(!outcompeted,  # remove lower-scored overlapping domains
          !hmm_name %in% c("Hyr1", "Candida_ALS")) %>% # remove two repeat domains , "Flocculin_t3"
   mutate(name = str_sub(seq_id, 2), # remove > from seq.id
-         feature = paste0(hmm_name, " (", gsub("\\.[0-9]", "", hmm_acc), ")")) %>% # feature name
+         feature = paste0(hmm_name, " (", gsub("\\.[0-9]+", "", hmm_acc), ")")) %>% # feature name
   filter(name %in% id.to.plot) %>% 
   left_join(select(df.whole, name, group), by = "name") %>% 
   select(name, feature, start = envelope_start, end = envelope_end, group)

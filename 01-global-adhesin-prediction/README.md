@@ -75,29 +75,33 @@ It appears that the first two proteins share the N-terminal domain but the latte
 
 - Read and learn about the Pfam domains present in our candidate adhesin list.
 
+  ![pfam domains](output/figure/20210720-cwp-candidates-domain-schematic.png)
+
 *Approach*
 
 - Search pfam and related databases and keep notes for each domain
 
 *Notes*
 
-| Domain         | Pfam ID                                                      | # proteins | Representative    | Function                                                     |
-| -------------- | ------------------------------------------------------------ | ---------- | ----------------- | ------------------------------------------------------------ |
-| GLEYA          | [PF10528](https://pfam.xfam.org/family/GLEYA)                | 3          | ScFlo5, CgEpa1    | Adhesion, mannose-binding                                    |
-| Candida_ALS_N  | [PF11766](https://pfam.xfam.org/family/PF11766)              | 3          | CaAls1-9          | Adhesion<sup>1</sup>                                         |
-| Collagen       | [PF01391](https://pfam.xfam.org/family/PF01391#tabview=tab0) | 1          | NA                | NA                                                           |
-| Flo11          | [PF10182](https://pfam.xfam.org/family/PF10182)              | 1          | Flo11             | homotypic binding, cell adhesion                             |
-| PLA2_B         | [PF01735](https://pfam.xfam.org/family/PLA2_B)               | 1          | CaPlb5            | GPI-anchored Phospholipase B                                 |
-| Asp            | [PF00026](https://pfam.xfam.org/family/PF00026)              | 7          | CaSap9 (aka Yps1) | GPI-anchored aspartyl protease                               |
-| CFEM           | [PF05730](https://pfam.xfam.org/family/PF05730)              | 5          | CaRbt5            | cell surface receptors or adhesins                           |
-| Glyco_hydro_72 | [PF03198](https://pfam.xfam.org/family/PF03198)              | 2          | CaPhr1            | glycosidases with a role in proper cross-linking of β-1,3- and β-1,6-glucans |
-| X8             | [PF07983](https://pfam.xfam.org/family/PF07983)              | 2          | CaPhr1            | glycolsyl hydrolase, bind carbohydrates                      |
-| Glyco_hydro_16 | [PF00722](https://pfam.xfam.org/family/PF00722)              | 2          | CaCrh11           | transglycosylase                                             |
-| Zip            | [PF02535](https://pfam.xfam.org/family/PF02535)              | 1          |                   |                                                              |
+| Domain         | Pfam ID                                         | # proteins | Representative | Relation to adhesion, function                               |
+| -------------- | ----------------------------------------------- | ---------- | -------------- | ------------------------------------------------------------ |
+| GLEYA          | [PF10528](https://pfam.xfam.org/family/GLEYA)   | 1          | ScFlo5, CgEpa1 | Yes, mannose-binding                                         |
+| Candida_ALS_N  | [PF11766](https://pfam.xfam.org/family/PF11766) | 3          | CaAls1-9       | Yes, fucose-containing glycan<sup>1</sup>                    |
+| Flo11          | [PF10182](https://pfam.xfam.org/family/PF10182) | 1          | ScFlo11        | Yes, homotypic binding, cell adhesion                        |
+| PLA2_B         | [PF01735](https://pfam.xfam.org/family/PLA2_B)  | 1          | CaPlb5         | Unclear, could release GPI-anchored proteins via Phospholipase B function |
+| Asp            | [PF00026](https://pfam.xfam.org/family/PF00026) | 7          | CaSap9         | Yes, either process other adhesins or act as one, GPI-anchored aspartyl protease |
+| CFEM           | [PF05730](https://pfam.xfam.org/family/PF05730) | 5          | CaRbt5         | Likely, haem-iron binding<sup>2</sup>, adhesion<sup>3</sup>  |
+| Glyco_hydro_72 | [PF03198](https://pfam.xfam.org/family/PF03198) | 2          | CaPhr1         | Likely, glycosidases with a role in proper cross-linking of β-1,3- and β-1,6-glucans<sup>4</sup> and adhesion<sup>5</sup> |
+| Glyco_hydro_16 | [PF00722](https://pfam.xfam.org/family/PF00722) | 2          | CaCrh11        | transglycosylase                                             |
+| Zip            | [PF02535](https://pfam.xfam.org/family/PF02535) | 1          |                |                                                              |
+| Peptidase_S8   | [PF00082](https://pfam.xfam.org/family/PF00082) | 1          | CaKex2         | Unclear, subtilisin-like serine proteases                    |
+| Peptidase_C13  | [PF01650](http://pfam.xfam.org/family/PF01650)  | 1          | ScGpi8         | Unclear, GPI transamidase, adding GPI anchors to newly synthesized proteins |
 
 1. Donohue, Dagmara S., Francesco S. Ielasi, Katty V. Y. Goossens, and Ronnie G. Willaert. “The N-Terminal Part of Als1 Protein from Candida Albicans Specifically Binds Fucose-Containing Glycans.” *Molecular Microbiology* 80, no. 6 (June 2011): 1667–79. https://doi.org/10.1111/j.1365-2958.2011.07676.x.
-2. Based on Pfam description of the protein domain being an enzyme acting on the lysophospholipids
-3. 
+2. Nasser, Lena, Ziva Weissman, Mariel Pinsky, Hadar Amartely, Hay Dvir, and Daniel Kornitzer. “Structural Basis of Haem-Iron Acquisition by Fungal Pathogens.” *Nature Microbiology* 1, no. 11 (September 12, 2016): 16156. https://doi.org/10.1038/nmicrobiol.2016.156.
+3. Zhou, Qi, Lei Yu, Sheng-Hua Ying, and Ming-Guang Feng. “Comparative Roles of Three Adhesin Genes (Adh1–3) in Insect-Pathogenic Lifecycle of Beauveria Bassiana.” *Applied Microbiology and Biotechnology* 105, no. 13 (July 1, 2021): 5491–5502. https://doi.org/10.1007/s00253-021-11420-w.
+4. Fonzi, W. A. “PHR1 and PHR2 of Candida Albicans Encode Putative Glycosidases Required for Proper Cross-Linking of Beta-1,3- and Beta-1,6-Glucans.” *Journal of Bacteriology* 181, no. 22 (November 1999): 7070–79. https://doi.org/10.1128/JB.181.22.7070-7079.1999.
+5. Calderon, Julia, Martin Zavrel, Enrico Ragni, William A. Fonzi, Steffen Rupp, and Laura Popolo. “PHR1, a PH-Regulated Gene of Candida Albicans Encoding a Glucan-Remodelling Enzyme, Is Required for Adhesion and Invasion.” *Microbiology (Reading, England)* 156, no. Pt 8 (August 2010): 2484–94. https://doi.org/10.1099/mic.0.038000-0.
 
 ### GLEYA
 
