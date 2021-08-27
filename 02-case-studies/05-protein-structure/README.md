@@ -1,1 +1,1 @@
-Protein structural prediction results. [I-TASSER](https://zhanglab.ccmb.med.umich.edu/I-TASSER/), [DALI](http://ekhidna2.biocenter.helsinki.fi/dali/) and [Phyre2](http://www.sbg.bio.ic.ac.uk/phyre2/html/page.cgi?id=index).
+Protein structural prediction results. [AlphaFold2](https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb#scrollTo=kOblAo-xetgx), [I-TASSER](https://zhanglab.ccmb.med.umich.edu/I-TASSER/), [DALI](http://ekhidna2.biocenter.helsinki.fi/dali/) and [Phyre2](http://www.sbg.bio.ic.ac.uk/phyre2/html/page.cgi?id=index).
