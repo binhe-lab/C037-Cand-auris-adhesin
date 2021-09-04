@@ -808,7 +808,15 @@ motif.per.seq <- motif.per.seq %>%
                                     str_sub(levels(species_id), 2))
          ),
          species = reorder(species, desc(species)),
-         species_id = NULL) 
+         species_id = NULL)
+```
+Export the tango motif per seq result
+```{r}
+motif.per.seq1 %>% 
+  mutate(id = gsub("_[a-zA-Z]+$", "", name),
+         species = gsub(".*_([A-Z])([a-z]+)$", "\\1\\. \\2", name)) %>% 
+  select(id, species, species_gr, n.type, n.all, avg.intv, mad.intv, seqs) %>% 
+  write_tsv("output/tango/20210904-tango-summary-table.tsv")
 ```
 
 ```{r, fig.width=7, fig.height=4}
