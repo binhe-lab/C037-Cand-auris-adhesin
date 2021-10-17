@@ -26,8 +26,9 @@ date: 2020-07-01
       * [2021-03-01 [HB] <em>C. auris</em> clade III should have 8 members in this family](#2021-03-01-hb-c-auris-clade-iii-should-have-8-members-in-this-family)
       * [2021-04-03 [HB] Missing homolog in B11221](#2021-04-03-hb-missing-homolog-in-b11221)
       * [2021-07-05 [HB] <em>C. auris</em> B11245 homologs](#2021-07-05-hb-c-auris-b11245-homologs)
+      * [2021-10-17 [HB] PSI-BLAST](#2021-10-17-hb-psi-blast)
 
-<!-- Added by: bhe2, at: Tue Jul  6 08:43:34 CDT 2021 -->
+<!-- Added by: bhe2, at: Sun Oct 17 17:21:57 CDT 2021 -->
 
 <!--te-->
 
@@ -322,3 +323,9 @@ From the result we can assemble the following:
 From the B11221 Hil8 ortholog (XP_028889034), I found that this gene is expected to be located on chromosome 6. When I used PSK76858 as the query and performed tblastn against the B11245 genome, I can identify nearly the entire gene in broken pieces on its chromosome 6, suggesting that the reason it is missing in the blastp search is because the incomplete assembly of that chromosome, which led to the protein to be unidentified.
 
 ![B11245 Hil8](img/20210706-B11245-missing-Hil8-on-chromosome6-tblastn.png)
+
+## 2021-10-17 [HB] PSI-BLAST
+
+While attending Jan's lecture on BLAST, I realized that in my early try of the PSI-BLAST algorithm, I didn't use it properly -- for PSI-BLAST to realize its power, one needs to run the search iteratively. The idea of PSI-BLAST is to use the hits from the previous round (first round is just a regular blastp search) to build a PSSM and then search with that PSSM to achieve higher sensitivity.
+
+I thus redid this analysis using the N360 amino acids from Hil1 in _C. auris_, setting the E-value cutoff at 1e-5. I then required >30% identity for a hit to be included in building the PSSM for the second round. Using this approach, I could identify the Hyphal_reg_CWP domains in the Saccharomycetaceae species, such as _S. cerevisiae_. They are the ones that I commented on before -- the amino acid sequences are < 30% identical and the protein domain architectures are very different, with the Hyphal_reg_CWP domain in the middle instead of in the N-terminal of the proteins.
