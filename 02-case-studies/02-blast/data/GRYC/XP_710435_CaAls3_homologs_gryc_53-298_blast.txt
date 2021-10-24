@@ -1,0 +1,266 @@
+BLASTP 2.4.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: Nabr_CBS_10154_CDSproc; Naca_CBS_4332_CDSproc;
+Nade_CBS_2170_CDSproc; Naba_CBS_7720_CDSproc; Nani_CBS_9983_CDSproc;
+Cagl_CBS_138_CDSproc
+           30,780 sequences; 15,395,679 total letters
+
+
+
+Query= query_z6XEARsaxJ
+
+Length=246
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+BN121_CACA0s05e06149g1_1  weakly similar to uniprot|P20840 SACE0J...  78.2    2e-16
+BN123_NABA0s37e04301g1_1  weakly similar to uniprot|P20840 SACE0J...  68.2    6e-13
+CAGL0G04125g1_1  weakly similar to uniprot|P20840 Saccharomyces c...  67.0    1e-12
+BN119_CABR0s13e03740g1_1  weakly similar to uniprot|P20840 SACE0J...  66.6    2e-12
+BN124_NADE0s13e01155g1_1  weakly similar to uniprot|P20840 SACE0J...  64.7    9e-12
+BN122_CANI0s15e01441g1_1  weakly similar to uniprot|P20840 SACE0J...  60.8    2e-10
+
+
+>BN121_CACA0s05e06149g1_1 weakly similar to uniprot|P20840 SACE0J05038g YJR004C Saccharomyces 
+cerevisiae SAG1 Alpha-agglutinin of alpha-cells binds 
+to Aga1p during agglutination N-terminal half is homologous 
+to the immunoglobulin superfamily and contains binding site 
+for a-agglutinin C-terminal half is highly glycosylated and 
+contains GPI anchor
+Length=662
+
+ Score = 78.2 bits (191),  Expect = 2e-16, Method: Compositional matrix adjust.
+ Identities = 71/243 (29%), Positives = 114/243 (47%), Gaps = 19/243 (8%)
+
+Query  12   GDTFTLNMPCVF--KFT--TSQTSVDLTAHGVKYATCQFQAGEEFMT-FSTLTCTVSNTL  66
+            GDTFT+N P V+  KFT  ++Q+ ++L  +G     C       F+   STL C    + 
+Sbjct  63   GDTFTMNFPNVYRLKFTDESTQSFINL-QNGTSIFECNITQQASFIHDQSTLQCVSLASF  121
+
+Query  67   TPSIKALGTVTLPLAFNVGGTGSSVDLEDSKCFTAGTNTVTFNDGGKKISINVDFERSNV  126
+              ++   G +TL L+FN GG+  S +L  +  F AGT  VT  +G    S+    E    
+Sbjct  122  PNTLAIFGNMTLALSFNNGGSSYSHELAGASLFHAGTQDVTLMEGLDG-SVAFKGEEFKA  180
+
+Query  127  DPKGYLTDSRVIPSLNKVSTLFVAPQCANGY-TSGTMGFANTYGD--VQIDCSNIHVGIT  183
+            +  G L  +    +L  +   +++  C NGY   GT  F   YG   + I+C    V ++
+Sbjct  181  NFLGALRTT----TLGSLEIYYMSMSCPNGYLLGGTQTFDYDYGAEGLSINCDTAQVFVS  236
+
+Query  184  KGLNDWNYPVSSESFSYTKTCSSNGIFITYKNVPAGYRPFVDAYISATD-----VNSYTL  238
+              LNDW +P + +  S   TC  N +++       GY  + +  + A +     VNS ++
+Sbjct  237  NELNDWYFPKNYKDGSAEVTCFGNNLWVDIGEQEPGYNLWANVIVEAPNDVTKVVNSLSV  296
+
+Query  239  SYA  241
+            SY+
+Sbjct  297  SYS  299
+
+
+>BN123_NABA0s37e04301g1_1 weakly similar to uniprot|P20840 SACE0J05038g YJR004C Saccharomyces 
+cerevisiae SAG1 Alpha-agglutinin of alpha-cells binds 
+to Aga1p during agglutination N-terminal half is homologous 
+to the immunoglobulin superfamily and contains binding site 
+for a-agglutinin C-terminal half is highly glycosylated and 
+contains GPI anchor
+Length=897
+
+ Score = 68.2 bits (165),  Expect = 6e-13, Method: Compositional matrix adjust.
+ Identities = 62/226 (27%), Positives = 101/226 (45%), Gaps = 12/226 (5%)
+
+Query  12   GDTFTLNMPCVF--KFTTSQTSVDLT-AHGVKYATCQFQAGEEFMT-FSTLTCTVSNTLT  67
+            GDTFTL  P V+  KFT   T  ++  A G    +C       ++   S L+C+   T +
+Sbjct  62   GDTFTLTFPSVYRVKFTDDCTKSNINLADGTTIFSCSIDQQASYLNDASILSCSALETFS  121
+
+Query  68   PSIKALGTVTLPLAFNVGGTGSSVDLEDSKCFTAGTNTVTFNDGGKKISINVDFERSNVD  127
+             S    G++ L + FN GG+    +LE++  F  GTN V F +    +S  ++F+ S   
+Sbjct  122  TSSSISGSIILAVNFNSGGSKYQYELENASLFKKGTNVVQFTN---NLSGTINFDASEFS  178
+
+Query  128  PKGYLTDSRVIPSLNKVSTLFVAPQCANGYTSG---TMGFANTYGDVQIDCSNIHVGITK  184
+               Y T      + N   + ++  +C NG   G    + F  T G   +DC++  V  + 
+Sbjct  179  ELIYSTMRST--TFNSSESYYLGMRCPNGPLLGGSQKINFDATNGGFDLDCASAQVFTSN  236
+
+Query  185  GLNDWNYPVSSESFSYTKTCSSNGIFITYKNVPAGYRPFVDAYISA  230
+              NDW +P           C  N ++IT    P+G   +++A  +A
+Sbjct  237  NFNDWWFPKDYSDSGADVVCFGNNLWITVDEQPSGDMLWINALQNA  282
+
+
+>CAGL0G04125g1_1 weakly similar to uniprot|P20840 Saccharomyces cerevisiae YJR004c 
+SAG1 alpha-agglutinin
+Length=764
+
+ Score = 67.0 bits (162),  Expect = 1e-12, Method: Compositional matrix adjust.
+ Identities = 59/246 (24%), Positives = 108/246 (44%), Gaps = 18/246 (7%)
+
+Query  13   DTFTLNMPCVF--KFTTSQTSV-----DLTAHGVKYATCQFQAGEEFMTFSTLTCTVSNT  65
+            D F L +P V+  KF    T +     D  +  + + +   QA  ++ + + L C     
+Sbjct  62   DYFELELPRVYIIKFAKDSTELLIPLKDRNSEEIFHCSVPQQAAYKYKS-TILRCVTLTD  120
+
+Query  66   LTPSIKALGTVTLPLAFNVGGTGSSVDLEDSKCFTAGTNTVTFNDGGKKISINVDFERSN  125
+            L P  +  G +   L+F+ G +    +LE++  F +G N + F    ++++  V F+ + 
+Sbjct  121  LAPHPEISGHIEFSLSFSNGDSTYQYELENANYFESGLNNIEFT---QELNAEVYFDAAK  177
+
+Query  126  VDPKGYLTDSRVIPSLNKVSTLFVAPQCANGYTSG---TMGFANTYGDVQIDCSNIHVGI  182
+             +   Y T      +  +V   F++ +C NGY  G    + F +   + Q++C+   + +
+Sbjct  178  FNDHFYTTIRST--TYKEVEIYFLSMRCPNGYLLGGSQKINFDSKDANCQLNCNTPQIFV  235
+
+Query  183  TKGLNDWNYPVS-SESFSYTKTCSSNGIFITYKNVPAGYRPFVDAYISATD-VNSYTLSY  240
+            +K  NDW +P S  E       C  N ++IT      G+  +V+A     D  N+     
+Sbjct  236  SKHFNDWWFPKSYQEIVDADILCFGNNLWITIGEQEKGHLLWVNAMQDVADGQNTLYHDV  295
+
+Query  241  ANEYTC  246
+              EYTC
+Sbjct  296  FIEYTC  301
+
+
+>BN119_CABR0s13e03740g1_1 weakly similar to uniprot|P20840 SACE0J05038g YJR004C Saccharomyces 
+cerevisiae SAG1 Alpha-agglutinin of alpha-cells binds 
+to Aga1p during agglutination N-terminal half is homologous 
+to the immunoglobulin superfamily and contains binding site 
+for a-agglutinin C-terminal half is highly glycosylated and 
+contains GPI anchor
+Length=673
+
+ Score = 66.6 bits (161),  Expect = 2e-12, Method: Compositional matrix adjust.
+ Identities = 64/246 (26%), Positives = 106/246 (43%), Gaps = 18/246 (7%)
+
+Query  13   DTFTLNMPCVF--KFTTSQTSV-----DLTAHGVKYATCQFQAGEEFMTFSTLTCTVSNT  65
+            D F L +P V+  KFT   T +     D     V + T   QA  ++   + L CT    
+Sbjct  61   DYFELVLPRVYRIKFTEDSTELIIPMKDRLQPEVFHCTIPQQAAFKYAD-TILRCTTLID  119
+
+Query  66   LTPSIKALGTVTLPLAFNVGGTGSSVDLEDSKCFTAGTNTVTFNDGGKKISINVDFERSN  125
+            L P  +  G + + L+F+ G +    +LE++  F +G N +   +G     +N +   + 
+Sbjct  120  LAPHPEIYGEIKIVLSFSNGDSCYEYELENANYFESGMNYIELEEG-----LNTEVHFNA  174
+
+Query  126  VDPKGYLTDSRVIPSLNKVSTLFVAPQCANGYTSG---TMGFANTYGDVQIDCSNIHVGI  182
+                G    +    S + V T F++  C NGY  G    + F +   +  +DC +  V I
+Sbjct  175  AQFSGAFYSTMKTTSYDSVETYFLSMNCPNGYILGGTQRINFDSKDQNCNLDCDSPQVFI  234
+
+Query  183  TKGLNDWNYPVS-SESFSYTKTCSSNGIFITYKNVPAGYRPFVDAYISATD-VNSYTLSY  240
+            +   NDW +P S  E+      C  N + IT    P G+  +++A     + +N+   S 
+Sbjct  235  SNHFNDWWFPKSYQEAKDVDVNCFGNELIITIGEQPDGHLLWINAMQGVEEGINTLFHSV  294
+
+Query  241  ANEYTC  246
+              EYTC
+Sbjct  295  YLEYTC  300
+
+
+>BN124_NADE0s13e01155g1_1 weakly similar to uniprot|P20840 SACE0J05038g YJR004C Saccharomyces 
+cerevisiae SAG1 Alpha-agglutinin of alpha-cells binds 
+to Aga1p during agglutination N-terminal half is homologous 
+to the immunoglobulin superfamily and contains binding site 
+for a-agglutinin C-terminal half is highly glycosylated and 
+contains GPI anchor
+Length=729
+
+ Score = 64.7 bits (156),  Expect = 9e-12, Method: Compositional matrix adjust.
+ Identities = 60/246 (24%), Positives = 104/246 (42%), Gaps = 18/246 (7%)
+
+Query  13   DTFTLNMPCVFKFTTSQTSVDLTAH-------GVKYATCQFQAGEEFMTFSTLTCTVSNT  65
+            D F L +P V++   +Q S +L           V + T   QA  ++   + + C     
+Sbjct  60   DYFELALPRVYRIKFAQDSTELIIPMKDRPQTEVFHCTVPQQAAYKYPE-TIMRCVTLTD  118
+
+Query  66   LTPSIKALGTVTLPLAFNVGGTGSSVDLEDSKCFTAGTNTVTFNDGGKKISINVDFERSN  125
+            L P  +  G +   ++F+ G +    +L+++  F +G N + F DG   ++  V F  + 
+Sbjct  119  LAPHPEIFGEIKFVMSFSNGDSSYEYELQNAGHFQSGLNDIEFTDG---LNTQVSFNAAE  175
+
+Query  126  VDPKGYLTDSRVIPSLNKVSTLFVAPQCANGYTSG---TMGFANTYGDVQIDCSNIHVGI  182
+                 Y T      S + V   F++ +C NGY  G    + F +   +  +DC +  V I
+Sbjct  176  FSDHFYTTIRST--SYDSVEIYFLSMKCPNGYILGGSQKINFDSKDQNCILDCDSPQVFI  233
+
+Query  183  TKGLNDWNYPVS-SESFSYTKTCSSNGIFITYKNVPAGYRPFVDAYISATD-VNSYTLSY  240
+            +   NDW +P S  E+      C  N ++IT      G+  +V+A     +  N+     
+Sbjct  234  SDHFNDWWFPKSYQEATDADVMCFGNNLWITIGEQKEGHLLWVNAMQGVEEGKNTLFHDV  293
+
+Query  241  ANEYTC  246
+              EYTC
+Sbjct  294  YLEYTC  299
+
+
+>BN122_CANI0s15e01441g1_1 weakly similar to uniprot|P20840 SACE0J05038g YJR004C Saccharomyces 
+cerevisiae SAG1 Alpha-agglutinin of alpha-cells binds 
+to Aga1p during agglutination N-terminal half is homologous 
+to the immunoglobulin superfamily and contains binding site 
+for a-agglutinin C-terminal half is highly glycosylated and 
+contains GPI anchor
+Length=682
+
+ Score = 60.8 bits (146),  Expect = 2e-10, Method: Compositional matrix adjust.
+ Identities = 53/211 (25%), Positives = 93/211 (44%), Gaps = 17/211 (8%)
+
+Query  13   DTFTLNMPCVFKFTTSQTSVDLTAH-------GVKYATCQFQAGEEFMTFSTLTCTVSNT  65
+            D F L +P V++   +Q S +L           V + T   QA  +F   + + C     
+Sbjct  60   DYFELVLPRVYRIKFAQDSTELIIPMKDRPQTEVFHCTVPQQAAFKFAD-TVVRCVTLTD  118
+
+Query  66   LTPSIKALGTVTLPLAFNVGGTGSSVDLEDSKCFTAGTNTVTFNDGGKKISINVDFERSN  125
+            L P  +  G +   L+F+ G +    +L+++  F +G N + F +G   ++  V F  ++
+Sbjct  119  LAPHPEIFGEIKFMLSFSNGDSSYEYELQNADQFQSGLNNIEFVEG---LNTQVHFNAAD  175
+
+Query  126  VDPKGYLTDSRVIPSLNKVSTLFVAPQCANGYTSG---TMGFANTYGDVQIDCSNIHVGI  182
+                 Y T      S N V   F++ +C NGY  G    + F +   +  +DC++  V  
+Sbjct  176  FSDHIYTTIRST--SYNAVEIYFLSMKCPNGYILGGTQKINFDSKDQNCILDCNSPQVFT  233
+
+Query  183  TKGLNDWNYPVSSESFSYTKT-CSSNGIFIT  212
+            +   NDW +P S +  + T   C  N ++IT
+Sbjct  234  SNHFNDWWFPKSYKEATDTDVMCFGNQLWIT  264
+
+
+
+Lambda      K        H        a         alpha
+   0.316    0.131    0.395    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 1832127372
+
+
+  Database: Nabr_CBS_10154_CDSproc
+    Posted date:  Nov 5, 2014  2:45 PM
+  Number of letters in database: 2,618,827
+  Number of sequences in database:  5,265
+
+  Database: Naca_CBS_4332_CDSproc
+    Posted date:  Nov 5, 2014  2:47 PM
+  Number of letters in database: 2,418,859
+  Number of sequences in database:  4,874
+
+  Database: Nade_CBS_2170_CDSproc
+    Posted date:  Nov 5, 2014  2:48 PM
+  Number of letters in database: 2,550,572
+  Number of sequences in database:  5,112
+
+  Database: Naba_CBS_7720_CDSproc
+    Posted date:  Nov 5, 2014  2:49 PM
+  Number of letters in database: 2,546,044
+  Number of sequences in database:  5,098
+
+  Database: Nani_CBS_9983_CDSproc
+    Posted date:  Nov 5, 2014  2:53 PM
+  Number of letters in database: 2,601,455
+  Number of sequences in database:  5,206
+
+  Database: Cagl_CBS_138_CDSproc
+    Posted date:  Nov 5, 2014  3:51 PM
+  Number of letters in database: 2,659,922
+  Number of sequences in database:  5,225
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

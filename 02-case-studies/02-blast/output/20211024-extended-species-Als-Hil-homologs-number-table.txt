@@ -1,0 +1,24 @@
+label	species	patho	Hil	Als
+C. duobushaemulonis	Candida duobushaemulonis	TRUE	11	4
+C. pseudohaemulonis	Candida pseudohaemulonis	TRUE	12	4
+C. haemuloni	Candida haemuloni	TRUE	12	2
+C. auris	Candida auris	TRUE	8	3
+C. lusitaniae	Clavispora lusitaniae	TRUE	5	1
+M. fructicola	Metschnikowia fructicola	FALSE	0	0
+D. hansenii	Debaryomyces hansenii	FALSE	3	1
+C. parapsilosis	Candida parapsilosis	TRUE	4	5
+L. elongisporus	Lodderomyces elongisporus	FALSE	1	5
+C. tropicalis	Candida tropicalis	TRUE	14	13
+C. dubliniensis	Candida dubliniensis	TRUE	11	7
+C. albicans	Candida albicans	TRUE	12	8
+S. stipitis	Scheffersomyces stipitis	FALSE	4	3
+K. lactis	Kluyveromyces lactis	FALSE	1	1
+N. castellii	Naumovozyma castellii	FALSE	1	1
+N. bacillisporus	Nakaseomyces bacillisporus	FALSE	0	1
+C. glabrata	Candida glabrata	TRUE	2	1
+N. bracarensis	Nakaseomyces bracarensis	TRUE	1	1
+N. delphensis	Nakaseomyces delphensis	FALSE	1	1
+N. nivariensis	Nakaseomyces nivariensis	TRUE	1	1
+S. cerevisiae	Saccharomyces cerevisiae	FALSE	0	1
+S. paradoxus	Saccharomyces paradoxus	FALSE	0	1
+S. mikatae	Saccharomyces mikatae	FALSE	0	1

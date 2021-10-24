@@ -27,8 +27,9 @@ date: 2020-07-01
       * [2021-04-03 [HB] Missing homolog in B11221](#2021-04-03-hb-missing-homolog-in-b11221)
       * [2021-07-05 [HB] <em>C. auris</em> B11245 homologs](#2021-07-05-hb-c-auris-b11245-homologs)
       * [2021-10-17 [HB] PSI-BLAST](#2021-10-17-hb-psi-blast)
+      * [2021-10-24 [HB] Als blast](#2021-10-24-hb-als-blast)
 
-<!-- Added by: bhe2, at: Sun Oct 17 17:21:57 CDT 2021 -->
+<!-- Added by: bhe2, at: Sun Oct 24 17:00:06 CDT 2021 -->
 
 <!--te-->
 
@@ -329,3 +330,6 @@ From the B11221 Hil8 ortholog (XP_028889034), I found that this gene is expected
 While attending Jan's lecture on BLAST, I realized that in my early try of the PSI-BLAST algorithm, I didn't use it properly -- for PSI-BLAST to realize its power, one needs to run the search iteratively. The idea of PSI-BLAST is to use the hits from the previous round (first round is just a regular blastp search) to build a PSSM and then search with that PSSM to achieve higher sensitivity.
 
 I thus redid this analysis using the N360 amino acids from Hil1 in _C. auris_, setting the E-value cutoff at 1e-5. I then required >30% identity for a hit to be included in building the PSSM for the second round. Using this approach, I could identify the Hyphal_reg_CWP domains in the Saccharomycetaceae species, such as _S. cerevisiae_. They are the ones that I commented on before -- the amino acid sequences are < 30% identical and the protein domain architectures are very different, with the Hyphal_reg_CWP domain in the middle instead of in the N-terminal of the proteins.
+
+## 2021-10-24 [HB] Als blast
+I'd like to include the homologs count in Figure 1 for the Als family as well. To do so, I followed a similar recipe as I did for the Hil family: I chose to use _C. albicans_ Als3's NTD as the query. Specifically, I used the refseq protein sequence (XP_710435.2) from aa 53-298 (based on the [Pfam table](http://pfam.xfam.org/protein/Q59L12#tabview=tab0) identifying its Candida_ALS_N domain). I used blastp to search this query against the refseq database with E-value cutoff of 1e-5. Query coverages are all above 50%. I also referenced three other publications that contained partial list of homologs for the Als family, namely Butler _et al._ 2009 (PMID: 19465905), Muñoz _et al._ 2018 (PMID: 30559369) and Linder and Gustafsson 2008 (PMID: 17870620). Among the three, the Muñoz 2018 paper appears to have a more stringent criteria for identifying homologs, as its numbers are often much smaller than the other two and my blastp result. The other two papers broadly agree with my blastp results. I also did the same blast on GRYC for the Nakaseomyces group. The outputs from both searches are stored in the `data` folder under their respective subfolder, along with the output for the Hil family. The consolidated table is stored in the `output` folder and soft linked to the `04-homologs-property` folder.
