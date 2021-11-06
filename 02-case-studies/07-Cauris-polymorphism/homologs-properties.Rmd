@@ -33,7 +33,7 @@ Homologs of the PF11765 domain containing proteins were identified in the five s
 
 As shown in Muñoz _et al._ 2021 Genetics, _C. auris_ as a species has a total of eight members in this family. The number of members present in each strain varies. In particular, Clade II strains, represented by B11220 in our dataset, has only three. Below we will show the domain architecture for the eight members from the clade I strain B8441. The data for this plot is actually generated in the [latter part](#B8441) of this R markdown file
 
-```{r, fig.width=8, fig.height=3.5}
+```{r}
 # read in data
 len <- read_tsv("input/B8441-homologs-length-name.tsv", col_types = cols())
 B8441 <- read_tsv("input/B8441-homologs-feature-table.tsv", col_types = cols()) %>% 
@@ -47,11 +47,15 @@ B8441.tango <- read_tsv("input/B8441-homologs-tango.tsv", col_types = cols()) %>
 seq.order <- len$gID
 B8441$gID <- ordered(B8441$gID, levels = seq.order)
 B8441.tango$gID <- ordered(B8441.tango$gID, levels = seq.order)
+```
 
+```{r}
 # plot
-colors <- c("grey", "#1f78b4", "#e31a1c", "#6a3d9a", "orange4")
-p1 <- ggplot(B8441, aes(x = gID, y = start)) +  geom_segment(aes(xend = gID, yend = end), color = "black", size = 7)
-p2 <- geom_segment(aes(x = gID, y = start + 1, xend = gID, yend = end - 1, color = type), size = 6.5)
+colors <- c(Hyphal_reg_CWP = "#3d85c6", SignalP = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeat" = "#af8400")
+p1 <- ggplot(B8441 %>% filter(type == "entire protein"), aes(x = gID, y = start)) + 
+  geom_segment(aes(xend = gID, yend = end), color = "black", size = 7) +
+  geom_segment(aes(xend = gID, yend = end), color = "grey80", size = 6.5)
+p2 <- geom_segment(data = B8441 %>% filter(type != "entire protein"), aes(x = gID, y = start + 1, xend = gID, yend = end - 1, color = type), size = 6.5)
 p3 <- geom_segment(data = B8441.tango, aes(xend = gID,  y = ifelse(start-3 >= 0, start-3, 0),  yend = end + 3, alpha = median),
                    position = position_nudge(x = -0.4, y = 0), color = "darkred", size = 2)
 p4 <- p1 + p2 + p3 + coord_flip() + theme_cowplot() + 
