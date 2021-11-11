@@ -1,0 +1,14 @@
+# TBLASTN 2.12.0+
+# Query: Hil3_PIS55432.1_Cauris
+# Database: ../input/blastdb/Cand_auris_strains
+# Fields: subject id, % query coverage per subject, q. start, q. end, subject length, s. start, s. end, % identity, mismatches, evalue
+# 8 hits found
+gb|CP060374.1|	100	1	316	4175355	4168096	4167149	100.000	0	0.0
+gb|CP060339.1|	100	1	316	4182400	4175130	4174183	100.000	0	0.0
+gb|CP060362.1|	100	1	316	1548399	1541826	1540879	99.684	1	0.0
+gb|CP060355.1|	100	1	316	1554028	1547297	1546350	99.684	1	0.0
+gb|PGLS01000002.1|	100	1	316	1552814	1547006	1546059	99.684	1	0.0
+gb|CP060367.1|	100	1	316	3525697	6661	7608	99.367	2	0.0
+gb|CP060346.1|	100	1	316	4200574	8835	9782	98.734	4	0.0
+gb|CP043442.1|	100	1	316	4189902	4181031	4180084	98.734	4	0.0
+# BLAST processed 1 queries

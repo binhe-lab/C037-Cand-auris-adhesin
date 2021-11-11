@@ -1,4 +1,5 @@
 <!--ts-->
+
    * [Introduction](#introduction)
    * [Updates](#updates)
       * [2021-05-22 [HB]](#2021-05-22-hb)
@@ -224,3 +225,133 @@ I wrote a script stored in the `script` folder called `ST-freq.sh`.
 
 ## 8. Dotplot for Hil1-8
 The goal of this analysis is to investigate the similarity and infer the evolutionary process that led to the variable length central domains in Hil1-8 in _C. auris_. The results are documented in `output/dot-plot/` and the revealed a potentially common origin of the main tandem repeat unit, which includes the GVVIVTT motif, in Hil1-4 and Hil7-8.
+
+## 9. Tandem repeat copy number variation in Hil1-4 among _C. auris_ isolates
+The goal of this analysis is to extend #5 above to Hil2-4 (Hil5-6 have extremely low complexity regions, Hil7-8 have low tandem repeat content). Tandem repeats are known to increase the chance of recombination-based copy number variations, which in turn could affect the length of the protein, β-aggregation potential (since a strongly β-aggregating sequence is part of the repeat in Hil1-4).
+
+### Download genome fna files
+Added Clade II strains. See `../../input/genome-seq/README.md` for details
+
+### Make blast database
+```bash
+cd ../../input/
+cat genome-seq/*.gz | gunzip -c | makeblastdb -in - -parse_seqids -dbtype nucl -title Cand_auris_strains -out blastdb/Cand_auris_strains
+```
+
+### Perform tblastn
+See `../../script/blast-{full,NTD}-Hil?.sh` for details.
+
+#### Hil1
+
+copies from above (#5)
+
+| Query | Strain  | Clade | Chr  | sseqid     | q.start | q.end | s.start | s.end  | qcovs | pident |
+| ----- | ------- | ----- | ---- | ---------- | ------- | ----- | ------- | ------ | ----- | ------ |
+| full  | B11221  | III   | 6    | scaffold06 | 1       | 3052  | 23449   | 32604  | 100   | 100    |
+| full  | B17721  | III   | 6    | CP060358.1 | 1       | 3052  | 925910  | 916755 | 100   | 100    |
+| full  | *B12631 | III   | 6    | CP060365.1 | 2518    | 3052  | 334     | 1938   | 18    | 98.9   |
+| full  | *B12037 | III   | 7    | CP060373.1 | 1       | 3052  | 24671   | 33898  | 100   | 99.2   |
+| full  | B12037  | III   | 6    | CP060372.1 | 1648    | 2678  | 969691  | 966593 | 37    | 71.8   |
+| full  | B12342  | IV    | 6    | CP060351.1 | 1       | 3052  | 25433   | 34462  | 100   | 95.8   |
+| full  | B11245  | IV    | 6    | CP043447.1 | 12      | 327   | 944923  | 943976 | 10    | 99.4   |
+| full  | B11245  | IV    | 6    | CP043447.1 | 541     | 2211  | 941487  | 936418 | 82    | 62.9   |
+| full  | B11245  | IV    | 6    | CP043447.1 | 1188    | 3052  | 941526  | 935932 | 82    | 97.4   |
+| NTD   | B11205  | I     | 6    | CP060344.1 | 12      | 327   | 24993   | 25940  | 10    | 99.7   |
+| full  | B11205  | I     | 6    | CP060344.1 | 613     | 3052  | 26478   | 33797  | 83    | 86.6   |
+| NTD   | B13916  | I     | 6    | CP060379.1 | 12      | 327   | 15681   | 16628  | 10    | 99.7   |
+| full  | B13916  | I     | 6    | CP060379.1 | 613     | 3052  | 17166   | 24485  | 83    | 86.6   |
+
+_Discussion_
+
+- Now only B12631 is missing the NTD and it seems most likely that chromosome 6 in this strain is incomplete
+- B12037 still has the best match on chromosome 7.
+
+#### Hil2
+
+| Query | Strain | Clade | Chr  | sseqid     | s.start | s.end  | q.start | q.end | qcovs | pident |
+| ----- | ------ | ----- | ---- | ---------- | ------- | ------ | ------- | ----- | ----- | ------ |
+| Full  | B11221 | III   | 5    | scaffold05 | 23930   | 29088  | 1       | 1720  | 100   | 99.9   |
+| Full  | B17721 | III   | 5    | CP060357.1 | 23904   | 29063  | 1       | 1720  | 100   | 99.9   |
+| Full  | B12631 | III   | 5    | CP060364.1 | 971210  | 967512 | 491     | 1720  | 72    | 99.4   |
+| Full  | B12037 | III   | 6    | CP060372.1 | 969691  | 966353 | 608     | 1720  | 70    | 99.8   |
+| Full  | B12342 | IV    | 5    | CP060350.1 | 978453  | 975616 | 775     | 1720  | 72    | 85.6   |
+| NTD   | B12342 | IV    | 5    | CP060350.1 | 979950  | 979003 | 1       | 316   | 100   | 99.4   |
+| Full  | B11245 | IV    | 5    | CP043446.1 | 969534  | 966697 | 775     | 1720  | 72    | 85.6   |
+| NTD   | B11245 | IV    | 5    | CP043446.1 | 971031  | 970084 | 1       | 316   | 100   | 99.4   |
+| Full  | B11205 | I     | 5    | CP060343.1 | 978557  | 973398 | 1       | 1720  | 100   | 100    |
+| Full  | B13916 | I     | 5    | CP060378.1 | 978609  | 973450 | 1       | 1720  | 100   | 100    |
+
+_Discussion_
+
+- Even after combining the NTD and full query searches, I'm still missing the NTD for B12631 and B12037
+
+#### Hil3
+
+| Query | Strain | Clade | Chr  | sseqid     | s.start | s.end   | q.start | q.end | qcovs | pident |
+| ----- | ------ | ----- | ---- | ---------- | ------- | ------- | ------- | ----- | ----- | ------ |
+| full  | B11205 | I     | 1    | CP060339.1 | 4175151 | 4171027 | 1       | 1375  | 100   | 100    |
+| full  | B13916 | I     | 1    | CP060374.1 | 4168117 | 4163993 | 1       | 1375  | 100   | 100    |
+| full  | B13463 | II    | 1    | CP050652.1 | 4049649 | 4047835 | 760     | 1364  | 44    | 98.5   |
+| full  | B11221 | III   | 3    | scaffold03 | 1547027 | 1542903 | 1       | 1375  | 100   | 99.9   |
+| full  | B17721 | III   | 3    | CP060355.1 | 1547318 | 1543194 | 1       | 1375  | 100   | 99.9   |
+| full  | B12631 | III   | 3    | CP060362.1 | 1541847 | 1537723 | 1       | 1375  | 100   | 99.9   |
+| full  | B12037 | III   | 1    | CP060367.1 | 6640    | 10764   | 1       | 1375  | 100   | 99.8   |
+| full  | B12342 | IV    | 1    | CP060346.1 | 8814    | 11981   | 1       | 1087  | 99    | *76.6  |
+| full  | B12342 | IV    | 1    | CP060346.1 | 9858    | 12143   | 603     | 1364  | 99    | 95.5   |
+| NTD   | B12342 | IV    | 1    | CP060346.1 | 8835    | 9782    | 1       | 316   | 100   | 99.4   |
+| full  | B11245 | IV    | 1    | CP043442.1 | 4181052 | 4177885 | 1       | 1087  | 99    | *76.6  |
+| full  | B11245 | IV    | 1    | CP043442.1 | 4180008 | 4177732 | 603     | 1361  | 99    | 95.4   |
+| NTD   | B11245 | IV    | 1    | CP043442.1 | 4181031 | 4180084 | 1       | 316   | 100   | 98.7   |
+
+_Discussion_
+
+- Note that three of the four Clade III strains have Hil3 on chromosome 3 instead of chromosome 1, consistent with Muñoz 2021 report showing a translocation event relative to B8441, where the chromosome tip of Chr1 is translocated to the tip of Chr3. Why B12037 had it on Chr1 is unclear and interesting.
+- The two hits with <80% identity are likely misalignment. I looked carefully into B11245, extracted the range CP043442.1:4177732-4181052, and translated it _in silico_, and aligned it to B8441 Hil3. It does show a good alignment, with some deletions in the middle.
+
+#### Hil4
+
+| Query | Strain | Clade | Chr  | sseqid     | s.start | s.end   | q.start | q.end | qcovs | pident |
+| ----- | ------ | ----- | ---- | ---------- | ------- | ------- | ------- | ----- | ----- | ------ |
+| full  | B11205 | I     | 1    | CP060339.1 | 18486   | 22226   | 1       | 1247  | 100   | 100    |
+| full  | B13916 | I     | 1    | CP060374.1 | 18349   | 22089   | 1       | 1247  | 100   | 100    |
+| full  | B11221 | III   | 1    | scaffold01 | 4303397 | 4301979 | 775     | 1247  | 38    | 99.8   |
+| full  | B17721 | III   | 1    | CP060353.1 | 4276715 | 4273152 | 1       | 1234  | 99    | 90.0   |
+| full  | B12631 | III   | 1    | CP060360.1 | 4267550 | 4263987 | 1       | 1234  | 99    | 90.0   |
+| full  | B12037 | III   | 4    | CP060370.1 | 15741   | 19304   | 1       | 1234  | 99    | 90.0   |
+| full  | B12342 | IV    | 1    | CP060346.1 | 4188629 | 4184889 | 1       | 1247  | 100   | 99.6   |
+| full  | B11245 | IV    | 1    | CP043442.1 | 12526   | 15780   | 163     | 1247  | 100   | 98.0   |
+| NTD   | B11245 | IV    | 1    | CP043442.1 | 12071   | 12598   | 1       | 176   | 100   | 97.7   |
+
+### 
+
+### Assemble BED file to extract the sequences
+Based on the tblastn results as shown in the README file in the parent folder, I assembled a BED file `Cauris-Hil-homologs-tblastn.bed` and installed `bedtools` to use its `getfasta` command to extract the sequences. `seqtk subseq` can do the same thing but doesn't allow for renaming the output files, while `bedtools` allows one to use the optional `name` field in the BED file to rename the extracted sequences. `bedtools` does require the input fasta file to be not compressed.
+
+Several changes need to be made for the BED file
+1. start must be smaller than the end, so for features on the minus strand, the `sstart` and `send` from tblastn output need to be swapped
+1. strand information has to be explicitly encoded in BED file in the fifth column. 4th column is "score", which is not used but must be written (used 1)
+1. BED is 0-based, so all start positions (the smaller number) need to go down by 1 from the tblastn output
+
+```bash
+# extract the nucleotide sequences using bedtools
+bedtools getfasta -fi ../../input/genome-seq/all-cauris-strains.fna -bed Cauris-Hil-homologs-tblastn.bed -s -name -fo cauris-Hil-homologs-tblastn.fna
+# edit the resulting fasta file by replacing "::" with " " so the next tool will properly deal with the sequence names
+# translate to amino acid sequences using the yeast alternative nuclear code table using EMBOSS::transeq
+transeq -table 12 -sequence cauris-Hil-homologs-tblastn.fna -outseq cauris-Hil-homologs-tblastn.faa
+# convert the resulting fasta to a single line format using bioawk
+bioawk -c fastx '{print ">"$name" "$comment; print $seq}' cauris-Hil-homologs-tblastn.faa >| cauris-Hil-homologs-tblastn.faa1
+# examine the result and if satisfied, replace the previous file with the reformatted file
+mv cauris-Hil-homologs-tblastn.faa1 cauris-Hil-homologs-tblastn.faa
+```
+
+### Write Hil1-4 homologs into fasta files
+The goal here is to form four fasta files, one for each of Hil1-4. The basis would be the extracted and translated protein sequences from the previous step, but as some of the sequences there are incorrect (premature stop codons in sequences), I also used blast against the specific strain's genome to obtain the protein sequence directly from NCBI. My general approach is to copy and paste all protein sequences belonging to Hil1, for example, into clustalo website and align them. Note that B8441, which was used as the query strain, needs to be added. If the resulting alignment looks good, all sequences are directly copied to the new fasta file. If one or more sequences show large discrepancy, likely due to errors in the sequence and the ranges, I manually blast that strain's genome using the B8441 sequence query and identify the homolog. The sequence names in the resulting fasta files show which ones are from the previous extraction and which ones are from NCBI protein database.
+
+### Align the Hil1-4 homologs
+Used `clustao` locally
+
+```bash
+clustalo -i Hil1/Hil1-cauris-homologs.fasta --iter=5 -o Hil1/Hil1-cauris-homologs.faa
+```
+
+Visualize the results in Jalview, and created a Jalview project file to preserve the arrangement of the windows.

@@ -1,2 +1,4 @@
 blastdb/
-genome-seq/cauris-no-clade-ii.fna.gz
+genome-seq/*
+!genome-seq/README.md
+!genome-seq/md5checksums.txt
