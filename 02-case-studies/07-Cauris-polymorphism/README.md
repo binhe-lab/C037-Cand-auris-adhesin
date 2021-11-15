@@ -355,3 +355,11 @@ clustalo -i Hil1/Hil1-cauris-homologs.fasta --iter=5 -o Hil1/Hil1-cauris-homolog
 ```
 
 Visualize the results in Jalview, and created a Jalview project file to preserve the arrangement of the windows.
+
+### XSTREAM detects tandem repeats and quantify the copy numbers
+In order to quantify the number of tandem repeat copies, I used xstream with a modified substitution table (letting "V=I") to detect tandem repeats and it worked better than using the default table, because it allowed the GVVIVTT variants to properly align. The reason for using xstream to quantify the copy number is because it is tedious to manually count the copy number in the alignment. However, the xstream output needs to be carefully checked because different sequences may have slightly different consensus, starting and ending position. Therefore the result needs to be manually edited.
+
+1. run `sh xstream-hil1-4.sh ../output/copynum-var/cauris-Hil-homologs-final.fasta cauris-Hil-homologs-sub ../output/tandem-repeats`
+1. edit the `.xslx` file by renaming the headings and adding the "type" column, whose values comes from the first html file generated
+1. import into R (see main analysis Rmd in the `07-Cauris-polymorphism` folder)
+1. cross-reference the alignment output (second html output from xstream) and the alignment generated above to determine the copy numbers
