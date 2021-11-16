@@ -1,0 +1,101 @@
+
+
+IMPORTANT WARNING: Sequences Hil2_PIS49865.1_B8441_Cauris and XP_028888611.1_B11221_Cauris are exactly identical
+
+
+IMPORTANT WARNING: Sequences Hil8_PIS50297.1_B8441_Cauris and QEO24213.1_B11220_Cauris are exactly identical
+
+
+IMPORTANT WARNING: Sequences Hil8_PIS50297.1_B8441_Cauris and XP_028889034.1_B11221_Cauris are exactly identical
+
+
+IMPORTANT WARNING: Sequences Hil4_PIS52481.1_B8441_Cauris and PSK79346.1_B11243_Cauris are exactly identical
+
+
+IMPORTANT WARNING: Sequences Hil6_PIS52483.1_B8441_Cauris and PSK79348.1_B11243_Cauris are exactly identical
+
+
+IMPORTANT WARNING: Sequences Hil6_PIS52483.1_B8441_Cauris and XP_028887965.1_B11221_Cauris are exactly identical
+
+
+IMPORTANT WARNING: Sequences Hil5_PIS56617.1_B8441_Cauris and XP_028892087.1_B11221_Cauris are exactly identical
+
+
+IMPORTANT WARNING: Sequences PSK79720.1_B11243_Cauris and QEO24533.1_B11220_Cauris are exactly identical
+
+IMPORTANT WARNING
+Found 8 sequences that are exactly identical to other sequences in the alignment.
+Normally they should be excluded from the analysis.
+
+Just in case you might need it, an alignment file with 
+sequence duplicates removed is printed to file ../output/gene-tree/epa/cauris-four-strains-for-gene-tree-epa_C400_clustalo.faa.reduced
+Found a total of 50 taxa in tree file ../output/gene-tree/epa/RAxML_bipartitionsBranchLabels.epa1_6730149
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 362 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 18.62%
+
+RAxML likelihood-based placement algorithm
+
+Using 1 distinct models/data partitions with joint branch length optimization
+
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+Partition: 0
+Alignment Patterns: 362
+Name: No Name Provided
+DataType: AA
+Substitution Matrix: WAG
+Using fixed base frequencies
+
+
+
+
+RAxML was called as follows:
+
+/Users/bhe2/bin/raxmlHPC-AVX2 -f v -p 12345 -t ../output/gene-tree/epa/RAxML_bipartitionsBranchLabels.epa1_6730149 -m PROTGAMMAWAG -s ../output/gene-tree/epa/cauris-four-strains-for-gene-tree-epa_C400_clustalo.faa -n epa2_6730594 
+
+
+RAxML placement algorithm: You provided a reference tree with 50 taxa; alignmnet has 52 taxa
+2 query taxa will be placed using maximum likelihood
+
+RAxML Evolutionary Placement Algorithm
+
+Likelihood of reference tree: -14208.439366
+
+RAxML will place 2 Query Sequences into the 97 branches of the reference tree with 50 taxa
+
+Overall Classification time: 2.829621
+
+
+
+Labelled reference tree including branch labels and query sequences written to file: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_labelledTree.epa2_6730594
+
+Labelled reference tree with branch labels (without query sequences) written to file: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_originalLabelledTree.epa2_6730594
+
+Labelled reference tree with branch labels in portable pplacer/EPA format (without query sequences) written to file: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_portableTree.epa2_6730594.jplace
+
+Classification result file written to file: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_classification.epa2_6730594
+
+Classification result file using likelihood weights written to file: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_classificationLikelihoodWeights.epa2_6730594
+
+Classification entropy result file using likelihood weights written to file: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/07-Cauris-polymorphism/script/RAxML_entropy.epa2_6730594
+
