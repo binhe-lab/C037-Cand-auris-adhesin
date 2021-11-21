@@ -85,6 +85,8 @@ B8441.tango %>%
   arrange(name, desc(n))
 ```
 
+For S/T frequencies, please first run the script at the end of this notebook to load the data [link](#STB8441)
+
 ## Evolution (duplications and losses)
 ### Gene tree
 The gene tree inferred based on the PF11765 domain in each sequence is presented below:
@@ -259,7 +261,7 @@ ggplot(repeats, aes(x = period, y = copyMean)) + geom_hex(binwidth = c(3,2)) +
   ylab("Mean copy number per sequence") + theme_bw()
 ```
 **Fig. 4 Tandem Repeats (TRs) identified among the protein sequences.** A total of `r nrow(repeats)` types of TRs were identified by the XSTREAM program as described above. The period (unit length) of the TRs are plotted against the mean copy number per sequence for the same TRs. Data are binned by 3 for the period and 2 for the mean copy number, and the number of TRs in each bin is shown in dark-gray to yellow gradient. Note that many TRs are both short (<= 15 a.a.) and have few copies per sequence (< 4). There are, however, a number of TRs that are long (> 30 a.a.) and repeat for more than 10 times per sequence. Those are potentially of more interest.
-```{r, fig.width=5, fig.asp=0.8}
+```{r, fig.width=5, fig.height=4}
 repeats %>%
   ggplot(aes(x = length)) + stat_ecdf(geom = "step") + 
   scale_x_continuous(breaks = c(10,20,40,80,160,320,640,1280), trans = "log2") +
@@ -268,7 +270,7 @@ repeats %>%
 ```
 **Fig. 5 Tandem Repeat domain length cumulative distribution.** Empirical cumulative distribution is calculated for the length of each tandem repeat domain, defined as the period (unit length) of a domain multiplied by the mean copy number in all sequences that contain this domain. The x-axis is log2 transformed. Note that ~50% of the domains have a length < 40 residues and ~80% < 160 residues.
 
-```{r write_XP_028889033_to_table}
+```{r write_to_table}
 # this is for the purpose of drawing just XP_028889033
 tandem %>% filter(grepl("XP_028889033", name)) %>% write_tsv(file = "../01-XP_028889033_drawing/input/XP_028889033_tandem_sub.tsv")
 tandem.div %>% filter(grepl("XP_028889033", name)) %>% 
@@ -277,6 +279,30 @@ tandem.div %>% filter(grepl("XP_028889033", name)) %>%
 # also export the subset belonging to the B8441 homologs
 tandem.div %>% filter(grepl("PIS", name)) %>% 
   write_tsv(file = "output/seq-feature/B8441-homologs-tandem_sub_div.tsv")
+```
+
+#### **Update 2021-11-12** Hil1-4 in multiple _C. auris_ isolates per clade
+In order to characterize the tandem repeat copy number variation among _C. auris_ isolates (see `README.md` in the `output/copynum-var` folder), I combined the homologs of Hil1-4 from the various isolates into a single file and performed XSTREAM analysis using the following command:
+```bash
+sh xstream.sh ../output/copynum-var/cauris-Hil-homologs-final.fasta cauris-Hil-homologs_sub ../output/tandem-repeats
+```
+Below I analyze the results from that analysis, with the goal of quantifying the tandem repeat copy number differences among homologs.
+
+```{r}
+tandem1 <- read_tsv("output/tandem-repeats/XSTREAM_cauris-Hil-homologs-sub_i0.7_g3_m5_L15_chart.tsv", 
+                   col_types = "ciiifidcccd", comment = "#") %>% 
+  rename(name = identifier)
+```
+
+Summarize results: the goal is to count the number of tandem repeat units for the major repeat type (the ~44 aa with GVVIVTT)
+```{r}
+tandem1.sum <- tandem1 %>% 
+  filter(period > 10, grepl("[VI]{4}TT", consensus_nogap, perl = TRUE)) %>%  # repeats with the (G)VVIVTT variants
+  separate(name, into = c("Hil", "strain", "clade"), sep = "_") %>% 
+  #mutate(copy = floor(copyN)) %>% 
+  select(Hil, strain, clade, length = seqLength, period, copyN) %>% 
+  arrange(Hil, clade, strain)
+tandem1.sum
 ```
 
 ### Domain architecture {#B8441}
@@ -539,3 +565,52 @@ ggplot(ST.comb, aes(x = id, y = pos)) + geom_tile(aes(fill = freq)) +
   ggtitle("Ser/Thr frequency in 100 aa windows (frequency > 0.55 replaced by 0.55)")
 ggsave("output/figure/20210530-ST-freq-composite.png", width = 10, height = 6)
 ```
+
+#### S/T in B8441 {#STB8441}
+Sliding window plot of S/T frequency for Hil family proteins in B8441
+```{r}
+B8441.ST <- ST.comb %>% 
+  filter(grepl("B8441", id)) %>% 
+  left_join(select(len, shortName = name, gID, pID), by = c("id" = "pID")) %>% 
+  mutate(gID = ordered(gID, levels = seq.order))
+```
+```{r}
+ggplot(B8441.ST, aes(x = gID, y = pos)) + geom_tile(aes(fill = freq)) + 
+  facet_wrap(~Var, nrow = 3, scales = "fixed") + coord_flip() + 
+  #scale_fill_distiller(palette = "RdGy", limits = c(-0.05, 0.55), oob = scales::squish, breaks = seq(0,0.5,by=0.1)) +
+  scale_fill_viridis_b(option = "D", n.breaks = 10) +
+  scale_x_discrete(labels = paste0(len$gID, " (", len$name, ")")) +
+  labs(y = "Position in sequence", x = NULL, fill = "Freq") + 
+  theme_cowplot() +
+  theme(axis.text.y = element_text(size = 10),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        strip.background = element_blank(),
+        panel.background = element_rect(fill = alpha("gray90", 0.5)),
+        legend.position = "right") +
+  ggtitle("Ser/Thr frequency in 100 aa sliding windows")
+ggsave("output/figure/20211118-B8441-ST-freq.png", width = 8, height = 6.5)
+```
+
+Compare the Hil family to the proteome in B8441
+```{r}
+B8441.STprot <- read_tsv("input/Cauris-ST-freq-per-protein.txt.gz", col_types = cols()) %>% 
+  mutate(Ser = Ser/length, Thr = Thr/length) %>% 
+  pivot_longer(cols = c(Ser, Thr), names_to = "residue", values_to = "value") %>% 
+  mutate(residue = factor(residue, levels = c("Ser", "Thr")))
+```
+```{r}
+B8441.STprot %>% 
+  ggplot(aes(value)) + 
+  geom_histogram(bins = 30) +
+  #scale_fill_viridis_c(option = "B", direction = -1) + 
+  #scale_fill_distiller(palette = "OrRd", direction = 1) +
+  geom_segment(data = filter(B8441.STprot, ID %in% str_split(len$pID, "_", simplify = T)[,1]), 
+               aes(xend = value, y = -200, yend = 200), 
+               color = "red", size = 0.9) +
+  facet_wrap(~residue, nrow = 2, scales = "free") +
+  xlab("Ser/Thr frequency in protein") + ylab("") + 
+  theme_cowplot()
+ggsave("output/figure/20211118-B8441-ST-freq-distr-to-all-proteins.png", width = 6, height = 4)
+```
+
