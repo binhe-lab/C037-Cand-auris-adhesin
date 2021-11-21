@@ -32,12 +32,13 @@ library(treeio)
 require(GenomicRanges)
 ```
 
-## Goal
+# Goal
 
 Analyze the adhesin properties of the XP_028889033 homologs (putative adhesin in _C. auris_)
 This is version 3 of the analysis, using the updated homologs on 2021-02-05
 
-## Build datasets
+# Build datasets
+## Basic information
 First get the basic information about the 100 sequences in this study. I decide to write a simple Python script to extract such info.
 ```bash
 # edit the PYTHON path below to match your local system
@@ -76,175 +77,7 @@ seqInfo <- seqInfo %>%
          length, n_seqs, starts_with("chr"), relLoc)
 ```
 
-## Species tree
-Below is the relationship between the species studied in this analysis.
-```{r, fig.width=6, fig.height=5, warning=FALSE}
-sps.tree <- read.tree(file = "data/20200724-species-tree.nwk")
-p <- ggtree(sps.tree, ladderize = FALSE) + xlim(0,12) + scale_y_reverse() +
-  geom_tiplab(size = 4, align = TRUE, linesize = .5, fontface = 4) +
-  geom_cladelabel(node = 22,  label = "Clavispora", offset = 3.7, color = "magenta", 
-                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
-  geom_cladelabel(node = 23,  label = "MDR", offset = 4.5, color = "purple", fontface = 2,
-                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # MDR
-  geom_cladelabel(node = 27,  label = "Candida", offset = 2.7, color = "salmon", 
-                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Candida
-  geom_cladelabel(node = 29,  label = "albicans", offset = 3.5, color = "red", fontface = 2,
-                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # albicans
-  geom_cladelabel(node = 31,  label = "Saccharomycetaceae", offset = 2.7, color = "grey20", 
-                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) # Sacchromycetaceae
-p
-```
-**Fig. 1 Phylogenetic relationship of the species analyzed in this study.** This species tree is based on the Maximum likelihood phylogeny from Muñoz _et al._ 2018 (PMID: 30559369) for the most part, with the exception of the species in the Saccharomycetaceae family, which is based on Gabaldón _et al._ 2016 (PMID: 27493146).
-
-> Note that he placement of _Debaryomyces hansenii_ differs between the above two publications. The former placed it closer to the Clavispora genus while the latter placed it closer to the Candida genus. We based ours on the first publication. Another large scale phylogenetic analysis (Shen _et al._ 2018 (PMID: 30415838)), also placed _D. hansenii_ closer to the Candida genus. However, in both studies, which reported bootstrap support values in addition to the phylogeny, the support for the part of the tree involving _D. hansenii_ is relatively low suggesting uncertainty in resolving the relationship. We chose to place _D. hansenii_ closer to the Clavispora genus because this is more congruent with the gene tree for the Hil family proteins we inferred below.
-
-### Update 2021-10-22 add new species
-The species tree above only includes species with at least one homolog of the Hil family and thus leaves out species that are usually included in the yeast phylogeny. Here I add some of them back to achieve two goals: 1) to help make the point that _Candida_ pathogens have evolved independently multiple times, by adding non-pathogenic species around those that are pathogenic; 2) to enhance the point that the Hil family has experienced losses in the non-pathogenic species.
-```{r, fig.width=5, fig.height=5, warning=FALSE}
-sps.tree.exp <- read.tree(file = "data/20211017-expanded-species-tree-for-fig1.nwk")
-spsData <- read_tsv("data/20211024-extended-species-Als-Hil-homologs-number-table.txt")
-# correct names
-sps.tree.exp <- sps.tree.exp %>% 
-  as_tibble() %>% 
-  mutate(label = gsub("\\.", "\\. ", label)) %>% 
-  left_join(spsData, by = "label") %>% 
-  as.treedata()
-# plotting
-off = 4.5
-p <- ggtree(sps.tree.exp, ladderize = FALSE) + xlim(0,16) + scale_y_reverse() +
-  geom_tiplab(aes(color = patho), size = 3.5, fontface = "italic", offset = 0.3) +
-  scale_color_manual(values = c("black","red"), guide = FALSE) +
-  #geom_hilight(node = 27, fill = "magenta", alpha = 0.15) + # Clavispora
-  geom_hilight(node = 28, fill = "#7F00FF", alpha = 0.15)  + # MDR
-  #geom_hilight(node = 33, fill = "gold", alpha = 0.25) + # Candida
-  geom_hilight(node = 35, fill = "orange", alpha = 0.25)     + # albicans
-  #geom_hilight(node = 37, fill = "grey50", alpha = 0.15)  + # Sacchromycetaceae
-  geom_hilight(node = 41, fill = "steelblue", alpha = 0.15)  + # glabrata
-  #geom_cladelabel(node = 27,  label = "Clavispora", offset = off+1.2, color = "orchid3", 
-  #                offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
-  geom_cladelabel(node = 28,  label = "MDR", offset = off+1, color = "#7F00FF", fontface = 2,
-                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # MDR
-  geom_cladelabel(node = 33,  label = "Candida", offset = off, color = "gold3", barsize = 0.2, 
-                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Candida
-  geom_cladelabel(node = 35,  label = "albicans", offset = off+1, color = "orange", fontface = 2,
-                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # albicans
-  geom_cladelabel(node = 37,  label = "Saccharomycetaceae", offset = off, color = "grey50",
-                  barsize = 0.2,
-                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Sacchromycetaceae
-  geom_cladelabel(node = 41,  label = "glabrata", offset = off+1, color = "steelblue", fontface = 2,
-                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) # glabrata
-p
-ggsave("output/img/20211023-species-tree-multiple-origin.png", width = 5, height = 5)
-```
-Also visualize the number of homologs in the Als and Hil families
-```{r}
-df0 <- select(spsData, label, Als, Hil) %>%  
-  pivot_longer(Hil:Als, names_to = "family", values_to = "number") %>% 
-  mutate(species = factor(label, levels = rev(spsData$label)))
-p <- ggplot(df0, aes(x = family, y = species)) + 
-  geom_tile(aes(fill = number), color = "white", alpha = 0.4) +
-  geom_text(aes(label = number), color = "black") +
-  scale_fill_distiller(palette = "Greys",direction = 1) +
-  scale_x_discrete(position = "top") +
-  theme_cowplot() + theme(axis.title = element_blank(), legend.position = "none")
-p
-ggsave("output/img/20211024-extended-species-Als-Hil-family-size-plot.png", width = 3, height = 5)
-```
-
-## Gene tree
-### RAxML tree before reconciliation
-```{r}
-gene.tree <- read.raxml("data/RAxML_bipartitionsBranchLabels.clustalo_3701250") %>% 
-  root(node = 143, resolve.root = TRUE, edgelabel = TRUE)
-df0 <- seqInfo %>% select(label = name, species_id, species_gr)
-gene.tree <- full_join(gene.tree, df0, by = "label")
-p <- ggtree(gene.tree, aes(alpha = bootstrap), ladderize = TRUE) +
-  geom_nodelab(aes(x = branch, label = bootstrap, subset = bootstrap < 90), 
-               alpha = 1, vjust = -.5, size = 2) +
-  scale_alpha_continuous(name = "Rapid bootstrap", breaks = c(20,60,100)) + 
-  geom_tippoint(aes(color = species_gr)) +
-  scale_color_manual(name = "Clades / Species",
-                     values = c("MDR clade"   = "#7F00FF9F",
-                                "C. lusitaniae" = "plum2", 
-                                "D. hansenii" = "gray50",
-                                "S. stipitis" = "slategray",
-                                "Candida" = "orange2", 
-                                "Saccharomycetaceae" = "grey20")) +
-  theme(text = element_text(size = 10))
-p <- flip(p, 137,149)
-p
-ggsave("output/img/20210624-raxml-gene-tree-color.png", width = 7, height = 5)
-```
-**Fig. 2 RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The branch length is proportional to the inferred substitions per site. The tree is manually rooted on the Saccharomycetaceae family, which is the outgroup to both the Candida and Clavispora genera and whose Hil homologs form a distinct group. Protein sequence names are not shown for brevity, but are color coded based on the species (groups) they belong to. The clade color code is nested such that if a sequence belongs to both a species and a clade, e.g. _C. auris_ and the MDR clade, the sequence will be colored based on the smaller phylogenetic unit, i.e. _C. auris_.
-
-### Gene tree after reconciliation
-We reconciled the gene tree with the species tree in Notung 2.9. The purpose of this step is to reconstruct the history of gene duplications and losses (transfers don't apply to this case) and to rearrange weakly supported parts of the gene tree to reduce the total event score in accordance with the evolutionary parsimony principal.
-
-Briefly, after both the gene tree and the rooted species tree (see above) were loaded into the graphic user interface, the rooting analysis was run and the branch receiving the highest root score was the same as the manually chosen branch as shown in Fig. 2, namely the ancestral branch for all the Saccharomycetaceae proteins. After rooting and reconciliation, a total of 59 duplications and 47 losses were inferred. The reconciled gene tree was then rearranged. In this step, weakly supported branches -- those with rapid bootstrap score < 90% -- were allowed to be swapped and the event score, calculated as a weighted sum of the total loss and duplication events, was calculated for each rearrangement. Among all rearranged gene tree topologies, the one with the lowest event score had 42 duplications and 12 losses. This is the gene tree that is shown below.
-```{r}
-gene.tree.rec <- read.nhx(file = "output/notung/RAxML_bipartitions.clustalo_3701250_rearranged90.nhx")
-gene.tree.rec <- full_join(gene.tree.rec, df0, by = "label")
-sps.color <-  c("MDR clade" = "#7F00FF9F", "C. auris" = "darkorchid",
-                "C. lusitaniae" = "plum2", "D. hansenii"  = "gray50",
-                "S. stipitis" = "slategray", 
-                "Candida" = "orange2",  "Saccharomycetaceae" = "grey20")
-ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + 
-  scale_y_reverse() +
-  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
-  geom_text(aes(label = ifelse(D == "Y", "D", NA)), hjust = -0.4, size = 2, color = "red") +
-  geom_tippoint(aes(color = species_gr)) +
-  scale_color_manual(name = "Clades", values = sps.color) +
-  theme(text = element_text(size = 14))
-ggsave("output/img/20210624-reconciled-rearranged90-gene-tree-color.png", width = 7.5, height = 7)
-```
-**Fig. 3 Reconciled and rearranged gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The cladogram shows only the topology of the tree, with endpoints colored in the same way as in Fig. 2. A red "D" next to an internal node indicates an inferred gene duplication event at that node. The labels with gray background highlight the main features of the tree: 1) the Saccharomycetaceae sequences form the outgroup, suggesting there was no ancient duplication prior to the divergence of the family and the remaining species; 2) the CUG-Ser1 clade, which contains both the Candida and Clavispora genera, forms two duplicate groups, suggesting an early duplication event in the clade; 3) the top CUG-Ser1 branch further experienced extensive duplications _independently_ in the Clavispora genus, labeled by the outgroup _D. hansenii_ (DH), and the Candida genus, labeled by the outgroup _S. stipitis_ (SS). 
-```{r, fig.width=3, fig.height=5}
-p.gtree <- ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + 
-  scale_y_reverse() +
-  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
-  geom_tippoint(aes(color = species_gr), show.legend = FALSE) +
-  scale_color_manual(name = "Clades", values = sps.color) +
-  theme(text = element_text(size = 14))
-ggsave("output/img/20210626-reconciled-gene-tree-side.png", width = 3, height = 6)
-```
-
-### Gains and losses on species tree
-```{r, fig.width=5, fig.height=5}
-# read in notung parsed event summary stats
-notung.stat <- read_tsv("output/notung/RAxML_bipartitions.clustalo_3701250_notung_event_summary.txt", col_types = 'cii')
-sps.tree %>% 
-  full_join(notung.stat, by = "label") %>% 
-  as_tibble() %>% 
-  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2)),
-         patho = c(T,T,T,T,T,F,T,F,T,T,T,F,F,F,T,T,F,T,rep(NA, 35-18))) %>% 
-  as.treedata() %>% 
-  ggtree(ladderize = FALSE) + scale_y_reverse() +
-  geom_tiplab(aes(color = patho), size = 3.5, fontface = "italic", offset = 0.3) + xlim(0,11) +
-  scale_color_manual(values = c("black","red"), guide = FALSE) +
-  #geom_tiplab(size = 3.5, fontface = "italic", offset = 0.1) +
-  #geom_hilight(node = 22, fill = "magenta", alpha = 0.15) + # Clavispora
-  geom_hilight(node = 23, fill = "purple", alpha = 0.15)  + # MDR
-  #geom_hilight(node = 27, fill = "gold", alpha = 0.15) + # Candida
-  geom_hilight(node = 29, fill = "orange", alpha = 0.25)     + # albicans
-  geom_hilight(node = 33, fill = "steelblue", alpha = 0.15)  + # glabrata
-  geom_text(aes(label = duplications), hjust = 3, vjust = -.3,
-            size = 3, color = "red", fontface = 2) +
-  geom_text(aes(label = paste0("/", losses)), hjust = 1.3, vjust = -.3,
-            size = 3, color = "grey20", fontface = 2) +
-  geom_label(aes(label = ifelse(duplications >= 3, duplications, NA)), hjust = 2.1,
-             vjust = -.11, size = 3, color = "red", fill = "yellow1", fontface = 2,
-             label.size = 0, label.padding = unit(0.12, "lines"))
-ggsave("output/img/20210622-species-tree-with-gains-losses.png", width = 4.5, height = 5)
-```
-**Fig. 4 Inferred gene duplications and losses in the Hyr/Iff-Like (HIL) family in Ascomycetes.** The cladogram shows the species relationship with shadings as in Figure 1. The numbers on top of each branch are the inferred duplications (red) and losses (black) using Notung 2.9. Yellow highlight emphasize the branches that experience three or more duplications.
-
-_**Conclusions**_
-
-1. The Hil family **independently** expanded in the Candida and Clavispora genera. The most significant expansion occurred within the albicans clade in the Candida genus and the MDR clade in the Clavispora genus.
-1. Many species in the Saccharomycetaceae family have no homologs in this family based on our blast criteria. This suggests that the gene family has contracted and any remaining homologs are shorter than 500 amino acid and thus likely to not play an adhesin function.
-
 ## Adhesin predictions
-### SVM based predictions
 [FungalRV](http://fungalrv.igib.res.in/) and [FaaPred](http://bioinfo.icgeb.res.in/faap/) are two Support Vector Machine (SVM) based prediction algorithms that use sequence features such as amino acid composition (frequency, physiochemical properties etc.) as input and train Machine Learning models to distinguish fungal adhesins from non-adhesins.
 ```{r adhesin_prediction}
 frv.th = 0.511 # recommended FungalRV score threshold
@@ -277,7 +110,6 @@ for (j in 2:5){
   # Format cells in j-th column
   dt <- DT::formatStyle(dt, j, backgroundColor = DT::styleInterval(brks, clrs))
 }
-dt
 ```
 ```{r}
 # see https://yulab-smu.top/treedata-book/chapter7.html#attach-operator
@@ -285,7 +117,7 @@ dt
 # of the data frame to contain the tip labels
 ```
 
-### GPI-anchor prediction
+## GPI-anchor prediction
 GPI-anchored proteins are characterized by an N-terminal signal peptide, which would direct the protein to the secretary pathway, and a C-terminal GPI-anchor peptide, which would be cleaved and replaced by the GPI-anchor, allowing the protein to be tethered to the cell wall.
 
 For signal peptide, I used SignalP server. Its latest version is 5.0. But I also ran the sequences through their 4.1 version, with two settings. The results of the latter two are almost identical, except for one sequence "XP_024711350.1", which is only included in the sensitive version, and has a probability lower than 0.5.
@@ -320,48 +152,30 @@ if("pred.gpi" %in% names(seqInfo))
   seqInfo <- select(seqInfo, -pred.gpi)
 seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi), by = c("name"="name"))
 ```
-
 ```{r}
 df1 <- seqInfo %>% 
   group_by(species_id) %>% 
-  summarize(SignalP = sum(signalp), GPI_Pred = sum(pred.gpi), Pass = sum(frv.score > 0.511 & signalp & pred.gpi)) %>% 
+  summarize(SignalP = sum(signalp), GPI = sum(pred.gpi), All = sum(frv.score > 0.511 & signalp & pred.gpi)) %>% 
   right_join(df) %>% 
-  select(species = species_id, Total = n, Pass, FungalRV = fungalRV, SignalP, GPI_Pred)
-
-dt1 <- DT::datatable(df1, 
-                     options = list(dom = 't', pageLength = 20, ordering = FALSE, 
-                                    autowidth = TRUE,
-                                    # https://rstudio.github.io/DT/options.html
-                                    columnDefs = list(list(width = "150", targets = 1),
-                                                      list(width = '50', className = "dt-center", targets = 2:6))), 
-                caption = "Summary of Adhesin Prediction Results")
-# the following code is from https://www.r-bloggers.com/2020/05/mimic-excels-conditional-formatting-in-r-2/
-brks <- stats::quantile(x <- df1[[2]], probs = seq(.05, .95, .05), na.rm = TRUE)
-#clrs <- colorRampPalette(c("#fcdbdb", "#ff1515"))(length(brks)+1)
-clrs <- colorRampPalette(brewer.pal(n = 4, name = "Reds"))(length(brks)+1)
-for (j in 2:8){
-  # Create breaks for shading column values high to low
-  # Create shades of green for backgrounds
-  # Format cells in j-th column
-  dt1 <- DT::formatStyle(dt1, j, backgroundColor = DT::styleInterval(brks, clrs))
-}
-dt1
+  select(species = species_id, Total = n, FRV = fungalRV, SP = SignalP, GPI, All) %>% 
+  pivot_longer(Total:All, names_to = "type", values_to = "number") %>% 
+  mutate(type = factor(type, levels = unique(type)))
+p <- ggplot(df1, aes(x = type, y = species)) + 
+  scale_y_discrete(limits = rev) +
+  geom_tile(aes(fill = number), color = "white", alpha = 0.4) +
+  geom_text(aes(label = number), color = "black", size = 4) +
+  scale_fill_distiller(palette = "Greys",direction = 1) +
+  scale_x_discrete(position = "top") +
+  theme_cowplot() + theme(axis.title = element_blank(), legend.position = "none")
+p
+ggsave("output/img/20211024-homologs-prediction-summary.png", width = 4.5, height = 5)
 ```
 
 **Summary**
 
 - Most of the Hil homologs in Ascomycetes passed both the GPI-anchor predictions and also the FungalRV predictor, suggesting that they are likely to be cell wall proteins and may play an adhesin function (FaaPred predicted fewer adhesins, but the overall pattern doesn't change).
-- 
-```{r}
-# saving the table output to a png file 
-# https://stackoverflow.com/questions/60287652/how-to-save-a-table-i-created-with-dt-datatable-into-a-high-quality-image
-DT::saveWidget(dt1, "output/misc/tmp.html")
-webshot::webshot("output/misc/tmp.html", "output/img/20210623-homologs-prediction-summary.png")
-```
 
-
-## Build feature map for homologs
-### Tandem repeat structures
+## Tandem repeat structures
 
 The non-NTD portion of the proteins evolve rapidly and many of them contain tandem repeats. Therefore, characterizing and visualizing the type, number and spatial distribution of the tandem repeats serve to highlight the differences in the non-NTD part of the proteins in this family.
 
@@ -369,22 +183,23 @@ To identify and group tandem repeats, I used [XSTREAM](https://amnewmanlab.stanf
 
 ```{r}
 tandem <- read_tsv("output/xstream/XSTREAM_XP_028889033_homologs_sub_i0.7_g3_m5_L15_chart.tsv",
-                   col_types = "ciiifidcccd", comment = "#") %>% 
-  rename(name = identifier)
+                   col_types = "ciiifidcccd", comment = "#")
 # now let's create a tibble for plotting, which would contain each instance of the tandem repeat on a separate row
 tandem.div <- tandem %>% 
   rowwise(name) %>% 
   summarize(div = list(c(seq(from = start, to = end, by = period), end)), .groups = "drop") %>% 
   unnest(div)
-```
 
-```{r, fig.width=5, fig.height=4}
 # summarize stats of tandem repeats
 repeats <- tandem %>% 
   group_by(type, period) %>% 
   summarize(n = n(), copyMean = mean(copyN), .groups = "drop") %>% 
   mutate(length = period * copyMean)
+```
 
+Calculate length of tandem repeats as a percentage of the protein length minus the PF11765 domain
+
+```{r, fig.width=5, fig.height=4}
 # tandem repeat length distribution
 ggplot(repeats, aes(length)) + geom_histogram(bins = 40) + 
   scale_x_continuous(breaks = c(10,20,40,80,160,320,640,1280), trans = "log2") +
@@ -395,89 +210,83 @@ ggplot(repeats, aes(length)) + stat_ecdf(geom = "step") +
   scale_x_continuous(breaks = 10*2^seq_len(9), trans = "log2") +
   ylab("Probability") + xlab("length (= period * mean copies)") + 
   theme_cowplot() + panel_border(color = "black") #+ background_grid()
-
 ```
 
-### Domain diagram
+# Feature map for homologs
 The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
 
+## Load Pfam domains
 ```{r}
-# GPI-anchor
-# use pred.gpi
 # Pfam domains
 pfam <- read_tsv("output/web-download/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
 # save feature file for Jalview examination
 # pfam %>% filter(grepl("XP_028889033",seq_id)) %>% select(hmm_name, seq_id, envelope_start, envelope_end) %>% mutate(featuretype = "domain") %>% write_tsv("XP_028889033_features.jalview")
 # I manually edited the feature file, so I commented out the line above to avoid accidentally 
 # overwriting my own edits
+```
 
+## Organize and combine the tandem repeats features
+```{r}
+tr <- tandem %>% 
+  left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
+  mutate(type = "Tandem Repeats") %>% 
+  select(name, type, start, end)
+```
+
+```{r}
+# GPI-anchor
+# use pred.gpi
 # feature set
 # structure: id  feature  start  end
+seqLen <- seqInfo %>% mutate(start = 1) %>% select(name, start, end = length)
 feature <- bind_rows(
-  seqInfo %>% mutate(type = "entire protein", start = 1) %>% select(name, type, start, end = length),
   pfam %>% select(name = seq_id, type = hmm_name, start = envelope_start, end = envelope_end) %>% 
     filter(type == "Hyphal_reg_CWP"),
   # extend the signal peptide segment by 10 amino acids to make it more visible
   signalp5 %>% mutate(type = "SignalP", end = end + 10) %>% select(name = id, type, start = start, end),
   # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
   pred.gpi %>% filter(is.gpi) %>% mutate(type = "GPI-anchor", start = cleavePos-10) %>% 
-    select(name, type, start, end = length)
+    select(name, type, start, end = length),
+  tr
 ) 
 
 # in order to plot properties of the sequences in an order that is consistent with the sequences' position in the gene tree
 genetreeOrder <- scan("data/reorder_by_gene_tree.txt", what = "character")
+seqLen$name <- ordered(seqLen$name, levels = rev(genetreeOrder))
+
 feature <- feature %>% 
-  mutate(tip = ifelse(type == "entire protein", as.character(name), as.character(type)),
-         name = ordered(name, levels = rev(genetreeOrder)),
-         type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor")))
-feature.colors <- c("grey", "#1f78b4","#e31a1c", "#6a3d9a")
+  mutate(name = ordered(name, levels = rev(genetreeOrder)),
+         type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor", "Tandem Repeats")))
+feature.colors <- c(Hyphal_reg_CWP = "#3d85c6", SignalP = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeats" = "#af8400bb")
 ```
-
-organize the tandem repeats features
-```{r}
-tr.th <- 100 # arbitrary threshold for distinguishing "short" from "long" TRs
-tr <- tandem %>% 
-  left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
-  mutate(type = ifelse(period * copyMean < tr.th, "TR-short", "TR-long")) %>% 
-  select(name, type, start, end)
-```
-
-Combine domains, SP and GPI-anchor with TR features.
-```{r transform_tandem_feature_data}
-# combine sequence features with tandem repeats
-tr.feature <- bind_rows(feature, tr) %>% 
-  mutate(type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor", "TR-long", "TR-short")))
-# reorder the sequences by their positions in the gene tree
-tr.feature$name <- ordered(tr.feature$name, levels = rev(genetreeOrder))
-# combine the colors
-comb.col <- c(feature.colors, "#a87b00bb", "#ffbb00bb")
-```
-
-```{r plot_tandem_repeats, warning=FALSE, fig.width=6, fig.height=7.5}
+## Plot domain organization
+```{r plot_tandem_repeats, warning=FALSE}
 # plot
-p1 <- ggplot(tr.feature, aes(x = name, y = start, xend = name, yend = end)) + 
-  geom_segment(aes(color = type, text = tip), size = 2)
+p0 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + 
+  #geom_segment(color = "black", size = 2.1) +
+  geom_segment(color = "gray80", size = 2)
+p1 <- geom_segment(data = feature, aes(color = type), size = 2)
 p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2, color = "white")
-p3 <- p1 + coord_flip() + theme_classic() + 
-  scale_color_manual(values = comb.col) +
+p3 <- p0 + p1 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = feature.colors) +
   scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
   theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
         legend.position = c(0.8, 0.3),
         plot.title = element_text(hjust = 0.5), 
-        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
-  labs(title = "Domain schematics of Hil family proteins", y = "Position in sequence", x = "Sequences", color = "FEATURES")
-p3
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
+  labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
 #plot_grid(p.gtree, p3, ncol = 2, align = 'v', rel_widths = c(1,2), scale = c(1.01,1))
-ggsave("output/img/20210625-domain-tandem-repeats.png", width = 6, height = 7.5)
+ggsave("output/img/20210625-domain-tandem-repeats.png", width = 6, height = 7)
 ```
 **Fig. ?** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
 
+## Separate TR types
 ```{r}
 DT::datatable(
   tandem %>% 
-    rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
+    dplyr::rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
     select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
     arrange(desc(name)),
   fillContainer = FALSE, options = list(pageLength = 10)
@@ -499,6 +308,7 @@ tr1 <- tandem %>%
 
 ```{r set_tr_color}
 require(RColorBrewer)
+tr.th <- 100 # arbitrary threshold for distinguishing "short" from "long" TRs
 tr.col <- character(nrow(repeats)) # create a color vector
 short.rp <- which(repeats$length < tr.th) # identify the short repeats indices
 long.rp <- setdiff(1:nrow(repeats), short.rp) # the long repeats indices
@@ -508,33 +318,48 @@ tr.col[short.rp] <- colorRampPalette(brewer.pal(12, "Paired")[seq(3,11,by=2)])(l
 set.seed(231) # for reproducibly shuffling the order before assigning the colors
 long.rp <- sample(long.rp)
 tr.col[long.rp] <- colorRampPalette(brewer.pal(12, "Paired")[seq(4,12,by=2)])(length(long.rp)) # assign the long repeats a higher contrast color
+# -- desaturate the colors -- 
+# https://stackoverflow.com/questions/26314701/r-reducing-colour-saturation-of-a-colour-palette
+library(colorspace)   ## hsv colorspace manipulations
+
+## Function for desaturating colors by specified proportion
+desat <- function(cols, sat=0.5) {
+    X <- diag(c(1, sat, 1)) %*% rgb2hsv(col2rgb(cols))
+    hsv(X[1,], X[2,], X[3,])
+}
+
+tr.col <- desat(tr.col, sat = 0.7)
+# -- finish --
+tr.col <- paste0(tr.col, "CC") # add 20% transparency to the TR features
+names(tr.col) <- paste0("TR-", repeats$type) # name the colors by the TR types
 repeats$color <- tr.col
 ```
 
 Combine domains, SP and GPI-anchor with TR features.
 ```{r} 
 # combine sequence features with tandem repeats
-tr1.feature <- bind_rows(feature, tr1) %>% 
-  mutate(type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor", unique(tr1$type))))
-comb.col1 <- c(feature.colors, paste0(tr.col, "CC")) # add 20% transparency to the TR features
-write_tsv(tr1.feature, file = "output/misc/R-feature-table.tsv", col_names = TRUE)
+feature1 <- bind_rows(filter(feature, type != "Tandem Repeats"), tr1) %>% 
+  mutate(type = ordered(type, levels = c("Hyphal_reg_CWP", "SignalP", "GPI-anchor", unique(tr1$type))))
+feature.col1 <- c(feature.colors[1:3], tr.col) # remove the singel "Tandem Repeats" type
+write_tsv(feature1, file = "output/misc/R-feature-table.tsv", col_names = TRUE)
 ```
 
-```{r, warning=FALSE, fig.width = 6, fig.height=7.5}
+```{r, warning=FALSE}
 # plot
-p1 <- ggplot(tr1.feature, aes(x = name, y = start, xend = name, yend = end)) + 
-  geom_segment(aes(color = type, text = tip), size = 2)
+p0 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + 
+  #geom_segment(color = "black", size = 2.1) +
+  geom_segment(color = "gray80", size = 2)
+p1 <- geom_segment(data = feature1, aes(color = type, text = tip), size = 2)
 p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2, color = "white")
-p3 <- p1 + coord_flip() + theme_classic() + 
-  scale_color_manual(values = comb.col1) +
+p3 <- p0 + p1 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = feature.col1) +
   scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
   theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
         legend.position = "none", plot.title = element_text(hjust = 0.5),
-        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
-  labs(title = "Domain schematics of Hil family proteins", y = "Position in sequence", x = "Sequences", color = "FEATURES")
-p3
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
+  labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
 # plot_grid(p.gtree, p3 + p2, ncol = 2, align = 'v', rel_widths = c(1,2), scale = c(1.01,1))
 ggsave("output/img/20210626-domain-tandem-repeats-distinct-color.png", width = 5, height = 7.5)
 ```
@@ -544,28 +369,16 @@ ggsave("output/img/20210626-domain-tandem-repeats-distinct-color.png", width = 5
 require(plotly)
 ggplotly(p3, tooltip = "text", width = 900, height = 900)
 ```
-## Homologous protein length
-### Length distribution
-```{r}
-p.tree <- sps.tree %>% as_tibble() %>% 
-  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
-  as.treedata() %>% ggtree(ladderize = FALSE) + xlim(0,15) + scale_y_reverse() +
-  geom_tiplab(size = 5, align = TRUE, linesize = .5, fontface = "italic", offset = 0.1) +
-  geom_hilight(node = 22, fill = "hotpink", alpha = 0.2) + # Clavispora
-  geom_hilight(node = 23, fill = "purple", alpha = 0.2)  + # MDR
-  geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
-  geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
-  geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
-ggsave("output/img/20210624-species-tree-side.png", p.tree, width = 4, height = 6)
-```
-
+# Similarity and divergence
+## Length distribution
 ```{r plot_prot_length}
 # plot the length distribution of the homologs in each species
-p <- ggplot(seqInfo, aes(x = reorder(species_id, desc(species_id)), y = length)) + 
+p <- ggplot(seqInfo, aes(x = species_id, y = length)) + 
   geom_boxplot(outlier.shape = NA) + geom_hline(yintercept = 500, linetype = 2) +
   #stat_summary(fun.data = "mean_cl_boot", color = "red") +
   geom_dotplot(binwidth = 100, binaxis = "y", stackdir = "center", dotsize = 0.5, 
                binpositions = "all", fill = rgb(0,0,0,0.5), color = rgb(0,0,0,0.6)) + 
+  scale_x_discrete(limits = rev) +
   coord_flip() +  labs(title = "Distribution of XP_028889033 homologs' length") +
   theme(axis.title.y = element_blank(), axis.text.y = element_blank())
   
@@ -579,13 +392,14 @@ _**Discussion**_
 - Majority of the proteins in the list are 500-2000 a.a., with a few exceptionally long
 - Not only do Saccharomycetaceae species have fewer Hil family homologs, the ones they have are also short (< 1000 a.a.) with the exception of _C. glabrata_
 
-### Protein length vs tandem repeat content
+## Protein length vs tandem repeat content
 Examine the relationship between the entire protein length and tandem repeat content
 ```{r}
 # calculate the length of the PF11765 domain in each protein
 pf11765.length <- feature %>% 
   filter(type == "Hyphal_reg_CWP") %>% 
   mutate(domainLen = end - start + 1) %>% 
+  # need the following step because one protein has two instances of PF11765
   group_by(name) %>% 
   summarize(dmLen = sum(domainLen))
 
@@ -594,18 +408,20 @@ tr.length <- tandem %>%
   mutate(trLength = end - start + 1) %>% 
   group_by(name, seqLength) %>% 
   summarize(trLen = sum(trLength)) %>% 
-  rename(length = seqLength) %>% 
+  dplyr::rename(length = seqLength) %>% 
   right_join(select(seqInfo, name, length, species_id, species_gr),
              by = c("name","length")) %>% 
   mutate(trLen = ifelse(is.na(trLen), 0, trLen)) %>% 
   left_join(pf11765.length, by = "name") %>% 
   mutate(nonNTDLen = length - dmLen, tr.content = trLen/nonNTDLen)
+```
 
+```{r}
 tr.length %>% 
-  ggplot(aes(x = trLen, y = length, color = species_gr)) + 
+  ggplot(aes(x = trLen, y = length)) + 
   geom_point(size = 2.5, alpha = 0.7) + 
   #geom_smooth(method = "lm") +
-  scale_color_manual(name = "Clade", values = sps.color) +
+  #scale_color_manual(name = "Clade", values = sps.color) +
   ylab("Protein length") + xlab("Tandem repeat length") + ylim(0, 4500) +
   theme_cowplot() + panel_border(color = "black")
 ggsave("output/img/20210627-protein-length-evol-driven-by-tandem-repeats.png", width = 6, height = 4.5)
@@ -613,17 +429,17 @@ ggsave("output/img/20210627-protein-length-evol-driven-by-tandem-repeats.png", w
 Shorter proteins seem to have a lower content of tandem repeats as a percentrage of their non NTD portion of the protein.
 ```{r}
 tr.length %>% 
-  ggplot(aes(x = nonNTDLen, y = tr.content, color = species_gr)) + 
-  geom_point(size = 2.5, alpha = 0.9) + 
-  geom_hline(yintercept = 0.5, linetype = 2, color = "gray30") +
-  geom_vline(xintercept = 1200, linetype = 2, color = "gray30") +
-  scale_color_manual(name = "Clade", values = sps.color) +
-  ylab("Tandem repeat as % of non NTD") + xlab("Length of non-NTD part") +
-  xlim(0,4500) + ylim(0,1) +
+  mutate(group = cut(length, breaks = c(0,1000,1500,5000), labels = c("<1000","<1500",">1500"))) %>% 
+  ggplot(aes(x = group, y = tr.content)) + 
+  geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2) +
+  #geom_hline(yintercept = 0.5, linetype = 2, color = "gray30") +
+  #geom_vline(xintercept = 1500, linetype = 2, color = "gray30") +
+  #scale_color_manual(name = "Clade", values = sps.color) +
+  ylab("Tandem repeat content") + xlab("Protein length") +
   theme_cowplot() + panel_border(color = "black")
-ggsave("output/img/20210627-tandem-repeat-proportion-in-nonNTD.png", width = 6, height = 4.5)
+ggsave("output/img/20211120-tandem-repeat-proportion.png", width = 5, height = 4)
 ```
-```{r, fig.width = 5, fig.height=4.5}
+```{r}
 # https://stackoverflow.com/questions/7549694/add-regression-line-equation-and-r2-on-graph
 # # GET EQUATION AND R-SQUARED AS STRING
 # # SOURCE: https://groups.google.com/forum/#!topic/ggplot2/1TgH-kG5XMA
@@ -657,6 +473,69 @@ _**Discussion**_
 
 S/T sites are potential sites for O-glycosylation, which could increase the rididity of the stalk of the protein and allow the N-terminal domain to protrude out of the cell wall facing the exterior. More evidence for the importance of O-glycosylation in a serine/threonine-rich domain can be found [here](https://ec.asm.org/content/10/10/1317.long).
 
+### In whole protein
+The goal here is to compare the S/T frequencies in the Hil proteins to the proteome average. First we need to calculate the S/T frequencies in the Hil proteins, either in the whole protein or excluding the PF11765 domain. This is done with a script in the `script` folder named `Hil-ST-freq.sh`
+
+To help with the latter task (in the non-PF11765 domain part), I export the PF11765 domain boundaries as a BED format file
+```{r}
+feature %>% 
+  filter(type == "Hyphal_reg_CWP") %>% 
+  select(name, start, end) %>% 
+  write_tsv(file = "data/XP_028889033_homologs_PF11765.BED", col_names = FALSE)
+```
+
+Read in the S/T frequencies
+```{r}
+
+```
+
+**Update 2021-06-28**
+
+It is of interest to know the background frequency of Serine and Threonine in the proteome(s). To do so, I modified the `calc_aafreq_gz.py` script I wrote a long time ago for calculating the cystein and dibasic residues. I then copied four proteome fasta files, for _C. albicans_, _C. glabrata_, _S. cerevisiae_ and _C. auris_ and applied the script on them (using a wrapper script called `S-T-freq.sh`). Below I will look at both the proteome average and the distribution of S/T in individual proteins across the proteome.
+```{r}
+tmp.files <- list.files(path = "output/ST-freq/", pattern = "*ST-freq.tsv.gz")
+files <- file.path("output/ST-freq", tmp.files)
+names(files) <- gsub("-", " ", tmp.files) %>% word(1, 1)
+bgST.freq <- files %>% 
+  map(~read_tsv(., col_types = cols())) %>% 
+  bind_rows(.id = "Species") %>% 
+  mutate(freqS = Ser/length, freqT = Thr/length,
+         Ser = NULL, Thr = NULL,
+         Species = paste0(str_sub(Species, 1, 1), ". ", str_sub(Species, 2))) %>% 
+  pivot_longer(cols = starts_with("freq"), names_to = "Residue", names_prefix = "freq", values_to = "frequency")
+```
+
+Plot the proteome-wide distribution:
+
+Is there any correlations between protein length and S/T frequency?
+```{r}
+bgST.freq %>% 
+  ggplot(aes(x = length, y = frequency)) +
+  geom_hex() + facet_grid(Residue ~ Species, scales = "free_y") + 
+  scale_x_log10() + xlab("Protein length")
+```
+Doesn't seem to be significant.
+
+```{r}
+bgST.freq %>% 
+  ggplot(aes(x = Species, y = frequency, fill = Residue)) + 
+  geom_violin(position = position_dodge(0.9), trim = FALSE) + 
+  stat_summary(
+    fun.data = "mean_sdl",  fun.args = list(mult = 1), 
+    geom = "pointrange", color = "black", position = position_dodge(0.9)
+    ) +
+  scale_fill_viridis_d() +
+  theme_cowplot()
+ggsave("output/img/20210701-ST-freq-proteome-wide-distribution.png", width = 6, height = 4)
+```
+```{r}
+bgST.freq %>% 
+  group_by(Species, Residue) %>% 
+  summarize(mean = round(mean(frequency),3)) %>% 
+  pivot_wider(names_from = Residue, values_from = mean)
+```
+
+### Sliding window estimates
 To determine the S/T frequency in the XP_028889033 homologs, I ran the program `freak` from the EMBOSS suite with the parameters of 100 aa sliding window and a step size of 10 aa. After reformating the output, the rest of the analysis is accomplished below.
 
 
@@ -705,51 +584,6 @@ p.st
 ggsave("output/img/20201223-ST-freq-composite.png", width = 7, height = 7.5)
 ```
 
-**Update 2021-06-28**
-
-It is of interest to know the background frequency of Serine and Threonine in the proteome(s). To do so, I modified the `calc_aafreq_gz.py` script I wrote a long time ago for calculating the cystein and dibasic residues. I then copied four proteome fasta files, for _C. albicans_, _C. glabrata_, _S. cerevisiae_ and _C. auris_ and applied the script on them (using a wrapper script called `S-T-freq.sh`). Below I will look at both the proteome average and the distribution of S/T in individual proteins across the proteome.
-```{r}
-tmp.files <- list.files(path = "output/ST-freq/", pattern = "*ST-freq.tsv.gz")
-files <- file.path("output/ST-freq", tmp.files)
-names(files) <- gsub("-", " ", tmp.files) %>% word(1, 1)
-bgST.freq <- files %>% 
-  map(~read_tsv(., col_types = cols())) %>% 
-  bind_rows(.id = "Species") %>% 
-  mutate(freqS = Ser/length, freqT = Thr/length,
-         Ser = NULL, Thr = NULL,
-         Species = paste0(str_sub(Species, 1, 1), ". ", str_sub(Species, 2))) %>% 
-  pivot_longer(cols = starts_with("freq"), names_to = "Residue", names_prefix = "freq", values_to = "frequency")
-```
-
-Plot the proteome-wide distribution:
-
-Is there any correlations between protein length and S/T frequency?
-```{r}
-bgST.freq %>% 
-  ggplot(aes(x = length, y = frequency)) +
-  geom_hex() + facet_grid(Residue ~ Species, scales = "free_y") + 
-  scale_x_log10() + xlab("Protein length")
-```
-Doesn't seem to be significant.
-
-```{r}
-bgST.freq %>% 
-  ggplot(aes(x = Species, y = frequency, fill = Residue)) + 
-  geom_violin(position = position_dodge(0.9), trim = FALSE) + 
-  stat_summary(
-    fun.data = "mean_sdl",  fun.args = list(mult = 1), 
-    geom = "pointrange", color = "black", position = position_dodge(0.9)
-    ) +
-  scale_fill_brewer(type = "qual", palette = 2) +
-  theme_cowplot()
-ggsave("output/img/20210701-ST-freq-proteome-wide-distribution.png", width = 6, height = 4)
-```
-```{r}
-bgST.freq %>% 
-  group_by(Species, Residue) %>% 
-  summarize(mean = round(mean(frequency),3)) %>% 
-  pivot_wider(names_from = Residue, values_from = mean)
-```
 
 ## TANGO prediction of β-aggregation prone sequences
 
@@ -928,7 +762,203 @@ plot_grid(legend, prow, ncol = 1, rel_heights = c(.1,1))
 
 ggsave("output/img/20210630-tango-hits-number-and-interval.png", width =5, height = 5)
 ```
-## Chromosomal locations
+# Evolutionary history
+## Species tree
+Below is the relationship between the species studied in this analysis.
+```{r, warning=FALSE}
+sps.tree <- read.tree(file = "data/20200724-species-tree.nwk")
+p.tree <- sps.tree %>% 
+  as_tibble() %>% 
+  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
+  left_join(spsData, by = "label") %>% 
+  as.treedata() %>% 
+  ggtree(ladderize = FALSE) + xlim(0,17) + scale_y_reverse() +
+  geom_tiplab(aes(color = patho), size = 3.8, fontface = "italic", offset = 0.3) +
+  scale_color_manual(values = c("black","red"), guide = "none") +
+  #geom_hilight(node = 27, fill = "magenta", alpha = 0.15) + # Clavispora
+  geom_hilight(node = 23, fill = "#7F00FF", alpha = 0.15)  + # MDR
+  #geom_hilight(node = 33, fill = "gold", alpha = 0.25) + # Candida
+  geom_hilight(node = 29, fill = "orange", alpha = 0.25)     + # albicans
+  #geom_hilight(node = 37, fill = "grey50", alpha = 0.15)  + # Sacchromycetaceae
+  geom_hilight(node = 33, fill = "steelblue", alpha = 0.15)  # glabrata
+  #geom_cladelabel(node = 22,  label = "Clavispora", offset = 3.7, color = "magenta", 
+  #                offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
+p.tree + 
+  geom_cladelabel(node = 23,  label = "MDR", offset = 4.5, color = "purple", fontface = 2,
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # MDR
+  #geom_cladelabel(node = 27,  label = "Candida", offset = 2.7, color = "salmon", 
+  #                offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Candida
+  geom_cladelabel(node = 29,  label = "albicans", offset = 3.5, color = "red", fontface = 2,
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # albicans
+  geom_cladelabel(node = 33,  label = "glabrata", offset = 3.5, color = "steelblue", 
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) # Sacchromycetaceae
+```
+**Fig. 1 Phylogenetic relationship of the species analyzed in this study.** This species tree is based on the Maximum likelihood phylogeny from Muñoz _et al._ 2018 (PMID: 30559369) for the most part, with the exception of the species in the Saccharomycetaceae family, which is based on Gabaldón _et al._ 2016 (PMID: 27493146).
+
+> Note that he placement of _Debaryomyces hansenii_ differs between the above two publications. The former placed it closer to the Clavispora genus while the latter placed it closer to the Candida genus. We based ours on the first publication. Another large scale phylogenetic analysis (Shen _et al._ 2018 (PMID: 30415838)), also placed _D. hansenii_ closer to the Candida genus. However, in both studies, which reported bootstrap support values in addition to the phylogeny, the support for the part of the tree involving _D. hansenii_ is relatively low suggesting uncertainty in resolving the relationship. We chose to place _D. hansenii_ closer to the Clavispora genus because this is more congruent with the gene tree for the Hil family proteins we inferred below.
+
+Species tree for the side of a figure
+```{r}
+#p.tree <- sps.tree %>% as_tibble() %>% 
+#  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
+#  as.treedata() %>% ggtree(ladderize = FALSE) + xlim(0,15) + scale_y_reverse() +
+#  geom_tiplab(size = 5, align = TRUE, linesize = .5, fontface = "italic", offset = 0.1) +
+#  geom_hilight(node = 22, fill = "hotpink", alpha = 0.2) + # Clavispora
+#  geom_hilight(node = 23, fill = "purple", alpha = 0.2)  + # MDR
+#  geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
+#  geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
+#  geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
+ggsave("output/img/20210624-species-tree-side.png", p.tree, width = 3, height = 4.5)
+```
+
+### Update 2021-10-22 add new species
+The species tree above only includes species with at least one homolog of the Hil family and thus leaves out species that are usually included in the yeast phylogeny. Here I add some of them back to achieve two goals: 1) to help make the point that _Candida_ pathogens have evolved independently multiple times, by adding non-pathogenic species around those that are pathogenic; 2) to enhance the point that the Hil family has experienced losses in the non-pathogenic species.
+```{r, warning=FALSE}
+sps.tree.exp <- read.tree(file = "data/20211017-expanded-species-tree-for-fig1.nwk")
+spsData <- read_tsv("data/20211024-extended-species-Als-Hil-homologs-number-table.txt")
+# correct names
+sps.tree.exp <- sps.tree.exp %>% 
+  as_tibble() %>% 
+  mutate(label = gsub("\\.", "\\. ", label)) %>% 
+  left_join(spsData, by = "label") %>% 
+  as.treedata()
+# plotting
+off = 4.5
+p <- ggtree(sps.tree.exp, ladderize = FALSE) + xlim(0,16) + scale_y_reverse() +
+  geom_tiplab(aes(color = patho), size = 3.5, fontface = "italic", offset = 0.3) +
+  scale_color_manual(values = c("black","red"), guide = FALSE) +
+  #geom_hilight(node = 27, fill = "magenta", alpha = 0.15) + # Clavispora
+  geom_hilight(node = 28, fill = "#7F00FF", alpha = 0.15)  + # MDR
+  #geom_hilight(node = 33, fill = "gold", alpha = 0.25) + # Candida
+  geom_hilight(node = 35, fill = "orange", alpha = 0.25)     + # albicans
+  #geom_hilight(node = 37, fill = "grey50", alpha = 0.15)  + # Sacchromycetaceae
+  geom_hilight(node = 41, fill = "steelblue", alpha = 0.15)  + # glabrata
+  #geom_cladelabel(node = 27,  label = "Clavispora", offset = off+1.2, color = "orchid3", 
+  #                offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
+  geom_cladelabel(node = 28,  label = "MDR", offset = off+1, color = "#7F00FF", fontface = 2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # MDR
+  geom_cladelabel(node = 33,  label = "Candida", offset = off, color = "gold3", barsize = 0.2, 
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Candida
+  geom_cladelabel(node = 35,  label = "albicans", offset = off+1, color = "orange", fontface = 2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # albicans
+  geom_cladelabel(node = 37,  label = "Saccharomycetaceae", offset = off, color = "grey50",
+                  barsize = 0.2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Sacchromycetaceae
+  geom_cladelabel(node = 41,  label = "glabrata", offset = off+1, color = "steelblue", fontface = 2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) # glabrata
+p
+ggsave("output/img/20211023-species-tree-multiple-origin.png", width = 5, height = 5)
+```
+Also visualize the number of homologs in the Als and Hil families
+```{r}
+df0 <- select(spsData, label, Als, Hil) %>%  
+  pivot_longer(Hil:Als, names_to = "family", values_to = "number") %>% 
+  mutate(species = factor(label, levels = rev(spsData$label)))
+p <- ggplot(df0, aes(x = family, y = species)) + 
+  geom_tile(aes(fill = number), color = "white", alpha = 0.4) +
+  geom_text(aes(label = number), color = "black") +
+  scale_fill_distiller(palette = "Greys",direction = 1) +
+  scale_x_discrete(position = "top") +
+  theme_cowplot() + theme(axis.title = element_blank(), legend.position = "none")
+p
+ggsave("output/img/20211024-extended-species-Als-Hil-family-size-plot.png", width = 3, height = 5)
+```
+
+## Gene tree
+### RAxML tree before reconciliation
+```{r}
+gene.tree <- read.raxml("data/RAxML_bipartitionsBranchLabels.clustalo_3701250") %>% 
+  root(node = 143, resolve.root = TRUE, edgelabel = TRUE)
+df0 <- seqInfo %>% select(label = name, species_id, species_gr)
+gene.tree <- full_join(gene.tree, df0, by = "label")
+p <- ggtree(gene.tree, aes(alpha = bootstrap), ladderize = TRUE) +
+  geom_nodelab(aes(x = branch, label = bootstrap, subset = bootstrap < 90), 
+               alpha = 1, vjust = -.5, size = 2) +
+  scale_alpha_continuous(name = "Rapid bootstrap", breaks = c(20,60,100)) + 
+  geom_tippoint(aes(color = species_gr)) +
+  scale_color_manual(name = "Clades / Species",
+                     values = c("MDR clade"   = "#7F00FF9F",
+                                "C. lusitaniae" = "plum2", 
+                                "D. hansenii" = "gray50",
+                                "S. stipitis" = "slategray",
+                                "Candida" = "orange2", 
+                                "Saccharomycetaceae" = "grey20")) +
+  theme(text = element_text(size = 10))
+p <- flip(p, 137,149)
+p
+ggsave("output/img/20210624-raxml-gene-tree-color.png", width = 7, height = 5)
+```
+**Fig. 2 RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The branch length is proportional to the inferred substitions per site. The tree is manually rooted on the Saccharomycetaceae family, which is the outgroup to both the Candida and Clavispora genera and whose Hil homologs form a distinct group. Protein sequence names are not shown for brevity, but are color coded based on the species (groups) they belong to. The clade color code is nested such that if a sequence belongs to both a species and a clade, e.g. _C. auris_ and the MDR clade, the sequence will be colored based on the smaller phylogenetic unit, i.e. _C. auris_.
+
+### Gene tree after reconciliation
+We reconciled the gene tree with the species tree in Notung 2.9. The purpose of this step is to reconstruct the history of gene duplications and losses (transfers don't apply to this case) and to rearrange weakly supported parts of the gene tree to reduce the total event score in accordance with the evolutionary parsimony principal.
+
+Briefly, after both the gene tree and the rooted species tree (see above) were loaded into the graphic user interface, the rooting analysis was run and the branch receiving the highest root score was the same as the manually chosen branch as shown in Fig. 2, namely the ancestral branch for all the Saccharomycetaceae proteins. After rooting and reconciliation, a total of 59 duplications and 47 losses were inferred. The reconciled gene tree was then rearranged. In this step, weakly supported branches -- those with rapid bootstrap score < 90% -- were allowed to be swapped and the event score, calculated as a weighted sum of the total loss and duplication events, was calculated for each rearrangement. Among all rearranged gene tree topologies, the one with the lowest event score had 42 duplications and 12 losses. This is the gene tree that is shown below.
+```{r}
+gene.tree.rec <- read.nhx(file = "output/notung/RAxML_bipartitions.clustalo_3701250_rearranged90.nhx")
+gene.tree.rec <- full_join(gene.tree.rec, df0, by = "label")
+sps.color <-  c("MDR clade" = "#7F00FF9F", "C. auris" = "darkorchid",
+                "C. lusitaniae" = "plum2", "D. hansenii"  = "gray50",
+                "S. stipitis" = "slategray", 
+                "Candida" = "orange2",  "Saccharomycetaceae" = "grey20")
+ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + 
+  scale_y_reverse() +
+  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
+  geom_text(aes(label = ifelse(D == "Y", "D", NA)), hjust = -0.4, size = 2, color = "red") +
+  geom_tippoint(aes(color = species_gr)) +
+  scale_color_manual(name = "Clades", values = sps.color) +
+  theme(text = element_text(size = 14))
+ggsave("output/img/20210624-reconciled-rearranged90-gene-tree-color.png", width = 7.5, height = 7)
+```
+**Fig. 3 Reconciled and rearranged gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The cladogram shows only the topology of the tree, with endpoints colored in the same way as in Fig. 2. A red "D" next to an internal node indicates an inferred gene duplication event at that node. The labels with gray background highlight the main features of the tree: 1) the Saccharomycetaceae sequences form the outgroup, suggesting there was no ancient duplication prior to the divergence of the family and the remaining species; 2) the CUG-Ser1 clade, which contains both the Candida and Clavispora genera, forms two duplicate groups, suggesting an early duplication event in the clade; 3) the top CUG-Ser1 branch further experienced extensive duplications _independently_ in the Clavispora genus, labeled by the outgroup _D. hansenii_ (DH), and the Candida genus, labeled by the outgroup _S. stipitis_ (SS). 
+```{r, fig.width=3, fig.height=5}
+p.gtree <- ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + 
+  scale_y_reverse() +
+  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
+  geom_tippoint(aes(color = species_gr), show.legend = FALSE) +
+  scale_color_manual(name = "Clades", values = sps.color) +
+  theme(text = element_text(size = 14))
+ggsave("output/img/20210626-reconciled-gene-tree-side.png", width = 3, height = 6)
+```
+
+### Gains and losses on species tree
+```{r, fig.width=5, fig.height=5}
+# read in notung parsed event summary stats
+notung.stat <- read_tsv("output/notung/RAxML_bipartitions.clustalo_3701250_notung_event_summary.txt", col_types = 'cii')
+sps.tree %>% 
+  full_join(notung.stat, by = "label") %>% 
+  as_tibble() %>% 
+  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2)),
+         patho = c(T,T,T,T,T,F,T,F,T,T,T,F,F,F,T,T,F,T,rep(NA, 35-18))) %>% 
+  as.treedata() %>% 
+  ggtree(ladderize = FALSE) + scale_y_reverse() +
+  geom_tiplab(aes(color = patho), size = 3.5, fontface = "italic", offset = 0.3) + xlim(0,11) +
+  scale_color_manual(values = c("black","red"), guide = FALSE) +
+  #geom_tiplab(size = 3.5, fontface = "italic", offset = 0.1) +
+  #geom_hilight(node = 22, fill = "magenta", alpha = 0.15) + # Clavispora
+  geom_hilight(node = 23, fill = "purple", alpha = 0.15)  + # MDR
+  #geom_hilight(node = 27, fill = "gold", alpha = 0.15) + # Candida
+  geom_hilight(node = 29, fill = "orange", alpha = 0.25)     + # albicans
+  geom_hilight(node = 33, fill = "steelblue", alpha = 0.15)  + # glabrata
+  geom_text(aes(label = duplications), hjust = 3, vjust = -.3,
+            size = 3, color = "red", fontface = 2) +
+  geom_text(aes(label = paste0("/", losses)), hjust = 1.3, vjust = -.3,
+            size = 3, color = "grey20", fontface = 2) +
+  geom_label(aes(label = ifelse(duplications >= 3, duplications, NA)), hjust = 2.1,
+             vjust = -.11, size = 3, color = "red", fill = "yellow1", fontface = 2,
+             label.size = 0, label.padding = unit(0.12, "lines"))
+ggsave("output/img/20210622-species-tree-with-gains-losses.png", width = 4.5, height = 5)
+```
+**Fig. 4 Inferred gene duplications and losses in the Hyr/Iff-Like (HIL) family in Ascomycetes.** The cladogram shows the species relationship with shadings as in Figure 1. The numbers on top of each branch are the inferred duplications (red) and losses (black) using Notung 2.9. Yellow highlight emphasize the branches that experience three or more duplications.
+
+_**Conclusions**_
+
+1. The Hil family **independently** expanded in the Candida and Clavispora genera. The most significant expansion occurred within the albicans clade in the Candida genus and the MDR clade in the Clavispora genus.
+1. Many species in the Saccharomycetaceae family have no homologs in this family based on our blast criteria. This suggests that the gene family has contracted and any remaining homologs are shorter than 500 amino acid and thus likely to not play an adhesin function.
+
+
+
+# Chromosomal locations
 While I was performing BLAST on FungiDB to identify homologs of our protein, I noticed that many of the hits appear to be at the beginning and end of the chromosomes. To see if there is a systematic trend in the chromosomal locations, I collected this information for all 99 homologs in the list. Note however, not all genomes are assembled to the chromosomal level, and as a result, the locations for the proteins in those species/strains would be relative to a contig or scaffold. My rationale is that if the contig or scaffold is close to choromosomal length (although that varies by at least an order of magnitude), I could at least look at them separately.
 
 ```{r, fig.width = 8, fig.height = 7}
@@ -966,7 +996,7 @@ ggsave("output/img/20210213-distribution-on-chromosome-or-scaffolds-histogram.pn
 - Breakdown by species revealed stronger signals in the albicans clade and the MDR clade.
 - To properly test for enrichment in the chromosomal ends would require documenting the gene density on the affected chromosomes. If the different chromosomes have dramatically different gene distributions, proper tests may not be straightforward to construct. Instead, a bootstrapping approach could be easier to conceive and apply.
 
-### Are members of this protein family enriched in the subtelomeric regions?
+## Are members of this protein family enriched in the subtelomeric regions?
 A recent long-read sequencing study for _C. glabrata_ annotated 31 novel ORFs, of which 24 are GPI-Cell Wall Proteins. The authors cited previous literature supporting the  in the subtelomeric regions [Xu 2020](https://doi.org/10.1111/mmi.14488). This plus the empirical observation above showing an apparent enrichment towards the chromosome ends lead me to ask whether there is indeed a significant enrichment among this family of proteins in the subtelomeric regions.
 
 To formally test this hypothesis, I need to account for the background gene density differences along the chromosomes. The idea is to compare the chromosomal positions for this group of proteins compared with the gene densities on the chromosomes they reside on. We will restrict our analysis to those genomes with a chromosomal level assembly status for obvious reasons.

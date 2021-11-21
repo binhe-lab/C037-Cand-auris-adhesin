@@ -120,8 +120,19 @@ The script used to parse and explore the TANGO results are in `tango.Rmd`
 
 
 1. For plotting, we would like to create a vector of sequence names in the same order as shown in the rooted gene tree. To do so, I loaded the `../gene-tree/20200723-raxml-hb/RAxML_bipartitions.muscle_4318866` in FigTree 1.4.4, rooted the tree on the Saccharomycotaceae, and rotated the auris and albicans groups, then saved the tree in Newick format. I then copied that file over to the current folder and edited in vim. By removing the branch lengths and other symbols such as parentheses, I got the sequence names in rows in the same order as the gene tree.
-
 1. At Jan's suggestion, I expanded the analysis above to separately document the frequency of Serine and Threonine.
+
+#### S/T background frequencies
+
+**Update 2021-06-28**
+
+It is of interest to know the background frequency of Serine and Threonine in the proteome(s). To do so, I modified the `calc_aafreq_gz.py` script I wrote a long time ago for calculating the cystein and dibasic residues. I then copied four proteome fasta files, for _C. albicans_, _C. glabrata_, _S. cerevisiae_ and _C. auris_ and applied the script on them (using a wrapper script called `S-T-freq.sh`). Below I will look at both the proteome average and the distribution of S/T in individual proteins across the proteome.
+
+See Rmd file for details.
+
+**Update 2021-11-21**
+
+To directly compare the Serine/Threonine frequencies of the Hil family to the genome distribution, I'd like to calculate the S/T frequency either in the whole protein or excluding the PF11765 domain. I wrote a script `Hil-ST-freq.sh` to do this.
 
 ### Collect feature profiles for a schematic plot for each homolog
 
