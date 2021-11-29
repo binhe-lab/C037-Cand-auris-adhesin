@@ -9,6 +9,8 @@ A repeat of the 2021-01-31 analysis (see sister folder) on an updated version of
 
 # Notes
 
+## 2021-03-01
+
 To align the sequences, I first did the ClustalO alignment with 50 iterations, which took only a few minutes on 30 slots on ARGON. Instead of running Muscle on the unaligned sequences, I decided to use the `muscle -in <Aligned> -out <Refined> -refine` function as follows:
 
 ```bash
@@ -24,6 +26,17 @@ bioawk -c fastx '{print ">"$name;print substr($seq, 1, 480)}' XP_028889033_homol
 ```
 
 Lastly I used Notung 2.9 to reconcile the resulting gene tree (used `RAxML_bipartitions.muscle_100381`) with the species tree (`../../../data/20200724-species-tree.nwk`). Rooting analysis was performed in Notung, which scored the the Saccharomycetaceae clade the most likely root. Rearrangement was performed with edge weight (based on rapid bootstrapping) cutoff of 90%. The resulting reconciled and rearranged tree had a total of 44 duplications and 14 losses.
+
+## 2021-11-24
+
+_Motivation_
+
+- In the first version of the manuscript, I knew that I didn't quite resolve the relationships among the Hil homologs in the MDR clade and that the rearrangement performed in Notung probably introduced some artifacts. But I didn't quite pursue that. Instead I left those results as they were and made claims based on them. Now that I'm revising the manuscript and refocusing the paper on the evolution of the family, I feel the need to revisit these problems and get a better picture.
+
+_Approach_
+
+1. To better visualize the relationships between the Hil homologs in the MDR clade -- specifically to tell the relationships between Hil1-8 -- I wrote a `sed` script that can rename sequence or taxa names in text files. I applied it to the RAxML output files in this folder.
+2. I repeated Notung analysis and changed the rearrangement cutoff to 80%. This preserves the relationships among the MDR clade, namely Hil5 is the first to diverge and Hil1/2, Hil3/4 and Hil6/8 are pairs of closely releated homologs,  as is concistent with the 07-polymorphism tree.
 
 # Results files
 file(s) | description | source 
