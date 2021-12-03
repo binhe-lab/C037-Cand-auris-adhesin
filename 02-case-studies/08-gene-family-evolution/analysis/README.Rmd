@@ -1,0 +1,30 @@
+---
+title: "Extract subtree for CAFE analysis"
+author: "Bin He"
+date: "12/02/2021  (updated: `r Sys.Date()`)"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    toc_depth: 5
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+installation
+```{r install_libraries, echo = FALSE}
+pkgs <- c("shiny","phytools")
+sapply(pkgs, function(p){
+  if(!p %in% rownames(installed.packages()))
+    install.packages(p)
+})
+```
+
+running the app
+```{r}
+shiny::runGitHub("treehouse", "JLSteenwyk")
+```
+
