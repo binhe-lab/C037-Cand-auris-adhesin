@@ -191,3 +191,6 @@ I start to realize that the TANGO hit sequences are not the same as some other s
 
 An idea is to first summarize TANGO sequence within each protein, counting their number of instances and distribution, and see if some alternative patterns emerge.
 
+### Evolutionary history of Hil family
+
+In this part I use the gene tree generated from `03-gene-tree` analysis to visualize the evolutionary history of the Hil family. See README in the `03-gene-tree` folder (in subfolders) for details on the tree reconstruction. What's important here is that I loaded the gene trees into R and used the `ggtree` and `treeio` packages to read, manipulate and draw the tree and annotate it.
