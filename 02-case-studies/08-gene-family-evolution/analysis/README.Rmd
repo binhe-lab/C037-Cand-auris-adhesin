@@ -1,5 +1,5 @@
 ---
-title: "Extract subtree for CAFE analysis"
+title: "CAFE analysis"
 author: "Bin He"
 date: "12/02/2021  (updated: `r Sys.Date()`)"
 output: 
@@ -14,6 +14,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Use Treehouse to extract subtree
 installation
 ```{r install_libraries, echo = FALSE}
 pkgs <- c("shiny","phytools")
@@ -26,5 +27,16 @@ sapply(pkgs, function(p){
 running the app
 ```{r}
 shiny::runGitHub("treehouse", "JLSteenwyk")
+```
+## Analyse CAFE output
+Load simulation results
+```{r}
+require(tidyverse)
+sim <- read_tsv(file = "../output/lhtest.txt", col_names = c("na","Sglo","lambda.g","Smul","lambda.1","lambda.2"),
+                col_types = "cddddd", col_select = -na) %>% 
+  mutate(LR = 2*(Sglo-Smul))
+LR.test = 2 * (-36.151+36.010)
+quantile(sim$LR, prob = 0.05, na.rm = TRUE)
+LR.test
 ```
 
