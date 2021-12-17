@@ -65,6 +65,7 @@ _Goal_
 _Approach_
 
 1. Add two _D. hansenii_ sequences as determined in previous studies to be the outgroup for the _C. auris_ homologs (XP_002770057.1, XP_462630.1) and make a new fasta file for alignment and gene tree inference.
+
 1. I decided to also add the homologs from _C. haemuloni_ and _C. pseudohaemuloni_, which would help reveal the gene family's evolutionary history within the _Clavispora_ genus.
 
     ```bash
@@ -75,11 +76,15 @@ _Approach_
     I also added the results associated with these two species to the _C. auris_ results obtained above using `grep` and redirection.
 
 1. Align the sequences, using the script developed previously for the ARGON cluster.
-    - Based on RAxML's [user manual](https://cme.h-its.org/exelixis/resource/download/NewManual.pdf), which recommended to leave out the outgroup in the initial tree reconstruction and instead add them later using the [EPA](https://academic.oup.com/sysbio/article/60/3/291/1667010?login=true) pipeline.
+    - Based on RAxML's [user manual](https://cme.h-its.org/exelixis/resource/download/NewManual.pdf), which recommended to leave out the outgroup in the initial tree reconstruction and instead add them later using the [EPA](https://academic.oup.com/sysbio/article/60/3/291/1667010?login=true) pipeline. See the corresponding shell scripts in the `script` for details. 
+    - RAxML detected 12 sequences in the dataset that are identical to other sequences. These are genuinely identical amino acid sequences between different strains.
 
-    - RAxML detected 12 sequences in the dataset that are identical to other sequences. These are 
+## 3.1 Gene tree and species tree reconciliation
+
+In order to infer gains and losses, I attempted to reconcile the gene tree with the species tree. Instead of using Notung as I did with the large family tree, I decided to try the [GeneRax](https://github.com/BenoitMorel/GeneRax/) algorithm instead. The accompanying [paper](https://doi.org/10.1093/molbev/msaa141) compared several algorithms and found Notung, particularly its rearrangement function, to lead to errorneous answers. Notung is based on parsimony. The GeneRax algorithm instead adds the gene-species-tree congruence into the maximum likelihood score and searches for a tree that maximizes the joint ML. 
 
 ## 4. TANGO prediction
+
 - copied the `tango2_3_1` executable from `../../../01-global-adhesin-prediction/output/C_auris/tango-output/`. The exectuable in the `01-global/script` folder doesn't work on ARGON, probably because it was compiled on a different platform (windows?)
 - used the `output/tango/format_tango_batch.py` to generate the shell script, and used `qsub -q BH -cwd output/tango/cauris-five-strains-for-tango_tango.sh` to run it on the computing node.
 - the resulting txt files were gzipped and commited

@@ -1,0 +1,6 @@
+[FAMILIES]
+- Hil
+starting_gene_tree = RAxML_bipartitions.epa2_6730149_rooted.nwk
+alignment = cauris-four-strains-for-gene-tree-epa_C400_clustalo.faa
+mapping = gene-to-species-map.txt
+subst_model = LG+G

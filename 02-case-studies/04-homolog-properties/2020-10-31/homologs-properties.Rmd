@@ -71,8 +71,8 @@ seqInfo <- seqInfo %>%
   mutate(assemblystatus = factor(assemblystatus, levels = c("Complete Genome","Chromosome","Contig","Scaffold"), 
                                  labels = c("Chromosome", "Chromosome", "Partial", "Partial")),
          species_gr = factor(species_id, labels = 
-                               c(rep("MDR clade",4),"C. lusitaniae","D. hansenii",
-                                 rep("Candida",5), "S. stipitis", rep("Saccharomycetaceae",6)))) %>% 
+                               c(rep("MDR clade",4),"C. lusitaniae","D. hansenii",rep("C. parapsilosis",2),
+                                 rep("albicans clade",3), "S. stipitis", rep("Saccharomycetaceae",6)))) %>% 
   select(name, id, source, starts_with("gene"), starts_with("species"), strain, starts_with("assembly"),
          length, n_seqs, starts_with("chr"), relLoc)
 ```
@@ -242,7 +242,7 @@ feature <- bind_rows(
   pfam %>% select(name = seq_id, type = hmm_name, start = envelope_start, end = envelope_end) %>% 
     filter(type == "Hyphal_reg_CWP"),
   # extend the signal peptide segment by 10 amino acids to make it more visible
-  signalp5 %>% mutate(type = "SignalP", end = end + 10) %>% select(name = id, type, start = start, end),
+  signalp5 %>% mutate(type = "Signal Peptide", end = end + 10) %>% select(name = id, type, start = start, end),
   # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
   pred.gpi %>% filter(is.gpi) %>% mutate(type = "GPI-anchor", start = cleavePos-10) %>% 
     select(name, type, start, end = length),
@@ -255,8 +255,8 @@ seqLen$name <- ordered(seqLen$name, levels = rev(genetreeOrder))
 
 feature <- feature %>% 
   mutate(name = ordered(name, levels = rev(genetreeOrder)),
-         type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "SignalP", "GPI-anchor", "Tandem Repeats")))
-feature.colors <- c(Hyphal_reg_CWP = "#3d85c6", SignalP = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeats" = "#af8400bb")
+         type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "Signal Peptide", "GPI-anchor", "Tandem Repeats")))
+feature.colors <- c(Hyphal_reg_CWP = "#3d85c6", "Signal Peptide" = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeats" = "#af8400bb")
 ```
 ## Plot domain organization
 ```{r plot_tandem_repeats, warning=FALSE}
@@ -272,7 +272,8 @@ p3 <- p0 + p1 + coord_flip() + theme_classic() +
   theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
-        legend.position = c(0.8, 0.3),
+        legend.position = c(0.75, 0.35), 
+        legend.text = element_text(size = 12), legend.title = element_text(size = 14),
         plot.title = element_text(hjust = 0.5), 
         panel.background = element_rect(fill = alpha("lightblue",0.1))) +
   labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
@@ -619,7 +620,9 @@ p4 <- p1 + p2 + p3 + coord_flip() + theme_classic() +
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(), axis.ticks.x = element_blank(),
         plot.title = element_text(hjust = 0.5),
-        legend.position = c(0.8,0.3),
+        legend.position = c(0.75,0.35),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12),
         panel.background = element_rect(fill = alpha("lightblue",0.1))) +
   ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "TANGO score") + 
   ggtitle("TANGO hits with Hyphal_reg_CWP domain masked")
@@ -793,7 +796,7 @@ p.tree <- sps.tree %>%
   #geom_hilight(node = 27, fill = "magenta", alpha = 0.15) + # Clavispora
   geom_hilight(node = 23, fill = "#7F00FF", alpha = 0.15)  + # MDR
   #geom_hilight(node = 33, fill = "gold", alpha = 0.25) + # Candida
-  geom_hilight(node = 29, fill = "orange", alpha = 0.25)     + # albicans
+  geom_hilight(node = 29, fill = "pink", alpha = 0.25)     + # albicans
   #geom_hilight(node = 37, fill = "grey50", alpha = 0.15)  + # Sacchromycetaceae
   geom_hilight(node = 33, fill = "steelblue", alpha = 0.15)  # glabrata
   #geom_cladelabel(node = 22,  label = "Clavispora", offset = 3.7, color = "magenta", 
@@ -803,7 +806,7 @@ p.tree +
                   offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # MDR
   #geom_cladelabel(node = 27,  label = "Candida", offset = 2.7, color = "salmon", 
   #                offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Candida
-  geom_cladelabel(node = 29,  label = "albicans", offset = 3.5, color = "red", fontface = 2,
+  geom_cladelabel(node = 29,  label = "albicans", offset = 3.5, color = "hotpink2", fontface = 2,
                   offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # albicans
   geom_cladelabel(node = 33,  label = "glabrata", offset = 3.5, color = "steelblue", 
                   offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) # Sacchromycetaceae
@@ -845,16 +848,16 @@ p <- ggtree(sps.tree.exp, ladderize = FALSE) + xlim(0,16) + scale_y_reverse() +
   #geom_hilight(node = 27, fill = "magenta", alpha = 0.15) + # Clavispora
   geom_hilight(node = 28, fill = "#7F00FF", alpha = 0.15)  + # MDR
   #geom_hilight(node = 33, fill = "gold", alpha = 0.25) + # Candida
-  geom_hilight(node = 35, fill = "orange", alpha = 0.25)     + # albicans
+  geom_hilight(node = 35, fill = "pink", alpha = 0.25)     + # albicans
   #geom_hilight(node = 37, fill = "grey50", alpha = 0.15)  + # Sacchromycetaceae
   geom_hilight(node = 41, fill = "steelblue", alpha = 0.15)  + # glabrata
   #geom_cladelabel(node = 27,  label = "Clavispora", offset = off+1.2, color = "orchid3", 
   #                offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
   geom_cladelabel(node = 28,  label = "MDR", offset = off+1, color = "#7F00FF", fontface = 2,
                   offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # MDR
-  geom_cladelabel(node = 33,  label = "Candida", offset = off, color = "gold3", barsize = 0.2, 
+  geom_cladelabel(node = 33,  label = "Candida", offset = off, color = "orange2", barsize = 0.2, 
                   offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Candida
-  geom_cladelabel(node = 35,  label = "albicans", offset = off+1, color = "orange", fontface = 2,
+  geom_cladelabel(node = 35,  label = "albicans", offset = off+1, color = "hotpink2", fontface = 2,
                   offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # albicans
   geom_cladelabel(node = 37,  label = "Saccharomycetaceae", offset = off, color = "grey50",
                   barsize = 0.2,
@@ -890,8 +893,9 @@ gene.tree <- full_join(gene.tree, df0, by = "label")
 sps.color <- c("MDR clade"   = "#7F00FF9F",
                "C. lusitaniae" = "plum2", 
                "D. hansenii" = "gray50",
+               "C. parapsilosis" = "orange2",
                "S. stipitis" = "slategray",
-               "Candida" = "orange2", 
+               "albicans clade" = "hotpink", 
                "Saccharomycetaceae" = "grey20")
 p <- ggtree(gene.tree, aes(alpha = bootstrap), ladderize = TRUE) +
   geom_nodelab(aes(x = branch, label = bootstrap, subset = bootstrap < 80), 
@@ -952,12 +956,12 @@ sps.tree %>%
   as.treedata() %>% 
   ggtree(ladderize = FALSE) + scale_y_reverse() +
   geom_tiplab(aes(color = patho), size = 3.5, fontface = "italic", offset = 0.3) + xlim(0,11) +
-  scale_color_manual(values = c("black","red"), guide = FALSE) +
+  scale_color_manual(values = c("black","red"), guide = "none") +
   #geom_tiplab(size = 3.5, fontface = "italic", offset = 0.1) +
   #geom_hilight(node = 22, fill = "magenta", alpha = 0.15) + # Clavispora
   geom_hilight(node = 23, fill = "purple", alpha = 0.15)  + # MDR
   #geom_hilight(node = 27, fill = "gold", alpha = 0.15) + # Candida
-  geom_hilight(node = 29, fill = "orange", alpha = 0.25)     + # albicans
+  geom_hilight(node = 29, fill = "pink", alpha = 0.25)     + # albicans
   geom_hilight(node = 33, fill = "steelblue", alpha = 0.15)  + # glabrata
   geom_text(aes(label = duplications), hjust = 3, vjust = -.3,
             size = 3, color = "red", fontface = 2) +
@@ -1025,7 +1029,7 @@ To formally test this hypothesis, I need to account for the background gene dens
 ```{r decide_which_species_to_use}
 use.sps <- seqInfo %>% 
   filter(assemblystatus == "Chromosome" | species_id == "Cauris") %>%
-  filter(species_id != "Cdubliniensis") %>%
+  filter(!species_id %in% c("Cdubliniensis", "Ncastellii")) %>%
   # phylogenetic relatedness can induce correlations, including when testing for enrichment at the chromosomal ends
   # based on the gene duplication patterns, combined with YGOB synteny based orthology assignments, the set of species
   # used here, after excluding Cdubliniensis, represent quasi phylogenetically independent contrasts, thanks to the 
@@ -1143,8 +1147,8 @@ fg.freq <- fg.freq %>%
 freq.plot <- fg.freq %>%
   mutate(chromosome = "X") %>%  # we label the homologs as X to make it a separate class
   select(species = species_id, chromosome, bin) %>% 
-  bind_rows(select(bg.freq.tb, species, chromosome, bin)) %>% 
-  filter(!species %in% c("Ncastellii")) # remove one species to make it easier to plot
+  bind_rows(select(bg.freq.tb, species, chromosome, bin))# %>% 
+  #filter(!species %in% c("Ncastellii")) # remove one species to make it easier to plot
 
 # plot
 freq.plot %>% 

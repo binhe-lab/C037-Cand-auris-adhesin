@@ -1,0 +1,1 @@
+Hil 1 104 optimizeGeneTrees ../output/generax/results/Hil/geneTree.newick generax/gene-to-species-map.txt ../input/XP_028889033_clustalo_C480.faa ../output/generax/startingSpeciesTree.newick LG+G ../output/generax/gene_optimization_1/dtl_rates.txt 0 0 1 1 -1 1 1 1 2 ../output/generax/results/Hil/geneTree.newick ../output/generax/results/Hil/stats.txt

@@ -1,0 +1,12 @@
+The master process runs on node  and on pid 25041
+Remaining commands: 1
+## Started Hil on [0:3] 
+All commands were launched
+End of Hil after 33311ms  (1/1)
+end of run
+Finished running commands. Total elasped time: 33s
+Load balance ratio: 0.799832
+Saving svg output in ../../output/gene-tree/generax/20211206-run2/gene_optimization_4/statistics.svg
+total width 6
+Time spent writting svg: 0s
+End of Multiraxml run

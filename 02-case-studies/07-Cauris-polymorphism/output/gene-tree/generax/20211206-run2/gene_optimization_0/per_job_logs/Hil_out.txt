@@ -1,0 +1,39 @@
+mpi-scheduler optimizeGeneTrees RAxML_bipartitions.epa2_6730149_rooted.nwk gene-to-species-map.txt cauris-four-strains-for-gene-tree-epa_C400_clustalo.faa ../../output/gene-tree/generax/20211206-run2/startingSpeciesTree.newick LG+G ../../output/gene-tree/generax/20211206-run2/gene_optimization_0/dtl_rates.txt 0 0 1 1 -1 1 1 1 1 ../../output/gene-tree/generax/20211206-run2/results/Hil/geneTree.newick ../../output/gene-tree/generax/20211206-run2/results/Hil/stats.txt 
+[00:00:00] Starting optimizeGeneTreesSlave
+LibpllModel LG+G
+[00:00:00] Starting optimizing gene tree
+Number of ranks 4
+Taxa number: 52
+[00:00:00] Start optimizing DL rates
+ best rates: 1e-07 1e-07 -953.533
+joint: -16033.9  libpll: -15080.3  reconciliation: -953.533  
+Initial ll = -16033.9
+Start SPR round (std::hash=96133, (best ll=-16033.9, radius=1, possible moves: 98)
+best;; -15953.3 0
+Start SPR round (std::hash=68513, (best ll=-15953.3, radius=1, possible moves: 98)
+best;; -15872.7 1
+Start SPR round (std::hash=83638, (best ll=-15872.7, radius=1, possible moves: 98)
+best;; -15808.2 1
+Start SPR round (std::hash=11261, (best ll=-15808.2, radius=1, possible moves: 98)
+best;; -15745.7 0
+Start SPR round (std::hash=25975, (best ll=-15745.7, radius=1, possible moves: 98)
+best;; -15684.9 1
+Start SPR round (std::hash=70567, (best ll=-15684.9, radius=1, possible moves: 98)
+best;; -15642.4 2
+Start SPR round (std::hash=46651, (best ll=-15642.4, radius=1, possible moves: 98)
+best;; -15623.9 3
+Start SPR round (std::hash=57938, (best ll=-15623.9, radius=1, possible moves: 98)
+best;; -15610.2 2
+Start SPR round (std::hash=29211, (best ll=-15610.2, radius=1, possible moves: 98)
+best;; -15601.8 1
+Start SPR round (std::hash=2740, (best ll=-15601.8, radius=1, possible moves: 98)
+best;; -15599.1 0
+Start SPR round (std::hash=80863, (best ll=-15599.1, radius=1, possible moves: 98)
+best;; -15598.1 2
+Start SPR round (std::hash=69595, (best ll=-15598.1, radius=1, possible moves: 98)
+best;; -15598.1 0
+joint: -15598.1  libpll: -15112  reconciliation: -486.108  
+Saving tree in ../../output/gene-tree/generax/20211206-run2/results/Hil/geneTree.newick
+Finished saving  ../../output/gene-tree/generax/20211206-run2/results/Hil/geneTree.newick
+[00:00:09] End of optimizing gene tree
+[00:00:09] End of optimizeGeneTreesSlave

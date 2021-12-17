@@ -37,7 +37,8 @@ As shown in Muñoz _et al._ 2021 Genetics, _C. auris_ as a species has a total o
 # read in data
 len <- read_tsv("input/B8441-homologs-length-name.tsv", col_types = cols())
 B8441 <- read_tsv("input/B8441-homologs-feature-table.tsv", col_types = cols()) %>% 
-  mutate(type = ifelse(grepl("TR-",type), "Tandem Repeat", type), type = ordered(type, levels = unique(type))) %>% 
+  mutate(type = ifelse(grepl("TR-",type), "Tandem Repeat", ifelse(type == "SignalP", "Signal Peptide", type)), 
+         type = ordered(type, levels = unique(type))) %>% 
   left_join(select(len, shortName = name, gID, pID), by = c("name" = "pID")) %>% 
   select(shortName, gID, pID = name, type, start, end)
 B8441.tango <- read_tsv("input/B8441-homologs-tango.tsv", col_types = cols()) %>% 
@@ -51,7 +52,7 @@ B8441.tango$gID <- ordered(B8441.tango$gID, levels = seq.order)
 
 ```{r}
 # plot
-colors <- c(Hyphal_reg_CWP = "#3d85c6", SignalP = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeat" = "#af8400")
+colors <- c(Hyphal_reg_CWP = "#3d85c6", "Signal Peptide" = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeat" = "#af8400")
 p1 <- ggplot(B8441 %>% filter(type == "entire protein"), aes(x = gID, y = start)) + 
   geom_segment(aes(xend = gID, yend = end), color = "black", size = 7) +
   geom_segment(aes(xend = gID, yend = end), color = "grey80", size = 6.5)
@@ -97,12 +98,15 @@ The gene tree inferred based on the PF11765 domain in each sequence is presented
 ### Reconciliation and rearrangement
 To infer the timing of gene duplication and loss events, the gene tree is reconciled with the species tree in Notung 2.9. Rearrangement of the reconciled gene tree was performed in the same software, allowing for swapping of branches with rapid bootstrapping values lower than **90%**. The rearranged tree has a total of **15** duplication and **13** losses. Note that the clade I strain 6684 appeared to have experienced several losses, but this is very likely due to the relatively poor assembly status of the strain, not real evolutionary losses.
 
+**Update 2021-12-06**
+Now the reconciliation is done using [GeneRax](https://github.com/BenoitMorel/GeneRax). See the accompanying paper for details [link](https://doi.org/10.1093/molbev/msaa141). The reason is because Notung's rearrangement function doesn't work very well with the _C. auris_ and MDR Hil tree. GeneRax works by incorporating the evolutionary events like speciation, duplications and losses into the maximum likelihood function of gene tree inference. See `script/generax/run-generax.sh`
 ```{r fig.height=8, fig.width=8}
 # read in reconciled and rearranged gene tree
-gene.tree <- read.nhx("output/gene-tree/notung/RAxML_bipartitions.clustalo-cauris-four-strains_rearranged90.nhx") %>%  as_tibble() %>% # convert to a tibble
+gene.tree <- read.nhx("output/gene-tree/notung/GeneRax-corrected-reconciled-gene-tree-20211206.nhx") %>% 
+  as_tibble() %>% # convert to a tibble
   mutate(strains = ordered(S, levels = c("Cauris.B8441", "Cauris.B11220", "Cauris.B11221", "Cauris.B11243",
                                            "Cpseudohaemulonis", "Chaemuloni", "Dhansenii"), 
-                             labels = c("Clade I", "Clade II", "Clade III", "Clade IV", 
+                             labels = c("C. auris Clade I", "C. auris Clade II", "C. auris Clade III", "C. auris Clade IV", 
                                         "C. pseudohaemulonis", "C. haemuloni", "D. hansenii")))
 
 # set up species/strains tip label colors
@@ -110,28 +114,28 @@ gene.tree <- read.nhx("output/gene-tree/notung/RAxML_bipartitions.clustalo-cauri
 #  groupOTU()
 gene.tree %>%
   as.treedata() %>% 
-  ggtree() +  geom_tiplab(aes(colour = strains), fontface = 3, size = 3) +
-  xlim(0,20) +
+  ggtree(branch.length = "none") +
+  geom_tiplab(aes(colour = strains), size = 3, fontface = 2) + xlim(0,20) +
   scale_color_manual(name = "LEGEND", values = c("#345714", "#952395", "#0030ff", "#ff2900", 
-                                                 "#008ab8", "#008ab8", "#000000")) +
-  geom_hilight(node = 98,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-1
-  geom_hilight(node = 94,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-2
-  geom_hilight(node = 78,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-3
-  geom_hilight(node = 102, fill = "gray20", alpha = 0.2, color = "white") + # Hil-4
+                                                 "gray50", "gray50", "#000000")) +
+  geom_hilight(node = 81,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-1
+  geom_hilight(node = 79,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-2
+  geom_hilight(node = 68,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-3
+  geom_hilight(node = 66, fill = "gray20", alpha = 0.2, color = "white") + # Hil-4
   geom_hilight(node = 57,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-5
-  geom_hilight(node = 68,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-6
-  geom_hilight(node = 82,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-7
-  geom_hilight(node = 73,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-8
-  geom_cladelabel(node = 98,  label = "Hil-1", offset = 7, color = "red", fontface = 2) + # Hil-1
-  geom_cladelabel(node = 94,  label = "Hil-2", offset = 7, color = "red", fontface = 2) + # Hil-1
-  geom_cladelabel(node = 78,  label = "Hil-3", offset = 7, color = "red", fontface = 2) + # Hil-1
-  geom_cladelabel(node = 102, label = "Hil-4", offset = 7, color = "red", fontface = 2) + # Hil-1
-  geom_cladelabel(node = 57,  label = "Hil-5", offset = 7, color = "red", fontface = 2) + # Hil-1
-  geom_cladelabel(node = 68,  label = "Hil-6", offset = 7, color = "red", fontface = 2) + # Hil-1
-  geom_cladelabel(node = 82,  label = "Hil-7", offset = 7, color = "red", fontface = 2) + # Hil-1
-  geom_cladelabel(node = 73,  label = "Hil-8", offset = 7, color = "red", fontface = 2) + # Hil-1
-  theme(legend.position = "none")
-ggsave("output/figure/20210601-reconciled-NTD-tree-annotated.png", width = 8, height = 8)
+  geom_hilight(node = 85,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-6
+  geom_hilight(node = 100,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-7
+  geom_hilight(node = 87,  fill = "gray20", alpha = 0.2, color = "white") + # Hil-8
+  geom_cladelabel(node = 81,  label = "Hil-1", offset = 7, color = "red", fontface = 2) + # Hil-1
+  geom_cladelabel(node = 79,  label = "Hil-2", offset = 7, color = "red", fontface = 2) + # Hil-2
+  geom_cladelabel(node = 68,  label = "Hil-3", offset = 7, color = "red", fontface = 2) + # Hil-3
+  geom_cladelabel(node = 66, label = "Hil-4", offset = 7, color = "red", fontface = 2) + # Hil-4
+  geom_cladelabel(node = 57,  label = "Hil-5", offset = 7, color = "red", fontface = 2) + # Hil-5
+  geom_cladelabel(node = 85,  label = "Hil-6", offset = 7, color = "red", fontface = 2) + # Hil-6
+  geom_cladelabel(node = 100,  label = "Hil-7", offset = 7, color = "red", fontface = 2) + # Hil-7
+  geom_cladelabel(node = 87,  label = "Hil-8", offset = 7, color = "red", fontface = 2) + # Hil-8
+  theme(legend.text = element_text(size = 10, face = 3))
+ggsave("output/figure/20211207-reconciled-NTD-tree-annotated.png", width = 9, height = 8)
 ```
 **Fig. 3 The same tree in Fig. 3 after reconciliation and rearrangement using Notung v2.9.** The species/strains tree and the gene tree as shown in Fig. 3 were used as input for reconciliation in Notung v2.9. Rooting and reconciliation were performed in a single step, after which the tree is rearranged by allowing branches with < 90% rapid bootstrap support to be swapped in order to reduce the total number of events (duplications and losses), resulting in the rearranged tree. Because of the rearrangement, branch lengths do not correspond to the estimated substitution number. Red nodes indicate inferred duplication events. Losses were not shown explicitly. Sequence names were colored in the same way as in Fig. 2
 
@@ -142,8 +146,8 @@ We can summarize the inferred gains and losses on the species/strains tree.
 1. Plot using ggtree
 
 ```{r parse_stats}
-sps.tree <- read.tree("input/cauris-four-strains-outgroup-tree.nwk")
-notung.stat <- read_tsv("output/gene-tree/notung/RAxML_bipartitions.clustalo-cauris-four-strains_rearranged90_stats.txt", col_types = 'cii')
+sps.tree <- read.tree("output/gene-tree/notung/cauris-four-strains-outgroup-tree.nwk")
+notung.stat <- read_tsv("output/gene-tree/notung/GeneRax-corrected-reconciled-gene-tree-20211206-stats.txt", col_types = 'cii')
 sps.tree.tb <- as_tibble(sps.tree) %>% 
   full_join(notung.stat, by = "label")
 sps.tree <- as.treedata(sps.tree.tb)
@@ -155,7 +159,7 @@ sps.tree %>%
   geom_tiplab(as_ylab = TRUE, size = 11, face = 4) +
   geom_text(aes(x = branch, label = duplications), vjust = -.4, size = 3, color = "red", face = 2) +
   geom_text(aes(x = branch, label = losses), vjust = 1.4, size = 3, color = "grey20", face = 2)
-ggsave("output/figure/20210601-gains-losses-reconciliation.png", width = 3, height = 3)
+ggsave("output/figure/20211207-gains-losses-reconciliation.png", width = 3, height = 3)
 ```
 **Fig. 4 Summary of inferred duplication and loss events in _C. auris_ strains and selected outgroups.** The tree topology is based on Muñoz _et al._ 2018 PMID: 30559369. The number of duplications (red) and losses (black) were inferred using Notung 2.9 and labeled on the top and bottom of the branches respectively. 
 

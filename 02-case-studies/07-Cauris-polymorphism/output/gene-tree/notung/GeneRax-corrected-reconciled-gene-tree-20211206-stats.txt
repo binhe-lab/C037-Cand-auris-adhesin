@@ -1,0 +1,14 @@
+label	duplications	losses
+Cauris.B11221	0	1
+Cauris.B8441	0	0
+Cpseudohaemulonis	3	1
+n627	2	2
+n628	7	0
+Dhansenii	1	0
+n623	0	0
+n630	0	0
+Chaemuloni	3	1
+n625	0	0
+Cauris.B11243	0	0
+Cauris.B11220	0	5
+n620	2	0
