@@ -8,5 +8,6 @@
 | cauris-five-strains-homologs.fasta | fasta for just the _C. auris_ five strains homologs |
 | cauris-five-strains-renamed.fasta | identical to gene-tree.fasta except that the sequence names were reformatted |
 | cauris-four-strains-xxx | same as above with the clade I strain 6684 removed |
+| cauris-four-strains-...epa... | for use with the EPA algorithm, with the _C. auris_ genes renamed to include the Hil1-8 name |
 | gc.prt | genetic code used for tblastn, from ftp://ftp.ncbi.nih.gov/entrez/misc/data/gc.prt |
 | genome-seq | download the genome sequence for additional _C. auris_ strains for blast |

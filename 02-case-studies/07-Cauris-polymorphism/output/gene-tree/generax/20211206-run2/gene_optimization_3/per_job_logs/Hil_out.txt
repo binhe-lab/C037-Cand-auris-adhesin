@@ -1,0 +1,17 @@
+mpi-scheduler optimizeGeneTrees ../../output/gene-tree/generax/20211206-run2/results/Hil/geneTree.newick gene-to-species-map.txt cauris-four-strains-for-gene-tree-epa_C400_clustalo.faa ../../output/gene-tree/generax/20211206-run2/startingSpeciesTree.newick LG+G ../../output/gene-tree/generax/20211206-run2/gene_optimization_3/dtl_rates.txt 0 0 1 1 -1 1 1 1 4 ../../output/gene-tree/generax/20211206-run2/results/Hil/geneTree.newick ../../output/gene-tree/generax/20211206-run2/results/Hil/stats.txt 
+[00:00:54] Starting optimizeGeneTreesSlave
+LibpllModel LG+G
+[00:00:54] Starting optimizing gene tree
+Number of ranks 4
+Taxa number: 52
+[00:00:54] Start optimizing DL rates
+ best rates: 1e-07 1e-07 -453.872
+joint: -15568.2  libpll: -15114.3  reconciliation: -453.872  
+Initial ll = -15568.2
+Start SPR round (std::hash=2567, (best ll=-15568.2, radius=4, possible moves: 2218)
+best;; -15568.2 0
+joint: -15568.2  libpll: -15114.3  reconciliation: -453.872  
+Saving tree in ../../output/gene-tree/generax/20211206-run2/results/Hil/geneTree.newick
+Finished saving  ../../output/gene-tree/generax/20211206-run2/results/Hil/geneTree.newick
+[00:01:14] End of optimizing gene tree
+[00:01:14] End of optimizeGeneTreesSlave

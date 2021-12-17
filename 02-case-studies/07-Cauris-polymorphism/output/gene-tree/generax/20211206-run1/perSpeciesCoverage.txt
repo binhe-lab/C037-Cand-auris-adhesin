@@ -1,0 +1,8 @@
+SPECIES: FAMILY_COVERAGE
+Cauris.B11220: 1
+Cauris.B11221: 1
+Cauris.B11243: 1
+Cauris.B8441: 1
+Chaemuloni: 1
+Cpseudohaemulonis: 1
+Dhansenii: 1

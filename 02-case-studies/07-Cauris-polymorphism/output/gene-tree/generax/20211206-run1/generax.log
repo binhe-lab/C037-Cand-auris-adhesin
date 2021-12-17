@@ -1,0 +1,52 @@
+GeneRax was called as follow:
+generax --families families.txt --species-tree cauris-four-strains-outgroup-tree.nwk --rec-model UndatedDL --per-family-rates --prefix output --max-spr-radius 3 
+
+Parameters summary: 
+Families information: families.txt
+Species tree: cauris-four-strains-outgroup-tree.nwk
+Species Strategy: SPR
+Strategy: SPR
+Reconciliation model: UndatedDL
+Reconciliation opt: grid
+DTL rates: per family rates
+Prefix: output
+Unrooted reconciliation likelihood: OFF
+Prune species tree: OFF
+Reconciliation radius: 0
+MPI Ranks: 1
+Max gene SPR radius: 3
+Gene support threshold: -1
+Reconciliation likelihood weight: 1
+Random seed: 123
+Infer ML reconciliation: OFF
+
+[00:00:00] Filtering invalid families...
+
+[00:00:00] Filtering invalid families based on the starting species tree...
+
+[00:00:00] Gathering statistics about the families...
+[00:00:00] Input data information:
+- Number of gene families: 1
+- Number of species: 7
+- Total number of genes: 52
+- Average number of genes per family: 52
+- Maximum number of genes per family: 52
+- Species covered with the smallest family coverage: "Cauris.B8441" (covered by 1/1 families)
+- Average (over species) species family coverage: 1
+
+[00:00:00] Optimizing reconciliation rates and gene trees with radius=1... 
+	JointLL=-15598.1 RecLL=-486.108 LibpllLL=-15112
+
+[00:00:27] Optimizing reconciliation rates and gene trees with radius=2... 
+	JointLL=-15570.1 RecLL=-453.872 LibpllLL=-15116.2
+
+[00:01:34] Optimizing reconciliation rates and gene trees with radius=3... 
+	JointLL=-15568.5 RecLL=-453.872 LibpllLL=-15114.6
+
+[00:02:25] Terminating the instance..
+
+[00:02:25] Reconciliation likelihood: -453.872
+[00:02:25] Phylogenetic likelihood: -15114.6
+[00:02:25] Joint likelihood: -15568.5
+[00:02:25] Results directory: output
+[00:02:25] End of GeneRax execution

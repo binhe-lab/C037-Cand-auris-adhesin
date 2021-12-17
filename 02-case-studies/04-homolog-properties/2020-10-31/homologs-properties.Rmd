@@ -272,7 +272,8 @@ p3 <- p0 + p1 + coord_flip() + theme_classic() +
   theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
-        legend.position = c(0.8, 0.3),
+        legend.position = c(0.75, 0.35), 
+        legend.text = element_text(size = 12), legend.title = element_text(size = 14),
         plot.title = element_text(hjust = 0.5), 
         panel.background = element_rect(fill = alpha("lightblue",0.1))) +
   labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
@@ -619,7 +620,9 @@ p4 <- p1 + p2 + p3 + coord_flip() + theme_classic() +
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(), axis.ticks.x = element_blank(),
         plot.title = element_text(hjust = 0.5),
-        legend.position = c(0.8,0.3),
+        legend.position = c(0.75,0.35),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12),
         panel.background = element_rect(fill = alpha("lightblue",0.1))) +
   ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "TANGO score") + 
   ggtitle("TANGO hits with Hyphal_reg_CWP domain masked")
@@ -1025,7 +1028,7 @@ To formally test this hypothesis, I need to account for the background gene dens
 ```{r decide_which_species_to_use}
 use.sps <- seqInfo %>% 
   filter(assemblystatus == "Chromosome" | species_id == "Cauris") %>%
-  filter(species_id != "Cdubliniensis") %>%
+  filter(!species_id %in% c("Cdubliniensis", "Ncastellii")) %>%
   # phylogenetic relatedness can induce correlations, including when testing for enrichment at the chromosomal ends
   # based on the gene duplication patterns, combined with YGOB synteny based orthology assignments, the set of species
   # used here, after excluding Cdubliniensis, represent quasi phylogenetically independent contrasts, thanks to the 
@@ -1143,8 +1146,8 @@ fg.freq <- fg.freq %>%
 freq.plot <- fg.freq %>%
   mutate(chromosome = "X") %>%  # we label the homologs as X to make it a separate class
   select(species = species_id, chromosome, bin) %>% 
-  bind_rows(select(bg.freq.tb, species, chromosome, bin)) %>% 
-  filter(!species %in% c("Ncastellii")) # remove one species to make it easier to plot
+  bind_rows(select(bg.freq.tb, species, chromosome, bin))# %>% 
+  #filter(!species %in% c("Ncastellii")) # remove one species to make it easier to plot
 
 # plot
 freq.plot %>% 
