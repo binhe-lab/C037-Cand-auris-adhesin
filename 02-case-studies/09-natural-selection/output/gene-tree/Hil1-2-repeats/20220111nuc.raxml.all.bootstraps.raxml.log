@@ -1,0 +1,67 @@
+
+RAxML-NG v. 1.1.0 released on 29.11.2021 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Apple M1, 8 cores, 16 GB RAM
+
+RAxML-NG was called at 11-Jan-2022 14:37:25 as follows:
+
+raxml-ng --bsconverge --bs-trees 20220111nuc.raxml.all.bootstraps
+
+Analysis options:
+  run mode: A posteriori bootstrap convergence test
+  start tree(s): 
+  random seed: 1641933445
+  SIMD kernels: SSE3
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+Reading bootstrap trees from file: 20220111nuc.raxml.all.bootstraps
+Loaded 2000 trees with 34 taxa.
+
+Performing bootstrap convergence assessment using autoMRE criterion
+
+ # trees        avg WRF       avg WRF in %       # perms: wrf <= 3.00 %     converged?  
+      50        125.935              8.601                            0        NO
+     100        176.452              5.818                            1        NO
+     150        207.148              4.492                           54        NO
+     200        247.954              4.010                          103        NO
+     250        286.220              3.699                          261        NO
+     300        322.105              3.467                          337        NO
+     350        376.320              3.474                          329        NO
+     400        384.358              3.102                          529        NO
+     450        361.184              2.592                          782        NO
+     500        394.695              2.550                          728        NO
+     550        404.666              2.376                          773        NO
+     600        456.049              2.453                          748        NO
+     650        498.602              2.475                          723        NO
+     700        487.375              2.246                          829        NO
+     750        512.864              2.206                          858        NO
+     800        592.034              2.387                          840        NO
+     850        635.554              2.412                          840        NO
+     900        579.250              2.076                          911        NO
+     950        563.990              1.915                          946        NO
+    1000        601.562              1.941                          935        NO
+    1050        594.530              1.827                          967        NO
+    1100        650.809              1.909                          941        NO
+    1150        553.249              1.552                          978        NO
+    1200        635.436              1.708                          953        NO
+    1250        592.657              1.529                          982        NO
+    1300        597.828              1.483                          983        NO
+    1350        580.299              1.387                          989        NO
+    1400        624.387              1.439                          978        NO
+    1450        599.926              1.335                          980        NO
+    1500        564.345              1.214                          987        NO
+    1550        593.057              1.234                          981        NO
+    1600        610.544              1.231                          994        YES
+Bootstopping test converged after 1600 trees
+
+
+Execution log saved to: /Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gene-tree/Hil1-2-repeats/20220111nuc.raxml.all.bootstraps.raxml.log
+
+Analysis started: 11-Jan-2022 14:37:25 / finished: 11-Jan-2022 14:39:41
+
+Elapsed time: 135.958 seconds
+

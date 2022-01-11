@@ -1,0 +1,5230 @@
+     37    132
+
+B11221_Hil1_tr1                 GGC GTG GAA ACA GAC TCA GGT GTA GTA ATC GTC ACA ACC GAC TCT GAT GGA TCA TTG ACG ACC ACC ACC TCA GTG ATT CCT CCC CCC TTC ACT ACT TAC ACT TCT TCA TGG GTC ACC ACT AAC TCT GCT GGG 
+B11221_Hil1_tr2                 GAG ACT GAA ACC GAT TCC GGT GTA GTT GTT GTC ACC ACA AAC TCC GAG GGA GAG CTT ACA ACT TCC ACT TCT GTG ATT CCT CCT CCT TAC ACA ACG TAC ACT TCC ACA TGG ACA ACA ACT GAC GGT AAC GGA 
+B11221_Hil1_tr3                 GAT GTG GAA ACT GAC TCC GGA GTT GTT ATT GTG ACT ACT GGT AGC GAT GGA TCC CTC ACG ACC ACC ACA TCC GTA ATT CCA CCT CCA TTT ACC ACT TTC ACA TCT ACA TGG ACA ACT ACA AAC ACT GAT GGT 
+B11221_Hil1_tr4                 GAA ACT GAA ACA GAC TCG GGT ATC GTT GTT GTC ACT ACA GAC TCC AAT GGC CAG TTG ACC ACT TCT ACC TCG ATC ATT CCA CCT CCT TTC ACT ACC TAC ACA TCT ACG TGG ACA AGT TCT CAG AGT GAT GGT 
+B11221_Hil1_tr5                 AGC GAG GTA ACC GAT TCA GGA GTT GTG ATT GTG ACT ACC GAT TCA GAT GGT TCT TTG ACC ACC ACC ACT TCA GTC ATT CCG CCA CCA TTC ACA ACA TAC ACT TCA ACT TGG GCT ACG ACC AAC TCG AAT GGT 
+B11221_Hil1_tr6                 GAG ACC GAA ACA AAC TCT GGT GTG GTA GTT GTT ACA ACG GGC TCC GAT GGG GAG TTG ACC ACT ACT ACC TCT ACC ATT CCT CCT CCA TTC ACA ACA TAT ACT TCC ACT TGG ATC TCC ACC AAC TCC AAC GGA 
+B11221_Hil1_tr7                 GCT ACA GAA ACT GAC TCT GGA GTG GTT GTA GTA ACA ACA GAC TCA GAT GGT GCT TTG ACT ACT ACC ACA TCG ATT ATT CCA CAG CCT TTC ACC ACC TAC ACA TCT ACG TGG ACC TCG ACA AAC TCG GAT GGT 
+B11221_Hil1_tr8                 GAC ACT GAG ACT GAC TCG GGG GTG GTT GTT GTC ACC ACA AAC TCT GAT GGA GCA TTG ACA ACA TCT ACT TCT GTT ATA CCC CAG CCC TTC ACT ACC TTC ACT TCC ACC TGG ACC TCA AGC AAC AGC AAT GGT 
+B11221_Hil1_tr9                 GCT GTG CAA ACC GAT TCT GGT GTA GTG ATT GTT ACC ACT GGT TCC GAT GGA TCG TTG ACT ACT ACA ACG TCC GTC ATT CCT CCA CCT TTC ACT ACT TAC ACT TCT ACC TGG ACC TCC AGT AAC TCT GAT GGT 
+B11221_Hil1_tr10                GAA ACT GAG ACG GAT TCT GGC GTT GTT GTG GTG ACT ACC GAC TCA AAT GGT GAA TTA ACT ACC ACC ACT TCT ATC ATC CCT CCA CCA TTC ACC ACC TTC ACC TCC ACT TGG ACT TCC ACC AAA TCT GAC GGC 
+B11221_Hil1_tr11                GCT GTT GAG ACT GAT TCT GGT GTC ATA ATC GTT ACC ACT AAC TCA GAA GGT GAC TTG ACT ACC ACT ACT TCG ATC ATC CCT CCG CCA TAC ACC ACT TAC ACG TCA ACT TGG ACC ACA ACT GAT TCA AAC GGC 
+B11221_Hil1_tr12                GTA ACG GAG ACC GAC TCT GGT GTA GTT GTC GTT ACC ACC GAC TCA GAT GGA CAA CTT ACT ACA GCA ACA TCC ATA ATT CCT CCT CCA TTT ACT ACC TAC ACG TCA ACT TGG ACC ACA ACC AAC AGT GAT GGA 
+B11221_Hil1_tr13                AGT GAA GAG ACT GAC TCT GGC GTG GTA ATC GTG ACC GCA GGA ACC GAT GGC TCC TTG ACC ACT ACC ACG TCG GTG ATT CCA CCT CCT TTC ACA ACG TAC ACC TCC ACG TGG ATC ACC ACT AAT TCC AAT GGT 
+B11221_Hil1_tr14                GCA GTC GAG ACT GAC TCT GGC ATA ATT GTT GTC ACC ACT AAC TCT GGC GGT TCT TTG ACT ACT AGC ACC TCT GTG TTG CCC ACT CCA TTC ACC ACC TAC ACT TCT ACC TGG ACC ACG TCT GAT GGA GAT GGA 
+B11221_Hil1_tr15                AAC GTT CAA ACA GAT TCT GGT GTG GTG ATT GTG ACT ACC GGC TCT GAC GGC GCT TTG AGC ACG ACC ACG TCT GTG ATT CCA CCT CCT TTT ACA ACT TAC ACA TCC ACT TGG ATT TCC ACT AAT TCT GAT GGT 
+B11221_Hil1_tr16                GAA ACC GAA ACC GAC TCT GGA GTT GTC GTT GTC ACA ACG GAT TCC AAC GGC GCC TTG ACT ACC ACC ACG TCC ATC ATT CCT CCA CCT TTC ACT ACG TTC ACT TCG ACT TGG ACA ACT ACT GAT GAG AAC GGT 
+B11221_Hil1_tr17                GCC ACT GAA ACA GAC TCC GGG GTG GTG GTC GTT ACC ACT GGA ACT GAC GGT TCT TTG ACC ACC ACG ACT TCT GTG ATT CCT CCA CCA TAT ACT ACT TTT ACT TCG ACG TGG ACT ACT TCC AAC TCT AAT GGT 
+B11221_Hil1_tr18                GAC ATT GAG ACC GAC TCC GGT GTG GTG ATC GTG ACA ACA AAC TCT GAT GGC AGT TTG ACT ACT ACT ACT TCT GTG ATT CCT CCA CCA TAC ACG ACA TTC ACT ACA ACT TGG GCC ACA ACA AAC TCT GAT GGC 
+B11221_Hil1_tr19                ACA ACA GAA ACT GAC TCG GGT GTT GTC ATT GTG ACC ACT GAC TCT GAA GGT CAA TTA ACT ACT ACT ACT TCG GTC ATT CCT CCC CCT TTC ACG ACG TAC ACT TCC ACC TGG ACA TCA AAC AAG TCT GAT GGT 
+B11221_Hil1_tr20                GCA GTG GAA ACA GAT TCT GGC GTT GTT ATT GTC ACC ACC GAC TCT GAT GGT GCT TTG ACT ACA ACG ACT TCT ATC ATA CCT CAG CCT TTC ACA ACT TAC ACA TCT ACT TGG ACA TCC ACG AAC TCG AAC GGT 
+B11221_Hil1_tr21                GCT ATT GAG ACC GAA TCT GGC GTT GTT GTT GTG ACT ACT GAC TCA AAC GGT GCT TTG ACC ACA TCC ACC TCT GTC ATT CCC CTT CCA TTA ACC ACT TTT ACC ACC ACT TGG ACA ACT ACA AAC TCT GCT GGT 
+B11221_Hil1_tr22                GAA ACT GAG ACA GAC TCT GGT GTG GTC GTT GTG GAA ACT AAC TCC AAT GGT GCT TTG ACC ACA ACT ACT TCC ACT TTC CCT GAA CCG TTC ACC ACC TTC ACG TCC ACC TGG ACT ACC ACC GAT GAT TCT GGG 
+B11221_Hil1_tr23                GCC ATC GCT ACC GAC TCT GGC GTC GTT ATA GTG ACT ACT GGA TCA GAC GGC TCC TTG TCC ACC ACA ACC TCG GTG ATT CCA CCT CCT TTC ACC ACC TAT ACA ACT ACC TGG ACT TCT ACA AAC TCC AAC GGT 
+B11221_Hil1_tr24                GGA GTC GAG ACT GAC TCT GGT GTT GTC ATT GTC ACC ACA AAT AGT GAC GGT GCT TTG GAG ACT ACC ACC TCT GTT ATT GAT CCT CCT TTC AAC ACA TAC ACT TCC ACT TGG ACT ACT ACA GAT GCT GAT GGT 
+B11221_Hil1_tr25                GCG ATT GAG ACT GAC TCA GGT GTA GTT GTC GTC ACT ACA GGA TCT GAT GGA TCC TTG ACT ACC ACC ACC TCG GTG ATT CCA CAC CCA TTC ACG ACT TAC ACT TCT ACA TGG GTC ACT ACG GGC AGT GAT GGA 
+B11221_Hil1_tr26                GAT ACT GAG ACC GAT TCA GGA GTC ATC GTT GTC ACG ACT GAC TCT GAT GGT GCC TTG ACC ACA AGC ACA TCT TTG TTG CCA GTT CCC TTC ACT ACG TAC ACC TCA ACT TGG ACT ATA ACC AAT AGT GAC GGT 
+B11221_Hil1_tr27                AGT CAA GCA ACT GAC TCT GGT GTT GTT ATC GTT ACC ACA GAC TCC GAA GGG CAG CTC ACA ACG ACT ACC TCG GTG ATT CCT CCA CCG TTC ACT ACC TAC ACG TCC ACT TGG ACC ACT ACG GGT GCC AAC GGA 
+B11221_Hil1_tr28                GGC GAA GAG ACC GAC TCT GGC GTG ATT ATT GTT ACC ACT GAC TCG GAT GGT CAA TTG GCC ACA ACA ACC TCA GTG ATT CCT CCA CCC TTC ACC ACG TTC ACC TCT ACG TGG ACT ACG ACC AAC AGT GAT GGA 
+B11221_Hil1_tr29                AAC CAA GCG ACC GAC TCA GGT GTT GTT ATC GTT ACT ACT GAT TCA GAT GGT CAA CTC ACG ACG ACT ACT TCA GTC ATT CCT CCT CCA TTT ACC ACC TAT ACT TCC ACT TGG ACT ACC ACG GAT GGA AAT GGT 
+B11221_Hil1_tr30                GCT GAA GAG ACC GAT TCG GGT GTC ATT ATC GTC ACC ACT GAT TCT GAA GGA CAA CTC ACG ACG ACT ACT TCA GTC ATT CCT CCT CCA TTT ACT ACC TAC ACC TCC ACT TGG ACT ACA ACT GGT GCT GAC GGT 
+B11221_Hil1_tr31                AGC GAA GAG ACC GAC TCT GGG GTA ATC ATT GTG ACT ACA GAT TCA GCT GGC CAA TTG ACC ACC ACT ACC TCT GTC ATT CCT CCA CCA TTT ACA ACC TTC ACG TCT ACT TGG ACT ACG ACC GAC GGT AAT GGT 
+B11221_Hil1_tr32                AAC GAA GGA ACT GAT TCT GGT GTG ATA ATT GTT ACT ACG GAT TCT GAC GGT GCT TTG ACA ACC ACG ACG GCT GTG ATT CCA CCT CCA TAC ACC ACA TAT ACC TCC ACC TGG ACT ACT ACT GAT GGT AAC GGA 
+B11221_Hil1_tr33                AAT ATC GAA ACT GAC TCT GGT GTA GTC ATT GTT ACC ACT GAT TCT CAG GGT TCC TTG ACA ACC ACT ACT TCG ATC ATT GAC TCT CCC TTC ACC ACA TAC ACG TCC ACC TGG GCT ACC ACT GAC AAT AAC GGT 
+B11221_Hil1_tr34                AAC GTT GAG ACA GAC TCT GGT GTT GTC ATT GTT ACT ACT GAT TCC AAC GGT CAG TTG ACT ACC ACC ACT CTG GTC ATT GAC TCC CCA TAC ACC ACT TAC ACA ACT TCT TGG CCA ACT ACT GAC GCA AAT GGC 
+B11221_Hil1_tr35                GGT GTT GAA ACT GAT TCA GGT GTG GTA ATC GTT ACT ACT GAC TCT GAT GGT CAA TTG TCT ACT ACG ACA TCT GTT ATC GAT TCT CCA TTC ACG ACT TAT ACA ACT TCG TGG CCC ACT ACC GAT GGA AAT GGC 
+B11221_Hil1_tr36                GCT GTT GAG ACC GAT TCC GGT GTT GTT ATT GTC ACT ACT GAC TCT AAC GGA CAG TTG ACA ACT ACG ACC TCG GTA ATC GAC TCA CCA TAT ACC ACT TAC ACT ACT TCG TGG CCT ACA ACT GGT GCC GAC GGG 
+B11221_Hil1_tr37                GCC GTT GAG ACT AAT TCA GGC GTG GTG ATT GTC ACC ACT GAC TCT GAT GGT CAG TTG ACT ACT ACT ACT TCA GTC ATT GAC TCC CCA TAC ACA ACC TAT ACC TCC ATC TGG ACT ACT ACT GAC AGT GTT GGA 
+
+
+
+Printing out site pattern counts
+
+
+        37        132  P
+
+B11221_Hil1_tr1                 AAC ACA ACA ACC ACC ACC ACC ACC ACG ACT ACT ACT ACT ATC ATT CCC CCC CCT GAA GAC GAC GAT GCT GGA GGC GGG GGT GTA GTA GTC GTC GTG GTG TAC TCA TCA TCA TCA TCT TCT TCT TGG TTC TTG 
+B11221_Hil1_tr2                 G.. ..C ..C ..A ..A ..T ..T T.. ..A ..A ..G ... ... G.T ... ..T ..T ... ... A.. ..T ..G AAC ... .AG ..A ... ... ..T ACA ... ACT ... ... A.. GAG ..C ..T GG. ..C ..C ... .A. C.T 
+B11221_Hil1_tr3                 ... ..T ..T ..T ..T ..A ... ... ... ..C ... ..A ..A ..T ... ..A ..T ..A ... .GT ... ... .A. ... .AT ..T ..A ..T ..T ACA ..G ... ..A .T. A.. ..C ..C ..C A.. AGC ... ... ..T C.C 
+B11221_Hil1_tr4                 C.G ... ..T ..A .GT ... ..T T.T ..C ... ..C ..A T.. G.T ... ..T ..T ..A ... ... ... A.. .A. ..C .AA ..T ... A.C ..T ACA ... ACT A.C ... A.G CAG ..G ..G AG. ..C ... ... ... ... 
+B11221_Hil1_tr5                 ... ..C ..T ... ..G ..T ... ... ..C ..A ..A ... ..C ..T ... ..A ..A ..G .T. ..T ..T ... AA. ..T A.. ..T ..A ..T ..G .CT ..G .A. ..C ... A.T ..T ... ... ..G ..A ..A ... ... ... 
+B11221_Hil1_tr6                 ... ... ... ..G T.. ... ..T ..T ..C ..A ..A ... ..C G.T ... ..A ..T ... ... .G. A.. ... AAC ..G .AG ..A ... ..G ... A.. ..T ACC ACC ..T A.T GAG ..T ..T ..C ..C ..C ... ... ... 
+B11221_Hil1_tr7                 ... ..T ... ..A T.G ..A ..T ... ..T ..C ..C ..A ..A G.A ... ..T .AG ..A ... ... ... ... .A. ..T .CT ..T ..A ..G ..T AC. ..A ACA A.T ... A.G G.T ..T ..G ..G ..A ... ... ... ... 
+B11221_Hil1_tr8                 ... ..T ..C ..A T.A ..T ..A T.T ..A ... ..C ... .GC G.T ..A ... .AG ..C ..G A.. ... ... AA. ... .A. ..T ..G ..G ..T AC. ... ACT ..T .T. A.C G.. ..G ..T AGC ... ..C ... ... ... 
+B11221_Hil1_tr9                 ... ..C ..C ..T T.. ..G ..T ..A ..T ... ... ... .G. ..T ... ..T ..A ... C.. .GT ..T ... .A. ... .CT ..T ... ... ..G AC. ..T ... ..C ... A.C ..G ..T ..C ... ..C ... ... ... ... 
+B11221_Hil1_tr10                ..A ..G ..T ... T.. ..T ... ... ..T ..C ..C ..C ..C G.G ..C ..A ..A ... ..G ... ..T A.. .AC ..T .AA ..C ..C ..T ..T ACT ..G ACT A.C .T. A.T GA. ..T ..T ... ..A ..C ... ... ..A 
+B11221_Hil1_tr11                G.T ..T ..C ..T ..A ..T ... ..T ..T ..C ... ..G ... ... ..C ..A ..G ... ..G A.. ..T ..A AAC ..T .CT ..C ... ..C A.. AC. ..T ..T A.C ... A.T GAC ..T ..G ..A ..A ..A ... .A. ... 
+B11221_Hil1_tr12                ... ..C ..C ... ..A ..A ..A G.A ..T ... ..C ..G ..C G.. ... ..A ..T ... ..G ... ... ... .A. ... .TA ..A ... ... ..T AC. ..T AC. A.A ... A.T CA. ..T ..C AG. ..A ..A ... ..T C.T 
+B11221_Hil1_tr13                ..T ..T ..C G.A ... ..G ..T ... ..C ..A ..G ..C ... ... ... ..T ..T ..A ..G .GA ... ... AA. ..C A.T ..T ..C ..G ... A.. ..G .AA ... ... A.G ..C ..T ..G ..C A.C ..C ... ... ... 
+B11221_Hil1_tr14                G.T ..T ..C ..T ..G ... ..T .G. ..T ..C ..C ... T.. G.T T.G ..A A.T ..C ..G A.. ... .GC .A. ..T .CA ..A ..C A.. A.T AC. ... ..C ... ... A.C ..T ..T ..T GGA ... ... ... ... ... 
+B11221_Hil1_tr15                ..T ... ..T ... T.. ..G ..G ... .GC ..A ... ..A ... ..T ... ..T ..T ..A C.. .G. ..T ..C .A. ..C AA. ..T ... ..G ..G A.T ..G ..T ... ... A.T G.T ..T ..T ... ... ..C ... ..T ... 
+B11221_Hil1_tr16                G.T ..C ... ..G ..T ..G ... ... ..T ... ..G ... ... G.T ... ..T ..A ... ... ..T ... A.C AAC ..C .AA ..T ..A ..T ..C ACA ... ACC A.C .T. A.T G.C ..T ..C GAG ..C ..G ... ... ... 
+B11221_Hil1_tr17                ... ... ..C ..T ..T ..T ... ..G ..C ... ... ... T.C G.. ... ..A ..A ... ... .GA ... ..C AA. ..T .C. ..T ..G ..G ..G ACT ..T ACT ... .TT A.G ..T ..C ..T ... A.. ..G ... .AT ... 
+B11221_Hil1_tr18                ... ..C ... ..A ..A ..T ..T ..T ..T ..G ..A ... ..A ... ... ..A ..A ... ..G A.. ... ... .A. ..C .A. ..C ... ..G ..G .C. ..G A.T ... .T. A.T AGT ..C ..T ... ... A.A ... .A. ... 
+B11221_Hil1_tr19                ..G ..T ..C ..T T.A ..T ..T ..T ..T ..G ..G ... .AC ..T ... ..T ... ... ... ... ... ..A .A. ..T ACA ..T ... ..T ..C ACA ..G ACA ..C ... A.C CA. ..G ..G ... ... ..C ... ... ..A 
+B11221_Hil1_tr20                ... ... ..C ... T.. ..T ..A ..G ..T ..A ... ..A ..G ..T ..A ..T .AG ... ... ... ..T ... AAC ..T .CA ..T ..C ..T ..T ACA ... ... A.C ... A.T G.T ..T ..T ..G ... ... ... ... ... 
+B11221_Hil1_tr21                ... ..C ..T ..T ..T ... ..A T.. ..C ..C ... ..C ..A G.T ... ..A .TT ..C ..G ... ..A A.C ... ..T .CT ..T ..C ..T ..T ACA ..G A.T ..C .TT A.T G.T ..T ..T ... ..A A.C ... ..A ... 
+B11221_Hil1_tr22                G.T ... GA. ..T ... ..T ..A ..T ..C ..C ..C ..G ..C G.T T.C ..G GAA ... ..G A.. ... A.. T.. ..T .AA ... ... ..G ..C ACT ..G ACT ACT .T. A.C G.T ..T ..C GA. ..C ..C ... ... ... 
+B11221_Hil1_tr23                ... ..C ..T ..T T.T ... ... ..A T.C ..C ..C ..A ..A ..A ... ..T ..T ..A .CT .GA ... ..C AAC ..C .C. ..T ..C ..C ..T ACT ..G A.C ... ..T A.C ..C ..T ..G ..C ..A A.. ... ... ... 
+B11221_Hil1_tr24                G.T ..T ..C ..A ..T ... ..T ... GA. .AC ..A ... ..A ..T ... ..T ..T GA. ..G A.T ... ..C .A. ..T ..A ..T ... ..T ..C ACT ... ..C ..T ... A.T G.T ..T ..T G.. AG. ..C ... ... ... 
+B11221_Hil1_tr25                GG. ..T ..T ..A ..T ... ... ... ..T ..G ... ... ..G G.. ... ..A .A. ..A ..G .GA ... ... .A. ... .CG ..A ... ... ..T ... ... A.T ... ... A.. ..C ... ..G AG. ... ... ... ... ... 
+B11221_Hil1_tr26                ..T ..C ..G ..T .TA ..A ..A .G. ..C ... ..G ..C ..C G.T T.G ... GTT ..A ..G ... ..T ... .AC ..T .AT ..T ..A ..C A.C ACT ... ACT T.. ... A.T G.C ... ..T AG. ... ..A ... ... ... 
+B11221_Hil1_tr27                GGT ..T ..C ..A ..T ... ..G ..T ..A ... ..C ..G ..G ... ... ..G ..A ... .C. ... ... ..A AAC ..G A.T ..A ... ..T ..T AC. ..T CAA ... ... A.T CAG ..T ..G G.C ..C ..C ... ... C.C 
+B11221_Hil1_tr28                ... ..C ..C ..T ..G ... ..A ..A G.C ..C ..G ..C ..C ..T ... ... ..A ... ..G ... ... ... .A. ..T ... ..A ..C ..G A.T ACT ..T .AA ... .T. A.G CA. ..T ... AG. ..G ... ... ... ... 
+B11221_Hil1_tr29                G.T ..C ..T ..T ... ..T ..G ..T ... ..C ..C ... ..G ... ... ..A ..T ... .CG ..T ... ... AA. ..T AA. ..T ... ..T ..T ACT ..T CAA ..C ..T A.T CA. ... ... GGA ..A ..C ... ..T C.C 
+B11221_Hil1_tr30                GGT ..C ..C ..T ..A ..T ..G ..T ... ... ..C ..C ... ... ... ..A ..T ... ..G ..T ..T ..A .AC ... .CT ..T ... ..C A.T ACT ... .AA ..C ... A.T CA. ..G ... G.. ... ..C ... ..T C.C 
+B11221_Hil1_tr31                G.. ..C ..T ..A ..G ... ... ..T ..C ..A ..C ..G ..C ..T ... ..A ..A ... ..G ..T ... .C. AA. ..C A.. ..T ..G ... A.C ACT ..G .AA ..C .T. A.T CA. ..T ..T GG. ..A ... ... ..T ... 
+B11221_Hil1_tr32                G.T ..T ..T ..G ..T ..G ... ..G ..A ..C ..A ..C ... ..T ... ..A ..T ..A .G. ..T ..T ..C AAC ..T AA. ..A ... ..G A.. ACT ..T .AA ... ..T A.C G.T ..T G.T GG. ... ..C ... .A. ... 
+B11221_Hil1_tr33                G.. ..T ..C ..T ... ..T ... ..T ..A ..C ..A ..G ... ..T ... ... T.T GAC ... ..T ... C.G AAC ..T AAT ..T ... ... ..C .CT ..T A.C A.C ... A.C ..C ..T ..G AA. ... ..C ... ... ... 
+B11221_Hil1_tr34                G.. ... ..T ..T ..T ..T ... ... ..T ..C ... ..A ... ..T ... ..A T.. GAC ..G ..T ... A.C AA. ..T AA. ..C ... ..T ..C CCA ..T ..T ..C ... ..T CAG ..T CTG G.A ..C A.. ... .A. ... 
+B11221_Hil1_tr35                G.T ..T ..T ..T ..T ..A ..T ..G T.T ..G ... ..A ..C ... ..C ..A T.T GA. ... ... ..T ... AA. ..T ..T ..C ... ..G ... CC. ..T ..T ..T ..T ..G CA. ... ..T GGA ... A.. ... ... ... 
+B11221_Hil1_tr36                GGT ..C ..T ..T ..A ... ..T ..G ..A ..C ... ... ... ..T ..C ..A T.A GAC ..G ... ..T A.C .AC ... .CT ... ... ..T ..T CCT ... ..T ..A ... ..G CAG ..C ..G G.C ... A.. ... .AT ... 
+B11221_Hil1_tr37                G.. ..T ..C ..T ..T ..T ..T ..T ..T ..A ..C ..C ... ..T ... ..A T.. GAC ..G ... A.T ... .T. ..T .C. ..A ..C ..G ..G ACT ... ..T ..C ..T ATC CAG ... ... AG. ... ..C ... .A. ... 
+
+    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+
+CODONML (in paml version 4.9, March 2015)  B11221-Hil1-repeats-aligned.phy
+Model: One dN/dS ratio for branches,  kappa = 2.680 fixed
+
+Codon frequency model: F3x4
+ns =  37  ls =  44
+
+Codon usage in sequences
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   0   0   1   0   0   0 | Ser TCT   3   1   1   3   1   2 | Tyr TAT   0   0   0   0   0   1 | Cys TGT   0   0   0   0   0   0
+    TTC   1   0   1   1   1   1 |     TCC   0   4   3   1   0   4 |     TAC   1   2   0   1   1   0 |     TGC   0   0   0   0   0   0
+Leu TTA   0   0   0   0   0   0 |     TCA   4   0   0   0   4   0 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   1   0   0   1   1   1 |     TCG   0   0   0   2   1   0 |     TAG   0   0   0   0   0   0 | Trp TGG   1   1   1   1   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   0   1   0   0   0   0 | Pro CCT   1   3   1   2   0   2 | His CAT   0   0   0   0   0   0 | Arg CGT   0   0   0   0   0   0
+    CTC   0   0   1   0   0   0 |     CCC   2   0   0   0   0   0 |     CAC   0   0   0   0   0   0 |     CGC   0   0   0   0   0   0
+    CTA   0   0   0   0   0   0 |     CCA   0   0   2   1   2   1 | Gln CAA   0   0   0   0   0   0 |     CGA   0   0   0   0   0   0
+Ser CTG   0   0   0   0   0   0 |     CCG   0   0   0   0   1   0 |     CAG   0   0   0   2   0   0 |     CGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   1   1   2   1   2   1 | Thr ACT   4   5   6   4   4   4 | Asn AAT   0   0   0   1   1   0 | Ser AGT   0   0   0   2   0   0
+    ATC   1   0   0   2   0   1 |     ACC   5   2   3   3   6   5 |     AAC   1   2   1   0   1   3 |     AGC   0   0   1   0   1   0
+    ATA   0   0   0   0   0   0 |     ACA   2   6   5   4   2   4 | Lys AAA   0   0   0   0   0   0 | Arg AGA   0   0   0   0   0   0
+Met ATG   0   0   0   0   0   0 |     ACG   1   1   1   1   1   1 |     AAG   0   0   0   0   0   0 |     AGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   0   2   2   2   1   2 | Ala GCT   1   0   0   0   1   0 | Asp GAT   1   1   3   1   3   1 | Gly GGT   1   2   2   2   2   1
+    GTC   2   1   0   1   1   0 |     GCC   0   0   0   0   0   0 |     GAC   2   1   1   2   0   0 |     GGC   1   0   0   1   0   1
+    GTA   2   1   1   0   1   1 |     GCA   0   0   0   0   0   0 | Glu GAA   1   1   1   2   0   1 |     GGA   1   2   2   0   1   1
+    GTG   2   1   2   0   2   1 |     GCG   0   0   0   0   0   0 |     GAG   0   3   0   0   1   2 |     GGG   1   0   0   0   0   1
+--------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   0   0   0   0   0   1 | Ser TCT   2   3   3   3   1   1 | Tyr TAT   0   0   0   0   0   0 | Cys TGT   0   0   0   0   0   0
+    TTC   1   2   1   2   0   0 |     TCC   0   1   3   2   0   1 |     TAC   1   0   1   0   2   1 |     TGC   0   0   0   0   0   0
+Leu TTA   0   0   0   1   0   0 |     TCA   1   1   0   1   3   2 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   1   1   1   0   1   0 |     TCG   3   1   1   0   1   0 |     TAG   0   0   0   0   0   0 | Trp TGG   1   1   1   1   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   0   0   0   0   0   1 | Pro CCT   1   0   2   1   1   2 | His CAT   0   0   0   0   0   0 | Arg CGT   0   0   0   0   0   0
+    CTC   0   0   0   0   0   0 |     CCC   0   2   0   0   0   0 |     CAC   0   0   0   0   0   0 |     CGC   0   0   0   0   0   0
+    CTA   0   0   0   0   0   0 |     CCA   1   0   1   2   1   1 | Gln CAA   0   0   1   0   0   1 |     CGA   0   0   0   0   0   0
+Ser CTG   0   0   0   0   0   0 |     CCG   0   0   0   0   1   0 |     CAG   1   1   0   0   0   0 |     CGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   2   0   2   0   0   1 | Thr ACT   3   5   6   6   8   3 | Asn AAT   0   1   0   1   0   0 | Ser AGT   0   0   1   0   0   1
+    ATC   0   0   0   2   3   0 |     ACC   4   4   4   7   4   6 |     AAC   1   2   1   0   2   1 |     AGC   0   2   0   0   0   0
+    ATA   0   1   0   0   1   1 |     ACA   6   3   1   0   1   3 | Lys AAA   0   0   0   1   0   0 | Arg AGA   0   0   0   0   0   0
+Met ATG   0   0   0   0   0   0 |     ACG   1   0   1   1   1   2 |     AAG   0   0   0   0   0   0 |     AGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   1   3   1   2   2   2 | Ala GCT   2   0   1   0   1   0 | Asp GAT   2   1   3   1   2   2 | Gly GGT   2   1   3   1   2   1
+    GTC   0   1   1   0   1   1 |     GCC   0   0   0   0   0   0 |     GAC   2   2   0   2   1   2 |     GGC   0   0   0   2   1   0
+    GTA   2   0   1   0   0   2 |     GCA   0   1   0   0   0   1 | Glu GAA   1   0   0   2   1   0 |     GGA   1   1   1   0   0   2
+    GTG   1   1   2   2   0   0 |     GCG   0   0   0   0   0   0 |     GAG   0   1   0   1   1   1 |     GGG   0   1   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   0   0   1   0   1   0 | Ser TCT   1   6   4   1   3   3 | Tyr TAT   0   0   0   0   1   0 | Cys TGT   0   0   0   0   0   0
+    TTC   1   1   0   2   0   1 |     TCC   3   0   2   2   2   1 |     TAC   1   1   1   0   0   1 |     TGC   0   0   0   0   0   0
+Leu TTA   0   0   0   0   0   0 |     TCA   0   0   0   0   0   0 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   1   2   1   1   1   1 |     TCG   1   0   0   1   1   0 |     TAG   0   0   0   0   0   0 | Trp TGG   1   1   1   1   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   0   0   0   0   0   0 | Pro CCT   2   0   2   2   1   1 | His CAT   0   0   0   0   0   0 | Arg CGT   0   0   0   0   0   0
+    CTC   0   0   0   0   0   0 |     CCC   0   1   0   0   0   0 |     CAC   0   0   0   0   0   0 |     CGC   0   0   0   0   0   0
+    CTA   0   0   0   0   0   0 |     CCA   1   1   1   1   2   2 | Gln CAA   0   0   1   0   0   0 |     CGA   0   0   0   0   0   0
+Ser CTG   0   0   0   0   0   0 |     CCG   0   0   0   0   0   0 |     CAG   0   0   0   0   0   0 |     CGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   1   1   3   1   1   2 | Thr ACT   3   6   4   6   9   6 | Asn AAT   2   0   1   0   1   0 | Ser AGT   1   0   0   0   0   1
+    ATC   2   0   0   1   0   1 |     ACC   6   6   2   4   3   1 |     AAC   0   1   1   2   1   2 |     AGC   0   1   1   0   0   0
+    ATA   0   1   0   0   0   0 |     ACA   1   0   3   2   1   6 | Lys AAA   0   0   0   0   0   0 | Arg AGA   0   0   0   0   0   0
+Met ATG   0   0   0   0   0   0 |     ACG   3   1   2   3   2   1 |     AAG   0   0   0   0   0   0 |     AGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   0   1   1   2   1   0 | Ala GCT   0   0   1   0   0   0 | Asp GAT   1   2   2   2   0   2 | Gly GGT   1   1   2   1   2   1
+    GTC   0   2   0   2   1   0 |     GCC   0   0   0   1   1   1 |     GAC   1   1   1   1   2   2 |     GGC   2   2   2   1   0   2
+    GTA   1   0   0   0   0   0 |     GCA   1   1   0   0   0   0 | Glu GAA   1   0   0   2   1   0 |     GGA   1   2   0   1   1   0
+    GTG   3   1   4   0   3   4 |     GCG   0   0   0   0   0   0 |     GAG   1   1   0   1   0   1 |     GGG   0   0   0   0   1   0
+--------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   0   0   1   0   0   0 | Ser TCT   2   4   3   2   2   2 | Tyr TAT   0   0   0   0   1   0 | Cys TGT   0   0   0   0   0   0
+    TTC   1   1   0   3   1   1 |     TCC   1   1   1   3   3   1 |     TAC   1   1   0   0   0   1 |     TGC   0   0   0   0   0   0
+Leu TTA   1   0   1   0   0   0 |     TCA   1   0   1   0   1   0 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   0   1   1   1   1   1 |     TCG   2   1   0   0   1   0 |     TAG   0   0   0   0   0   0 | Trp TGG   1   1   1   1   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   0   0   1   0   0   0 | Pro CCT   2   2   0   1   2   2 | His CAT   0   0   0   0   0   0 | Arg CGT   0   0   0   0   0   0
+    CTC   0   0   0   0   0   0 |     CCC   1   0   1   0   0   0 |     CAC   0   0   0   0   0   0 |     CGC   0   0   0   0   0   0
+    CTA   0   0   0   0   0   0 |     CCA   0   0   1   0   1   0 | Gln CAA   1   0   0   0   0   0 |     CGA   0   0   0   0   0   0
+Ser CTG   0   0   0   0   0   0 |     CCG   0   0   0   1   0   0 |     CAG   0   1   0   0   0   0 |     CGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   2   1   2   0   1   2 | Thr ACT   7   4   5   6   4   6 | Asn AAT   0   0   0   1   0   1 | Ser AGT   0   0   0   0   0   1
+    ATC   0   1   0   0   1   0 |     ACC   2   2   6   6   6   3 |     AAC   1   2   2   1   2   1 |     AGC   0   0   0   0   0   0
+    ATA   0   1   0   0   1   0 |     ACA   3   5   3   2   3   3 | Lys AAA   0   0   0   0   0   0 | Arg AGA   0   0   0   0   0   0
+Met ATG   0   0   0   0   0   0 |     ACG   2   2   0   1   0   0 |     AAG   1   0   0   0   0   0 |     AGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   1   2   3   1   1   2 | Ala GCT   0   1   3   1   1   2 | Asp GAT   1   2   0   2   0   3 | Gly GGT   3   2   2   2   1   3
+    GTC   2   1   1   1   1   3 |     GCC   0   0   0   0   1   0 |     GAC   2   1   1   1   2   2 |     GGC   0   1   1   0   2   0
+    GTA   0   0   0   0   0   0 |     GCA   0   1   0   0   0   0 | Glu GAA   2   1   1   3   0   0 |     GGA   0   0   0   0   1   1
+    GTG   1   1   1   2   2   0 |     GCG   0   0   0   0   0   0 |     GAG   0   0   1   1   0   2 |     GGG   0   0   0   1   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   0   0   0   0   1   1 | Ser TCT   2   2   1   2   0   1 | Tyr TAT   0   0   0   0   1   0 | Cys TGT   0   0   0   0   0   0
+    TTC   1   1   1   2   0   0 |     TCC   1   0   2   0   1   1 |     TAC   1   1   1   0   0   1 |     TGC   0   0   0   0   0   0
+Leu TTA   0   0   0   0   0   0 |     TCA   1   2   0   1   3   1 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   1   3   0   1   0   0 |     TCG   1   0   1   1   0   1 |     TAG   0   0   0   0   0   0 | Trp TGG   1   1   1   1   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   0   0   0   0   0   0 | Pro CCT   0   0   1   1   2   2 | His CAT   0   0   0   0   0   0 | Arg CGT   0   0   0   0   0   0
+    CTC   0   0   1   0   1   1 |     CCC   0   1   0   1   0   0 |     CAC   1   0   0   0   0   0 |     CGC   0   0   0   0   0   0
+    CTA   0   0   0   0   0   0 |     CCA   2   1   1   1   1   1 | Gln CAA   0   0   1   1   2   1 |     CGA   0   0   0   0   0   0
+Ser CTG   0   0   0   0   0   0 |     CCG   0   0   1   0   0   0 |     CAG   0   0   1   0   0   0 |     CGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   2   0   1   3   1   2 | Thr ACT   6   5   5   2   7   7 | Asn AAT   0   1   0   0   1   0 | Ser AGT   1   1   1   1   0   0
+    ATC   0   1   1   0   1   1 |     ACC   3   4   4   6   4   4 |     AAC   0   0   1   1   1   0 |     AGC   0   1   0   0   0   0
+    ATA   0   1   0   0   0   0 |     ACA   2   2   2   2   0   1 | Lys AAA   0   0   0   0   0   0 | Arg AGA   0   0   0   0   0   0
+Met ATG   0   0   0   0   0   0 |     ACG   2   2   3   3   3   2 |     AAG   0   0   0   0   0   0 |     AGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   1   2   3   1   3   0 | Ala GCT   0   0   0   0   0   2 | Asp GAT   2   3   0   2   3   2 | Gly GGT   1   2   2   1   3   3
+    GTC   3   2   0   0   1   3 |     GCC   0   1   1   1   0   0 |     GAC   1   2   2   2   1   1 |     GGC   1   0   0   2   0   0
+    GTA   1   0   0   0   0   0 |     GCA   0   0   1   0   0   0 | Glu GAA   0   0   1   1   0   2 |     GGA   3   1   1   1   1   1
+    GTG   1   0   1   2   0   0 |     GCG   1   0   0   0   1   0 |     GAG   1   1   0   1   0   1 |     GGG   0   0   1   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   1   0   0   0   0   0 | Ser TCT   3   2   3   2   4   1 | Tyr TAT   0   1   0   0   1   1 | Cys TGT   0   0   0   0   0   0
+    TTC   1   0   1   0   1   0 |     TCC   0   1   2   2   0   1 |     TAC   0   1   1   2   0   1 |     TGC   0   0   0   0   0   0
+Leu TTA   0   0   0   0   0   0 |     TCA   1   0   0   0   1   1 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   1   1   1   1   1   1 |     TCG   0   0   1   0   1   2 |     TAG   0   0   0   0   0   0 | Trp TGG   1   1   1   1   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   0   0   0   0   0   0 | Pro CCT   1   1   0   0   0   1 | His CAT   0   0   0   0   0   0 | Arg CGT   0   0   0   0   0   0
+    CTC   0   0   0   0   0   0 |     CCC   0   0   1   0   1   0 |     CAC   0   0   0   0   0   0 |     CGC   0   0   0   0   0   0
+    CTA   0   0   0   0   0   0 |     CCA   2   2   0   2   1   1 | Gln CAA   1   0   0   0   1   0 |     CGA   0   0   0   0   0   0
+Ser CTG   0   0   0   1   0   0 |     CCG   0   0   0   0   0   0 |     CAG   0   0   1   1   0   1 |     CGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   2   2   2   2   0   1 | Thr ACT   4   5   5   8   7   7 | Asn AAT   1   0   2   1   1   0 | Ser AGT   0   0   0   0   0   0
+    ATC   1   0   2   0   2   1 |     ACC   6   4   5   3   1   3 |     AAC   0   2   1   2   0   1 |     AGC   1   0   0   0   0   0
+    ATA   0   1   0   0   0   0 |     ACA   2   2   2   2   2   2 | Lys AAA   0   0   0   0   0   0 | Arg AGA   0   0   0   0   0   0
+Met ATG   0   0   0   0   0   0 |     ACG   2   3   1   0   2   1 |     AAG   0   0   0   0   0   0 |     AGG   0   0   0   0   0   0
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   0   1   1   3   3   3 | Ala GCT   1   2   1   0   0   1 | Asp GAT   1   3   1   1   4   1 | Gly GGT   2   3   3   2   3   2
+    GTC   1   0   1   2   0   1 |     GCC   0   0   0   0   0   1 |     GAC   2   1   3   3   1   3 |     GGC   1   0   0   1   1   0
+    GTA   1   0   1   0   1   1 |     GCA   0   0   0   1   0   0 | Glu GAA   1   1   1   0   1   0 |     GGA   0   2   0   0   1   1
+    GTG   1   2   0   0   1   0 |     GCG   0   0   0   0   0   0 |     GAG   1   0   0   1   0   1 |     GGG   1   0   0   0   0   1
+--------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------
+Phe TTT   0 | Ser TCT   1 | Tyr TAT   1 | Cys TGT   0
+    TTC   0 |     TCC   2 |     TAC   1 |     TGC   0
+Leu TTA   0 |     TCA   2 | *** TAA   0 | *** TGA   0
+    TTG   1 |     TCG   0 |     TAG   0 | Trp TGG   1
+------------------------------------------------------
+Leu CTT   0 | Pro CCT   0 | His CAT   0 | Arg CGT   0
+    CTC   0 |     CCC   0 |     CAC   0 |     CGC   0
+    CTA   0 |     CCA   1 | Gln CAA   0 |     CGA   0
+Ser CTG   0 |     CCG   0 |     CAG   1 |     CGG   0
+------------------------------------------------------
+Ile ATT   2 | Thr ACT   9 | Asn AAT   1 | Ser AGT   1
+    ATC   1 |     ACC   3 |     AAC   0 |     AGC   0
+    ATA   0 |     ACA   1 | Lys AAA   0 | Arg AGA   0
+Met ATG   0 |     ACG   0 |     AAG   0 |     AGG   0
+------------------------------------------------------
+Val GTT   2 | Ala GCT   0 | Asp GAT   1 | Gly GGT   1
+    GTC   2 |     GCC   1 |     GAC   3 |     GGC   1
+    GTA   0 |     GCA   0 | Glu GAA   0 |     GGA   1
+    GTG   2 |     GCG   0 |     GAG   1 |     GGG   0
+------------------------------------------------------
+
+Codon position x base (3x4) table for each sequence.
+
+#1: B11221_Hil1_tr1
+position  1:    T:0.25000    C:0.06818    A:0.34091    G:0.34091
+position  2:    T:0.22727    C:0.52273    A:0.13636    G:0.11364
+position  3:    T:0.27273    C:0.36364    A:0.22727    G:0.13636
+Average         T:0.25000    C:0.31818    A:0.23485    G:0.19697
+
+#2: B11221_Hil1_tr2
+position  1:    T:0.18182    C:0.09091    A:0.38636    G:0.34091
+position  2:    T:0.15909    C:0.50000    A:0.22727    G:0.11364
+position  3:    T:0.36364    C:0.27273    A:0.22727    G:0.13636
+Average         T:0.23485    C:0.28788    A:0.28030    G:0.19697
+
+#3: B11221_Hil1_tr3
+position  1:    T:0.15909    C:0.09091    A:0.43182    G:0.31818
+position  2:    T:0.22727    C:0.50000    A:0.13636    G:0.13636
+position  3:    T:0.40909    C:0.25000    A:0.25000    G:0.09091
+Average         T:0.26515    C:0.28030    A:0.27273    G:0.18182
+
+#4: B11221_Hil1_tr4
+position  1:    T:0.22727    C:0.11364    A:0.40909    G:0.25000
+position  2:    T:0.18182    C:0.47727    A:0.20455    G:0.13636
+position  3:    T:0.40909    C:0.27273    A:0.15909    G:0.15909
+Average         T:0.27273    C:0.28788    A:0.25758    G:0.18182
+
+#5: B11221_Hil1_tr5
+position  1:    T:0.22727    C:0.06818    A:0.40909    G:0.29545
+position  2:    T:0.20455    C:0.52273    A:0.15909    G:0.11364
+position  3:    T:0.34091    C:0.25000    A:0.22727    G:0.18182
+Average         T:0.25758    C:0.28030    A:0.26515    G:0.19697
+
+#6: B11221_Hil1_tr6
+position  1:    T:0.22727    C:0.06818    A:0.43182    G:0.27273
+position  2:    T:0.18182    C:0.52273    A:0.18182    G:0.11364
+position  3:    T:0.31818    C:0.34091    A:0.18182    G:0.15909
+Average         T:0.24242    C:0.31061    A:0.26515    G:0.18182
+
+#7: B11221_Hil1_tr7
+position  1:    T:0.22727    C:0.06818    A:0.38636    G:0.31818
+position  2:    T:0.18182    C:0.54545    A:0.18182    G:0.09091
+position  3:    T:0.34091    C:0.20455    A:0.27273    G:0.18182
+Average         T:0.25000    C:0.27273    A:0.28030    G:0.19697
+
+#8: B11221_Hil1_tr8
+position  1:    T:0.22727    C:0.06818    A:0.40909    G:0.29545
+position  2:    T:0.20455    C:0.47727    A:0.18182    G:0.13636
+position  3:    T:0.31818    C:0.36364    A:0.15909    G:0.15909
+Average         T:0.25000    C:0.30303    A:0.25000    G:0.19697
+
+#9: B11221_Hil1_tr9
+position  1:    T:0.25000    C:0.09091    A:0.36364    G:0.29545
+position  2:    T:0.20455    C:0.52273    A:0.13636    G:0.13636
+position  3:    T:0.50000    C:0.25000    A:0.11364    G:0.13636
+Average         T:0.31818    C:0.28788    A:0.20455    G:0.18939
+
+#10: B11221_Hil1_tr10
+position  1:    T:0.22727    C:0.06818    A:0.40909    G:0.29545
+position  2:    T:0.20455    C:0.52273    A:0.18182    G:0.09091
+position  3:    T:0.34091    C:0.38636    A:0.15909    G:0.11364
+Average         T:0.25758    C:0.32576    A:0.25000    G:0.16667
+
+#11: B11221_Hil1_tr11
+position  1:    T:0.20455    C:0.06818    A:0.45455    G:0.27273
+position  2:    T:0.18182    C:0.52273    A:0.20455    G:0.09091
+position  3:    T:0.38636    C:0.31818    A:0.15909    G:0.13636
+Average         T:0.25758    C:0.30303    A:0.27273    G:0.16667
+
+#12: B11221_Hil1_tr12
+position  1:    T:0.15909    C:0.11364    A:0.40909    G:0.31818
+position  2:    T:0.20455    C:0.50000    A:0.18182    G:0.11364
+position  3:    T:0.34091    C:0.27273    A:0.29545    G:0.09091
+Average         T:0.23485    C:0.29545    A:0.29545    G:0.17424
+
+#13: B11221_Hil1_tr13
+position  1:    T:0.20455    C:0.06818    A:0.43182    G:0.29545
+position  2:    T:0.20455    C:0.50000    A:0.15909    G:0.13636
+position  3:    T:0.27273    C:0.36364    A:0.13636    G:0.22727
+Average         T:0.22727    C:0.31061    A:0.24242    G:0.21970
+
+#14: B11221_Hil1_tr14
+position  1:    T:0.25000    C:0.04545    A:0.38636    G:0.31818
+position  2:    T:0.20455    C:0.50000    A:0.13636    G:0.15909
+position  3:    T:0.38636    C:0.36364    A:0.11364    G:0.13636
+Average         T:0.28030    C:0.30303    A:0.21212    G:0.20455
+
+#15: B11221_Hil1_tr15
+position  1:    T:0.22727    C:0.09091    A:0.38636    G:0.29545
+position  2:    T:0.22727    C:0.47727    A:0.15909    G:0.13636
+position  3:    T:0.47727    C:0.22727    A:0.11364    G:0.18182
+Average         T:0.31061    C:0.26515    A:0.21970    G:0.20455
+
+#16: B11221_Hil1_tr16
+position  1:    T:0.18182    C:0.06818    A:0.43182    G:0.31818
+position  2:    T:0.20455    C:0.52273    A:0.18182    G:0.09091
+position  3:    T:0.34091    C:0.36364    A:0.13636    G:0.15909
+Average         T:0.24242    C:0.31818    A:0.25000    G:0.18939
+
+#17: B11221_Hil1_tr17
+position  1:    T:0.22727    C:0.06818    A:0.40909    G:0.29545
+position  2:    T:0.18182    C:0.56818    A:0.13636    G:0.11364
+position  3:    T:0.45455    C:0.22727    A:0.11364    G:0.20455
+Average         T:0.28788    C:0.28788    A:0.21970    G:0.20455
+
+#18: B11221_Hil1_tr18
+position  1:    T:0.18182    C:0.06818    A:0.45455    G:0.29545
+position  2:    T:0.20455    C:0.50000    A:0.18182    G:0.11364
+position  3:    T:0.36364    C:0.27273    A:0.18182    G:0.18182
+Average         T:0.25000    C:0.28030    A:0.27273    G:0.19697
+
+#19: B11221_Hil1_tr19
+position  1:    T:0.22727    C:0.09091    A:0.40909    G:0.27273
+position  2:    T:0.18182    C:0.52273    A:0.20455    G:0.09091
+position  3:    T:0.40909    C:0.25000    A:0.18182    G:0.15909
+Average         T:0.27273    C:0.28788    A:0.26515    G:0.17424
+
+#20: B11221_Hil1_tr20
+position  1:    T:0.22727    C:0.06818    A:0.40909    G:0.29545
+position  2:    T:0.20455    C:0.52273    A:0.18182    G:0.09091
+position  3:    T:0.40909    C:0.25000    A:0.18182    G:0.15909
+Average         T:0.28030    C:0.28030    A:0.25758    G:0.18182
+
+#21: B11221_Hil1_tr21
+position  1:    T:0.20455    C:0.06818    A:0.40909    G:0.31818
+position  2:    T:0.25000    C:0.54545    A:0.11364    G:0.09091
+position  3:    T:0.45455    C:0.29545    A:0.15909    G:0.09091
+Average         T:0.30303    C:0.30303    A:0.22727    G:0.16667
+
+#22: B11221_Hil1_tr22
+position  1:    T:0.22727    C:0.04545    A:0.38636    G:0.34091
+position  2:    T:0.18182    C:0.52273    A:0.20455    G:0.09091
+position  3:    T:0.36364    C:0.34091    A:0.11364    G:0.18182
+Average         T:0.25758    C:0.30303    A:0.23485    G:0.20455
+
+#23: B11221_Hil1_tr23
+position  1:    T:0.25000    C:0.06818    A:0.40909    G:0.27273
+position  2:    T:0.20455    C:0.56818    A:0.11364    G:0.11364
+position  3:    T:0.29545    C:0.43182    A:0.15909    G:0.11364
+Average         T:0.25000    C:0.35606    A:0.22727    G:0.16667
+
+#24: B11221_Hil1_tr24
+position  1:    T:0.15909    C:0.04545    A:0.38636    G:0.40909
+position  2:    T:0.20455    C:0.43182    A:0.22727    G:0.13636
+position  3:    T:0.54545    C:0.27273    A:0.09091    G:0.09091
+Average         T:0.30303    C:0.25000    A:0.23485    G:0.21212
+
+#25: B11221_Hil1_tr25
+position  1:    T:0.20455    C:0.06818    A:0.36364    G:0.36364
+position  2:    T:0.22727    C:0.47727    A:0.13636    G:0.15909
+position  3:    T:0.34091    C:0.27273    A:0.20455    G:0.18182
+Average         T:0.25758    C:0.27273    A:0.23485    G:0.23485
+
+#26: B11221_Hil1_tr26
+position  1:    T:0.22727    C:0.04545    A:0.40909    G:0.31818
+position  2:    T:0.22727    C:0.45455    A:0.18182    G:0.13636
+position  3:    T:0.36364    C:0.31818    A:0.15909    G:0.15909
+Average         T:0.27273    C:0.27273    A:0.25000    G:0.20455
+
+#27: B11221_Hil1_tr27
+position  1:    T:0.15909    C:0.13636    A:0.40909    G:0.29545
+position  2:    T:0.18182    C:0.52273    A:0.15909    G:0.13636
+position  3:    T:0.31818    C:0.31818    A:0.15909    G:0.20455
+Average         T:0.21970    C:0.32576    A:0.24242    G:0.21212
+
+#28: B11221_Hil1_tr28
+position  1:    T:0.18182    C:0.09091    A:0.40909    G:0.31818
+position  2:    T:0.20455    C:0.47727    A:0.18182    G:0.13636
+position  3:    T:0.29545    C:0.34091    A:0.15909    G:0.20455
+Average         T:0.22727    C:0.30303    A:0.25000    G:0.21970
+
+#29: B11221_Hil1_tr29
+position  1:    T:0.15909    C:0.13636    A:0.40909    G:0.29545
+position  2:    T:0.18182    C:0.50000    A:0.20455    G:0.11364
+position  3:    T:0.50000    C:0.22727    A:0.15909    G:0.11364
+Average         T:0.28030    C:0.28788    A:0.25758    G:0.17424
+
+#30: B11221_Hil1_tr30
+position  1:    T:0.15909    C:0.11364    A:0.38636    G:0.34091
+position  2:    T:0.18182    C:0.52273    A:0.18182    G:0.11364
+position  3:    T:0.45455    C:0.27273    A:0.15909    G:0.11364
+Average         T:0.26515    C:0.30303    A:0.24242    G:0.18939
+
+#31: B11221_Hil1_tr31
+position  1:    T:0.18182    C:0.09091    A:0.43182    G:0.29545
+position  2:    T:0.20455    C:0.50000    A:0.15909    G:0.13636
+position  3:    T:0.36364    C:0.29545    A:0.18182    G:0.15909
+Average         T:0.25000    C:0.29545    A:0.25758    G:0.19697
+
+#32: B11221_Hil1_tr32
+position  1:    T:0.15909    C:0.06818    A:0.43182    G:0.34091
+position  2:    T:0.15909    C:0.50000    A:0.20455    G:0.13636
+position  3:    T:0.45455    C:0.20455    A:0.18182    G:0.15909
+Average         T:0.25758    C:0.25758    A:0.27273    G:0.21212
+
+#33: B11221_Hil1_tr33
+position  1:    T:0.22727    C:0.04545    A:0.45455    G:0.27273
+position  2:    T:0.20455    C:0.47727    A:0.22727    G:0.09091
+position  3:    T:0.40909    C:0.38636    A:0.09091    G:0.11364
+Average         T:0.28030    C:0.30303    A:0.25758    G:0.15909
+
+#34: B11221_Hil1_tr34
+position  1:    T:0.18182    C:0.09091    A:0.40909    G:0.31818
+position  2:    T:0.20455    C:0.45455    A:0.25000    G:0.09091
+position  3:    T:0.43182    C:0.34091    A:0.11364    G:0.11364
+Average         T:0.27273    C:0.29545    A:0.25758    G:0.17424
+
+#35: B11221_Hil1_tr35
+position  1:    T:0.22727    C:0.06818    A:0.34091    G:0.36364
+position  2:    T:0.20455    C:0.45455    A:0.20455    G:0.13636
+position  3:    T:0.52273    C:0.15909    A:0.18182    G:0.13636
+Average         T:0.31818    C:0.22727    A:0.24242    G:0.21212
+
+#36: B11221_Hil1_tr36
+position  1:    T:0.20455    C:0.06818    A:0.36364    G:0.36364
+position  2:    T:0.18182    C:0.50000    A:0.20455    G:0.11364
+position  3:    T:0.40909    C:0.27273    A:0.13636    G:0.18182
+Average         T:0.26515    C:0.28030    A:0.23485    G:0.21970
+
+#37: B11221_Hil1_tr37
+position  1:    T:0.20455    C:0.04545    A:0.40909    G:0.34091
+position  2:    T:0.22727    C:0.45455    A:0.20455    G:0.11364
+position  3:    T:0.43182    C:0.31818    A:0.11364    G:0.13636
+Average         T:0.28788    C:0.27273    A:0.24242    G:0.19697
+
+Sums of codon usage counts
+------------------------------------------------------------------------------
+Phe F TTT       8 | Ser S TCT      81 | Tyr Y TAT       8 | Cys C TGT       0
+      TTC      31 |       TCC      52 |       TAC      27 |       TGC       0
+Leu L TTA       3 |       TCA      32 | *** * TAA       0 | *** * TGA       0
+      TTG      32 |       TCG      24 |       TAG       0 | Trp W TGG      37
+------------------------------------------------------------------------------
+Leu L CTT       3 | Pro P CCT      42 | His H CAT       0 | Arg R CGT       0
+      CTC       4 |       CCC      11 |       CAC       1 |       CGC       0
+      CTA       0 |       CCA      38 | Gln Q CAA      11 |       CGA       0
+Ser S CTG       1 |       CCG       4 |       CAG      10 |       CGG       0
+------------------------------------------------------------------------------
+Ile I ATT      50 | Thr T ACT     201 | Asn N AAT      18 | Ser S AGT      12
+      ATC      26 |       ACC     150 |       AAC      40 |       AGC       8
+      ATA       8 |       ACA      91 | Lys K AAA       1 | Arg R AGA       0
+Met M ATG       0 |       ACG      53 |       AAG       1 |       AGG       0
+------------------------------------------------------------------------------
+Val V GTT      58 | Ala A GCT      22 | Asp D GAT      62 | Gly G GGT      69
+      GTC      39 |       GCC       9 |       GAC      57 |       GGC      26
+      GTA      17 |       GCA       7 | Glu E GAA      29 |       GGA      32
+      GTG      46 |       GCG       2 |       GAG      26 |       GGG       8
+------------------------------------------------------------------------------
+
+
+Codon position x base (3x4) table, overall
+
+position  1:    T:0.20577    C:0.07678    A:0.40479    G:0.31265
+position  2:    T:0.20025    C:0.50307    A:0.17875    G:0.11794
+position  3:    T:0.38943    C:0.29545    A:0.16523    G:0.14988
+Average         T:0.26515    C:0.29177    A:0.24959    G:0.19349
+
+Codon frequencies under model, for use in evolver (TTT TTC TTA TTG ... GGG):
+  0.01630110  0.01236724  0.00691640  0.00627361
+  0.04095276  0.03106984  0.01737586  0.01576100
+  0.01455098  0.01103947  0.00000000  0.00000000
+  0.00960065  0.00728377  0.00000000  0.00369489
+  0.00608250  0.00461464  0.00258075  0.00234090
+  0.01528088  0.01159322  0.00648353  0.00588097
+  0.00542947  0.00411920  0.00230367  0.00208958
+  0.00358233  0.00271783  0.00151995  0.00137869
+  0.03206694  0.02432839  0.01360569  0.01234122
+  0.08056081  0.06111948  0.03418116  0.03100448
+  0.02862417  0.02171645  0.01214496  0.01101624
+  0.01888605  0.01432838  0.00801317  0.00726845
+  0.02476794  0.01879082  0.01050879  0.00953214
+  0.06222375  0.04720761  0.02640093  0.02394731
+  0.02210881  0.01677340  0.00938055  0.00850875
+  0.01458725  0.01106699  0.00618923  0.00561402
+
+
+
+Nei & Gojobori 1986. dN/dS (dN, dS)
+(Note: This matrix is not used in later ML. analysis.
+Use runmode = -2 for ML pairwise comparison.)
+
+B11221_Hil1_tr1     
+B11221_Hil1_tr2      0.1967 (0.2589 1.3162)
+B11221_Hil1_tr3      0.0713 (0.1390 1.9506) 0.0948 (0.2268 2.3922)
+B11221_Hil1_tr4      0.1688 (0.2623 1.5534) 0.1800 (0.1874 1.0412) 0.2180 (0.2664 1.2220)
+B11221_Hil1_tr5      0.0344 (0.0783 2.2781) 0.0906 (0.2470 2.7276) 0.0905 (0.1540 1.7012)-1.0000 (0.2851 -1.0000)
+B11221_Hil1_tr6      0.1119 (0.1895 1.6944) 0.1506 (0.1787 1.1869)-1.0000 (0.2264 -1.0000) 0.1193 (0.1938 1.6239) 0.0914 (0.2017 2.2076)
+B11221_Hil1_tr7      0.0488 (0.1544 3.1647)-1.0000 (0.2063 -1.0000) 0.1550 (0.1889 1.2185) 0.2153 (0.2010 0.9337) 0.0514 (0.1384 2.6921)-1.0000 (0.1069 -1.0000)
+B11221_Hil1_tr8      0.1181 (0.2268 1.9196) 0.1044 (0.1427 1.3670)-1.0000 (0.2034 -1.0000) 0.1278 (0.2019 1.5793)-1.0000 (0.2019 -1.0000) 0.0472 (0.1680 3.5584) 0.0560 (0.1119 1.9983)
+B11221_Hil1_tr9      0.0908 (0.1022 1.1247) 0.2584 (0.2567 0.9934) 0.0832 (0.1193 1.4336) 0.1875 (0.2528 1.3484) 0.0664 (0.1136 1.7111) 0.0994 (0.1593 1.6021) 0.0488 (0.1093 2.2386)-1.0000 (0.1642 -1.0000)
+B11221_Hil1_tr10    -1.0000 (0.2007 -1.0000)-1.0000 (0.1697 -1.0000)-1.0000 (0.1949 -1.0000)-1.0000 (0.1112 -1.0000) 0.1999 (0.2083 1.0419)-1.0000 (0.0887 -1.0000)-1.0000 (0.0772 -1.0000)-1.0000 (0.1360 -1.0000)-1.0000 (0.1656 -1.0000)
+B11221_Hil1_tr11    -1.0000 (0.1749 -1.0000)-1.0000 (0.1504 -1.0000)-1.0000 (0.2066 -1.0000)-1.0000 (0.2603 -1.0000)-1.0000 (0.1637 -1.0000) 0.0706 (0.1829 2.5918)-1.0000 (0.1378 -1.0000)-1.0000 (0.2113 -1.0000) 0.0866 (0.1604 1.8517) 0.2115 (0.1893 0.8948)
+B11221_Hil1_tr12     0.1461 (0.1986 1.3597) 0.0601 (0.1190 1.9809) 0.0779 (0.1663 2.1349)-1.0000 (0.1174 -1.0000)-1.0000 (0.2086 -1.0000) 0.0459 (0.1502 3.2685) 0.0528 (0.1315 2.4908) 0.0940 (0.1614 1.7165) 0.1586 (0.1902 1.1994) 0.0603 (0.1126 1.8684) 0.1593 (0.2088 1.3114)
+B11221_Hil1_tr13    -1.0000 (0.1077 -1.0000) 0.1922 (0.2827 1.4704)-1.0000 (0.1248 -1.0000) 0.3146 (0.3220 1.0233)-1.0000 (0.0715 -1.0000) 0.1102 (0.1759 1.5960) 0.1767 (0.1829 1.0354) 0.0691 (0.2377 3.4392) 0.0514 (0.1129 2.1985)-1.0000 (0.2495 -1.0000) 0.0993 (0.1982 1.9964)-1.0000 (0.2425 -1.0000)
+B11221_Hil1_tr14     0.1129 (0.2197 1.9449) 0.1494 (0.2316 1.5501)-1.0000 (0.2553 -1.0000) 0.1700 (0.2567 1.5099)-1.0000 (0.2515 -1.0000) 0.1504 (0.3246 2.1589) 0.2095 (0.2389 1.1404) 0.2165 (0.2648 1.2232) 0.1228 (0.2178 1.7738) 0.1558 (0.2900 1.8617) 0.1206 (0.1896 1.5721) 0.1995 (0.2751 1.3789) 0.2078 (0.2898 1.3945)
+B11221_Hil1_tr15     0.0647 (0.1198 1.8503) 0.2222 (0.2746 1.2358) 0.0507 (0.1433 2.8258) 0.2891 (0.2929 1.0133) 0.0896 (0.1313 1.4645) 0.0716 (0.1454 2.0325)-1.0000 (0.1373 -1.0000)-1.0000 (0.2004 -1.0000) 0.0291 (0.0656 2.2519) 0.1027 (0.1820 1.7722)-1.0000 (0.1889 -1.0000)-1.0000 (0.2397 -1.0000) 0.0890 (0.1061 1.1921) 0.1338 (0.2817 2.1052)
+B11221_Hil1_tr16     0.0701 (0.2139 3.0536) 0.0957 (0.1434 1.4985) 0.1150 (0.1977 1.7189) 0.1017 (0.1519 1.4927) 0.1198 (0.1805 1.5075) 0.0567 (0.1369 2.4155)-1.0000 (0.1065 -1.0000)-1.0000 (0.1335 -1.0000) 0.1901 (0.2053 1.0800)-1.0000 (0.0883 -1.0000)-1.0000 (0.1559 -1.0000)-1.0000 (0.1537 -1.0000) 0.1335 (0.2273 1.7019) 0.0774 (0.2230 2.8810) 0.0831 (0.2152 2.5899)
+B11221_Hil1_tr17     0.1093 (0.1755 1.6055) 0.0740 (0.2009 2.7163) 0.0316 (0.1283 4.0541) 0.0849 (0.2375 2.7976) 0.1069 (0.1522 1.4236) 0.0641 (0.1538 2.3988)-1.0000 (0.1265 -1.0000) 0.0640 (0.1587 2.4786) 0.0566 (0.1287 2.2730)-1.0000 (0.1644 -1.0000)-1.0000 (0.1869 -1.0000) 0.0642 (0.1982 3.0870)-1.0000 (0.1197 -1.0000) 0.1044 (0.2505 2.3988) 0.1338 (0.1773 1.3251)-1.0000 (0.1509 -1.0000)
+B11221_Hil1_tr18     0.0974 (0.1349 1.3847) 0.1736 (0.1997 1.1504)-1.0000 (0.1554 -1.0000) 0.1473 (0.2717 1.8451) 0.1022 (0.1475 1.4429) 0.1684 (0.2154 1.2792) 0.0722 (0.1558 2.1569) 0.1225 (0.1710 1.3960) 0.0962 (0.1689 1.7569) 0.1150 (0.1725 1.5003) 0.1026 (0.1491 1.4531) 0.1941 (0.2176 1.1208) 0.0806 (0.2035 2.5248) 0.1461 (0.2655 1.8170) 0.0774 (0.1613 2.0849)-1.0000 (0.1873 -1.0000) 0.1302 (0.1462 1.1226)
+B11221_Hil1_tr19     0.0769 (0.1695 2.2046) 0.1147 (0.1767 1.5407) 0.0875 (0.2125 2.4295) 0.1388 (0.1774 1.2778) 0.0717 (0.1509 2.1043) 0.0480 (0.1503 3.1318) 0.0724 (0.1192 1.6474) 0.1633 (0.1878 1.1502) 0.0879 (0.1153 1.3116) 0.0526 (0.1066 2.0285) 0.0896 (0.1632 1.8225) 0.0434 (0.1376 3.1711) 0.1068 (0.1827 1.7097) 0.1764 (0.2754 1.5610) 0.0401 (0.1498 3.7364) 0.1434 (0.2024 1.4120) 0.0904 (0.1781 1.9694) 0.1560 (0.1838 1.1783)
+B11221_Hil1_tr20     0.0630 (0.1261 2.0019) 0.1826 (0.2286 1.2516)-1.0000 (0.1627 -1.0000) 0.1464 (0.2369 1.6183) 0.0706 (0.1048 1.4851) 0.0566 (0.1268 2.2384) 0.0251 (0.0449 1.7893) 0.0777 (0.1442 1.8560) 0.0570 (0.0830 1.4574) 0.1155 (0.1266 1.0967) 0.0378 (0.0886 2.3411) 0.0661 (0.1824 2.7591)-1.0000 (0.1474 -1.0000) 0.1438 (0.2306 1.6032) 0.0877 (0.1182 1.3470) 0.0658 (0.1262 1.9184)-1.0000 (0.1534 -1.0000)-1.0000 (0.1679 -1.0000) 0.1135 (0.1457 1.2834)
+B11221_Hil1_tr21    -1.0000 (0.1730 -1.0000) 0.1480 (0.2481 1.6769) 0.2446 (0.2153 0.8802) 0.1616 (0.2300 1.4229) 0.1870 (0.2174 1.1626) 0.1370 (0.2331 1.7017) 0.0832 (0.1389 1.6689) 0.0676 (0.1825 2.7002) 0.0790 (0.1918 2.4282) 0.1751 (0.1512 0.8632) 0.1224 (0.2260 1.8456) 0.1282 (0.2188 1.7064) 0.1194 (0.2471 2.0704) 0.2646 (0.2776 1.0492) 0.1910 (0.2041 1.0689) 0.0568 (0.1637 2.8810) 0.1321 (0.1727 1.3070) 0.0673 (0.1503 2.2337) 0.1297 (0.2191 1.6896) 0.1362 (0.1706 1.2522)
+B11221_Hil1_tr22    -1.0000 (0.2963 -1.0000)-1.0000 (0.2389 -1.0000)-1.0000 (0.3213 -1.0000) 0.1652 (0.2688 1.6274) 0.0789 (0.3214 4.0728) 0.1350 (0.2290 1.6962)-1.0000 (0.1849 -1.0000) 0.1444 (0.1993 1.3800) 0.1373 (0.3226 2.3492) 0.1809 (0.1876 1.0371) 0.1599 (0.2613 1.6348) 0.1431 (0.2650 1.8515) 0.1841 (0.3700 2.0091) 0.2023 (0.2902 1.4343) 0.2282 (0.3362 1.4728)-1.0000 (0.1113 -1.0000) 0.1449 (0.2728 1.8822) 0.1700 (0.2581 1.5185) 0.3020 (0.3270 1.0826) 0.0491 (0.2343 4.7707) 0.1610 (0.2381 1.4787)
+B11221_Hil1_tr23    -1.0000 (0.1600 -1.0000)-1.0000 (0.2660 -1.0000) 0.1188 (0.1680 1.4147) 0.2826 (0.2973 1.0520)-1.0000 (0.1310 -1.0000)-1.0000 (0.1604 -1.0000) 0.1093 (0.1392 1.2731)-1.0000 (0.2055 -1.0000)-1.0000 (0.0960 -1.0000) 0.0801 (0.2050 2.5597)-1.0000 (0.1870 -1.0000)-1.0000 (0.2408 -1.0000) 0.0938 (0.1386 1.4784) 0.1794 (0.2731 1.5226) 0.0572 (0.1321 2.3103) 0.1116 (0.2113 1.8935) 0.0498 (0.1212 2.4343)-1.0000 (0.1527 -1.0000)-1.0000 (0.1649 -1.0000)-1.0000 (0.1197 -1.0000) 0.1981 (0.1795 0.9059)-1.0000 (0.3524 -1.0000)
+B11221_Hil1_tr24    -1.0000 (0.1760 -1.0000) 0.1633 (0.2428 1.4869) 0.0819 (0.1740 2.1256) 0.2065 (0.3209 1.5538) 0.1281 (0.2256 1.7609) 0.1537 (0.2942 1.9141) 0.1469 (0.2252 1.5332) 0.1203 (0.2614 2.1725) 0.0762 (0.2013 2.6417) 0.1161 (0.2674 2.3039)-1.0000 (0.1839 -1.0000)-1.0000 (0.2776 -1.0000) 0.1756 (0.2301 1.3102) 0.3233 (0.2352 0.7277) 0.1951 (0.2204 1.1297) 0.1987 (0.2133 1.0735) 0.1095 (0.2472 2.2568) 0.1475 (0.2195 1.4882) 0.3212 (0.2717 0.8460) 0.0981 (0.1934 1.9705) 0.2903 (0.2701 0.9305) 0.2329 (0.3066 1.3166) 0.1188 (0.2510 2.1132)
+B11221_Hil1_tr25     0.2259 (0.1399 0.6191) 0.1923 (0.2211 1.1498) 0.1667 (0.1772 1.0628) 0.1688 (0.2154 1.2764) 0.0713 (0.2006 2.8148)-1.0000 (0.1862 -1.0000) 0.1137 (0.1579 1.3881) 0.1335 (0.1978 1.4811) 0.0867 (0.1581 1.8241)-1.0000 (0.2274 -1.0000) 0.1313 (0.2313 1.7618) 0.1435 (0.1906 1.3284) 0.1118 (0.1747 1.5619) 0.1981 (0.2067 1.0432)-1.0000 (0.1700 -1.0000)-1.0000 (0.1943 -1.0000) 0.0775 (0.1590 2.0506) 0.1927 (0.1982 1.0288) 0.1109 (0.2209 1.9911)-1.0000 (0.1902 -1.0000) 0.0955 (0.1992 2.0865)-1.0000 (0.2792 -1.0000) 0.0781 (0.1591 2.0368) 0.1608 (0.2608 1.6222)
+B11221_Hil1_tr26    -1.0000 (0.2329 -1.0000) 0.1676 (0.2353 1.4041)-1.0000 (0.2302 -1.0000) 0.1321 (0.2249 1.7019) 0.1915 (0.2648 1.3829)-1.0000 (0.2302 -1.0000)-1.0000 (0.1677 -1.0000) 0.0788 (0.1678 2.1302)-1.0000 (0.2550 -1.0000) 0.1489 (0.2091 1.4042) 0.1723 (0.2479 1.4390) 0.0816 (0.1847 2.2637) 0.1216 (0.2706 2.2248) 0.0731 (0.1804 2.4682) 0.1435 (0.2364 1.6468) 0.1219 (0.1972 1.6183)-1.0000 (0.2373 -1.0000)-1.0000 (0.2331 -1.0000) 0.1023 (0.2494 2.4369) 0.1248 (0.2273 1.8207) 0.1867 (0.2227 1.1933) 0.1376 (0.2258 1.6412)-1.0000 (0.2691 -1.0000) 0.1845 (0.3127 1.6947)-1.0000 (0.2015 -1.0000)
+B11221_Hil1_tr27     0.0652 (0.2084 3.1979) 0.0923 (0.1550 1.6797)-1.0000 (0.1990 -1.0000) 0.2208 (0.2770 1.2546)-1.0000 (0.1320 -1.0000) 0.2736 (0.2534 0.9261) 0.1319 (0.2322 1.7606) 0.1363 (0.2728 2.0024) 0.1238 (0.2277 1.8392) 0.0778 (0.2457 3.1564) 0.1755 (0.1900 1.0824) 0.1099 (0.1743 1.5869) 0.1443 (0.1762 1.2212) 0.1644 (0.3041 1.8502)-1.0000 (0.2379 -1.0000) 0.1596 (0.2282 1.4300)-1.0000 (0.2560 -1.0000) 0.1049 (0.2465 2.3492) 0.0774 (0.1464 1.8900)-1.0000 (0.2100 -1.0000) 0.0530 (0.3095 5.8402) 0.2328 (0.3604 1.5476) 0.0750 (0.2127 2.8381) 0.1571 (0.2501 1.5915) 0.2005 (0.2525 1.2594)-1.0000 (0.3178 -1.0000)
+B11221_Hil1_tr28     0.0765 (0.1378 1.8004) 0.0837 (0.2153 2.5715)-1.0000 (0.1488 -1.0000) 0.0947 (0.2054 2.1695) 0.0803 (0.1430 1.7815) 0.0863 (0.2173 2.5167) 0.1171 (0.1816 1.5500) 0.0799 (0.1664 2.0823) 0.0871 (0.1557 1.7878) 0.1172 (0.1743 1.4869)-1.0000 (0.1778 -1.0000) 0.1064 (0.1300 1.2221) 0.0930 (0.1613 1.7340) 0.2413 (0.2360 0.9779)-1.0000 (0.1938 -1.0000)-1.0000 (0.1981 -1.0000) 0.1664 (0.2032 1.2212) 0.0866 (0.1689 1.9517) 0.0773 (0.1510 1.9546) 0.0404 (0.1676 4.1537) 0.1967 (0.2167 1.1016) 0.2848 (0.3025 1.0622) 0.1483 (0.2033 1.3706) 0.0805 (0.1987 2.4692) 0.0849 (0.2024 2.3847) 0.1585 (0.1984 1.2517) 0.0634 (0.1619 2.5520)
+B11221_Hil1_tr29     0.0604 (0.2080 3.4417)-1.0000 (0.1315 -1.0000) 0.0806 (0.1773 2.2007)-1.0000 (0.2281 -1.0000) 0.1044 (0.1318 1.2620) 0.1117 (0.2241 2.0068)-1.0000 (0.2176 -1.0000)-1.0000 (0.2288 -1.0000)-1.0000 (0.2132 -1.0000) 0.1762 (0.2168 1.2302) 0.1340 (0.1964 1.4659) 0.0875 (0.1375 1.5721)-1.0000 (0.1759 -1.0000) 0.1040 (0.2677 2.5735) 0.0748 (0.2094 2.7976)-1.0000 (0.1755 -1.0000) 0.1543 (0.2408 1.5610) 0.0898 (0.2177 2.4239) 0.1048 (0.1633 1.5583)-1.0000 (0.1982 -1.0000) 0.2797 (0.2931 1.0478) 0.2382 (0.3268 1.3721) 0.0910 (0.1985 2.1817) 0.1918 (0.2556 1.3326) 0.1032 (0.2398 2.3245)-1.0000 (0.2712 -1.0000) 0.0241 (0.0432 1.7945) 0.0771 (0.1425 1.8483)
+B11221_Hil1_tr30     0.0757 (0.1786 2.3607) 0.0849 (0.1507 1.7754)-1.0000 (0.1569 -1.0000) 0.1402 (0.2427 1.7315)-1.0000 (0.1772 -1.0000)-1.0000 (0.2460 -1.0000)-1.0000 (0.1904 -1.0000) 0.1618 (0.2727 1.6854) 0.1053 (0.1705 1.6188) 0.1342 (0.2055 1.5318) 0.1278 (0.1315 1.0285) 0.1010 (0.1377 1.3636) 0.0621 (0.2031 3.2685)-1.0000 (0.2105 -1.0000) 0.1445 (0.2307 1.5960) 0.0921 (0.2164 2.3488) 0.1274 (0.2485 1.9506) 0.1075 (0.2250 2.0937) 0.0751 (0.1212 1.6151)-1.0000 (0.1761 -1.0000) 0.1800 (0.2630 1.4607) 0.1085 (0.3436 3.1652)-1.0000 (0.2340 -1.0000) 0.1444 (0.2146 1.4869)-1.0000 (0.1979 -1.0000) 0.2665 (0.2642 0.9914) 0.0431 (0.0658 1.5264)-1.0000 (0.1119 -1.0000) 0.1705 (0.1009 0.5916)
+B11221_Hil1_tr31    -1.0000 (0.1771 -1.0000)-1.0000 (0.1864 -1.0000) 0.0956 (0.1984 2.0757) 0.1684 (0.2383 1.4150) 0.1586 (0.1268 0.7996) 0.1267 (0.2343 1.8502)-1.0000 (0.2115 -1.0000) 0.0741 (0.1931 2.6062) 0.0936 (0.1958 2.0903) 0.1831 (0.2130 1.1635)-1.0000 (0.1492 -1.0000) 0.1465 (0.1794 1.2244)-1.0000 (0.1489 -1.0000) 0.0606 (0.2064 3.4071) 0.1311 (0.2079 1.5865) 0.0852 (0.1656 1.9437) 0.1613 (0.2177 1.3497) 0.1702 (0.2094 1.2300) 0.0656 (0.1622 2.4719)-1.0000 (0.1746 -1.0000) 0.2402 (0.2606 1.0849) 0.2249 (0.2907 1.2924) 0.1725 (0.2320 1.3449) 0.1663 (0.2372 1.4266) 0.1347 (0.2357 1.7502) 0.0568 (0.2547 4.4824)-1.0000 (0.1063 -1.0000) 0.0606 (0.0646 1.0674) 0.0780 (0.0883 1.1315) 0.0600 (0.1062 1.7690)
+B11221_Hil1_tr32    -1.0000 (0.1915 -1.0000) 0.1124 (0.1763 1.5678)-1.0000 (0.2029 -1.0000)-1.0000 (0.2860 -1.0000) 0.0327 (0.1212 3.7110) 0.2049 (0.2476 1.2084)-1.0000 (0.2057 -1.0000)-1.0000 (0.2008 -1.0000)-1.0000 (0.1968 -1.0000) 0.1372 (0.2594 1.8903) 0.0597 (0.1373 2.2999)-1.0000 (0.2379 -1.0000) 0.0558 (0.1561 2.7976) 0.1874 (0.2308 1.2317) 0.2106 (0.1820 0.8640) 0.0776 (0.1686 2.1733) 0.1717 (0.2118 1.2335)-1.0000 (0.2013 -1.0000)-1.0000 (0.2169 -1.0000)-1.0000 (0.1711 -1.0000) 0.1924 (0.2696 1.4010) 0.0924 (0.2974 3.2199) 0.1211 (0.2050 1.6934) 0.2037 (0.2232 1.0957) 0.0570 (0.2251 3.9490) 0.0677 (0.2137 3.1583) 0.0784 (0.1567 1.9988) 0.0377 (0.1423 3.7761) 0.0402 (0.1066 2.6543) 0.0781 (0.1567 2.0068)-1.0000 (0.0940 -1.0000)
+B11221_Hil1_tr33     0.0887 (0.2029 2.2875) 0.1633 (0.2428 1.4869) 0.1301 (0.2282 1.7543) 0.1254 (0.2533 2.0196) 0.0764 (0.1693 2.2165) 0.1774 (0.2495 1.4071)-1.0000 (0.2182 -1.0000) 0.1072 (0.2328 2.1725) 0.2043 (0.2220 1.0867) 0.0803 (0.2420 3.0128) 0.1383 (0.1773 1.2822)-1.0000 (0.2351 -1.0000) 0.1275 (0.2277 1.7864) 0.2235 (0.2891 1.2933) 0.0907 (0.2344 2.5835) 0.1028 (0.1604 1.5605) 0.1039 (0.2448 2.3564)-1.0000 (0.2058 -1.0000) 0.2054 (0.2144 1.0442) 0.0839 (0.1967 2.3449) 0.1423 (0.2739 1.9244) 0.2173 (0.2689 1.2374) 0.1647 (0.2306 1.3997) 0.2121 (0.2207 1.0403) 0.0799 (0.2018 2.5243) 0.1407 (0.2603 1.8495) 0.1393 (0.2217 1.5915) 0.1146 (0.2471 2.1561) 0.1330 (0.2097 1.5769) 0.1633 (0.2428 1.4869) 0.0995 (0.2061 2.0709) 0.2553 (0.2071 0.8112)
+B11221_Hil1_tr34     0.0677 (0.2188 3.2315) 0.0606 (0.2642 4.3566) 0.2629 (0.2937 1.1172) 0.2678 (0.3100 1.1574) 0.1446 (0.2241 1.5495)-1.0000 (0.3092 -1.0000) 0.0758 (0.3099 4.0879)-1.0000 (0.3346 -1.0000) 0.1663 (0.2647 1.5915) 0.1854 (0.2856 1.5405) 0.2253 (0.2139 0.9495)-1.0000 (0.3090 -1.0000)-1.0000 (0.2705 -1.0000) 0.2721 (0.3411 1.2536) 0.1293 (0.2627 2.0322) 0.1983 (0.2409 1.2143) 0.1683 (0.2967 1.7629) 0.0561 (0.2146 3.8227) 0.1530 (0.2493 1.6294) 0.1403 (0.2557 1.8231) 0.3687 (0.3040 0.8246) 0.2544 (0.3876 1.5232) 0.1432 (0.2740 1.9129) 0.1793 (0.2555 1.4245) 0.2941 (0.3243 1.1026)-1.0000 (0.3826 -1.0000)-1.0000 (0.2213 -1.0000)-1.0000 (0.2539 -1.0000) 0.1227 (0.1959 1.5963)-1.0000 (0.2376 -1.0000) 0.1046 (0.1990 1.9035) 0.1065 (0.1978 1.8577) 0.1516 (0.1717 1.1320)
+B11221_Hil1_tr35     0.0642 (0.1645 2.5623)-1.0000 (0.2238 -1.0000) 0.0797 (0.2618 3.2844) 0.1283 (0.2855 2.2248)-1.0000 (0.1966 -1.0000) 0.1280 (0.2668 2.0850) 0.1814 (0.2675 1.4742)-1.0000 (0.2714 -1.0000) 0.0688 (0.2172 3.1564) 0.1138 (0.2739 2.4075) 0.2249 (0.2026 0.9008)-1.0000 (0.2257 -1.0000) 0.0530 (0.2443 4.6052) 0.1781 (0.2668 1.4985)-1.0000 (0.2584 -1.0000)-1.0000 (0.2154 -1.0000) 0.2102 (0.2772 1.3184) 0.1156 (0.2101 1.8179) 0.1047 (0.2330 2.2253) 0.0382 (0.2021 5.2925) 0.1208 (0.2844 2.3546) 0.1502 (0.3584 2.3862)-1.0000 (0.2047 -1.0000)-1.0000 (0.1801 -1.0000) 0.1824 (0.2463 1.3506) 0.1927 (0.3239 1.6807)-1.0000 (0.1962 -1.0000)-1.0000 (0.1611 -1.0000) 0.0813 (0.1692 2.0798)-1.0000 (0.1961 -1.0000)-1.0000 (0.1425 -1.0000) 0.1571 (0.2092 1.3310)-1.0000 (0.1757 -1.0000) 0.0355 (0.0932 2.6297)
+B11221_Hil1_tr36    -1.0000 (0.1788 -1.0000) 0.2017 (0.2541 1.2595) 0.1205 (0.2609 2.1649) 0.1323 (0.2722 2.0580)-1.0000 (0.2400 -1.0000)-1.0000 (0.2991 -1.0000)-1.0000 (0.2469 -1.0000)-1.0000 (0.3194 -1.0000) 0.0761 (0.2045 2.6876) 0.0595 (0.2411 4.0519) 0.1407 (0.1901 1.3516)-1.0000 (0.2486 -1.0000)-1.0000 (0.2907 -1.0000) 0.2297 (0.2760 1.2016) 0.1015 (0.2674 2.6342)-1.0000 (0.2379 -1.0000) 0.0678 (0.2637 3.8913)-1.0000 (0.1842 -1.0000)-1.0000 (0.2132 -1.0000)-1.0000 (0.2101 -1.0000) 0.1770 (0.2411 1.3621)-1.0000 (0.3440 -1.0000) 0.0666 (0.2489 3.7352)-1.0000 (0.1944 -1.0000) 0.1304 (0.2297 1.7614) 0.1885 (0.3449 1.8294) 0.0892 (0.2111 2.3671)-1.0000 (0.2087 -1.0000)-1.0000 (0.2248 -1.0000) 0.1249 (0.1573 1.2595)-1.0000 (0.2093 -1.0000) 0.0948 (0.2387 2.5174)-1.0000 (0.1944 -1.0000) 0.0311 (0.0649 2.0870) 0.0343 (0.0771 2.2492)
+B11221_Hil1_tr37     0.0423 (0.1935 4.5683) 0.1508 (0.2237 1.4840)-1.0000 (0.2303 -1.0000) 0.1650 (0.2558 1.5506) 0.1794 (0.2457 1.3698) 0.1203 (0.2520 2.0946)-1.0000 (0.2526 -1.0000) 0.2114 (0.2639 1.2483) 0.1036 (0.1896 1.8304) 0.1586 (0.2589 1.6325) 0.1107 (0.1856 1.6767)-1.0000 (0.1911 -1.0000) 0.1307 (0.2812 2.1514) 0.2876 (0.2593 0.9016) 0.0966 (0.2438 2.5243)-1.0000 (0.2556 -1.0000) 0.1813 (0.2546 1.4040) 0.1348 (0.2100 1.5582) 0.1635 (0.2027 1.2395) 0.0963 (0.2088 2.1678) 0.2392 (0.2691 1.1247) 0.2327 (0.3499 1.5036)-1.0000 (0.2621 -1.0000) 0.0805 (0.2067 2.5694) 0.1461 (0.2106 1.4413) 0.1553 (0.2851 1.8363)-1.0000 (0.2380 -1.0000) 0.1346 (0.1675 1.2442) 0.1258 (0.2026 1.6099) 0.1535 (0.1893 1.2328)-1.0000 (0.1877 -1.0000) 0.1926 (0.2160 1.1213) 0.1249 (0.1800 1.4414) 0.1144 (0.1667 1.4573) 0.0827 (0.1367 1.6532)-1.0000 (0.1188 -1.0000)
+
+pairwise comparison, codon frequencies: F3x4.
+
+
+2 (B11221_Hil1_tr2) ... 1 (B11221_Hil1_tr1)
+lnL = -282.748227
+  2.55264  0.16370
+
+t= 2.5526  S=    47.5  N=    84.5  dN/dS=  0.1637  dN = 0.2997  dS = 1.8305
+
+
+3 (B11221_Hil1_tr3) ... 1 (B11221_Hil1_tr1)
+lnL = -259.976431
+ 50.00000  0.00291
+
+t= 50.0000  S=    46.6  N=    85.4  dN/dS=  0.0029  dN = 0.1364  dS =46.9431
+
+
+3 (B11221_Hil1_tr3) ... 2 (B11221_Hil1_tr2)
+lnL = -280.430817
+ 13.00583  0.02231
+
+t= 13.0058  S=    44.9  N=    87.1  dN/dS=  0.0223  dN = 0.2723  dS =12.2047
+
+
+4 (B11221_Hil1_tr4) ... 1 (B11221_Hil1_tr1)
+lnL = -288.426774
+ 29.68502  0.01133
+
+t= 29.6850  S=    46.4  N=    85.6  dN/dS=  0.0113  dN = 0.3121  dS =27.5558
+
+
+4 (B11221_Hil1_tr4) ... 2 (B11221_Hil1_tr2)
+lnL = -270.507149
+ 50.00000  0.00375
+
+t= 50.0000  S=    45.0  N=    87.0  dN/dS=  0.0038  dN = 0.1824  dS =48.5884
+
+
+4 (B11221_Hil1_tr4) ... 3 (B11221_Hil1_tr3)
+lnL = -285.684553
+ 50.00000  0.00587
+
+t= 50.0000  S=    43.8  N=    88.2  dN/dS=  0.0059  dN = 0.2913  dS =49.6290
+
+
+5 (B11221_Hil1_tr5) ... 1 (B11221_Hil1_tr1)
+lnL = -252.201511
+ 10.13989  0.01063
+
+t= 10.1399  S=    49.0  N=    83.0  dN/dS=  0.0106  dN = 0.0951  dS = 8.9491
+
+
+5 (B11221_Hil1_tr5) ... 2 (B11221_Hil1_tr2)
+lnL = -281.313713
+ 50.00000  0.00548
+
+t= 50.0000  S=    47.7  N=    84.3  dN/dS=  0.0055  dN = 0.2501  dS =45.6658
+
+
+5 (B11221_Hil1_tr5) ... 3 (B11221_Hil1_tr3)
+lnL = -265.750639
+ 50.00000  0.00330
+
+t= 50.0000  S=    46.5  N=    85.5  dN/dS=  0.0033  dN = 0.1551  dS =47.0507
+
+
+5 (B11221_Hil1_tr5) ... 4 (B11221_Hil1_tr4)
+lnL = -291.036916
+  6.50738  0.05963
+
+t= 6.5074  S=    46.4  N=    85.6  dN/dS=  0.0596  dN = 0.3317  dS = 5.5633
+
+
+6 (B11221_Hil1_tr6) ... 1 (B11221_Hil1_tr1)
+lnL = -268.802608
+  2.77757  0.10630
+
+t= 2.7776  S=    48.3  N=    83.7  dN/dS=  0.1063  dN = 0.2273  dS = 2.1381
+
+
+6 (B11221_Hil1_tr6) ... 2 (B11221_Hil1_tr2)
+lnL = -267.385247
+  2.52298  0.10350
+
+t= 2.5230  S=    48.1  N=    83.9  dN/dS=  0.1035  dN = 0.2025  dS = 1.9562
+
+
+6 (B11221_Hil1_tr6) ... 3 (B11221_Hil1_tr3)
+lnL = -273.218101
+ 50.00000  0.00530
+
+t= 50.0000  S=    47.2  N=    84.8  dN/dS=  0.0053  dN = 0.2444  dS =46.1517
+
+
+6 (B11221_Hil1_tr6) ... 4 (B11221_Hil1_tr4)
+lnL = -274.520420
+  9.54671  0.02867
+
+t= 9.5467  S=    46.9  N=    85.1  dN/dS=  0.0287  dN = 0.2442  dS = 8.5180
+
+
+6 (B11221_Hil1_tr6) ... 5 (B11221_Hil1_tr5)
+lnL = -274.469864
+ 13.09956  0.02135
+
+t= 13.0996  S=    49.6  N=    82.4  dN/dS=  0.0213  dN = 0.2397  dS =11.2274
+
+
+7 (B11221_Hil1_tr7) ... 1 (B11221_Hil1_tr1)
+lnL = -265.022941
+ 50.00000  0.00393
+
+t= 50.0000  S=    49.7  N=    82.3  dN/dS=  0.0039  dN = 0.1730  dS =43.9767
+
+
+7 (B11221_Hil1_tr7) ... 2 (B11221_Hil1_tr2)
+lnL = -272.390125
+ 50.00000  0.00421
+
+t= 50.0000  S=    48.0  N=    84.0  dN/dS=  0.0042  dN = 0.1915  dS =45.4790
+
+
+7 (B11221_Hil1_tr7) ... 3 (B11221_Hil1_tr3)
+lnL = -269.382107
+ 50.00000  0.00403
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0040  dN = 0.1896  dS =47.0599
+
+
+7 (B11221_Hil1_tr7) ... 4 (B11221_Hil1_tr4)
+lnL = -279.109675
+  3.21677  0.08074
+
+t= 3.2168  S=    46.7  N=    85.3  dN/dS=  0.0807  dN = 0.2132  dS = 2.6399
+
+
+7 (B11221_Hil1_tr7) ... 5 (B11221_Hil1_tr5)
+lnL = -263.267263
+  2.69937  0.08384
+
+t= 2.6994  S=    49.4  N=    82.6  dN/dS=  0.0838  dN = 0.1769  dS = 2.1099
+
+
+7 (B11221_Hil1_tr7) ... 6 (B11221_Hil1_tr6)
+lnL = -254.745406
+ 34.28830  0.00377
+
+t= 34.2883  S=    50.2  N=    81.8  dN/dS=  0.0038  dN = 0.1126  dS =29.8435
+
+
+8 (B11221_Hil1_tr8) ... 1 (B11221_Hil1_tr1)
+lnL = -279.544480
+  3.83580  0.08789
+
+t= 3.8358  S=    46.6  N=    85.4  dN/dS=  0.0879  dN = 0.2743  dS = 3.1204
+
+
+8 (B11221_Hil1_tr8) ... 2 (B11221_Hil1_tr2)
+lnL = -265.340973
+ 50.00000  0.00293
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0029  dN = 0.1380  dS =47.1233
+
+
+8 (B11221_Hil1_tr8) ... 3 (B11221_Hil1_tr3)
+lnL = -271.105073
+ 50.00000  0.00425
+
+t= 50.0000  S=    45.8  N=    86.2  dN/dS=  0.0042  dN = 0.2025  dS =47.6854
+
+
+8 (B11221_Hil1_tr8) ... 4 (B11221_Hil1_tr4)
+lnL = -282.797172
+ 20.60721  0.01201
+
+t= 20.6072  S=    45.1  N=    86.9  dN/dS=  0.0120  dN = 0.2361  dS =19.6586
+
+
+8 (B11221_Hil1_tr8) ... 5 (B11221_Hil1_tr5)
+lnL = -279.518670
+  9.75348  0.02905
+
+t= 9.7535  S=    47.9  N=    84.1  dN/dS=  0.0290  dN = 0.2479  dS = 8.5327
+
+
+8 (B11221_Hil1_tr8) ... 6 (B11221_Hil1_tr6)
+lnL = -270.893410
+  8.59604  0.02740
+
+t= 8.5960  S=    47.3  N=    84.7  dN/dS=  0.0274  dN = 0.2087  dS = 7.6162
+
+
+8 (B11221_Hil1_tr8) ... 7 (B11221_Hil1_tr7)
+lnL = -256.647108
+  3.97376  0.03747
+
+t= 3.9738  S=    48.7  N=    83.3  dN/dS=  0.0375  dN = 0.1265  dS = 3.3762
+
+
+9 (B11221_Hil1_tr9) ... 1 (B11221_Hil1_tr1)
+lnL = -251.540948
+  1.92157  0.07622
+
+t= 1.9216  S=    46.4  N=    85.6  dN/dS=  0.0762  dN = 0.1217  dS = 1.5971
+
+
+9 (B11221_Hil1_tr9) ... 2 (B11221_Hil1_tr2)
+lnL = -282.656354
+ 50.00000  0.00550
+
+t= 50.0000  S=    44.0  N=    88.0  dN/dS=  0.0055  dN = 0.2720  dS =49.4977
+
+
+9 (B11221_Hil1_tr9) ... 3 (B11221_Hil1_tr3)
+lnL = -253.434231
+ 50.00000  0.00201
+
+t= 50.0000  S=    42.5  N=    89.5  dN/dS=  0.0020  dN = 0.1034  dS =51.5498
+
+
+9 (B11221_Hil1_tr9) ... 4 (B11221_Hil1_tr4)
+lnL = -287.477623
+  3.66378  0.09660
+
+t= 3.6638  S=    42.0  N=    90.0  dN/dS=  0.0966  dN = 0.3074  dS = 3.1825
+
+
+9 (B11221_Hil1_tr9) ... 5 (B11221_Hil1_tr5)
+lnL = -258.268109
+  2.33004  0.06832
+
+t= 2.3300  S=    45.3  N=    86.7  dN/dS=  0.0683  dN = 0.1367  dS = 2.0010
+
+
+9 (B11221_Hil1_tr9) ... 6 (B11221_Hil1_tr6)
+lnL = -264.987661
+  5.13426  0.04072
+
+t= 5.1343  S=    46.1  N=    85.9  dN/dS=  0.0407  dN = 0.1855  dS = 4.5551
+
+
+9 (B11221_Hil1_tr9) ... 7 (B11221_Hil1_tr7)
+lnL = -256.413826
+  9.05311  0.01404
+
+t= 9.0531  S=    45.6  N=    86.4  dN/dS=  0.0140  dN = 0.1194  dS = 8.5047
+
+
+9 (B11221_Hil1_tr9) ... 8 (B11221_Hil1_tr8)
+lnL = -270.964790
+  5.20011  0.04193
+
+t= 5.2001  S=    44.5  N=    87.5  dN/dS=  0.0419  dN = 0.1990  dS = 4.7464
+
+
+10 (B11221_Hil1_tr10) ... 1 (B11221_Hil1_tr1)
+lnL = -269.367443
+ 31.16226  0.00770
+
+t= 31.1623  S=    47.0  N=    85.0  dN/dS=  0.0077  dN = 0.2214  dS =28.7474
+
+
+10 (B11221_Hil1_tr10) ... 2 (B11221_Hil1_tr2)
+lnL = -265.298783
+ 50.00000  0.00384
+
+t= 50.0000  S=    47.0  N=    85.0  dN/dS=  0.0038  dN = 0.1785  dS =46.4926
+
+
+10 (B11221_Hil1_tr10) ... 3 (B11221_Hil1_tr3)
+lnL = -266.751842
+ 50.00000  0.00436
+
+t= 50.0000  S=    46.1  N=    85.9  dN/dS=  0.0044  dN = 0.2062  dS =47.3012
+
+
+10 (B11221_Hil1_tr10) ... 4 (B11221_Hil1_tr4)
+lnL = -259.279643
+ 14.31306  0.01048
+
+t= 14.3131  S=    45.8  N=    86.2  dN/dS=  0.0105  dN = 0.1413  dS =13.4916
+
+
+10 (B11221_Hil1_tr10) ... 5 (B11221_Hil1_tr5)
+lnL = -274.366861
+  4.51685  0.06749
+
+t= 4.5169  S=    48.5  N=    83.5  dN/dS=  0.0675  dN = 0.2476  dS = 3.6680
+
+
+10 (B11221_Hil1_tr10) ... 6 (B11221_Hil1_tr6)
+lnL = -244.719682
+ 14.74623  0.00833
+
+t= 14.7462  S=    48.0  N=    84.0  dN/dS=  0.0083  dN = 0.1109  dS =13.3193
+
+
+10 (B11221_Hil1_tr10) ... 7 (B11221_Hil1_tr7)
+lnL = -248.581724
+ 16.13120  0.00576
+
+t= 16.1312  S=    49.3  N=    82.7  dN/dS=  0.0058  dN = 0.0820  dS =14.2513
+
+
+10 (B11221_Hil1_tr10) ... 8 (B11221_Hil1_tr8)
+lnL = -263.399027
+ 11.43458  0.01626
+
+t= 11.4346  S=    46.1  N=    85.9  dN/dS=  0.0163  dN = 0.1721  dS =10.5875
+
+
+10 (B11221_Hil1_tr10) ... 9 (B11221_Hil1_tr9)
+lnL = -266.471659
+ 27.67649  0.00698
+
+t= 27.6765  S=    45.1  N=    86.9  dN/dS=  0.0070  dN = 0.1861  dS =26.6612
+
+
+11 (B11221_Hil1_tr11) ... 1 (B11221_Hil1_tr1)
+lnL = -267.160595
+ 17.95647  0.01278
+
+t= 17.9565  S=    48.1  N=    83.9  dN/dS=  0.0128  dN = 0.2053  dS =16.0713
+
+
+11 (B11221_Hil1_tr11) ... 2 (B11221_Hil1_tr2)
+lnL = -256.914104
+ 50.00000  0.00302
+
+t= 50.0000  S=    47.3  N=    84.7  dN/dS=  0.0030  dN = 0.1400  dS =46.2898
+
+
+11 (B11221_Hil1_tr11) ... 3 (B11221_Hil1_tr3)
+lnL = -272.751666
+ 50.00000  0.00480
+
+t= 50.0000  S=    46.2  N=    85.8  dN/dS=  0.0048  dN = 0.2267  dS =47.2089
+
+
+11 (B11221_Hil1_tr11) ... 4 (B11221_Hil1_tr4)
+lnL = -284.857615
+  7.94288  0.04631
+
+t= 7.9429  S=    45.9  N=    86.1  dN/dS=  0.0463  dN = 0.3245  dS = 7.0057
+
+
+11 (B11221_Hil1_tr11) ... 5 (B11221_Hil1_tr5)
+lnL = -267.573452
+  3.98903  0.06243
+
+t= 3.9890  S=    48.8  N=    83.2  dN/dS=  0.0624  dN = 0.2030  dS = 3.2509
+
+
+11 (B11221_Hil1_tr11) ... 6 (B11221_Hil1_tr6)
+lnL = -265.915082
+  4.98321  0.05668
+
+t= 4.9832  S=    49.0  N=    83.0  dN/dS=  0.0567  dN = 0.2315  dS = 4.0849
+
+
+11 (B11221_Hil1_tr11) ... 7 (B11221_Hil1_tr7)
+lnL = -262.723441
+  8.75437  0.02327
+
+t= 8.7544  S=    49.3  N=    82.7  dN/dS=  0.0233  dN = 0.1749  dS = 7.5192
+
+
+11 (B11221_Hil1_tr11) ... 8 (B11221_Hil1_tr8)
+lnL = -276.626477
+  7.58284  0.04031
+
+t= 7.5828  S=    47.0  N=    85.0  dN/dS=  0.0403  dN = 0.2665  dS = 6.6115
+
+
+11 (B11221_Hil1_tr11) ... 9 (B11221_Hil1_tr9)
+lnL = -264.546926
+ 23.62967  0.00800
+
+t= 23.6297  S=    44.6  N=    87.4  dN/dS=  0.0080  dN = 0.1838  dS =22.9661
+
+
+11 (B11221_Hil1_tr11) ... 10 (B11221_Hil1_tr10)
+lnL = -264.351180
+  3.17814  0.09260
+
+t= 3.1781  S=    47.7  N=    84.3  dN/dS=  0.0926  dN = 0.2334  dS = 2.5200
+
+
+12 (B11221_Hil1_tr12) ... 1 (B11221_Hil1_tr1)
+lnL = -270.330250
+ 50.00000  0.00417
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0042  dN = 0.1965  dS =47.1010
+
+
+12 (B11221_Hil1_tr12) ... 2 (B11221_Hil1_tr2)
+lnL = -258.002699
+  2.61032  0.05865
+
+t= 2.6103  S=    45.4  N=    86.6  dN/dS=  0.0587  dN = 0.1334  dS = 2.2745
+
+
+12 (B11221_Hil1_tr12) ... 3 (B11221_Hil1_tr3)
+lnL = -267.176010
+ 15.81126  0.01168
+
+t= 15.8113  S=    44.0  N=    88.0  dN/dS=  0.0117  dN = 0.1804  dS =15.4352
+
+
+12 (B11221_Hil1_tr12) ... 4 (B11221_Hil1_tr4)
+lnL = -255.601365
+ 50.00000  0.00217
+
+t= 50.0000  S=    44.7  N=    87.3  dN/dS=  0.0022  dN = 0.1064  dS =49.0484
+
+
+12 (B11221_Hil1_tr12) ... 5 (B11221_Hil1_tr5)
+lnL = -273.592057
+ 50.00000  0.00440
+
+t= 50.0000  S=    47.0  N=    85.0  dN/dS=  0.0044  dN = 0.2046  dS =46.4785
+
+
+12 (B11221_Hil1_tr12) ... 6 (B11221_Hil1_tr6)
+lnL = -261.873863
+ 50.00000  0.00339
+
+t= 50.0000  S=    47.4  N=    84.6  dN/dS=  0.0034  dN = 0.1563  dS =46.1487
+
+
+12 (B11221_Hil1_tr12) ... 7 (B11221_Hil1_tr7)
+lnL = -256.094569
+ 50.00000  0.00232
+
+t= 50.0000  S=    46.9  N=    85.1  dN/dS=  0.0023  dN = 0.1081  dS =46.6683
+
+
+12 (B11221_Hil1_tr12) ... 8 (B11221_Hil1_tr8)
+lnL = -268.939926
+ 50.00000  0.00323
+
+t= 50.0000  S=    45.9  N=    86.1  dN/dS=  0.0032  dN = 0.1541  dS =47.6400
+
+
+12 (B11221_Hil1_tr12) ... 9 (B11221_Hil1_tr9)
+lnL = -270.388405
+ 50.00000  0.00385
+
+t= 50.0000  S=    43.8  N=    88.2  dN/dS=  0.0038  dN = 0.1917  dS =49.8094
+
+
+12 (B11221_Hil1_tr12) ... 10 (B11221_Hil1_tr10)
+lnL = -256.184572
+ 50.00000  0.00261
+
+t= 50.0000  S=    46.3  N=    85.7  dN/dS=  0.0026  dN = 0.1236  dS =47.3275
+
+
+12 (B11221_Hil1_tr12) ... 11 (B11221_Hil1_tr11)
+lnL = -270.060361
+ 50.00000  0.00468
+
+t= 50.0000  S=    46.8  N=    85.2  dN/dS=  0.0047  dN = 0.2185  dS =46.6399
+
+
+13 (B11221_Hil1_tr13) ... 1 (B11221_Hil1_tr1)
+lnL = -256.003720
+  8.44104  0.01609
+
+t= 8.4410  S=    47.5  N=    84.5  dN/dS=  0.0161  dN = 0.1224  dS = 7.6084
+
+
+13 (B11221_Hil1_tr13) ... 2 (B11221_Hil1_tr2)
+lnL = -284.615821
+ 50.00000  0.00636
+
+t= 50.0000  S=    47.8  N=    84.2  dN/dS=  0.0064  dN = 0.2893  dS =45.5043
+
+
+13 (B11221_Hil1_tr13) ... 3 (B11221_Hil1_tr3)
+lnL = -257.618304
+ 50.00000  0.00269
+
+t= 50.0000  S=    47.5  N=    84.5  dN/dS=  0.0027  dN = 0.1241  dS =46.0569
+
+
+13 (B11221_Hil1_tr13) ... 4 (B11221_Hil1_tr4)
+lnL = -293.032363
+  3.08213  0.17489
+
+t= 3.0821  S=    46.2  N=    85.8  dN/dS=  0.1749  dN = 0.3874  dS = 2.2151
+
+
+13 (B11221_Hil1_tr13) ... 5 (B11221_Hil1_tr5)
+lnL = -245.697204
+ 11.95369  0.00763
+
+t= 11.9537  S=    49.0  N=    83.0  dN/dS=  0.0076  dN = 0.0809  dS =10.6049
+
+
+13 (B11221_Hil1_tr13) ... 6 (B11221_Hil1_tr6)
+lnL = -267.060439
+ 27.76592  0.00786
+
+t= 27.7659  S=    48.3  N=    83.7  dN/dS=  0.0079  dN = 0.1964  dS =24.9789
+
+
+13 (B11221_Hil1_tr13) ... 7 (B11221_Hil1_tr7)
+lnL = -270.775363
+  2.60339  0.11279
+
+t= 2.6034  S=    50.0  N=    82.0  dN/dS=  0.1128  dN = 0.2181  dS = 1.9335
+
+
+13 (B11221_Hil1_tr13) ... 8 (B11221_Hil1_tr8)
+lnL = -281.159812
+ 30.71618  0.00964
+
+t= 30.7162  S=    46.2  N=    85.8  dN/dS=  0.0096  dN = 0.2770  dS =28.7514
+
+
+13 (B11221_Hil1_tr13) ... 9 (B11221_Hil1_tr9)
+lnL = -257.830283
+  9.89621  0.01485
+
+t= 9.8962  S=    45.8  N=    86.2  dN/dS=  0.0148  dN = 0.1372  dS = 9.2426
+
+
+13 (B11221_Hil1_tr13) ... 10 (B11221_Hil1_tr10)
+lnL = -276.460392
+ 50.00000  0.00584
+
+t= 50.0000  S=    47.1  N=    84.9  dN/dS=  0.0058  dN = 0.2701  dS =46.2215
+
+
+13 (B11221_Hil1_tr13) ... 11 (B11221_Hil1_tr11)
+lnL = -270.791920
+ 50.00000  0.00507
+
+t= 50.0000  S=    48.2  N=    83.8  dN/dS=  0.0051  dN = 0.2294  dS =45.2388
+
+
+13 (B11221_Hil1_tr13) ... 12 (B11221_Hil1_tr12)
+lnL = -278.046930
+ 50.00000  0.00525
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0052  dN = 0.2403  dS =45.7783
+
+
+14 (B11221_Hil1_tr14) ... 1 (B11221_Hil1_tr1)
+lnL = -276.209055
+ 50.00000  0.00561
+
+t= 50.0000  S=    47.1  N=    84.9  dN/dS=  0.0056  dN = 0.2598  dS =46.2854
+
+
+14 (B11221_Hil1_tr14) ... 2 (B11221_Hil1_tr2)
+lnL = -276.850824
+ 50.00000  0.00488
+
+t= 50.0000  S=    46.2  N=    85.8  dN/dS=  0.0049  dN = 0.2299  dS =47.1439
+
+
+14 (B11221_Hil1_tr14) ... 3 (B11221_Hil1_tr3)
+lnL = -277.069719
+ 50.00000  0.00546
+
+t= 50.0000  S=    45.4  N=    86.6  dN/dS=  0.0055  dN = 0.2618  dS =47.9837
+
+
+14 (B11221_Hil1_tr14) ... 4 (B11221_Hil1_tr4)
+lnL = -284.213824
+ 50.00000  0.00570
+
+t= 50.0000  S=    44.5  N=    87.5  dN/dS=  0.0057  dN = 0.2784  dS =48.8507
+
+
+14 (B11221_Hil1_tr14) ... 5 (B11221_Hil1_tr5)
+lnL = -282.313039
+ 50.00000  0.00641
+
+t= 50.0000  S=    47.7  N=    84.3  dN/dS=  0.0064  dN = 0.2923  dS =45.5905
+
+
+14 (B11221_Hil1_tr14) ... 6 (B11221_Hil1_tr6)
+lnL = -286.780949
+  5.81955  0.09167
+
+t= 5.8195  S=    47.3  N=    84.7  dN/dS=  0.0917  dN = 0.4261  dS = 4.6482
+
+
+14 (B11221_Hil1_tr14) ... 7 (B11221_Hil1_tr7)
+lnL = -279.343753
+ 50.00000  0.00602
+
+t= 50.0000  S=    48.5  N=    83.5  dN/dS=  0.0060  dN = 0.2702  dS =44.8520
+
+
+14 (B11221_Hil1_tr14) ... 8 (B11221_Hil1_tr8)
+lnL = -283.172536
+ 50.00000  0.00627
+
+t= 50.0000  S=    45.5  N=    86.5  dN/dS=  0.0063  dN = 0.2997  dS =47.7610
+
+
+14 (B11221_Hil1_tr14) ... 9 (B11221_Hil1_tr9)
+lnL = -273.649767
+ 50.00000  0.00478
+
+t= 50.0000  S=    43.7  N=    88.3  dN/dS=  0.0048  dN = 0.2383  dS =49.8718
+
+
+14 (B11221_Hil1_tr14) ... 10 (B11221_Hil1_tr10)
+lnL = -283.751414
+  8.27853  0.05267
+
+t= 8.2785  S=    46.1  N=    85.9  dN/dS=  0.0527  dN = 0.3792  dS = 7.1991
+
+
+14 (B11221_Hil1_tr14) ... 11 (B11221_Hil1_tr11)
+lnL = -269.374263
+ 50.00000  0.00463
+
+t= 50.0000  S=    46.6  N=    85.4  dN/dS=  0.0046  dN = 0.2169  dS =46.8085
+
+
+14 (B11221_Hil1_tr14) ... 12 (B11221_Hil1_tr12)
+lnL = -277.389445
+ 50.00000  0.00532
+
+t= 50.0000  S=    45.9  N=    86.1  dN/dS=  0.0053  dN = 0.2527  dS =47.4844
+
+
+14 (B11221_Hil1_tr14) ... 13 (B11221_Hil1_tr13)
+lnL = -282.303342
+ 50.00000  0.00705
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0071  dN = 0.3303  dS =46.8168
+
+
+15 (B11221_Hil1_tr15) ... 1 (B11221_Hil1_tr1)
+lnL = -261.391800
+  4.28452  0.03516
+
+t= 4.2845  S=    45.8  N=    86.2  dN/dS=  0.0352  dN = 0.1357  dS = 3.8598
+
+
+15 (B11221_Hil1_tr15) ... 2 (B11221_Hil1_tr2)
+lnL = -283.771857
+ 50.00000  0.00559
+
+t= 50.0000  S=    43.3  N=    88.7  dN/dS=  0.0056  dN = 0.2803  dS =50.1832
+
+
+15 (B11221_Hil1_tr15) ... 3 (B11221_Hil1_tr3)
+lnL = -260.520361
+ 50.00000  0.00252
+
+t= 50.0000  S=    42.1  N=    89.9  dN/dS=  0.0025  dN = 0.1309  dS =51.9958
+
+
+15 (B11221_Hil1_tr15) ... 4 (B11221_Hil1_tr4)
+lnL = -288.722759
+  2.13144  0.22912
+
+t= 2.1314  S=    41.2  N=    90.8  dN/dS=  0.2291  dN = 0.3465  dS = 1.5123
+
+
+15 (B11221_Hil1_tr15) ... 5 (B11221_Hil1_tr5)
+lnL = -264.735240
+  4.27597  0.03902
+
+t= 4.2760  S=    44.5  N=    87.5  dN/dS=  0.0390  dN = 0.1532  dS = 3.9259
+
+
+15 (B11221_Hil1_tr15) ... 6 (B11221_Hil1_tr6)
+lnL = -263.018157
+  5.89796  0.03034
+
+t= 5.8980  S=    45.4  N=    86.6  dN/dS=  0.0303  dN = 0.1640  dS = 5.4052
+
+
+15 (B11221_Hil1_tr15) ... 7 (B11221_Hil1_tr7)
+lnL = -262.046730
+  3.56783  0.04587
+
+t= 3.5678  S=    44.8  N=    87.2  dN/dS=  0.0459  dN = 0.1475  dS = 3.2153
+
+
+15 (B11221_Hil1_tr15) ... 8 (B11221_Hil1_tr8)
+lnL = -277.233120
+ 15.06864  0.01537
+
+t= 15.0686  S=    43.8  N=    88.2  dN/dS=  0.0154  dN = 0.2257  dS =14.6810
+
+
+15 (B11221_Hil1_tr15) ... 9 (B11221_Hil1_tr9)
+lnL = -237.328185
+  3.62494  0.01865
+
+t= 3.6249  S=    39.4  N=    92.6  dN/dS=  0.0187  dN = 0.0723  dS = 3.8744
+
+
+15 (B11221_Hil1_tr15) ... 10 (B11221_Hil1_tr10)
+lnL = -268.078837
+ 22.17471  0.00914
+
+t= 22.1747  S=    44.5  N=    87.5  dN/dS=  0.0091  dN = 0.1967  dS =21.5160
+
+
+15 (B11221_Hil1_tr15) ... 11 (B11221_Hil1_tr11)
+lnL = -269.441586
+ 23.64849  0.00913
+
+t= 23.6485  S=    43.9  N=    88.1  dN/dS=  0.0091  dN = 0.2124  dS =23.2514
+
+
+15 (B11221_Hil1_tr15) ... 12 (B11221_Hil1_tr12)
+lnL = -277.746155
+ 50.00000  0.00452
+
+t= 50.0000  S=    43.5  N=    88.5  dN/dS=  0.0045  dN = 0.2266  dS =50.1652
+
+
+15 (B11221_Hil1_tr15) ... 13 (B11221_Hil1_tr13)
+lnL = -254.102984
+  1.68147  0.08861
+
+t= 1.6815  S=    44.9  N=    87.1  dN/dS=  0.0886  dN = 0.1247  dS = 1.4069
+
+
+15 (B11221_Hil1_tr15) ... 14 (B11221_Hil1_tr14)
+lnL = -282.646269
+ 50.00000  0.00618
+
+t= 50.0000  S=    43.0  N=    89.0  dN/dS=  0.0062  dN = 0.3124  dS =50.5240
+
+
+16 (B11221_Hil1_tr16) ... 1 (B11221_Hil1_tr1)
+lnL = -271.893960
+ 28.70402  0.00920
+
+t= 28.7040  S=    47.7  N=    84.3  dN/dS=  0.0092  dN = 0.2395  dS =26.0330
+
+
+16 (B11221_Hil1_tr16) ... 2 (B11221_Hil1_tr2)
+lnL = -257.440592
+ 50.00000  0.00273
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0027  dN = 0.1257  dS =45.9727
+
+
+16 (B11221_Hil1_tr16) ... 3 (B11221_Hil1_tr3)
+lnL = -266.304927
+ 50.00000  0.00440
+
+t= 50.0000  S=    46.9  N=    85.1  dN/dS=  0.0044  dN = 0.2047  dS =46.5357
+
+
+16 (B11221_Hil1_tr16) ... 4 (B11221_Hil1_tr4)
+lnL = -268.207925
+  2.49327  0.09000
+
+t= 2.4933  S=    46.0  N=    86.0  dN/dS=  0.0900  dN = 0.1836  dS = 2.0404
+
+
+16 (B11221_Hil1_tr16) ... 5 (B11221_Hil1_tr5)
+lnL = -271.242794
+  3.18719  0.09099
+
+t= 3.1872  S=    48.9  N=    83.1  dN/dS=  0.0910  dN = 0.2259  dS = 2.4827
+
+
+16 (B11221_Hil1_tr16) ... 6 (B11221_Hil1_tr6)
+lnL = -258.732811
+ 18.04270  0.01003
+
+t= 18.0427  S=    48.5  N=    83.5  dN/dS=  0.0100  dN = 0.1615  dS =16.0958
+
+
+16 (B11221_Hil1_tr16) ... 7 (B11221_Hil1_tr7)
+lnL = -258.356260
+  4.54753  0.03356
+
+t= 4.5475  S=    49.8  N=    82.2  dN/dS=  0.0336  dN = 0.1278  dS = 3.8090
+
+
+16 (B11221_Hil1_tr16) ... 8 (B11221_Hil1_tr8)
+lnL = -261.440569
+  9.55459  0.01819
+
+t= 9.5546  S=    46.6  N=    85.4  dN/dS=  0.0182  dN = 0.1590  dS = 8.7392
+
+
+16 (B11221_Hil1_tr16) ... 9 (B11221_Hil1_tr9)
+lnL = -272.672935
+  3.83582  0.07389
+
+t= 3.8358  S=    45.2  N=    86.8  dN/dS=  0.0739  dN = 0.2417  dS = 3.2709
+
+
+16 (B11221_Hil1_tr16) ... 10 (B11221_Hil1_tr10)
+lnL = -244.778761
+ 11.55496  0.00909
+
+t= 11.5550  S=    47.2  N=    84.8  dN/dS=  0.0091  dN = 0.0962  dS =10.5920
+
+
+16 (B11221_Hil1_tr16) ... 11 (B11221_Hil1_tr11)
+lnL = -264.615374
+ 10.00876  0.02205
+
+t= 10.0088  S=    48.1  N=    83.9  dN/dS=  0.0220  dN = 0.1943  dS = 8.8130
+
+
+16 (B11221_Hil1_tr16) ... 12 (B11221_Hil1_tr12)
+lnL = -262.652440
+ 50.00000  0.00309
+
+t= 50.0000  S=    47.2  N=    84.8  dN/dS=  0.0031  dN = 0.1430  dS =46.3213
+
+
+16 (B11221_Hil1_tr16) ... 13 (B11221_Hil1_tr13)
+lnL = -274.420109
+ 46.04864  0.00593
+
+t= 46.0486  S=    47.3  N=    84.7  dN/dS=  0.0059  dN = 0.2511  dS =42.3533
+
+
+16 (B11221_Hil1_tr16) ... 14 (B11221_Hil1_tr14)
+lnL = -273.709107
+ 18.82297  0.01584
+
+t= 18.8230  S=    46.4  N=    85.6  dN/dS=  0.0158  dN = 0.2748  dS =17.3458
+
+
+16 (B11221_Hil1_tr16) ... 15 (B11221_Hil1_tr15)
+lnL = -275.411329
+  8.37107  0.03188
+
+t= 8.3711  S=    44.5  N=    87.5  dN/dS=  0.0319  dN = 0.2482  dS = 7.7848
+
+
+17 (B11221_Hil1_tr17) ... 1 (B11221_Hil1_tr1)
+lnL = -267.436921
+ 19.59310  0.01221
+
+t= 19.5931  S=    49.1  N=    82.9  dN/dS=  0.0122  dN = 0.2100  dS =17.1929
+
+
+17 (B11221_Hil1_tr17) ... 2 (B11221_Hil1_tr2)
+lnL = -270.566662
+ 50.00000  0.00420
+
+t= 50.0000  S=    46.9  N=    85.1  dN/dS=  0.0042  dN = 0.1955  dS =46.5406
+
+
+17 (B11221_Hil1_tr17) ... 3 (B11221_Hil1_tr3)
+lnL = -252.611039
+ 50.00000  0.00255
+
+t= 50.0000  S=    45.6  N=    86.4  dN/dS=  0.0026  dN = 0.1226  dS =48.0347
+
+
+17 (B11221_Hil1_tr17) ... 4 (B11221_Hil1_tr4)
+lnL = -281.831166
+ 32.34843  0.00848
+
+t= 32.3484  S=    44.7  N=    87.3  dN/dS=  0.0085  dN = 0.2655  dS =31.3147
+
+
+17 (B11221_Hil1_tr17) ... 5 (B11221_Hil1_tr5)
+lnL = -263.586578
+  3.97754  0.05469
+
+t= 3.9775  S=    48.1  N=    83.9  dN/dS=  0.0547  dN = 0.1816  dS = 3.3208
+
+
+17 (B11221_Hil1_tr17) ... 6 (B11221_Hil1_tr6)
+lnL = -262.971746
+  5.80292  0.03803
+
+t= 5.8029  S=    49.0  N=    83.0  dN/dS=  0.0380  dN = 0.1862  dS = 4.8976
+
+
+17 (B11221_Hil1_tr17) ... 7 (B11221_Hil1_tr7)
+lnL = -260.248539
+ 22.23511  0.00734
+
+t= 22.2351  S=    48.5  N=    83.5  dN/dS=  0.0073  dN = 0.1461  dS =19.9156
+
+
+17 (B11221_Hil1_tr17) ... 8 (B11221_Hil1_tr8)
+lnL = -269.151183
+ 17.01130  0.01273
+
+t= 17.0113  S=    47.2  N=    84.8  dN/dS=  0.0127  dN = 0.1974  dS =15.5019
+
+
+17 (B11221_Hil1_tr17) ... 9 (B11221_Hil1_tr9)
+lnL = -256.014080
+  4.32639  0.03705
+
+t= 4.3264  S=    42.8  N=    89.2  dN/dS=  0.0370  dN = 0.1530  dS = 4.1305
+
+
+17 (B11221_Hil1_tr17) ... 10 (B11221_Hil1_tr10)
+lnL = -262.442260
+ 39.98482  0.00501
+
+t= 39.9848  S=    48.0  N=    84.0  dN/dS=  0.0050  dN = 0.1821  dS =36.3541
+
+
+17 (B11221_Hil1_tr17) ... 11 (B11221_Hil1_tr11)
+lnL = -263.770156
+ 50.00000  0.00462
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0046  dN = 0.2117  dS =45.8739
+
+
+17 (B11221_Hil1_tr17) ... 12 (B11221_Hil1_tr12)
+lnL = -270.489525
+ 50.00000  0.00409
+
+t= 50.0000  S=    47.0  N=    85.0  dN/dS=  0.0041  dN = 0.1903  dS =46.4913
+
+
+17 (B11221_Hil1_tr17) ... 13 (B11221_Hil1_tr13)
+lnL = -255.762609
+  5.88091  0.02824
+
+t= 5.8809  S=    48.2  N=    83.8  dN/dS=  0.0282  dN = 0.1444  dS = 5.1153
+
+
+17 (B11221_Hil1_tr17) ... 14 (B11221_Hil1_tr14)
+lnL = -274.692078
+ 50.00000  0.00582
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0058  dN = 0.2735  dS =46.9512
+
+
+17 (B11221_Hil1_tr17) ... 15 (B11221_Hil1_tr15)
+lnL = -265.816860
+  3.29178  0.07309
+
+t= 3.2918  S=    41.9  N=    90.1  dN/dS=  0.0731  dN = 0.2184  dS = 2.9881
+
+
+17 (B11221_Hil1_tr17) ... 16 (B11221_Hil1_tr16)
+lnL = -259.621217
+  6.26286  0.03051
+
+t= 6.2629  S=    47.9  N=    84.1  dN/dS=  0.0305  dN = 0.1665  dS = 5.4581
+
+
+18 (B11221_Hil1_tr18) ... 1 (B11221_Hil1_tr1)
+lnL = -264.339389
+  3.32971  0.05731
+
+t= 3.3297  S=    48.2  N=    83.8  dN/dS=  0.0573  dN = 0.1584  dS = 2.7632
+
+
+18 (B11221_Hil1_tr18) ... 2 (B11221_Hil1_tr2)
+lnL = -271.165894
+ 50.00000  0.00451
+
+t= 50.0000  S=    47.1  N=    84.9  dN/dS=  0.0045  dN = 0.2088  dS =46.3032
+
+
+18 (B11221_Hil1_tr18) ... 3 (B11221_Hil1_tr3)
+lnL = -262.001575
+ 50.00000  0.00325
+
+t= 50.0000  S=    46.1  N=    85.9  dN/dS=  0.0033  dN = 0.1542  dS =47.4173
+
+
+18 (B11221_Hil1_tr18) ... 4 (B11221_Hil1_tr4)
+lnL = -288.069646
+ 27.89837  0.01242
+
+t= 27.8984  S=    45.6  N=    86.4  dN/dS=  0.0124  dN = 0.3267  dS =26.3112
+
+
+18 (B11221_Hil1_tr18) ... 5 (B11221_Hil1_tr5)
+lnL = -268.276823
+  3.09408  0.07536
+
+t= 3.0941  S=    48.4  N=    83.6  dN/dS=  0.0754  dN = 0.1874  dS = 2.4872
+
+
+18 (B11221_Hil1_tr18) ... 6 (B11221_Hil1_tr6)
+lnL = -273.971112
+  3.25516  0.11453
+
+t= 3.2552  S=    48.8  N=    83.2  dN/dS=  0.1145  dN = 0.2811  dS = 2.4549
+
+
+18 (B11221_Hil1_tr18) ... 7 (B11221_Hil1_tr7)
+lnL = -268.433835
+ 14.79379  0.01484
+
+t= 14.7938  S=    48.8  N=    83.2  dN/dS=  0.0148  dN = 0.1928  dS =12.9969
+
+
+18 (B11221_Hil1_tr18) ... 8 (B11221_Hil1_tr8)
+lnL = -270.027469
+ 10.05119  0.02280
+
+t= 10.0512  S=    47.0  N=    85.0  dN/dS=  0.0228  dN = 0.2061  dS = 9.0403
+
+
+18 (B11221_Hil1_tr18) ... 9 (B11221_Hil1_tr9)
+lnL = -267.661033
+  4.43439  0.04642
+
+t= 4.4344  S=    44.4  N=    87.6  dN/dS=  0.0464  dN = 0.1870  dS = 4.0286
+
+
+18 (B11221_Hil1_tr18) ... 10 (B11221_Hil1_tr10)
+lnL = -261.776836
+  3.40835  0.07359
+
+t= 3.4083  S=    47.8  N=    84.2  dN/dS=  0.0736  dN = 0.2045  dS = 2.7791
+
+
+18 (B11221_Hil1_tr18) ... 11 (B11221_Hil1_tr11)
+lnL = -258.162013
+  3.63097  0.05855
+
+t= 3.6310  S=    48.1  N=    83.9  dN/dS=  0.0585  dN = 0.1765  dS = 3.0150
+
+
+18 (B11221_Hil1_tr18) ... 12 (B11221_Hil1_tr12)
+lnL = -274.074933
+ 50.00000  0.00446
+
+t= 50.0000  S=    46.7  N=    85.3  dN/dS=  0.0045  dN = 0.2082  dS =46.6929
+
+
+18 (B11221_Hil1_tr18) ... 13 (B11221_Hil1_tr13)
+lnL = -275.088289
+  2.75027  0.12554
+
+t= 2.7503  S=    48.0  N=    84.0  dN/dS=  0.1255  dN = 0.2594  dS = 2.0666
+
+
+18 (B11221_Hil1_tr18) ... 14 (B11221_Hil1_tr14)
+lnL = -282.410934
+  4.44415  0.09390
+
+t= 4.4442  S=    46.7  N=    85.3  dN/dS=  0.0939  dN = 0.3359  dS = 3.5768
+
+
+18 (B11221_Hil1_tr18) ... 15 (B11221_Hil1_tr15)
+lnL = -267.799897
+  2.24768  0.10615
+
+t= 2.2477  S=    43.6  N=    88.4  dN/dS=  0.1062  dN = 0.1982  dS = 1.8674
+
+
+18 (B11221_Hil1_tr18) ... 16 (B11221_Hil1_tr16)
+lnL = -267.639178
+  5.94993  0.04499
+
+t= 5.9499  S=    48.1  N=    83.9  dN/dS=  0.0450  dN = 0.2271  dS = 5.0467
+
+
+18 (B11221_Hil1_tr18) ... 17 (B11221_Hil1_tr17)
+lnL = -256.145339
+  2.15259  0.10770
+
+t= 2.1526  S=    47.1  N=    84.9  dN/dS=  0.1077  dN = 0.1812  dS = 1.6828
+
+
+19 (B11221_Hil1_tr19) ... 1 (B11221_Hil1_tr1)
+lnL = -270.106619
+ 16.63469  0.01361
+
+t= 16.6347  S=    48.0  N=    84.0  dN/dS=  0.0136  dN = 0.2026  dS =14.8820
+
+
+19 (B11221_Hil1_tr19) ... 2 (B11221_Hil1_tr2)
+lnL = -270.727715
+ 50.00000  0.00440
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0044  dN = 0.2072  dS =47.0654
+
+
+19 (B11221_Hil1_tr19) ... 3 (B11221_Hil1_tr3)
+lnL = -273.405011
+ 50.00000  0.00456
+
+t= 50.0000  S=    45.0  N=    87.0  dN/dS=  0.0046  dN = 0.2213  dS =48.4828
+
+
+19 (B11221_Hil1_tr19) ... 4 (B11221_Hil1_tr4)
+lnL = -269.328656
+  1.68931  0.18008
+
+t= 1.6893  S=    44.8  N=    87.2  dN/dS=  0.1801  dN = 0.2211  dS = 1.2280
+
+
+19 (B11221_Hil1_tr19) ... 5 (B11221_Hil1_tr5)
+lnL = -267.506757
+ 12.32461  0.01579
+
+t= 12.3246  S=    47.8  N=    84.2  dN/dS=  0.0158  dN = 0.1743  dS =11.0408
+
+
+19 (B11221_Hil1_tr19) ... 6 (B11221_Hil1_tr6)
+lnL = -264.176852
+ 17.85500  0.01207
+
+t= 17.8550  S=    48.5  N=    83.5  dN/dS=  0.0121  dN = 0.1915  dS =15.8701
+
+
+19 (B11221_Hil1_tr19) ... 7 (B11221_Hil1_tr7)
+lnL = -258.113042
+ 31.44471  0.00438
+
+t= 31.4447  S=    48.1  N=    83.9  dN/dS=  0.0044  dN = 0.1251  dS =28.5733
+
+
+19 (B11221_Hil1_tr19) ... 8 (B11221_Hil1_tr8)
+lnL = -276.381261
+ 21.65250  0.01124
+
+t= 21.6525  S=    46.7  N=    85.3  dN/dS=  0.0112  dN = 0.2245  dS =19.9741
+
+
+19 (B11221_Hil1_tr19) ... 9 (B11221_Hil1_tr9)
+lnL = -256.896136
+ 18.71822  0.00693
+
+t= 18.7182  S=    43.3  N=    88.7  dN/dS=  0.0069  dN = 0.1301  dS =18.7739
+
+
+19 (B11221_Hil1_tr19) ... 10 (B11221_Hil1_tr10)
+lnL = -252.649273
+  4.24889  0.03374
+
+t= 4.2489  S=    47.4  N=    84.6  dN/dS=  0.0337  dN = 0.1255  dS = 3.7194
+
+
+19 (B11221_Hil1_tr19) ... 11 (B11221_Hil1_tr11)
+lnL = -263.807202
+ 12.10479  0.01898
+
+t= 12.1048  S=    47.4  N=    84.6  dN/dS=  0.0190  dN = 0.2062  dS =10.8619
+
+
+19 (B11221_Hil1_tr19) ... 12 (B11221_Hil1_tr12)
+lnL = -258.270791
+ 50.00000  0.00319
+
+t= 50.0000  S=    45.9  N=    86.1  dN/dS=  0.0032  dN = 0.1522  dS =47.6666
+
+
+19 (B11221_Hil1_tr19) ... 13 (B11221_Hil1_tr13)
+lnL = -271.077264
+ 41.43653  0.00556
+
+t= 41.4365  S=    48.0  N=    84.0  dN/dS=  0.0056  dN = 0.2090  dS =37.6147
+
+
+19 (B11221_Hil1_tr19) ... 14 (B11221_Hil1_tr14)
+lnL = -284.560146
+ 50.00000  0.00705
+
+t= 50.0000  S=    46.2  N=    85.8  dN/dS=  0.0070  dN = 0.3315  dS =47.0416
+
+
+19 (B11221_Hil1_tr19) ... 15 (B11221_Hil1_tr15)
+lnL = -265.364917
+  5.72012  0.02907
+
+t= 5.7201  S=    42.5  N=    89.5  dN/dS=  0.0291  dN = 0.1621  dS = 5.5762
+
+
+19 (B11221_Hil1_tr19) ... 16 (B11221_Hil1_tr16)
+lnL = -276.395101
+ 23.27654  0.01203
+
+t= 23.2765  S=    47.7  N=    84.3  dN/dS=  0.0120  dN = 0.2529  dS =21.0238
+
+
+19 (B11221_Hil1_tr19) ... 17 (B11221_Hil1_tr17)
+lnL = -269.140040
+ 40.05682  0.00557
+
+t= 40.0568  S=    46.1  N=    85.9  dN/dS=  0.0056  dN = 0.2108  dS =37.8124
+
+
+19 (B11221_Hil1_tr19) ... 18 (B11221_Hil1_tr18)
+lnL = -271.021171
+ 50.00000  0.00460
+
+t= 50.0000  S=    47.1  N=    84.9  dN/dS=  0.0046  dN = 0.2134  dS =46.3518
+
+
+20 (B11221_Hil1_tr20) ... 1 (B11221_Hil1_tr1)
+lnL = -259.006245
+ 34.41190  0.00446
+
+t= 34.4119  S=    48.3  N=    83.7  dN/dS=  0.0045  dN = 0.1389  dS =31.1333
+
+
+20 (B11221_Hil1_tr20) ... 2 (B11221_Hil1_tr2)
+lnL = -275.619658
+ 50.00000  0.00477
+
+t= 50.0000  S=    46.5  N=    85.5  dN/dS=  0.0048  dN = 0.2236  dS =46.8889
+
+
+20 (B11221_Hil1_tr20) ... 3 (B11221_Hil1_tr3)
+lnL = -264.170472
+ 50.00000  0.00317
+
+t= 50.0000  S=    45.1  N=    86.9  dN/dS=  0.0032  dN = 0.1537  dS =48.4573
+
+
+20 (B11221_Hil1_tr20) ... 4 (B11221_Hil1_tr4)
+lnL = -283.819267
+  2.66780  0.13446
+
+t= 2.6678  S=    44.9  N=    87.1  dN/dS=  0.1345  dN = 0.2788  dS = 2.0738
+
+
+20 (B11221_Hil1_tr20) ... 5 (B11221_Hil1_tr5)
+lnL = -257.673550
+  4.27394  0.03390
+
+t= 4.2739  S=    47.9  N=    84.1  dN/dS=  0.0339  dN = 0.1256  dS = 3.7049
+
+
+20 (B11221_Hil1_tr20) ... 6 (B11221_Hil1_tr6)
+lnL = -258.210917
+ 26.55575  0.00592
+
+t= 26.5558  S=    48.6  N=    83.4  dN/dS=  0.0059  dN = 0.1409  dS =23.8122
+
+
+20 (B11221_Hil1_tr20) ... 7 (B11221_Hil1_tr7)
+lnL = -232.938638
+  3.24183  0.01777
+
+t= 3.2418  S=    48.2  N=    83.8  dN/dS=  0.0178  dN = 0.0510  dS = 2.8712
+
+
+20 (B11221_Hil1_tr20) ... 8 (B11221_Hil1_tr8)
+lnL = -259.336971
+  9.23406  0.01820
+
+t= 9.2341  S=    46.9  N=    85.1  dN/dS=  0.0182  dN = 0.1527  dS = 8.3907
+
+
+20 (B11221_Hil1_tr20) ... 9 (B11221_Hil1_tr9)
+lnL = -247.697999
+  2.84661  0.03274
+
+t= 2.8466  S=    43.4  N=    88.6  dN/dS=  0.0327  dN = 0.0886  dS = 2.7049
+
+
+20 (B11221_Hil1_tr20) ... 10 (B11221_Hil1_tr10)
+lnL = -257.525760
+ 14.47964  0.01066
+
+t= 14.4796  S=    47.5  N=    84.5  dN/dS=  0.0107  dN = 0.1403  dS =13.1544
+
+
+20 (B11221_Hil1_tr20) ... 11 (B11221_Hil1_tr11)
+lnL = -249.705204
+  4.99636  0.02441
+
+t= 4.9964  S=    47.5  N=    84.5  dN/dS=  0.0244  dN = 0.1083  dS = 4.4366
+
+
+20 (B11221_Hil1_tr20) ... 12 (B11221_Hil1_tr12)
+lnL = -265.762344
+ 50.00000  0.00351
+
+t= 50.0000  S=    46.0  N=    86.0  dN/dS=  0.0035  dN = 0.1669  dS =47.5074
+
+
+20 (B11221_Hil1_tr20) ... 13 (B11221_Hil1_tr13)
+lnL = -262.799533
+ 32.93225  0.00529
+
+t= 32.9323  S=    48.1  N=    83.9  dN/dS=  0.0053  dN = 0.1579  dS =29.8417
+
+
+20 (B11221_Hil1_tr20) ... 14 (B11221_Hil1_tr14)
+lnL = -277.450223
+ 50.00000  0.00567
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0057  dN = 0.2665  dS =46.9714
+
+
+20 (B11221_Hil1_tr20) ... 15 (B11221_Hil1_tr15)
+lnL = -256.018899
+ 26.52754  0.00420
+
+t= 26.5275  S=    42.7  N=    89.3  dN/dS=  0.0042  dN = 0.1140  dS =27.1104
+
+
+20 (B11221_Hil1_tr20) ... 16 (B11221_Hil1_tr16)
+lnL = -260.237000
+  2.44721  0.07765
+
+t= 2.4472  S=    47.8  N=    84.2  dN/dS=  0.0776  dN = 0.1538  dS = 1.9810
+
+
+20 (B11221_Hil1_tr20) ... 17 (B11221_Hil1_tr17)
+lnL = -261.938701
+ 27.30059  0.00680
+
+t= 27.3006  S=    46.2  N=    85.8  dN/dS=  0.0068  dN = 0.1744  dS =25.6538
+
+
+20 (B11221_Hil1_tr20) ... 18 (B11221_Hil1_tr18)
+lnL = -267.279933
+ 16.47788  0.01251
+
+t= 16.4779  S=    47.2  N=    84.8  dN/dS=  0.0125  dN = 0.1881  dS =15.0339
+
+
+20 (B11221_Hil1_tr20) ... 19 (B11221_Hil1_tr19)
+lnL = -261.101933
+ 45.17065  0.00359
+
+t= 45.1706  S=    46.3  N=    85.7  dN/dS=  0.0036  dN = 0.1531  dS =42.6476
+
+
+21 (B11221_Hil1_tr21) ... 1 (B11221_Hil1_tr1)
+lnL = -265.325505
+ 13.16661  0.01755
+
+t= 13.1666  S=    47.4  N=    84.6  dN/dS=  0.0175  dN = 0.2081  dS =11.8573
+
+
+21 (B11221_Hil1_tr21) ... 2 (B11221_Hil1_tr2)
+lnL = -278.607109
+ 50.00000  0.00555
+
+t= 50.0000  S=    45.7  N=    86.3  dN/dS=  0.0055  dN = 0.2642  dS =47.6176
+
+
+21 (B11221_Hil1_tr21) ... 3 (B11221_Hil1_tr3)
+lnL = -268.393189
+ 50.00000  0.00461
+
+t= 50.0000  S=    44.4  N=    87.6  dN/dS=  0.0046  dN = 0.2267  dS =49.1370
+
+
+21 (B11221_Hil1_tr21) ... 4 (B11221_Hil1_tr4)
+lnL = -282.706235
+  6.81617  0.04607
+
+t= 6.8162  S=    44.1  N=    87.9  dN/dS=  0.0461  dN = 0.2868  dS = 6.2253
+
+
+21 (B11221_Hil1_tr21) ... 5 (B11221_Hil1_tr5)
+lnL = -275.862246
+  3.89595  0.09082
+
+t= 3.8960  S=    47.2  N=    84.8  dN/dS=  0.0908  dN = 0.2834  dS = 3.1210
+
+
+21 (B11221_Hil1_tr21) ... 6 (B11221_Hil1_tr6)
+lnL = -274.031095
+  7.18158  0.04863
+
+t= 7.1816  S=    47.7  N=    84.3  dN/dS=  0.0486  dN = 0.2969  dS = 6.1055
+
+
+21 (B11221_Hil1_tr21) ... 7 (B11221_Hil1_tr7)
+lnL = -262.686880
+ 50.00000  0.00349
+
+t= 50.0000  S=    47.5  N=    84.5  dN/dS=  0.0035  dN = 0.1608  dS =46.0201
+
+
+21 (B11221_Hil1_tr21) ... 8 (B11221_Hil1_tr8)
+lnL = -269.636884
+ 50.00000  0.00445
+
+t= 50.0000  S=    46.1  N=    85.9  dN/dS=  0.0044  dN = 0.2106  dS =47.3384
+
+
+21 (B11221_Hil1_tr21) ... 9 (B11221_Hil1_tr9)
+lnL = -267.796347
+ 22.63856  0.00959
+
+t= 22.6386  S=    42.6  N=    89.4  dN/dS=  0.0096  dN = 0.2200  dS =22.9273
+
+
+21 (B11221_Hil1_tr21) ... 10 (B11221_Hil1_tr10)
+lnL = -255.825289
+  2.22798  0.09970
+
+t= 2.2280  S=    46.5  N=    85.5  dN/dS=  0.0997  dN = 0.1778  dS = 1.7830
+
+
+21 (B11221_Hil1_tr21) ... 11 (B11221_Hil1_tr11)
+lnL = -271.684017
+  4.88535  0.07101
+
+t= 4.8853  S=    46.5  N=    85.5  dN/dS=  0.0710  dN = 0.2903  dS = 4.0883
+
+
+21 (B11221_Hil1_tr21) ... 12 (B11221_Hil1_tr12)
+lnL = -272.617747
+ 50.00000  0.00467
+
+t= 50.0000  S=    45.2  N=    86.8  dN/dS=  0.0047  dN = 0.2252  dS =48.2418
+
+
+21 (B11221_Hil1_tr21) ... 13 (B11221_Hil1_tr13)
+lnL = -278.502797
+  6.82618  0.05604
+
+t= 6.8262  S=    47.6  N=    84.4  dN/dS=  0.0560  dN = 0.3218  dS = 5.7426
+
+
+21 (B11221_Hil1_tr21) ... 14 (B11221_Hil1_tr14)
+lnL = -279.634547
+  3.38469  0.15393
+
+t= 3.3847  S=    45.5  N=    86.5  dN/dS=  0.1539  dN = 0.3900  dS = 2.5339
+
+
+21 (B11221_Hil1_tr21) ... 15 (B11221_Hil1_tr15)
+lnL = -273.383205
+  8.23762  0.03108
+
+t= 8.2376  S=    42.2  N=    89.8  dN/dS=  0.0311  dN = 0.2506  dS = 8.0624
+
+
+21 (B11221_Hil1_tr21) ... 16 (B11221_Hil1_tr16)
+lnL = -262.093776
+ 21.39222  0.00990
+
+t= 21.3922  S=    47.0  N=    85.0  dN/dS=  0.0099  dN = 0.1948  dS =19.6872
+
+
+21 (B11221_Hil1_tr21) ... 17 (B11221_Hil1_tr17)
+lnL = -262.476378
+ 28.00652  0.00793
+
+t= 28.0065  S=    45.5  N=    86.5  dN/dS=  0.0079  dN = 0.2116  dS =26.6643
+
+
+21 (B11221_Hil1_tr21) ... 18 (B11221_Hil1_tr18)
+lnL = -262.056016
+  4.11797  0.05336
+
+t= 4.1180  S=    46.5  N=    85.5  dN/dS=  0.0534  dN = 0.1892  dS = 3.5460
+
+
+21 (B11221_Hil1_tr21) ... 19 (B11221_Hil1_tr19)
+lnL = -274.122241
+ 10.01824  0.02920
+
+t= 10.0182  S=    45.5  N=    86.5  dN/dS=  0.0292  dN = 0.2683  dS = 9.1870
+
+
+21 (B11221_Hil1_tr21) ... 20 (B11221_Hil1_tr20)
+lnL = -264.501521
+ 50.00000  0.00400
+
+t= 50.0000  S=    45.6  N=    86.4  dN/dS=  0.0040  dN = 0.1916  dS =47.8614
+
+
+22 (B11221_Hil1_tr22) ... 1 (B11221_Hil1_tr1)
+lnL = -285.143013
+  5.10758  0.09423
+
+t= 5.1076  S=    48.3  N=    83.7  dN/dS=  0.0942  dN = 0.3768  dS = 3.9983
+
+
+22 (B11221_Hil1_tr22) ... 2 (B11221_Hil1_tr2)
+lnL = -277.733813
+ 50.00000  0.00546
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0055  dN = 0.2499  dS =45.7351
+
+
+22 (B11221_Hil1_tr22) ... 3 (B11221_Hil1_tr3)
+lnL = -286.292684
+ 50.00000  0.00797
+
+t= 50.0000  S=    46.7  N=    85.3  dN/dS=  0.0080  dN = 0.3700  dS =46.4352
+
+
+22 (B11221_Hil1_tr22) ... 4 (B11221_Hil1_tr4)
+lnL = -288.182853
+ 15.44048  0.02357
+
+t= 15.4405  S=    45.7  N=    86.3  dN/dS=  0.0236  dN = 0.3356  dS =14.2389
+
+
+22 (B11221_Hil1_tr22) ... 5 (B11221_Hil1_tr5)
+lnL = -292.657933
+  8.20629  0.06464
+
+t= 8.2063  S=    48.9  N=    83.1  dN/dS=  0.0646  dN = 0.4303  dS = 6.6561
+
+
+22 (B11221_Hil1_tr22) ... 6 (B11221_Hil1_tr6)
+lnL = -277.658746
+  5.25307  0.07276
+
+t= 5.2531  S=    48.6  N=    83.4  dN/dS=  0.0728  dN = 0.3079  dS = 4.2309
+
+
+22 (B11221_Hil1_tr22) ... 7 (B11221_Hil1_tr7)
+lnL = -273.859003
+ 22.11213  0.01223
+
+t= 22.1121  S=    49.8  N=    82.2  dN/dS=  0.0122  dN = 0.2342  dS =19.1485
+
+
+22 (B11221_Hil1_tr22) ... 8 (B11221_Hil1_tr8)
+lnL = -271.541044
+ 22.17209  0.01173
+
+t= 22.1721  S=    46.7  N=    85.3  dN/dS=  0.0117  dN = 0.2400  dS =20.4671
+
+
+22 (B11221_Hil1_tr22) ... 9 (B11221_Hil1_tr9)
+lnL = -291.055297
+ 30.64610  0.01433
+
+t= 30.6461  S=    44.8  N=    87.2  dN/dS=  0.0143  dN = 0.4198  dS =29.2984
+
+
+22 (B11221_Hil1_tr22) ... 10 (B11221_Hil1_tr10)
+lnL = -268.287233
+  2.99583  0.10140
+
+t= 2.9958  S=    47.4  N=    84.6  dN/dS=  0.1014  dN = 0.2387  dS = 2.3539
+
+
+22 (B11221_Hil1_tr22) ... 11 (B11221_Hil1_tr11)
+lnL = -282.026247
+  5.78603  0.07471
+
+t= 5.7860  S=    47.9  N=    84.1  dN/dS=  0.0747  dN = 0.3508  dS = 4.6958
+
+
+22 (B11221_Hil1_tr22) ... 12 (B11221_Hil1_tr12)
+lnL = -284.281796
+ 50.00000  0.00625
+
+t= 50.0000  S=    47.3  N=    84.7  dN/dS=  0.0062  dN = 0.2872  dS =45.9698
+
+
+22 (B11221_Hil1_tr22) ... 13 (B11221_Hil1_tr13)
+lnL = -293.033112
+ 50.00000  0.01009
+
+t= 50.0000  S=    47.3  N=    84.7  dN/dS=  0.0101  dN = 0.4608  dS =45.6611
+
+
+22 (B11221_Hil1_tr22) ... 14 (B11221_Hil1_tr14)
+lnL = -279.258483
+  8.20292  0.05011
+
+t= 8.2029  S=    46.4  N=    85.6  dN/dS=  0.0501  dN = 0.3565  dS = 7.1140
+
+
+22 (B11221_Hil1_tr22) ... 15 (B11221_Hil1_tr15)
+lnL = -292.494867
+ 16.47059  0.02702
+
+t= 16.4706  S=    43.9  N=    88.1  dN/dS=  0.0270  dN = 0.4227  dS =15.6433
+
+
+22 (B11221_Hil1_tr22) ... 16 (B11221_Hil1_tr16)
+lnL = -254.458522
+ 37.11296  0.00418
+
+t= 37.1130  S=    47.6  N=    84.4  dN/dS=  0.0042  dN = 0.1423  dS =34.0265
+
+
+22 (B11221_Hil1_tr22) ... 17 (B11221_Hil1_tr17)
+lnL = -281.493961
+ 50.00000  0.00758
+
+t= 50.0000  S=    47.4  N=    84.6  dN/dS=  0.0076  dN = 0.3472  dS =45.8271
+
+
+22 (B11221_Hil1_tr22) ... 18 (B11221_Hil1_tr18)
+lnL = -279.074251
+  2.25822  0.24300
+
+t= 2.2582  S=    47.8  N=    84.2  dN/dS=  0.2430  dN = 0.3537  dS = 1.4555
+
+
+22 (B11221_Hil1_tr22) ... 19 (B11221_Hil1_tr19)
+lnL = -293.529826
+  4.37168  0.13841
+
+t= 4.3717  S=    47.4  N=    84.6  dN/dS=  0.1384  dN = 0.4503  dS = 3.2534
+
+
+22 (B11221_Hil1_tr22) ... 20 (B11221_Hil1_tr20)
+lnL = -276.678803
+ 34.67483  0.00907
+
+t= 34.6748  S=    47.6  N=    84.4  dN/dS=  0.0091  dN = 0.2861  dS =31.5563
+
+
+22 (B11221_Hil1_tr22) ... 21 (B11221_Hil1_tr21)
+lnL = -274.579796
+  5.32656  0.06851
+
+t= 5.3266  S=    46.8  N=    85.2  dN/dS=  0.0685  dN = 0.3053  dS = 4.4564
+
+
+23 (B11221_Hil1_tr23) ... 1 (B11221_Hil1_tr1)
+lnL = -260.655285
+ 17.61401  0.01074
+
+t= 17.6140  S=    47.5  N=    84.5  dN/dS=  0.0107  dN = 0.1719  dS =16.0086
+
+
+23 (B11221_Hil1_tr23) ... 2 (B11221_Hil1_tr2)
+lnL = -281.006521
+ 50.00000  0.00612
+
+t= 50.0000  S=    48.2  N=    83.8  dN/dS=  0.0061  dN = 0.2766  dS =45.1813
+
+
+23 (B11221_Hil1_tr23) ... 3 (B11221_Hil1_tr3)
+lnL = -262.028130
+ 50.00000  0.00349
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0035  dN = 0.1605  dS =45.9271
+
+
+23 (B11221_Hil1_tr23) ... 4 (B11221_Hil1_tr4)
+lnL = -290.559298
+  3.52023  0.13922
+
+t= 3.5202  S=    47.2  N=    84.8  dN/dS=  0.1392  dN = 0.3653  dS = 2.6240
+
+
+23 (B11221_Hil1_tr23) ... 5 (B11221_Hil1_tr5)
+lnL = -257.009500
+ 32.47107  0.00515
+
+t= 32.4711  S=    49.9  N=    82.1  dN/dS=  0.0052  dN = 0.1464  dS =28.4185
+
+
+23 (B11221_Hil1_tr23) ... 6 (B11221_Hil1_tr6)
+lnL = -261.505323
+ 24.32084  0.00828
+
+t= 24.3208  S=    48.9  N=    83.1  dN/dS=  0.0083  dN = 0.1789  dS =21.5986
+
+
+23 (B11221_Hil1_tr23) ... 7 (B11221_Hil1_tr7)
+lnL = -260.199963
+ 50.00000  0.00340
+
+t= 50.0000  S=    50.8  N=    81.2  dN/dS=  0.0034  dN = 0.1465  dS =43.0763
+
+
+23 (B11221_Hil1_tr23) ... 8 (B11221_Hil1_tr8)
+lnL = -274.058006
+ 44.69017  0.00551
+
+t= 44.6902  S=    46.8  N=    85.2  dN/dS=  0.0055  dN = 0.2290  dS =41.5569
+
+
+23 (B11221_Hil1_tr23) ... 9 (B11221_Hil1_tr9)
+lnL = -247.503630
+ 20.55888  0.00492
+
+t= 20.5589  S=    46.9  N=    85.1  dN/dS=  0.0049  dN = 0.0941  dS =19.1347
+
+
+23 (B11221_Hil1_tr23) ... 10 (B11221_Hil1_tr10)
+lnL = -267.584737
+ 39.91450  0.00584
+
+t= 39.9145  S=    47.3  N=    84.7  dN/dS=  0.0058  dN = 0.2146  dS =36.7587
+
+
+23 (B11221_Hil1_tr23) ... 11 (B11221_Hil1_tr11)
+lnL = -267.043509
+ 43.01624  0.00564
+
+t= 43.0162  S=    48.8  N=    83.2  dN/dS=  0.0056  dN = 0.2164  dS =38.3977
+
+
+23 (B11221_Hil1_tr23) ... 12 (B11221_Hil1_tr12)
+lnL = -272.083281
+ 50.00000  0.00487
+
+t= 50.0000  S=    47.3  N=    84.7  dN/dS=  0.0049  dN = 0.2245  dS =46.0642
+
+
+23 (B11221_Hil1_tr23) ... 13 (B11221_Hil1_tr13)
+lnL = -253.000088
+  1.93021  0.11419
+
+t= 1.9302  S=    47.7  N=    84.3  dN/dS=  0.1142  dN = 0.1693  dS = 1.4823
+
+
+23 (B11221_Hil1_tr23) ... 14 (B11221_Hil1_tr14)
+lnL = -278.729710
+ 50.00000  0.00691
+
+t= 50.0000  S=    47.1  N=    84.9  dN/dS=  0.0069  dN = 0.3190  dS =46.1638
+
+
+23 (B11221_Hil1_tr23) ... 15 (B11221_Hil1_tr15)
+lnL = -258.858721
+  2.75045  0.06766
+
+t= 2.7505  S=    46.4  N=    85.6  dN/dS=  0.0677  dN = 0.1570  dS = 2.3206
+
+
+23 (B11221_Hil1_tr23) ... 16 (B11221_Hil1_tr16)
+lnL = -270.903652
+ 37.03127  0.00706
+
+t= 37.0313  S=    47.9  N=    84.1  dN/dS=  0.0071  dN = 0.2372  dS =33.5727
+
+
+23 (B11221_Hil1_tr23) ... 17 (B11221_Hil1_tr17)
+lnL = -255.047942
+  7.43343  0.02418
+
+t= 7.4334  S=    49.8  N=    82.2  dN/dS=  0.0242  dN = 0.1528  dS = 6.3198
+
+
+23 (B11221_Hil1_tr23) ... 18 (B11221_Hil1_tr18)
+lnL = -265.557103
+ 26.52727  0.00758
+
+t= 26.5273  S=    49.0  N=    83.0  dN/dS=  0.0076  dN = 0.1782  dS =23.5025
+
+
+23 (B11221_Hil1_tr23) ... 19 (B11221_Hil1_tr19)
+lnL = -264.104253
+ 35.91768  0.00553
+
+t= 35.9177  S=    48.9  N=    83.1  dN/dS=  0.0055  dN = 0.1771  dS =32.0061
+
+
+23 (B11221_Hil1_tr23) ... 20 (B11221_Hil1_tr20)
+lnL = -253.110667
+ 50.00000  0.00252
+
+t= 50.0000  S=    49.0  N=    83.0  dN/dS=  0.0025  dN = 0.1127  dS =44.6800
+
+
+23 (B11221_Hil1_tr23) ... 21 (B11221_Hil1_tr21)
+lnL = -264.255944
+  2.52458  0.11458
+
+t= 2.5246  S=    47.8  N=    84.2  dN/dS=  0.1146  dN = 0.2215  dS = 1.9330
+
+
+23 (B11221_Hil1_tr23) ... 22 (B11221_Hil1_tr22)
+lnL = -290.587363
+ 37.92958  0.01364
+
+t= 37.9296  S=    48.3  N=    83.7  dN/dS=  0.0136  dN = 0.4603  dS =33.7428
+
+
+24 (B11221_Hil1_tr24) ... 1 (B11221_Hil1_tr1)
+lnL = -267.506805
+  7.25635  0.03088
+
+t= 7.2563  S=    43.9  N=    88.1  dN/dS=  0.0309  dN = 0.2113  dS = 6.8428
+
+
+24 (B11221_Hil1_tr24) ... 2 (B11221_Hil1_tr2)
+lnL = -274.813921
+ 50.00000  0.00469
+
+t= 50.0000  S=    41.5  N=    90.5  dN/dS=  0.0047  dN = 0.2465  dS =52.5232
+
+
+24 (B11221_Hil1_tr24) ... 3 (B11221_Hil1_tr3)
+lnL = -257.983978
+ 50.00000  0.00282
+
+t= 50.0000  S=    39.9  N=    92.1  dN/dS=  0.0028  dN = 0.1543  dS =54.7254
+
+
+24 (B11221_Hil1_tr24) ... 4 (B11221_Hil1_tr4)
+lnL = -287.354568
+  2.47007  0.20122
+
+t= 2.4701  S=    39.2  N=    92.8  dN/dS=  0.2012  dN = 0.3777  dS = 1.8772
+
+
+24 (B11221_Hil1_tr24) ... 5 (B11221_Hil1_tr5)
+lnL = -273.961565
+ 31.54656  0.00721
+
+t= 31.5466  S=    42.6  N=    89.4  dN/dS=  0.0072  dN = 0.2315  dS =32.1028
+
+
+24 (B11221_Hil1_tr24) ... 6 (B11221_Hil1_tr6)
+lnL = -278.421682
+  8.29763  0.04515
+
+t= 8.2976  S=    43.3  N=    88.7  dN/dS=  0.0452  dN = 0.3485  dS = 7.7194
+
+
+24 (B11221_Hil1_tr24) ... 7 (B11221_Hil1_tr7)
+lnL = -275.062825
+ 50.00000  0.00482
+
+t= 50.0000  S=    42.9  N=    89.1  dN/dS=  0.0048  dN = 0.2444  dS =50.7289
+
+
+24 (B11221_Hil1_tr24) ... 8 (B11221_Hil1_tr8)
+lnL = -280.921654
+ 29.11914  0.01003
+
+t= 29.1191  S=    41.9  N=    90.1  dN/dS=  0.0100  dN = 0.2999  dS =29.9021
+
+
+24 (B11221_Hil1_tr24) ... 9 (B11221_Hil1_tr9)
+lnL = -267.624760
+ 12.78441  0.01524
+
+t= 12.7844  S=    37.6  N=    94.4  dN/dS=  0.0152  dN = 0.2195  dS =14.4033
+
+
+24 (B11221_Hil1_tr24) ... 10 (B11221_Hil1_tr10)
+lnL = -275.290055
+ 14.66631  0.02173
+
+t= 14.6663  S=    42.5  N=    89.5  dN/dS=  0.0217  dN = 0.3156  dS =14.5259
+
+
+24 (B11221_Hil1_tr24) ... 11 (B11221_Hil1_tr11)
+lnL = -265.143619
+ 23.35581  0.00891
+
+t= 23.3558  S=    41.8  N=    90.2  dN/dS=  0.0089  dN = 0.2147  dS =24.1021
+
+
+24 (B11221_Hil1_tr24) ... 12 (B11221_Hil1_tr12)
+lnL = -277.907825
+ 50.00000  0.00522
+
+t= 50.0000  S=    41.3  N=    90.7  dN/dS=  0.0052  dN = 0.2748  dS =52.6906
+
+
+24 (B11221_Hil1_tr24) ... 13 (B11221_Hil1_tr13)
+lnL = -270.305784
+ 50.00000  0.00457
+
+t= 50.0000  S=    43.3  N=    88.7  dN/dS=  0.0046  dN = 0.2297  dS =50.3125
+
+
+24 (B11221_Hil1_tr24) ... 14 (B11221_Hil1_tr14)
+lnL = -274.465318
+  2.04293  0.18937
+
+t= 2.0429  S=    41.1  N=    90.9  dN/dS=  0.1894  dN = 0.2919  dS = 1.5415
+
+
+24 (B11221_Hil1_tr24) ... 15 (B11221_Hil1_tr15)
+lnL = -269.344862
+ 43.84719  0.00413
+
+t= 43.8472  S=    37.0  N=    95.0  dN/dS=  0.0041  dN = 0.2127  dS =51.5409
+
+
+24 (B11221_Hil1_tr24) ... 16 (B11221_Hil1_tr16)
+lnL = -267.260514
+  2.02542  0.16028
+
+t= 2.0254  S=    42.8  N=    89.2  dN/dS=  0.1603  dN = 0.2503  dS = 1.5618
+
+
+24 (B11221_Hil1_tr24) ... 17 (B11221_Hil1_tr17)
+lnL = -272.173203
+ 21.01454  0.01270
+
+t= 21.0145  S=    40.2  N=    91.8  dN/dS=  0.0127  dN = 0.2840  dS =22.3623
+
+
+24 (B11221_Hil1_tr24) ... 18 (B11221_Hil1_tr18)
+lnL = -272.622030
+ 15.46355  0.01561
+
+t= 15.4636  S=    41.7  N=    90.3  dN/dS=  0.0156  dN = 0.2461  dS =15.7701
+
+
+24 (B11221_Hil1_tr24) ... 19 (B11221_Hil1_tr19)
+lnL = -278.800820
+ 34.07194  0.00836
+
+t= 34.0719  S=    40.5  N=    91.5  dN/dS=  0.0084  dN = 0.3035  dS =36.2949
+
+
+24 (B11221_Hil1_tr24) ... 20 (B11221_Hil1_tr20)
+lnL = -268.175567
+  3.18167  0.07053
+
+t= 3.1817  S=    40.8  N=    91.2  dN/dS=  0.0705  dN = 0.2092  dS = 2.9662
+
+
+24 (B11221_Hil1_tr24) ... 21 (B11221_Hil1_tr21)
+lnL = -276.143579
+  8.46928  0.03932
+
+t= 8.4693  S=    40.1  N=    91.9  dN/dS=  0.0393  dN = 0.3350  dS = 8.5188
+
+
+24 (B11221_Hil1_tr24) ... 22 (B11221_Hil1_tr22)
+lnL = -282.133621
+  2.94695  0.17488
+
+t= 2.9469  S=    42.4  N=    89.6  dN/dS=  0.1749  dN = 0.3907  dS = 2.2342
+
+
+24 (B11221_Hil1_tr24) ... 23 (B11221_Hil1_tr23)
+lnL = -275.991305
+ 50.00000  0.00569
+
+t= 50.0000  S=    44.1  N=    87.9  dN/dS=  0.0057  dN = 0.2805  dS =49.3318
+
+
+25 (B11221_Hil1_tr25) ... 1 (B11221_Hil1_tr1)
+lnL = -263.113724
+  1.22271  0.18193
+
+t= 1.2227  S=    47.7  N=    84.3  dN/dS=  0.1819  dN = 0.1552  dS = 0.8531
+
+
+25 (B11221_Hil1_tr25) ... 2 (B11221_Hil1_tr2)
+lnL = -281.336656
+  2.54325  0.11776
+
+t= 2.5432  S=    46.5  N=    85.5  dN/dS=  0.1178  dN = 0.2330  dS = 1.9789
+
+
+25 (B11221_Hil1_tr25) ... 3 (B11221_Hil1_tr3)
+lnL = -268.119002
+ 50.00000  0.00341
+
+t= 50.0000  S=    45.4  N=    86.6  dN/dS=  0.0034  dN = 0.1640  dS =48.1327
+
+
+25 (B11221_Hil1_tr25) ... 4 (B11221_Hil1_tr4)
+lnL = -283.031622
+ 29.90815  0.00796
+
+t= 29.9082  S=    44.8  N=    87.2  dN/dS=  0.0080  dN = 0.2306  dS =28.9569
+
+
+25 (B11221_Hil1_tr25) ... 5 (B11221_Hil1_tr5)
+lnL = -277.227902
+ 25.28094  0.00898
+
+t= 25.2809  S=    47.7  N=    84.3  dN/dS=  0.0090  dN = 0.2062  dS =22.9756
+
+
+25 (B11221_Hil1_tr25) ... 6 (B11221_Hil1_tr6)
+lnL = -274.223017
+  3.35334  0.08375
+
+t= 3.3533  S=    47.7  N=    84.3  dN/dS=  0.0838  dN = 0.2255  dS = 2.6922
+
+
+25 (B11221_Hil1_tr25) ... 7 (B11221_Hil1_tr7)
+lnL = -266.796678
+ 18.75572  0.01008
+
+t= 18.7557  S=    48.1  N=    83.9  dN/dS=  0.0101  dN = 0.1699  dS =16.8508
+
+
+25 (B11221_Hil1_tr25) ... 8 (B11221_Hil1_tr8)
+lnL = -274.684101
+ 17.48494  0.01326
+
+t= 17.4849  S=    46.2  N=    85.8  dN/dS=  0.0133  dN = 0.2155  dS =16.2497
+
+
+25 (B11221_Hil1_tr25) ... 9 (B11221_Hil1_tr9)
+lnL = -266.650900
+ 22.81445  0.00713
+
+t= 22.8144  S=    44.1  N=    87.9  dN/dS=  0.0071  dN = 0.1602  dS =22.4553
+
+
+25 (B11221_Hil1_tr25) ... 10 (B11221_Hil1_tr10)
+lnL = -279.538443
+ 31.81302  0.00831
+
+t= 31.8130  S=    46.8  N=    85.2  dN/dS=  0.0083  dN = 0.2447  dS =29.4350
+
+
+25 (B11221_Hil1_tr25) ... 11 (B11221_Hil1_tr11)
+lnL = -279.189677
+ 36.01177  0.00773
+
+t= 36.0118  S=    47.0  N=    85.0  dN/dS=  0.0077  dN = 0.2570  dS =33.2655
+
+
+25 (B11221_Hil1_tr25) ... 12 (B11221_Hil1_tr12)
+lnL = -266.982811
+ 50.00000  0.00335
+
+t= 50.0000  S=    45.9  N=    86.1  dN/dS=  0.0033  dN = 0.1596  dS =47.6776
+
+
+25 (B11221_Hil1_tr25) ... 13 (B11221_Hil1_tr13)
+lnL = -271.125293
+  2.07360  0.13519
+
+t= 2.0736  S=    47.2  N=    84.8  dN/dS=  0.1352  dN = 0.2104  dS = 1.5562
+
+
+25 (B11221_Hil1_tr25) ... 14 (B11221_Hil1_tr14)
+lnL = -271.601495
+  2.24421  0.13906
+
+t= 2.2442  S=    46.2  N=    85.8  dN/dS=  0.1391  dN = 0.2361  dS = 1.6979
+
+
+25 (B11221_Hil1_tr25) ... 15 (B11221_Hil1_tr15)
+lnL = -273.401505
+  5.00125  0.04154
+
+t= 5.0013  S=    43.3  N=    88.7  dN/dS=  0.0415  dN = 0.1946  dS = 4.6860
+
+
+25 (B11221_Hil1_tr25) ... 16 (B11221_Hil1_tr16)
+lnL = -272.737581
+ 37.36705  0.00596
+
+t= 37.3671  S=    47.2  N=    84.8  dN/dS=  0.0060  dN = 0.2053  dS =34.4297
+
+
+25 (B11221_Hil1_tr25) ... 17 (B11221_Hil1_tr17)
+lnL = -268.565013
+  5.01874  0.04353
+
+t= 5.0187  S=    46.6  N=    85.4  dN/dS=  0.0435  dN = 0.1910  dS = 4.3882
+
+
+25 (B11221_Hil1_tr25) ... 18 (B11221_Hil1_tr18)
+lnL = -279.477595
+  2.45604  0.12172
+
+t= 2.4560  S=    46.9  N=    85.1  dN/dS=  0.1217  dN = 0.2299  dS = 1.8886
+
+
+25 (B11221_Hil1_tr25) ... 19 (B11221_Hil1_tr19)
+lnL = -279.489053
+ 34.34790  0.00735
+
+t= 34.3479  S=    46.2  N=    85.8  dN/dS=  0.0074  dN = 0.2372  dS =32.2595
+
+
+25 (B11221_Hil1_tr25) ... 20 (B11221_Hil1_tr20)
+lnL = -270.486603
+ 23.98318  0.00891
+
+t= 23.9832  S=    46.5  N=    85.5  dN/dS=  0.0089  dN = 0.1991  dS =22.3503
+
+
+25 (B11221_Hil1_tr25) ... 21 (B11221_Hil1_tr21)
+lnL = -275.960736
+  8.90674  0.03052
+
+t= 8.9067  S=    46.0  N=    86.0  dN/dS=  0.0305  dN = 0.2461  dS = 8.0631
+
+
+25 (B11221_Hil1_tr25) ... 22 (B11221_Hil1_tr22)
+lnL = -286.409399
+  5.41089  0.07724
+
+t= 5.4109  S=    47.3  N=    84.7  dN/dS=  0.0772  dN = 0.3417  dS = 4.4237
+
+
+25 (B11221_Hil1_tr25) ... 23 (B11221_Hil1_tr23)
+lnL = -267.479499
+  4.02928  0.05742
+
+t= 4.0293  S=    48.0  N=    84.0  dN/dS=  0.0574  dN = 0.1927  dS = 3.3568
+
+
+25 (B11221_Hil1_tr25) ... 24 (B11221_Hil1_tr24)
+lnL = -279.364385
+ 22.83598  0.01163
+
+t= 22.8360  S=    41.7  N=    90.3  dN/dS=  0.0116  dN = 0.2732  dS =23.4985
+
+
+26 (B11221_Hil1_tr26) ... 1 (B11221_Hil1_tr1)
+lnL = -279.139787
+ 14.74048  0.02067
+
+t= 14.7405  S=    46.6  N=    85.4  dN/dS=  0.0207  dN = 0.2771  dS =13.4049
+
+
+26 (B11221_Hil1_tr26) ... 2 (B11221_Hil1_tr2)
+lnL = -279.313088
+ 50.00000  0.00500
+
+t= 50.0000  S=    45.6  N=    86.4  dN/dS=  0.0050  dN = 0.2387  dS =47.7576
+
+
+26 (B11221_Hil1_tr26) ... 3 (B11221_Hil1_tr3)
+lnL = -276.024452
+ 50.00000  0.00491
+
+t= 50.0000  S=    44.7  N=    87.3  dN/dS=  0.0049  dN = 0.2393  dS =48.7164
+
+
+26 (B11221_Hil1_tr26) ... 4 (B11221_Hil1_tr4)
+lnL = -283.652309
+  3.59396  0.08579
+
+t= 3.5940  S=    44.0  N=    88.0  dN/dS=  0.0858  dN = 0.2630  dS = 3.0652
+
+
+26 (B11221_Hil1_tr26) ... 5 (B11221_Hil1_tr5)
+lnL = -283.008997
+ 50.00000  0.00616
+
+t= 50.0000  S=    47.0  N=    85.0  dN/dS=  0.0062  dN = 0.2852  dS =46.2856
+
+
+26 (B11221_Hil1_tr26) ... 6 (B11221_Hil1_tr6)
+lnL = -278.087322
+ 50.00000  0.00579
+
+t= 50.0000  S=    46.9  N=    85.1  dN/dS=  0.0058  dN = 0.2687  dS =46.3848
+
+
+26 (B11221_Hil1_tr26) ... 7 (B11221_Hil1_tr7)
+lnL = -269.277165
+ 50.00000  0.00349
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0035  dN = 0.1604  dS =45.9049
+
+
+26 (B11221_Hil1_tr26) ... 8 (B11221_Hil1_tr8)
+lnL = -273.492480
+ 50.00000  0.00388
+
+t= 50.0000  S=    45.2  N=    86.8  dN/dS=  0.0039  dN = 0.1874  dS =48.3223
+
+
+26 (B11221_Hil1_tr26) ... 9 (B11221_Hil1_tr9)
+lnL = -280.556555
+ 50.00000  0.00545
+
+t= 50.0000  S=    43.2  N=    88.8  dN/dS=  0.0055  dN = 0.2745  dS =50.3304
+
+
+26 (B11221_Hil1_tr26) ... 10 (B11221_Hil1_tr10)
+lnL = -273.865948
+ 50.00000  0.00492
+
+t= 50.0000  S=    45.9  N=    86.1  dN/dS=  0.0049  dN = 0.2336  dS =47.5011
+
+
+26 (B11221_Hil1_tr26) ... 11 (B11221_Hil1_tr11)
+lnL = -278.658566
+ 50.00000  0.00614
+
+t= 50.0000  S=    46.3  N=    85.7  dN/dS=  0.0061  dN = 0.2886  dS =47.0103
+
+
+26 (B11221_Hil1_tr26) ... 12 (B11221_Hil1_tr12)
+lnL = -267.095235
+ 50.00000  0.00317
+
+t= 50.0000  S=    45.2  N=    86.8  dN/dS=  0.0032  dN = 0.1532  dS =48.3850
+
+
+26 (B11221_Hil1_tr26) ... 13 (B11221_Hil1_tr13)
+lnL = -283.165922
+  4.25201  0.09802
+
+t= 4.2520  S=    46.1  N=    85.9  dN/dS=  0.0980  dN = 0.3365  dS = 3.4330
+
+
+26 (B11221_Hil1_tr26) ... 14 (B11221_Hil1_tr14)
+lnL = -261.515026
+ 16.33621  0.01262
+
+t= 16.3362  S=    45.1  N=    86.9  dN/dS=  0.0126  dN = 0.1964  dS =15.5701
+
+
+26 (B11221_Hil1_tr26) ... 15 (B11221_Hil1_tr15)
+lnL = -279.482327
+  3.85036  0.08100
+
+t= 3.8504  S=    42.5  N=    89.5  dN/dS=  0.0810  dN = 0.2760  dS = 3.4075
+
+
+26 (B11221_Hil1_tr26) ... 16 (B11221_Hil1_tr16)
+lnL = -271.212741
+ 50.00000  0.00455
+
+t= 50.0000  S=    46.2  N=    85.8  dN/dS=  0.0045  dN = 0.2146  dS =47.2086
+
+
+26 (B11221_Hil1_tr26) ... 17 (B11221_Hil1_tr17)
+lnL = -279.024888
+ 50.00000  0.00584
+
+t= 50.0000  S=    45.9  N=    86.1  dN/dS=  0.0058  dN = 0.2770  dS =47.4616
+
+
+26 (B11221_Hil1_tr26) ... 18 (B11221_Hil1_tr18)
+lnL = -280.571595
+ 50.00000  0.00598
+
+t= 50.0000  S=    46.1  N=    85.9  dN/dS=  0.0060  dN = 0.2823  dS =47.1739
+
+
+26 (B11221_Hil1_tr26) ... 19 (B11221_Hil1_tr19)
+lnL = -283.669573
+ 50.00000  0.00609
+
+t= 50.0000  S=    45.6  N=    86.4  dN/dS=  0.0061  dN = 0.2903  dS =47.6776
+
+
+26 (B11221_Hil1_tr26) ... 20 (B11221_Hil1_tr20)
+lnL = -275.907043
+ 50.00000  0.00476
+
+t= 50.0000  S=    45.8  N=    86.2  dN/dS=  0.0048  dN = 0.2265  dS =47.6141
+
+
+26 (B11221_Hil1_tr26) ... 21 (B11221_Hil1_tr21)
+lnL = -276.755908
+ 50.00000  0.00562
+
+t= 50.0000  S=    45.1  N=    86.9  dN/dS=  0.0056  dN = 0.2712  dS =48.2143
+
+
+26 (B11221_Hil1_tr26) ... 22 (B11221_Hil1_tr22)
+lnL = -276.796580
+ 27.06435  0.01114
+
+t= 27.0644  S=    46.2  N=    85.8  dN/dS=  0.0111  dN = 0.2813  dS =25.2615
+
+
+26 (B11221_Hil1_tr26) ... 23 (B11221_Hil1_tr23)
+lnL = -281.692647
+  6.43770  0.06049
+
+t= 6.4377  S=    47.0  N=    85.0  dN/dS=  0.0605  dN = 0.3289  dS = 5.4368
+
+
+26 (B11221_Hil1_tr26) ... 24 (B11221_Hil1_tr24)
+lnL = -282.484972
+ 50.00000  0.00642
+
+t= 50.0000  S=    40.7  N=    91.3  dN/dS=  0.0064  dN = 0.3417  dS =53.2711
+
+
+26 (B11221_Hil1_tr26) ... 25 (B11221_Hil1_tr25)
+lnL = -275.697393
+  5.92694  0.04235
+
+t= 5.9269  S=    45.6  N=    86.4  dN/dS=  0.0423  dN = 0.2243  dS = 5.2958
+
+
+27 (B11221_Hil1_tr27) ... 1 (B11221_Hil1_tr1)
+lnL = -282.145457
+ 50.00000  0.00491
+
+t= 50.0000  S=    47.9  N=    84.1  dN/dS=  0.0049  dN = 0.2238  dS =45.5778
+
+
+27 (B11221_Hil1_tr27) ... 2 (B11221_Hil1_tr2)
+lnL = -272.208474
+  2.56680  0.09013
+
+t= 2.5668  S=    47.7  N=    84.3  dN/dS=  0.0901  dN = 0.1842  dS = 2.0435
+
+
+27 (B11221_Hil1_tr27) ... 3 (B11221_Hil1_tr3)
+lnL = -284.371154
+  5.67719  0.05082
+
+t= 5.6772  S=    47.0  N=    85.0  dN/dS=  0.0508  dN = 0.2472  dS = 4.8645
+
+
+27 (B11221_Hil1_tr27) ... 4 (B11221_Hil1_tr4)
+lnL = -288.525311
+ 50.00000  0.00614
+
+t= 50.0000  S=    46.0  N=    86.0  dN/dS=  0.0061  dN = 0.2901  dS =47.2659
+
+
+27 (B11221_Hil1_tr27) ... 5 (B11221_Hil1_tr5)
+lnL = -262.221565
+ 50.00000  0.00277
+
+t= 50.0000  S=    48.8  N=    83.2  dN/dS=  0.0028  dN = 0.1242  dS =44.9144
+
+
+27 (B11221_Hil1_tr27) ... 6 (B11221_Hil1_tr6)
+lnL = -285.379054
+  2.82445  0.15320
+
+t= 2.8244  S=    48.5  N=    83.5  dN/dS=  0.1532  dN = 0.3105  dS = 2.0265
+
+
+27 (B11221_Hil1_tr27) ... 7 (B11221_Hil1_tr7)
+lnL = -285.227526
+ 50.00000  0.00582
+
+t= 50.0000  S=    49.5  N=    82.5  dN/dS=  0.0058  dN = 0.2562  dS =44.0464
+
+
+27 (B11221_Hil1_tr27) ... 8 (B11221_Hil1_tr8)
+lnL = -293.167039
+ 50.00000  0.00656
+
+t= 50.0000  S=    46.6  N=    85.4  dN/dS=  0.0066  dN = 0.3059  dS =46.6187
+
+
+27 (B11221_Hil1_tr27) ... 9 (B11221_Hil1_tr9)
+lnL = -285.258534
+ 50.00000  0.00500
+
+t= 50.0000  S=    45.1  N=    86.9  dN/dS=  0.0050  dN = 0.2416  dS =48.3270
+
+
+27 (B11221_Hil1_tr27) ... 10 (B11221_Hil1_tr10)
+lnL = -284.235984
+ 50.00000  0.00572
+
+t= 50.0000  S=    47.4  N=    84.6  dN/dS=  0.0057  dN = 0.2629  dS =45.9580
+
+
+27 (B11221_Hil1_tr27) ... 11 (B11221_Hil1_tr11)
+lnL = -275.459530
+ 50.00000  0.00439
+
+t= 50.0000  S=    48.1  N=    83.9  dN/dS=  0.0044  dN = 0.1989  dS =45.3512
+
+
+27 (B11221_Hil1_tr27) ... 12 (B11221_Hil1_tr12)
+lnL = -273.375054
+  5.04320  0.04830
+
+t= 5.0432  S=    47.4  N=    84.6  dN/dS=  0.0483  dN = 0.2080  dS = 4.3071
+
+
+27 (B11221_Hil1_tr27) ... 13 (B11221_Hil1_tr13)
+lnL = -271.182389
+ 50.00000  0.00373
+
+t= 50.0000  S=    47.3  N=    84.7  dN/dS=  0.0037  dN = 0.1720  dS =46.1556
+
+
+27 (B11221_Hil1_tr27) ... 14 (B11221_Hil1_tr14)
+lnL = -293.357183
+ 50.00000  0.00683
+
+t= 50.0000  S=    46.5  N=    85.5  dN/dS=  0.0068  dN = 0.3195  dS =46.7526
+
+
+27 (B11221_Hil1_tr27) ... 15 (B11221_Hil1_tr15)
+lnL = -285.894936
+ 50.00000  0.00485
+
+t= 50.0000  S=    44.3  N=    87.7  dN/dS=  0.0048  dN = 0.2385  dS =49.1879
+
+
+27 (B11221_Hil1_tr27) ... 16 (B11221_Hil1_tr16)
+lnL = -281.261179
+ 50.00000  0.00482
+
+t= 50.0000  S=    47.8  N=    84.2  dN/dS=  0.0048  dN = 0.2199  dS =45.6456
+
+
+27 (B11221_Hil1_tr27) ... 17 (B11221_Hil1_tr17)
+lnL = -286.552701
+ 50.00000  0.00608
+
+t= 50.0000  S=    47.7  N=    84.3  dN/dS=  0.0061  dN = 0.2775  dS =45.6698
+
+
+27 (B11221_Hil1_tr27) ... 18 (B11221_Hil1_tr18)
+lnL = -288.776884
+ 50.00000  0.00618
+
+t= 50.0000  S=    48.0  N=    84.0  dN/dS=  0.0062  dN = 0.2802  dS =45.3322
+
+
+27 (B11221_Hil1_tr27) ... 19 (B11221_Hil1_tr19)
+lnL = -264.577410
+ 50.00000  0.00321
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0032  dN = 0.1474  dS =45.9922
+
+
+27 (B11221_Hil1_tr27) ... 20 (B11221_Hil1_tr20)
+lnL = -281.288312
+ 50.00000  0.00470
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0047  dN = 0.2151  dS =45.8048
+
+
+27 (B11221_Hil1_tr27) ... 21 (B11221_Hil1_tr21)
+lnL = -295.146985
+ 50.00000  0.00832
+
+t= 50.0000  S=    47.0  N=    85.0  dN/dS=  0.0083  dN = 0.3833  dS =46.0875
+
+
+27 (B11221_Hil1_tr27) ... 22 (B11221_Hil1_tr22)
+lnL = -301.540903
+ 50.00000  0.00946
+
+t= 50.0000  S=    47.5  N=    84.5  dN/dS=  0.0095  dN = 0.4307  dS =45.5185
+
+
+27 (B11221_Hil1_tr27) ... 23 (B11221_Hil1_tr23)
+lnL = -277.194369
+ 50.00000  0.00484
+
+t= 50.0000  S=    48.2  N=    83.8  dN/dS=  0.0048  dN = 0.2190  dS =45.2314
+
+
+27 (B11221_Hil1_tr27) ... 24 (B11221_Hil1_tr24)
+lnL = -285.118336
+ 50.00000  0.00501
+
+t= 50.0000  S=    42.7  N=    89.3  dN/dS=  0.0050  dN = 0.2556  dS =51.0443
+
+
+27 (B11221_Hil1_tr27) ... 25 (B11221_Hil1_tr25)
+lnL = -286.772369
+ 50.00000  0.00523
+
+t= 50.0000  S=    47.2  N=    84.8  dN/dS=  0.0052  dN = 0.2414  dS =46.1741
+
+
+27 (B11221_Hil1_tr27) ... 26 (B11221_Hil1_tr26)
+lnL = -296.423063
+ 50.00000  0.00750
+
+t= 50.0000  S=    46.1  N=    85.9  dN/dS=  0.0075  dN = 0.3527  dS =47.0331
+
+
+28 (B11221_Hil1_tr28) ... 1 (B11221_Hil1_tr1)
+lnL = -266.524864
+  2.00946  0.10567
+
+t= 2.0095  S=    46.9  N=    85.1  dN/dS=  0.1057  dN = 0.1673  dS = 1.5829
+
+
+28 (B11221_Hil1_tr28) ... 2 (B11221_Hil1_tr2)
+lnL = -276.611803
+ 50.00000  0.00466
+
+t= 50.0000  S=    46.8  N=    85.2  dN/dS=  0.0047  dN = 0.2169  dS =46.5915
+
+
+28 (B11221_Hil1_tr28) ... 3 (B11221_Hil1_tr3)
+lnL = -264.456991
+ 50.00000  0.00289
+
+t= 50.0000  S=    46.3  N=    85.7  dN/dS=  0.0029  dN = 0.1367  dS =47.2563
+
+
+28 (B11221_Hil1_tr28) ... 4 (B11221_Hil1_tr4)
+lnL = -275.057825
+ 24.59723  0.00920
+
+t= 24.5972  S=    45.2  N=    86.8  dN/dS=  0.0092  dN = 0.2165  dS =23.5210
+
+
+28 (B11221_Hil1_tr28) ... 5 (B11221_Hil1_tr5)
+lnL = -267.075050
+ 10.21630  0.01692
+
+t= 10.2163  S=    47.9  N=    84.1  dN/dS=  0.0169  dN = 0.1540  dS = 9.1048
+
+
+28 (B11221_Hil1_tr28) ... 6 (B11221_Hil1_tr6)
+lnL = -277.546387
+ 13.70933  0.02126
+
+t= 13.7093  S=    47.5  N=    84.5  dN/dS=  0.0213  dN = 0.2603  dS =12.2454
+
+
+28 (B11221_Hil1_tr28) ... 7 (B11221_Hil1_tr7)
+lnL = -277.296578
+ 11.84087  0.02034
+
+t= 11.8409  S=    48.8  N=    83.2  dN/dS=  0.0203  dN = 0.2099  dS =10.3180
+
+
+28 (B11221_Hil1_tr28) ... 8 (B11221_Hil1_tr8)
+lnL = -273.226769
+  3.35878  0.06926
+
+t= 3.3588  S=    45.6  N=    86.4  dN/dS=  0.0693  dN = 0.1985  dS = 2.8665
+
+
+28 (B11221_Hil1_tr28) ... 9 (B11221_Hil1_tr9)
+lnL = -273.507959
+  4.39780  0.04634
+
+t= 4.3978  S=    44.7  N=    87.3  dN/dS=  0.0463  dN = 0.1839  dS = 3.9684
+
+
+28 (B11221_Hil1_tr28) ... 10 (B11221_Hil1_tr10)
+lnL = -266.615175
+ 23.84366  0.00841
+
+t= 23.8437  S=    46.4  N=    85.6  dN/dS=  0.0084  dN = 0.1873  dS =22.2691
+
+
+28 (B11221_Hil1_tr28) ... 11 (B11221_Hil1_tr11)
+lnL = -273.555103
+  8.66222  0.02723
+
+t= 8.6622  S=    47.2  N=    84.8  dN/dS=  0.0272  dN = 0.2094  dS = 7.6924
+
+
+28 (B11221_Hil1_tr28) ... 12 (B11221_Hil1_tr12)
+lnL = -256.837891
+ 50.00000  0.00254
+
+t= 50.0000  S=    46.5  N=    85.5  dN/dS=  0.0025  dN = 0.1195  dS =47.1021
+
+
+28 (B11221_Hil1_tr28) ... 13 (B11221_Hil1_tr13)
+lnL = -269.118875
+  3.68811  0.05815
+
+t= 3.6881  S=    46.1  N=    85.9  dN/dS=  0.0582  dN = 0.1846  dS = 3.1753
+
+
+28 (B11221_Hil1_tr28) ... 14 (B11221_Hil1_tr14)
+lnL = -280.188154
+ 50.00000  0.00509
+
+t= 50.0000  S=    45.7  N=    86.3  dN/dS=  0.0051  dN = 0.2426  dS =47.7033
+
+
+28 (B11221_Hil1_tr28) ... 15 (B11221_Hil1_tr15)
+lnL = -279.811393
+ 21.72052  0.01000
+
+t= 21.7205  S=    43.9  N=    88.1  dN/dS=  0.0100  dN = 0.2136  dS =21.3591
+
+
+28 (B11221_Hil1_tr28) ... 16 (B11221_Hil1_tr16)
+lnL = -271.269520
+ 39.99413  0.00557
+
+t= 39.9941  S=    46.8  N=    85.2  dN/dS=  0.0056  dN = 0.2077  dS =37.2583
+
+
+28 (B11221_Hil1_tr28) ... 17 (B11221_Hil1_tr17)
+lnL = -275.201518
+ 33.18256  0.00739
+
+t= 33.1826  S=    47.2  N=    84.8  dN/dS=  0.0074  dN = 0.2256  dS =30.5423
+
+
+28 (B11221_Hil1_tr28) ... 18 (B11221_Hil1_tr18)
+lnL = -270.582342
+  2.25397  0.12002
+
+t= 2.2540  S=    47.1  N=    84.9  dN/dS=  0.1200  dN = 0.2077  dS = 1.7309
+
+
+28 (B11221_Hil1_tr28) ... 19 (B11221_Hil1_tr19)
+lnL = -267.333541
+  7.89780  0.02642
+
+t= 7.8978  S=    46.9  N=    85.1  dN/dS=  0.0264  dN = 0.1869  dS = 7.0731
+
+
+28 (B11221_Hil1_tr28) ... 20 (B11221_Hil1_tr20)
+lnL = -274.256873
+  7.06813  0.02999
+
+t= 7.0681  S=    47.0  N=    85.0  dN/dS=  0.0300  dN = 0.1882  dS = 6.2747
+
+
+28 (B11221_Hil1_tr28) ... 21 (B11221_Hil1_tr21)
+lnL = -279.816106
+  7.02261  0.04436
+
+t= 7.0226  S=    46.5  N=    85.5  dN/dS=  0.0444  dN = 0.2726  dS = 6.1444
+
+
+28 (B11221_Hil1_tr28) ... 22 (B11221_Hil1_tr22)
+lnL = -289.519253
+  3.19041  0.16252
+
+t= 3.1904  S=    46.7  N=    85.3  dN/dS=  0.1625  dN = 0.3766  dS = 2.3173
+
+
+28 (B11221_Hil1_tr28) ... 23 (B11221_Hil1_tr23)
+lnL = -279.099899
+ 21.14238  0.01209
+
+t= 21.1424  S=    47.1  N=    84.9  dN/dS=  0.0121  dN = 0.2338  dS =19.3404
+
+
+28 (B11221_Hil1_tr28) ... 24 (B11221_Hil1_tr24)
+lnL = -275.221712
+ 16.77600  0.01266
+
+t= 16.7760  S=    42.3  N=    89.7  dN/dS=  0.0127  dN = 0.2149  dS =16.9798
+
+
+28 (B11221_Hil1_tr28) ... 25 (B11221_Hil1_tr25)
+lnL = -280.237112
+  3.30098  0.08029
+
+t= 3.3010  S=    46.4  N=    85.6  dN/dS=  0.0803  dN = 0.2188  dS = 2.7252
+
+
+28 (B11221_Hil1_tr28) ... 26 (B11221_Hil1_tr26)
+lnL = -276.583227
+ 50.00000  0.00421
+
+t= 50.0000  S=    45.3  N=    86.7  dN/dS=  0.0042  dN = 0.2028  dS =48.1620
+
+
+28 (B11221_Hil1_tr28) ... 27 (B11221_Hil1_tr27)
+lnL = -271.578093
+  3.76849  0.05364
+
+t= 3.7685  S=    46.8  N=    85.2  dN/dS=  0.0536  dN = 0.1730  dS = 3.2260
+
+
+29 (B11221_Hil1_tr29) ... 1 (B11221_Hil1_tr1)
+lnL = -279.460338
+ 50.00000  0.00449
+
+t= 50.0000  S=    45.4  N=    86.6  dN/dS=  0.0045  dN = 0.2156  dS =48.0407
+
+
+29 (B11221_Hil1_tr29) ... 2 (B11221_Hil1_tr2)
+lnL = -264.471394
+ 14.33015  0.01032
+
+t= 14.3302  S=    43.1  N=    88.9  dN/dS=  0.0103  dN = 0.1477  dS =14.3196
+
+
+29 (B11221_Hil1_tr29) ... 3 (B11221_Hil1_tr3)
+lnL = -274.610509
+ 10.25267  0.01863
+
+t= 10.2527  S=    41.6  N=    90.4  dN/dS=  0.0186  dN = 0.1943  dS =10.4293
+
+
+29 (B11221_Hil1_tr29) ... 4 (B11221_Hil1_tr4)
+lnL = -276.764589
+ 50.00000  0.00434
+
+t= 50.0000  S=    41.4  N=    90.6  dN/dS=  0.0043  dN = 0.2287  dS =52.6832
+
+
+29 (B11221_Hil1_tr29) ... 5 (B11221_Hil1_tr5)
+lnL = -258.640519
+ 50.00000  0.00236
+
+t= 50.0000  S=    44.4  N=    87.6  dN/dS=  0.0024  dN = 0.1166  dS =49.3257
+
+
+29 (B11221_Hil1_tr29) ... 6 (B11221_Hil1_tr6)
+lnL = -277.057151
+ 50.00000  0.00501
+
+t= 50.0000  S=    45.5  N=    86.5  dN/dS=  0.0050  dN = 0.2401  dS =47.9073
+
+
+29 (B11221_Hil1_tr29) ... 7 (B11221_Hil1_tr7)
+lnL = -278.950660
+ 50.00000  0.00447
+
+t= 50.0000  S=    44.4  N=    87.6  dN/dS=  0.0045  dN = 0.2196  dS =49.0746
+
+
+29 (B11221_Hil1_tr29) ... 8 (B11221_Hil1_tr8)
+lnL = -281.352794
+ 50.00000  0.00441
+
+t= 50.0000  S=    44.0  N=    88.0  dN/dS=  0.0044  dN = 0.2189  dS =49.5971
+
+
+29 (B11221_Hil1_tr29) ... 9 (B11221_Hil1_tr9)
+lnL = -277.737584
+ 50.00000  0.00376
+
+t= 50.0000  S=    39.4  N=    92.6  dN/dS=  0.0038  dN = 0.2081  dS =55.4145
+
+
+29 (B11221_Hil1_tr29) ... 10 (B11221_Hil1_tr10)
+lnL = -277.403905
+ 50.00000  0.00492
+
+t= 50.0000  S=    44.5  N=    87.5  dN/dS=  0.0049  dN = 0.2407  dS =48.9704
+
+
+29 (B11221_Hil1_tr29) ... 11 (B11221_Hil1_tr11)
+lnL = -274.818835
+ 50.00000  0.00416
+
+t= 50.0000  S=    44.1  N=    87.9  dN/dS=  0.0042  dN = 0.2060  dS =49.5137
+
+
+29 (B11221_Hil1_tr29) ... 12 (B11221_Hil1_tr12)
+lnL = -260.323646
+ 24.73811  0.00580
+
+t= 24.7381  S=    42.8  N=    89.2  dN/dS=  0.0058  dN = 0.1455  dS =25.1025
+
+
+29 (B11221_Hil1_tr29) ... 13 (B11221_Hil1_tr13)
+lnL = -269.810728
+ 50.00000  0.00349
+
+t= 50.0000  S=    45.6  N=    86.4  dN/dS=  0.0035  dN = 0.1671  dS =47.9225
+
+
+29 (B11221_Hil1_tr29) ... 14 (B11221_Hil1_tr14)
+lnL = -283.171024
+ 50.00000  0.00514
+
+t= 50.0000  S=    43.0  N=    89.0  dN/dS=  0.0051  dN = 0.2605  dS =50.6442
+
+
+29 (B11221_Hil1_tr29) ... 15 (B11221_Hil1_tr15)
+lnL = -277.120755
+ 50.00000  0.00338
+
+t= 50.0000  S=    38.8  N=    93.2  dN/dS=  0.0034  dN = 0.1901  dS =56.2160
+
+
+29 (B11221_Hil1_tr29) ... 16 (B11221_Hil1_tr16)
+lnL = -269.956369
+ 50.00000  0.00351
+
+t= 50.0000  S=    44.9  N=    87.1  dN/dS=  0.0035  dN = 0.1710  dS =48.6639
+
+
+29 (B11221_Hil1_tr29) ... 17 (B11221_Hil1_tr17)
+lnL = -279.896041
+ 50.00000  0.00463
+
+t= 50.0000  S=    42.2  N=    89.8  dN/dS=  0.0046  dN = 0.2390  dS =51.5996
+
+
+29 (B11221_Hil1_tr29) ... 18 (B11221_Hil1_tr18)
+lnL = -280.557213
+ 50.00000  0.00456
+
+t= 50.0000  S=    43.8  N=    88.2  dN/dS=  0.0046  dN = 0.2268  dS =49.7408
+
+
+29 (B11221_Hil1_tr29) ... 19 (B11221_Hil1_tr19)
+lnL = -265.239851
+ 50.00000  0.00326
+
+t= 50.0000  S=    42.5  N=    89.5  dN/dS=  0.0033  dN = 0.1673  dS =51.3793
+
+
+29 (B11221_Hil1_tr29) ... 20 (B11221_Hil1_tr20)
+lnL = -274.857457
+ 50.00000  0.00359
+
+t= 50.0000  S=    42.6  N=    89.4  dN/dS=  0.0036  dN = 0.1841  dS =51.2553
+
+
+29 (B11221_Hil1_tr29) ... 21 (B11221_Hil1_tr21)
+lnL = -286.920261
+ 50.00000  0.00641
+
+t= 50.0000  S=    41.9  N=    90.1  dN/dS=  0.0064  dN = 0.3324  dS =51.8492
+
+
+29 (B11221_Hil1_tr29) ... 22 (B11221_Hil1_tr22)
+lnL = -292.097586
+ 50.00000  0.00718
+
+t= 50.0000  S=    44.3  N=    87.7  dN/dS=  0.0072  dN = 0.3518  dS =48.9929
+
+
+29 (B11221_Hil1_tr29) ... 23 (B11221_Hil1_tr23)
+lnL = -271.777759
+ 50.00000  0.00410
+
+t= 50.0000  S=    46.3  N=    85.7  dN/dS=  0.0041  dN = 0.1933  dS =47.1779
+
+
+29 (B11221_Hil1_tr29) ... 24 (B11221_Hil1_tr24)
+lnL = -278.780514
+ 50.00000  0.00412
+
+t= 50.0000  S=    37.0  N=    95.0  dN/dS=  0.0041  dN = 0.2425  dS =58.8699
+
+
+29 (B11221_Hil1_tr29) ... 25 (B11221_Hil1_tr25)
+lnL = -280.525490
+ 50.00000  0.00415
+
+t= 50.0000  S=    43.2  N=    88.8  dN/dS=  0.0042  dN = 0.2098  dS =50.5191
+
+
+29 (B11221_Hil1_tr29) ... 26 (B11221_Hil1_tr26)
+lnL = -284.312688
+ 50.00000  0.00494
+
+t= 50.0000  S=    42.5  N=    89.5  dN/dS=  0.0049  dN = 0.2529  dS =51.2391
+
+
+29 (B11221_Hil1_tr29) ... 27 (B11221_Hil1_tr27)
+lnL = -237.948265
+ 11.92199  0.00430
+
+t= 11.9220  S=    45.0  N=    87.0  dN/dS=  0.0043  dN = 0.0497  dS =11.5698
+
+
+29 (B11221_Hil1_tr29) ... 28 (B11221_Hil1_tr28)
+lnL = -260.593566
+ 50.00000  0.00266
+
+t= 50.0000  S=    44.4  N=    87.6  dN/dS=  0.0027  dN = 0.1311  dS =49.2933
+
+
+30 (B11221_Hil1_tr30) ... 1 (B11221_Hil1_tr1)
+lnL = -270.113283
+ 50.00000  0.00396
+
+t= 50.0000  S=    46.8  N=    85.2  dN/dS=  0.0040  dN = 0.1848  dS =46.6765
+
+
+30 (B11221_Hil1_tr30) ... 2 (B11221_Hil1_tr2)
+lnL = -264.036870
+  8.62121  0.02064
+
+t= 8.6212  S=    45.1  N=    86.9  dN/dS=  0.0206  dN = 0.1670  dS = 8.0917
+
+
+30 (B11221_Hil1_tr30) ... 3 (B11221_Hil1_tr3)
+lnL = -266.658291
+  3.71864  0.05381
+
+t= 3.7186  S=    43.6  N=    88.4  dN/dS=  0.0538  dN = 0.1819  dS = 3.3811
+
+
+30 (B11221_Hil1_tr30) ... 4 (B11221_Hil1_tr4)
+lnL = -275.906481
+ 50.00000  0.00471
+
+t= 50.0000  S=    43.3  N=    88.7  dN/dS=  0.0047  dN = 0.2374  dS =50.3740
+
+
+30 (B11221_Hil1_tr30) ... 5 (B11221_Hil1_tr5)
+lnL = -266.293708
+ 50.00000  0.00356
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0036  dN = 0.1680  dS =47.1527
+
+
+30 (B11221_Hil1_tr30) ... 6 (B11221_Hil1_tr6)
+lnL = -274.950860
+ 50.00000  0.00567
+
+t= 50.0000  S=    46.9  N=    85.1  dN/dS=  0.0057  dN = 0.2633  dS =46.4379
+
+
+30 (B11221_Hil1_tr30) ... 7 (B11221_Hil1_tr7)
+lnL = -270.810820
+ 50.00000  0.00401
+
+t= 50.0000  S=    46.7  N=    85.3  dN/dS=  0.0040  dN = 0.1878  dS =46.8099
+
+
+30 (B11221_Hil1_tr30) ... 8 (B11221_Hil1_tr8)
+lnL = -286.191375
+ 50.00000  0.00623
+
+t= 50.0000  S=    45.3  N=    86.7  dN/dS=  0.0062  dN = 0.2985  dS =47.9475
+
+
+30 (B11221_Hil1_tr30) ... 9 (B11221_Hil1_tr9)
+lnL = -266.190864
+ 50.00000  0.00309
+
+t= 50.0000  S=    41.7  N=    90.3  dN/dS=  0.0031  dN = 0.1620  dS =52.4494
+
+
+30 (B11221_Hil1_tr30) ... 10 (B11221_Hil1_tr10)
+lnL = -270.179546
+ 50.00000  0.00448
+
+t= 50.0000  S=    45.8  N=    86.2  dN/dS=  0.0045  dN = 0.2135  dS =47.6336
+
+
+30 (B11221_Hil1_tr30) ... 11 (B11221_Hil1_tr11)
+lnL = -254.861976
+ 50.00000  0.00259
+
+t= 50.0000  S=    45.7  N=    86.3  dN/dS=  0.0026  dN = 0.1238  dS =47.8936
+
+
+30 (B11221_Hil1_tr30) ... 12 (B11221_Hil1_tr12)
+lnL = -256.410433
+  3.13628  0.05779
+
+t= 3.1363  S=    44.6  N=    87.4  dN/dS=  0.0578  dN = 0.1605  dS = 2.7777
+
+
+30 (B11221_Hil1_tr30) ... 13 (B11221_Hil1_tr13)
+lnL = -269.352806
+ 50.00000  0.00434
+
+t= 50.0000  S=    46.8  N=    85.2  dN/dS=  0.0043  dN = 0.2024  dS =46.6099
+
+
+30 (B11221_Hil1_tr30) ... 14 (B11221_Hil1_tr14)
+lnL = -271.281275
+ 50.00000  0.00392
+
+t= 50.0000  S=    44.6  N=    87.4  dN/dS=  0.0039  dN = 0.1915  dS =48.9065
+
+
+30 (B11221_Hil1_tr30) ... 15 (B11221_Hil1_tr15)
+lnL = -274.721557
+ 50.00000  0.00396
+
+t= 50.0000  S=    41.2  N=    90.8  dN/dS=  0.0040  dN = 0.2100  dS =52.9871
+
+
+30 (B11221_Hil1_tr30) ... 16 (B11221_Hil1_tr16)
+lnL = -272.259303
+ 50.00000  0.00445
+
+t= 50.0000  S=    46.3  N=    85.7  dN/dS=  0.0045  dN = 0.2096  dS =47.0993
+
+
+30 (B11221_Hil1_tr30) ... 17 (B11221_Hil1_tr17)
+lnL = -275.753498
+ 50.00000  0.00497
+
+t= 50.0000  S=    44.5  N=    87.5  dN/dS=  0.0050  dN = 0.2431  dS =48.9068
+
+
+30 (B11221_Hil1_tr30) ... 18 (B11221_Hil1_tr18)
+lnL = -277.003884
+ 50.00000  0.00502
+
+t= 50.0000  S=    45.7  N=    86.3  dN/dS=  0.0050  dN = 0.2394  dS =47.7049
+
+
+30 (B11221_Hil1_tr30) ... 19 (B11221_Hil1_tr19)
+lnL = -251.723506
+ 50.00000  0.00253
+
+t= 50.0000  S=    44.6  N=    87.4  dN/dS=  0.0025  dN = 0.1244  dS =49.1159
+
+
+30 (B11221_Hil1_tr30) ... 20 (B11221_Hil1_tr20)
+lnL = -267.495404
+ 50.00000  0.00347
+
+t= 50.0000  S=    44.7  N=    87.3  dN/dS=  0.0035  dN = 0.1696  dS =48.8768
+
+
+30 (B11221_Hil1_tr30) ... 21 (B11221_Hil1_tr21)
+lnL = -279.335777
+ 50.00000  0.00593
+
+t= 50.0000  S=    43.9  N=    88.1  dN/dS=  0.0059  dN = 0.2941  dS =49.5634
+
+
+30 (B11221_Hil1_tr30) ... 22 (B11221_Hil1_tr22)
+lnL = -291.322823
+ 50.00000  0.00820
+
+t= 50.0000  S=    46.0  N=    86.0  dN/dS=  0.0082  dN = 0.3865  dS =47.1115
+
+
+30 (B11221_Hil1_tr30) ... 23 (B11221_Hil1_tr23)
+lnL = -275.066336
+ 50.00000  0.00509
+
+t= 50.0000  S=    47.2  N=    84.8  dN/dS=  0.0051  dN = 0.2350  dS =46.1650
+
+
+30 (B11221_Hil1_tr30) ... 24 (B11221_Hil1_tr24)
+lnL = -269.635447
+ 50.00000  0.00382
+
+t= 50.0000  S=    39.4  N=    92.6  dN/dS=  0.0038  dN = 0.2115  dS =55.3922
+
+
+30 (B11221_Hil1_tr30) ... 25 (B11221_Hil1_tr25)
+lnL = -271.579803
+ 50.00000  0.00373
+
+t= 50.0000  S=    45.2  N=    86.8  dN/dS=  0.0037  dN = 0.1801  dS =48.3092
+
+
+30 (B11221_Hil1_tr30) ... 26 (B11221_Hil1_tr26)
+lnL = -281.163621
+ 50.00000  0.00527
+
+t= 50.0000  S=    44.3  N=    87.7  dN/dS=  0.0053  dN = 0.2594  dS =49.2007
+
+
+30 (B11221_Hil1_tr30) ... 27 (B11221_Hil1_tr27)
+lnL = -245.187406
+  3.06662  0.02817
+
+t= 3.0666  S=    46.5  N=    85.5  dN/dS=  0.0282  dN = 0.0777  dS = 2.7596
+
+
+30 (B11221_Hil1_tr30) ... 28 (B11221_Hil1_tr28)
+lnL = -251.446752
+ 50.00000  0.00219
+
+t= 50.0000  S=    45.8  N=    86.2  dN/dS=  0.0022  dN = 0.1048  dS =47.8038
+
+
+30 (B11221_Hil1_tr30) ... 29 (B11221_Hil1_tr29)
+lnL = -243.225124
+  0.87202  0.16777
+
+t= 0.8720  S=    41.1  N=    90.9  dN/dS=  0.1678  dN = 0.1142  dS = 0.6806
+
+
+31 (B11221_Hil1_tr31) ... 1 (B11221_Hil1_tr1)
+lnL = -276.928942
+  7.06264  0.03630
+
+t= 7.0626  S=    47.6  N=    84.4  dN/dS=  0.0363  dN = 0.2228  dS = 6.1390
+
+
+31 (B11221_Hil1_tr31) ... 2 (B11221_Hil1_tr2)
+lnL = -270.995661
+ 50.00000  0.00352
+
+t= 50.0000  S=    46.6  N=    85.4  dN/dS=  0.0035  dN = 0.1648  dS =46.8630
+
+
+31 (B11221_Hil1_tr31) ... 3 (B11221_Hil1_tr3)
+lnL = -273.639427
+ 50.00000  0.00425
+
+t= 50.0000  S=    45.7  N=    86.3  dN/dS=  0.0042  dN = 0.2030  dS =47.7742
+
+
+31 (B11221_Hil1_tr31) ... 4 (B11221_Hil1_tr4)
+lnL = -282.094722
+ 17.30529  0.01744
+
+t= 17.3053  S=    45.2  N=    86.8  dN/dS=  0.0174  dN = 0.2844  dS =16.3061
+
+
+31 (B11221_Hil1_tr31) ... 5 (B11221_Hil1_tr5)
+lnL = -263.059169
+  2.65756  0.06571
+
+t= 2.6576  S=    48.0  N=    84.0  dN/dS=  0.0657  dN = 0.1436  dS = 2.1848
+
+
+31 (B11221_Hil1_tr31) ... 6 (B11221_Hil1_tr6)
+lnL = -281.597643
+ 13.45381  0.02536
+
+t= 13.4538  S=    48.2  N=    83.8  dN/dS=  0.0254  dN = 0.2984  dS =11.7678
+
+
+31 (B11221_Hil1_tr31) ... 7 (B11221_Hil1_tr7)
+lnL = -283.000344
+  5.44185  0.06098
+
+t= 5.4418  S=    48.4  N=    83.6  dN/dS=  0.0610  dN = 0.2727  dS = 4.4724
+
+
+31 (B11221_Hil1_tr31) ... 8 (B11221_Hil1_tr8)
+lnL = -277.515491
+  3.31547  0.09010
+
+t= 3.3155  S=    46.4  N=    85.6  dN/dS=  0.0901  dN = 0.2429  dS = 2.6961
+
+
+31 (B11221_Hil1_tr31) ... 9 (B11221_Hil1_tr9)
+lnL = -279.838116
+  3.85176  0.07191
+
+t= 3.8518  S=    44.1  N=    87.9  dN/dS=  0.0719  dN = 0.2419  dS = 3.3633
+
+
+31 (B11221_Hil1_tr31) ... 10 (B11221_Hil1_tr10)
+lnL = -272.698596
+  3.18778  0.10546
+
+t= 3.1878  S=    47.0  N=    85.0  dN/dS=  0.1055  dN = 0.2642  dS = 2.5048
+
+
+31 (B11221_Hil1_tr31) ... 11 (B11221_Hil1_tr11)
+lnL = -268.971127
+  5.78244  0.03629
+
+t= 5.7824  S=    47.5  N=    84.5  dN/dS=  0.0363  dN = 0.1827  dS = 5.0335
+
+
+31 (B11221_Hil1_tr31) ... 12 (B11221_Hil1_tr12)
+lnL = -267.320554
+ 50.00000  0.00390
+
+t= 50.0000  S=    46.2  N=    85.8  dN/dS=  0.0039  dN = 0.1845  dS =47.2917
+
+
+31 (B11221_Hil1_tr31) ... 13 (B11221_Hil1_tr13)
+lnL = -268.020104
+ 23.07778  0.00816
+
+t= 23.0778  S=    47.5  N=    84.5  dN/dS=  0.0082  dN = 0.1720  dS =21.0730
+
+
+31 (B11221_Hil1_tr31) ... 14 (B11221_Hil1_tr14)
+lnL = -276.977019
+ 50.00000  0.00486
+
+t= 50.0000  S=    46.1  N=    85.9  dN/dS=  0.0049  dN = 0.2297  dS =47.2750
+
+
+31 (B11221_Hil1_tr31) ... 15 (B11221_Hil1_tr15)
+lnL = -281.707170
+ 18.36892  0.01297
+
+t= 18.3689  S=    43.4  N=    88.6  dN/dS=  0.0130  dN = 0.2354  dS =18.1484
+
+
+31 (B11221_Hil1_tr31) ... 16 (B11221_Hil1_tr16)
+lnL = -266.805083
+  5.72906  0.03726
+
+t= 5.7291  S=    47.5  N=    84.5  dN/dS=  0.0373  dN = 0.1855  dS = 4.9772
+
+
+31 (B11221_Hil1_tr31) ... 17 (B11221_Hil1_tr17)
+lnL = -275.684928
+  3.59110  0.09022
+
+t= 3.5911  S=    46.9  N=    85.1  dN/dS=  0.0902  dN = 0.2613  dS = 2.8966
+
+
+31 (B11221_Hil1_tr31) ... 18 (B11221_Hil1_tr18)
+lnL = -275.736899
+  1.96817  0.20874
+
+t= 1.9682  S=    47.3  N=    84.7  dN/dS=  0.2087  dN = 0.2781  dS = 1.3323
+
+
+31 (B11221_Hil1_tr31) ... 19 (B11221_Hil1_tr19)
+lnL = -268.528307
+  9.66846  0.02207
+
+t= 9.6685  S=    46.6  N=    85.4  dN/dS=  0.0221  dN = 0.1935  dS = 8.7679
+
+
+31 (B11221_Hil1_tr31) ... 20 (B11221_Hil1_tr20)
+lnL = -276.405431
+ 10.06137  0.02317
+
+t= 10.0614  S=    46.7  N=    85.3  dN/dS=  0.0232  dN = 0.2106  dS = 9.0873
+
+
+31 (B11221_Hil1_tr31) ... 21 (B11221_Hil1_tr21)
+lnL = -280.461383
+  2.68437  0.18479
+
+t= 2.6844  S=    46.0  N=    86.0  dN/dS=  0.1848  dN = 0.3525  dS = 1.9075
+
+
+31 (B11221_Hil1_tr31) ... 22 (B11221_Hil1_tr22)
+lnL = -287.994058
+  3.52068  0.14685
+
+t= 3.5207  S=    47.3  N=    84.7  dN/dS=  0.1469  dN = 0.3809  dS = 2.5940
+
+
+31 (B11221_Hil1_tr31) ... 23 (B11221_Hil1_tr23)
+lnL = -282.706876
+ 15.37937  0.02095
+
+t= 15.3794  S=    48.2  N=    83.8  dN/dS=  0.0210  dN = 0.2838  dS =13.5457
+
+
+31 (B11221_Hil1_tr31) ... 24 (B11221_Hil1_tr24)
+lnL = -278.676417
+ 22.83514  0.01073
+
+t= 22.8351  S=    41.5  N=    90.5  dN/dS=  0.0107  dN = 0.2540  dS =23.6741
+
+
+31 (B11221_Hil1_tr31) ... 25 (B11221_Hil1_tr25)
+lnL = -284.703550
+ 17.18988  0.01628
+
+t= 17.1899  S=    46.5  N=    85.5  dN/dS=  0.0163  dN = 0.2569  dS =15.7853
+
+
+31 (B11221_Hil1_tr31) ... 26 (B11221_Hil1_tr26)
+lnL = -285.624345
+ 50.00000  0.00595
+
+t= 50.0000  S=    45.7  N=    86.3  dN/dS=  0.0060  dN = 0.2836  dS =47.6494
+
+
+31 (B11221_Hil1_tr31) ... 27 (B11221_Hil1_tr27)
+lnL = -257.346157
+ 50.00000  0.00207
+
+t= 50.0000  S=    47.6  N=    84.4  dN/dS=  0.0021  dN = 0.0951  dS =46.0623
+
+
+31 (B11221_Hil1_tr31) ... 28 (B11221_Hil1_tr28)
+lnL = -241.874528
+  2.15879  0.04077
+
+t= 2.1588  S=    46.6  N=    85.4  dN/dS=  0.0408  dN = 0.0773  dS = 1.8951
+
+
+31 (B11221_Hil1_tr31) ... 29 (B11221_Hil1_tr29)
+lnL = -247.546978
+ 50.00000  0.00151
+
+t= 50.0000  S=    43.5  N=    88.5  dN/dS=  0.0015  dN = 0.0760  dS =50.3838
+
+
+31 (B11221_Hil1_tr31) ... 30 (B11221_Hil1_tr30)
+lnL = -248.397157
+ 50.00000  0.00195
+
+t= 50.0000  S=    45.3  N=    86.7  dN/dS=  0.0020  dN = 0.0945  dS =48.3940
+
+
+32 (B11221_Hil1_tr32) ... 1 (B11221_Hil1_tr1)
+lnL = -274.262453
+  3.67644  0.08180
+
+t= 3.6764  S=    47.5  N=    84.5  dN/dS=  0.0818  dN = 0.2432  dS = 2.9727
+
+
+32 (B11221_Hil1_tr32) ... 2 (B11221_Hil1_tr2)
+lnL = -264.056346
+ 50.00000  0.00344
+
+t= 50.0000  S=    45.1  N=    86.9  dN/dS=  0.0034  dN = 0.1668  dS =48.4286
+
+
+32 (B11221_Hil1_tr32) ... 3 (B11221_Hil1_tr3)
+lnL = -274.095825
+ 50.00000  0.00435
+
+t= 50.0000  S=    43.6  N=    88.4  dN/dS=  0.0043  dN = 0.2176  dS =50.0663
+
+
+32 (B11221_Hil1_tr32) ... 4 (B11221_Hil1_tr4)
+lnL = -289.334014
+  5.23198  0.07260
+
+t= 5.2320  S=    43.2  N=    88.8  dN/dS=  0.0726  dN = 0.3365  dS = 4.6347
+
+
+32 (B11221_Hil1_tr32) ... 5 (B11221_Hil1_tr5)
+lnL = -258.620939
+  9.16721  0.01651
+
+t= 9.1672  S=    46.4  N=    85.6  dN/dS=  0.0165  dN = 0.1393  dS = 8.4400
+
+
+32 (B11221_Hil1_tr32) ... 6 (B11221_Hil1_tr6)
+lnL = -274.514701
+  1.88939  0.25797
+
+t= 1.8894  S=    47.5  N=    84.5  dN/dS=  0.2580  dN = 0.3095  dS = 1.1999
+
+
+32 (B11221_Hil1_tr32) ... 7 (B11221_Hil1_tr7)
+lnL = -276.334839
+ 13.50913  0.01951
+
+t= 13.5091  S=    46.5  N=    85.5  dN/dS=  0.0195  dN = 0.2409  dS =12.3458
+
+
+32 (B11221_Hil1_tr32) ... 8 (B11221_Hil1_tr8)
+lnL = -278.110233
+ 12.24652  0.02121
+
+t= 12.2465  S=    45.9  N=    86.1  dN/dS=  0.0212  dN = 0.2395  dS =11.2906
+
+
+32 (B11221_Hil1_tr32) ... 9 (B11221_Hil1_tr9)
+lnL = -274.453088
+  7.11404  0.03331
+
+t= 7.1140  S=    41.5  N=    90.5  dN/dS=  0.0333  dN = 0.2343  dS = 7.0345
+
+
+32 (B11221_Hil1_tr32) ... 10 (B11221_Hil1_tr10)
+lnL = -281.270094
+ 11.63786  0.03012
+
+t= 11.6379  S=    46.6  N=    85.4  dN/dS=  0.0301  dN = 0.3138  dS =10.4167
+
+
+32 (B11221_Hil1_tr32) ... 11 (B11221_Hil1_tr11)
+lnL = -259.490338
+  6.38552  0.02747
+
+t= 6.3855  S=    46.1  N=    85.9  dN/dS=  0.0275  dN = 0.1593  dS = 5.7990
+
+
+32 (B11221_Hil1_tr32) ... 12 (B11221_Hil1_tr12)
+lnL = -276.457432
+ 50.00000  0.00480
+
+t= 50.0000  S=    44.7  N=    87.3  dN/dS=  0.0048  dN = 0.2340  dS =48.7149
+
+
+32 (B11221_Hil1_tr32) ... 13 (B11221_Hil1_tr13)
+lnL = -264.746587
+  2.84553  0.08390
+
+t= 2.8455  S=    47.4  N=    84.6  dN/dS=  0.0839  dN = 0.1928  dS = 2.2977
+
+
+32 (B11221_Hil1_tr32) ... 14 (B11221_Hil1_tr14)
+lnL = -274.436864
+  3.88272  0.08339
+
+t= 3.8827  S=    45.2  N=    86.8  dN/dS=  0.0834  dN = 0.2718  dS = 3.2596
+
+
+32 (B11221_Hil1_tr32) ... 15 (B11221_Hil1_tr15)
+lnL = -268.983586
+  1.95932  0.12089
+
+t= 1.9593  S=    40.7  N=    91.3  dN/dS=  0.1209  dN = 0.2013  dS = 1.6654
+
+
+32 (B11221_Hil1_tr32) ... 16 (B11221_Hil1_tr16)
+lnL = -267.103387
+ 17.67321  0.01171
+
+t= 17.6732  S=    46.9  N=    85.1  dN/dS=  0.0117  dN = 0.1901  dS =16.2363
+
+
+32 (B11221_Hil1_tr32) ... 17 (B11221_Hil1_tr17)
+lnL = -269.686907
+  3.37859  0.09062
+
+t= 3.3786  S=    44.4  N=    87.6  dN/dS=  0.0906  dN = 0.2576  dS = 2.8428
+
+
+32 (B11221_Hil1_tr32) ... 18 (B11221_Hil1_tr18)
+lnL = -271.729550
+  3.67076  0.08309
+
+t= 3.6708  S=    45.7  N=    86.3  dN/dS=  0.0831  dN = 0.2538  dS = 3.0541
+
+
+32 (B11221_Hil1_tr32) ... 19 (B11221_Hil1_tr19)
+lnL = -279.042312
+ 13.32594  0.02083
+
+t= 13.3259  S=    44.5  N=    87.5  dN/dS=  0.0208  dN = 0.2635  dS =12.6505
+
+
+32 (B11221_Hil1_tr32) ... 20 (B11221_Hil1_tr20)
+lnL = -269.295635
+ 13.72329  0.01406
+
+t= 13.7233  S=    44.7  N=    87.3  dN/dS=  0.0141  dN = 0.1851  dS =13.1595
+
+
+32 (B11221_Hil1_tr32) ... 21 (B11221_Hil1_tr21)
+lnL = -282.506874
+  5.86495  0.07118
+
+t= 5.8649  S=    44.1  N=    87.9  dN/dS=  0.0712  dN = 0.3651  dS = 5.1287
+
+
+32 (B11221_Hil1_tr32) ... 22 (B11221_Hil1_tr22)
+lnL = -286.522321
+  6.04308  0.07703
+
+t= 6.0431  S=    46.4  N=    85.6  dN/dS=  0.0770  dN = 0.3865  dS = 5.0180
+
+
+32 (B11221_Hil1_tr32) ... 23 (B11221_Hil1_tr23)
+lnL = -274.412042
+  5.75617  0.05640
+
+t= 5.7562  S=    48.4  N=    83.6  dN/dS=  0.0564  dN = 0.2687  dS = 4.7642
+
+
+32 (B11221_Hil1_tr32) ... 24 (B11221_Hil1_tr24)
+lnL = -272.593734
+ 24.77631  0.00883
+
+t= 24.7763  S=    39.0  N=    93.0  dN/dS=  0.0088  dN = 0.2419  dS =27.3900
+
+
+32 (B11221_Hil1_tr32) ... 25 (B11221_Hil1_tr25)
+lnL = -277.434214
+  3.39791  0.09269
+
+t= 3.3979  S=    45.2  N=    86.8  dN/dS=  0.0927  dN = 0.2604  dS = 2.8095
+
+
+32 (B11221_Hil1_tr32) ... 26 (B11221_Hil1_tr26)
+lnL = -275.632857
+  5.39248  0.05069
+
+t= 5.3925  S=    44.4  N=    87.6  dN/dS=  0.0507  dN = 0.2460  dS = 4.8534
+
+
+32 (B11221_Hil1_tr32) ... 27 (B11221_Hil1_tr27)
+lnL = -269.744046
+ 50.00000  0.00333
+
+t= 50.0000  S=    46.8  N=    85.2  dN/dS=  0.0033  dN = 0.1557  dS =46.7738
+
+
+32 (B11221_Hil1_tr32) ... 28 (B11221_Hil1_tr28)
+lnL = -266.836276
+  3.32786  0.05885
+
+t= 3.3279  S=    46.2  N=    85.8  dN/dS=  0.0589  dN = 0.1682  dS = 2.8584
+
+
+32 (B11221_Hil1_tr32) ... 29 (B11221_Hil1_tr29)
+lnL = -251.335734
+ 50.00000  0.00162
+
+t= 50.0000  S=    40.7  N=    91.3  dN/dS=  0.0016  dN = 0.0869  dS =53.7972
+
+
+32 (B11221_Hil1_tr32) ... 30 (B11221_Hil1_tr30)
+lnL = -261.862076
+ 50.00000  0.00295
+
+t= 50.0000  S=    43.2  N=    88.8  dN/dS=  0.0029  dN = 0.1492  dS =50.6145
+
+
+32 (B11221_Hil1_tr32) ... 31 (B11221_Hil1_tr31)
+lnL = -256.263820
+  7.64255  0.01510
+
+t= 7.6426  S=    45.5  N=    86.5  dN/dS=  0.0151  dN = 0.1086  dS = 7.1915
+
+
+33 (B11221_Hil1_tr33) ... 1 (B11221_Hil1_tr1)
+lnL = -271.400829
+  3.44140  0.08464
+
+t= 3.4414  S=    46.0  N=    86.0  dN/dS=  0.0846  dN = 0.2406  dS = 2.8427
+
+
+33 (B11221_Hil1_tr33) ... 2 (B11221_Hil1_tr2)
+lnL = -274.974193
+ 50.00000  0.00542
+
+t= 50.0000  S=    45.5  N=    86.5  dN/dS=  0.0054  dN = 0.2594  dS =47.8789
+
+
+33 (B11221_Hil1_tr33) ... 3 (B11221_Hil1_tr3)
+lnL = -272.854851
+ 50.00000  0.00489
+
+t= 50.0000  S=    44.6  N=    87.4  dN/dS=  0.0049  dN = 0.2385  dS =48.8165
+
+
+33 (B11221_Hil1_tr33) ... 4 (B11221_Hil1_tr4)
+lnL = -281.884909
+  2.54483  0.16238
+
+t= 2.5448  S=    44.0  N=    88.0  dN/dS=  0.1624  dN = 0.3119  dS = 1.9210
+
+
+33 (B11221_Hil1_tr33) ... 5 (B11221_Hil1_tr5)
+lnL = -270.764469
+ 30.47076  0.00696
+
+t= 30.4708  S=    47.0  N=    85.0  dN/dS=  0.0070  dN = 0.1962  dS =28.1748
+
+
+33 (B11221_Hil1_tr33) ... 6 (B11221_Hil1_tr6)
+lnL = -277.792502
+  6.49053  0.06131
+
+t= 6.4905  S=    46.7  N=    85.3  dN/dS=  0.0613  dN = 0.3369  dS = 5.4955
+
+
+33 (B11221_Hil1_tr33) ... 7 (B11221_Hil1_tr7)
+lnL = -277.483806
+  6.05341  0.05289
+
+t= 6.0534  S=    47.8  N=    84.2  dN/dS=  0.0529  dN = 0.2696  dS = 5.0967
+
+
+33 (B11221_Hil1_tr33) ... 8 (B11221_Hil1_tr8)
+lnL = -279.246796
+  6.81073  0.04892
+
+t= 6.8107  S=    44.8  N=    87.2  dN/dS=  0.0489  dN = 0.2989  dS = 6.1102
+
+
+33 (B11221_Hil1_tr33) ... 9 (B11221_Hil1_tr9)
+lnL = -271.840452
+  2.63830  0.12866
+
+t= 2.6383  S=    42.8  N=    89.2  dN/dS=  0.1287  dN = 0.2750  dS = 2.1377
+
+
+33 (B11221_Hil1_tr33) ... 10 (B11221_Hil1_tr10)
+lnL = -274.962664
+ 25.26964  0.01302
+
+t= 25.2696  S=    45.4  N=    86.6  dN/dS=  0.0130  dN = 0.3108  dS =23.8718
+
+
+33 (B11221_Hil1_tr33) ... 11 (B11221_Hil1_tr11)
+lnL = -264.536920
+ 22.90771  0.01069
+
+t= 22.9077  S=    46.2  N=    85.8  dN/dS=  0.0107  dN = 0.2287  dS =21.3966
+
+
+33 (B11221_Hil1_tr33) ... 12 (B11221_Hil1_tr12)
+lnL = -273.066047
+ 50.00000  0.00486
+
+t= 50.0000  S=    45.2  N=    86.8  dN/dS=  0.0049  dN = 0.2345  dS =48.2154
+
+
+33 (B11221_Hil1_tr33) ... 13 (B11221_Hil1_tr13)
+lnL = -274.236618
+ 50.00000  0.00557
+
+t= 50.0000  S=    45.7  N=    86.3  dN/dS=  0.0056  dN = 0.2656  dS =47.6697
+
+
+33 (B11221_Hil1_tr33) ... 14 (B11221_Hil1_tr14)
+lnL = -277.257095
+ 50.00000  0.00673
+
+t= 50.0000  S=    44.4  N=    87.6  dN/dS=  0.0067  dN = 0.3293  dS =48.9525
+
+
+33 (B11221_Hil1_tr33) ... 15 (B11221_Hil1_tr15)
+lnL = -275.742295
+  5.19734  0.05507
+
+t= 5.1973  S=    42.2  N=    89.8  dN/dS=  0.0551  dN = 0.2669  dS = 4.8476
+
+
+33 (B11221_Hil1_tr33) ... 16 (B11221_Hil1_tr16)
+lnL = -262.209988
+  5.92346  0.03836
+
+t= 5.9235  S=    45.8  N=    86.2  dN/dS=  0.0384  dN = 0.2037  dS = 5.3104
+
+
+33 (B11221_Hil1_tr33) ... 17 (B11221_Hil1_tr17)
+lnL = -274.920009
+ 26.19427  0.01276
+
+t= 26.1943  S=    45.6  N=    86.4  dN/dS=  0.0128  dN = 0.3147  dS =24.6597
+
+
+33 (B11221_Hil1_tr33) ... 18 (B11221_Hil1_tr18)
+lnL = -276.041604
+ 10.93874  0.02696
+
+t= 10.9387  S=    46.1  N=    85.9  dN/dS=  0.0270  dN = 0.2681  dS = 9.9435
+
+
+33 (B11221_Hil1_tr33) ... 19 (B11221_Hil1_tr19)
+lnL = -272.701759
+ 28.05488  0.00997
+
+t= 28.0549  S=    45.6  N=    86.4  dN/dS=  0.0100  dN = 0.2646  dS =26.5430
+
+
+33 (B11221_Hil1_tr33) ... 20 (B11221_Hil1_tr20)
+lnL = -270.533948
+  6.77663  0.03684
+
+t= 6.7766  S=    45.7  N=    86.3  dN/dS=  0.0368  dN = 0.2246  dS = 6.0973
+
+
+33 (B11221_Hil1_tr33) ... 21 (B11221_Hil1_tr21)
+lnL = -277.474045
+  6.86270  0.06407
+
+t= 6.8627  S=    44.7  N=    87.3  dN/dS=  0.0641  dN = 0.3847  dS = 6.0036
+
+
+33 (B11221_Hil1_tr33) ... 22 (B11221_Hil1_tr22)
+lnL = -278.882921
+ 15.98027  0.02438
+
+t= 15.9803  S=    45.7  N=    86.3  dN/dS=  0.0244  dN = 0.3589  dS =14.7207
+
+
+33 (B11221_Hil1_tr33) ... 23 (B11221_Hil1_tr23)
+lnL = -272.106808
+ 50.00000  0.00573
+
+t= 50.0000  S=    46.3  N=    85.7  dN/dS=  0.0057  dN = 0.2690  dS =46.9815
+
+
+33 (B11221_Hil1_tr33) ... 24 (B11221_Hil1_tr24)
+lnL = -263.974819
+  1.80701  0.18189
+
+t= 1.8070  S=    40.3  N=    91.7  dN/dS=  0.1819  dN = 0.2538  dS = 1.3955
+
+
+33 (B11221_Hil1_tr33) ... 25 (B11221_Hil1_tr25)
+lnL = -273.225771
+ 34.16329  0.00652
+
+t= 34.1633  S=    45.1  N=    86.9  dN/dS=  0.0065  dN = 0.2148  dS =32.9375
+
+
+33 (B11221_Hil1_tr33) ... 26 (B11221_Hil1_tr26)
+lnL = -277.349069
+ 50.00000  0.00616
+
+t= 50.0000  S=    44.3  N=    87.7  dN/dS=  0.0062  dN = 0.3027  dS =49.1049
+
+
+33 (B11221_Hil1_tr33) ... 27 (B11221_Hil1_tr27)
+lnL = -279.495776
+ 50.00000  0.00486
+
+t= 50.0000  S=    45.8  N=    86.2  dN/dS=  0.0049  dN = 0.2317  dS =47.6353
+
+
+33 (B11221_Hil1_tr33) ... 28 (B11221_Hil1_tr28)
+lnL = -282.739146
+ 27.97345  0.01105
+
+t= 27.9735  S=    44.9  N=    87.1  dN/dS=  0.0111  dN = 0.2966  dS =26.8367
+
+
+33 (B11221_Hil1_tr33) ... 29 (B11221_Hil1_tr29)
+lnL = -274.284419
+ 50.00000  0.00398
+
+t= 50.0000  S=    42.5  N=    89.5  dN/dS=  0.0040  dN = 0.2044  dS =51.3638
+
+
+33 (B11221_Hil1_tr33) ... 30 (B11221_Hil1_tr30)
+lnL = -273.486206
+ 50.00000  0.00525
+
+t= 50.0000  S=    43.9  N=    88.1  dN/dS=  0.0053  dN = 0.2606  dS =49.6212
+
+
+33 (B11221_Hil1_tr33) ... 31 (B11221_Hil1_tr31)
+lnL = -277.768880
+ 21.12225  0.01254
+
+t= 21.1222  S=    45.4  N=    86.6  dN/dS=  0.0125  dN = 0.2506  dS =19.9809
+
+
+33 (B11221_Hil1_tr33) ... 32 (B11221_Hil1_tr32)
+lnL = -273.895681
+ 10.69449  0.02458
+
+t= 10.6945  S=    44.5  N=    87.5  dN/dS=  0.0246  dN = 0.2481  dS =10.0962
+
+
+34 (B11221_Hil1_tr34) ... 1 (B11221_Hil1_tr1)
+lnL = -282.670278
+ 11.05290  0.02677
+
+t= 11.0529  S=    45.0  N=    87.0  dN/dS=  0.0268  dN = 0.2750  dS =10.2716
+
+
+34 (B11221_Hil1_tr34) ... 2 (B11221_Hil1_tr2)
+lnL = -280.790852
+ 50.00000  0.00592
+
+t= 50.0000  S=    44.0  N=    88.0  dN/dS=  0.0059  dN = 0.2925  dS =49.4009
+
+
+34 (B11221_Hil1_tr34) ... 3 (B11221_Hil1_tr3)
+lnL = -287.202104
+ 50.00000  0.00621
+
+t= 50.0000  S=    42.9  N=    89.1  dN/dS=  0.0062  dN = 0.3143  dS =50.5772
+
+
+34 (B11221_Hil1_tr34) ... 4 (B11221_Hil1_tr4)
+lnL = -286.930253
+  2.05902  0.30526
+
+t= 2.0590  S=    42.3  N=    89.7  dN/dS=  0.3053  dN = 0.3969  dS = 1.3002
+
+
+34 (B11221_Hil1_tr34) ... 5 (B11221_Hil1_tr5)
+lnL = -285.007048
+ 28.29693  0.00997
+
+t= 28.2969  S=    45.3  N=    86.7  dN/dS=  0.0100  dN = 0.2690  dS =26.9752
+
+
+34 (B11221_Hil1_tr34) ... 6 (B11221_Hil1_tr6)
+lnL = -286.595715
+  5.54819  0.09197
+
+t= 5.5482  S=    45.3  N=    86.7  dN/dS=  0.0920  dN = 0.4211  dS = 4.5794
+
+
+34 (B11221_Hil1_tr34) ... 7 (B11221_Hil1_tr7)
+lnL = -293.394762
+ 38.24432  0.01106
+
+t= 38.2443  S=    45.9  N=    86.1  dN/dS=  0.0111  dN = 0.3973  dS =35.9057
+
+
+34 (B11221_Hil1_tr34) ... 8 (B11221_Hil1_tr8)
+lnL = -297.144569
+ 16.84844  0.02717
+
+t= 16.8484  S=    43.6  N=    88.4  dN/dS=  0.0272  dN = 0.4375  dS =16.1050
+
+
+34 (B11221_Hil1_tr34) ... 9 (B11221_Hil1_tr9)
+lnL = -285.788003
+ 23.92236  0.01335
+
+t= 23.9224  S=    41.0  N=    91.0  dN/dS=  0.0133  dN = 0.3327  dS =24.9247
+
+
+34 (B11221_Hil1_tr34) ... 10 (B11221_Hil1_tr10)
+lnL = -283.404346
+  7.62059  0.05540
+
+t= 7.6206  S=    44.3  N=    87.7  dN/dS=  0.0554  dN = 0.3782  dS = 6.8272
+
+
+34 (B11221_Hil1_tr34) ... 11 (B11221_Hil1_tr11)
+lnL = -271.652051
+  2.05363  0.19499
+
+t= 2.0536  S=    44.6  N=    87.4  dN/dS=  0.1950  dN = 0.2859  dS = 1.4663
+
+
+34 (B11221_Hil1_tr34) ... 12 (B11221_Hil1_tr12)
+lnL = -282.058049
+ 50.00000  0.00666
+
+t= 50.0000  S=    43.7  N=    88.3  dN/dS=  0.0067  dN = 0.3306  dS =49.6534
+
+
+34 (B11221_Hil1_tr34) ... 13 (B11221_Hil1_tr13)
+lnL = -287.569782
+ 35.32814  0.00951
+
+t= 35.3281  S=    44.7  N=    87.3  dN/dS=  0.0095  dN = 0.3247  dS =34.1435
+
+
+34 (B11221_Hil1_tr34) ... 14 (B11221_Hil1_tr14)
+lnL = -292.035269
+  3.85875  0.15409
+
+t= 3.8588  S=    43.1  N=    88.9  dN/dS=  0.1541  dN = 0.4607  dS = 2.9900
+
+
+34 (B11221_Hil1_tr34) ... 15 (B11221_Hil1_tr15)
+lnL = -286.675487
+ 27.47090  0.01050
+
+t= 27.4709  S=    40.5  N=    91.5  dN/dS=  0.0105  dN = 0.3063  dS =29.1740
+
+
+34 (B11221_Hil1_tr34) ... 16 (B11221_Hil1_tr16)
+lnL = -282.420446
+ 22.34892  0.01449
+
+t= 22.3489  S=    44.7  N=    87.3  dN/dS=  0.0145  dN = 0.3103  dS =21.4126
+
+
+34 (B11221_Hil1_tr34) ... 17 (B11221_Hil1_tr17)
+lnL = -284.483159
+ 28.16474  0.01359
+
+t= 28.1647  S=    43.7  N=    88.3  dN/dS=  0.0136  dN = 0.3748  dS =27.5865
+
+
+34 (B11221_Hil1_tr34) ... 18 (B11221_Hil1_tr18)
+lnL = -278.547940
+  3.71114  0.08938
+
+t= 3.7111  S=    44.5  N=    87.5  dN/dS=  0.0894  dN = 0.2789  dS = 3.1207
+
+
+34 (B11221_Hil1_tr34) ... 19 (B11221_Hil1_tr19)
+lnL = -278.503640
+ 24.59957  0.01345
+
+t= 24.5996  S=    43.8  N=    88.2  dN/dS=  0.0134  dN = 0.3236  dS =24.0615
+
+
+34 (B11221_Hil1_tr34) ... 20 (B11221_Hil1_tr20)
+lnL = -285.074000
+ 37.73179  0.00821
+
+t= 37.7318  S=    43.9  N=    88.1  dN/dS=  0.0082  dN = 0.3053  dS =37.1914
+
+
+34 (B11221_Hil1_tr34) ... 21 (B11221_Hil1_tr21)
+lnL = -286.352510
+  3.23030  0.17305
+
+t= 3.2303  S=    43.1  N=    88.9  dN/dS=  0.1731  dN = 0.4207  dS = 2.4309
+
+
+34 (B11221_Hil1_tr34) ... 22 (B11221_Hil1_tr22)
+lnL = -296.712891
+  8.76932  0.07049
+
+t= 8.7693  S=    44.4  N=    87.6  dN/dS=  0.0705  dN = 0.5374  dS = 7.6245
+
+
+34 (B11221_Hil1_tr34) ... 23 (B11221_Hil1_tr23)
+lnL = -285.016178
+ 37.03522  0.00950
+
+t= 37.0352  S=    45.3  N=    86.7  dN/dS=  0.0095  dN = 0.3358  dS =35.3549
+
+
+34 (B11221_Hil1_tr34) ... 24 (B11221_Hil1_tr24)
+lnL = -276.645722
+ 41.67705  0.00601
+
+t= 41.6771  S=    38.8  N=    93.2  dN/dS=  0.0060  dN = 0.2799  dS =46.5502
+
+
+34 (B11221_Hil1_tr34) ... 25 (B11221_Hil1_tr25)
+lnL = -295.837659
+  4.74894  0.09630
+
+t= 4.7489  S=    43.8  N=    88.2  dN/dS=  0.0963  dN = 0.3847  dS = 3.9942
+
+
+34 (B11221_Hil1_tr34) ... 26 (B11221_Hil1_tr26)
+lnL = -296.690916
+ 50.00000  0.00919
+
+t= 50.0000  S=    42.9  N=    89.1  dN/dS=  0.0092  dN = 0.4622  dS =50.3039
+
+
+34 (B11221_Hil1_tr34) ... 27 (B11221_Hil1_tr27)
+lnL = -282.398654
+ 50.00000  0.00509
+
+t= 50.0000  S=    44.7  N=    87.3  dN/dS=  0.0051  dN = 0.2480  dS =48.7406
+
+
+34 (B11221_Hil1_tr34) ... 28 (B11221_Hil1_tr28)
+lnL = -283.996021
+ 19.57946  0.01656
+
+t= 19.5795  S=    43.9  N=    88.1  dN/dS=  0.0166  dN = 0.3143  dS =18.9789
+
+
+34 (B11221_Hil1_tr34) ... 29 (B11221_Hil1_tr29)
+lnL = -273.269124
+ 50.00000  0.00379
+
+t= 50.0000  S=    40.7  N=    91.3  dN/dS=  0.0038  dN = 0.2030  dS =53.6171
+
+
+34 (B11221_Hil1_tr34) ... 30 (B11221_Hil1_tr30)
+lnL = -274.059133
+ 50.00000  0.00502
+
+t= 50.0000  S=    42.4  N=    89.6  dN/dS=  0.0050  dN = 0.2579  dS =51.3432
+
+
+34 (B11221_Hil1_tr34) ... 31 (B11221_Hil1_tr31)
+lnL = -276.479022
+ 21.55892  0.01172
+
+t= 21.5589  S=    44.0  N=    88.0  dN/dS=  0.0117  dN = 0.2470  dS =21.0689
+
+
+34 (B11221_Hil1_tr34) ... 32 (B11221_Hil1_tr32)
+lnL = -276.463674
+  8.25180  0.02810
+
+t= 8.2518  S=    42.6  N=    89.4  dN/dS=  0.0281  dN = 0.2263  dS = 8.0526
+
+
+34 (B11221_Hil1_tr34) ... 33 (B11221_Hil1_tr33)
+lnL = -266.459414
+ 23.00916  0.00861
+
+t= 23.0092  S=    42.6  N=    89.4  dN/dS=  0.0086  dN = 0.2008  dS =23.3231
+
+
+35 (B11221_Hil1_tr35) ... 1 (B11221_Hil1_tr1)
+lnL = -272.574957
+  2.75719  0.08536
+
+t= 2.7572  S=    44.7  N=    87.3  dN/dS=  0.0854  dN = 0.1986  dS = 2.3272
+
+
+35 (B11221_Hil1_tr35) ... 2 (B11221_Hil1_tr2)
+lnL = -274.930444
+ 50.00000  0.00425
+
+t= 50.0000  S=    41.2  N=    90.8  dN/dS=  0.0043  dN = 0.2251  dS =52.9514
+
+
+35 (B11221_Hil1_tr35) ... 3 (B11221_Hil1_tr3)
+lnL = -281.236252
+ 50.00000  0.00460
+
+t= 50.0000  S=    39.3  N=    92.7  dN/dS=  0.0046  dN = 0.2549  dS =55.4404
+
+
+35 (B11221_Hil1_tr35) ... 4 (B11221_Hil1_tr4)
+lnL = -283.363496
+ 22.40066  0.01280
+
+t= 22.4007  S=    39.1  N=    92.9  dN/dS=  0.0128  dN = 0.3133  dS =24.4758
+
+
+35 (B11221_Hil1_tr35) ... 5 (B11221_Hil1_tr5)
+lnL = -279.148398
+  5.12736  0.04540
+
+t= 5.1274  S=    42.4  N=    89.6  dN/dS=  0.0454  dN = 0.2206  dS = 4.8585
+
+
+35 (B11221_Hil1_tr35) ... 6 (B11221_Hil1_tr6)
+lnL = -281.042251
+  2.46713  0.18797
+
+t= 2.4671  S=    43.8  N=    88.2  dN/dS=  0.1880  dN = 0.3378  dS = 1.7971
+
+
+35 (B11221_Hil1_tr35) ... 7 (B11221_Hil1_tr7)
+lnL = -286.969217
+ 29.77309  0.01005
+
+t= 29.7731  S=    42.3  N=    89.7  dN/dS=  0.0101  dN = 0.3049  dS =30.3360
+
+
+35 (B11221_Hil1_tr35) ... 8 (B11221_Hil1_tr8)
+lnL = -291.018864
+ 12.12240  0.02762
+
+t= 12.1224  S=    42.6  N=    89.4  dN/dS=  0.0276  dN = 0.3267  dS =11.8281
+
+
+35 (B11221_Hil1_tr35) ... 9 (B11221_Hil1_tr9)
+lnL = -279.008905
+  3.86488  0.06676
+
+t= 3.8649  S=    37.3  N=    94.7  dN/dS=  0.0668  dN = 0.2603  dS = 3.8983
+
+
+35 (B11221_Hil1_tr35) ... 10 (B11221_Hil1_tr10)
+lnL = -283.043322
+  5.42152  0.07084
+
+t= 5.4215  S=    43.2  N=    88.8  dN/dS=  0.0708  dN = 0.3413  dS = 4.8182
+
+
+35 (B11221_Hil1_tr35) ... 11 (B11221_Hil1_tr11)
+lnL = -274.392939
+  1.73847  0.20593
+
+t= 1.7385  S=    42.0  N=    90.0  dN/dS=  0.2059  dN = 0.2603  dS = 1.2639
+
+
+35 (B11221_Hil1_tr35) ... 12 (B11221_Hil1_tr12)
+lnL = -270.580168
+ 50.00000  0.00410
+
+t= 50.0000  S=    40.7  N=    91.3  dN/dS=  0.0041  dN = 0.2191  dS =53.5027
+
+
+35 (B11221_Hil1_tr35) ... 13 (B11221_Hil1_tr13)
+lnL = -285.417574
+ 35.98756  0.00772
+
+t= 35.9876  S=    44.2  N=    87.8  dN/dS=  0.0077  dN = 0.2723  dS =35.2613
+
+
+35 (B11221_Hil1_tr35) ... 14 (B11221_Hil1_tr14)
+lnL = -282.605508
+  5.07660  0.06626
+
+t= 5.0766  S=    41.8  N=    90.2  dN/dS=  0.0663  dN = 0.3098  dS = 4.6756
+
+
+35 (B11221_Hil1_tr35) ... 15 (B11221_Hil1_tr15)
+lnL = -285.785999
+  3.94270  0.07291
+
+t= 3.9427  S=    36.6  N=    95.4  dN/dS=  0.0729  dN = 0.2907  dS = 3.9868
+
+
+35 (B11221_Hil1_tr35) ... 16 (B11221_Hil1_tr16)
+lnL = -277.770394
+  9.35043  0.02856
+
+t= 9.3504  S=    43.4  N=    88.6  dN/dS=  0.0286  dN = 0.2560  dS = 8.9645
+
+
+35 (B11221_Hil1_tr35) ... 17 (B11221_Hil1_tr17)
+lnL = -283.912683
+  3.96813  0.09696
+
+t= 3.9681  S=    39.9  N=    92.1  dN/dS=  0.0970  dN = 0.3468  dS = 3.5764
+
+
+35 (B11221_Hil1_tr35) ... 18 (B11221_Hil1_tr18)
+lnL = -279.612406
+  2.58296  0.12538
+
+t= 2.5830  S=    41.6  N=    90.4  dN/dS=  0.1254  dN = 0.2692  dS = 2.1474
+
+
+35 (B11221_Hil1_tr35) ... 19 (B11221_Hil1_tr19)
+lnL = -275.681200
+  5.36201  0.05391
+
+t= 5.3620  S=    40.2  N=    91.8  dN/dS=  0.0539  dN = 0.2816  dS = 5.2235
+
+
+35 (B11221_Hil1_tr35) ... 20 (B11221_Hil1_tr20)
+lnL = -278.943201
+ 22.04130  0.00978
+
+t= 22.0413  S=    40.4  N=    91.6  dN/dS=  0.0098  dN = 0.2294  dS =23.4595
+
+
+35 (B11221_Hil1_tr35) ... 21 (B11221_Hil1_tr21)
+lnL = -284.453801
+  4.47558  0.08825
+
+t= 4.4756  S=    40.0  N=    92.0  dN/dS=  0.0882  dN = 0.3614  dS = 4.0951
+
+
+35 (B11221_Hil1_tr35) ... 22 (B11221_Hil1_tr22)
+lnL = -293.279855
+  5.30886  0.09993
+
+t= 5.3089  S=    42.9  N=    89.1  dN/dS=  0.0999  dN = 0.4502  dS = 4.5057
+
+
+35 (B11221_Hil1_tr35) ... 23 (B11221_Hil1_tr23)
+lnL = -276.955963
+ 32.54922  0.00712
+
+t= 32.5492  S=    45.4  N=    86.6  dN/dS=  0.0071  dN = 0.2217  dS =31.1205
+
+
+35 (B11221_Hil1_tr35) ... 24 (B11221_Hil1_tr24)
+lnL = -264.990035
+ 13.12118  0.01127
+
+t= 13.1212  S=    35.0  N=    97.0  dN/dS=  0.0113  dN = 0.1801  dS =15.9824
+
+
+35 (B11221_Hil1_tr35) ... 25 (B11221_Hil1_tr25)
+lnL = -285.220332
+ 25.68840  0.00962
+
+t= 25.6884  S=    41.7  N=    90.3  dN/dS=  0.0096  dN = 0.2556  dS =26.5813
+
+
+35 (B11221_Hil1_tr35) ... 26 (B11221_Hil1_tr26)
+lnL = -289.462323
+ 50.00000  0.00640
+
+t= 50.0000  S=    40.9  N=    91.1  dN/dS=  0.0064  dN = 0.3389  dS =52.9786
+
+
+35 (B11221_Hil1_tr35) ... 27 (B11221_Hil1_tr27)
+lnL = -277.585620
+ 50.00000  0.00403
+
+t= 50.0000  S=    43.0  N=    89.0  dN/dS=  0.0040  dN = 0.2046  dS =50.7367
+
+
+35 (B11221_Hil1_tr35) ... 28 (B11221_Hil1_tr28)
+lnL = -269.488741
+  7.65163  0.02415
+
+t= 7.6516  S=    42.9  N=    89.1  dN/dS=  0.0242  dN = 0.1806  dS = 7.4764
+
+
+35 (B11221_Hil1_tr35) ... 29 (B11221_Hil1_tr29)
+lnL = -264.295831
+ 50.00000  0.00257
+
+t= 50.0000  S=    36.1  N=    95.9  dN/dS=  0.0026  dN = 0.1552  dS =60.4772
+
+
+35 (B11221_Hil1_tr35) ... 30 (B11221_Hil1_tr30)
+lnL = -266.552316
+ 50.00000  0.00343
+
+t= 50.0000  S=    39.0  N=    93.0  dN/dS=  0.0034  dN = 0.1920  dS =56.0022
+
+
+35 (B11221_Hil1_tr35) ... 31 (B11221_Hil1_tr31)
+lnL = -264.414868
+  5.04446  0.03363
+
+t= 5.0445  S=    41.5  N=    90.5  dN/dS=  0.0336  dN = 0.1677  dS = 4.9854
+
+
+35 (B11221_Hil1_tr35) ... 32 (B11221_Hil1_tr32)
+lnL = -274.458625
+  2.45670  0.10448
+
+t= 2.4567  S=    38.1  N=    93.9  dN/dS=  0.1045  dN = 0.2356  dS = 2.2549
+
+
+35 (B11221_Hil1_tr35) ... 33 (B11221_Hil1_tr33)
+lnL = -267.501677
+ 32.47022  0.00551
+
+t= 32.4702  S=    40.8  N=    91.2  dN/dS=  0.0055  dN = 0.1902  dS =34.5536
+
+
+35 (B11221_Hil1_tr35) ... 34 (B11221_Hil1_tr34)
+lnL = -247.924102
+ 23.65978  0.00365
+
+t= 23.6598  S=    38.9  N=    93.1  dN/dS=  0.0036  dN = 0.0969  dS =26.5598
+
+
+36 (B11221_Hil1_tr36) ... 1 (B11221_Hil1_tr1)
+lnL = -276.343394
+  3.37755  0.08417
+
+t= 3.3776  S=    47.8  N=    84.2  dN/dS=  0.0842  dN = 0.2281  dS = 2.7097
+
+
+36 (B11221_Hil1_tr36) ... 2 (B11221_Hil1_tr2)
+lnL = -280.533719
+ 50.00000  0.00588
+
+t= 50.0000  S=    46.1  N=    85.9  dN/dS=  0.0059  dN = 0.2777  dS =47.1951
+
+
+36 (B11221_Hil1_tr36) ... 3 (B11221_Hil1_tr3)
+lnL = -285.459939
+ 50.00000  0.00570
+
+t= 50.0000  S=    44.8  N=    87.2  dN/dS=  0.0057  dN = 0.2764  dS =48.5241
+
+
+36 (B11221_Hil1_tr36) ... 4 (B11221_Hil1_tr4)
+lnL = -285.826372
+ 14.40346  0.02339
+
+t= 14.4035  S=    43.9  N=    88.1  dN/dS=  0.0234  dN = 0.3222  dS =13.7752
+
+
+36 (B11221_Hil1_tr36) ... 5 (B11221_Hil1_tr5)
+lnL = -287.069639
+ 11.46411  0.02895
+
+t= 11.4641  S=    47.2  N=    84.8  dN/dS=  0.0290  dN = 0.2940  dS =10.1531
+
+
+36 (B11221_Hil1_tr36) ... 6 (B11221_Hil1_tr6)
+lnL = -285.921691
+  4.85477  0.10723
+
+t= 4.8548  S=    47.5  N=    84.5  dN/dS=  0.1072  dN = 0.4049  dS = 3.7761
+
+
+36 (B11221_Hil1_tr36) ... 7 (B11221_Hil1_tr7)
+lnL = -287.194726
+ 24.19035  0.01427
+
+t= 24.1904  S=    47.8  N=    84.2  dN/dS=  0.0143  dN = 0.3097  dS =21.7064
+
+
+36 (B11221_Hil1_tr36) ... 8 (B11221_Hil1_tr8)
+lnL = -298.123619
+  5.56769  0.09913
+
+t= 5.5677  S=    45.9  N=    86.1  dN/dS=  0.0991  dN = 0.4464  dS = 4.5038
+
+
+36 (B11221_Hil1_tr36) ... 9 (B11221_Hil1_tr9)
+lnL = -279.044913
+  4.87657  0.05766
+
+t= 4.8766  S=    42.7  N=    89.3  dN/dS=  0.0577  dN = 0.2584  dS = 4.4821
+
+
+36 (B11221_Hil1_tr36) ... 10 (B11221_Hil1_tr10)
+lnL = -280.575476
+ 28.77807  0.01127
+
+t= 28.7781  S=    46.6  N=    85.4  dN/dS=  0.0113  dN = 0.3000  dS =26.6336
+
+
+36 (B11221_Hil1_tr36) ... 11 (B11221_Hil1_tr11)
+lnL = -272.408385
+  3.49142  0.08737
+
+t= 3.4914  S=    46.5  N=    85.5  dN/dS=  0.0874  dN = 0.2489  dS = 2.8487
+
+
+36 (B11221_Hil1_tr36) ... 12 (B11221_Hil1_tr12)
+lnL = -277.456989
+ 50.00000  0.00569
+
+t= 50.0000  S=    45.8  N=    86.2  dN/dS=  0.0057  dN = 0.2701  dS =47.4985
+
+
+36 (B11221_Hil1_tr36) ... 13 (B11221_Hil1_tr13)
+lnL = -290.096174
+ 22.93913  0.01673
+
+t= 22.9391  S=    46.8  N=    85.2  dN/dS=  0.0167  dN = 0.3502  dS =20.9286
+
+
+36 (B11221_Hil1_tr36) ... 14 (B11221_Hil1_tr14)
+lnL = -285.808736
+  4.19029  0.10527
+
+t= 4.1903  S=    45.4  N=    86.6  dN/dS=  0.1053  dN = 0.3559  dS = 3.3812
+
+
+36 (B11221_Hil1_tr36) ... 15 (B11221_Hil1_tr15)
+lnL = -287.262298
+ 15.80994  0.01923
+
+t= 15.8099  S=    41.9  N=    90.1  dN/dS=  0.0192  dN = 0.3066  dS =15.9442
+
+
+36 (B11221_Hil1_tr36) ... 16 (B11221_Hil1_tr16)
+lnL = -282.329672
+ 20.34710  0.01574
+
+t= 20.3471  S=    46.8  N=    85.2  dN/dS=  0.0157  dN = 0.2928  dS =18.6051
+
+
+36 (B11221_Hil1_tr36) ... 17 (B11221_Hil1_tr17)
+lnL = -281.594239
+  9.76913  0.03783
+
+t= 9.7691  S=    45.3  N=    86.7  dN/dS=  0.0378  dN = 0.3348  dS = 8.8508
+
+
+36 (B11221_Hil1_tr36) ... 18 (B11221_Hil1_tr18)
+lnL = -276.042490
+  4.03034  0.07120
+
+t= 4.0303  S=    46.3  N=    85.7  dN/dS=  0.0712  dN = 0.2411  dS = 3.3870
+
+
+36 (B11221_Hil1_tr36) ... 19 (B11221_Hil1_tr19)
+lnL = -274.441095
+ 30.27546  0.00929
+
+t= 30.2755  S=    45.5  N=    86.5  dN/dS=  0.0093  dN = 0.2673  dS =28.7758
+
+
+36 (B11221_Hil1_tr36) ... 20 (B11221_Hil1_tr20)
+lnL = -281.941101
+ 17.66451  0.01600
+
+t= 17.6645  S=    45.7  N=    86.3  dN/dS=  0.0160  dN = 0.2642  dS =16.5147
+
+
+36 (B11221_Hil1_tr36) ... 21 (B11221_Hil1_tr21)
+lnL = -282.698806
+  6.71277  0.05270
+
+t= 6.7128  S=    45.0  N=    87.0  dN/dS=  0.0527  dN = 0.3137  dS = 5.9521
+
+
+36 (B11221_Hil1_tr36) ... 22 (B11221_Hil1_tr22)
+lnL = -294.837139
+  4.86805  0.12884
+
+t= 4.8681  S=    46.6  N=    85.4  dN/dS=  0.1288  dN = 0.4791  dS = 3.7189
+
+
+36 (B11221_Hil1_tr36) ... 23 (B11221_Hil1_tr23)
+lnL = -283.010891
+ 31.62925  0.01031
+
+t= 31.6293  S=    47.9  N=    84.1  dN/dS=  0.0103  dN = 0.2942  dS =28.5345
+
+
+36 (B11221_Hil1_tr36) ... 24 (B11221_Hil1_tr24)
+lnL = -271.672565
+ 14.99068  0.01424
+
+t= 14.9907  S=    40.4  N=    91.6  dN/dS=  0.0142  dN = 0.2252  dS =15.8081
+
+
+36 (B11221_Hil1_tr36) ... 25 (B11221_Hil1_tr25)
+lnL = -284.082328
+  3.21424  0.10065
+
+t= 3.2142  S=    46.0  N=    86.0  dN/dS=  0.1007  dN = 0.2604  dS = 2.5870
+
+
+36 (B11221_Hil1_tr36) ... 26 (B11221_Hil1_tr26)
+lnL = -295.489185
+ 50.00000  0.00863
+
+t= 50.0000  S=    44.9  N=    87.1  dN/dS=  0.0086  dN = 0.4156  dS =48.1409
+
+
+36 (B11221_Hil1_tr36) ... 27 (B11221_Hil1_tr27)
+lnL = -282.778296
+  2.93417  0.11188
+
+t= 2.9342  S=    46.6  N=    85.4  dN/dS=  0.1119  dN = 0.2570  dS = 2.2976
+
+
+36 (B11221_Hil1_tr36) ... 28 (B11221_Hil1_tr28)
+lnL = -279.936145
+ 15.63406  0.01802
+
+t= 15.6341  S=    46.0  N=    86.0  dN/dS=  0.0180  dN = 0.2606  dS =14.4623
+
+
+36 (B11221_Hil1_tr36) ... 29 (B11221_Hil1_tr29)
+lnL = -277.848666
+ 50.00000  0.00458
+
+t= 50.0000  S=    42.1  N=    89.9  dN/dS=  0.0046  dN = 0.2370  dS =51.7701
+
+
+36 (B11221_Hil1_tr36) ... 30 (B11221_Hil1_tr30)
+lnL = -261.764771
+ 50.00000  0.00310
+
+t= 50.0000  S=    44.3  N=    87.7  dN/dS=  0.0031  dN = 0.1534  dS =49.3967
+
+
+36 (B11221_Hil1_tr36) ... 31 (B11221_Hil1_tr31)
+lnL = -279.306001
+  8.14276  0.03722
+
+t= 8.1428  S=    45.9  N=    86.1  dN/dS=  0.0372  dN = 0.2715  dS = 7.2944
+
+
+36 (B11221_Hil1_tr36) ... 32 (B11221_Hil1_tr32)
+lnL = -280.867953
+  5.89168  0.05442
+
+t= 5.8917  S=    44.2  N=    87.8  dN/dS=  0.0544  dN = 0.2883  dS = 5.2975
+
+
+36 (B11221_Hil1_tr36) ... 33 (B11221_Hil1_tr33)
+lnL = -271.921967
+ 17.76035  0.01384
+
+t= 17.7604  S=    44.5  N=    87.5  dN/dS=  0.0138  dN = 0.2367  dS =17.0997
+
+
+36 (B11221_Hil1_tr36) ... 34 (B11221_Hil1_tr34)
+lnL = -238.195962
+  3.20593  0.02353
+
+t= 3.2059  S=    43.1  N=    88.9  dN/dS=  0.0235  dN = 0.0734  dS = 3.1215
+
+
+36 (B11221_Hil1_tr36) ... 35 (B11221_Hil1_tr35)
+lnL = -244.835329
+  7.27391  0.01093
+
+t= 7.2739  S=    40.3  N=    91.7  dN/dS=  0.0109  dN = 0.0846  dS = 7.7422
+
+
+37 (B11221_Hil1_tr37) ... 1 (B11221_Hil1_tr1)
+lnL = -276.308006
+  4.42267  0.06302
+
+t= 4.4227  S=    45.9  N=    86.1  dN/dS=  0.0630  dN = 0.2389  dS = 3.7918
+
+
+37 (B11221_Hil1_tr37) ... 2 (B11221_Hil1_tr2)
+lnL = -273.183584
+ 50.00000  0.00476
+
+t= 50.0000  S=    44.5  N=    87.5  dN/dS=  0.0048  dN = 0.2334  dS =48.9932
+
+
+37 (B11221_Hil1_tr37) ... 3 (B11221_Hil1_tr3)
+lnL = -279.666267
+ 50.00000  0.00470
+
+t= 50.0000  S=    43.4  N=    88.6  dN/dS=  0.0047  dN = 0.2359  dS =50.1851
+
+
+37 (B11221_Hil1_tr37) ... 4 (B11221_Hil1_tr4)
+lnL = -279.286361
+  9.18217  0.03272
+
+t= 9.1822  S=    42.6  N=    89.4  dN/dS=  0.0327  dN = 0.2904  dS = 8.8757
+
+
+37 (B11221_Hil1_tr37) ... 5 (B11221_Hil1_tr5)
+lnL = -284.938833
+  6.08521  0.05542
+
+t= 6.0852  S=    45.8  N=    86.2  dN/dS=  0.0554  dN = 0.2935  dS = 5.2958
+
+
+37 (B11221_Hil1_tr37) ... 6 (B11221_Hil1_tr6)
+lnL = -274.126132
+  2.34491  0.20473
+
+t= 2.3449  S=    45.9  N=    86.1  dN/dS=  0.2047  dN = 0.3325  dS = 1.6242
+
+
+37 (B11221_Hil1_tr37) ... 7 (B11221_Hil1_tr7)
+lnL = -284.599734
+ 50.00000  0.00602
+
+t= 50.0000  S=    46.4  N=    85.6  dN/dS=  0.0060  dN = 0.2821  dS =46.8968
+
+
+37 (B11221_Hil1_tr37) ... 8 (B11221_Hil1_tr8)
+lnL = -288.930880
+  9.67952  0.03820
+
+t= 9.6795  S=    44.2  N=    87.8  dN/dS=  0.0382  dN = 0.3419  dS = 8.9511
+
+
+37 (B11221_Hil1_tr37) ... 9 (B11221_Hil1_tr9)
+lnL = -275.859245
+ 16.69596  0.01338
+
+t= 16.6960  S=    41.4  N=    90.6  dN/dS=  0.0134  dN = 0.2307  dS =17.2436
+
+
+37 (B11221_Hil1_tr37) ... 10 (B11221_Hil1_tr10)
+lnL = -279.374231
+  7.14319  0.05274
+
+t= 7.1432  S=    44.9  N=    87.1  dN/dS=  0.0527  dN = 0.3350  dS = 6.3518
+
+
+37 (B11221_Hil1_tr37) ... 11 (B11221_Hil1_tr11)
+lnL = -267.344780
+  4.81857  0.05315
+
+t= 4.8186  S=    45.0  N=    87.0  dN/dS=  0.0532  dN = 0.2272  dS = 4.2747
+
+
+37 (B11221_Hil1_tr37) ... 12 (B11221_Hil1_tr12)
+lnL = -264.787631
+ 50.00000  0.00391
+
+t= 50.0000  S=    44.3  N=    87.7  dN/dS=  0.0039  dN = 0.1928  dS =49.3219
+
+
+37 (B11221_Hil1_tr37) ... 13 (B11221_Hil1_tr13)
+lnL = -285.902644
+ 34.55928  0.00973
+
+t= 34.5593  S=    45.2  N=    86.8  dN/dS=  0.0097  dN = 0.3212  dS =33.0098
+
+
+37 (B11221_Hil1_tr37) ... 14 (B11221_Hil1_tr14)
+lnL = -277.869970
+  3.51769  0.10564
+
+t= 3.5177  S=    43.8  N=    88.2  dN/dS=  0.1056  dN = 0.3081  dS = 2.9162
+
+
+37 (B11221_Hil1_tr37) ... 15 (B11221_Hil1_tr15)
+lnL = -283.272249
+ 20.12381  0.01336
+
+t= 20.1238  S=    40.7  N=    91.3  dN/dS=  0.0134  dN = 0.2820  dS =21.1131
+
+
+37 (B11221_Hil1_tr37) ... 16 (B11221_Hil1_tr16)
+lnL = -281.235177
+ 21.69915  0.01534
+
+t= 21.6991  S=    45.2  N=    86.8  dN/dS=  0.0153  dN = 0.3150  dS =20.5374
+
+
+37 (B11221_Hil1_tr37) ... 17 (B11221_Hil1_tr17)
+lnL = -277.219191
+  5.02832  0.07243
+
+t= 5.0283  S=    44.0  N=    88.0  dN/dS=  0.0724  dN = 0.3181  dS = 4.3919
+
+
+37 (B11221_Hil1_tr37) ... 18 (B11221_Hil1_tr18)
+lnL = -276.210044
+  2.76977  0.13033
+
+t= 2.7698  S=    44.9  N=    87.1  dN/dS=  0.1303  dN = 0.2825  dS = 2.1679
+
+
+37 (B11221_Hil1_tr37) ... 19 (B11221_Hil1_tr19)
+lnL = -271.025253
+ 24.44559  0.01075
+
+t= 24.4456  S=    44.1  N=    87.9  dN/dS=  0.0107  dN = 0.2564  dS =23.8661
+
+
+37 (B11221_Hil1_tr37) ... 20 (B11221_Hil1_tr20)
+lnL = -278.317980
+ 25.17532  0.00981
+
+t= 25.1753  S=    44.3  N=    87.7  dN/dS=  0.0098  dN = 0.2405  dS =24.5249
+
+
+37 (B11221_Hil1_tr37) ... 21 (B11221_Hil1_tr21)
+lnL = -280.494458
+  3.14375  0.14709
+
+t= 3.1437  S=    43.6  N=    88.4  dN/dS=  0.1471  dN = 0.3595  dS = 2.4439
+
+
+37 (B11221_Hil1_tr37) ... 22 (B11221_Hil1_tr22)
+lnL = -289.110615
+  4.83011  0.12298
+
+t= 4.8301  S=    45.0  N=    87.0  dN/dS=  0.1230  dN = 0.4696  dS = 3.8184
+
+
+37 (B11221_Hil1_tr37) ... 23 (B11221_Hil1_tr23)
+lnL = -282.790583
+ 37.27136  0.00891
+
+t= 37.2714  S=    46.1  N=    85.9  dN/dS=  0.0089  dN = 0.3119  dS =35.0042
+
+
+37 (B11221_Hil1_tr37) ... 24 (B11221_Hil1_tr24)
+lnL = -267.715797
+ 20.79949  0.00977
+
+t= 20.7995  S=    39.1  N=    92.9  dN/dS=  0.0098  dN = 0.2234  dS =22.8713
+
+
+37 (B11221_Hil1_tr37) ... 25 (B11221_Hil1_tr25)
+lnL = -277.178117
+  2.24742  0.13488
+
+t= 2.2474  S=    44.4  N=    87.6  dN/dS=  0.1349  dN = 0.2371  dS = 1.7582
+
+
+37 (B11221_Hil1_tr37) ... 26 (B11221_Hil1_tr26)
+lnL = -284.793254
+ 50.00000  0.00636
+
+t= 50.0000  S=    43.5  N=    88.5  dN/dS=  0.0064  dN = 0.3177  dS =49.9766
+
+
+37 (B11221_Hil1_tr37) ... 27 (B11221_Hil1_tr27)
+lnL = -282.919536
+ 50.00000  0.00548
+
+t= 50.0000  S=    45.1  N=    86.9  dN/dS=  0.0055  dN = 0.2650  dS =48.3117
+
+
+37 (B11221_Hil1_tr37) ... 28 (B11221_Hil1_tr28)
+lnL = -267.643215
+  2.57924  0.08669
+
+t= 2.5792  S=    44.4  N=    87.6  dN/dS=  0.0867  dN = 0.1891  dS = 2.1817
+
+
+37 (B11221_Hil1_tr37) ... 29 (B11221_Hil1_tr29)
+lnL = -270.413919
+ 50.00000  0.00368
+
+t= 50.0000  S=    40.8  N=    91.2  dN/dS=  0.0037  dN = 0.1965  dS =53.4527
+
+
+37 (B11221_Hil1_tr37) ... 30 (B11221_Hil1_tr30)
+lnL = -263.558273
+ 50.00000  0.00357
+
+t= 50.0000  S=    42.7  N=    89.3  dN/dS=  0.0036  dN = 0.1823  dS =51.0916
+
+
+37 (B11221_Hil1_tr37) ... 31 (B11221_Hil1_tr31)
+lnL = -271.868288
+  7.94941  0.03069
+
+t= 7.9494  S=    44.4  N=    87.6  dN/dS=  0.0307  dN = 0.2279  dS = 7.4242
+
+
+37 (B11221_Hil1_tr37) ... 32 (B11221_Hil1_tr32)
+lnL = -272.670217
+  3.04043  0.09584
+
+t= 3.0404  S=    42.8  N=    89.2  dN/dS=  0.0958  dN = 0.2496  dS = 2.6046
+
+
+37 (B11221_Hil1_tr37) ... 33 (B11221_Hil1_tr33)
+lnL = -264.658556
+ 22.48993  0.00945
+
+t= 22.4899  S=    43.0  N=    89.0  dN/dS=  0.0095  dN = 0.2131  dS =22.5484
+
+
+37 (B11221_Hil1_tr37) ... 34 (B11221_Hil1_tr34)
+lnL = -258.691796
+  3.77947  0.05481
+
+t= 3.7795  S=    41.7  N=    90.3  dN/dS=  0.0548  dN = 0.1955  dS = 3.5664
+
+
+37 (B11221_Hil1_tr37) ... 35 (B11221_Hil1_tr35)
+lnL = -255.063930
+  2.32903  0.06352
+
+t= 2.3290  S=    39.1  N=    92.9  dN/dS=  0.0635  dN = 0.1445  dS = 2.2752
+
+
+37 (B11221_Hil1_tr37) ... 36 (B11221_Hil1_tr36)
+lnL = -249.912840
+  4.02170  0.03538
+
+t= 4.0217  S=    43.5  N=    88.5  dN/dS=  0.0354  dN = 0.1342  dS = 3.7941

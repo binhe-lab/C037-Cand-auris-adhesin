@@ -1,0 +1,135 @@
+---
+title: "R Notebook"
+author: Bin He
+date: "2022-01-08  Updated `r format(Sys.time(), '%d %B, %Y')`"
+output: html_notebook
+---
+
+```{r}
+require(tidyverse)
+require(cowplot)
+require(usedist)
+```
+
+# Goal
+
+- Process PAML output (read lower triangular distance matrices)
+- Compare ML (GY94), YN00 and NG86 estimates of dN and dS and choose which method to use
+- Plot distribution of omega ratios
+
+# Data
+
+For this EDA I use the B11221 Hil1 repeats, extracted and aligned
+
+# Analysis
+## Read data
+```{r}
+# I wrote a simple shell script that can parse the PAML distance matrix output to three files
+# so that the processing will be easier
+# the function below is based a solution from here: https://github.com/tidyverse/readr/issues/659
+read.dist <- function(file){
+  cmd <- paste0("sh ../script/parse-paml-dist-out.sh ", file)
+  try(system(cmd))
+  len <- scan("tmp.len")
+  names <- scan("tmp.names", what = "char")
+  x <- scan("tmp.lower")
+  m <- matrix(NA, nrow = len, ncol = len)
+  m[upper.tri(m, diag = FALSE)] <- x
+  m <- t(m) # the reason for this and the above is because scan() reads by rows while matrix() fills by columns
+  d <- as.dist(m)
+  d <- dist_setNames(d, names)
+  return(d)
+}
+```
+
+```{r}
+dN <- list(
+  YN = read.dist("../output/paml/Hil1-repeat-yn00/2YN.dN"),
+  NG = read.dist("../output/paml/Hil1-repeat-ml/2NG.dN"),
+  ML = read.dist("../output/paml/Hil1-repeat-ml/2ML.dN")
+)
+dS <- list(
+  YN = read.dist("../output/paml/Hil1-repeat-yn00/2YN.dS"),
+  NG = read.dist("../output/paml/Hil1-repeat-ml/2NG.dS"),
+  ML = read.dist("../output/paml/Hil1-repeat-ml/2ML.dS")
+)
+t <- list(
+  YN = read.dist("../output/paml/Hil1-repeat-yn00/2YN.t"),
+  NG = read.dist("../output/paml/Hil1-repeat-ml/2NG.t"),
+  ML = read.dist("../output/paml/Hil1-repeat-ml/2ML.t")
+)
+```
+```{r}
+omega <- list(
+  YN = dN$YN / dS$YN,
+  NG = dN$NG / dS$NG,
+  ML = dN$ML / dS$ML
+)
+```
+
+## Compare methods
+How well do the estimates by the three methods agree with each other?
+```{r}
+pairs(bind_cols(omega))
+```
+- Nonsynonymous rates are not so different
+
+```{r}
+pairs(bind_cols(dS), pch = 1)
+```
+- dS estimates are quite different. NG estimates saturate at 3 (meaning every site has been mutated once at least).
+- According to Ziheng's [comment](https://groups.google.com/g/pamlsoftware/c/FPo2UCCoK7A) on PAML's google group, "It is virtually impossible to distinguish data with on average five changes per site from data with 50 changes per site, even though as estimates of dS, those values are very different." SE needs to be considered. 
+
+    He also commented that when sequences are quite diverged, the NG86 estimates are likely to be too low while the ML estimates don't have the same systematic bias but can be quite unreliable. He suggested trying the Bayesian approach (implemented as runmode = -3 in PAML), which due to the use of a prior, tend to shrink the omega and dN dS estimates away from the extreme values.
+
+## Physical vs. evolutionary distance
+I decide to use the YN estimates to further explore the relationship between the physical distance between repeats in the same protein and the evolutionary distance between them. It turns out that PAML results include an `rst` file that provides the dN, dS, omega estimates and other parameters in a table format
+```{r}
+header <- c("seq1", "seq2", "S", "N", "t", "k", "omega", "dN", "SE.dN", "dS", "SE.dS")
+df.YN <- read_table("../output/paml/Hil1-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd")
+df.YN <- mutate(df.YN, distance = (seq1-seq2)*44)
+```
+Examine the relationship between the estimates and standard errors for dS
+```{r}
+df.YN %>% 
+  select(rate_dN = dN, rate_dS = dS, SE_dN = SE.dN, SE_dS = SE.dS) %>% 
+  pivot_longer(everything(), names_to = c(".value", "par"), names_sep = "_") %>% 
+  mutate(CV = SE/rate) %>% 
+  ggplot(aes(x = rate, y = CV)) + geom_point() + 
+  facet_wrap(~par, scales = "free") + theme_cowplot()
+```
+- errors on dS are primarily driven by diverged sequences, while errors on dN are driven by small number of changes observed
+- filter out all pairs with dS estimates >= 3
+
+Plot evolutionary distance vs physical distance
+```{r}
+# GET EQUATION AND R-SQUARED AS STRING
+# SOURCE: https://groups.google.com/forum/#!topic/ggplot2/1TgH-kG5XMA
+
+lm_eqn <- function(m){
+    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, 
+         list(a = format(unname(coef(m)[1]), digits = 2),
+              b = format(unname(coef(m)[2]), digits = 2),
+             r2 = format(summary(m)$r.squared, digits = 3)))
+    as.character(as.expression(eq));
+}
+```
+
+```{r}
+df.YN %>% 
+  filter(dS < 3) %>% 
+  ggplot(aes(x = distance, y = t)) + 
+  geom_point() + stat_smooth(method = "lm") +
+  theme_cowplot()
+
+m <- lm(t ~ distance, df.YN)
+summary(m)
+```
+- The slope is significantly above zero, but the correlation is pretty low `sqrt(summary(m)$r.squared)`
+
+```{r}
+df.YN %>% 
+  filter(dS < 3) %>% 
+  ggplot(aes(x = omega)) + geom_boxplot()
+```
+
