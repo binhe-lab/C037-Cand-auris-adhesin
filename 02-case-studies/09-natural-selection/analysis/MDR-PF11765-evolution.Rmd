@@ -1,0 +1,99 @@
+---
+title: "Hil1-2 repeats comparisons"
+author: Bin He
+date: "2022-01-12  Updated `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r}
+require(tidyverse)
+require(cowplot)
+require(ggtree)
+require(treeio)
+```
+
+# Goal
+
+- Investigate the evolutionary rates and selective forces acting on the PF11765 (NTD) portion of the Hil homologs, within the MDR clade.
+
+# Approach
+
+Use PAML to estimate the branch length and omega values for the different branches in the PF11765 tree. If initial results suggest different rates / constraints among the branches, move on to perform formal hypotheses testing.
+
+# Data
+
+The alignments were extracted and built using BED format files and source amino acid and coding sequence fasta files. See `input` and `script` folders for details. The phylogenetic tree for the MDR Hil homologs were based on the GeneRax corrected gene tree (see `07-Cauris-polymorphism/output/gene-tree/notung`). These two inputs were then provided to `codeml` for ML analysis. The output is stored in `output/paml/MDR-PF11765-branch`.
+
+# Analysis
+## MDR, free or one ratios
+```{r}
+mdr.freeR <- read.codeml_mlc("../output/paml/MDR-PF11765-freeR/mlc")
+mdr.oneR <- read.codeml_mlc("../output/paml/MDR-PF11765-oneR/mlc")
+```
+```{r}
+mdr.freeR.1 <- drop.tip(mdr.freeR, tip = c("XP_462630.1_Dhansenii", "XP_002770057.1_Dhansenii"))
+ggtree(mdr.freeR.1, aes(color = dN_vs_dS), branch.length = 't', ) + 
+  geom_tiplab(as_ylab = TRUE) +
+  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5, size = 2) + 
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
+                         oob=scales::squish,
+                         low='darkgreen', high='red')
+```
+```{r}
+mdr.oneR.1 <- drop.tip(mdr.oneR, tip = c("XP_462630.1_Dhansenii", "XP_002770057.1_Dhansenii"))
+ggtree(mdr.oneR.1) +  geom_tiplab(as_ylab = TRUE)
+```
+
+## _C. auris_ free ratio
+I found how I specify the codonfreq parameter has a profound effect on the branch lengths estimates, and to some extent on the dN/dS estimates as well, where `CodonFreq=2` (F3x4) results in very large dS estimates and identified different branches as having elevated dN/dS than `CodonFreq=0/1` did.
+
+### `CodonFreq = 0`
+```{r}
+caur.freeR.cf0 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765-freeR-codonfreq0/mlc")
+# several internal branches have 0 inferred syn or nonsyn changes, and the dN/dS ratio estimates doesn't make much sense
+#caur.freeR@data <- mutate(caur.freeR@data,
+#                          dN_vs_dS = ifelse(N_x_dN == 0 | S_x_dS == 0, NA, dN_vs_dS))
+# no longer done as this hides important information. instead, suqish the out of bound values in heatmap
+ggtree(caur.freeR.cf0, aes(color = dN_vs_dS), branch.length = 't') + 
+  #geom_rootedge(rootedge = 0.1) +
+  geom_nodelab(hjust = -0.2, size = 2, color = "black") +
+  geom_tiplab(as_ylab = TRUE) +
+  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5) + 
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
+                         oob=scales::squish,
+                         low='darkgreen', high='red')
+```
+
+### `CodonFreq = 1`
+```{r}
+caur.freeR.cf1 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765-freeR-codonfreq1/mlc")
+# several internal branches have 0 inferred syn or nonsyn changes, and the dN/dS ratio estimates doesn't make much sense
+ggtree(caur.freeR.cf1, aes(color = dN_vs_dS), branch.length = 't') + 
+  #geom_rootedge(rootedge = 0.1) +
+  geom_nodelab(hjust = -0.2, size = 2, color = "black") +
+  geom_tiplab(as_ylab = TRUE) +
+  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5) + 
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
+                         oob=scales::squish,
+                         low='darkgreen', high='red')
+```
+
+### `CodonFreq = 2`
+Plotted as cladogram to avoid compressing some of the lineages. Branch lengths are printed at the bottom of the branches.
+```{r}
+caur.freeR.cf2 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765-freeR-codonfreq2/mlc")
+# several internal branches have 0 inferred syn or nonsyn changes, and the dN/dS ratio estimates doesn't make much sense
+ggtree(caur.freeR.cf2, aes(color = dN_vs_dS), branch.length = 'none') + 
+  #geom_rootedge(rootedge = 0.1) +
+  geom_nodelab(hjust = -0.2, size = 2, color = "black") +
+  geom_tiplab(as_ylab = TRUE) +
+  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5) + 
+  geom_text(aes(x = branch, label = round(t, 3)), vjust = 1.5, color = "black", size = 3) + 
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
+                         oob=scales::squish,
+                         low='darkgreen', high='red')
+```

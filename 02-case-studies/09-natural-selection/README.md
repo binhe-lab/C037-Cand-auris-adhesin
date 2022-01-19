@@ -84,3 +84,67 @@ The `codeml.ctl` control file contains all the parameters used. The key ones are
 1. The overall ω estimate is made by two models. M1a assumes two categories of sites -- those that evolve neutrally and those that evolve under selective constraints -- and this model estimates that 85% of the sites evolve under constraint, with an ω value of 0.06. M0 assumes a single category of sites and it estimates an ω value of 0.108. The reason M0 estimate is higher is because it lumps the neutrally evolving sites into the constrained sites and thus inflates the ω estimate. It is worth noting that the LRT statistic (-2 difference in log likelihood scores between the two models) is ~160 and is highly significant suggesting that M1a is a much better fit. In other words, there is strong evidence of variable selective constraints among sites in the NTD.
 ## Hil1-8 in _C. auris_ with MDR outgroups
 Using the locus tags or pIDs, e.g., B9J08_004109 or PIS50296.1 for Hil1, I can extract the CDS sequences from the [genome file](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/759/435/GCA_002759435.2_Cand_auris_B8441_V2/GCA_002759435.2_Cand_auris_B8441_V2_cds_from_genomic.fna.gz) using Vim (if more sequences need to be extracted, can automate using either bioawk or [seqkit](https://www.biostars.org/p/318979/)).
+
+## Hil1, 2 repeats tree
+Hil1 and Hil2 are the most closely related Hil homologs in _C. auris_. The NTD tree suggest that the duplication event occurred after _C. auris_ diverged from the closely related MDR species. The two proteins have the most similar repeats among all eight Hil proteins, with identical period (44 aa). Hil1 has more copies than Hil2 does. The question we are asking here is, what's the evolutionary history of the repeats in these two proteins relative to the genes' duplication, and what has been the type and strength of selection on them.
+
+To answer the evolutionary history question, I used `raxml-ng` to build ML trees for the repeats in the two proteins. I selected the first 17 repeats from Hil1 and 17/19 repeats from Hil2, both from the B8441 strain. The two that were omitted from Hil2 were of different lengths than the rest. I extracted both the amino acid and coding sequences for them and inferred phylogenetic trees using `raxml-ng`. The amino acid sequences turn out to be too close for some of the repeats and resulted in zero branch length for a couple of them. In the meantime, the level of divergence appear to be not so great as to overwhelm the nucleotide sequence tree. So I decided to use the latter. The best ML tree with branch support (from 2000 Felsenstein Bootstrap replicates) is shown below (annotated in iTol)
+
+![Hil1-2-repeat tree](output/gene-tree/Hil1-2-repeats/20220112-Hil1-2-repeats-raxml-nuc-tree-iTol-unrooted.png)
+
+- The tree is unrooted
+- Notably, repeat 1 from Hil2, which is the first repeat after the NTD, is close to the clade that includes the 1st repeat from Hil1. In addition, repeats 2-6 from Hil2 form a clade that also includes repeat 11 from Hil1, and which is somewhat close to the other repeats from Hil1. Beyond those two, the majority of the Hil2 repeats form a distant clade with one repeat from Hil1 mixed with them. This overall pattern suggests that
+    a. The repeats from the two proteins did share a common origin, as shown by the close relationship between the first repeat unit in both proteins.
+    a. It's unclear how many repeats were in the ancestral protein and how many got duplicated into Hil1 and Hil2. But from the tree it appears that if Hil1 and Hil2 used to share many repeats from their ancestor, those repeats were either later lost or other evolutionary forces have made them look more like other repeats in the same protein than with their "ortholog". Homogenizing processes could occur among repeats in the same protein via gene conversion for example.
+
+## Hil1, 2 repeats, horizontal vs vertical and compared with NTD
+The goal is to compare the evolutionary rates and selective constraints among repeats within the protein vs those between closely related proteins. There are three sets of comparisons here:
+
+1. Horizontal: among repeats within Hil1 or Hil2
+1. Vertical: between Hil1, Hil2 and closely related MDR homologs, for the repeat region
+1. PF11765: between Hil1, Hil2 and closely related MDR homologs, for the PF11765 region
+
+For each comparison, we will primarily look at `t` and `omega`. Note that for the second one, because the alignment is not reliable for the repeat region and since the phylogenetic tree above suggests that most of the repeats in the two proteins likely originated after the duplication event for Hil1 and Hil2, we will just do an all pairwise comparison. 
+
+## PF11765 domain evolution
+The question here is whether after the duplications that led to Hil1-8 in _C. auris_, there has been selection on the PF11765 domain to diversify in its function among the paralogs. So far I've been describing the evolution of the NTD as being conserved. While this is true relative to the fast-evolving repeat regions, it ignored the possibility of positive selection acting on the backdrop of purifying selection in the background (for most of the sites). After all, if positive selection was indeed involved, it would have only acted on a few residues.
+
+I have two specific questions here:
+
+1. Assuming equal selective forces on all branches (for Hil1-8), can the site-model detect fast evolution for certain sites within PF11765?
+1. Assuming equal selective constraints on all sites, can we detect certain branches with elevated dN/dS (omega) over the background, which would suggest episodes of relaxed constraints or positive selection?
+
+### Branch model
+I wrote several scripts in the `script` folder to extract, align and transform the coding sequences for Hil1-8 for PAML analysis. I also used the `ape` package's `drop.tip()` function to prune the GeneRax corrected gene tree for the MDR homologs for use with PAML analysis. For PAML, the important parameters used are
+
+```
+      seqtype = 1  * 1:codons; 2:AAs; 3:codons-->AAs
+    CodonFreq = 1  * 0:1/61 each, 1:F1X4, 2:F3X4, 3:codon table
+        clock = 0   * 0: no clock, unrooted tree, 1: clock, rooted tree
+        model = 1
+                    * models for codons:
+                        * 0:one, 1:b, 2:2 or more dN/dS ratios for branches
+
+      NSsites = 0  * dN/dS among sites. 0:no variation, 1:neutral, 2:positive
+        icode = 8  * 8: yeast alt nuc
+
+    fix_kappa = 0  * 1: kappa fixed, 0: kappa to be estimated
+        kappa = 2  * initial or fixed kappa
+    fix_omega = 0  * 1: omega or omega_1 fixed, 0: estimate 
+        omega = .4 * initial or fixed omega, for codons or codon-based AAs
+
+        getSE = 1  * 0: don't want them, 1: want S.E.s of estimates
+
+   Small_Diff = .5e-6
+    cleandata = 0  * remove sites with ambiguity data (1:yes, 0:no)?
+  fix_blength = 0  * 0: ignore, -1: random, 1: initial, 2: fixed
+```
+
+- The `model` parameter is varied between 0, 1 and 2 depending on the analysis (one dN/dS ratio across the tree, free ratios vs multiple ratios as defined in the tree).
+- The `CodonFreq` parameter was originally left out and I found that the default was 0, i.e. equal frequency. To explore the robustness of the result, I changed this to 1 or 2 and repeated the analysis. The results suggest that for the Hil1-8 dataset, `CodonFreq = 2` results in very large dS estimates for some branches and a transition/transversion ratio of ~1.2, which is much lower than the 1.7-2.3 that I've been getting with `CodonFreq = 0 / 1` and the pairwise analysis. Some branches identified as having dramatically elevated dN/dS with `CodonFreq=2` differed from those identified under the other two situations. But one branch was consistently identified as having much higher dN/dS than the rest.
+- `clock=0` is the default if the line is commented out.
+
+### Site model
+The site model is to detect particular sites under positive selection. Based on PAML's manual and Ziheng Yang's papers (e.g. Yang et al 2000, PMID: 10790415), I ran `NSsites = 0 1 2 7 8`, where the comparisons of interests are M1a vs M2a (1 vs 2) and M7 vs M8 (7 vs 8). According to the manual, the first comparison is more stringent than the second one. M1a specifies two categories of sites, with `omega_0 < 1` (constrained) and `omega_1 = 1` (neutral); M2a has one more class than M1a, i.e. `omega_2 > 1`. M7 and M8 are similar to M1a and M2a except that a beta distribution was used to model the constrained and neutral class, with two parameters for the beta distribution (p, q).
+
+I again ran the tests under the three `CodonFreq` options (0, 1, 2). In all three cases, the M1a vs M2a comparison turned out insignificant (the LL scores are nearly identical), while the M7 vs M8 comparison was highly significant (chi^2 test p-values < 0.001). A serine residue in column 261 in the alignment was consistently identified as under strong positive selection.

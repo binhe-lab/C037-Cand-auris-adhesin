@@ -1,0 +1,5 @@
+Hil1_PIS50296.1_B8441_Cauris	Hil1
+Hil2_PIS49865.1_B8441_Cauris	Hil2
+XP_025344416.1_Chaemuloni	MDR
+XP_025344407.1_Chaemuloni	MDR
+XP_024713121.1_Cpseudohaemulon	MDR

@@ -1,6 +1,6 @@
       seqfile = Hil1-2-MDR-NTD-aligned.nuc * sequence data filename
      treefile = raxml-rooted-20211227.nwk  * tree file
-      outfile = mcl                        * main result file name
+      outfile = mlc                        * main result file name
 
         noisy = 3  * 0,1,2,3,9: how much rubbish on the screen
       verbose = 1  * 0: concise; 1: detailed, 2: too much
@@ -8,7 +8,7 @@
                    * 3: StepwiseAddition; (4,5):PerturbationNNI; -2: pairwise
 
       seqtype = 1  * 1:codons; 2:AAs; 3:codons-->AAs
-*   CodonFreq = 2  * 0:1/61 each, 1:F1X4, 2:F3X4, 3:codon table
+    CodonFreq = 2  * 0:1/61 each, 1:F1X4, 2:F3X4, 3:codon table
 *       clock = 0   * 0: no clock, unrooted tree, 1: clock, rooted tree
         model = 0
                     * models for codons:
@@ -17,10 +17,10 @@
       NSsites = 0 1 2 * dN/dS among sites. 0:no variation, 1:neutral, 2:positive
         icode = 8  * 8: yeast alt nuc
 
-*   fix_kappa = 0  * 1: kappa fixed, 0: kappa to be estimated
-*       kappa = 2  * initial or fixed kappa
-*   fix_omega = 0  * 1: omega or omega_1 fixed, 0: estimate 
-*       omega = .4 * initial or fixed omega, for codons or codon-based AAs
+    fix_kappa = 0  * 1: kappa fixed, 0: kappa to be estimated
+        kappa = 2  * initial or fixed kappa
+    fix_omega = 0  * 1: omega or omega_1 fixed, 0: estimate 
+        omega = .4 * initial or fixed omega, for codons or codon-based AAs
 
 *   fix_alpha = 1  * 0: estimate gamma shape parameter; 1: fix it at alpha
 *       alpha = 0. * initial or fixed alpha, 0:infinity (constant rate)

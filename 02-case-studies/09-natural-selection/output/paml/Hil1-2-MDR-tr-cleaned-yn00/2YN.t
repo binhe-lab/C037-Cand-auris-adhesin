@@ -1,0 +1,7 @@
+     5
+Hil1_PIS50296_1_B8441_Cauris 
+Hil2_PIS49865_1_B8441_Cauris   1.6727
+XP_025344416_1_Chaemuloni   1.9436  1.8543
+XP_025344407_1_Chaemuloni   2.1866  2.2384  2.0657
+XP_024713121_1_Cpseudohaemulon   1.5786  1.7842  1.7685  2.0383
+
