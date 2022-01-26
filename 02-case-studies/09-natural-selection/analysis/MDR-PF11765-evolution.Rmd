@@ -31,17 +31,20 @@ The alignments were extracted and built using BED format files and source amino 
 # Analysis
 ## MDR, free or one ratios
 ```{r}
-mdr.freeR <- read.codeml_mlc("../output/paml/MDR-PF11765-freeR/mlc")
-mdr.oneR <- read.codeml_mlc("../output/paml/MDR-PF11765-oneR/mlc")
+mdr.freeR <- read.codeml_mlc("../output/paml/MDR-PF11765/MDR-PF11765-freeR/mlc")
+mdr.oneR <- read.codeml_mlc("../output/paml/MDR-PF11765/MDR-PF11765-oneR/mlc")
 ```
 ```{r}
 mdr.freeR.1 <- drop.tip(mdr.freeR, tip = c("XP_462630.1_Dhansenii", "XP_002770057.1_Dhansenii"))
-ggtree(mdr.freeR.1, aes(color = dN_vs_dS), branch.length = 't', ) + 
-  geom_tiplab(as_ylab = TRUE) +
-  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5, size = 2) + 
+ggtree(mdr.freeR.1, aes(color = dN_vs_dS), branch.length = 'none', ) + 
+  geom_tiplab(as_ylab = TRUE, size = 7) +
+  geom_text(data = td_filter(dN_vs_dS > 0.5), 
+            aes(x = branch, label = paste(round(dN, 2), round(dS, 2), sep = "/")),
+            vjust = -.5, size = 2.5) + 
   scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
                          oob=scales::squish,
                          low='darkgreen', high='red')
+ggsave("../output/figure/20220122-MDR-PF11765-freeR-anno-tree.png", width = 7, height = 4.5)
 ```
 ```{r}
 mdr.oneR.1 <- drop.tip(mdr.oneR, tip = c("XP_462630.1_Dhansenii", "XP_002770057.1_Dhansenii"))
@@ -53,33 +56,51 @@ I found how I specify the codonfreq parameter has a profound effect on the branc
 
 ### `CodonFreq = 0`
 ```{r}
-caur.freeR.cf0 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765-freeR-codonfreq0/mlc")
-# several internal branches have 0 inferred syn or nonsyn changes, and the dN/dS ratio estimates doesn't make much sense
-#caur.freeR@data <- mutate(caur.freeR@data,
-#                          dN_vs_dS = ifelse(N_x_dN == 0 | S_x_dS == 0, NA, dN_vs_dS))
-# no longer done as this hides important information. instead, suqish the out of bound values in heatmap
-ggtree(caur.freeR.cf0, aes(color = dN_vs_dS), branch.length = 't') + 
+caur.freeR.cf0 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765/codonfreq0-freeR/mlc")
+
+ggtree(caur.freeR.cf0, aes(color = dN_vs_dS), size = 1, branch.length = 'none') + 
   #geom_rootedge(rootedge = 0.1) +
-  geom_nodelab(hjust = -0.2, size = 2, color = "black") +
-  geom_tiplab(as_ylab = TRUE) +
-  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5) + 
-  scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
-                         oob=scales::squish,
-                         low='darkgreen', high='red')
+  geom_nodelab(hjust = -0.2, size = 3, color = "black") +
+  geom_tiplab(aes(label = str_extract(label, "Hil[1-8]")), size = 6, hjust = -0.5, color = 1) + 
+  xlim(0, 5.6) +
+  geom_text(data = td_filter(dN_vs_dS > 0.5),
+            aes(x = branch, label = paste(round(dN, 2), round(dS, 2), sep = "/")), 
+            vjust = -.5, size = 4) + 
+  geom_text(data = td_filter(node == 15), aes(x = branch, label = "ω1"), 
+            vjust = 1.5, size = 6, color = "black") +
+  geom_text(data = td_filter(node == 11), aes(x = branch, label = "ω2"), 
+            vjust = 1.5, size = 6, color = "black") +
+  geom_text(data = td_filter(node %in% c(4, 14)), aes(x = branch, label = "ω3"), 
+            vjust = 1.5, size = 6, color = "black") +
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5), 
+                         oob=scales::squish, low='darkgreen', high="darkviolet") +
+  theme(legend.position = c(0.1,0.8), legend.text = element_text(size = 12), 
+        legend.title = element_text(size = 14))
+ggsave("../output/figure/20220122-caur-PF11765-Feual-freeR-anno-tree.png", width = 5, height = 5)
 ```
 
 ### `CodonFreq = 1`
 ```{r}
-caur.freeR.cf1 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765-freeR-codonfreq1/mlc")
-# several internal branches have 0 inferred syn or nonsyn changes, and the dN/dS ratio estimates doesn't make much sense
-ggtree(caur.freeR.cf1, aes(color = dN_vs_dS), branch.length = 't') + 
+caur.freeR.cf1 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765/codonfreq1-freeR/mlc")
+ggtree(caur.freeR.cf1, aes(color = dN_vs_dS), size = 1, branch.length = 'none') + 
   #geom_rootedge(rootedge = 0.1) +
-  geom_nodelab(hjust = -0.2, size = 2, color = "black") +
-  geom_tiplab(as_ylab = TRUE) +
-  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5) + 
-  scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
-                         oob=scales::squish,
-                         low='darkgreen', high='red')
+  geom_nodelab(hjust = -0.2, size = 3, color = "black") +
+  geom_tiplab(aes(label = str_extract(label, "Hil[1-8]")), size = 6, hjust = -0.5, color = 1) + 
+  xlim(0, 5.6) +
+  geom_text(data = td_filter(dN_vs_dS > 0.5),
+            aes(x = branch, label = paste(round(dN, 2), round(dS, 2), sep = "/")), 
+            vjust = -.5, size = 4) + 
+  geom_text(data = td_filter(node == 15), aes(x = branch, label = "ω1"), 
+            vjust = 1.5, size = 6, color = "black") +
+  geom_text(data = td_filter(node == 11), aes(x = branch, label = "ω2"), 
+            vjust = 1.5, size = 6, color = "black") +
+  geom_text(data = td_filter(node %in% c(4, 14)), aes(x = branch, label = "ω3"), 
+            vjust = 1.5, size = 6, color = "black") +
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5), 
+                         oob=scales::squish, low='darkgreen', high="darkviolet") +
+  theme(legend.position = c(0.1,0.8), legend.text = element_text(size = 12), 
+        legend.title = element_text(size = 14))
+ggsave("../output/figure/20220122-caur-PF11765-F1x4-freeR-anno-tree.png", width = 5, height = 5)
 ```
 
 ### `CodonFreq = 2`
@@ -91,7 +112,7 @@ ggtree(caur.freeR.cf2, aes(color = dN_vs_dS), branch.length = 'none') +
   #geom_rootedge(rootedge = 0.1) +
   geom_nodelab(hjust = -0.2, size = 2, color = "black") +
   geom_tiplab(as_ylab = TRUE) +
-  geom_text(aes(x = branch, label = round(dN_vs_dS, 2)), vjust = -.5) + 
+  geom_text(aes(x = branch, label = paste(round(dN, 2), round(dS, 2), sep = "/")), vjust = -.5) + 
   geom_text(aes(x = branch, label = round(t, 3)), vjust = 1.5, color = "black", size = 3) + 
   scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
                          oob=scales::squish,

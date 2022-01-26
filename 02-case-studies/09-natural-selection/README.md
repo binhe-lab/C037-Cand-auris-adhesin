@@ -21,7 +21,16 @@ What we know about the evolutionary history of the Hil family in _C. auris_:
 
 In some cases, the in-paralogs are more closely related to each other than they are to the most closely related ortholog in related species -- this is the case for Hil1/Hil2, which arose by duplication after _C. auris_ diverged from the other MDR species sampled here. In other cases, the orthologs in the MDR relatives would be more closely related than the in-paralog, such as Hil3/Hil4.
 
+# Summary of results
+
+## Horizontal vs vertical evolution in Hil1-2
+
+![compare dN/dS of horizontal vs vertical evolution](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-Hil1-2-MDR-pairwise-estimates-compare.png)
+
+- 
+
 # Notes
+
 ## Hil1 TR horizontal repeat evolution
 The goal of this subanalysis is to calcualte the pairwise dn/ds ratios between repeats within a protein.
 
@@ -41,7 +50,10 @@ The first step is to extract the paralogous repeat alignments, which I already d
 ### PAML analysis
 1. Use `pal2nal.pl` to generate a PHYLIP format nucleotide alignment (since the nucleotide sequences are already aligned, this step can also be done with any program that can convert a fasta to a phylip format).
 1. PAML author (Yang Ziheng) recommended using `runmode = -2` in PAML to perform pairwise ML analysis to estimate dN/dS ratios, rather than the NG86 estimates. Both were produced in the run. For NG86, many sites cannot be estimated due to saturation. ML produced an estimate for each pairwise comparison.
-### Results and discussion
+1. After comparing the estimate by the ML, YN00 and NG86, I decided to use YN00. ML analysis using F3x4 with free kappa results in very large dS estimates (>20), which are likely not reliable. NG86 fails on any pairs with pS > 0.75. YN00 generally correlates well with NG86. I filtered out any pairs where dS > 3 or SE.dS/dS or SE.dN/dN > 2.
+   ![pairs comparison of dS estimates by three methods](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-compare-dS-estimates-by-three-methods.png)
+
+
 
 ## Hil1,2 orthologs in MDR, PF11765 domain
 Goal of this subanalysis is to provide a background omega ratio estimate to be compared with the pairwise dn/ds ratios from the horizontal evolution among the repeats.
@@ -115,6 +127,7 @@ I have two specific questions here:
 1. Assuming equal selective constraints on all sites, can we detect certain branches with elevated dN/dS (omega) over the background, which would suggest episodes of relaxed constraints or positive selection?
 
 ### Branch model
+
 I wrote several scripts in the `script` folder to extract, align and transform the coding sequences for Hil1-8 for PAML analysis. I also used the `ape` package's `drop.tip()` function to prune the GeneRax corrected gene tree for the MDR homologs for use with PAML analysis. For PAML, the important parameters used are
 
 ```
@@ -141,10 +154,27 @@ I wrote several scripts in the `script` folder to extract, align and transform t
 ```
 
 - The `model` parameter is varied between 0, 1 and 2 depending on the analysis (one dN/dS ratio across the tree, free ratios vs multiple ratios as defined in the tree).
-- The `CodonFreq` parameter was originally left out and I found that the default was 0, i.e. equal frequency. To explore the robustness of the result, I changed this to 1 or 2 and repeated the analysis. The results suggest that for the Hil1-8 dataset, `CodonFreq = 2` results in very large dS estimates for some branches and a transition/transversion ratio of ~1.2, which is much lower than the 1.7-2.3 that I've been getting with `CodonFreq = 0 / 1` and the pairwise analysis. Some branches identified as having dramatically elevated dN/dS with `CodonFreq=2` differed from those identified under the other two situations. But one branch was consistently identified as having much higher dN/dS than the rest.
+- The `CodonFreq` parameter was originally left out and I found that the default was 0, i.e. equal frequency. To explore the robustness of the result, I changed this to 1 or 2 and repeated the analysis. The results suggest that for the Hil1-8 dataset, `CodonFreq = 2` results in very large dS estimates for some branches and a transition/transversion ratio of ~1.2, which is much lower than the 1.7-2.3 that I've been getting with `CodonFreq = 0 / 1` and the pairwise analysis. Some branches identified as having dramatically elevated dN/dS with `CodonFreq = 2` differed from those identified under the other two situations. But one branch was consistently identified as having much higher dN/dS than the rest.
 - `clock=0` is the default if the line is commented out.
 
-### Site model
-The site model is to detect particular sites under positive selection. Based on PAML's manual and Ziheng Yang's papers (e.g. Yang et al 2000, PMID: 10790415), I ran `NSsites = 0 1 2 7 8`, where the comparisons of interests are M1a vs M2a (1 vs 2) and M7 vs M8 (7 vs 8). According to the manual, the first comparison is more stringent than the second one. M1a specifies two categories of sites, with `omega_0 < 1` (constrained) and `omega_1 = 1` (neutral); M2a has one more class than M1a, i.e. `omega_2 > 1`. M7 and M8 are similar to M1a and M2a except that a beta distribution was used to model the constrained and neutral class, with two parameters for the beta distribution (p, q).
+Initially I planned to work with the 35 sequences in the MDR clade tree as shown above. But I found an exploratory run with the one ratio and free ratio model with the large dataset, I found the patterns are quite complicated. In particular, several non auris MDR species homologs show elevated dN/dS. Since the next step is to test hypotheses about specific branches being subject to positive selection, this large dataset provides too many clues that are not focused on _C. auris_, our focal species.
 
-I again ran the tests under the three `CodonFreq` options (0, 1, 2). In all three cases, the M1a vs M2a comparison turned out insignificant (the LL scores are nearly identical), while the M7 vs M8 comparison was highly significant (chi^2 test p-values < 0.001). A serine residue in column 261 in the alignment was consistently identified as under strong positive selection.
+![MDR PF11765 domain free ratio estimates](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-MDR-PF11765-freeR-anno-tree.png)
+
+Based on the above, I decided to switch to a small dataset with just Hil1-8 from _C. auris_. The goal is to specifically ask whether during the expansion of the Hil family in _C. auris_ any of the duplicated copies experienced accelerated evolution in their NTD, which could be indications of either relaxed constraints (if ω is higher than the background but lower than 1) or positive selection (if ω > 1). My approach is to first run the free ratio model to identify candidate branches that are likely to have had elevated dN/dS. Note that this approach violates the best practice in statistical testing. Here is a quote from Yang 1998 (PMID: 9580986):
+
+> Strictly speaking, a proper statistical test requires the null hypothesis to be specified before the data are analyzed. ... While the lack of independence of the hypothesis on data is not expected to have a great effect, it does increase the probability of rejecting the null hypothesis.
+
+I will note these while writing up this part.
+
+That said, using the free ratio model (model = 1), I found `CodonFreq = 0/1` led to the same picture: the ancestral branch of Hil6/8 and the ancestral branch of Hil1/2/6/8 were inferred to have an extreme dN/dS, since their dS estimates are 0.
+
+![cauris Hil1-8 Fequal freeR](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-caur-PF11765-Feual-freeR-anno-tree.png)
+
+Based on this result, I set up a series of tests (in the `output/paml/B8441-Hil1-8-PF11765` folder) and summarized the results in a [google sheet](https://docs.google.com/spreadsheets/d/1iufv2kxs1tuUXiOvHX1CGbYaFmCWnCXX-AHUnXRgjlk/edit?usp=sharing).
+
+### Site model
+
+The site model is to detect particular sites under positive selection. Based on PAML's manual and Ziheng Yang's papers (e.g. Yang et al 2000, PMID: 10790415), I ran `NSsites = 0 1 2 7 8`, where the comparisons of interests are M1a vs M2a (1 vs 2) and M7 vs M8 (7 vs 8). According to the manual, the first comparison is more stringent than the second one. M1a specifies two categories of sites, with `omega_0 < 1` (constrained) and `omega_1 = 1` (neutral); M2a has one more class than M1a, i.e. `omega_2 > 1`. M7 and M8 are similar to M1a and M2a except that a beta distribution was used to model the constrained and neutral class, with two parameters for the beta distribution (p, q). A third test compares M8 with M8a, where M8a is specified with `NSsites = 8, fix_omega = 1, omega = 1`. This modified test specifically asks whether there is evidence for positive selection on the selected branch, by constraining the foreground branch's dN/dS as 1 in the null model.
+
+I again ran the tests under the three `CodonFreq` options (0, 1, 2). In all three cases, the M1a vs M2a comparison turned out insignificant (the LL scores are nearly identical), while the M7 vs M8 comparison was highly significant (chi^2 test p-values < 0.001). So are the M8 vs M8a comparisons. A serine residue in column 261 in the alignment was consistently identified as under strong positive selection.

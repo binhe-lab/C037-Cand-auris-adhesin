@@ -44,19 +44,19 @@ read.dist <- function(file){
 
 ```{r}
 dN <- list(
-  YN = read.dist("../output/paml/Hil1-repeat-yn00/2YN.dN"),
-  NG = read.dist("../output/paml/Hil1-repeat-ml/2NG.dN"),
-  ML = read.dist("../output/paml/Hil1-repeat-ml/2ML.dN")
+  YN = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-yn00/2YN.dN"),
+  NG = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-ml/2NG.dN"),
+  ML = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-ml/2ML.dN")
 )
 dS <- list(
-  YN = read.dist("../output/paml/Hil1-repeat-yn00/2YN.dS"),
-  NG = read.dist("../output/paml/Hil1-repeat-ml/2NG.dS"),
-  ML = read.dist("../output/paml/Hil1-repeat-ml/2ML.dS")
+  YN = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-yn00/2YN.dS"),
+  NG = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-ml/2NG.dS"),
+  ML = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-ml/2ML.dS")
 )
 t <- list(
-  YN = read.dist("../output/paml/Hil1-repeat-yn00/2YN.t"),
-  NG = read.dist("../output/paml/Hil1-repeat-ml/2NG.t"),
-  ML = read.dist("../output/paml/Hil1-repeat-ml/2ML.t")
+  YN = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-yn00/2YN.t"),
+  NG = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-ml/2NG.t"),
+  ML = read.dist("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-ml/2ML.t")
 )
 ```
 ```{r}
@@ -75,7 +75,9 @@ pairs(bind_cols(omega))
 - Nonsynonymous rates are not so different
 
 ```{r}
+png("../output/figure/20220122-compare-dS-estimates-by-three-methods.png")
 pairs(bind_cols(dS), pch = 1)
+dev.off()
 ```
 - dS estimates are quite different. NG estimates saturate at 3 (meaning every site has been mutated once at least).
 - According to Ziheng's [comment](https://groups.google.com/g/pamlsoftware/c/FPo2UCCoK7A) on PAML's google group, "It is virtually impossible to distinguish data with on average five changes per site from data with 50 changes per site, even though as estimates of dS, those values are very different." SE needs to be considered. 
@@ -86,7 +88,7 @@ pairs(bind_cols(dS), pch = 1)
 I decide to use the YN estimates to further explore the relationship between the physical distance between repeats in the same protein and the evolutionary distance between them. It turns out that PAML results include an `rst` file that provides the dN, dS, omega estimates and other parameters in a table format
 ```{r}
 header <- c("seq1", "seq2", "S", "N", "t", "k", "omega", "dN", "SE.dN", "dS", "SE.dS")
-df.YN <- read_table("../output/paml/Hil1-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd")
+df.YN <- read_table("../output/paml/Hil1-4-repeat/B11221-Hil1-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd")
 df.YN <- mutate(df.YN, distance = (seq1-seq2)*44)
 ```
 Examine the relationship between the estimates and standard errors for dS

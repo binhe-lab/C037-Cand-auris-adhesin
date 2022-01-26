@@ -10,6 +10,8 @@ require(tidyverse)
 require(cowplot)
 require(usedist)
 require(ape)
+require(treeio)
+require(ggtree)
 ```
 
 # Goal
@@ -23,6 +25,8 @@ require(ape)
 # Data
 
 1. First 17 repeats from B8441 Hil1 and 17/19 repeats from B8441 Hil2, rates estimated using `yn00`
+1. PF11765 domain alignment among Hil1, Hil2 and the closely related MDR homologs in the Hil1/2 clade
+1. A relatively well-aligned part of the tandem repeats among Hil1, Hil2 and closely related MDR homologs in the Hil1/2 clade.
 
 # Analysis
 ## Hil1 repeats, all
@@ -48,7 +52,7 @@ read.dist <- function(file){
 First read the rates for all of B8441 Hil1's repeats
 ```{r}
 header <- c("seq1", "seq2", "S", "N", "t", "k", "omega", "dN", "SE.dN", "dS", "SE.dS")
-Hil1 <- read_table("../output/paml/B8441-Hil1-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd") %>% 
+Hil1 <- read_table("../output/paml/Hil1-4-repeat/B8441-Hil1-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd") %>% 
   mutate(distance = (seq1-seq2)*44)
 ```
 Examine the relationship between the estimates and standard errors for dS. Note that because the repeats are relatively short (44 aa) compared with a typical gene, and since only 1/3 of the sites are synonymous, and given the large divergence, the estimates of dS are associated with large errors.
@@ -82,9 +86,33 @@ summary(m)
 Here we attempt to compare between Hil1 and Hil2 repeats. An ML tree inferred by `raxml-ng` is shown below to illustrate the putative evolutionary relationship among them:
 
 ![Hil1-2-repeat tree](../output/gene-tree/Hil1-2-repeats/20220112-Hil1-2-repeats-raxml-nuc-tree-iTol-unrooted.png)
+
 ```{r}
-Hil1n2 <- read_table("../output/paml/B8441-Hil1-2-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd")
-names <- scan("../output/paml/B8441-Hil1-2-repeat-yn00/seq-names.txt", what = "char")
+tree.rep <- read.newick("../output/gene-tree/Hil1-2-repeats/20220111nuc.raxml.bestTree.branchsupport.nwk", node.label = "support") %>% 
+  as_tibble() %>% 
+  mutate(label = gsub("B8441_", "", label),
+         group = str_extract(label, "Hil[12]")) %>% 
+  as.treedata()
+```
+```{r}
+ggtree(tree.rep) + 
+  geom_tiplab(aes(color = group)) + xlim(0,2) +
+  scale_color_manual(values = c("Hil1" = "#6a329f", "Hil2" = "#38761d"), guide = "none") +
+  geom_point2(aes(subset=!isTip,  fill=cut(support, c(0, 50, 70, 100))),  shape=21, size=2) + 
+  geom_treescale(x = 0, y = 32, linesize = 2) +
+  theme_tree(legend.position=c(0.85, 0.5)) + 
+  theme(legend.background = element_rect(color = "grey10")) +
+  scale_fill_manual(values=c("black", "grey", "white"), guide='legend', 
+                    name='Bootstrap (BS)', 
+                    breaks=c('(70,100]', '(50,70]', '(0,50]'), 
+                    labels=expression(BS>=70,50 <= BS * " < 70", BS < 50))
+
+ggsave("../output/figure/20220123-Hil1-2-repeats-anno-tree.png", width = 5, height = 4.5)
+```
+
+```{r}
+Hil1n2 <- read_table("../output/paml/Hil1-4-repeat/B8441-Hil1-2-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd")
+names <- scan("../output/paml/Hil1-4-repeat/B8441-Hil1-2-repeat-yn00/seq-names.txt", what = "char")
 which.Hil2 <- grep("Hil2", names)
 Hil2 <- Hil1n2 %>% 
   filter(seq1 %in% which.Hil2, seq2 %in% which.Hil2) %>% 
@@ -137,9 +165,9 @@ Hil1n2.gr %>%
 
 ## Hil3 and 4 repeats
 ```{r}
-Hil3 <- read_table("../output/paml/B8441-Hil3-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd") %>% 
+Hil3 <- read_table("../output/paml/Hil1-4-repeat/B8441-Hil3-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd") %>% 
   mutate(distance = (seq1-seq2)*51)
-Hil4 <- read_table("../output/paml/B8441-Hil4-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd") %>% 
+Hil4 <- read_table("../output/paml/Hil1-4-repeat/B8441-Hil4-repeat-yn00/rst1", col_names = header, col_types = "iiddddddddd") %>% 
   mutate(distance = (seq1-seq2)*47)
 ```
 ```{r}
@@ -169,16 +197,16 @@ plot.phylo(MDR.tree)
 Now we can import and compare the estimated rates:
 
 ```{r}
-vt.TR <- read_table("../output/paml/Hil1-2-MDR-tr-yn00/rst1", col_names = header, col_types = "iiddddddddd")
-vt.NTD <- read_table("../output/paml/Hil1-2-MDR-PF11765-yn00/rst1", col_names = header, col_types = "iiddddddddd")
+vt.TR <- read_table("../output/paml/Hil1-2-MDR/Hil1-2-MDR-tr-yn00/rst1", col_names = header, col_types = "iiddddddddd")
+vt.NTD <- read_table("../output/paml/Hil1-2-MDR/Hil1-2-MDR-PF11765-yn00/rst1", col_names = header, col_types = "iiddddddddd")
 vt <- bind_rows(list("R.inter TR" = vt.TR, "R.inter PF11765" = vt.NTD), .id = "group")
 hz <- Hil1n2.gr %>% 
   select(group, seq1:SE.dS) %>% 
   mutate(group = factor(group, levels = c("Hil1", "Hil2", "Hil1 vs Hil2"), 
                         labels = c("R.intra Hil1", "R.intra Hil2", "R.inter Rep1v2")
                         ))
-df <- bind_rows(list(protein = vt, repeats = hz), .id = "type")
-df$group <- factor(df$group, levels = c("R.inter PF11765", "R.inter TR", "R.inter Rep1v2", "R.intra Hil1", "R.intra Hil2", "R.intra Hil3", "R.intra Hil4"))
+df <- bind_rows(list(protein = vt, repeats = hz))
+df$group <- factor(df$group, levels = c("R.intra Hil1", "R.intra Hil2", "R.inter Rep1v2", "R.inter TR", "R.inter PF11765"))
 rm(list = c("vt", "hz", "vt.TR", "vt.NTD"))
 ```
 
@@ -190,10 +218,36 @@ clrs <- c("R.intra Hil1" = "#6a329f",
           "R.inter TR" = "#af8400")
 clrs[] <- paste0(clrs, "bf") # preserve the names of the vector
 df %>% 
-  ggplot(aes(x = group, y = omega, fill = group)) + geom_boxplot() +
-  scale_fill_manual(values = clrs) + 
-  facet_grid(~type, scales = "free_x", space = "free_x") +
-  xlab("Comparison groups") + ylab("dN/dS") +
-  theme_cowplot() + theme(axis.text.x = element_blank())
-```
+  ggplot(aes(y = group, x = omega, fill = group)) + 
+  geom_boxplot() + 
+  scale_fill_manual(values = clrs, guide = "none") + 
+  #facet_grid(~type, scales = "free_x", space = "free_x") +
+  scale_y_discrete(limits = rev) +
+  xlab("dN/dS") + ylab("") +
+  theme_cowplot() + panel_border(color = "grey10") +
+  theme(axis.line = element_blank())
 
+ggsave("../output/figure/20220122-Hil1-2-MDR-pairwise-estimates-compare.png", width = 5, height = 3)
+```
+## Wilcoxon Rank Sum tests for equal mean
+### R.intra Hil1 vs R.intra Hil2
+```{r}
+grps <- levels(df$group)
+var.test(omega ~ group, data = df, subset = group %in% grps[c(1,2)])
+wilcox.test(omega ~ group, data = df, conf.int = TRUE, subset = group %in% grps[c(1,2)])
+```
+### R.intra Hil1 vs R.inter Rep1v2
+```{r}
+var.test(omega ~ group, data = df, subset = group %in% grps[c(1,3)])
+wilcox.test(omega ~ group, data = df, conf.int = TRUE, subset = group %in% grps[c(1,3)])
+```
+### R.intra Hil2 vs R.inter Rep1v2
+```{r}
+var.test(omega ~ group, data = df, subset = group %in% grps[c(2,3)])
+wilcox.test(omega ~ group, data = df, conf.int = TRUE, subset = group %in% grps[c(2,3)])
+```
+### R.intra Hil1 vs R.inter PF11765
+```{r}
+var.test(omega ~ group, data = df, subset = group %in% grps[c(1,5)])
+wilcox.test(omega ~ group, data = df, conf.int = TRUE, subset = group %in% grps[c(1,5)])
+```
