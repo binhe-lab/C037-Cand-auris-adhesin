@@ -106,15 +106,25 @@ ggsave("../output/figure/20220122-caur-PF11765-F1x4-freeR-anno-tree.png", width 
 ### `CodonFreq = 2`
 Plotted as cladogram to avoid compressing some of the lineages. Branch lengths are printed at the bottom of the branches.
 ```{r}
-caur.freeR.cf2 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765-freeR-codonfreq2/mlc")
+caur.freeR.cf2 <- read.codeml_mlc("../output/paml/B8441-Hil1-8-PF11765/codonfreq2-freeR/mlc")
 # several internal branches have 0 inferred syn or nonsyn changes, and the dN/dS ratio estimates doesn't make much sense
 ggtree(caur.freeR.cf2, aes(color = dN_vs_dS), branch.length = 'none') + 
   #geom_rootedge(rootedge = 0.1) +
-  geom_nodelab(hjust = -0.2, size = 2, color = "black") +
-  geom_tiplab(as_ylab = TRUE) +
-  geom_text(aes(x = branch, label = paste(round(dN, 2), round(dS, 2), sep = "/")), vjust = -.5) + 
+  geom_nodelab(hjust = -0.2, size = 3, color = "black") +
+  geom_tiplab(aes(label = str_extract(label, "Hil[1-8]")), size = 6, hjust = -0.5, color = 1) + 
+  xlim(0, 5.6) +
   geom_text(aes(x = branch, label = round(t, 3)), vjust = 1.5, color = "black", size = 3) + 
-  scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
-                         oob=scales::squish,
-                         low='darkgreen', high='red')
+  geom_text(aes(x = branch, label = paste(round(dN, 2), round(dS, 2), sep = " / ")), 
+            vjust = -.5, size = 4) + 
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5), 
+                         oob=scales::squish, low='darkgreen', high="darkviolet") +
+  theme(legend.position = c(0.1,0.8), legend.text = element_text(size = 12), 
+        legend.title = element_text(size = 14))
+  # geom_nodelab(hjust = -0.2, size = 2, color = "black") +
+  # geom_tiplab(as_ylab = TRUE) +
+  # geom_text(aes(x = branch, label = paste(round(dN, 2), round(dS, 2), sep = " / ")), vjust = -.5) + 
+  # scale_color_continuous(name='dN/dS', limits=c(0, 1.5),
+  #                        oob=scales::squish,
+  #                        low='darkgreen', high='red')
+ggsave("../output/figure/20220130-caur-PF11765-F3x4-freeR-anno-tree.png", width = 5, height = 4)
 ```

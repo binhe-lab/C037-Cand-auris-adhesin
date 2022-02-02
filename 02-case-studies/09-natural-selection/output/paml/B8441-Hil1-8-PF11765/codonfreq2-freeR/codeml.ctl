@@ -1,9 +1,9 @@
       seqfile = ../B8441-Hil1-8-PF11765-aligned.nuc * sequence data filename
-     treefile = GeneRax-corrected-tree-20211206-pruned-../B8441.newick * tree file
+     treefile = GeneRax-corrected-tree-20211206-pruned-B8441.newick * tree file
       outfile = mlc                        * main result file name
 
         noisy = 3  * 0,1,2,3,9: how much rubbish on the screen
-      verbose = 1  * 0: concise; 1: detailed, 2: too much
+      verbose = 0  * 0: concise; 1: detailed, 2: too much
       runmode = 0  * 0: user tree;  1: semi-automatic;  2: automatic
                    * 3: StepwiseAddition; (4,5):PerturbationNNI; -2: pairwise
 
@@ -28,8 +28,8 @@
 
         getSE = 1  * 0: don't want them, 1: want S.E.s of estimates
 
-*  Small_Diff = .5e-6
-    cleandata = 1  * remove sites with ambiguity data (1:yes, 0:no)?
+   Small_Diff = .5e-6
+    cleandata = 0  * remove sites with ambiguity data (1:yes, 0:no)?
   fix_blength = 0  * 0: ignore, -1: random, 1: initial, 2: fixed
 *      method = 0  * Optimization method 0: simultaneous; 1: one branch a time
 
