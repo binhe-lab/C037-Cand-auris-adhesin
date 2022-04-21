@@ -333,3 +333,92 @@ I thus redid this analysis using the N360 amino acids from Hil1 in _C. auris_, s
 
 ## 2021-10-24 [HB] Als blast
 I'd like to include the homologs count in Figure 1 for the Als family as well. To do so, I followed a similar recipe as I did for the Hil family: I chose to use _C. albicans_ Als3's NTD as the query. Specifically, I used the refseq protein sequence (XP_710435.2) from aa 53-298 (based on the [Pfam table](http://pfam.xfam.org/protein/Q59L12#tabview=tab0) identifying its Candida_ALS_N domain). I used blastp to search this query against the refseq database with E-value cutoff of 1e-5. Query coverages are all above 50%. I also referenced three other publications that contained partial list of homologs for the Als family, namely Butler _et al._ 2009 (PMID: 19465905), Muñoz _et al._ 2018 (PMID: 30559369) and Linder and Gustafsson 2008 (PMID: 17870620). Among the three, the Muñoz 2018 paper appears to have a more stringent criteria for identifying homologs, as its numbers are often much smaller than the other two and my blastp result. The other two papers broadly agree with my blastp results. I also did the same blast on GRYC for the Nakaseomyces group. The outputs from both searches are stored in the `data` folder under their respective subfolder, along with the output for the Hil family. The consolidated table is stored in the `output` folder and soft linked to the `04-homologs-property` folder.
+
+## 2022-04-06 [HB] Address RC reviewer 1 comments
+
+The main questions/concerns raised are:
+
+1. Hil1 PF11765 domain sequence (XP_028889033) was used as bait. Will the result change if a different homolog was used?
+   - Try Hyr1 and *C. glabrata* homolog as bait
+2. The criteria for excluding species from the BLAST result is arbitrary
+   - Include all species that exist in the Shen et al 2018 Y1000 tree
+   - Use the result to repeat the gene family expansion analysis
+3. Useful to know the number of homologs beore and after applying the requirement for conserved position of the PF11765 domain in the protein
+   - Record the number of homologs before and after the filtering
+
+BLAST strategy:
+
+- blastp with E-value cutoff of 1e-5
+- low complexity filter on
+- minimum query coverage 50%
+
+Did:
+
+- Extracted amino acid sequences corresponding to the annotated PF11765 domain in Caur Hil1 (XP_028889033), Call Hyr1 (XP_722183.2) and Cgla Hyr1 (XP_445977.1, CAGL0E06600g).
+- Performed web-based blastp search with the above parameters against the refseq_prot database.
+- Downloaded the results in the BLAST archive format 
+  `blast_formatter -rid 4VFCXY5F016 -out 20220406-expanded-PF11765-blastp-out.asn -outfmt 11`
+- Downloaded and extracted the taxonomy database
+  `wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/taxdb.tar.gz; tar xzvf taxdb.tar.gz` in the same folder as above
+- Reformatted BLAST output to extract subject ID, length, query coverage, % identity, subject scientific name
+  `blast_formatter -archive 20220406-expanded-PF11765-blastp-out.asn -out expanded-PF11765-blastp-out.txt -outfmt "7 qseqid qcovs sseqid qstart qend slen sstart send pident evalue staxids sscinames"`
+- To expand the search beyond the refseq_prot database, I repeated the search against the new "clustered nr" database
+  `blast_formatter -rid 4VFCXY5F016 -out 20220406-expanded-PF11765-blastp-out.asn -outfmt 11`
+
+## 2022-04-20 [HB] Address RC reviewer 3 comments
+
+One of reviewer 3's criticism is that in their unpublished work, they found that seven of the _C. tropicalis_ Hil homologs listed in our manuscript are "incomplete", in the sense that the refseq annotated protein is not the full length product. When I looked closely at the refseq records, it turned out that the mRNA record indicated the product is indeed incomplete. I initially understood this as meaning the ORFfinder algorithm was unable to identify the stop codon. But later I realized that this is not necessarily the case. Note that the "completeness" field in the mRNA record can take several values, including "incomplete 5' end", "incomplete 3' end" and "incomplete on both ends" (exact wording may differ). What "incomplete 5' end" meant was that the gene finder wasn't able to identify an **upstream stop codon** (for the upstream gene) 5' of the current gene's start codon. Similarly, "incomplete 3' end" means that the pipeline cannot identify the **start codon** of the downstream gene. Missing stop codon should, in theory, result in failed gene annotation. But I decided to check the _C. tropicalis_ hits more closely anyway. Specifically, I blasted the mRNA sequence against a [new genome assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_013177555.1) (for the same MYA-3404 type strain) based on a mixture of PacBio and Illumina reads. My reasoning is that if the CDS is at least complete, I should be able to locate both the start and the stop codon in the genome sequences (especially the stop codon).
+
+| protein_ID     | length | mRNA_ID      | compared_to_new_assembly                                     |
+| -------------- | ------ | ------------ | ------------------------------------------------------------ |
+| XP_002547764.1 | 1405   | XM_002547718 | 10 SNPs, stop codon present                                  |
+| XP_002550900.1 | 665    | XM_002550854 | 1 SNP and 1bp deletion near annotated stop codon; ORF finder identifies a **1566 aa product** |
+| XP_002549927.1 | 925    | XM_002549881 | 2 SNP and 1bp deletion near annotated stop codon; ORF finder identifies a **1244 aa product** |
+| XP_002546360.1 | 1952   | XM_002546314 | 1 SNP and 1bp deletion in the middle of the CDS; ORF finder identifies a **1428 aa product** |
+| XP_002545452.1 | 1383   | XM_002545406 | 1 SNP, stop codon present                                    |
+| XP_002547620.1 | 1689   | XM_002547574 | 10 SNPs, stop codon present                                  |
+| XP_002547617.1 | 827    | XM_002547571 | **Protein is labeled as "no-right"**; poor match towards the C-terminus, 1bp deletion at least; ORF finder identifies a **2346 aa product** |
+| XP_002547615.1 | 749    | XM_002547569 | Multiple small indels and SNPs towards the C-terminus; ORF finder identifies a **370 aa product** |
+| XP_002545510.1 | 656    | XM_002545464 | Many SNPs at the C-terminus, 3 single bp indel, stop codon not present, ORF finder identifies a **1990 aa product** |
+| XP_002547616.1 | 1626   | XM_002547570 | Poor match in the middle and towards the C-terminus, multiple indels, stop codon not present, ORF finder identifies a **247 aa product** |
+| XP_002547904.1 | 1038   | XM_002547858 | Perfect match                                                |
+| XP_002550128.1 | 1230   | XM_002550082 | Perfect match                                                |
+| XP_002550768.1 | 455    | XM_002550722 | two SNPs, stop codon not present, ORF finder identifies a **1455 aa product** |
+| XP_002546744.1 | 328    | XM_002546698 | Perfect match                                                |
+| XP_002547891.1 | 669    | XM_002547845 | Perfect match                                                |
+| XP_002550387.1 | 588    | XM_002550341 | two SNPs, stop codon present                                 |
+
+ To see whether this is a general pattern for the other genomes, I also looked at several other species.
+
+- For _C. albicans_ SC5314, the reference assembly was updated in 2016 and no newer assembly is present in the NCBI database. Also, none of the _albicans_ hits were annotated as incomplete for the protein product.
+- For _C. parapsilosis_, which has the most hits shorter than the 500 aa cutoff, the reference assembly was submitted in 2011 and last updated in 2020, although it is still at contig level. The particular strain in that assembly, CDC317, has not been subject to another sequencing effort. I found a scaffold-level assembly for a different strain, CBS6318 ([GCA_000982555.2](https://www.ncbi.nlm.nih.gov/assembly/GCA_000982555.2)) that was completed in 2014 and last updated in 2019, and blasted all 15 hits against that assembly. In particular, 10/15 hits based on the reference assembly were shorter than 500 aa. For one of them (XM_036807488), I used ORFfinder to identify a 414 aa product with the same start codon position in the second strain's assembly, compared with 411 aa in the reference assembly. For another one (XM_036807487), the predicted size in the second assembly is 420 aa vs 414 aa in the reference one. The rest all matched between the two assemblies. So overall it seems like the short products are validated at least based two assemblies, both of which used short reads.
+- For _C. glabrata_, the Cormack lab has generated PacBio SRII based assemblies in 2020 for the BG strains. I chose BG2 ([ASM1421772v1](https://www.ncbi.nlm.nih.gov/assembly/GCA_014217725.1/)) as the target and blasted the three hits identified based on the reference assembly (for CBS138). 
+
+| protein_ID     | length | mRNA_ID      | compared_to_new_assembly                                     |
+| -------------- | ------ | ------------ | ------------------------------------------------------------ |
+| XP_002999585.1 | 3241   | XM_002999539 | matches QNG12756.1, 3329 aa, diverged significantly after the NTD |
+| XP_445977.1    | 965    | XM_445977    | matches QNG13321.1, 965 aa, identical sequences              |
+| XP_447567.2    | 1771   | XM447567     | matches QNG14727.1, 2581 aa, a long insertion in the new assembly allele |
+
+- Based on the above I can conclude that:
+  - The issue illustrated by _C. tropicalis_ is very organism-specific -- this primarily has to do with how the genome was sequenced in the past and whether the same strain was later sequenced again with a long-read technology. For example, _C. albicans_ and _C. dubliniensis_ were both sequenced in the same study as _C. tropicalis_. The former two were not sequenced (the same strain) later.
+  - The issues affecting _C. tropicalis_ can be summarized as follows: the PF11765 domain hit is credible (that's what we used as query in blast). However, the identified protein may be misannotated, meaning that it may be shorter or longer than it really is (in _C. tropicalis_'s case more likely to be shorter than longer, for reasons unclear to me).
+  - Because of the above, the issue *does not* affect the accuracy of the blastp hits. What it does affect is when I applied the 500 aa length filter, some proteins may have been wrongly left out. I plan to carefully review all hits that would be left out due to length in the revision and so this should be addressed.
+  - Note that none of our conclusions specifically hinged upon the Hil homologs in non _C. auris_ species being complete. The primary use of those sequences are 1) infer the evolutionary history of the family to demonstrate independent expansion, which relies only on the PF11765 domain alignment; 2) demonstrate the rapid divergence in the central domain (reviewer suggested changing this term, call it B-region?). For the latter, the incomplete proteins may affect the S/T frequency and β-aggregation potential analyses, but they are not expected to cause significant changes to any of the conclusions (which is that both features are highly variable among homologs).
+- Of particular interest is the quality of the hits in _C. auris_, including both the reference assembly and the other strains we used for various analyses. First of all, I checked the sequencing and assembly details for the genomes:
+
+| Strain | Clade | Assembly_ID     | Sequencing_Technology | Assembly_Notes           |
+| ------ | ----- | --------------- | --------------------- | ------------------------ |
+| B11221 | III   | GCF_002775015.1 | PacBio                | HGAP v.3, scaffold       |
+| B8441  | I     | GCA_002759435.2 | PacBio                | HGAP v.3, scaffold       |
+| B11220 | II    | GCA_003013715.2 | Oxford Nanopore       | Flye v.2.4.2, complete   |
+| B11243 | IV    | GCA_003014415.1 | Illumina              | Spades v.3.1.1, scaffold |
+| B11205 | I     | GCA_016772135.1 | PacBio                | Canu v.1.6, complete     |
+| B13916 | I     | GCA_016772235.1 | PacBio                | Canu v.1.6, complete     |
+| B17721 | III   | GCA_016772175.1 | PacBio                | Canu v.1.6, complete     |
+| B12037 | III   | GCA_016772215.1 | PacBio                | Canu v.1.6, complete     |
+| B12631 | III   | GCA_016772195.1 | PacBio                | Canu v.1.6, complete     |
+| B12342 | IV    | GCA_016772155.1 | PacBio                | Canu v.1.6, complete     |
+| B11245 | IV    | GCA_008275145.1 | Oxford Nanopore       | Canu v.1.5, complete     |
+
+- we will add these information to Table S6 and use them to support the validity of our within species analysis for the Hil family in _C. auris_.

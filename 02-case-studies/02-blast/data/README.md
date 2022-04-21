@@ -8,6 +8,8 @@
 | fungidb | blastp against FungiDB database | https://fungidb.org |
 | ncbi-nr | blastp against the NCBI nonredundant protein database | NA |
 | ncbi-refseq | blastp against the NCBI refseq_protein database | NA |
+| expanded-blast | blastp with two more queries | in response to reviewer comments |
+| yeast-phylogeny | species that are included in the Shen et al 2018,2020 phylogeny | for selecting blast hits to include for later analysis |
 
 Explanations for some of the files in the subfolders above:
 

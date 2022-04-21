@@ -1,0 +1,220 @@
+---
+title: "C037 Expanding NCBI blastp analysis"
+author: Bin He
+date: "2022-04-08 updated `r Sys.Date()`"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r}
+require(tidyverse)
+require(cowplot)
+require(ggvenn)
+require(rentrez)
+# set NCBI Entrez API key
+set_entrez_key("f4f01c220f3a0a162bada5b0bd5d4b131908")
+```
+
+## Background
+This analysis is in response to reviewer 1's questions:
+
+1. The submitted version used _C. auris_ Hil1's PF11765 domain as the query (bait). What if other homologs were used? Would the number and identity of the blast results change?
+1. Why remove species from the blast output?
+
+To address the first problem, I did blastp with two additional queries: the PF11765 domains in _C. albicans_ Hyr1 and _C. glabrata_ Hyr1.
+
+As for the second question, my response and solutions are to include any species that were among the Y1000 tree in Shen et al. 2018. The more complete set can be used for the family expansion analysis. I plan to keep the homologs analysis restricted to the 104 homologs, as adding more species are not expected to change the main conclusions.
+
+## Data
+I performed blastp analysis using the three queries against either the refseq_prot, the new clustered nr databases or in FungiDB. For the former two (performed through web interface on NCBI website), I downloaded the results using the Request ID (RID) with the `blast_formatter` program and then used the same tool to reformat the output to contain the desired columns. For the FungiDB result, I tried downloading the results in ASN.1 format, but wasn't able to use `blast_formatter` to reformat it. Therefore I downloaded the table as shown on the default result page.
+```{r}
+# header for ncbi output
+header <- c("query", "qcovs", "sid", "slen", "pident", "q.start", "q.end", "s.start", "s.end", "evalue", "staxid", "sscinames")
+# refseq results
+refseq <- read_tsv("20220406-expanded-PF11765-blastp-refseq.txt", comment = "#", col_types = cols(), col_names = header) %>% 
+  mutate(species = word(sscinames, 1, 2) %>% gsub("\\[|\\]", "", x = .), strain = word(sscinames, 3, -1),
+         pident = num(pident, digits = 1)) %>% 
+  select(-sscinames) %>% 
+  relocate(species:strain, .after = pident)
+# nr results
+nr <- read_tsv("20220406-expanded-PF11765-blastp-clusternr.txt", comment = "#", col_types = cols(), col_names = header) %>% 
+  mutate(species = word(sscinames, 1, 2) %>% gsub("\\[|\\]", "", x = .), strain = word(sscinames, 3, -1),
+         pident = num(pident, digits = 1)) %>% 
+  select(-sscinames) %>% 
+  relocate(species:strain, .after = pident)
+# fungidb results
+fdb <- read_csv("20220409-expanded-blast-fungidb.csv") %>% 
+  rename(sid = Accession, evalue = `E-Value`, score = Score, alen = `Align Length`, qcovs = `Query Coverage`) %>% 
+  mutate(
+    species = word(Organism, 1, 2) %>% gsub("\\[|\\]", "", x = .), strain = word(Organism, 3, -1),
+    query = word(Query, 1, 1),
+    pident = num(Identity*100, digits = 1),
+    qcovs = num(qcovs*100, digits = 0),
+    evalue = signif(evalue, digits = 1),
+    score = signif(score, digits = 3),
+    .keep = "unused"
+  ) %>% 
+  select(query, qcovs, sid, pident, species, strain, score, evalue, `Rank Per Query`, `Rank Per Subject`)
+```
+
+## Analysis
+### 1. Overlap between the three queries?
+What's the extent of overlap between the blastp hits using the three different queries?
+
+Hits with <50% query coverage are removed.
+```{r}
+refseq %>% filter(qcovs < 50)
+```
+Venn diagram showing the extent of overlap and set specific hits:
+```{r}
+set.ovlp <- refseq %>% 
+  filter(qcovs >= 50) %>% 
+  group_by(sid) %>% 
+  summarize(
+    Caur = any(query == "Caur_Hil1"),
+    Calb = any(query == "Calb_Hyr1"),
+    Cgla = any(query == "Cgla_Hyr1")
+  )
+ggvenn(set.ovlp)
+```
+
+Which genes are found by the _C. albicans_ and/or _C. glabrata_ Hyr1 query blast but not by the _C. auris_ Hil1 query blast?
+```{r}
+Calb.not.Caur.hits <- set.ovlp %>% filter(!Caur) %>% pull(sid)
+refseq %>% filter(sid %in% Calb.not.Caur.hits) %>% 
+  select(query, qcovs, sid, slen, pident, evalue, species) %>% 
+  mutate(species = paste(str_sub(species, 1, 1), word(species, 2, 2), sep = ". ")) %>% 
+  arrange(desc(slen))
+```
+> - The majority of the combined set is already in the subset identified using _C. auris_ Hil1 as the query.
+> - Of the ones that are specific to the _C. albicans_ Hyr1 query, I found the three _C. parasilosis_ hits are already included in the 104 homologs via the FungiDB blast. Whatever the reason that exluded them from the ncbi blastp search using _C. auris_ Hil1 domain as the query, they are already in our dataset.
+> - Same is true for XP_452176.1 from _K. lactis_, this time through the GRYC search.
+> - We will decide if any of the new sequences will be included in future analyses later
+
+Compare "new" sequences with the previous 104 homolog list
+
+| sid | gid | species | in_early_verion | source |
+|:--|:--|:--|:--|:--|
+| XP_002999585 | CAGL0L00227g | C. glabrata | Yes | GRYC |
+| XP_036665263 | CPAR2_806400 | C. parapsilosis | No | NA |
+| XP_036665262 | CPAR2_806390 | C. parapsilosis | Yes | FungiDB |
+| XP_001383953 | PICST_31095 | S. stipitis | Yes* | NCBI |
+| XP_002615218 | CLUG_05233 | C. lusitaniae | Yes | FungiDB |
+| XP_036662815 | CPAR2_600430 | C. parapsilosis | Yes | FungiDB |
+| XP_002614121 | CLUG_05607 | C. lusitaniae | No | NA |
+| XP_001527307 | LELG_02136 | L. elongisporus | No | NA |
+| XP_452176 | KLLA0_B14498g | K. lactis | Yes | GRYC |
+
+*this hit was originally included when the N560 aa was used as query. In later analysis where N360 aa (of _C. auris_ Hil1) was used as query, this hit dropped off the list due to E-value being above the 1e-5 cutoff. So it is a legit, but borderline hit.
+
+1. We potentially need to add three more genes to the existing homolog list.
+1. A few other hits are below the 500 aa cutoff. For the purpose of doing family expansion analysis, we may include them. But we won't include them for the homolog property analysis.
+
+
+### 2. Species to include
+The new criteria is whether the species is among the 332 included in the large-scale phylogeny of Shen _et al._ 2018. I downloaded the tree from https://github.com/JLSteenwyk/treehouse/blob/master/Data/Saccharomycotina_fig2_Shen_etal_2018.tre and manually converted it into a list of species names.
+```{r}
+shen2018 <- scan("../../data/yeast-phylogeny/Saccharomycotina_fig2_Shen_etal_2018.txt", what = "character", sep = "\n")
+```
+
+Any species in the refseq hit list not in the Shen 2018 phylogeny?
+```{r}
+setdiff(unique(refseq$species), shen2018)
+```
+
+| refseq_name | taxid | in_Shen_2018 | shen2018_name |
+|:--|:--|:--|:--|
+| Candida haemuloni | 45357 | No | NA |
+| Candida duobushaemulonis | 1231522 | No | NA |
+| Candida pseudohaemulonii | 418784 | No | NA |
+| Suhomyces tanzawaensis | 984487 | Yes | Candida tanzawaensis |
+| Pseudomonas syringae:Pseudomonas | 317;59510 | No | NA |
+| Diutina rugosa | 5481 | No | NA |
+| Yamadazyma tenuis | 590646 | Yes | Candida tenuis |
+| Schizosaccharomyces cryophilus | 653667 | No | NA |
+| Kazachstania barnettii | 61262 | No | NA |
+| Artibeus jamaicensis | 9417 | No | NA |
+
+Manually figure out species synonyms and record both names for the species to use.
+```{r}
+spsNameSyn <- tibble(
+  ncbi.name = c(intersect(refseq$species, shen2018), "Suhomyces tanzawaensis", "Yamadazyma tenuis"),
+  shen.name = c(intersect(refseq$species, shen2018), "Candida tanzawaensis", "Candida tenuis")
+)
+```
+
+### 3. Putative homologs per species
+
+Our goal is to create a table documenting the number of putative homologs per species before and after applying the 500 aa length filter. The table will also serve as the input for the CAFE analysis.
+```{r}
+sum.ref <- refseq %>% 
+  filter(species %in% spsNameSyn$ncbi.name, qcovs >= 50) %>% 
+  group_by(sid) %>% 
+  filter(evalue == min(evalue)) %>% 
+  group_by(species, strain) %>% 
+  summarize(
+    total = n(),
+    gt500 = sum(slen >= 500)
+  )
+```
+Note: some blast hits are partial. This would prevent us from properly assessing the length of the protein. For _C. tropicalis_, I found a new, [2019 assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_013177555.1) that uses both PacBio and Illumina. The assembly did use the reference genome assembly as a guide.
+
+To identify all partial mRNA, we will use the `rentrez` package to query the ncbi database.
+```{r}
+# define a function for retrieving the mRNA information from the nucleotide databased, based on protein ID
+retrieve_mrna_info <- function(ids){
+  nuc.lnk <- entrez_link(dbfrom = "protein", db = "nucleotide", id = ids, by_id = TRUE)
+  nucID <- sapply(nuc.lnk, function(x){
+    lnk = x$links$protein_nuccore_mrna
+    return(ifelse(is.null(lnk), NA, lnk))
+  })
+  nucSum <- entrez_summary(db = "nuccore", id = na.omit(nucID))
+  names(nucSum) <- ids[!is.na(nucID)]
+  return(nucSum)
+}
+
+retrieve_protein_info <- function(ids){
+  pSum <- entrez_summary(db = "protein", id = ids)
+  names(pSum) <- ids
+  return(pSum)
+}
+```
+
+```{r}
+# all refseq protein IDs to get the mRNA information for
+pid <- unique(refseq$sid)
+# posting too many queries can hit the rate-limit. split into multiples of 50s
+iter.pid <- split(x = pid, f = ceiling(seq_along(pid)/50))
+pSum <- sapply(iter.pid, retrieve_protein_info)
+nucSum <- sapply(iter.pid, retrieve_mrna_info)
+```
+
+```{r}
+# extract the mRNA info
+mrnaInfo <- lapply(nucSum, function(x) {
+  extract_from_esummary(x, elements = c("caption", "completeness"), simplify = FALSE) %>% 
+    bind_rows(.id = "pid") %>% 
+    rename(tID = caption, tComplete = completeness)
+}) %>% bind_rows()
+# extract the protein completeness info
+pInfo <- lapply(pSum, function(x) {
+  extract_from_esummary(x, elements = c("completeness"), simplify = FALSE) %>% 
+    bind_rows(.id = "pid") %>% 
+    rename(pComplete = completeness)
+}) %>% bind_rows()
+```
+
+```{r}
+dedup.ref <- refseq %>% 
+  filter(species %in% spsNameSyn$ncbi.name, qcovs >= 50) %>% 
+  group_by(sid) %>% 
+  filter(evalue == min(evalue)) %>% 
+  rename(pid = sid) %>% 
+  left_join(mrnaInfo, by = c("pid" = "pid")) %>% 
+  left_join(pInfo, by = c("pid" = "pid")) %>% 
+  select(query, pid, slen, pComplete, tID, tComplete, species, strain, everything())
+```
+
