@@ -10,10 +10,10 @@ output:
 ---
 
 ```{r}
-require(tidyverse)
-require(cowplot)
-require(ggvenn)
-require(rentrez)
+suppressPackageStartupMessages(require(tidyverse))
+suppressPackageStartupMessages(require(cowplot))
+suppressPackageStartupMessages(require(ggvenn))
+suppressPackageStartupMessages(require(rentrez))
 # set NCBI Entrez API key
 set_entrez_key("f4f01c220f3a0a162bada5b0bd5d4b131908")
 ```
@@ -46,7 +46,7 @@ nr <- read_tsv("20220406-expanded-PF11765-blastp-clusternr.txt", comment = "#", 
   select(-sscinames) %>% 
   relocate(species:strain, .after = pident)
 # fungidb results
-fdb <- read_csv("20220409-expanded-blast-fungidb.csv") %>% 
+fdb <- read_csv("20220427-expanded-blast-fungidb.csv") %>% 
   rename(sid = Accession, evalue = `E-Value`, score = Score, alen = `Align Length`, qcovs = `Query Coverage`) %>% 
   mutate(
     species = word(Organism, 1, 2) %>% gsub("\\[|\\]", "", x = .), strain = word(Organism, 3, -1),
@@ -57,6 +57,8 @@ fdb <- read_csv("20220409-expanded-blast-fungidb.csv") %>%
     score = signif(score, digits = 3),
     .keep = "unused"
   ) %>% 
+  # make spelling consistent with ncbi
+  mutate(species = gsub("Candida haemulonis", "Candida haemuloni", species)) %>%
   select(query, qcovs, sid, pident, species, strain, score, evalue, `Rank Per Query`, `Rank Per Subject`)
 ```
 
@@ -148,19 +150,11 @@ spsNameSyn <- tibble(
 
 ### 3. Putative homologs per species
 
-Our goal is to create a table documenting the number of putative homologs per species before and after applying the 500 aa length filter. The table will also serve as the input for the CAFE analysis.
-```{r}
-sum.ref <- refseq %>% 
-  filter(species %in% spsNameSyn$ncbi.name, qcovs >= 50) %>% 
-  group_by(sid) %>% 
-  filter(evalue == min(evalue)) %>% 
-  group_by(species, strain) %>% 
-  summarize(
-    total = n(),
-    gt500 = sum(slen >= 500)
-  )
-```
-Note: some blast hits are partial. This would prevent us from properly assessing the length of the protein. For _C. tropicalis_, I found a new, [2019 assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_013177555.1) that uses both PacBio and Illumina. The assembly did use the reference genome assembly as a guide.
+Our goal is to create a table documenting the number of putative homologs per species. We used to apply a length cutoff of 500 aa. However, the specific value of the cutoff is not based on any comprehensive studies. This combined with the uncertainty in some putative homolog's length due to assembly issues led us to reconsider this filter. The solution we came up with is to include all blast hits based on the PF11765 domain alone in the family expansion analysis (CAFE and phylogenetic reconstruction). Later we will selectively include some of them for the protein feature analysis. Since the latter analysis is mainly to demonstrate the fast evolution of the central domain features, it doesn't rely on the completeness of the Hil family or the inclusion of all species for which we have records for.
+
+In curating the blast hits, we found that some (protein) blast hits are annotated as missing the carboxy terminus. This would prevent us from properly assessing the length of the protein. Note that "incomplete" means different things for the protein vs mRNA record. For the latter, "incomplete" could mean missing 5' and/or 3'UTR while the CDS may be complete. A large number of the mRNA records corresponding to the protein hits in the list are "partial". That's not reason for exclusion.
+
+For _C. tropicalis_, I found a new, [2019 assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_013177555.1) that uses both PacBio and Illumina. The assembly did use the reference genome assembly as a guide.
 
 To identify all partial mRNA, we will use the `rentrez` package to query the ncbi database.
 ```{r}
@@ -207,9 +201,11 @@ pInfo <- lapply(pSum, function(x) {
 }) %>% bind_rows()
 ```
 
+Now remove duplicates (resulting from the different queries) and filter by species (those that overlap the Shen 2018 list plus the MDR clade)
 ```{r}
+sps.include <- c(spsNameSyn$ncbi.name, "Candida haemuloni", "Candida duobushaemulonis", "Candida pseudohaemulonii")
 dedup.ref <- refseq %>% 
-  filter(species %in% spsNameSyn$ncbi.name, qcovs >= 50) %>% 
+  filter(species %in% sps.include, qcovs >= 50) %>% 
   group_by(sid) %>% 
   filter(evalue == min(evalue)) %>% 
   rename(pid = sid) %>% 
@@ -218,3 +214,108 @@ dedup.ref <- refseq %>%
   select(query, pid, slen, pComplete, tID, tComplete, species, strain, everything())
 ```
 
+
+Summarize the deduplicated list - for each species, record the total number of hits, those that are labeled as incomplete in the protein record, those that are above 500 aa and the number of hits below 500 aa that are labeled as incomplete
+```{r}
+sum.ref <- dedup.ref %>% 
+  group_by(species, strain) %>% 
+  summarize(
+    total = n(),
+    incompl = sum(pComplete != ""),
+    gt500 = sum(slen >= 500),
+    shortIncompl = sum(pComplete != "" & slen < 500)
+  )
+sum.ref %>% arrange(desc(shortIncompl))
+```
+> - _S. stipitis_ and _M. bicuspidata_ had a large number of incomplete proteins, likely a reflection of the genome assembly status. For _M. bicuspidata_, a newer Illumina + Oxford Nanopore [assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_022575955.1/) is available for this species but is only assembled to the contig level, with no gene annotation. I tried blasting the refseq hits from the species against the new assembly but the match was poor for most of the hits - instead of getting a long, contiguous HSP, I got mostly broken pieces with lots of mismatches. I suspect this is due to a combination of tandem gene arrays causing difficulty for assembly around the Hil homologs loci and the sequencing depth and assembly itself. Based on these observations, I plan to include the species in the CAFE analysis and potentially in the phylogenetic reconstruction as well, but exclude it from the homolog protein trait analyses.
+> - For _S. stipitis_, I identified a [newer assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016859295.1/) for a different strain (NRRL Y-7124) and performed local blast against the annotated protein sequences. I identified a total of 13 hits, of which seven are above the 50% query coverage threshold. This is quite different from the 18 hits identified in the refseq assembly. When I blasted the refseq hits against the new assembly, some of them had poor matches. Without further investigation, it is not clear what is the cause of the discrepancy. I plan to use the new assembly hits for downstream analyses given that it is more recently sequenced.
+> - For the same reasons as above, I plan to include _Y. tenuis_, _S. tanzawaensis_ and _C. jadinii_ in the CAFE analysis but exclude them from the protein feature analyses. Given that they have relatively few hits, I could consider manually searching for the full length ORF, but that's optional.
+> - For _D. fabryi_, the Y-1000 plus project has sequenced another strain from this species. I blasted against that assembly and identified two matches. But the two hits appear too similar to each other, leaving me wonder if they are truly distinct loci, or are they partially duplicate contigs.
+
+Incorporate the new _S. stipitis_ hits
+```{r}
+s.stipitis <- read_tsv("../../data/s_stipitis_assembly/s-stipitis-Hil-homologs-blast.txt", comment = "#",
+                       col_names = header[1:10], col_types = cols()) %>% 
+  mutate(species = "Scheffersomyces stipitis", strain = "NRRL Y-7124", staxid = "913138",
+         pident = num(pident, digits = 1)) %>% 
+  relocate(species:strain, .after = pident) %>% 
+  group_by(sid) %>% 
+  filter(evalue == min(evalue)) %>% 
+  rename(pid = sid)
+```
+
+```{r}
+dedup.merge <- dedup.ref %>% 
+  filter(species != "Scheffersomyces stipitis") %>% 
+  bind_rows(filter(s.stipitis, qcovs >= 50)) %>% 
+  mutate(pid = gsub(".*\\|(.*)\\|.*", "\\1", pid))
+write_tsv(dedup.merge, file = "../../output/20220426-expanded-blast-homologs.tsv")
+```
+
+With the decision above, we will gather the final list of IDs and retrieve their sequences.
+```{r}
+dedup.seqs <- entrez_fetch(db = "protein", id = dedup.merge$pid, rettype = "fasta")
+write(dedup.seqs, file = "../../output/20220426-expanded-blast-homologs.faa")
+```
+
+And repeat the species summary
+```{r}
+sum.ref.merge <- dedup.merge %>% 
+  group_by(species, strain) %>% 
+  summarize(
+    total = n(),
+    incompl = sum(pComplete != ""),
+    gt500 = sum(slen >= 500),
+    shortIncompl = sum(pComplete != "" & slen < 500)
+  )
+sum.ref.merge %>% arrange(desc(shortIncompl))
+```
+### 4. FungiDB hits
+Deduplicate the fungidb hits:
+
+First, check if the fungidb included species not already in the refseq
+```{r}
+setdiff(unique(fdb$species), unique(refseq$species))
+```
+> After correcting the spelling of _C. haemulonis_ (with or without the final s), the only difference is _C. metapsilosis_, which we will not include
+
+```{r}
+dedup.fdb <- fdb %>% 
+  filter(species %in% sps.include, qcovs >= 50) %>% 
+  group_by(sid) %>% 
+  filter(evalue == min(evalue)) %>% 
+  rename(pid = sid) %>% 
+  select(query, pid, species, strain, everything())
+```
+
+
+### 5. Compare with the former 104 list
+Hits in the previous refseq blast list but not in the current one:
+```{r}
+# code modified from ../../blast.Rmd
+tmp <- read_tsv("../../data/ncbi-refseq/XP_028889033_homologs_refprot_N560_select_length.txt", 
+                col_names = c("accession","length"), col_types = "ci")
+pRef560 <- read_csv("../../data/ncbi-refseq/XP_028889033_homologs_refprot_N560_select.csv", col_types = "cddnnnc") %>% 
+  left_join(tmp) %>% select(accession, everything())
+hitTabColNames <- c("description","sci.name","common.name","taxid","max.score",
+                    "total.score","query.cover","e.value","perc.ident","length","acc")
+pRef360 <- read_csv("../../data/ncbi-refseq/XP_028889033_homologs_refprot_N360.csv", 
+                    col_types = "ccccddcddic", col_names = hitTabColNames, skip = 1) %>% 
+  mutate(query.cover = parse_number(query.cover), 
+         accession = gsub('[")]','',str_split(acc, ",", simplify = T)[,2]))
+hits <- list(old.N560 = pRef560$accession,
+             old.N360 = filter(pRef360, query.cover >= 50) %>% pull(accession),
+             new.PF11765 = dedup.merge$pid)
+ggvenn(hits)
+```
+Sequences in the previous blast hit list (N360) but in the new one:
+```{r}
+pRef360 %>% filter(accession %in% setdiff(hits$old.N360, hits$new.PF11765)) %>% select(accession, sci.name, length) %>% arrange(sci.name)
+```
+> - The four _S. stipitis_ sequences have been replaced by the new assembly
+> - The other two species were excluded in the current analysis because they are not in Ascomycota
+
+
+
+
+> - The three Nakaseomyces sequences need to be added. They are simply not in the refseq database

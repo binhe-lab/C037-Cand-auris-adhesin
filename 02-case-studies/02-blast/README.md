@@ -4,35 +4,6 @@ author: Bin He
 date: 2020-07-01
 ---
 
-<!--ts-->
-   * [Goal](#goal)
-   * [Notes](#notes)
-      * [2020-07-01 [HB] Repeat BLAST to identify XP_028889033 homologs](#2020-07-01-hb-repeat-blast-to-identify-xp_028889033-homologs)
-         * [FungiDB](#fungidb)
-         * [Retrieve ref_protein ID for FungiDB hits](#retrieve-ref_protein-id-for-fungidb-hits)
-         * [NCBI blast](#ncbi-blast)
-         * [Merge the two datasets](#merge-the-two-datasets)
-      * [2020-07-22 [HB] Identify homologs in Nakaseomyces](#2020-07-22-hb-identify-homologs-in-nakaseomyces)
-         * [Motivation](#motivation)
-         * [Approach](#approach)
-      * [2020-08-06 [HB] Identify potential homologs in bacteria and in <em>S. cerevisiae</em>](#2020-08-06-hb-identify-potential-homologs-in-bacteria-and-in-s-cerevisiae)
-      * [2020-08-09 [HB] Homologs in Bacteria?](#2020-08-09-hb-homologs-in-bacteria)
-      * [2020-08-19 [HB] Homologs in <em>S. cerevisiae</em>?](#2020-08-19-hb-homologs-in-s-cerevisiae)
-      * [2020-09-13 [HB] Homologs in other <em>C. auris</em> proteomes](#2020-09-13-hb-homologs-in-other-c-auris-proteomes)
-      * [2020-10-20 [HB] Correct GRYC mistakes](#2020-10-20-hb-correct-gryc-mistakes)
-      * [2021-01-09 [HB] Additional homologs through blastp against refseq_protein](#2021-01-09-hb-additional-homologs-through-blastp-against-refseq_protein)
-      * [2021-01-23 [HB] Repeat blast searches with N-360 aa from XP_028889033 (for writing up the results)](#2021-01-23-hb-repeat-blast-searches-with-n-360-aa-from-xp_028889033-for-writing-up-the-results)
-      * [2021-01-31 [HB] Vary e-value cutoff with N-360 aa from XP_028889033](#2021-01-31-hb-vary-e-value-cutoff-with-n-360-aa-from-xp_028889033)
-      * [2021-03-01 [HB] <em>C. auris</em> clade III should have 8 members in this family](#2021-03-01-hb-c-auris-clade-iii-should-have-8-members-in-this-family)
-      * [2021-04-03 [HB] Missing homolog in B11221](#2021-04-03-hb-missing-homolog-in-b11221)
-      * [2021-07-05 [HB] <em>C. auris</em> B11245 homologs](#2021-07-05-hb-c-auris-b11245-homologs)
-      * [2021-10-17 [HB] PSI-BLAST](#2021-10-17-hb-psi-blast)
-      * [2021-10-24 [HB] Als blast](#2021-10-24-hb-als-blast)
-
-<!-- Added by: bhe2, at: Sun Oct 24 17:00:06 CDT 2021 -->
-
-<!--te-->
-
 # Goal
 
 - Repeat the blast step to clean up the homologs list.
@@ -390,7 +361,25 @@ One of reviewer 3's criticism is that in their unpublished work, they found that
 
  To see whether this is a general pattern for the other genomes, I also looked at several other species.
 
-- For _C. albicans_ SC5314, the reference assembly was updated in 2016 and no newer assembly is present in the NCBI database. Also, none of the _albicans_ hits were annotated as incomplete for the protein product.
+- For _C. albicans_ SC5314, the reference assembly was updated in 2016 and no newer assembly is present in the NCBI database for the same strain. Also, none of the _albicans_ hits were annotated as incomplete for the protein product. To assess the completeness of the refseq records, I blasted the 12 mRNA records against two newer assemblies, [GCA_017309835.1](https://www.ncbi.nlm.nih.gov/assembly/GCA_017309835.1) and [GCA_005890745.1](https://www.ncbi.nlm.nih.gov/assembly/GCA_005890745.1). The former is for the CHN1 strain, sequenced using a mixture of Oxford Nanopore and MiSeq, assembled using Flye v.2.7.1 and Pilon v1.23. The latter is for the NCYC4166 strain, sequenced PacBio Sequel and assembled using FALCON-Unzip v. 1.1.3.
+
+| protein_ID  | length | mRNA_ID   | CHN1                            | NCYC4166                       |
+| ----------- | ------ | --------- | ------------------------------- | ------------------------------ |
+| XP_722183.2 | 919    | XM_717090 | 96% identical, 26 gaps, 921 aa  | 97% identical, 38 gaps, 927 aa |
+| XP_714203.1 | 1249   | XM_709110 | >1 HSPs, 1222 aa full length    | >1 HSPs, 1077 aa full length   |
+| XP_717330.2 | 941    | XM_712237 | 98% identical, 6 gaps, 943 aa   | 99% identical, 3 gaps, 942 aa  |
+| XP_715137.2 | 941    | XM_710044 | 97% identical, 6 gaps, 943 aa   | 99% identical, 3 gaps, 942 aa  |
+| XP_711686.2 | 1562   | XM_706594 | >1 HSPs, 1222 aa full length    | >1 HSPs,  2186 aa full length  |
+| XP_718630.1 | 1526   | XM_713537 | 99% identical, 1 gap (?) doubt  | 99% identical, 0 gap, 1526 aa  |
+| XP_714201.2 | 714    | XM_709108 | 98% identical, 13 gaps, 539 aa  | 96% identical, 57 gaps, 695 aa |
+| XP_715535.1 | 1308   | XM_710442 | 98% identical, 11 gaps, 1101 aa | 99% identical, 0 gap, 1308 aa  |
+| XP_717969.1 | 1225   | XM_712876 | 99% identical, 0 gap, 1225 aa   | 99% identical, 0 gap, 1225 aa  |
+| XP_714246.2 | 1085   | XM_709153 | 96% identical, 60 gaps, 893 aa  | 98% identical, 3 gap, 1086 aa  |
+| XP_717774.1 | 511    | XM_712681 | 99% identical, 0 gap, 511 aa    | 99% identical, 0 gap, 511 aa   |
+| XP_717775.2 | 1244   | XM_712682 | Partial match, 1155 aa          | >1 HSPs,  1162 aa full length  |
+
+- The result shows that for _C. albicans_, the reference assembly hits are all fine.
+
 - For _C. parapsilosis_, which has the most hits shorter than the 500 aa cutoff, the reference assembly was submitted in 2011 and last updated in 2020, although it is still at contig level. The particular strain in that assembly, CDC317, has not been subject to another sequencing effort. I found a scaffold-level assembly for a different strain, CBS6318 ([GCA_000982555.2](https://www.ncbi.nlm.nih.gov/assembly/GCA_000982555.2)) that was completed in 2014 and last updated in 2019, and blasted all 15 hits against that assembly. In particular, 10/15 hits based on the reference assembly were shorter than 500 aa. For one of them (XM_036807488), I used ORFfinder to identify a 414 aa product with the same start codon position in the second strain's assembly, compared with 411 aa in the reference assembly. For another one (XM_036807487), the predicted size in the second assembly is 420 aa vs 414 aa in the reference one. The rest all matched between the two assemblies. So overall it seems like the short products are validated at least based two assemblies, both of which used short reads.
 - For _C. glabrata_, the Cormack lab has generated PacBio SRII based assemblies in 2020 for the BG strains. I chose BG2 ([ASM1421772v1](https://www.ncbi.nlm.nih.gov/assembly/GCA_014217725.1/)) as the target and blasted the three hits identified based on the reference assembly (for CBS138). 
 
@@ -422,3 +411,24 @@ One of reviewer 3's criticism is that in their unpublished work, they found that
 | B11245 | IV    | GCA_008275145.1 | Oxford Nanopore       | Canu v.1.5, complete     |
 
 - we will add these information to Table S6 and use them to support the validity of our within species analysis for the Hil family in _C. auris_.
+
+## 2022-04-22 [HB] _Scheffersomyces Stipitis_ genome, new assembly
+
+As I examined the completeness of the protein hits, I found that _S. Stipitis_ had a large number of incomplete protein products (14/16). I identified a more recent assembly sequenced using Oxford Nanopore ([GCA_016859295.1](https://www.ncbi.nlm.nih.gov/assembly/GCA_016859295.1/)). Fortunately the researchers generating this assembly also annotated the genome. I thus downloaded their protein fasta file, made a blast database for it
+
+```bash
+# in 02-blast/data/s_stipitis_assembly
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/016/859/295/GCA_016859295.1_ASM1685929v1/GCA_016859295.1_ASM1685929v1_protein.faa.gz
+# make the blastdb
+cat GCA_016859295.1_ASM1685929v1_protein.faa.gz | gunzip -c | makeblastdb -in - -parse_seqids -dbtype prot -title S_stipitis_NRRL_Y7124 -out ../blastdb/S_stipitis_NRRL_Y7124
+# perform blastp
+# I actually wrote a script in the assembly folder to do all the above and the blast. check that instead
+```
+
+## 2022-04-26 [HB] Expanded BLAST results summary
+
+This is a summary of the past several days of analyses:
+
+1. I performed blastp searches against the refseq database using three queries (Cgla_Hyr1, Calb_Hyr1, Caur_Hil1, just the PF11765 domain portion). In retrospect, I realized that what would be an ideal solution to this arbitrary choice of queries is to use the HMM model already existing for the PF11765 domain and perform a HMMER search. However, so far the online version of HMMER doesn't support searching against the refseq or any other ncbi databases. This is because HMMER, even though it has been significantly sped up in its recent versions, is still much slower compared with BLAST.
+2. After combining the results from the three queries, I compared them to the previous 104 homologs list and found that among the species included in both, only three additional hits will be added due to the addition of the two new queries. That's quite reassuring, suggesting that our initial (arbitrary) choice of Caur_Hil1 PF11765 domain didn't bias the hits towards species close to it. Note that using the Cgla_Hyr1 as a query didn't recover more hits from the Saccharomycetaceae family.
+3. To address the 
