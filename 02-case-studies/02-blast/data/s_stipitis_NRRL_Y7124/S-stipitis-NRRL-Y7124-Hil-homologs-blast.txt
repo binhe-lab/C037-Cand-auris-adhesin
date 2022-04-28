@@ -1,0 +1,48 @@
+# BLASTP 2.12.0+
+# Query: Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172 [[Candida] auris]
+# Database: ../blastdb/S_stipitis_NRRL_Y7124
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 13 hits found
+Caur_Hil1	99	gb|KAG2733521.1|	2206	34.132	2	313	10	334	1.65e-39
+Caur_Hil1	99	gb|KAG2732535.1|	2212	33.731	2	313	10	334	4.34e-38
+Caur_Hil1	98	gb|KAG2731009.1|	1257	34.234	5	313	14	336	1.70e-36
+Caur_Hil1	96	gb|KAG2735578.1|	2707	33.951	10	313	2	318	1.54e-34
+Caur_Hil1	98	gb|KAG2734361.1|	960	29.909	3	313	12	334	4.60e-29
+Caur_Hil1	97	gb|KAG2731421.1|	1555	32.749	7	313	19	338	1.41e-28
+Caur_Hil1	34	gb|KAG2732122.1|	1508	42.982	5	112	14	125	3.36e-14
+Caur_Hil1	32	gb|KAG2730708.1|	869	43.925	5	106	14	119	4.01e-14
+Caur_Hil1	35	gb|KAG2731855.1|	1421	37.815	13	122	22	139	1.10e-13
+Caur_Hil1	99	gb|KAG2733788.1|	1523	26.786	1	315	12	332	1.79e-13
+Caur_Hil1	32	gb|KAG2736200.1|	1849	42.991	10	110	19	123	6.73e-13
+Caur_Hil1	31	gb|KAG2731452.1|	2829	34.000	3	99	13	111	7.64e-09
+Caur_Hil1	31	gb|KAG2732121.1|	815	35.849	1	98	8	112	3.54e-07
+# BLASTP 2.12.0+
+# Query: Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+# Database: ../blastdb/S_stipitis_NRRL_Y7124
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 12 hits found
+Calb_Hyr1	99	gb|KAG2734361.1|	960	39.697	2	324	11	337	2.84e-64
+Calb_Hyr1	97	gb|KAG2735578.1|	2707	41.231	10	324	2	321	1.20e-61
+Calb_Hyr1	97	gb|KAG2733521.1|	2206	40.123	10	324	19	337	1.19e-59
+Calb_Hyr1	96	gb|KAG2731421.1|	1555	38.245	13	324	25	341	7.76e-58
+Calb_Hyr1	98	gb|KAG2732535.1|	2212	39.692	9	324	18	337	8.53e-56
+Calb_Hyr1	100	gb|KAG2731009.1|	1257	38.393	1	324	7	339	5.39e-54
+Calb_Hyr1	75	gb|KAG2733788.1|	1523	29.134	83	324	93	336	1.86e-20
+Calb_Hyr1	33	gb|KAG2732122.1|	1508	36.111	10	117	19	125	1.49e-13
+Calb_Hyr1	36	gb|KAG2736200.1|	1849	32.759	2	117	11	125	2.62e-12
+Calb_Hyr1	35	gb|KAG2732121.1|	815	33.036	1	112	10	120	2.24e-09
+Calb_Hyr1	33	gb|KAG2730708.1|	869	28.704	5	112	14	120	7.89e-08
+Calb_Hyr1	31	gb|KAG2731855.1|	1421	32.673	12	112	21	118	1.26e-07
+# BLASTP 2.12.0+
+# Query: Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g [[Candida] glabrata]
+# Database: ../blastdb/S_stipitis_NRRL_Y7124
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 7 hits found
+Cgla_Hyr1	98	gb|KAG2734361.1|	960	28.916	3	325	12	335	1.53e-29
+Cgla_Hyr1	92	gb|KAG2731421.1|	1555	30.696	28	328	42	341	4.35e-23
+Cgla_Hyr1	97	gb|KAG2733788.1|	1523	29.787	3	320	13	329	2.62e-22
+Cgla_Hyr1	92	gb|KAG2731009.1|	1257	29.114	1	303	10	317	5.33e-19
+Cgla_Hyr1	97	gb|KAG2733521.1|	2206	29.129	4	320	13	330	1.92e-18
+Cgla_Hyr1	87	gb|KAG2735578.1|	2707	30.303	35	320	29	314	5.11e-17
+Cgla_Hyr1	97	gb|KAG2732535.1|	2212	28.443	4	320	13	330	1.80e-14
+# BLAST processed 3 queries

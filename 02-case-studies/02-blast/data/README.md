@@ -10,6 +10,9 @@
 | ncbi-refseq | blastp against the NCBI refseq_protein database | NA |
 | expanded-blast | blastp with two more queries | in response to reviewer comments |
 | yeast-phylogeny | species that are included in the Shen et al 2018,2020 phylogeny | for selecting blast hits to include for later analysis |
+| s_stipitis_assembly | GCA_016859295.1 2020 genome assembly | for identifying full length products in the species |
+| c_glabrata_CBS138 | GCA_010111755.1 2020 genome assembly | for identifying full length products in the species |
+| c_glabrata_BG2 | GCA_014217725.1 genome assembly | for identifying full length products in the species |
 
 Explanations for some of the files in the subfolders above:
 

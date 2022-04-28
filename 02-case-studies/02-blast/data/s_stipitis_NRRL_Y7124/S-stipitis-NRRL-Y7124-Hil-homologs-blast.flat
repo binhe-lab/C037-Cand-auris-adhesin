@@ -1,0 +1,352 @@
+BLASTP 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: S_stipitis_NRRL_Y7124
+           6,327 sequences; 3,170,166 total letters
+
+
+
+Query= Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172
+[[Candida] auris]
+
+Length=316
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KAG2733521.1 hypothetical protein G9P44_003046 [Scheffersomyces s...  146     2e-39
+KAG2732535.1 hypothetical protein G9P44_004952 [Scheffersomyces s...  142     4e-38
+KAG2731009.1 hypothetical protein G9P44_006158 [Scheffersomyces s...  137     2e-36
+KAG2735578.1 hypothetical protein G9P44_001792 [Scheffersomyces s...  131     2e-34
+KAG2734361.1 hypothetical protein G9P44_002367 [Scheffersomyces s...  115     5e-29
+KAG2731421.1 hypothetical protein G9P44_005837 [Scheffersomyces s...  114     1e-28
+KAG2732122.1 hypothetical protein G9P44_004539 [Scheffersomyces s...  71.2    3e-14
+KAG2730708.1 hypothetical protein G9P44_006285 [Scheffersomyces s...  70.9    4e-14
+KAG2731855.1 hypothetical protein G9P44_005442 [Scheffersomyces s...  69.7    1e-13
+KAG2733788.1 hypothetical protein G9P44_003313 [Scheffersomyces s...  69.3    2e-13
+KAG2736200.1 hypothetical protein G9P44_000290 [Scheffersomyces s...  67.4    7e-13
+KAG2731452.1 hypothetical protein G9P44_005868 [Scheffersomyces s...  55.1    8e-09
+KAG2732121.1 hypothetical protein G9P44_004538 [Scheffersomyces s...  49.7    4e-07
+
+
+
+Query_1       1    LAF-YL-SATWA--L--TITENTVNVGALNIKIGSLTINPGVYYSIVNNALTTLGGSL--  52
+KAG2733521.1  10    ..SFI-..VT.--V--...QD.IDR..ISLGL.DTI.ED...W..ID.VI.AFA.NV--  61
+KAG2732535.1  10    ..-C.I.GVV.--R--...QD..SR.TISLGL.DTI..D...W..ID.VV.AFA.NV--  61
+KAG2731009.1  14        .-A.VK.--V--....D.IDR.I..VDL.TT..ED...W..ID..V.AFL.DI--  61
+KAG2735578.1  2               .--R--...T..IDR..ISLGL.DTI.ED...W..ID.LA.AFA.NV--  44
+KAG2734361.1  12     L-FA-.VAL.--.--..SHPQ.TR.SI.LSF.D...KS.SFW..FD.NISIFK.DIRV  63
+KAG2731421.1  19           ..RD--V--V..GSK.DK.PI.LS..DI..EENS.W..FD.SVSA.K...WV  66
+KAG2732122.1  14        V-A.VL.--I--D..SPRIDR.VV.LS..DI..ES.A.W...D..VSV.A.D.--  61
+KAG2730708.1  14        F-.MAM.--V--..SQ..I.R.F..LD..DI..ED...W..ID..ISAMA...--  61
+KAG2731855.1  22                     V..D.TE..TISLDV.DI.VDA......I....SAIV.N.--  61
+KAG2733788.1  12   .L.-VA-..LA.DD.--V.SQ..IVSTGDTLIRQNFIV.S..F...DYGMTHNFYNDI--  65
+KAG2736200.1  19              .--A--D..SP.IDR.VV.LS..DI..ES.A.W..ID..VSV.A.N.--  61
+KAG2731452.1  13     .-SI-ATV..--K--....D.IDR..VA.DADETI.VD...W.L.D.DY.NFA.NV--  62
+KAG2732121.1  8    VRV-F.-F..V.--.AF.VQKPK.DR.SI.LS..DI..QS.SFW..FD.TVSIFK.D.WV  63
+
+Query_1       53   -D--NQGE---FYVTSA---N---GL-AA-S-VSIVS--GTIK---NSGDLAFNSLRASV  92
+KAG2733521.1  62   -.VGTGSG---L.I.GL---.---P.-L.LQ-.TLL.--.SLT---.D.IIS..AVQSLL  104
+KAG2732535.1  62   -.VGTGSG---L.I.GL---.---P.-LSLQ-.TLL.--.SLT---.D.VI...AIQSLL  104
+KAG2731009.1  62   ----.V.TGSG..I.GI---S---S.-ISLQ-.TLL.PI.N.N---.D.II...AVQSLL  106
+KAG2735578.1  45   -.VGSGSG---L.ISGL---.---P.LSM-.-.TLL.--.SLT---.D.IISL.AVQSLL  87
+KAG2734361.1  64   -K--KNAG---LFI..T---.KLI..-KV-E-LYAGK--.S..---.E.LIV....VSLT  106
+KAG2731421.1  67   -K--KGAG---..I.GT---DRLIN.-SV-T-LAFGQ--NS..---.E.TVV...IFCKL  109
+KAG2732122.1  62   -.--VKDDAG-..I..T---Q---S.-IGL.-.TLA.GL.S.T---.D.II....VVSL.  106
+KAG2730708.1  62   -KV-G..SG--..I..T---S---S.-I.-.T.TLL.PL.SLE---.N.IIS..A.QSLT  106
+KAG2731855.1  62   -.--VE.S---..I..T---S---D.-I.-L-TVTLD--.V.NSIV.N.LVS...AESLT  104
+KAG2733788.1  66   -T--IN.K---L.I.NKIVRT---.M-TC-D-.IGTT--AN.V---.N.WIVLDDTN.TS  108
+KAG2736200.1  62   -.--VKTDAG-..IS.T---Q---S.-IGL.-.TLA.GL.S.T---.D.II....VVSL.  106
+KAG2731452.1  63   -.---V..GSG..ISNT---S---PS-SM-Y-.A.L.--.SFV---.D.ITSW.AIE.IN  104
+KAG2732121.1  64   QK--.A.----.FI..T---.KLI..-KV-E-LASGF--.S.R---.D.LIV....VSIT  106
+
+Query_1       93   ISNYNLNSIG-G-FTNTG------NMWL------GISGYSLVPPIILGS-----ATNWDN  133
+KAG2733521.1  105  APT...VG.S---...N.------E.Y.------.AD.SVGI.S.SITT-----PV-.N.  143
+KAG2732535.1  105  APT...VG.S---...N.------E.Y.------.AD.SVGI.S.SITT-----PV-.N.  143
+KAG2731009.1  107  APT...LGLS---...N.------E.Y.------.AD.-.VGL.LFSIL-----TPD.N.  145
+KAG2735578.1  88   APT.S.VG.S---...N.------E.Y.------.AD.-.FGS.N.QIT-----.PI.N.  126
+KAG2734361.1  107  P.F.K.--..-KS...K.------EIF.------IS..CA.PTAAL.-------.PK.K.  144
+KAG2731421.1  110  ATK.E.--..-SS.Y.S.------E.F.------ATN.-------A...LTAITSSS.T.  147
+KAG2732122.1  107  AP....--..LS-...N.------EIN.                                  125
+KAG2730708.1  107  APV...VGL--S-...                                              119
+KAG2731855.1  105  APT.Q.AG.--S-.E.NDPGLGLVSVP.------.AVT..GP..                  139
+KAG2733788.1  109  APT.DWYG-.-S-.E.N.------MV.FAGIGNT.G.TFAIQ.-----------KGSFI.  148
+KAG2736200.1  107  AP....--..LS-...N.------EI                                    123
+KAG2731452.1  105  APTF.ID                                                       111
+KAG2732121.1  107  P.F.K.                                                        112
+
+Query_1       134  SGRIYLSQ---NSGSASTITISQTLGSITNDGSMCIERLSWLQTTSIKGAGCINL-MDDA  189
+KAG2733521.1  144  N.LLVFY.---.TRTTGPVNLGTIGLT.N.N.QI.FYNELYT...N.A.T..MT.-N..S  199
+KAG2732535.1  144  N.LLVFY.---.TRTTGPVNLGTIGST.N.N.QI.FYNELYT...N.A.T...T.-VE.S  199
+KAG2731009.1  146  N.LLVFYL---KTRTTGPVSLGTP..T.N.N.QI.LYNELYT...N.A.T...TA-I..S  201
+KAG2735578.1  127  N.LLVFY.---KTR.SAS.ELGTSGLD.K.N.QI.FFNELYT.R.N.V.T...T.-DENS  182
+KAG2734361.1  145  T.S.TFY.---AKRNNGIVSLGSPGSK.E.K.QI.LFNQLYK...R.V.S...TA-DQ.S  200
+KAG2731421.1  148  ..LLVFY.---..RTSAIVSLGKP..T.R...QI.LHNELFK.E.N.V.S...TA-DKNS  203
+KAG2733788.1  149  T.T.I.Y.TVRR..GT.HLGLDGK--T.....TV..YQNIFF.GSTVE.N..FDVGL.SN  206
+
+Query_1       190  HL-----QLQISPWSVSNDQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVN  244
+KAG2733521.1  200  SI-----FFSNTLLNIDSN.VF..AD.A.SI----RATA.SAP.....A...N..K.GLD  250
+KAG2732535.1  200  SI-----FFSNTLLNIDTN.VF..ED.A.SIR----ATA.SAP...T.A...N..K.GLD  250
+KAG2731009.1  202  SI-----F.SNTVLNIDSN.WF..QDPQ.S.RATAI.VP----.....A...N..K.GLD  252
+KAG2735578.1  183  SI-----F.SNTLLNIDTN.VF..AD.A.SIQ.HAI.F.----.....A...N..K.GLD  233
+KAG2734361.1  201  SV-----FFSNCLMDIDRK..V..AD.K.SVRAVAIAKP----R.FRIA...N..K.GLD  251
+KAG2731421.1  204  SIFLSNCL.E.D.K-----.SF..AD.Q.SIRAKAI.K.----...T.Y...N..K.GLD  254
+KAG2733788.1  207  FW-----ATNVNSRPMEEG.L....T.T.S.RIDTYPPN.----PIHIA.W.NN.V.GLS  257
+
+Query_1       245  --------TG-------F---------SGYSYEGDTLTLSFF-L-G--LFKIAFKIGTGY  276
+KAG2733521.1  251  --------IPLVNIPPLL---------NA...DTT.GI.TLRGA-.--.LSMN.N..L..  290
+KAG2732535.1  251  --------IP-------LVNIPPLLTGYT..TTTGI...KGA---.--VLAMN.N..K..  290
+KAG2731009.1  253  --------IPLVNLPPLL---------DAWD.DTT.GI.TLRGA-.--.LSQN.N..L..  292
+KAG2735578.1  234  --------VTLVNLPPLL---------N..T.DTK.GI.TLR-G-.GV.LPMN.N..L..  274
+KAG2734361.1  252  --------LP-------LFKLLS----.PF..NSR.GI..LR-IK.--NWGQD.D..L..  289
+KAG2731421.1  255  LPLISLPIL.-------S---------W..DEKRGI...-RA-.-.--NLAHN.I.....  293
+KAG2733788.1  258  --------.A-------I---------NSFD.D.N--N..IR-S-.--SYTYKLV..P..  287
+
+Query_1       277  SKSGF-----S---------T-N-----G---------L----F----G-----AG-T-R  292
+KAG2733521.1  291  NP.L.-----.IVTDD----N-V-----.---------.LSVP.----.-----.-----  312
+KAG2732535.1  291  NP.L.-----.IVTDDDVGLA-S-----V---------.----.----.-----.-----  312
+KAG2731009.1  293  DP.L.-----.---------I-T-----TDDDLGLLSV.----.----.-----.-----  314
+KAG2735578.1  275  NP.L.-----KIV-------.-D-----D---------N----T----.IIRIP..---A  296
+KAG2734361.1  290  DSRL.-----K---------V-TTDTSL.---------.----L----S-----VPWG-A  311
+KAG2731421.1  294  D.KK.QITTD.---------S-L-----.---------.----LSVFN.-----.-----  315
+KAG2733788.1  288  DP.LI-----.---------IGS-----A---------A----Y----.-----S.-VGT  305
+
+Query_1       293  ISYSGA-YP-GT-VPDVCK---CFDFPEP  315
+KAG2733521.1  313  LT...P-P.-NV-..S..QP--.KLL.    334
+KAG2732535.1  313  V....P-P.-NP-..SI..Q--.KTL.    334
+KAG2731009.1  315  V..A.P-P.-NP-A.A..QP--.KQL.    336
+KAG2735578.1  297  VT...P-P.-NS-..S..QP--.KKL.    318
+KAG2734361.1  312  VK.E.P-V.-NKQI.SN.RP--.KPY.    334
+KAG2731421.1  316  LK.N.P-V.NSS-I.SA.RP--.KPV.    338
+KAG2733788.1  306  ..RA.IL.S-.P-P..ASRPSQ.NEC.S.  332
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 587766336
+
+
+Query= Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+
+Length=324
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KAG2734361.1 hypothetical protein G9P44_002367 [Scheffersomyces s...  216     3e-64
+KAG2735578.1 hypothetical protein G9P44_001792 [Scheffersomyces s...  210     1e-61
+KAG2733521.1 hypothetical protein G9P44_003046 [Scheffersomyces s...  204     1e-59
+KAG2731421.1 hypothetical protein G9P44_005837 [Scheffersomyces s...  199     8e-58
+KAG2732535.1 hypothetical protein G9P44_004952 [Scheffersomyces s...  193     9e-56
+KAG2731009.1 hypothetical protein G9P44_006158 [Scheffersomyces s...  188     5e-54
+KAG2733788.1 hypothetical protein G9P44_003313 [Scheffersomyces s...  90.5    2e-20
+KAG2732122.1 hypothetical protein G9P44_004539 [Scheffersomyces s...  69.7    1e-13
+KAG2736200.1 hypothetical protein G9P44_000290 [Scheffersomyces s...  65.9    3e-12
+KAG2732121.1 hypothetical protein G9P44_004538 [Scheffersomyces s...  56.6    2e-09
+KAG2730708.1 hypothetical protein G9P44_006285 [Scheffersomyces s...  51.6    8e-08
+KAG2731855.1 hypothetical protein G9P44_005442 [Scheffersomyces s...  51.2    1e-07
+
+
+
+Query_2       1    ILLTLNLSAALEVVT---SRIDRGGIQGFHGDVKVHSGATWAILGTTLCSFFGGLEVEKG  57
+KAG2734361.1  11    F.FASVAL..TISH---PQVT..S.NLSF..LTIK..SF.S.FDNNISI.K.DIR.K.N  66
+KAG2735578.1  2             .RTIT.---NT....A.SLGL..TIIED.VY.S.IDNLATA.A.NVD.GS.  49
+KAG2733521.1  19            .VTITQ---DT....A.SLGL..TIIED.VY.S.IDNVITA.A.NVD.GT.  66
+KAG2731421.1  25               ITG---.KV.K.P.NLSI..ITIEENSY.S.FDNSVSALK.S.W.K..  69
+KAG2732535.1  18           V.RTITQ---DTVS..T.SLGL..TIIND.VY.S.IDNVVTA.A.NVD.GT.  66
+KAG2731009.1  7    L.AITT.L..VKA..ITEDT....ILNVDL.TTTIED.VY.S.IDNAVTA.L.DIN.GT.  66
+KAG2732122.1  19            .IDITS---P.....VVNLSI..ITIE...Y.S.VDNAVSVLA.D.D.KDD  66
+KAG2736200.1  11    IVSVSVVL.ADITS---PT....VVNLSI..ITIE...Y.S.IDNAVSVLA.N.D.KTD  66
+KAG2732121.1  10   VF.FATVAL.FT.QK---PKV...S.NLSI..ITIQ..SF.S.FDN.VSI.K.D.W.Q.N  66
+KAG2730708.1  14       FSMAM.VTISQ---NT.N..FLNLDI..ITIED.VY.S.IDNAISAMA.S.K.GQ.  66
+KAG2731855.1  21              ..TE---DTTEV.T.SLDV..IT.DA.VYYS.INNA.SAIV.N.D..--  64
+
+Query_2       58   ASLFIKSDNGPVLALNVALSTLVRPVINNGVISLNSKSSTSFSNFDIGGSSFTNNGEIYL  117
+KAG2734361.1  67   .G...T.T.K-LIG.K.E.YAGKGSIK.E.L.VF..LV.LTP.FYKLI.K....K...F.  125
+KAG2735578.1  50   SG.Y.SGL.-.L.SMS.T.--.SGSLT.D.I....AVQ.LLAPTYSLV.I.......M..  106
+KAG2733521.1  67   SG.Y.TGL.-.L...Q.T.--.SGSLT.D.I..F.AVQ.LLAPTYNLV.I.......M..  123
+KAG2731421.1  70   .GFY.TGTDR-LIN.S.T.AFGQNSIK.E.TVVF..IFCKLATKYELI....Y.S..MF.  128
+KAG2732535.1  67   SG.Y.TGL.-.L.S.Q.T.--.SGSLT.D...AF.AIQ.LLAPTYNLV.I.......M..  123
+KAG2731009.1  67   SGFY.TGISS-LIS.Q.T.LSPIGNIN.D.I.AF.AVQ.LLAPTYNLL.L.......M..  125
+KAG2733788.1  93                            IV...W.V.DDTNA..APTY.WY.G..E...MVWF  127
+KAG2732122.1  67   .GFY.T.TQS-LIG.S.T.ASGLGSIT.D.I.AF..VV.LVAP.YNLI.L........N.  125
+KAG2736200.1  67   .GFY.S.TQS-LIG.S.T.ASGLGSIT.D.I.AF..VV.LVAP.YNLI.L........N.  125
+KAG2732121.1  67   .GF..T.T.K-LIG.K.E.ASGFGSIR.D.L.VF..LV.ITP.FYKLI.K.YNS.       120
+KAG2730708.1  67   SGFY.T.TSS-LI.ST.T.LSPLGSLE...I..F.ALQ.LTAPVYNLV.L.....       120
+KAG2731855.1  65   G.FY.T.TSD-LI..T.T.DGVINSIV...LV.F..AE.LTAPTYQLA.I..E..       118
+
+Query_2       118  ASSGLVK-S-TAY-LYARE--WTNNGLIVAYQN-QKAAGNIAFGTAYQTITNNGQICLRH  171
+KAG2734361.1  126  I...CAL-P-..A-.L.PK--.K.T.S.TF..A-KRNN.IVSL.SPGSK.E.K.....FN  179
+KAG2735578.1  107  GAD.SFG-.PNIQ-IT.PI--.N....L.F..K-TRSSAS.EL..SGLD.K......FFN  161
+KAG2733521.1  124  GAD.S.GIP-SIS-ITTPV--.N....L.F...-TRTT.PVNL..IGL..N......FYN  178
+KAG2731421.1  129  .TN.ALG-.-LTA-ITSSS--...S..L.F...-SRTSAIVSL.KPLG..R.D.....HN  182
+KAG2732535.1  124  GAD.S.GIP-SIS-ITTPV--.N....L.F...-TRTT.PVNL..IGS..N......FYN  178
+KAG2731009.1  126  GAD.S.G-L-PLFSILTPD--.N....L.F.LK-TRTT.PVSL..PLG..N.......YN  180
+KAG2733788.1  128  .GI.NTG-G-STF-AIQPKGSFI.T.T.IL..TVRRSG.TSHL.LDGK....D.TV.IYQ  184
+
+Query_2       172  QDFVPATKIKGTGC--VTADEDTWIKLGNTILSVEPTHNFYLKDSKSSLIVHAVSSNQTF  229
+KAG2734361.1  180  .LYKQT.R.V.S..--I...Q.SSVFFS.CLMDIDRKQTV..A.....VRAV.IAKPR..  237
+KAG2735578.1  162  ELYTQR.N.V....--I.L..NSS.F.S..L.NIDTNQV...A..A..IQ...I.FSK.Y  219
+KAG2733521.1  179  ELYTQT.N.A....--M.LND.SS.FFS..L.NIDSNQV...A..A..IRAT.I.APK.Y  236
+KAG2731421.1  183  EL.KQE.N.V.S..--I...KNSS.F.S.CL.EID.KQS...A..Q..IRAK.I.KSK.Y  240
+KAG2732535.1  179  ELYTQT.N.A....--I.LV..SS.FFS..L.NIDTNQV...E..A..IRAT.I.APK.Y  236
+KAG2731009.1  181  ELYTQT.N.A....--I..ID.SS.F.S..V.NIDSNQW...Q.PQ...RAT.I.VPK.Y  238
+KAG2733788.1  185  NI.FQGSTVE.N..FD.GL.SNF.ATNV.S-RPM.EGQLI..ST.T...RIDTYPP.IPI  243
+
+Query_2       230  TVHGFGNGNKLGLTLPLTGNRDHF-R-FEYYPDTGILQLR-A-AA--LPQYFKIGKGYDS  283
+KAG2734361.1  238  RIA.......I..D...FKLLSS--P-.S.NSR....S..-I-KGN-WG.D.D..L....  291
+KAG2735578.1  220  N.A.......I..DVT.VNLPPLL-NGYT.DTK....T..-G-GGVL..MN.N..L..NP  276
+KAG2733521.1  237  N.A.......I..DI..VNIPPLL-NAYS.DTT....T..-G-.GL-.SMN.N..L..NP  292
+KAG2731421.1  241  ..Y.......I..D...ISLPILG-S-WG.DEKR...T..-.LGN--.AHN.I..T...K  295
+KAG2732535.1  237  ..A.......I..DI..VNIPPLLTG-YT.STT....T.KG.-GV--.AMN.N.....NP  292
+KAG2731009.1  239  N.A.......I..DI..VNLPPLL-DAWD.DTT....T..-G-.GL-.S.N.N..L...P  294
+KAG2733788.1  244  HIA.W..N.VI..STAIN-------S-.D.--.GNN.SI.-S-GS--YTYKLV..P...P  289
+
+Query_2       284  KLFRIV--NS------RGL------K------N----AVTYDGPVPNNEIPAVCLIPCTN  319
+KAG2734361.1  292  R..KVT--TD------TS.------GLLSVPWG----..K.E.....KQ..SN.R-..KP  332
+KAG2735578.1  277  S..K..--TDDNTGII.IP------A------G----....S..P..S-V.S..Q-..KK  316
+KAG2733521.1  293  S..S..--TD------DNV------GLLSVPFG----.L..S..P.-.VV.S..Q-..KL  332
+KAG2731421.1  296  .K.Q.T--TD------SS.GLLSVFN------G----.LK.N.....SS..SA.R-..KP  336
+KAG2732535.1  293  S..S..TDDD------V..------A------SVLFG..S.S..-.P.PV.SI.K-Q.KT  332
+KAG2731009.1  295  S..S.T--TD------DD.------GLLSVLFG----..S.A.-P.P.PA....Q-..KQ  334
+KAG2733788.1  290  S.IS.G--SAAYG---S.VGTIS--R------A----GIL.S..P.DASR.SQ.N-E.PS  331
+
+Query_2       320  GPSAP  324
+KAG2734361.1  333  Y.P..  337
+KAG2735578.1  317  L.P..  321
+KAG2733521.1  333  L.P..  337
+KAG2731421.1  337  V..V.  341
+KAG2732535.1  333  L.P..  337
+KAG2731009.1  335  L.P..  339
+KAG2733788.1  332  P.R..  336
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 587766336
+
+
+Query= Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g
+[[Candida] glabrata]
+
+Length=328
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KAG2734361.1 hypothetical protein G9P44_002367 [Scheffersomyces s...  117     2e-29
+KAG2731421.1 hypothetical protein G9P44_005837 [Scheffersomyces s...  98.2    4e-23
+KAG2733788.1 hypothetical protein G9P44_003313 [Scheffersomyces s...  95.9    3e-22
+KAG2731009.1 hypothetical protein G9P44_006158 [Scheffersomyces s...  86.3    5e-19
+KAG2733521.1 hypothetical protein G9P44_003046 [Scheffersomyces s...  84.7    2e-18
+KAG2735578.1 hypothetical protein G9P44_001792 [Scheffersomyces s...  80.1    5e-17
+KAG2732535.1 hypothetical protein G9P44_004952 [Scheffersomyces s...  72.4    2e-14
+
+
+
+Query_3       1    LTIFIDQARAA---TIKENTYYS--GE--LPSE--GF---TVNSNQFLALVNTKTVNFAG  48
+KAG2734361.1  12     L.ASV.L.L---..SHPQVTR--.SIN.SFG--DL---.IK.GS.WSIFDNNISI.K.  59
+KAG2731421.1  42                                       I---.IEE.SYWSIFDNSVSALK.  62
+KAG2733788.1  13     L.VAS.L..DDLV.SQ..IV.TGDT--.IRQ--N.---I...GV.YSIDYGM.H..YN  63
+KAG2731009.1  10   I.TLLAAVK.V---..T.D.IDR--.I--.NVDLGTT---.IEDGVYWSIIDNAVTA.L.  59
+KAG2733521.1  13      ..SAVT.V---..TQD.IDR--.A--I-.L--.LGDTIIEDGVYWSIIDNVITA...  59
+KAG2735578.1  29                                                 YWSIIDNLATA...  42
+KAG2732535.1  13      L.SGVV.R---..TQD.VSR--.T--I-.L--.LGDTII.DGVYWSIIDNVVTA...  59
+
+Query_3       49   PLTINKDASVFI-GNENAANGAISSTFSI-NGDINNYGTIVLDNRNSSDAASVSWTAKTF  106
+KAG2734361.1  60   DIRVK.N.GL..-TST.KLI.LKVELYAG-K.S.K.E.L..FNSLV.LTPSFYKLIG.S.  117
+KAG2731421.1  63   S.WVK.G.GFY.T.TDRLI.LSVTLA.GQ-.-S.K.E..V.FNSIFCKL.TKYELIGSS.  120
+KAG2733788.1  64   DI...--GKLY.-T.KIVRT.MTCDVIGT-TAN.V.N.W....DT.ATS.PTYD.YGGS.  119
+KAG2731009.1  60   DINVGTGSGFY.-TGISSLISLQVTLL.P-I.N...D.I.AFNAVQ.LL.PTYNLLGLS.  117
+KAG2733521.1  60   NVDVGTGSGLY.-TGL.PLL-.LQV.L-L-S.SLT.D.I.SFNAVQ.LL.PTYNLVGIS.  115
+KAG2735578.1  43   NVDVGSGSGLY.-SGL.PLL-SM.V.L-L-S.SLT.D.I.S.NAVQ.LL.PTY.LVGIS.  98
+KAG2732535.1  60   NVDVGTGSGLY.----TGL.PLL.LQVTLLS.SLT.D.V.AFNAIQ.LL.PTYNLVGIS.  115
+
+Query_3       107  NNYGSMFF--NGA----SAVVQNSF-VLTGQTELVNKGLI---QFTQQ-----PTNWDAV  151
+KAG2734361.1  118  T.K.EI.L--ISS----GCALPTAA-L.APKWK--.T.S.---T.Y.A-----KR.-NGI  159
+KAG2731421.1  121  Y.S.E..LAT...LGSLT.ITSS.W-T--------.S..L---V.Y.N------SRTS.I  162
+KAG2733788.1  120  E.N.MVW.--A.I----GNTGGST.-AIQPKGSFI.T.T.ILY.TVRR-----SGGTSHL  167
+KAG2731009.1  118  T.N.E.YL--GAD----GS.GLPL.SI..--PDWN.N..L---V.YLK-----TRTTGP.  161
+KAG2733521.1  116  T.N.E.YL--GAD----GS.GIP.I-SI.-TPVWN.N..L---V.Y.NTRTTG.V.LGTI  164
+KAG2735578.1  99   T.N.E.YL---..----DGSFGSPN-IQITAPIWN.N..L---V.Y.K-----TRSSASI  142
+KAG2732535.1  116  T.N.E.YL--GAD----GS.GIP.I-SI.TPV-WN.N..L---V.Y.NTRTTG.V.LGTI  164
+
+Query_3       152  G-SVSSP--SLVNEGTICL-KN-MKTQTISSISGSGCI-VIGENS-IY---DMLSI-SHG  200
+KAG2734361.1  160  V-.LG..GSKIE.K.Q...-F.-QLYKQTTR.V.....-TADQD.-SV---FFSNC-LMD  210
+KAG2731421.1  163  V-.LGK.LGTIR.D.Q...-H.-ELFKQETN.V.....-TADK..S.FLSNCL.E.-DP-  216
+KAG2733788.1  168  .--LDGK--TIT.D..V.IYQ.-IFF.G-.TVE.N..F-DV.LD.-NF---WATNVN.RP  216
+KAG2731009.1  162  --.LGT.LGTIN.N.Q...-Y.ELY...-TN.A.T...TA.DDS.-.FLSNTV.N.-DS-  214
+KAG2733521.1  165  .-----L--TIN.N.Q..F-Y.ELY...-TN.A.T..M-TLNDD.S.FFSNTL.N.-DS-  212
+KAG2735578.1  143  ELGT.GL--DIK.N.Q..F-F.-ELYTQRTN.V.T...-TLD...S.FLSNTL.N.-DT-  195
+KAG2732535.1  165  .-.------TIN.N.Q..F-Y.ELY...-TN.A.T...-TLV.D.S.FFSNTL.N.-DT-  212
+
+Query_3       201  TVGSQMIYLSSTSS--ELYAESDAKTDNIVVAGFGNGNVI-----TFR---TSI---D--  245
+KAG2734361.1  211  IDRK.TV..ADSK.--SVR.VAI..PRTFRI.......K.GLDLPL.K---LLS---S--  260
+KAG2731421.1  217  ---K.SF..ADSQ.--SIR.KAIS.SKTYT.Y......K.-----GLD---LPL---ISL  260
+KAG2733788.1  217  MEEG.L....TST.--S.RIDTYPPNIP.HI..W..N...-----GLS---.A.---N--  261
+KAG2731009.1  215  ---N.WF..QDPQ.--S.R.TAISVPKTYN........K.-----GLDIPLVNL---P--  259
+KAG2733521.1  213  ---N.VF..ADSA.--SIR.TAISAPKTYN........K.-----GLDIPLVN.---P--  257
+KAG2735578.1  196  ---N.VF..ADSA.SIQVH.I.FS..Y.--........K.-----GLD---VTLVNLP--  240
+KAG2732535.1  213  ---N.VF..EDSA.--SIR.TAISAPKTYT........K.-----GLDIPLVN.---P--  257
+
+Query_3       246  PFRGKWSYDGKTGILTVKVWPSMTHI-FNIGLGYDSSKFDWKQID-NHCTPTLVNNAIYY  303
+KAG2734361.1  261  ..----..NSR....SLRIKGNWGQD-.D.......RL.KVTTDT-SLGLLSVPWG.VK.  314
+KAG2731421.1  261  .IL.S.G..E.R....LRALGNLA.N-.I..T...KK..QITTDS-SLGLLSVF.G.LK.  318
+KAG2733788.1  262  S.D----...NN--.SIRSG-.Y.YK-LV..P...P.LISIGSAAYGSGVG.ISRAG.L.  313
+KAG2731009.1  260  .LLDA.D..TT.....LRGAGLLSQN-........P.L.SITTD.-DLGLLSVLFG.VS.  317
+KAG2733521.1  258  .LLNAY...TT.....LRGAGLLSMN-.......NP.L.SIVTD.-.VGLLSVPFG.LT.  315
+KAG2735578.1  241  .LLNGYT..T......LRGGGVLLPMN.......NP.L.KIVTD.-.TGIIRIPAG.VT.  299
+KAG2732535.1  258  .LLTGYT.STT.....L.GAGVLAMN-....K..NP.L.SIVTD.-DVGLASVLFG.VS.  315
+
+Query_3       304  KGPIPDGANKPDKCLPCVDHIPWIP  328
+KAG2734361.1  315  E..V.N-KQI.SN.R..KPYP.     335
+KAG2731421.1  319  N..V.N-SSI.SA.R..-KPV.SV.  341
+KAG2733788.1  314  S..P..-.SR.SQ.NE.          329
+KAG2733521.1  316  S..P.NVV--.SV.Q..          330
+KAG2735578.1  300  S..P.N--SV.SV.Q..          314
+KAG2732535.1  316  S..P.NPV--.SI.KQ.          330
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 587766336
+
+
+  Database: S_stipitis_NRRL_Y7124
+    Posted date:  Apr 28, 2022  3:47 PM
+  Number of letters in database: 3,170,166
+  Number of sequences in database:  6,327
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

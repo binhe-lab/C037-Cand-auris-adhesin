@@ -1,0 +1,42 @@
+# Assembly name:  ASM1685929v1
+# Organism name:  Scheffersomyces stipitis (budding yeasts)
+# Infraspecific name:  strain=NRRL Y-7124
+# Taxid:          4924
+# BioSample:      SAMN14310124
+# BioProject:     PRJNA609885
+# Submitter:      University of Greenwich
+# Date:           2021-02-12
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# WGS project:    JADGGA01
+# Assembly method: Canu v. 1.8
+# Expected final version: yes
+# Genome coverage: 167.0x
+# Sequencing technology: Oxford Nanopore MinION
+# Relation to type material: assembly from type material
+# GenBank assembly accession: GCA_016859295.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_016859305.1		Primary Assembly
+## GCA_016859315.1		non-nuclear
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+contig_1	assembled-molecule	2	Chromosome	CM029105.1	<>	na	Primary Assembly	2691698	na
+contig_4	assembled-molecule	3	Chromosome	CM029106.1	<>	na	Primary Assembly	1880751	na
+contig_5	assembled-molecule	4	Chromosome	CM029107.1	<>	na	Primary Assembly	1767139	na
+contig_3	assembled-molecule	5	Chromosome	CM029108.1	<>	na	Primary Assembly	1893022	na
+contig_6	assembled-molecule	6	Chromosome	CM029109.1	<>	na	Primary Assembly	1677372	na
+contig_8	assembled-molecule	7	Chromosome	CM029110.1	<>	na	Primary Assembly	954262	na
+contig_2	unlocalized-scaffold	1	Chromosome	JADGGA010000002.1	<>	na	Primary Assembly	2501657	na
+contig_7	unlocalized-scaffold	1	Chromosome	JADGGA010000007.1	<>	na	Primary Assembly	1176439	na
+contig_9	unlocalized-scaffold	8	Chromosome	JADGGA010000009.1	<>	na	Primary Assembly	879920	na
+contig_10	unlocalized-scaffold	8	Chromosome	JADGGA010000010.1	<>	na	Primary Assembly	173283	na
+contig_11	unlocalized-scaffold	MT	Mitochondrion	JADGGA010000011.1	<>	na	non-nuclear	86229	na

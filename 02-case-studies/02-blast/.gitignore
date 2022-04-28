@@ -1,5 +1,6 @@
-blastdb/Cand_auris_five_strains.*
+blastdb/
 Cauris-strains/Cand_auris_five_strains_protein.faa.gz
 assembly-info/*
 !assembly-info/README.md
 data/blastdb/taxdb.tar.gz
+data/s_stipitis_assembly/*.gz

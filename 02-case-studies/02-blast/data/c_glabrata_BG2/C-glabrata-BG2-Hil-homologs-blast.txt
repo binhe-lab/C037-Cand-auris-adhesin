@@ -1,0 +1,48 @@
+# BLASTP 2.12.0+
+# Query: Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172 [[Candida] auris]
+# Database: ../blastdb/C_glabrata_BG2
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 8 hits found
+Caur_Hil1	92	gb|QNG14727.1|	2581	29.102	24	313	32	329	5.74e-18
+Caur_Hil1	99	gb|QNG13321.1|	965	28.529	1	312	14	336	2.75e-15
+Caur_Hil1	78	gb|QNG12756.1|	3329	25.954	67	313	92	335	1.10e-11
+Caur_Hil1	49	gb|QNG16707.1|	1241	30.120	160	313	16	171	8.01e-09
+Caur_Hil1	49	gb|QNG12312.1|	1001	27.711	160	313	168	323	2.69e-07
+Caur_Hil1	75	gb|QNG14607.1|	2353	25.954	78	313	103	335	3.24e-07
+Caur_Hil1	84	gb|QNG14880.1|	4378	26.780	49	313	75	335	5.04e-06
+Caur_Hil1	75	gb|QNG13326.1|	2782	25.475	78	315	104	345	8.88e-06
+# BLASTP 2.12.0+
+# Query: Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+# Database: ../blastdb/C_glabrata_BG2
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 12 hits found
+Calb_Hyr1	90	gb|QNG14727.1|	2581	30.065	29	321	37	329	1.06e-24
+Calb_Hyr1	89	gb|QNG13321.1|	965	28.947	32	319	43	335	2.72e-20
+Calb_Hyr1	85	gb|QNG13326.1|	2782	30.662	48	321	67	336	1.69e-16
+Calb_Hyr1	92	gb|QNG12756.1|	3329	28.896	25	321	43	335	3.70e-16
+Calb_Hyr1	85	gb|QNG14880.1|	4378	29.167	48	321	66	335	7.47e-16
+Calb_Hyr1	73	gb|QNG14607.1|	2353	32.794	85	321	104	335	2.53e-14
+Calb_Hyr1	98	gb|QNG12312.1|	1001	27.139	3	321	8	323	7.30e-14
+Calb_Hyr1	72	gb|QNG12526.1|	3372	28.968	85	317	104	332	2.97e-13
+Calb_Hyr1	85	gb|QNG15395.1|	2966	28.028	48	321	66	335	1.29e-12
+Calb_Hyr1	99	gb|QNG15396.1|	816	25.948	2	321	17	334	2.16e-12
+Calb_Hyr1	49	gb|QNG16707.1|	1241	35.294	163	322	16	172	1.24e-11
+Calb_Hyr1	63	gb|QNG14140.1|	3368	29.717	85	289	104	299	5.16e-11
+# BLASTP 2.12.0+
+# Query: Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g [[Candida] glabrata]
+# Database: ../blastdb/C_glabrata_BG2
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 12 hits found
+Cgla_Hyr1	100	gb|QNG13321.1|	965	99.390	1	328	14	341	0.0
+Cgla_Hyr1	99	gb|QNG14727.1|	2581	52.615	4	328	15	333	6.30e-105
+Cgla_Hyr1	96	gb|QNG15395.1|	2966	31.515	11	326	28	336	3.57e-23
+Cgla_Hyr1	91	gb|QNG14880.1|	4378	32.797	27	326	47	336	1.60e-22
+Cgla_Hyr1	95	gb|QNG12756.1|	3329	29.721	11	322	28	333	1.91e-22
+Cgla_Hyr1	96	gb|QNG15396.1|	816	30.699	13	326	29	335	2.75e-22
+Cgla_Hyr1	99	gb|QNG12312.1|	1001	29.345	1	326	6	324	1.01e-20
+Cgla_Hyr1	96	gb|QNG14607.1|	2353	30.030	11	326	28	336	3.17e-19
+Cgla_Hyr1	96	gb|QNG13326.1|	2782	29.641	11	326	29	337	8.91e-18
+Cgla_Hyr1	95	gb|QNG12526.1|	3372	28.060	11	322	28	334	3.25e-17
+Cgla_Hyr1	99	gb|QNG14140.1|	3368	30.659	1	326	18	337	8.95e-16
+Cgla_Hyr1	49	gb|QNG16707.1|	1241	37.576	161	322	16	169	3.43e-15
+# BLAST processed 3 queries

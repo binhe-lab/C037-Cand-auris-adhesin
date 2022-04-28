@@ -1,0 +1,51 @@
+# BLASTP 2.12.0+
+# Query: Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172 [[Candida] auris]
+# Database: ../blastdb/C_glabrata_CBS138
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 9 hits found
+Caur_Hil1	92	gb|QHS67215.1|	1861	28.483	24	313	32	329	2.64e-17
+Caur_Hil1	99	gb|QHS65613.1|	965	28.228	1	312	14	336	2.00e-15
+Caur_Hil1	78	gb|QHS68452.1|	3241	25.954	67	313	92	335	1.37e-11
+Caur_Hil1	49	gb|QHS66001.1|	1570	29.518	160	313	206	361	1.06e-08
+Caur_Hil1	75	gb|QHS69029.1|	1580	26.336	78	313	103	335	1.38e-08
+Caur_Hil1	49	gb|QHS67887.1|	832	25.749	160	313	179	334	6.81e-07
+Caur_Hil1	84	gb|QHS67369.1|	2385	26.780	49	313	75	335	1.15e-06
+Caur_Hil1	75	gb|QHS65049.1|	3330	25.954	78	313	103	335	1.50e-06
+Caur_Hil1	75	gb|QHS67886.1|	2111	26.692	78	313	103	335	6.32e-06
+# BLASTP 2.12.0+
+# Query: Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+# Database: ../blastdb/C_glabrata_CBS138
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 13 hits found
+Calb_Hyr1	90	gb|QHS67215.1|	1861	30.065	29	321	37	329	9.89e-25
+Calb_Hyr1	89	gb|QHS65613.1|	965	28.618	32	319	43	335	2.53e-20
+Calb_Hyr1	85	gb|QHS67369.1|	2385	29.167	48	321	66	335	1.17e-16
+Calb_Hyr1	92	gb|QHS68452.1|	3241	28.896	25	321	43	335	8.90e-16
+Calb_Hyr1	83	gb|QHS65618.1|	4497	30.742	48	317	67	332	1.36e-15
+Calb_Hyr1	72	gb|QHS64811.1|	2231	28.968	85	317	104	332	6.50e-14
+Calb_Hyr1	89	gb|QHS66001.1|	1570	28.254	35	322	73	362	6.56e-14
+Calb_Hyr1	73	gb|QHS65049.1|	3330	32.794	85	321	104	335	1.34e-13
+Calb_Hyr1	75	gb|QHS69029.1|	1580	31.325	46	289	64	299	3.82e-13
+Calb_Hyr1	98	gb|QHS64595.1|	955	26.844	3	321	8	323	8.84e-13
+Calb_Hyr1	85	gb|QHS67886.1|	2111	27.778	48	321	66	335	1.06e-12
+Calb_Hyr1	92	gb|QHS67887.1|	832	26.415	25	321	42	334	2.40e-12
+Calb_Hyr1	63	gb|QHS66441.1|	1989	29.717	85	289	104	299	2.88e-12
+# BLASTP 2.12.0+
+# Query: Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g [[Candida] glabrata]
+# Database: ../blastdb/C_glabrata_CBS138
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 13 hits found
+Cgla_Hyr1	100	gb|QHS65613.1|	965	100.000	1	328	14	341	0.0
+Cgla_Hyr1	99	gb|QHS67215.1|	1861	52.308	4	328	15	333	1.77e-104
+Cgla_Hyr1	96	gb|QHS67886.1|	2111	31.692	11	326	28	336	3.87e-25
+Cgla_Hyr1	99	gb|QHS67369.1|	2385	31.532	3	326	20	336	2.68e-24
+Cgla_Hyr1	96	gb|QHS67887.1|	832	30.699	13	326	29	335	6.25e-23
+Cgla_Hyr1	95	gb|QHS68452.1|	3241	29.721	11	322	28	333	7.05e-23
+Cgla_Hyr1	95	gb|QHS66001.1|	1570	31.402	11	322	48	359	1.35e-22
+Cgla_Hyr1	99	gb|QHS69029.1|	1580	29.155	1	326	18	336	7.63e-20
+Cgla_Hyr1	99	gb|QHS64595.1|	955	29.191	1	326	6	324	7.24e-19
+Cgla_Hyr1	95	gb|QHS64811.1|	2231	28.358	11	322	28	334	1.41e-18
+Cgla_Hyr1	96	gb|QHS65049.1|	3330	30.149	11	326	28	336	5.12e-18
+Cgla_Hyr1	87	gb|QHS66441.1|	1989	30.132	1	284	18	297	1.28e-17
+Cgla_Hyr1	96	gb|QHS65618.1|	4497	29.641	11	326	29	337	1.12e-16
+# BLAST processed 3 queries

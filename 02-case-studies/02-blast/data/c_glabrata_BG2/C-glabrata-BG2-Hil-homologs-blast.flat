@@ -1,0 +1,386 @@
+BLASTP 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: C_glabrata_BG2
+           5,220 sequences; 2,680,966 total letters
+
+
+
+Query= Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172
+[[Candida] auris]
+
+Length=316
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QNG14727.1 uncharacterized protein GWK60_I02783 [[Candida] glabrata]  82.8    6e-18
+QNG13321.1 uncharacterized protein GWK60_E06215 [[Candida] glabrata]  74.3    3e-15
+QNG12756.1 uncharacterized protein GWK60_D00055 [[Candida] glabrata]  63.5    1e-11
+QNG16707.1 uncharacterized protein GWK60_M00011 [[Candida] glabrata]  54.7    8e-09
+QNG12312.1 uncharacterized protein GWK60_B00011 [[Candida] glabrata]  49.7    3e-07
+QNG14607.1 uncharacterized protein GWK60_I00011 [[Candida] glabrata]  49.7    3e-07
+QNG14880.1 uncharacterized protein GWK60_J00011 [[Candida] glabrata]  46.2    5e-06
+QNG13326.1 uncharacterized protein GWK60_F00033 [[Candida] glabrata]  45.1    9e-06
+
+
+
+Query_1     1    LAFYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALTTLGGSL----DNQG  56
+QNG14727.1  32                          .LPSEDI.V.SNAFLAL.HANTY.FN.GI----N.N.  64
+QNG13321.1  14   .TIFIDQAR.A..K...YYS.E.PSE--GF.V.SNQFLAL..TKPVNFA.P.----TVNK  67
+QNG14880.1  75                                                   ..A.YYIN..MK  86
+
+Query_1     57   EFYV-----TSAN----GLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIGG----  103
+QNG14727.1  65   YLFM-----GNV.SGQS..KTTL.--..SVS.Q.TFVLD----------.R.ETN.ASLS  107
+QNG13321.1  68   DAS.FIGNENA..----.AIS.TFSIN.D.N.Y.TIVLDNRNS.DAASVSWTA-KT----  118
+QNG12756.1  92                      S.HAFF.DFVFQ.D.TVVVDDRKSASAGHFKIYD-.S----  127
+QNG14607.1  103                                Q.D.TIVVDDRLSTSAGSWKI.D-.S----  127
+QNG14880.1  87   G.DI-----S.SH----A.FGDF-----VFQ.D.IVVVDDRKSTSSGSWTI.D-.T----  127
+QNG13326.1  104                                E.D.TIVVDDRKSTSVGVWKI.D-.S----  128
+
+Query_1     104  -----FTNTGN-MWLGISG-----YSLVPPIILGSATNWDNSGRIY-LS-QNSGSASTIT  150
+QNG14727.1  108  WSGSS.....T-.YFWGA.SPQNS.DFN.------SG.FE.K.TMV-FH-.D.KNTDSYA  158
+QNG13321.1  119  -----.N.Y.S-.FFNGAS-----AVVQNSFV.TGQ.ELV.K.L.Q-FT-.QPTNWDAVG  165
+QNG12756.1  128  -----.....S-IMFAS.QGDT--FDI-------.G.SVT.T.L..S.G-TD.LKPQQLK  171
+QNG14607.1  128  -----......I.FTSSQ.-----DTF-----DI...SVT.T.I..-SKGT.AARPQQLK  171
+QNG14880.1  128  -----.....H-.MFTS.Q-----GDTIG--.YA.S.T--.T.L..-SKGTDRNKPQQVK  171
+QNG13326.1  129  -----.....D-IMFTS.K-----G.K----FDI..KSVT.T.F..-SKGTDANTPQILK  172
+
+Query_1     151  ISQTLGS-ITNDGSMCIERLSWLQTTSIKGAGCINL-------MD-------DA-HLQLQ  194
+QNG14727.1  159  NF.--..NVN...TI.LTNTKS.LKK..V.N...TI-------GE-------N.-MMV..  201
+QNG13321.1  166  -.VSSP.-LV.E.TI.LKNMKTQTIS..S.S...VI-------GE-------NSIYDM.S  209
+QNG12756.1  172  .GNNVKT-WY.T.TI.LTNT.FDLVNP.Q.V..VSI----------------G.-.SLFN  213
+QNG16707.1  16             .T.TI.LANT.FDLENP.H.G...TV-------GE-------NS---KFD  48
+QNG12312.1  168            .T.TV.LANTTF.LQNT.Q.G...SI-------GE-------NS---LFN  200
+QNG14607.1  172  .GNNANN-WY.T.TI.LANTTFDLQK..Q.V..VSVGANSVFNIH-------.I-N..Q-  221
+QNG14880.1  172  ..SGNNW-.-.T.TI.LANSTYKLSKA.H.G...SV-------GEGSVFNIY.Y-DM.--  219
+QNG13326.1  173  .GNNADN-WY.T.TI.LANTTFNLKNP.E.V..VTV-------GE-------NS---VFN  214
+
+Query_1     195  ISPWSVSNDQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNS-IRVN-TG---F--  247
+QNG14727.1  202  STSSGTMGS..L.MT.....I----FAE.DAK.DNII.R...N..I-LTFR-.SVDP.--  253
+QNG13321.1  210  ..HGT.GS-.M.....T..E.----YAE.DAK.DNIV.A...N..V-.TFR-.SIDP.--  260
+QNG12756.1  214  .HDIN.QQ-..V..TER..V.A.-------SNGQNMPIA.L.N..GLLYPD-YP---I--  259
+QNG16707.1  49   .GGID.QQ-..V...D.T.V.K.-------.HGQDVR.Y.L.N..G-FLTPLLA---.--  94
+QNG12312.1  201  .YNFDI-RQ......D...VVA-.SNG.TV.------.Y.L.N..GFLYPH-FP---I--  246
+QNG14607.1  222  ---------.S....DPT.VVA.-------SNGQNMP.S...N..--------.---.LF  254
+QNG14880.1  220  --------Q......H...V.-------AF.NGQNVA.H.L.N..--------.---.LY  253
+QNG13326.1  215  .KDLD..Q-.S....DPT.V.A.-------SNGQNMP.S...N..--------.---.--  253
+
+Query_1     248  -----S---------G-YSYEGDT--LTLSF---FLGL---FKIAFKIGTGYSKSGF---  281
+QNG14727.1  254  -----R---------.KW..D.NSGV..VKL---WPSI---SH-..H..K..D..K.---  289
+QNG13321.1  261  -----R---------.KW..D.K.GI..VKV---WPSM---TH.-.N..L..DS.K.---  296
+QNG12756.1  260  -----Q---------S-F..NSI.--GI.T.TTGYI..---QSFTVVV....NETL.---  296
+QNG16707.1  95   -----E---------S-FK.DAL.--GI.HA---TI..ADVLH.SAN..K..NS.L.---  131
+QNG12312.1  247  -----K---------K-VT.DSLS--GVAT.STGLA..---Q.FTVF..V..NE.N.---  283
+QNG14607.1  255  PLFPIK---------S-FN.DYL.--GIVT.TVGY...---QSFTIP..K..NQTL.---  296
+QNG14880.1  254  PIFPIR---------K-VT.NSL.--GIAT.TTG.IS.---Q.FTVD..L..NE.D.---  295
+QNG13326.1  254  -----LFPDFPIKKFE-...LTGI--..FTTG--YI..---LSFTIPV.K..NDTL.EIV  300
+
+Query_1     282  S-------TNG-LFG-AGT------R------IS---YSGAYP--GT-VPDVC-K-C---  309
+QNG14727.1  290  K-------QKQ-ITN-NV.PTLVNNA------VY---.D.PV.--D.SK....-AI.---  325
+QNG13321.1  297  D-------WKQ-IDN-HC.PTLVNNA------.Y---.K.PI.DGAN-K..K.LP-.---  333
+QNG12756.1  297  E-------KV.ETYI-Q.K------.YRNNF-.R---.N..P.--QG-P.SI.-QP.---  331
+QNG16707.1  132  E-------VVE-T.EFQ..------KYTNYNYLR---.N.KP.--QK-A..I.-QP.---  167
+QNG12312.1  284  EIVPSIKIQDV-NYN-NYN------F------VR---.T.PP.--NL-A.S..-QP.---  319
+QNG14607.1  297  EIVP----D.Y-IQ.-NHY------K------N.FFI.K.SP.--QA-Q.SI.-QP.---  331
+QNG14880.1  296  EI------VKS-INI-Q..------NYNNYNFVI---.K.PT.--NS-A.S..-QP.---  331
+QNG13326.1  301  A-------D.Y-IQ.-KHY------KNNF---FR---.N.SP.--NS-A.SI.-RP.VEI  335
+
+Query_1     310  ----FDFPEP  315
+QNG14727.1  326  ----PNN.    329
+QNG13321.1  334  ----V.H     336
+QNG12756.1  332  ----VEI.    335
+QNG16707.1  168  ----VEV.    171
+QNG12312.1  320  ----VEI.    323
+QNG14607.1  332  ----VEI.    335
+QNG14880.1  332  ----IEI.    335
+QNG13326.1  336  PLYT.KV...  345
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 503119622
+
+
+Query= Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+
+Length=324
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QNG14727.1 uncharacterized protein GWK60_I02783 [[Candida] glabrata]  102     1e-24
+QNG13321.1 uncharacterized protein GWK60_E06215 [[Candida] glabrata]  89.7    3e-20
+QNG13326.1 uncharacterized protein GWK60_F00033 [[Candida] glabrata]  78.6    2e-16
+QNG12756.1 uncharacterized protein GWK60_D00055 [[Candida] glabrata]  77.4    4e-16
+QNG14880.1 uncharacterized protein GWK60_J00011 [[Candida] glabrata]  76.6    7e-16
+QNG14607.1 uncharacterized protein GWK60_I00011 [[Candida] glabrata]  71.6    3e-14
+QNG12312.1 uncharacterized protein GWK60_B00011 [[Candida] glabrata]  70.1    7e-14
+QNG12526.1 uncharacterized protein GWK60_B04917 [[Candida] glabrata]  68.6    3e-13
+QNG15395.1 uncharacterized protein GWK60_J11759 [[Candida] glabrata]  66.6    1e-12
+QNG15396.1 AWP2 [[Candida] glabrata]                                  65.5    2e-12
+QNG16707.1 uncharacterized protein GWK60_M00011 [[Candida] glabrata]  63.5    1e-11
+QNG14140.1 uncharacterized protein GWK60_H00011 [[Candida] glabrata]  61.6    5e-11
+
+
+
+Query_2     2    LLTLNLSAALEVVTSRIDRGG--IQGFHGDVKVHSGATWAILGTTLCSFFGGLEVEKGAS  59
+QNG14727.1  37                                .IT.N.N.FL.LVHANTYT.N..--INNNGY  65
+QNG13321.1  43                                   .N.NQFL.LVN.KPVN.A.P.T.N.D..  70
+QNG13326.1  67                                                   MYQKVR.Q..GA  78
+QNG12756.1  43                            .YDKGYI.LD..YL.FQDMNTVPLYQNIR.N..GA  77
+QNG14880.1  66                                                   MYQTVK.D..GA  77
+QNG12312.1  8     ISI.V..QTVIGNDT.VY.NN-PS.YENGYVILG..YL.FQD.NSVPMYQIVR.D..GA  65
+QNG15395.1  66                                                   MYQTVR.D..GA  77
+QNG15396.1  17   .YIIKVASTQI.IK.NTIV..NNPS..QNGYI.SGD.FL.FQDMNTVPMYQTVRID..GA  76
+
+Query_2     60   LFIKSDNGPVLALNVALS-TLVRPVI--NN-GVISLNSKSSTSFSNFDIGGSSFTNNGEI  115
+QNG14727.1  66   ..MGNV.SGQSG.KTT..-S--GS.S--.Q-.TFV.DNRNE.NGASLSWS......T.TM  119
+QNG13321.1  71   V..GNE.AANG.ISSTF.---INGD.--..Y.T.V.DNRN.SDAASVSWTAKT.N.Y.SM  125
+QNG13326.1  79   .YYINN.LKGIEISSSHA-LF.DF.FE-.D-.T.VVDDRK...VGVWK.NDG....T.D.  135
+QNG12756.1  78   .YYINN.LEGFNI.S.HA-FF.DF.FQ-.D-.TVVVDDRK.A.AGH.K.YDG....T.S.  134
+QNG14880.1  78   .YYIN..MKGFDISSSHA-LFGDF.FQ-.D-.IVVVDDRK...SGSWT.NDGT...T.HM  134
+QNG14607.1  104                              .D-.T.VVDDRL...AGSWK.NDG....T.N.  134
+QNG12312.1  66   .YYVNNDERGFSISSGHAY.VPFEFR--.E-.TVVVDDRQ.S.PGSWTVNDGT...T.RM  122
+QNG12526.1  104                              .D-.TVVVDDRN...SGSWT.NSG....T.NM  134
+QNG15395.1  78   .YYVNN.MKGFSISS.HA-FT.PF.FR-.E-.TVVVDDRH...PGSWT.NSGT...T.NM  134
+QNG15396.1  77   .YYINNDKQGFSI-LSDH-NYNH.FVFL.E-.TVVVDDRR.I.PGSWT.KDG......N.  133
+QNG14140.1  104                              .D-.TVVVDDRK...PGSWT.KDGT...T.RM  134
+
+Query_2     116  YL-ASS---------GLVKSTAY-LY--AR-EWTNNGL-----IVA--------Y---Q-  144
+QNG14727.1  120  .F-WGA---------.SPQN-S.-DFNPSG-NFE.K.T-----M.F--------H---.-  149
+QNG13321.1  126  FFNGA.---------AV.QNSFV-.T--GQT.LV.K..-----.QF--------T---.Q  157
+QNG13326.1  136  MF-T..------------.GSKFDIS--.K-SV..T.F-----.YS--------K---G-  162
+QNG12756.1  135  MF-...---------Q--GD.FD-IS--GT-SV..T..-----.YS--------LG--T-  162
+QNG14880.1  135  MF-T..---------Q--GD.IG-I.--.S-ST..T..-----.YS--------KGTDR-  164
+QNG14607.1  135  MF-T..---------Q--GD.FD-IS--.T-SV..T.I-----.YS--------KG--T-  162
+QNG12312.1  123  MF-T.R-----------FGD.IG-I.--SN-PI..T.FLYSKG.D.--------D---H-  154
+QNG12526.1  135  MF-T..HGDTFEIDASS.VN.G.-I.--SK-GTSA.MP-----QI---------------  169
+QNG15395.1  135  MF-T..---------Q--GD.IG-I.--.S-SI..T.V-----.YS--------K---G-  161
+QNG15396.1  134  MF-T..Q--------.DIF.IGS-N.--I----..T.F-----.FSKGTSFEKPQ---R-  168
+QNG14140.1  135  MF-T..---------Q--GD.FT-I.--SS-SI..T.Y-----.YS--------KG--T-  162
+
+Query_2     145  --NQKAAGN---I-AFGTAYQ--TITNNGQICLRHQDFVPATKIKGTGCVTADEDTWIKL  196
+QNG14727.1  150  --DS.NTDS---Y-.---NF.GSNVN.D.T...TNTKSLLKKS.V.N..I.IG.NAMMV.  200
+QNG13321.1  158  PT.WD.V.S---V-S----SP--SLV.E.T...KNMKTQTISS.S.S..IVIG.NSIYDM  207
+QNG13326.1  163  --TDANTPQ---.LKI.NNAD--NWY.T.T...ANTT.NLKNP.E.V....VG.NSVFNI  215
+QNG12756.1  163  --DSLKPQQ---L-KI.NNVK--.WY.T.T...TNTS.DLVNP.Q.V...SIGAHSLFNI  214
+QNG14880.1  165  --.KPQQVK---.-SS.NNWI-----.T.T...ANSTYKLSKA.H.G..ISVG.GSVFNI  213
+QNG14607.1  163  --.AARPQQ---L-KI.NNAN--NWY.T.T...ANTT.DLQKS.Q.V...SVGANSVFNI  214
+QNG12312.1  155  --P..LE-----.-SN.NNW-----I.T.TV..ANTT.LLQNT.Q.G..ISIG.NSLFNI  201
+QNG12526.1  170  ------------L-KL.NYAN--PWY.T.T...ANTT.ELGNP.Q.I....VGQNALFDI  214
+QNG15395.1  162  --TSSSKPQQLK.-SS.NSW-----I.T.T...ANSTYKLSKS.Q.G..ISVG.GSVFNI  213
+QNG15396.1  169  --L.IGN..---.-WI----------.T.TV.MANTTYILENA.Q.G..ISVG.NSVFNI  212
+QNG16707.1  16                             .T.T...ANTS.DLENP.H.G..I.VG.NSKFDI  49
+QNG14140.1  163  --.ANRPQQ---F-QL.NRFN--.WI.T.TV..ANTTYLLNKA.Q.G..I.VG.NSVFNV  214
+
+Query_2     197  GNTILSVEPTHNFYLKDSKSSLIVHAVSSNQTFTVHGFGNGNK-LGLTLPLTGNRDHF--  253
+QNG14727.1  201  QS.SSGTMGSQTL.MTS.S.MIFAESDAKTDNII.R......I-.TFRTSV----.P.--  253
+QNG13321.1  208  LSISHGTVGSQMI..SSTS.E.YAESDAKTDNIV.A......V-ITFRTSI----.P.--  260
+QNG13326.1  216  KDLDV.QQ---SI..S.PT.V.---...NG.NMP.S......GF.FPDF.I------K--  261
+QNG12756.1  215  HD--IN.Q-QQTV..TERS.V.---...NG.NMPIA.L....---..LY.---DYPIQ--  260
+QNG14880.1  214  YDYDMQQQ---TI..SH.S.V.---.FTNG.NVA...L....---.FLY.IFPI.-----  259
+QNG14607.1  215  HDIN.QQQ---SI..S.PT.---.V...NG.NMP.S......---.FLF..FPIK-S.--  262
+QNG12312.1  202  Y.FDIRQQ---TI..S..S.---.V.L.NG..V..Y.L....---.FLY.------..PI  246
+QNG12526.1  215  SS--ID.Q-QQTI..S.PS.V.---S.TNG.NTPIY.L....---.FLF.IFPIK-----  260
+QNG15395.1  214  Y.YDMQQQ---TI..SHPS.---.VSF.NG.NVA...L....GF.YPGF.I------Q--  259
+QNG15396.1  213  YSFDMQQQ---TV..SHPS.V..LNG---GHEVP.Y.L....---.ILC.DAPI..IY--  261
+QNG16707.1  50   .G--ID.Q-QQTV..S..T.V.---K.THG.DVR.Y.L....---.FLT..LAFE-----  95
+QNG14140.1  215  Y.IDMQQQ---SI..SHPS.V.---.L.NR.NVN.F.L....---.FLF.------..PV  259
+
+Query_2     254  -R--FEYYPDTGILQLR---A---A-ALP-QY---F--K--I--GKGYDSKLF---R---  287
+QNG14727.1  254  -.GKWS.DGNS.V.TVK---LW--P-SIS-HA---.--H--.--.....KSK.---KQKQ  293
+QNG13321.1  261  -.GKWS.DGK....TVK---VW--P-SMT-HI---.--N--.--.L....SK.DWKQ---  300
+QNG13326.1  262  -K--...SYL....TFT---TGYIG-L.S-FT---I--P--V--....NDT..---E---  298
+QNG12756.1  261  -S--.S.NSI....TFT---T---G-YIGL.S---.--TVVV--.T..NET..---EKVG  300
+QNG14880.1  260  -K--VT.NSL...ATFT---T---G-FISL.K---.TVD--.--.L..NESD.---E---  296
+QNG14607.1  263  -N--YD.L--...VTFT---V---G-Y.GL.S---.TIP--.--....NQT..---E---  297
+QNG12312.1  247  KK--VT.DSLS.VATFS---TGL-.-G.Q-KFT--V--F--.--.V..NESN.---E---  284
+QNG12526.1  261  -K--VD.N.L...VHFT---T---G-W.DL.S---.--T--.PV....NES..---E---  297
+QNG15395.1  260  -K--VT.NSL...ATFT---TGI-.-S.Q-EFT--V--P--.--.L..NQSE.---E---  296
+QNG15396.1  262  ------.DSS...MDVT---.---G-TNG-I.KFTV--Y--.--.A..NESN.---E---  295
+QNG16707.1  96   -S--.K.DAL....HATIGL.---D-V.H-IS---A--N--.--....N.S..---E---  132
+QNG14140.1  260  KK--VS.NSL...ATFT---T---GYGSE-.W---.--TAI.--.....ESK.---E---  297
+
+Query_2     288  ---IVNS---RG---L-----K-------NA-VTYDGPVPNN-EIPAVCLIPCTNGPS  322
+QNG14727.1  294  ---.T.N---VTPTLV-----N-------..-.Y......DT-SK.D..A.-.P.N.   329
+QNG13321.1  301  ---.D.H---CTPTLV-----N-------..-IY.K..I.DGANK.DK..-..VD     335
+QNG13326.1  299  ---..AD---NY---I-----QGKHYKN-.F-FR.N.SP..S-A-.SI.R-..VEI.   336
+QNG12756.1  301  ETY.QGK---.Y---R-----N-------.F-IR.N.AP.QG-P-.SI.Q-..VEI.   335
+QNG14880.1  297  ---..K.---IN---I-----QGTNYNNY.F-.I.K..T..S-A-.S..Q-..IEI.   335
+QNG14607.1  298  ---..PD---NY---IQGNHY.-------.SFFI.K.SP.QA-Q-.SI.Q-..VEI.   335
+QNG12312.1  285  ---..P.---IK---I-----QDVNYNNY.F-.R.T..P.-.-LA.S..Q-..VEI.   323
+QNG12526.1  298  ---..E.---IS---I-----QGETYNHN.F-.R.N.-R.PQ-PA.SI.Q-..       332
+QNG15395.1  297  ---.IK.---IN---I-----QGTNYNNY.Y-.I.K..P..S-A-.S..Q-..VEI.   335
+QNG15396.1  296  ---..S.---IK---I-----HGISYDNY.F-.R.R..P.-.-LA.S..Q-..VEI.   334
+QNG16707.1  133  ---V.ETFEFQ.---T-----.YTNY---.Y-LR.N.K-.PQ-KA.DI.Q-..VEV..  172
+QNG14140.1  298  ---.I                                                       299
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 503119622
+
+
+Query= Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g
+[[Candida] glabrata]
+
+Length=328
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QNG13321.1 uncharacterized protein GWK60_E06215 [[Candida] glabrata]  686     0.0   
+QNG14727.1 uncharacterized protein GWK60_I02783 [[Candida] glabrata]  335     6e-105
+QNG15395.1 uncharacterized protein GWK60_J11759 [[Candida] glabrata]  98.6    4e-23 
+QNG14880.1 uncharacterized protein GWK60_J00011 [[Candida] glabrata]  96.7    2e-22 
+QNG12756.1 uncharacterized protein GWK60_D00055 [[Candida] glabrata]  96.3    2e-22 
+QNG15396.1 AWP2 [[Candida] glabrata]                                  95.5    3e-22 
+QNG12312.1 uncharacterized protein GWK60_B00011 [[Candida] glabrata]  90.9    1e-20 
+QNG14607.1 uncharacterized protein GWK60_I00011 [[Candida] glabrata]  86.7    3e-19 
+QNG13326.1 uncharacterized protein GWK60_F00033 [[Candida] glabrata]  82.4    9e-18 
+QNG12526.1 uncharacterized protein GWK60_B04917 [[Candida] glabrata]  80.9    3e-17 
+QNG14140.1 uncharacterized protein GWK60_H00011 [[Candida] glabrata]  76.3    9e-16 
+QNG16707.1 uncharacterized protein GWK60_M00011 [[Candida] glabrata]  74.3    3e-15 
+
+
+
+Query_3     1    LTIFIDQARAATIKENTYYSGELP---S---EGFTVNSNQFLALVNTKTVNFAGPLTINK  54
+QNG13321.1  14   ........................---.---.................P........V..  67
+QNG14727.1  15      L.QL.SS...DK...LDN-..---.---.DI.....A.....HAN.YT.N.G--..N  62
+QNG15395.1  28             .V.QSD.IVN.NN.---.GYEN.YIILGGAY..FQDMNS.PMYQTVRVD.  74
+QNG14880.1  47                                   .YI.LGGAY..FQEMNS.PMYQTVKVD.  74
+QNG12756.1  28             .VVQR..ITT.NN.VGYD---K.YI.LDGAY..FQDMN..PLYQNIRV..  74
+QNG15396.1  29               ..S..IVG.NN.---.GFQN.YI.SGDA...FQDMN..PMYQTVR.D.  73
+QNG12312.1  6    FS.S.NVSAQTV.GND.IVY.NN.---.GYEN.YVILGGAY..FQD.NS.PMYQIVRVD.  62
+QNG14607.1  28             .V.QS..ITY.NN.TGY.---N.YI.LGGAY..FQDMN..SMFQTVRV.Q  74
+QNG13326.1  29             .V.QS..ILY.NN.---TGYDD.YI.LGGAY..FQDMN..PMYQKVRVQ.  75
+QNG12526.1  28             .VVQS..ITY.NS.---.GFDD.YI.LGGAY..FQDMNS.PMYQTVRVD.  74
+QNG14140.1  18   .F.IVNVSAQ.I.QTD.VVK.NN.---.GYSN.YIILEGAY..FQDMN..PLYQTVRV..  74
+
+Query_3     55   DASVFIGNENAANGAISS--T--FS--INGDI--N--NYGTIVLDNRNSSDAASVSWTAK  104
+QNG13321.1  68   ..................--.--..--.....--.--.......................  117
+QNG14727.1  63   NGYL.M..V.SGQSGLKT--.--L.---S.SV--S--.Q..F......ETNG..L..SGS  111
+QNG15395.1  75   GGALYYV.N.MKGFS...--AHA.T--VPFVF--R--.E..V.V.D.H.TSPG.WTINSG  126
+QNG14880.1  75   GGALYYI.D.MKGFD...--S--HA--LF..FVFQ--.D.IV.V.D.K.TSSG.WTINDG  126
+QNG12756.1  75   GGALYYI.N.LEGFN.N.--AHA.F--VDFVF--Q--.D..V.V.D.K.AS.GHFKIYDG  126
+QNG15396.1  74   GGALYYI.NDKQGFS.L.--D--HN--Y.HPF--VFL.E..V.V.D.R.ISPG.--..I.  123
+QNG12312.1  63   GGALYYV.NDERGFS...GHA--YT--VPFEF--R--.E..V.V.D.Q..SPG.WTVNDG  114
+QNG14607.1  75   GGALYYI.N.LKGFS...--N--HNWFV.FVF--Q--.D....V.D.L.TS.G.WKINDG  126
+QNG13326.1  76   GGALYYI.N.LKGIE...--S--HA--LFV.FVFE--.D....V.D.K.TSVGVWKINDG  127
+QNG12526.1  75   GG.LYYL.NGLQGFD.E.--K--HALFVSFVF--R--.D..V.V.D...TSSG.WTINSG  126
+QNG14140.1  75   GGALYYI.DYLSGFS.T.--G--HP--.YVPFVFQ--.D..V.V.D.K.TSPG.--..I.  124
+
+Query_3     105  --TFNNYGSMFFNG---------A---------SAVVQNSFVLTGQTELVNKGLI-----  139
+QNG13321.1  118  --............---------.---------......................-----  152
+QNG14727.1  112  --S.T.T.T.Y.W.---------.---------GSP-...YDFNPSGNFE...TM-----  145
+QNG15395.1  127  --..T.T.N.M.TS---------S-------------.GDTIGIYASSIT.T.V.-----  157
+QNG14880.1  127  --..T.T.H.M.TS---------S-------------.GDTIGIYASSTT.T...-----  157
+QNG12756.1  127  --S.T.T..IM.AS---------S---------QG---DT.DIS.-.SVT.T...-----  157
+QNG15396.1  124  DGS.T.N.NIM.TS---------S-------------.GDIFSI.SNYIT.T.F.FSKGT  161
+QNG12312.1  115  --..T.T.R.M.TSRFGD-----T---------IGIYS.PITN..F--.YS..ID-----  151
+QNG14607.1  127  --S.T.T.NIM.TSSQGDTFDIS.---------TS.TNTGIIYSKG.NAARPQQL-----  170
+QNG13326.1  128  --S.T.T.DIM.TSSKGSKFDIS.---------KS.TNTG.IYSKG.DANTPQIL-----  171
+QNG12526.1  127  --S.T.T.N.M.TSSHGDTFEID.---------.S..NTGYIYSKG.SANMPQIL-----  170
+QNG14140.1  125  DG..T.T.R.M.TS---------SQGDTFTIYS.SITNTGYIYSKG.NANRPQQF-----  170
+
+Query_3     140  QF----TQQP------TNWDAVGSVSSP-S-LVNEGTICLKNMKTQTISSISGSGCIVIG  187
+QNG13321.1  153  ..----....------............-.-.............................  200
+QNG14727.1  146  V.----H.DS------K.T.SYANFQGS-N-VN.D.....T.T.SLLKK..V.N...T..  193
+QNG15395.1  158  YS----KGTS------SSKPQQLKI..GN.-WI.T.....A.STYKLSK..Q.G...SV.  206
+QNG14880.1  158  YS----KGTD------R.KPQQVKI..G-NNWI.T.....A.STYKLSKA.H.G...SV.  206
+QNG12756.1  158  YSLGTDSLK.------QQLKIGNN.KT----WY.T.....T.TSFDLVNP.Q.V..VS..  207
+QNG15396.1  162  S.----EKPQ------RLQIGN.NI------WI.T..V.MA.TTYILENA.Q.G...SV.  205
+QNG12312.1  152  AD----HP.KLEISNGN..-------------I.T..V..A.TTFLLQNT.Q.G...S..  194
+QNG14607.1  171  KI----GNNA------N..-------------Y.T.....A.TTFDLQK..Q.V..VSV.  207
+QNG13326.1  172  KI----GNNA------D..-------------Y.T.....A.TTFNLKNP.E.V..VTV.  208
+QNG12526.1  171  KL----GNYA------NP.-------------Y.T.....A.TTFELGNP.Q.I..VTV.  207
+QNG14140.1  171  .L----GNRF------NT.-------------I.T..V..A.TTYLLNKA.Q.G...TV.  207
+QNG16707.1  16                                    .T.....A.TSFDLENP.H.G...TV.  42
+
+Query_3     188  ENSI-----YDMLSISHGTVGSQMIYLSSTSSELYAESDAKTDNIVVAGFGNGNVITFRT  242
+QNG13321.1  201  ....-----...................................................  255
+QNG14727.1  194  ..AM-----MVLQ.T.S..M...TL.MT.S..MIF..........I.R......IL....  248
+QNG15395.1  207  .G.VFNIYN...Q--------Q.T....HP..VV---.FSNGQ.VA.H.L....GFLYPG  255
+QNG14880.1  207  .G.VFNIYD...Q--------Q.T....HS..V.-.FTNGQ--.VA.H.L....--G.LY  253
+QNG12756.1  208  AH.L-----FNIHD.N---.QQ.TV..TER..V.-.V.NGQ--.MPI..L....GLLYPD  256
+QNG15396.1  206  ...V-----FNIY.FD---MQQ.TV...HP..V.ILNGGHE---VP.Y.L....G.LCPD  254
+QNG12312.1  195  ...L-----FNIYNFD---IRQ.T....DS..-VV.L.NGQ.--VT.Y.L....--G.LY  241
+QNG14607.1  208  A..V-----FNIHD.N---LQQ.S....DPT.-VV.V.NGQ--.MP.S......GFL.P-  255
+QNG13326.1  209  ...V-----FNIKDLD---.SQ.S....DPT.V.-.V.NGQ--.MP.S......GFL.P-  256
+QNG12526.1  208  Q.AL-----F.IS..D---.QQ.T....DP..V.SVTNGQ---.TPIY.L....GFL.P-  255
+QNG14140.1  208  ...V-----FNVYN.D---MQQ.S....HP..V.-.L.NRQ--.VN.F.L....GFL.PH  256
+QNG16707.1  43   ...K-----F.IGG.D---.QQ.TV...DST.V.KV---THGQDVR.Y.L....--G.L.  89
+
+Query_3     243  SID-PFRGKWSYDGKTGILTVKV--WPSM-TH-I-FN--IGLGYDSSKFD-------W--  285
+QNG13321.1  256  ...-...................--....-..-.-..--...........-------.--  298
+QNG14727.1  249  .V.-..........NS.V....L--...I-S.-A-.H--..K...K...K-------Q--  291
+QNG15395.1  256  F---.IQ-.VT.NSL...A.FTT--GIAS-LQ-E-.TVP.....NQ.E.EI------I--  298
+QNG14880.1  254  P.F-.I.-.VT.NSL...A.FTTG-FI.L-QKFT-VD--.....NE.D.E-------IV-  298
+QNG12756.1  257  Y---.IQ-SF..NSI.....FTT--GYIG-LQ-S-.TVVV.T..NETL.E-------K--  298
+QNG15396.1  255  A---.I.DIY-..SS...MD.TA--GTNG-IY-K-.TVY..A..NE.N.E-------IV-  297
+QNG12312.1  242  PHF-.IK-.VT..SLS.VA.FST--GLAG-LQ-K-.TVF..V..NE.N.E----------  284
+QNG14607.1  256  -LF-.IK-SFN..YL...V.FT.--GYLG-LQ-S-.TIP..K..NQTL.E-------I--  298
+QNG13326.1  257  --.F.IK-.FE.SYL.....FTTGYIGLL-SF-T-IP--V.K..NDTL.E-------I--  299
+QNG12526.1  256  -.F-.IK-.VD.NPL...VHFTTG-.LDLQSF-T-IP--V.K..NE.L.EIVESISIQ--  305
+QNG14140.1  257  F---.VK-.V..NSL...A.FTT--GYGS-EQ-W-.TAI..K...E...E-------IIA  300
+QNG16707.1  90   PLL-A.E-SFK..AL....HATIG-LADV-L.-.SA.--..K..N..L.E-------V--  133
+
+Query_3     286  ---KQIDNHCT-PTL----VN----NAIY-YKGPIPDGANKPDKCLPCVDHIPWIP  328
+QNG13321.1  299  ---........-...----..----....-..........................  341
+QNG14727.1  292  ---...T.NV.-...----..----..V.-.D..V..-TS...V.AI.PNNP....  333
+QNG15395.1  299  ---.S.NIQG.-NYN----NY----.YVI-....P.NS.--.SV.Q...E-..L    336
+QNG14880.1  299  ---.S.NIQG.-NYN----NY----.FVI-....T.NS.--.SV.Q..IE-..L    336
+QNG12756.1  299  ---VGETYIQG-KRY----R.----.F.R-.N.AP.Q.--P.SI.Q...E        333
+QNG15396.1  298  ---SS.KI.GI-SYD----NY----.FVR-.R..P.NL.--.SV.Q...E-..L    335
+QNG12312.1  285  ---------IV-.SIKIQD..YNNY.FVR-.T..P.NL.--.SV.Q...E-..L    324
+QNG14607.1  299  ---VP-..YIQ-GNH----YK----.SFFI...SP.QA--Q.SI.Q...E-..L    336
+QNG13326.1  300  ---VA-..YIQGKHY----K.----.FFR-.N.SP.NS.--.SI.R...E-..L    337
+QNG12526.1  306  ---GETY..-----------.----.FVR-.N.RP.QP.--.SI.Q...E        334
+QNG14140.1  301  NINI.GE.YNG---------.----.FVI-.N..P.--NPA.AT.Q....-..L    337
+QNG16707.1  134  ---VETFEFQG-TKY----T.Y---.YLR-.N.KP.QK.--..I.Q...E        169
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 503119622
+
+
+  Database: C_glabrata_BG2
+    Posted date:  Apr 28, 2022  3:43 PM
+  Number of letters in database: 2,680,966
+  Number of sequences in database:  5,220
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40
