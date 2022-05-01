@@ -1,0 +1,19 @@
+# BLASTP 2.12.0+
+# Query: Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172 [[Candida] auris]
+# Database: ../blastdb/K_lactis_CBS2015
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 1 hits found
+Caur_Hil1	79	gb|QEU59456.1|	1081	29.818	65	315	86	341	1.05e-15
+# BLASTP 2.12.0+
+# Query: Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+# Database: ../blastdb/K_lactis_CBS2015
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 1 hits found
+Calb_Hyr1	95	gb|QEU59456.1|	1081	30.120	7	313	18	333	2.23e-21
+# BLASTP 2.12.0+
+# Query: Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g [[Candida] glabrata]
+# Database: ../blastdb/K_lactis_CBS2015
+# Fields: query id, % query coverage per subject, subject id, subject length, % identity, q. start, q. end, s. start, s. end, evalue
+# 1 hits found
+Cgla_Hyr1	91	gb|QEU59456.1|	1081	31.373	30	326	50	342	8.68e-28
+# BLAST processed 3 queries

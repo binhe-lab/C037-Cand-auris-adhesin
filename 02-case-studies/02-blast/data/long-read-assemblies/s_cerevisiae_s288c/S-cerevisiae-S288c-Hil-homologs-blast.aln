@@ -1,0 +1,93 @@
+BLASTP 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: S_cerevisiae_S288C
+           5,850 sequences; 2,815,473 total letters
+
+
+
+Query= Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172
+[[Candida] auris]
+
+Length=316
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 517307898
+
+
+Query= Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+
+Length=324
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 517307898
+
+
+Query= Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g
+[[Candida] glabrata]
+
+Length=328
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 517307898
+
+
+  Database: S_cerevisiae_S288C
+    Posted date:  May 1, 2022  2:30 PM
+  Number of letters in database: 2,815,473
+  Number of sequences in database:  5,850
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

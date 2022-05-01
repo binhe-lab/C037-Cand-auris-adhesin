@@ -1,0 +1,172 @@
+Blast4-archive ::= {
+  request {
+    ident "2.12.0+",
+    body queue-search {
+      program "blastp",
+      service "plain",
+      queries bioseq-set {
+        seq-set {
+          seq {
+            id {
+              local str "Query_1"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Caur_Hil1 XP_028889033.1:12-327 uncharacterized
+ protein CJI97_004172 [[Candida] auris]"
+                  }
+                }
+              },
+              title "Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein
+ CJI97_004172 [[Candida] auris]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 316,
+              seq-data ncbieaa "LAFYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALT
+TLGGSLDNQGEFYVTSANGLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIGGFTNTGNMWLGISGYSLVPPII
+LGSATNWDNSGRIYLSQNSGSASTITISQTLGSITNDGSMCIERLSWLQTTSIKGAGCINLMDDAHLQLQISPWSVSN
+DQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVNTGFSGYSYEGDTLTLSFFLGLFKIAFKIGTGYSKSG
+FSTNGLFGAGTRISYSGAYPGTVPDVCKCFDFPEPT"
+            }
+          },
+          seq {
+            id {
+              local str "Query_2"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida
+ albicans SC5314]"
+                  }
+                }
+              },
+              title "Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans
+ SC5314]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 324,
+              seq-data ncbieaa "ILLTLNLSAALEVVTSRIDRGGIQGFHGDVKVHSGATWAILGTTLC
+SFFGGLEVEKGASLFIKSDNGPVLALNVALSTLVRPVINNGVISLNSKSSTSFSNFDIGGSSFTNNGEIYLASSGLVK
+STAYLYAREWTNNGLIVAYQNQKAAGNIAFGTAYQTITNNGQICLRHQDFVPATKIKGTGCVTADEDTWIKLGNTILS
+VEPTHNFYLKDSKSSLIVHAVSSNQTFTVHGFGNGNKLGLTLPLTGNRDHFRFEYYPDTGILQLRAAALPQYFKIGKG
+YDSKLFRIVNSRGLKNAVTYDGPVPNNEIPAVCLIPCTNGPSAP"
+            }
+          },
+          seq {
+            id {
+              local str "Query_3"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Cgla_Hyr1 XP_445977.1:14-341 uncharacterized
+ protein CAGL0E06600g [[Candida] glabrata]"
+                  }
+                }
+              },
+              title "Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein
+ CAGL0E06600g [[Candida] glabrata]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 328,
+              seq-data ncbieaa "LTIFIDQARAATIKENTYYSGELPSEGFTVNSNQFLALVNTKTVNF
+AGPLTINKDASVFIGNENAANGAISSTFSINGDINNYGTIVLDNRNSSDAASVSWTAKTFNNYGSMFFNGASAVVQNS
+FVLTGQTELVNKGLIQFTQQPTNWDAVGSVSSPSLVNEGTICLKNMKTQTISSISGSGCIVIGENSIYDMLSISHGTV
+GSQMIYLSSTSSELYAESDAKTDNIVVAGFGNGNVITFRTSIDPFRGKWSYDGKTGILTVKVWPSMTHIFNIGLGYDS
+SKFDWKQIDNHCTPTLVNNAIYYKGPIPDGANKPDKCLPCVDHIPWIP"
+            }
+          }
+        }
+      },
+      subject database "../blastdb/S_cerevisiae_S288C",
+      algorithm-options {
+        {
+          name "EvalueThreshold",
+          value cutoff e-value { 1, 10, -5 }
+        },
+        {
+          name "MaxHspsPerSubject",
+          value integer 2
+        },
+        {
+          name "MaskAtHash",
+          value boolean FALSE
+        },
+        {
+          name "SegFiltering",
+          value boolean FALSE
+        },
+        {
+          name "WordThreshold",
+          value integer 11
+        },
+        {
+          name "WindowSize",
+          value integer 40
+        },
+        {
+          name "HitlistSize",
+          value integer 500
+        },
+        {
+          name "UngappedMode",
+          value boolean FALSE
+        },
+        {
+          name "CompositionBasedStats",
+          value integer 2
+        },
+        {
+          name "SmithWatermanMode",
+          value boolean FALSE
+        },
+        {
+          name "EffectiveSearchSpace",
+          value big-integer 517307898
+        }
+      }
+    }
+  },
+  results {
+    alignments {
+    },
+    masks {
+    },
+    ka-blocks {
+      {
+        lambda { 314970803584422, 10, -15 },
+        k { 132288117205846, 10, -15 },
+        h { 387416642226648, 10, -15 },
+        gapped FALSE
+      },
+      {
+        lambda { 267, 10, -3 },
+        k { 41, 10, -3 },
+        h { 14, 10, -2 },
+        gapped TRUE
+      }
+    },
+    search-stats {
+      "Effective search space: 517307898",
+      "Effective search space used: 517307898",
+      "Length adjustment: 90"
+    }
+  }
+}

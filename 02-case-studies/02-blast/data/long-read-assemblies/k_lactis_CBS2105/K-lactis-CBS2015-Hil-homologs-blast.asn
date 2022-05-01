@@ -1,0 +1,802 @@
+Blast4-archive ::= {
+  request {
+    ident "2.12.0+",
+    body queue-search {
+      program "blastp",
+      service "plain",
+      queries bioseq-set {
+        seq-set {
+          seq {
+            id {
+              local str "Query_1"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Caur_Hil1 XP_028889033.1:12-327 uncharacterized
+ protein CJI97_004172 [[Candida] auris]"
+                  }
+                }
+              },
+              title "Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein
+ CJI97_004172 [[Candida] auris]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 316,
+              seq-data ncbieaa "LAFYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALT
+TLGGSLDNQGEFYVTSANGLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIGGFTNTGNMWLGISGYSLVPPII
+LGSATNWDNSGRIYLSQNSGSASTITISQTLGSITNDGSMCIERLSWLQTTSIKGAGCINLMDDAHLQLQISPWSVSN
+DQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVNTGFSGYSYEGDTLTLSFFLGLFKIAFKIGTGYSKSG
+FSTNGLFGAGTRISYSGAYPGTVPDVCKCFDFPEPT"
+            }
+          },
+          seq {
+            id {
+              local str "Query_2"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida
+ albicans SC5314]"
+                  }
+                }
+              },
+              title "Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans
+ SC5314]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 324,
+              seq-data ncbieaa "ILLTLNLSAALEVVTSRIDRGGIQGFHGDVKVHSGATWAILGTTLC
+SFFGGLEVEKGASLFIKSDNGPVLALNVALSTLVRPVINNGVISLNSKSSTSFSNFDIGGSSFTNNGEIYLASSGLVK
+STAYLYAREWTNNGLIVAYQNQKAAGNIAFGTAYQTITNNGQICLRHQDFVPATKIKGTGCVTADEDTWIKLGNTILS
+VEPTHNFYLKDSKSSLIVHAVSSNQTFTVHGFGNGNKLGLTLPLTGNRDHFRFEYYPDTGILQLRAAALPQYFKIGKG
+YDSKLFRIVNSRGLKNAVTYDGPVPNNEIPAVCLIPCTNGPSAP"
+            }
+          },
+          seq {
+            id {
+              local str "Query_3"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Cgla_Hyr1 XP_445977.1:14-341 uncharacterized
+ protein CAGL0E06600g [[Candida] glabrata]"
+                  }
+                }
+              },
+              title "Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein
+ CAGL0E06600g [[Candida] glabrata]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 328,
+              seq-data ncbieaa "LTIFIDQARAATIKENTYYSGELPSEGFTVNSNQFLALVNTKTVNF
+AGPLTINKDASVFIGNENAANGAISSTFSINGDINNYGTIVLDNRNSSDAASVSWTAKTFNNYGSMFFNGASAVVQNS
+FVLTGQTELVNKGLIQFTQQPTNWDAVGSVSSPSLVNEGTICLKNMKTQTISSISGSGCIVIGENSIYDMLSISHGTV
+GSQMIYLSSTSSELYAESDAKTDNIVVAGFGNGNVITFRTSIDPFRGKWSYDGKTGILTVKVWPSMTHIFNIGLGYDS
+SKFDWKQIDNHCTPTLVNNAIYYKGPIPDGANKPDKCLPCVDHIPWIP"
+            }
+          }
+        }
+      },
+      subject database "../blastdb/K_lactis_CBS2015",
+      algorithm-options {
+        {
+          name "EvalueThreshold",
+          value cutoff e-value { 1, 10, -5 }
+        },
+        {
+          name "MaxHspsPerSubject",
+          value integer 2
+        },
+        {
+          name "MaskAtHash",
+          value boolean FALSE
+        },
+        {
+          name "SegFiltering",
+          value boolean FALSE
+        },
+        {
+          name "WordThreshold",
+          value integer 11
+        },
+        {
+          name "WindowSize",
+          value integer 40
+        },
+        {
+          name "HitlistSize",
+          value integer 500
+        },
+        {
+          name "UngappedMode",
+          value boolean FALSE
+        },
+        {
+          name "CompositionBasedStats",
+          value integer 2
+        },
+        {
+          name "SmithWatermanMode",
+          value boolean FALSE
+        },
+        {
+          name "EffectiveSearchSpace",
+          value big-integer 469288450
+        }
+      }
+    }
+  },
+  results {
+    alignments {
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 184
+          },
+          {
+            id str "blast_score",
+            value int 184
+          },
+          {
+            id str "e_value",
+            value real { 105352005514166, 10, -29 }
+          },
+          {
+            id str "bit_score",
+            value real { 75484954248837, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 82
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 138
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 799303797468354, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 33,
+          ids {
+            local str "Query_1",
+            genbank {
+              accession "QEU59456",
+              version 1
+            }
+          },
+          starts {
+            64,
+            85,
+            98,
+            -1,
+            100,
+            119,
+            -1,
+            121,
+            102,
+            122,
+            -1,
+            130,
+            110,
+            131,
+            -1,
+            137,
+            116,
+            142,
+            121,
+            -1,
+            127,
+            147,
+            -1,
+            164,
+            144,
+            165,
+            -1,
+            200,
+            179,
+            201,
+            191,
+            -1,
+            197,
+            213,
+            -1,
+            217,
+            201,
+            221,
+            223,
+            -1,
+            226,
+            243,
+            -1,
+            255,
+            238,
+            256,
+            -1,
+            274,
+            256,
+            276,
+            268,
+            -1,
+            270,
+            288,
+            -1,
+            304,
+            286,
+            305,
+            -1,
+            309,
+            290,
+            315,
+            -1,
+            326,
+            301,
+            327
+          },
+          lens {
+            34,
+            2,
+            2,
+            1,
+            8,
+            1,
+            6,
+            5,
+            5,
+            6,
+            17,
+            1,
+            35,
+            1,
+            12,
+            6,
+            4,
+            4,
+            22,
+            3,
+            12,
+            1,
+            18,
+            2,
+            12,
+            2,
+            16,
+            1,
+            4,
+            6,
+            11,
+            1,
+            14
+          },
+          strands {
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 229
+          },
+          {
+            id str "blast_score",
+            value int 229
+          },
+          {
+            id str "e_value",
+            value real { 223160503003145, 10, -35 }
+          },
+          {
+            id str "bit_score",
+            value real { 928189351651179, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 100
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 172
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 952530864197531, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 31,
+          ids {
+            local str "Query_2",
+            genbank {
+              accession "QEU59456",
+              version 1
+            }
+          },
+          starts {
+            6,
+            17,
+            -1,
+            28,
+            17,
+            36,
+            24,
+            -1,
+            25,
+            43,
+            55,
+            -1,
+            57,
+            73,
+            64,
+            -1,
+            65,
+            80,
+            -1,
+            131,
+            116,
+            132,
+            125,
+            -1,
+            128,
+            141,
+            -1,
+            143,
+            130,
+            147,
+            -1,
+            157,
+            140,
+            158,
+            -1,
+            200,
+            182,
+            201,
+            -1,
+            206,
+            187,
+            207,
+            205,
+            -1,
+            208,
+            225,
+            -1,
+            244,
+            227,
+            245,
+            -1,
+            255,
+            237,
+            256,
+            246,
+            -1,
+            252,
+            265,
+            -1,
+            305,
+            292,
+            312
+          },
+          lens {
+            11,
+            8,
+            7,
+            1,
+            30,
+            2,
+            7,
+            1,
+            51,
+            1,
+            9,
+            3,
+            2,
+            4,
+            10,
+            1,
+            42,
+            1,
+            5,
+            1,
+            18,
+            3,
+            19,
+            1,
+            10,
+            1,
+            9,
+            6,
+            40,
+            7,
+            21
+          },
+          strands {
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 278
+          },
+          {
+            id str "blast_score",
+            value int 278
+          },
+          {
+            id str "e_value",
+            value real { 867713168936123, 10, -42 }
+          },
+          {
+            id str "bit_score",
+            value real { 111693714385068, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 96
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 163
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 910487804878049, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 29,
+          ids {
+            local str "Query_3",
+            genbank {
+              accession "QEU59456",
+              version 1
+            }
+          },
+          starts {
+            29,
+            49,
+            52,
+            -1,
+            54,
+            72,
+            -1,
+            167,
+            149,
+            170,
+            156,
+            -1,
+            157,
+            177,
+            -1,
+            200,
+            180,
+            201,
+            192,
+            -1,
+            194,
+            213,
+            -1,
+            239,
+            220,
+            240,
+            233,
+            -1,
+            234,
+            253,
+            244,
+            -1,
+            245,
+            263,
+            248,
+            -1,
+            249,
+            266,
+            266,
+            -1,
+            267,
+            283,
+            283,
+            -1,
+            286,
+            299,
+            -1,
+            303,
+            290,
+            304,
+            -1,
+            308,
+            294,
+            311,
+            309,
+            -1,
+            310,
+            326
+          },
+          lens {
+            23,
+            2,
+            95,
+            3,
+            7,
+            1,
+            23,
+            1,
+            12,
+            2,
+            26,
+            1,
+            13,
+            1,
+            10,
+            1,
+            3,
+            1,
+            17,
+            1,
+            16,
+            3,
+            4,
+            1,
+            4,
+            3,
+            15,
+            1,
+            16
+          },
+          strands {
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown,
+            unknown
+          }
+        }
+      }
+    },
+    masks {
+    },
+    ka-blocks {
+      {
+        lambda { 314970803584422, 10, -15 },
+        k { 132288117205846, 10, -15 },
+        h { 387416642226648, 10, -15 },
+        gapped FALSE
+      },
+      {
+        lambda { 267, 10, -3 },
+        k { 41, 10, -3 },
+        h { 14, 10, -2 },
+        gapped TRUE
+      }
+    },
+    search-stats {
+      "Effective search space: 469288450",
+      "Effective search space used: 469288450",
+      "Length adjustment: 89"
+    }
+  }
+}

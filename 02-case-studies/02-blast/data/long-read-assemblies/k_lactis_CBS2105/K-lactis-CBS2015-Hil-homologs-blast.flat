@@ -1,0 +1,150 @@
+BLASTP 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: K_lactis_CBS2015
+           5,108 sequences; 2,521,962 total letters
+
+
+
+Query= Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172
+[[Candida] auris]
+
+Length=316
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]    75.5    1e-15
+
+
+
+Query_1     65   GLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIG-GFTNTGNM-WLGISG-----Y  117
+QEU59456.1  86   ..DVK.LGI.QS.E.R.TIVL.GHNTTLP.T.YW--V.KS.K.D.EIY.TAK.SLIGSL.  143
+
+Query_1     118  SLVPPIILGSATNWDNSGRIYLSQNSG-SASTITISQTLGSITNDGSMCIERLSWLQTTS  176
+QEU59456.1  144  EII.------SHSFE.N.LLSF.HEN.RKGG.LALGHIGSA...S.TI.LKGVVYK..GM  197
+
+Query_1     177  IKG-AGCINLMDDAHLQLQISPWSVS----NDQTIYLSSSSSMLSVLGLSQSITGTKTYN  231
+QEU59456.1  198  VS.DS....VS.EGLF------.AINGYQL.........DTAA.RLEA.GSP---.F..K  248
+
+Query_1     232  VVGFGDG-NSIRVNTGFSGYSYEGDT--LTLSFFLGLFKIAFKIGTGYSKSGFSTNGL-F  287
+QEU59456.1  249  .....GAKQKVGLAVPIREFQ.DD..GV..V.SLFVTY.L--N.....DRTK.YVDNIN.  306
+
+Query_1     288  GAG------TRISYSGAYPG-TVPDVCKCFDFPEP  315
+QEU59456.1  307  .P.YITVLNGG.Y...DV.TFE...A.QACPETA.  341
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 469288450
+
+
+Query= Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+
+Length=324
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]    92.8    2e-21
+
+
+
+Query_2     7    LSAALEVVTSR--------IDRGGIQGFHGDVKVHSGATWAILGTTLCSFFGGLEVEKGA  58
+QEU59456.1  18   .AS..RL...DYDVISDTVL.V..AI-.N.N.QIEEDKFL.LVSG.TEY.KKD.I.D--G  74
+
+Query_2     59   SLFIKSDNGPVLALNVALSTLVRPVINNGVISLNSKSSTSFSNFDIGGSSFTNNGEIY-L  117
+QEU59456.1  75   A.Y.G.-KIQT.G.D.KVLGISQSIE.R.T.V..GHNT.LP.TYYWV.K..K.D....WT  133
+
+Query_2     118  ASSGLVKSTAYLY----AREWTNNGLI-VAYQNQKAAGNIAFGTAYQTITNNGQICLRHQ  172
+QEU59456.1  134  .K.S.IG.---..EIIPSHSFE....LSFSHE.GRKG.TL.L.HIGSA...S.T...KGV  190
+
+Query_2     173  DFVPATKIKG-TGCVT-ADEDTWIKLGNTILSVEPTHNFYLKDSKSSLIVHAVSSNQ-TF  229
+QEU59456.1  191  VYKQTGMVS.DS..INVS..GLFWAINGYQ.NDQT---I..SSDTAA.RLE.LG.PTF.Y  247
+
+Query_2     230  TVHGFGNG-NKLGLTLPLTGNRDHFRFEYYPDTGILQLRAAALPQYFKIGKGYDSKLFRI  288
+QEU59456.1  248  K.V...GAKQ.V..AV.I------RE.Q.DD...V.TVSSLFVTYKLN..T...RTK.YV  301
+
+Query_2     289  VNSR-------GLKNAVTYDGPVPNNEIPAVC  313
+QEU59456.1  302  D.INFGPGYITV.NGGIY.S.D..TF.V.DA.  333
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 469288450
+
+
+Query= Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g
+[[Candida] glabrata]
+
+Length=328
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]    111     9e-28
+
+
+
+Query_3     30   VNSNQFLALVNTKTVNFAGPLTINKDASVFIGNENAANGAISSTFSINGDINNYGTIVLD  89
+QEU59456.1  50   IEEDK.....SGT.EY.KKD.IV--.GALY..SKIQTL.LDVKVLG.SQS.E.R.....N  107
+
+Query_3     90   NRNSSDAASVSWTAKTFNNYGSMFFNGASAVVQNSFVLTGQTELVNKGLIQFTQQPTNWD  149
+QEU59456.1  108  GH.TTLPSTYY.VG.S.K.D.EIYWTAK.SLIGSLYEIIPSHSFE.N..LS.SHENGRKG  167
+
+Query_3     150  ---AVGSVSSPSLVNEGTICLKNMKTQTISSISG-SGCIVIGENSIYDMLSISHGTVGSQ  205
+QEU59456.1  168  GTL.L.HIG.-AIT.S......GVVYKQTGMV..D....NVSDEGLF--WA.NGYQLND.  224
+
+Query_3     206  MIYLSSTSSELYAES-DAKTDNIVVAGFGNGNVITFRTSIDPFRGKWSYDGKTGILTVKV  264
+QEU59456.1  225  T.....DTAA.RL.ALGSP.FTYK.V...-.AKQKVGLAV-.I.-EFQ..DD..V...SS  281
+
+Query_3     265  WPSMTHIFNIGLGYDSSKFDWKQIDN-HCTP---TLVNNAIYYKGPIPDGANKPDKCLPC  320
+QEU59456.1  282  LF-V.YKL...T...RT..---YV..INFG.GYI.VL.GG...S.DV.T-FEV..A.QA.  336
+
+Query_3     321  VDHIPW  326
+QEU59456.1  337  PETA..  342
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 469288450
+
+
+  Database: K_lactis_CBS2015
+    Posted date:  May 1, 2022  2:42 PM
+  Number of letters in database: 2,521,962
+  Number of sequences in database:  5,108
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

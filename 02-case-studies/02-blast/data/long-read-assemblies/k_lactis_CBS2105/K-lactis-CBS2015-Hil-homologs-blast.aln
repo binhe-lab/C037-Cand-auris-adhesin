@@ -1,0 +1,185 @@
+BLASTP 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: K_lactis_CBS2015
+           5,108 sequences; 2,521,962 total letters
+
+
+
+Query= Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172
+[[Candida] auris]
+
+Length=316
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]    75.5    1e-15
+
+
+>QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]
+Length=1081
+
+ Score = 75.5 bits (184),  Expect = 1e-15, Method: Compositional matrix adjust.
+ Identities = 82/275 (30%), Positives = 130/275 (47%), Gaps = 43/275 (16%)
+
+Query  65   GLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIG-GFTNTGNM-WLGISG-----Y  117
+            GL   V  +S +I+N G +  N    ++ S Y    +G  F N G + W   S      Y
+Sbjct  86   GLDVKVLGISQSIENRGTIVLNGHNTTLPSTYYW--VGKSFKNDGEIYWTAKSSLIGSLY  143
+
+Query  118  SLVPPIILGSATNWDNSGRIYLSQNSG-SASTITISQTLGSITNDGSMCIERLSWLQTTS  176
+             ++P      + +++N+G +  S  +G    T+ +     +ITN G++C++ + + QT  
+Sbjct  144  EIIP------SHSFENNGLLSFSHENGRKGGTLALGHIGSAITNSGTICLKGVVYKQTGM  197
+
+Query  177  IKG-AGCINLMDDAHLQLQISPWSVS----NDQTIYLSSSSSMLSVLGLSQSITGTKTYN  231
+            + G +GCIN+ D+         W+++    NDQTIYLSS ++ L +  L      T TY 
+Sbjct  198  VSGDSGCINVSDEGLF------WAINGYQLNDQTIYLSSDTAALRLEALGSP---TFTYK  248
+
+Query  232  VVGFGDG-NSIRVNTGFSGYSYEGDT--LTLSFFLGLFKIAFKIGTGYSKSGFSTNGL-F  287
+            VVGFG     + +      + Y+ DT  LT+S     +K+   IGTGY ++ F  + + F
+Sbjct  249  VVGFGGAKQKVGLAVPIREFQYDDDTGVLTVSSLFVTYKL--NIGTGYDRTKFYVDNINF  306
+
+Query  288  GAG------TRISYSGAYPG-TVPDVCKCFDFPEP  315
+            G G        I YSG  P   VPD C+      P
+Sbjct  307  GPGYITVLNGGIYYSGDVPTFEVPDACQACPETAP  341
+
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 469288450
+
+
+Query= Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+
+Length=324
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]    92.8    2e-21
+
+
+>QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]
+Length=1081
+
+ Score = 92.8 bits (229),  Expect = 2e-21, Method: Compositional matrix adjust.
+ Identities = 100/332 (30%), Positives = 158/332 (48%), Gaps = 41/332 (12%)
+
+Query  7    LSAALEVVTSR--------IDRGGIQGFHGDVKVHSGATWAILGTTLCSFFGGLEVEKGA  58
+            L++AL +VTS         +D GG   F+G+V++      A++  T   F   L V+   
+Sbjct  18   LASALRLVTSDYDVISDTVLDVGGAI-FNGNVQIEEDKFLALVSGTTEYFKKDLIVD--G  74
+
+Query  59   SLFIKSDNGPVLALNVALSTLVRPVINNGVISLNSKSSTSFSNFDIGGSSFTNNGEIY-L  117
+            +L+I S     L L+V +  + + + N G I LN  ++T  S +   G SF N+GEIY  
+Sbjct  75   ALYIGS-KIQTLGLDVKVLGISQSIENRGTIVLNGHNTTLPSTYYWVGKSFKNDGEIYWT  133
+
+Query  118  ASSGLVKSTAYLY----AREWTNNGLI-VAYQNQKAAGNIAFGTAYQTITNNGQICLRHQ  172
+            A S L+ S   LY    +  + NNGL+  +++N +  G +A G     ITN+G ICL+  
+Sbjct  134  AKSSLIGS---LYEIIPSHSFENNGLLSFSHENGRKGGTLALGHIGSAITNSGTICLKGV  190
+
+Query  173  DFVPATKIKG-TGCVT-ADEDTWIKLGNTILSVEPTHNFYLKDSKSSLIVHAVSSNQ-TF  229
+             +     + G +GC+  +DE  +  +    L+ +     YL    ++L + A+ S   T+
+Sbjct  191  VYKQTGMVSGDSGCINVSDEGLFWAINGYQLNDQT---IYLSSDTAALRLEALGSPTFTY  247
+
+Query  230  TVHGFGNG-NKLGLTLPLTGNRDHFRFEYYPDTGILQLRAAALPQYFKIGKGYDSKLFRI  288
+             V GFG    K+GL +P+        F+Y  DTG+L + +  +     IG GYD   F +
+Sbjct  248  KVVGFGGAKQKVGLAVPI------REFQYDDDTGVLTVSSLFVTYKLNIGTGYDRTKFYV  301
+
+Query  289  VNSR-------GLKNAVTYDGPVPNNEIPAVC  313
+             N          L   + Y G VP  E+P  C
+Sbjct  302  DNINFGPGYITVLNGGIYYSGDVPTFEVPDAC  333
+
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 469288450
+
+
+Query= Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g
+[[Candida] glabrata]
+
+Length=328
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]    111     9e-28
+
+
+>QEU59456.1 hypothetical protein KDRO_B07250 [Kluyveromyces lactis]
+Length=1081
+
+ Score = 111 bits (278),  Expect = 9e-28, Method: Compositional matrix adjust.
+ Identities = 96/306 (31%), Positives = 157/306 (51%), Gaps = 22/306 (7%)
+
+Query  30   VNSNQFLALVNTKTVNFAGPLTINKDASVFIGNENAANGAISSTFSINGDINNYGTIVLD  89
+            +  ++FLALV+  T  F   L +  D +++IG++    G       I+  I N GTIVL+
+Sbjct  50   IEEDKFLALVSGTTEYFKKDLIV--DGALYIGSKIQTLGLDVKVLGISQSIENRGTIVLN  107
+
+Query  90   NRNSSDAASVSWTAKTFNNYGSMFFNGASAVVQNSFVLTGQTELVNKGLIQFTQQPTNWD  149
+              N++  ++  W  K+F N G +++   S+++ + + +       N GL+ F+ +     
+Sbjct  108  GHNTTLPSTYYWVGKSFKNDGEIYWTAKSSLIGSLYEIIPSHSFENNGLLSFSHENGRKG  167
+
+Query  150  ---AVGSVSSPSLVNEGTICLKNMKTQTISSISG-SGCIVIGENSIYDMLSISHGTVGSQ  205
+               A+G + S ++ N GTICLK +  +    +SG SGCI + +  ++   +I+   +  Q
+Sbjct  168  GTLALGHIGS-AITNSGTICLKGVVYKQTGMVSGDSGCINVSDEGLF--WAINGYQLNDQ  224
+
+Query  206  MIYLSSTSSELYAES-DAKTDNIVVAGFGNGNVITFRTSIDPFRGKWSYDGKTGILTVKV  264
+             IYLSS ++ L  E+  + T    V GFG G       ++ P R ++ YD  TG+LTV  
+Sbjct  225  TIYLSSDTAALRLEALGSPTFTYKVVGFG-GAKQKVGLAV-PIR-EFQYDDDTGVLTVSS  281
+
+Query  265  WPSMTHIFNIGLGYDSSKFDWKQIDN-HCTP---TLVNNAIYYKGPIPDGANKPDKCLPC  320
+               +T+  NIG GYD +KF    +DN +  P   T++N  IYY G +P     PD C  C
+Sbjct  282  LF-VTYKLNIGTGYDRTKF---YVDNINFGPGYITVLNGGIYYSGDVPT-FEVPDACQAC  336
+
+Query  321  VDHIPW  326
+             +  PW
+Sbjct  337  PETAPW  342
+
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 469288450
+
+
+  Database: K_lactis_CBS2015
+    Posted date:  May 1, 2022  2:42 PM
+  Number of letters in database: 2,521,962
+  Number of sequences in database:  5,108
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

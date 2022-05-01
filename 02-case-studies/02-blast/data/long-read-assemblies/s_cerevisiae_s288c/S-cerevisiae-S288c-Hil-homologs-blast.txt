@@ -1,0 +1,13 @@
+# BLASTP 2.12.0+
+# Query: Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172 [[Candida] auris]
+# Database: ../blastdb/S_cerevisiae_S288C
+# 0 hits found
+# BLASTP 2.12.0+
+# Query: Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+# Database: ../blastdb/S_cerevisiae_S288C
+# 0 hits found
+# BLASTP 2.12.0+
+# Query: Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g [[Candida] glabrata]
+# Database: ../blastdb/S_cerevisiae_S288C
+# 0 hits found
+# BLAST processed 3 queries
