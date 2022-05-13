@@ -1,0 +1,4993 @@
+Blast4-archive ::= {
+  request {
+    ident "2.12.0+",
+    body queue-search {
+      program "tblastn",
+      service "plain",
+      queries bioseq-set {
+        seq-set {
+          seq {
+            id {
+              local str "Query_1"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Caur_Hil1 XP_028889033.1:12-327 uncharacterized
+ protein CJI97_004172 [[Candida] auris]"
+                  }
+                }
+              },
+              title "Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein
+ CJI97_004172 [[Candida] auris]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 316,
+              seq-data ncbieaa "LAFYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALT
+TLGGSLDNQGEFYVTSANGLAASVSIVSGTIKNSGDLAFNSLRASVISNYNLNSIGGFTNTGNMWLGISGYSLVPPII
+LGSATNWDNSGRIYLSQNSGSASTITISQTLGSITNDGSMCIERLSWLQTTSIKGAGCINLMDDAHLQLQISPWSVSN
+DQTIYLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVNTGFSGYSYEGDTLTLSFFLGLFKIAFKIGTGYSKSG
+FSTNGLFGAGTRISYSGAYPGTVPDVCKCFDFPEPT"
+            }
+          },
+          seq {
+            id {
+              local str "Query_2"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida
+ albicans SC5314]"
+                  }
+                }
+              },
+              title "Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans
+ SC5314]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 324,
+              seq-data ncbieaa "ILLTLNLSAALEVVTSRIDRGGIQGFHGDVKVHSGATWAILGTTLC
+SFFGGLEVEKGASLFIKSDNGPVLALNVALSTLVRPVINNGVISLNSKSSTSFSNFDIGGSSFTNNGEIYLASSGLVK
+STAYLYAREWTNNGLIVAYQNQKAAGNIAFGTAYQTITNNGQICLRHQDFVPATKIKGTGCVTADEDTWIKLGNTILS
+VEPTHNFYLKDSKSSLIVHAVSSNQTFTVHGFGNGNKLGLTLPLTGNRDHFRFEYYPDTGILQLRAAALPQYFKIGKG
+YDSKLFRIVNSRGLKNAVTYDGPVPNNEIPAVCLIPCTNGPSAP"
+            }
+          },
+          seq {
+            id {
+              local str "Query_3"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">Cgla_Hyr1 XP_445977.1:14-341 uncharacterized
+ protein CAGL0E06600g [[Candida] glabrata]"
+                  }
+                }
+              },
+              title "Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein
+ CAGL0E06600g [[Candida] glabrata]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 328,
+              seq-data ncbieaa "LTIFIDQARAATIKENTYYSGELPSEGFTVNSNQFLALVNTKTVNF
+AGPLTINKDASVFIGNENAANGAISSTFSINGDINNYGTIVLDNRNSSDAASVSWTAKTFNNYGSMFFNGASAVVQNS
+FVLTGQTELVNKGLIQFTQQPTNWDAVGSVSSPSLVNEGTICLKNMKTQTISSISGSGCIVIGENSIYDMLSISHGTV
+GSQMIYLSSTSSELYAESDAKTDNIVVAGFGNGNVITFRTSIDPFRGKWSYDGKTGILTVKVWPSMTHIFNIGLGYDS
+SKFDWKQIDNHCTPTLVNNAIYYKGPIPDGANKPDKCLPCVDHIPWIP"
+            }
+          }
+        }
+      },
+      subject database "../../blastdb/C_nivariensis_CBS9983",
+      algorithm-options {
+        {
+          name "EvalueThreshold",
+          value cutoff e-value { 1, 10, -5 }
+        },
+        {
+          name "DbGeneticCode",
+          value integer 1
+        },
+        {
+          name "UngappedMode",
+          value boolean FALSE
+        },
+        {
+          name "LongestIntronLength",
+          value integer 0
+        },
+        {
+          name "MaskAtHash",
+          value boolean FALSE
+        },
+        {
+          name "SegFiltering",
+          value boolean FALSE
+        },
+        {
+          name "WordThreshold",
+          value integer 13
+        },
+        {
+          name "WindowSize",
+          value integer 40
+        },
+        {
+          name "HitlistSize",
+          value integer 500
+        },
+        {
+          name "CompositionBasedStats",
+          value integer 2
+        },
+        {
+          name "SmithWatermanMode",
+          value boolean FALSE
+        },
+        {
+          name "EffectiveSearchSpace",
+          value big-integer 879224553
+        }
+      }
+    }
+  },
+  results {
+    alignments {
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 218
+          },
+          {
+            id str "blast_score",
+            value int 218
+          },
+          {
+            id str "e_value",
+            value real { 101589170813961, 10, -33 }
+          },
+          {
+            id str "bit_score",
+            value real { 88581739830027, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 98
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 160
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 976518987341772, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 0,
+                to 7,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255952,
+                to 255975,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 8,
+                to 8,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 9,
+                to 26,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255898,
+                to 255951,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 27,
+                to 29,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 30,
+                to 58,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255811,
+                to 255897,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 255802,
+                to 255810,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 59,
+                to 99,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255679,
+                to 255801,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 100,
+                to 100,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 101,
+                to 111,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255646,
+                to 255678,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 112,
+                to 112,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 113,
+                to 153,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255523,
+                to 255645,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 154,
+                to 154,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 155,
+                to 214,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255343,
+                to 255522,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 215,
+                to 218,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 219,
+                to 245,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255262,
+                to 255342,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 255253,
+                to 255261,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 246,
+                to 248,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255244,
+                to 255252,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 255241,
+                to 255243,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 249,
+                to 255,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255220,
+                to 255240,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 255214,
+                to 255219,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 256,
+                to 266,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255181,
+                to 255213,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 267,
+                to 267,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 268,
+                to 290,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255112,
+                to 255180,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 255094,
+                to 255111,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 291,
+                to 301,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255061,
+                to 255093,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 255058,
+                to 255060,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 302,
+                to 306,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 255043,
+                to 255057,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 158
+          },
+          {
+            id str "blast_score",
+            value int 158
+          },
+          {
+            id str "e_value",
+            value real { 513662107254692, 10, -26 }
+          },
+          {
+            id str "bit_score",
+            value real { 654697652749858, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 92
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 154
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 938544303797468, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 9,
+                to 22,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1419742,
+                to 1419783,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 23,
+                to 24,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 25,
+                to 49,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1419784,
+                to 1419858,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1419859,
+                to 1419864,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 50,
+                to 59,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1419865,
+                to 1419894,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1419895,
+                to 1419906,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 60,
+                to 71,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1419907,
+                to 1419942,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 72,
+                to 78,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 79,
+                to 81,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1419943,
+                to 1419951,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 82,
+                to 83,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 84,
+                to 101,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1419952,
+                to 1420005,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1420006,
+                to 1420011,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 102,
+                to 104,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420012,
+                to 1420020,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1420021,
+                to 1420035,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 105,
+                to 149,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420036,
+                to 1420170,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 150,
+                to 150,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 151,
+                to 214,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420171,
+                to 1420362,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 215,
+                to 218,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 219,
+                to 245,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420363,
+                to 1420443,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1420444,
+                to 1420452,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 246,
+                to 248,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420453,
+                to 1420461,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1420462,
+                to 1420464,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 249,
+                to 255,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420465,
+                to 1420485,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1420486,
+                to 1420491,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 256,
+                to 267,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420492,
+                to 1420527,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 268,
+                to 268,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 269,
+                to 285,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420528,
+                to 1420578,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 1420579,
+                to 1420584,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 286,
+                to 303,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 1420585,
+                to 1420638,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 143
+          },
+          {
+            id str "blast_score",
+            value int 143
+          },
+          {
+            id str "e_value",
+            value real { 418407624170586, 10, -24 }
+          },
+          {
+            id str "bit_score",
+            value real { 596917716362255, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 66
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 119
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 751835443037975, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 77,
+                to 99,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750083,
+                to 750151,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 100,
+                to 100,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 101,
+                to 119,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750152,
+                to 750208,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 120,
+                to 121,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 122,
+                to 129,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750209,
+                to 750232,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 130,
+                to 132,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 133,
+                to 137,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750233,
+                to 750247,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 750248,
+                to 750250,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 138,
+                to 198,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750251,
+                to 750433,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 199,
+                to 201,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 202,
+                to 224,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750434,
+                to 750502,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 225,
+                to 230,
+                strand unknown,
+                id local str "Query_1"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 231,
+                to 244,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750503,
+                to 750544,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 750545,
+                to 750547,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 245,
+                to 260,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750548,
+                to 750595,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 750596,
+                to 750604,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 261,
+                to 278,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750605,
+                to 750658,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 750659,
+                to 750676,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 279,
+                to 306,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750677,
+                to 750760,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_1",
+              int {
+                from 750761,
+                to 750763,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_1",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 307,
+                to 312,
+                strand unknown,
+                id local str "Query_1"
+              },
+              int {
+                from 750764,
+                to 750781,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 252
+          },
+          {
+            id str "blast_score",
+            value int 252
+          },
+          {
+            id str "e_value",
+            value real { 458948795824184, 10, -38 }
+          },
+          {
+            id str "bit_score",
+            value real { 101678525411217, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 76
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 121
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 751913580246914, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 82,
+                to 115,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 255649,
+                to 255750,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 255646,
+                to 255648,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 116,
+                to 156,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 255523,
+                to 255645,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 157,
+                to 157,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 158,
+                to 245,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 255259,
+                to 255522,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 246,
+                to 249,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 250,
+                to 253,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 255247,
+                to 255258,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 255241,
+                to 255246,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 254,
+                to 267,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 255199,
+                to 255240,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 255196,
+                to 255198,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 268,
+                to 287,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 255136,
+                to 255195,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 255118,
+                to 255135,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 288,
+                to 323,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 255010,
+                to 255117,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 180
+          },
+          {
+            id str "blast_score",
+            value int 180
+          },
+          {
+            id str "e_value",
+            value real { 85109224261967, 10, -28 }
+          },
+          {
+            id str "bit_score",
+            value real { 739441559451676, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 81
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 135
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 893888888888889, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 31,
+                to 76,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1419802,
+                to 1419939,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 77,
+                to 78,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 79,
+                to 85,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1419940,
+                to 1419960,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 1419961,
+                to 1419963,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 86,
+                to 116,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1419964,
+                to 1420056,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 1420057,
+                to 1420062,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 117,
+                to 143,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1420063,
+                to 1420143,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 1420144,
+                to 1420152,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 144,
+                to 152,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1420153,
+                to 1420179,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 153,
+                to 156,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 157,
+                to 245,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1420180,
+                to 1420446,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 246,
+                to 249,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 250,
+                to 253,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1420447,
+                to 1420458,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 1420459,
+                to 1420464,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 254,
+                to 267,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1420465,
+                to 1420506,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 1420507,
+                to 1420509,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 268,
+                to 287,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1420510,
+                to 1420569,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 1420570,
+                to 1420587,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 288,
+                to 318,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 1420588,
+                to 1420680,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 159
+          },
+          {
+            id str "blast_score",
+            value int 159
+          },
+          {
+            id str "e_value",
+            value real { 409553483648571, 10, -26 }
+          },
+          {
+            id str "bit_score",
+            value real { 658549648509032, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 74
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 151
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 896975308641975, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 24,
+                to 60,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 749903,
+                to 750013,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 750014,
+                to 750016,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 61,
+                to 70,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750017,
+                to 750046,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 71,
+                to 76,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 77,
+                to 83,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750047,
+                to 750067,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 750068,
+                to 750085,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 84,
+                to 119,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750086,
+                to 750193,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 120,
+                to 122,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 123,
+                to 142,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750194,
+                to 750253,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 750254,
+                to 750256,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 143,
+                to 203,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750257,
+                to 750439,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 204,
+                to 206,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 207,
+                to 218,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750440,
+                to 750475,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 219,
+                to 220,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 221,
+                to 238,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750476,
+                to 750529,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 239,
+                to 240,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 241,
+                to 249,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750530,
+                to 750556,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 250,
+                to 252,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 253,
+                to 271,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750557,
+                to 750613,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 750614,
+                to 750616,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 272,
+                to 275,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750617,
+                to 750628,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 750629,
+                to 750634,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 276,
+                to 294,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750635,
+                to 750691,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_2",
+              int {
+                from 750692,
+                to 750709,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 295,
+                to 306,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750710,
+                to 750745,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 307,
+                to 307,
+                strand unknown,
+                id local str "Query_2"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_2",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 308,
+                to 312,
+                strand unknown,
+                id local str "Query_2"
+              },
+              int {
+                from 750746,
+                to 750760,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 1174
+          },
+          {
+            id str "blast_score",
+            value int 1174
+          },
+          {
+            id str "e_value",
+            value real { 430926271230502, 10, -161 }
+          },
+          {
+            id str "bit_score",
+            value real { 456832534407017, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 208
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 269
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 990853658536585, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000001",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 3,
+                to 327,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 1419724,
+                to 1420698,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000001",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 812
+          },
+          {
+            id str "blast_score",
+            value int 812
+          },
+          {
+            id str "e_value",
+            value real { 149095653538543, 10, -112 }
+          },
+          {
+            id str "bit_score",
+            value real { 317390287924935, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 171
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 221
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 1, 10, 2 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 0,
+                to 21,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 255913,
+                to 255978,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 22,
+                to 22,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 23,
+                to 48,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 255835,
+                to 255912,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 49,
+                to 50,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 51,
+                to 119,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 255628,
+                to 255834,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 120,
+                to 120,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 121,
+                to 308,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 255064,
+                to 255627,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 309,
+                to 309,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000006",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 310,
+                to 327,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 255010,
+                to 255063,
+                strand minus,
+                id genbank {
+                  accession "JAEVGP010000006",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 165
+          },
+          {
+            id str "blast_score",
+            value int 165
+          },
+          {
+            id str "e_value",
+            value real { 781467064808588, 10, -27 }
+          },
+          {
+            id str "bit_score",
+            value real { 681661623064073, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 97
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 144
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 990853658536585, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 0,
+                to 9,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 749825,
+                to 749854,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_3",
+              int {
+                from 749855,
+                to 749857,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 10,
+                to 24,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 749858,
+                to 749902,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_3",
+              int {
+                from 749903,
+                to 749911,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 25,
+                to 62,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 749912,
+                to 750025,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 63,
+                to 64,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 65,
+                to 72,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750026,
+                to 750049,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_3",
+              int {
+                from 750050,
+                to 750073,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 73,
+                to 78,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750074,
+                to 750091,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 79,
+                to 82,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 83,
+                to 113,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750092,
+                to 750184,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_3",
+              int {
+                from 750185,
+                to 750193,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 114,
+                to 123,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750194,
+                to 750223,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 124,
+                to 125,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 126,
+                to 145,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750224,
+                to 750283,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 146,
+                to 148,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 149,
+                to 152,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750284,
+                to 750295,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 153,
+                to 153,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 154,
+                to 183,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750296,
+                to 750385,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 184,
+                to 188,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 189,
+                to 192,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750386,
+                to 750397,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_3",
+              int {
+                from 750398,
+                to 750403,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 193,
+                to 222,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750404,
+                to 750493,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 223,
+                to 224,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 225,
+                to 239,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750494,
+                to 750538,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 240,
+                to 241,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 242,
+                to 247,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750539,
+                to 750556,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 248,
+                to 248,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 249,
+                to 272,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750557,
+                to 750628,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              empty local str "Query_3",
+              int {
+                from 750629,
+                to 750634,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 273,
+                to 310,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750635,
+                to 750748,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 311,
+                to 312,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 313,
+                to 321,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750749,
+                to 750775,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 322,
+                to 322,
+                strand unknown,
+                id local str "Query_3"
+              },
+              empty genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_3",
+              genbank {
+                accession "JAEVGP010000008",
+                version 1
+              }
+            },
+            loc {
+              int {
+                from 323,
+                to 324,
+                strand unknown,
+                id local str "Query_3"
+              },
+              int {
+                from 750776,
+                to 750781,
+                strand plus,
+                id genbank {
+                  accession "JAEVGP010000008",
+                  version 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    masks {
+    },
+    ka-blocks {
+      {
+        lambda { 314970803584422, 10, -15 },
+        k { 132288117205846, 10, -15 },
+        h { 387416642226648, 10, -15 },
+        gapped FALSE
+      },
+      {
+        lambda { 267, 10, -3 },
+        k { 41, 10, -3 },
+        h { 14, 10, -2 },
+        gapped TRUE
+      }
+    },
+    search-stats {
+      "Effective search space: 879224553",
+      "Effective search space used: 879224553",
+      "Length adjustment: 93"
+    }
+  }
+}

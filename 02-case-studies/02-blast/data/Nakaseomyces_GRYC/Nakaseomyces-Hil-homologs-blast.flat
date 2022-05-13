@@ -1,0 +1,486 @@
+BLASTP 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: Nakaseomyces-GRYC
+           31,032 sequences; 15,448,373 total letters
+
+
+
+Query= Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172
+[[Candida] auris]
+
+Length=316
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+BN122_CANI0s18e03223g1_1 similar to uniprot|Q6FQC7|Q6FQC7_CANGA C...  89.0    8e-20
+BN124_NADE0s05e04136g1_1 conserved hypothetical protein; partial ...  78.6    3e-16
+SAKL0C00330g1_1 weakly similar to uniprot|P40442 Saccharomyces ce...  69.7    7e-13
+BN121_CACA0s05e11539g1_1 weakly similar to uniprot|Q6FNG1 Candida...  65.5    1e-11
+BN121_CACA0s29e00143g1_1 weakly similar to uniprot|A5DD63|A5DD63_...  65.5    1e-11
+BN119_CABR0s21e03234g1_1 weakly similar to uniprot|Q6FUW7 Candida...  65.1    2e-11
+BN122_CANI0s04e00110g1_1 weakly similar to uniprot|Q6FUW7 Candida...  63.2    7e-11
+BN119_CABR0s31e03938g1_1 similar to uniprot|Q6FQC7 Candida glabra...  60.8    3e-10
+BN121_CACA0s21e06930g1_1 weakly similar to uniprot|P40442 SACE0I0...  55.1    3e-08
+BN124_NADE0s05e05918g1_1 weakly similar to uniprot|Q6FNG1 Candida...  52.8    2e-07
+BN121_CACA0s12e09086g1_1 weakly similar to uniprot|Q6FNG1|Q6FNG1_...  49.7    1e-06
+BN121_CACA0s22e00132g1_1 weakly similar to uniprot|C5M4U4|C5M4U4_...  49.3    1e-06
+BN121_CACA0s05e11550g1_1 weakly similar to uniprot|Q6FNG1 Candida...  47.0    9e-06
+
+
+
+Query_1                   1    LAFYLSATWALTITENTVNVGALNIKIGS-LTINPGVYYSIVNNALTTLGG--SLDNQGE  57
+BN122_CANI0s18e03223g1_1  14   .C..RT..-...VDT..YLT.PPSED.----.V.SN.FLAL..G.TE.FT.--GIN.N.Y  66
+BN124_NADE0s05e04136g1_1  16       .AG.T...VDT..Y----.PSPP.EDI.V.AN.FLAL.SG.TE.FTA--GIN.N.Y  65
+BN119_CABR0s21e03234g1_1  71                                                     .--.R..DN-  77
+BN122_CANI0s04e00110g1_1  19            .E..DK..YYS.D.--PSDG-F.V.SNNFLAL.DDKTYDFK.PITINKDAS  66
+BN119_CABR0s31e03938g1_1  22            .I..DT..YLTSPP.ED.----...SN.FLAM.DTGSE.FTA--GIN.N.Y  66
+
+Query_1                   58   FY---V----TSAN----GLAASVSIV--SGTIKNSGDLAFNSLRASVISNYNLNSIGG-  103
+BN122_CANI0s18e03223g1_1  67   IFMGN.----N.GQ----SGLS.KLSG--....S.Q.TIVLDNRNETAGV.FEWDG-AS-  114
+BN124_NADE0s05e04136g1_1  66   IF---M----GNT.SGQS..TSKI.-G--....S.Q.TIVVDNRNET--NGVS.EWD.AS  113
+BN121_CACA0s05e11539g1_1  111                                                           .I-  112
+BN121_CACA0s29e00143g1_1  111                                                           .I-  112
+BN119_CABR0s21e03234g1_1  78   -------------.----..SS.FT-.--P.DLN.N.I.V.SNHNKTAGG.LKW-TF.S-  115
+BN122_CANI0s04e00110g1_1  67   LF---IGSTT.GG.----..TS.F.V---------...--..NYGTM.F.DH.TT.G.S-  107
+BN119_CABR0s31e03938g1_1  67   MF---L----GNVES---.KSGQ.FKLTG..QTS.Q.IIVLDNRNET--NGVS.EWD.SS  114
+
+Query_1                   104  F-------TNTGN-MWLGISGYSLVPPIILGSATNW-DNSGR-IYLSQN-SGS-ASTITI  151
+BN122_CANI0s18e03223g1_1  115  .-------V...T-.YF-MGAD.PQNSYTFSQSGEF-N.K.T-MVF..G-.KN-TDSFAN  161
+BN124_NADE0s05e04136g1_1  114  .-------V...Y-.YF-MGAD.PQNSYTFSQSGEF-N.K.T-MVF..A-.KN-TNSYAN  160
+SAKL0C00330g1_1           152                                        .K.V-.VY..TV.R.-GGSMHL  171
+BN121_CACA0s05e11539g1_1  113  .-------..N..A.FA.PA.SVFT----VS.KEYI-T.Y..-.VYLFT-G.K-F.GTAN  157
+BN121_CACA0s29e00143g1_1  113  .-------..N..A.FA.PA.SVFT----VS.KEYI-T.Y..-.VYLFT-G.K-F.GTAN  157
+BN119_CABR0s21e03234g1_1  116  I-------N.Y.T-.YFDG.STASKNAFDVDAT.QI-I.K.L-.HF..Q-PTN-WDSYG-  162
+BN122_CANI0s04e00110g1_1  108  LGWTFENIN.Y.S-.FFEGASAATKN.FDIVAS.QL-I.K.L-.MF..E-PSN-WDSYG-  161
+BN119_CABR0s31e03938g1_1  115  .-------I.S.T-.YF-MGAD.PQNSYTFSQSGEF-N.K.T-MVF..G-TKN-TDSYAN  161
+BN121_CACA0s21e06930g1_1  176  .-------..Y.DA.FA.PP.S.F.----VS.KNYI-T.Y..-.IYLFS-G.K-YAGEAN  220
+BN121_CACA0s12e09086g1_1  116  .-------Y.Y.DA.FA.AP.S.F.V-----.SID.IS.Y..-.VYTFS-G.KF.G.VNL  161
+BN121_CACA0s22e00132g1_1  41                                         .Y..-.LYTFS-G.KF.G.VNL  60
+BN121_CACA0s05e11550g1_1  20                                         .N..LV.KFSG-GRH-.G.VNL  39
+
+Query_1                   152  SQTLGSIT-NDGSMCIERLSWLQTTSIKGAGCINLMDDAHLQL----QISPWSVSNDQTI  206
+BN122_CANI0s18e03223g1_1  162  F.A-NTVQ-...TI.LTNTKS.LKK..N.N...TIGEN.MMV.----.STSSGTMGP..L  215
+BN124_NADE0s05e04136g1_1  161  L.A-NTVQ-...TI.LTNTKS.LKK..N.N...TIGEN.MMV.----.STGSG.MGP..L  214
+SAKL0C00330g1_1           172  G.DDKT..-...TF.LINGLYF.GSTVT.N...DVGANSTMWV----TNANTRKLQG...  226
+BN121_CACA0s05e11539g1_1  158  FNSV.DV.W.A.TI.LTNAI.KSHAA.Q.G..VVINSGSS.TMSKGNNV..------..V  211
+BN121_CACA0s29e00143g1_1  158  FNSV.DV.W.A.TI.LTNAI.KSHAA.Q.G..VVINSGSS.TMSKGNNV..------..V  211
+BN119_CABR0s21e03234g1_1  163  NLNAP.FI-...TI.LNNIKSQTLS.VD.T...VVS..SAYIM----.SISHG.VGP...  217
+BN122_CANI0s04e00110g1_1  162  NLNSP.LI-...TI.LNNIKSQTLS.VE.T...VVSAN.AYIM----.SITHG.VGP...  216
+BN119_CABR0s31e03938g1_1  162  F.A-NTVQ-...TI.LTNTKS.LKK..N.N...TIGENSMMV.----.STGSGTMGP..L  215
+BN121_CACA0s21e06930g1_1  221  FNSI.DV.W.A.TI.LTNAI.RSHAA.E.G...VINSGSS.SMSKKNN...------..V  274
+BN124_NADE0s05e05918g1_1  187       TVY-.S.TI.LANST.TLNGDV..V...SVG.SS--L.----T.NNHD..QQ.-.  233
+BN121_CACA0s12e09086g1_1  162  NSRGS.TF-.S.TI.LTNAV.QSHAK.V.G..VAINKGST.AMSNN-N...------.IV  213
+BN121_CACA0s22e00132g1_1  61   NSRGSQTY-.T.TI.LTNAV.RSHAK.T.G..VAIDKGST.AMSNN-N...------.IV  112
+BN121_CACA0s05e11550g1_1  40   NSKGSIT.-.T.TIYLTNAV.HNHAILR.G..VAVNEGSV.G.----.KHGI---DS.Y.  91
+
+Query_1                   207  YLSSSSSMLSVLGLSQSITGTKTYNVVGFGDGNSIRVNT-G---FSG-YSYEGDT--LTL  259
+BN122_CANI0s18e03223g1_1  216  .MT....II----FAE.DSK.DNII.R...N..FLTFR.-SIDP.R.KW..D.SSGV..V  270
+BN124_NADE0s05e04136g1_1  215  .MT....II----FAE.DSK.DNII.R...N..FLTFR.-SVDP.R.KW..D.NS--GV.  267
+SAKL0C00330g1_1           227  ....R..N.RIDAY.P----.FSFT.A.L.G..FVGL.V-P---I.S-.T.DSTA--GL.  275
+BN121_CACA0s05e11539g1_1  212  ..ADPT.VFVI----N.AANG.DLV.A...N..F.GFDD-Q---IKA-W..DSNS--G..  260
+BN121_CACA0s29e00143g1_1  212  ..ADPT.VFVI----N.AANG.DLV.A...N..F.GFDD-Q---IKA-W..DSNS--G..  260
+BN119_CABR0s21e03234g1_1  218  F..GQG.E.----YCE.DSK.DNIL.A......F.TFR.-SIDP.R.KW..DT..GV..V  272
+BN122_CANI0s04e00110g1_1  217  F..T.G.E.----YCE.DCKSDNIL.A...N..Y.TFR.-SIDP.R.KW..N...GV..V  271
+BN119_CABR0s31e03938g1_1  216  .MT.Q..II----FAE.DSK.DNII.R...N..FLTFR.-SVDP.R.KW..DSTKGI..V  270
+BN121_CACA0s21e06930g1_1  275  ..AD...VFVI----N.AA.G.DLV.A...NN.I.GFD.-E---IKK-WK.DPTS--G..  323
+BN124_NADE0s05e05918g1_1  234  ...T.T.G.A.-------SNGQDTPIY...N..Y.IFPLFP---IQS-FT.DEA.--GII  280
+BN121_CACA0s12e09086g1_1  214  ..ADPT.AFVI---TT.AN.-.DLV.A...NN.I.GFT.-T---INK-WT.TSSS--G..  262
+BN121_CACA0s22e00132g1_1  113  F.ADAT---..FVITT.AD.-.DLV.A....N.T.GFT.-K---ITK-WT.TPSS--G..  161
+BN121_CACA0s05e11550g1_1  92   .....T.IFVLN.QKP.----.DLY.L...NN.A.AFES-T---IKS-.T.DFTS--GD.  140
+
+Query_1                   260  SF---F-L-GLFKI---A---FKIGTGYSKSGFS-T-NG---L--FG-----A---GTR-  292
+BN122_CANI0s18e03223g1_1  271  KL---W-P-SITH----K---.N......SGS.K-W-KS---I--SN-----H---V.P-  302
+BN124_NADE0s05e04136g1_1  268  TV---K-.WPTITH---K---.D..K...SGN.K-W-KS---I--SN-----H---V.P-  301
+SAKL0C00330g1_1           276  .I---K-Y-.TYTY---Q---VY.....DSTK.R-IG.A---A--Y.-----S---.VG-  309
+BN121_CACA0s05e11539g1_1  261  TL---K-G-...NLYTGN---VN..P..D..Q.FL.-QT---E--..-----Y---.SS-  297
+BN121_CACA0s29e00143g1_1  261  TL---K-G-...NLYTGN---VN..P..D..Q.FL.-QT---E--..-----Y---.SS-  297
+BN119_CABR0s21e03234g1_1  273  KV---W-P-TMTH.-------.N..K..DSGK.K-W-KQ---VNNHV-----.---P.L-  306
+BN122_CANI0s04e00110g1_1  272  KV---W-P-SMTH.-------.N..M..DS.K.K-W-KQ---VNNHV-----.---P.L-  305
+BN119_CABR0s31e03938g1_1  271  KL---W-P-SITH----.---.N.....DSGK.K-W-KS---I--SN-----H---V.P-  302
+BN121_CACA0s21e06930g1_1  324  TL---T-G-.A.NS---YSGNVN..Y..NQ.Q.YL.-SA---D--..-----Y---DSSG  361
+BN124_NADE0s05e05918g1_1  281  H.KTGY-V-.AQSF---T---LVV.K..DS.K.Q-L-L.FKS.--..-----KLYYNSV-  322
+BN121_CACA0s12e09086g1_1  263  QV---W-G-...N.---YSANVN..Y..NQTQ.                             287
+BN121_CACA0s22e00132g1_1  162  QV---W-G-.ILN.YSAN---VN..Y..NQTQ.YL.-QA---D--Y.YEISA.---SGA-  203
+BN121_CACA0s05e11550g1_1  141  KL---.GV-NGL.G---W---CN..P..D.AL.                             163
+
+Query_1                   293  ----ISYSGA--YPGTV----P---D---VC-K------CFDFPEPT  316
+BN122_CANI0s18e03223g1_1  303  ----DLVNN.II.D.PI----.---.---TS-R                320
+BN124_NADE0s05e04136g1_1  302  ----DLVNN.VI.D.P.----.---.---TS-.                319
+SAKL0C00330g1_1           310  ----TVSN..IF.D...TSSK.---A---..-SV-----.PAI.     337
+BN121_CACA0s05e11539g1_1  298  -----GA...IS.K.P.----.---.---PS-RSSKCLS.TEI.S.S  328
+BN121_CACA0s29e00143g1_1  298  -----GA...IS.K.P.----.---.---PS-RSSKCLS.TEI.S.   327
+BN119_CABR0s21e03234g1_1  307  ----VNNAIY--.D.PI----.---.---AA                  321
+BN122_CANI0s04e00110g1_1  306  ----VNNAIY--.D.P.----.                           317
+BN119_CABR0s31e03938g1_1  303  ----DLVNN.VI.D.P.----.---.---TS-R                320
+BN121_CACA0s21e06930g1_1  362  PSGA...N.----.VAD----.---SRSAI.-RN-----.DEI.     388
+BN124_NADE0s05e05918g1_1  323  ----FV.N.D--A.TQQ----.---S---I.QQ------.DEI.     344
+BN121_CACA0s22e00132g1_1  204  ----...N.----.VAD----.SRS.---T.-ES-----.EEI.     226
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 2647540315
+
+
+Query= Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+
+Length=324
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+SAKL0C00330g1_1 weakly similar to uniprot|P40442 Saccharomyces ce...  105     1e-24
+BN122_CANI0s18e03223g1_1 similar to uniprot|Q6FQC7|Q6FQC7_CANGA C...  102     2e-24
+BN119_CABR0s31e03938g1_1 similar to uniprot|Q6FQC7 Candida glabra...  101     3e-24
+BN124_NADE0s05e04136g1_1 conserved hypothetical protein; partial ...  99.4    3e-23
+BN121_CACA0s05e11539g1_1 weakly similar to uniprot|Q6FNG1 Candida...  88.6    3e-19
+BN121_CACA0s29e00143g1_1 weakly similar to uniprot|A5DD63|A5DD63_...  88.2    4e-19
+BN119_CABR0s21e03234g1_1 weakly similar to uniprot|Q6FUW7 Candida...  80.1    2e-16
+BN121_CACA0s21e06930g1_1 weakly similar to uniprot|P40442 SACE0I0...  78.2    6e-16
+BN123_NABA0s29e06380g1_1 some similarites with uniprot|Q6FUW7 Can...  76.3    4e-15
+BN121_CACA0s22e00132g1_1 weakly similar to uniprot|C5M4U4|C5M4U4_...  72.8    4e-14
+BN122_CANI0s04e00110g1_1 weakly similar to uniprot|Q6FUW7 Candida...  71.6    1e-13
+BN121_CACA0s12e09086g1_1 weakly similar to uniprot|Q6FNG1|Q6FNG1_...  70.9    1e-13
+BN124_NADE0s05e05918g1_1 weakly similar to uniprot|Q6FNG1 Candida...  68.6    2e-12
+BN121_CACA0s05e11550g1_1 weakly similar to uniprot|Q6FNG1 Candida...  55.5    2e-08
+BN124_NADE0s03e05775g1_1 similar to uniprot|A7WPK1|A7WPK1_KLUDE K...  54.3    7e-08
+BN124_NADE0s03e00110g1_1 weakly similar to uniprot|A7WPK1|A7WPK1_...  51.6    4e-07
+
+
+
+Query_2                   2    LLTLNLSAALEV----VTSR--IDRGG-IQGFHGDV-KVHSGATWAILGTTLCSFF----  49
+SAKL0C00330g1_1           43                                  .QDK.-T.D.N.YL..ISGYTHD.Y----  66
+BN121_CACA0s05e11539g1_1  39                                      .-Q.KKD..L.F.TGASHT.S----  58
+BN121_CACA0s29e00143g1_1  7    FI.VV...LSQ.DSLVIS.N--TYVNS-ATAYTEA.-Q.EKD..L.F.TGASHT.S----  58
+BN119_CABR0s21e03234g1_1  40                                         .N.NNFL.L.DSDTYN.Q----  57
+BN123_NABA0s29e06380g1_1  22   .VF.TVAR.V-I----II.Q--NSVV.-.SPTYN..LQINRDNYL.LTNV.QA..T----  69
+BN122_CANI0s04e00110g1_1  39                                         .N.NNFL.LVDDKTYD.K----  56
+BN124_NADE0s05e05918g1_1  24          ..AQT----.I.KNT.TT..NPA.YDKGI-Y.VG..YL.QAD.NTVVMY----  67
+BN124_NADE0s03e05775g1_1  43                                  .NNT.-T.D..G.LT.F.GDEWQ.N----  66
+BN124_NADE0s03e00110g1_1  43                                  .NNT.-T.D..G.LT.F.GDEWQ.NDAVN  70
+
+Query_2                   50   ---GGLEVEKGASLFIKSD----NGPV--------------LALNVALS------TLVRP  82
+SAKL0C00330g1_1           67   ---SD.T.N--GA.Y.G-.----AKH.--------------TGIT.DVI------GSSNV  96
+BN121_CACA0s05e11539g1_1  59   ---.NV.ID-.TMY.GEYA----KTSG--------------MT.TFSGK------..T--  88
+BN121_CACA0s29e00143g1_1  59   ---DNV.ID-.TLY.GEYT----.TSG--------------MT.TFSGK------..T--  88
+BN119_CABR0s21e03234g1_1  58   ---.P.TINSN.GV..G.R----DNDN--------------NG.SSSF-------.VPGD  89
+BN123_NABA0s29e06380g1_1  70   ---Q..T.YG.LYIGA.AS----ATSK--------------I.IGITGF------NF---  99
+BN122_CANI0s04e00110g1_1  57   ---.PITIN.D.....G.T----TTGG--------------NG.TSSF.--------.SG  87
+BN124_NADE0s05e05918g1_1  68   ---NQITI.QNGAYYVV-N----..QS--------------GLTSANGQ------D.LK.  99
+BN124_NADE0s03e05775g1_1  67   ---DAVDING.S---LIA.----..TAYSFGGAVSIASGGTI.V.A.P.ANEFKF.MGNS  116
+BN124_NADE0s03e00110g1_1  71   ING.S.IADN.TAYSFGD.ISIAS.GT--------------V.V.A.P.ANEFKF.MGNS  116
+
+Query_2                   83   V--INN-GVISLNSKSSTSFS-----NFDIGGSS--FTNNGEI--Y--L--A----SS--  120
+SAKL0C00330g1_1           97   .--T..-...VVDHRNG..AP-----TY.FY...--.L...NL--F--F--N----GI--  134
+BN122_CANI0s18e03223g1_1  89   I--S.Q-.T.V.DNRNE.AGV-----..EWD.A.--.V.T.TM--.F-M--G----AD--  127
+BN119_CABR0s31e03938g1_1  91       .Q-.I.V.DNRNE.NGV-----SLEWD...--.I.S.TM--.F-M--G----AD--  127
+BN124_NADE0s05e04136g1_1  88   I--S.Q-.T.VVDNRNE.NGV-----SLEWD.A.--.V.T.YM--.F-M--G----AD--  126
+BN121_CACA0s05e11539g1_1  89   ----..-.IFAVDDRNA..GI-----KS..SNGI--.....NA--M--F--.--------  122
+BN121_CACA0s29e00143g1_1  89   ----..-.IFAVDDRNA..GI-----KS..SNGI--.....NA--M--F--.--------  122
+BN119_CABR0s21e03234g1_1  90   L--N..-.ILVFSNHNK.AGG-----.LKWTFG.--IN.Y.TM--.--F--D----G.--  127
+BN121_CACA0s21e06930g1_1  152      .R-.TLVVDDRNA..GI-----TSN.A.ND--...Y.DA--M--F--.GPPG..--  191
+BN123_NABA0s29e06380g1_1  100  ---F.Y-.TVRIDTT..IAPL-----VIN.NP..--.V...IF--.--VK-.----.T--  137
+BN121_CACA0s22e00132g1_1  9                                .....Q--.Y.Y.DA--M--F--.GAPG.T--  30
+BN122_CANI0s04e00110g1_1  88   D--F..Y.TMVFSDHNT..GG-----SLGWTFEN--IN.Y.SM--F--FEG.----.A--  128
+BN121_CACA0s12e09086g1_1  92       .S-..FVVDDRNA..GI-----TS..S.NQ--.Y.Y.DA--M--F--.--------  125
+BN124_NADE0s05e05918g1_1  100  FEFK.D-.TFVWDDRK.S.KG-----T.YL.RG.VN.E.A.RM--M--.--.----.THG  143
+BN124_NADE0s03e05775g1_1  117  TTFV..-.TL.ITNQNLE.H.YIGTQ.IS.NP.M--LI...D.--SFS.--.----HT--  163
+BN124_NADE0s03e00110g1_1  117  TTFV..-.TL.ITNQNLE.H.YIGTQ.IS.NP.M--LI...D.SFL--.--.----HT--  163
+
+Query_2                   121  -------GLVK-STAYL--Y--A--REW-TNN--G-LI-V--AYQ----------N----  145
+SAKL0C00330g1_1           135  -------.NTG-GST.W--I--.PYNTF-V.K--.-V.-.--YS.----------TV---  162
+BN122_CANI0s18e03223g1_1  128  -------SPQN-.YTFS--Q--S--G.F-N.K--.-TM-.--FS.----------G----  152
+BN119_CABR0s31e03938g1_1  128  -------SPQN-.YTFS--Q--S--G.F-N.K--.-TM-.--FS.----------G----  152
+BN124_NADE0s05e04136g1_1  127  -------SPQN-.YTFS--Q--S--G.F-N.K--.-TM-.--FS.----------A----  151
+BN121_CACA0s05e11539g1_1  123  -------.PAG-.VFTV--S--S--K.YI..Y--.-R.-.Y-LFT----------G----  149
+BN121_CACA0s29e00143g1_1  123  -------.PAG-.VFTV--S--S--K.YI..Y--.-R.-.Y-LFT----------G----  149
+BN119_CABR0s21e03234g1_1  128  -------STAS-KN.FD--VDAT--TQI-I.K--.-..-H--FS.QPT-------.----  157
+BN121_CACA0s21e06930g1_1  192  -------FV.S-.KN.I------------..Y--.-R.-IY-LFS----------G----  212
+BN123_NABA0s29e06380g1_1  138  -------.----.SIQF--F--.--TST-S.Y--.-Q.S.--SFD----------D----  160
+BN121_CACA0s22e00132g1_1  31   -------FT.S-.VNFISN.--G--.----------IL-Y--TFS----------G----  51
+BN122_CANI0s04e00110g1_1  129  -------ATKN-PFDIV--A--S--TQL-I.K--.-..-M--FS.EPS-------.----  156
+BN121_CACA0s12e09086g1_1  126  -------.APG-.SFVV--S--S--ID.-IS.YGR-IV-Y--TFS----------G----  152
+BN124_NADE0s05e05918g1_1  144  DNMDFNFDNA.-NSGF.--.--S--LGT-SAS----------TP.----------V----  171
+BN121_CACA0s05e11550g1_1  19                                ...--.R.V-Y--KFS----------G----  30
+BN124_NADE0s03e05775g1_1  164  -------NTDEY..VGI--.--.--GQV-V..--.-Q.-TYKK.P----------.SATE  195
+BN124_NADE0s03e00110g1_1  164  -------NSDEY..VEI--.--.--GQI-V..--.-Q.-T---..KYPNSATEPDD----  198
+
+Query_2                   146  ---QKAAGNI-AFGTAYQTITNNGQI------CLRHQDFVPATKIKGTGC--VTADEDTW  193
+SAKL0C00330g1_1           163  ---SRSG.SM-HL.QDDK....D.TF------..INGLYFQGSTVT.N..ID.G.NSTM.  212
+BN122_CANI0s18e03223g1_1  153  ---S.NTDSF-.NFQ.-N.VQ.D.T.------..TNTKSLLKKS.N.N..--I.IG.NAM  199
+BN119_CABR0s31e03938g1_1  153  ---T.NTDSY-.NFQ.-N.VQ.D.T.------..TNTKSLLKKS.N.N..--I.IG.NSM  199
+BN124_NADE0s05e04136g1_1  152  ---S.NTNSY-.NLQ.-N.VQ.D.T.------..TNTKSLLKKS.N.N..--I.IG.NAM  198
+BN121_CACA0s05e11539g1_1  150  ---G.FS.TA-N.NSVGDVTW.A.T.------..TNAIWKSHAA.Q.G..--.VINSGSS  197
+BN121_CACA0s29e00143g1_1  150  ---G.FS.TA-N.NSVGDVTW.A.T.------..TNAIWKSHAA.Q.G..--.VINSGSS  197
+BN119_CABR0s21e03234g1_1  158  ---WDSY..L-N----APSFI.D.T.------..NNIKSQTLSSVD....--IVVSD.SA  201
+BN121_CACA0s21e06930g1_1  213  ---G.Y..EA-N.NSIGDVTW.A.T.------..TNAIWRSHAA.E.G..--IVINSGSS  260
+BN123_NABA0s29e06380g1_1  161  ---TPYV.SV-SL.YS-.QVY.Y.T.------.VTNGYWQL.HDTI.G..--------SV  201
+BN121_CACA0s22e00132g1_1  52   ---G.F..TV-NLNSRGSQTY.T.T.------..TNAVWRSHA..T.G..--.AI.KGST  99
+BN122_CANI0s04e00110g1_1  157  ---WDSY..L-N----SPSLI.D.T.------..NNIKSQTLSSVE....--IVVSANAA  200
+BN121_CACA0s12e09086g1_1  153  ---G.F..TV-NLNSRGSSTF.S.T.------..TNAVWQSHA..V.G..--.AINKGST  200
+BN124_NADE0s05e05918g1_1  172  ---LNLG.DVL.AAGVTH.VY.S.T.------..ANSTWTLNGDV..V..--ISVGDSSL  220
+BN121_CACA0s05e11550g1_1  31   ---GRH..TV-NLNSKGSIT..T.T.------Y.TNAVWHNHAILR.G..--.AVN.GSV  78
+BN124_NADE0s03e05775g1_1  196  PNDENLK...-FTIRSSSG.N.T.T.KLSGAP.YLMSS.YLDGIVGD..I--IEVVDGIL  252
+BN124_NADE0s03e00110g1_1  199  ---ENVN...-FMIESSGSLN.T.T.------K.SGAPSYSLSCAYLE.I--.GDTGTID  246
+
+Query_2                   194  IKL--GNTI-LSVEPTHN----FYLK-DSKSSLIVHAVSSNQTFTVHGFGNGNKLGL---  242
+SAKL0C00330g1_1           213  VTN--A..R-KLQG--QT----I..S-SRS.N.RID.Y.PTFS...A.L.G..FV..---  259
+BN122_CANI0s18e03223g1_1  200  MV.--QS.S-SGTMGPQT----L.MT-S.S.IIFAESD.KTDNII.R......F.TF---  248
+BN119_CABR0s31e03938g1_1  200  MV.--QS.G-SGTMGPQT----L.MT-SQS.IIFAESD.KTDNII.R......F.TF---  248
+BN124_NADE0s05e04136g1_1  199  MV.--QS.G-SG.MGPQT----L.MT-S.S.IIFAESD.KTDNII.R......F.TF---  247
+BN121_CACA0s05e11539g1_1  198  LTMSK..----N.S.-QT----V..A-.PT.VFVINSAANGKDLV.A......FI.F---  244
+BN121_CACA0s29e00143g1_1  198  LTMSK..----N.S.-QT----V..A-.PT.VFVINSAANGKDLV.A......FI.F---  244
+BN119_CABR0s21e03234g1_1  202  YIM--QSIS-HG.VGPQT----IF.S-GQG.E.YCESD.KTDNIL.A...D..FITF---  250
+BN121_CACA0s21e06930g1_1  261  LSM--SKKN--NIS.-QT----V..A-..S.VFVINSAAGGKDLV.A....N.II.F---  307
+BN123_NABA0s29e06380g1_1  202  .GV--.TVFSI.TN.VQTTDQVY.ME-.PT.---IYLAIA.SKVKIY.......IAALQT  255
+BN121_CACA0s22e00132g1_1  100  LAM--S.NN-I.PQI-------VF.A-.AT.VFVITTSADGKDLV.A...DN.TI.F---  145
+BN122_CANI0s04e00110g1_1  201  YIM--QSIT-HG.VGPQT----IF.S-T.G.E.YCESDCKSDNIL.A......YITF---  249
+BN121_CACA0s12e09086g1_1  201  LAM--S.NN-I.PQIV-------..A-.PT.AFVITTSANGKDLV.A....N.II.F---  246
+BN124_NADE0s05e05918g1_1  221  LTI--N.HD-V.QQ---Q----I..S-T.T.G.---...NG.DTPIY......YIIF---  263
+BN121_CACA0s05e11550g1_1  79   LG.--QKHG-I---DSQY----I..S-S.T.IFVLNGQKPSKDLY.L....N.AIAF---  124
+BN124_NADE0s03e05775g1_1  253  .NQ--.--------.IQ.----NTISLG..ARFGAIPM.FAYPLK.K...G..A.-----  293
+BN124_NADE0s03e00110g1_1  247  VAD--..LL-I.SGIIN.----TIVL-G..AN.VLYTSGTLYPIR.K...S..T------  292
+
+Query_2                   243  --TL-PLTGNRDHFR--FEYYPDT--GILQLRA-A-AL-PQY---FK--IGKGYDSKL--  285
+SAKL0C00330g1_1           260  --NV-.IS------S--YT.DSTA--.L.SIKY-G-TY-TYQ---VY--..T....TK--  296
+BN122_CANI0s18e03223g1_1  249  --RT-SI----.P..GKWS.DGSS--.V.TVKLWP-SI-THK---.N--..T..S.GS--  290
+BN119_CABR0s31e03938g1_1  249  --RT-SV----.P..--GKWSY.STK...TVKLWP-SI-THA---.N--..T....GK--  290
+BN124_NADE0s05e04136g1_1  248  --RT-SV----.P..GKWS.DGNS--.V.TVKLWP-TI-THK---.D--.....S.GN--  289
+BN121_CACA0s05e11539g1_1  245  ----------D.QIKA-WS.DSNS--.T.T.KG-G-LF-NL.TGNVN--..P...KSQ--  284
+BN121_CACA0s29e00143g1_1  245  ----------D.QIKA-WS.DSNS--.T.T.KG-G-LF-NL.TGNVN--..P...KSQ--  284
+BN119_CABR0s21e03234g1_1  251  --RT-SI----.P..GKWS.DT..--.V.TVKVWP-TM-THI---.N--.......GK--  292
+BN121_CACA0s21e06930g1_1  308  --DT-EIK------K--WK.D.TS--.T.T.TG-G-.F-NS.SGNVN--..Y..NQSQ--  347
+BN123_NABA0s29e06380g1_1  256  IS.Y-SYD.TNI.L--------SS--.T.S.QS-.-DI--------I--V.S..NIS.--  290
+BN121_CACA0s22e00132g1_1  146  --.T-KI.------K--WT.T.SS--.T..VWG-G-I.-NI.SANVN--..Y..NQTQ--  185
+BN122_CANI0s04e00110g1_1  250  --RT-SI----.P..GKWS.NG..--.V.TVKVWP-SM-THI---.N--..M....SK--  291
+BN121_CACA0s12e09086g1_1  247  --.T-TIN------K--WT.TSSS--.T..VWG-G-LF-NI.SANVN--..Y..NQTQ--  286
+BN124_NADE0s05e05918g1_1  264  --P.F.IQ------S--.T.DEA.--..IHFKT-G-YVGA.S---.TLVV......SK--  304
+BN121_CACA0s05e11550g1_1  125  --ES-TIK------S--YT.DFTS--.D.K.FG-VNG.-KGW---CN--..P...KA.--  162
+BN124_NADE0s03e05775g1_1  294  -------IE.GPKGQ--.Q.DNQ.--N..FIG.-.-GG-HH.---.D--..S....N.IS  334
+BN124_NADE0s03e00110g1_1  293  ------.M.HGVKG.--.K.DNQ.--...HMYG-G-LP-YHD---.A--..C...NN.--  332
+
+Query_2                   286  --FRI------V------N------S------RGL------K---N-AVTYDGPVPNNEI  309
+SAKL0C00330g1_1           297  --...------G------.------AAYG---S.VGTVS--N---G-.IF...T.TSSK-  326
+BN122_CANI0s18e03223g1_1  291  --.KWKSISNH.------T------P------DLV------N---.-.II....I.DTSR  320
+BN119_CABR0s31e03938g1_1  291  --.KWKSISNH.------T------P------DLV------N---.-..I......DTSR  320
+BN124_NADE0s05e04136g1_1  290  --.KWKSISNH.------T------P------DLV------N---.-..I......DTSK  319
+BN121_CACA0s05e11539g1_1  285  --.FL------T------QTEFGYG.------S.A------S---G-.IS.K....DPSR  314
+BN121_CACA0s29e00143g1_1  285  --.FL------T------QTEFGYG.------S.A------S---G-.IS.K....DPSR  314
+BN119_CABR0s21e03234g1_1  293  --.KWKQVNNH.------A------P------TLV------N---.-.IY....I.DAAN  322
+BN121_CACA0s21e06930g1_1  348  --.YL------TSADFGYD------.------S.P------S---G-.IS.N...ADPSR  377
+BN123_NABA0s29e06380g1_1  291  --IE.------.------DVSYGS-.------TTA------.---A-.I..NA.P.VR.R  319
+BN121_CACA0s22e00132g1_1  186  --.YL------T------Q------ADYGYEISAA------S---G-.IS.N...ADPSR  215
+BN122_CANI0s04e00110g1_1  292  --.KWKQVNNH.------A------P------TLV------N---.-.IY......AGAH  321
+BN121_CACA0s12e09086g1_1  287  --.YL------T------Q------ADYGYEVSAK------S---G-.IS.N...ADPTR  316
+BN124_NADE0s05e05918g1_1  305  --.QL------L------G------F------KS.FGKLYYN---S-VFV.N.DA.TQQ-  333
+BN121_CACA0s05e11550g1_1  163  --.NL------I------TIDYGY-M------K.P------.---.G.LV.N.KE..PDR  192
+BN124_NADE0s03e05775g1_1  335  GKYST------.------.------V------L.I------SYNMY-Q...N.SP..DIH  363
+BN124_NADE0s03e00110g1_1  333  --IS                                                          334
+
+Query_2                   310  PAVCLIPCTNGPSAP  324
+SAKL0C00330g1_1           327  ....SV           332
+BN122_CANI0s18e03223g1_1  321  ....NACPS.S.WI.  335
+BN119_CABR0s31e03938g1_1  321  .SI.N.CPN.S.WI.  335
+BN124_NADE0s05e04136g1_1  320  ....NACPS.S.WI.  334
+BN121_CACA0s05e11539g1_1  315  SSK..-S..EI..    326
+BN121_CACA0s29e00143g1_1  315  SSK..-S..EI..    326
+BN119_CABR0s21e03234g1_1  323  KGDNCL..K.       332
+BN121_CACA0s21e06930g1_1  378  S.I.             381
+BN123_NABA0s29e06380g1_1  320  .VL.A-..KIP.     330
+BN121_CACA0s22e00132g1_1  216  SDT.             219
+BN122_CANI0s04e00110g1_1  322  NGDNCL..G.       331
+BN121_CACA0s12e09086g1_1  317  SET.             320
+BN124_NADE0s05e05918g1_1  334  .SI.             337
+BN121_CACA0s05e11550g1_1  193  AQNHCL..DEV.     204
+BN124_NADE0s03e05775g1_1  364  .                364
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 2647540315
+
+
+Query= Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g
+[[Candida] glabrata]
+
+Length=328
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+BN122_CANI0s04e00110g1_1 weakly similar to uniprot|Q6FUW7 Candida...  461     2e-156
+BN119_CABR0s21e03234g1_1 weakly similar to uniprot|Q6FUW7 Candida...  442     3e-149
+BN122_CANI0s18e03223g1_1 similar to uniprot|Q6FQC7|Q6FQC7_CANGA C...  316     2e-106
+BN119_CABR0s31e03938g1_1 similar to uniprot|Q6FQC7 Candida glabra...  305     4e-102
+BN124_NADE0s05e04136g1_1 conserved hypothetical protein; partial ...  304     2e-101
+BN121_CACA0s12e09086g1_1 weakly similar to uniprot|Q6FNG1|Q6FNG1_...  123     8e-32 
+BN121_CACA0s05e11539g1_1 weakly similar to uniprot|Q6FNG1 Candida...  122     1e-30 
+SAKL0C00330g1_1 weakly similar to uniprot|P40442 Saccharomyces ce...  121     3e-30 
+BN121_CACA0s29e00143g1_1 weakly similar to uniprot|A5DD63|A5DD63_...  117     7e-29 
+BN121_CACA0s21e06930g1_1 weakly similar to uniprot|P40442 SACE0I0...  112     2e-27 
+BN121_CACA0s22e00132g1_1 weakly similar to uniprot|C5M4U4|C5M4U4_...  95.1    7e-22 
+BN121_CACA0s05e11550g1_1 weakly similar to uniprot|Q6FNG1 Candida...  82.8    1e-17 
+BN124_NADE0s05e05918g1_1 weakly similar to uniprot|Q6FNG1 Candida...  80.5    2e-16 
+BN123_NABA0s29e06380g1_1 some similarites with uniprot|Q6FUW7 Can...  74.7    2e-14 
+BN121_CACA0s15e00110g1_1 weakly similar to uniprot|Q6FQC7 Candida...  46.2    5e-06 
+
+
+
+Query_3                   1    LTIFIDQARAAT-IKENTYY-SGELPS---EGFTVNSNQFLALVNTKTVNFAGPLTINKD  55
+BN122_CANI0s04e00110g1_1  13      L.GKCL.E.-.DK....-..D...---D.......N.....DD..YD.K..I.....  64
+BN119_CABR0s21e03234g1_1  11   .GLIVKFSC.T.-.EH....-..A..T---D..V....N....LDSD.Y..Q......SN  65
+BN122_CANI0s18e03223g1_1  13   .LC.YRT.T.L.-VDT...L-T.P-..---.DI.....V......GA.ET.T.--G..NN  64
+BN119_CABR0s31e03938g1_1  20          .L.I.-.DT...L-TSP-.N---.DI.I...V...M.D.GSET.TAG--..NN  64
+BN124_NADE0s05e04136g1_1  21            .L.-VDT...L-PSP-.G---.DI...A.V.....SGA.ET.TAG--..NN  63
+BN121_CACA0s12e09086g1_1  13   .LTV.V.V.GII-.VN..VVN.ATSYK---.PVY.LK.AYF.FLAGT.HT.SQEVVV.--  66
+BN121_CACA0s05e11539g1_1  15       LS.VDSLV-.SS...VN.ATAYT---.AVQ.KKDAT..FLTGASHT.S.NVE.--.  64
+SAKL0C00330g1_1           48                                    ..D..AY..IISGY.HD.YSD..V.--  72
+BN121_CACA0s29e00143g1_1  15       LS.VDSLV-.SS...VN.ATAYT---.AVQ.EKDAT..FLTGASHT.SDNVE.--.  64
+BN121_CACA0s21e06930g1_1  83           .SI.-.VN..IVN.ATSYT---.PVYIEK.AL..FLSGTKHT.SKNV.--N.  128
+BN124_NADE0s05e05918g1_1  17   .VYLVSY.A.Q.V.SK..IT-T.GN.AGYDK.IY.VGGAY..QAD.N..VMYNQI..EQN  75
+BN123_NABA0s29e06380g1_1  23     V.LTV...VI-.ISQNSV-V.IS.TYN-DVLQI.RDNY...T.VTQAS.TQG..VY--  75
+
+Query_3                   56   ASVFIGNENAANGAISSTFSING-------DINNYGTIVLDNRNSSDAAS--VSWTAKTF  106
+BN122_CANI0s04e00110g1_1  65   ..L...STTTGGNGLT.S..VS.-------.F.....M.FSDH.TTSGG.--LG..FENI  115
+BN119_CABR0s21e03234g1_1  66   .G....SRDND.NGL..S.TVP.-------.L..N.IL.FS.H.KTAGGN--LK..FGSI  116
+BN122_CANI0s18e03223g1_1  65   GYI.M..V.SGQSGL..KL.GS.-------T.S.Q.........ETAGVN--FE.DGAS.  115
+BN119_CABR0s31e03938g1_1  65   GYM.L..VESGKSGQVFKLTGS.-------QTS.Q.I.......ETNGV.--LE.DGSS.  115
+BN124_NADE0s05e04136g1_1  64   GYI.M..T.SGQSGLT.KI.GS.-------T.S.Q....V....ETNGV.--LE.DGAS.  114
+BN121_CACA0s12e09086g1_1  67   G.LYF.EYRRTY.-MTL..NGKN-------ALT.S.VF.V.D..ATSGIT--SDISGNQ.  116
+BN121_CACA0s05e11539g1_1  65   GTMYF.-.Y.KTSGMTL...-GK-------TLT.N.IFAV.D..ATSGIK--SDISNGI.  113
+SAKL0C00330g1_1           73   GALY..DAKHVT.ITVDVIGSSN-------VVT.N.V..V.H..GTS.PT--YDFYGSS.  123
+BN121_CACA0s29e00143g1_1  65   GTLYF.EYTNTS.-MTL...-GK-------TLT.N.IFAV.D..ATSGIK--SDISNGI.  113
+BN121_CACA0s21e06930g1_1  129  GGLYF.EYRRIY.M---.LTFSD-------IFT.R..L.V.D..ATSGIT--SNIAGND.  176
+BN121_CACA0s22e00132g1_1  15                                                              .  15
+BN124_NADE0s05e05918g1_1  76   GAYYVV.-.GQS.LT.A----..QDLLKPFEFK.D..F.W.D.K..SKGTFYLGRGSVN.  130
+BN123_NABA0s29e06380g1_1  76   GGLY..AKAS.TSK.A--IG.T.F------NFF....VRI.TTS.IAPLV--ININPSS.  125
+
+Query_3                   107  NNYGSMF----------FNGASAVVQNSFVLTGQTELVNKGLIQFT------QQPTNW--  148
+BN122_CANI0s04e00110g1_1  116  .......----------.E....ATK.P.DIVAS.Q.I.....M.S------.E.S..--  157
+BN119_CABR0s21e03234g1_1  117  ....T.Y----------.D.S.TASK.A.DVDAT.QII.....H.S------......--  158
+BN122_CANI0s18e03223g1_1  116  V.T.T.Y----------.M..DSP-...YTFSQSG.FN...TMV.S------.GSK.T--  156
+BN119_CABR0s31e03938g1_1  116  I.S.T.Y----------.M..DSP-...YTFSQSG.FN...TMV.S------.GTK.T--  156
+BN124_NADE0s05e04136g1_1  115  V.T.Y.Y----------.M..DSP-...YTFSQSG.FN...TMV.S------.ASK.T--  155
+BN121_CACA0s12e09086g1_1  117  Y...DAM----------.A..PG---S...VSSIDWIS.Y.R.VY.------FSGGKF--  155
+BN121_CACA0s05e11539g1_1  114  T.N.NAM----------.A.PAGS.---.TVSSKEYIT.Y.R.VYLFTGGKFSGTA.F--  158
+SAKL0C00330g1_1           124  L.N.NL.----------...IGNTGGSTYWIAPYNTF....V.VYS------.--.VS--  163
+BN121_CACA0s29e00143g1_1  114  T.N.NAM----------.A.PAGS.---.TVSSKEYIT.Y.R.VYLFTGGKFSGTA.F--  158
+BN121_CACA0s21e06930g1_1  177  T...DAM----------.A.PPG---S...VSSKNYIT.Y.R.IYLFSGGKYAGEA.F--  221
+BN121_CACA0s22e00132g1_1  16   Y...DAM----------.A..PG---ST.TVSSVNFIS.Y.R.LY.FSGGKFAGTV.L--  60
+BN121_CACA0s05e11550g1_1  7                             ESN..VSSYKFIT.N.RLVYKFSGGRHAGTV.L--  39
+BN124_NADE0s05e05918g1_1  131  E.A.R.MLASTHGDNMD..FDN.--K..GF.------YSL.TSAS.------P.VL.LGG  176
+BN123_NABA0s29e06380g1_1  126  V.N.-I.----------YVK..TGSSIQ.FA.STS---.Y.Q.SVS------FDD.PY--  163
+
+Query_3                   149  DAVGSV----S---S--PSLVNEGTICLKNMKTQTISSISGSGCIVIGENSIYDMLSISH  199
+BN122_CANI0s04e00110g1_1  158  .SY.NL----N---.--...I.D.....N.I.S..L..VE.T....VSA.AA.I.Q..T.  208
+BN119_CABR0s21e03234g1_1  159  .SY.NL----N---A--..FI.D.....N.I.S..L..VD.T....VSDD.A.I.Q....  209
+BN122_CANI0s18e03223g1_1  157  .SFANF----Q---A--NTVQ.D.....T.T.SLLKK..N.N...T....AMMVLQ.T.S  207
+BN119_CABR0s31e03938g1_1  157  .SYANF----Q---A--NTVQ.D.....T.T.SLLKK..N.N...T.....MMVLQ.TGS  207
+BN124_NADE0s05e04136g1_1  156  NSYANL----Q---A--NTVQ.D.....T.T.SLLKK..N.N...T....AMMVLQ.TGS  206
+BN121_CACA0s12e09086g1_1  156  AGTVNL----N---.RGS.TF.S.....T.AVW.SHAK.V.G..VA.NKG.---T.AM.N  205
+BN121_CACA0s05e11539g1_1  159  NS..D.----T---------W.A.....T.AIWKSHAA.Q.G..V..NSG.---S.TM.K  202
+SAKL0C00330g1_1           164  RSG..MHLGQD---D--KTIT.D..F..I.GLYFQG.TVT.N...DV.A..TMWVTNANT  218
+BN121_CACA0s29e00143g1_1  159  NS..D.----T---------W.A.....T.AIWKSHAA.Q.G..V..NSG.---S.TM.K  202
+BN121_CACA0s21e06930g1_1  222  NSI.D.----T---------W.A.....T.AIWRSHAA.E.G.....NSG.---S..M.K  265
+BN121_CACA0s22e00132g1_1  61   NSR..Q----T---------Y.T.....T.AVWRSHAK.T.G..VA.DKG.---T.AM.N  104
+BN121_CACA0s05e11550g1_1  40   NSK..I----T---T------.T...Y.T.AVWHNHAILR.G..VAVN.G.VLGLQK--.  84
+BN124_NADE0s05e05918g1_1  177  .VLAAA----GV--T--HTVY.S.....A.STWTLNGDVK.V...SV.DS.---L.T.NN  225
+BN123_NABA0s29e06380g1_1  164  --....----.LGY.--QQVY.Y....VT.GYW.LAHDTI.G..S...VGTVF---...T  212
+
+Query_3                   200  -GT-VGS--QMIYLSSTSSELYAESDAKTDNIVVAGFGNGNVITFRTSIDPFRGKWSYDG  255
+BN122_CANI0s04e00110g1_1  209  -.V-..P--.T.F..TSG....C...C.S...L........Y................N.  264
+BN119_CABR0s21e03234g1_1  210  -.V-..P--.T.F..GQG....C...S.....L.....D..F.................T  265
+BN122_CANI0s18e03223g1_1  208  -..-M.P--.TL.MT.S..IIF....S.....I.R......FL.................  263
+BN119_CABR0s31e03938g1_1  208  -..-M.P--.TL.MT.Q..IIF....S.....I.R......FL.....V..........S  263
+BN124_NADE0s05e04136g1_1  207  -.V-M.P--.TL.MT.S..IIF....S.....I.R......FL.....V...........  262
+BN121_CACA0s12e09086g1_1  206  -NN-ISP--.IV..ADPT.AFVITTS.NGKDL.......N.I.G.T.T.N----..T.TS  257
+BN121_CACA0s05e11539g1_1  203  -.NN.SP--.TV..ADPT.VFVIN.A.NGKDL.........F.G.DDQ.K----A....S  255
+SAKL0C00330g1_1           219  -RK-LQG--.T.....R..N.RIDAYSP.FSFT...L.G..FVGLNVP.S----SYT..S  270
+BN121_CACA0s29e00143g1_1  203  -.NN.SP--.TV..ADPT.VFVIN.A.NGKDL.........F.G.DDQ.K----A....S  255
+BN121_CACA0s21e06930g1_1  266  KNN-ISP--.TV..ADS..VFVIN.A.GGKDL.......N.I.G.D.E.K----..K..P  318
+BN121_CACA0s22e00132g1_1  105  -NN-ISP--.IVF.ADAT.VFVITTS.DGKDL......DN.T.G.T.K.T----..T.TP  156
+BN121_CACA0s05e11550g1_1  85   -.--ID.--.Y.....ST.IFVLNGQKPSKDLY.L....N.A.A.EST.KSY----T..F  135
+BN124_NADE0s05e05918g1_1  226  -HD-.SQ--.Q....TST.G.AVSNGQD.P---IY......Y.I.--PLF.IQ-SFT..E  275
+BN123_NABA0s29e06380g1_1  213  -NP-.QTTD.VY.MEDPT.IYL.IANS.---VKIY......K.AALQT.S----TY....  263
+BN121_CACA0s15e00110g1_1  5      S-INT--.TV..ADQ..AFAFTTS.GGKGS.IV....N.TVE.T.T.N----S.Q.--  53
+
+Query_3                   256  KTGILTVK--VWPSMTHIF----N--IGLGYDSSKFDWKQIDNHC----TPTLVNNAIYY  303
+BN122_CANI0s04e00110g1_1  265  D..V....--.........----.--..M.......K...VN..V----A..........  312
+BN119_CABR0s21e03234g1_1  266  D..V....--...T.....----.--..K....G..K...VN..V----A..........  313
+BN122_CANI0s18e03223g1_1  264  SS.V....--L...I..K.----.--..T..S.GS.K..S.S..V----..D......I.  311
+BN119_CABR0s31e03938g1_1  264  TK......--L...I..A.----.--..T....G..K..S.S..V----..D.....VI.  311
+BN124_NADE0s05e04136g1_1  263  NS.V....--L..TI..K.----D--..K..S.GN.K..S.S..V----..D.....VI.  310
+BN121_CACA0s12e09086g1_1  258  SS.--.LQ--..GGLFN.YSANV.--..Y..NQTQ.YLT.A.YGY----EVSAKSG..S.  307
+BN121_CACA0s05e11539g1_1  256  NS.T..L.GGLFNLY.GNV----.--..P...K.Q.FLT.TEFGY----GSSGASG..S.  305
+SAKL0C00330g1_1           271  TA.L.SI.---YGTY.YQV----Y--..T....T..---R.G.AAYGSGVG.VS.G..F.  318
+BN121_CACA0s29e00143g1_1  256  NS.T..L.GGLFNLY.GNV----.--..P...K.Q.FLT.TEFGY----GSSGASG..S.  305
+BN121_CACA0s21e06930g1_1  319  TS.T..LTGGAFN.YSGNV----.--..Y..NQ.Q.YLTSA.FGY----DSSGPSG..S.  368
+BN121_CACA0s22e00132g1_1  157  SS.--.LQ--..GGILN.YSANV.--..Y..NQTQ.YLT.A.YGY----EISAASG..S.  206
+BN121_CACA0s05e11550g1_1  136  TS.D.KLF--GVNGLKGWC----.--..P...KAL.NLIT..YGY----MKGPK.G.LV.  183
+BN124_NADE0s05e05918g1_1  276  A...IHF.--TGYVGAQS.----TLVV.K.......QLLGFKSLF----GKLYY.SVFV.  325
+BN123_NABA0s29e06380g1_1  264  TNIH.SSG--TLSLQSADI----I--V.S..NI.LIEIVDV-SYG----SS.TAKA..T.  310
+BN121_CACA0s15e00110g1_1  54   -.SSG.LA--..GGLLNFYSANV.--..H.CNQ.L.HLTKA.YGY----EMSAHSR.TS.  104
+
+Query_3                   304  KGPIPDGANKPDKCLPCVDHIPWIP  328
+BN122_CANI0s04e00110g1_1  313  D..V.A..HNG.N....GNT.....  337
+BN119_CABR0s21e03234g1_1  314  D.....A...G.N....KNN.....  338
+BN122_CANI0s18e03223g1_1  312  D.....-TSR.AV.NA.PSNS....  335
+BN119_CABR0s31e03938g1_1  312  D..V..-TSR.SI.NI.PNNS....  335
+BN124_NADE0s05e04136g1_1  311  D..V..-TS..AV.NA.PSNS....  334
+BN121_CACA0s12e09086g1_1  308  N..VA.-PTRSET.QS.-EE..FF   329
+BN121_CACA0s05e11539g1_1  306  ...V..-PSRSS...S.TE-..     325
+SAKL0C00330g1_1           319  D.TVT--SS..AV.SV.-PA...    338
+BN121_CACA0s29e00143g1_1  306  ...V..-PSRSS...S.TE-..     325
+BN121_CACA0s21e06930g1_1  369  N..VA.-PSRSAI.RN.-.E..FF   390
+BN121_CACA0s22e00132g1_1  207  N..VA.-PSRS.T.ES.-EE..FF   228
+BN121_CACA0s05e11550g1_1  184  N.KE.NPDRAQNH....-.EV..F   206
+BN124_NADE0s05e05918g1_1  326  N.DA.--TQQ.SI.QQ.-.E..     344
+BN123_NABA0s29e06380g1_1  311  NA.-.PVRER.VL.A..          326
+BN121_CACA0s15e00110g1_1  105  N...----EA.TRY.T.          117
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 2647540315
+
+
+  Database: Nakaseomyces-GRYC
+    Posted date:  May 3, 2022  2:58 PM
+  Number of letters in database: 15,448,373
+  Number of sequences in database:  31,032
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

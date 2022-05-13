@@ -380,7 +380,7 @@ One of reviewer 3's criticism is that in their unpublished work, they found that
 
 - The result shows that for _C. albicans_, the reference assembly hits are all fine.
 
-- For _C. parapsilosis_, which has the most hits shorter than the 500 aa cutoff, the reference assembly was submitted in 2011 and last updated in 2020, although it is still at contig level. The particular strain in that assembly, CDC317, has not been subject to another sequencing effort. I found a scaffold-level assembly for a different strain, CBS6318 ([GCA_000982555.2](https://www.ncbi.nlm.nih.gov/assembly/GCA_000982555.2)) that was completed in 2014 and last updated in 2019, and blasted all 15 hits against that assembly. In particular, 10/15 hits based on the reference assembly were shorter than 500 aa. For one of them (XM_036807488), I used ORFfinder to identify a 414 aa product with the same start codon position in the second strain's assembly, compared with 411 aa in the reference assembly. For another one (XM_036807487), the predicted size in the second assembly is 420 aa vs 414 aa in the reference one. The rest all matched between the two assemblies. So overall it seems like the short products are validated at least based two assemblies, both of which used short reads.
+- For _C. parapsilosis_, which has the most hits shorter than the 500 aa cutoff, the reference assembly was submitted in 2011 and last updated in 2020, although it is still at contig level. The particular strain in that assembly, CDC317, has not been subject to another sequencing effort. I found a scaffold-level assembly for a different strain, CBS6318 ([GCA_000982555.2](https://www.ncbi.nlm.nih.gov/assembly/GCA_000982555.2)) that was completed in 2014 and last updated in 2019, and blasted all 15 hits against that assembly. In particular, 10/15 hits based on the reference assembly were shorter than 500 aa. For one of them (XM_036807488), I used ORFfinder to identify a 414 aa product with the same start codon position in the second strain's assembly, compared with 411 aa in the reference assembly. For another one (XM_036807487), the predicted size in the second assembly is 420 aa vs 414 aa in the reference one. **The rest all matched between the two assemblies**. So overall it seems like the short products are validated at least based two assemblies, both of which used short reads.
 - For _C. glabrata_, the Cormack lab has generated PacBio SRII based assemblies in 2020 for the BG strains. I chose BG2 ([ASM1421772v1](https://www.ncbi.nlm.nih.gov/assembly/GCA_014217725.1/)) as the target and blasted the three hits identified based on the reference assembly (for CBS138). 
 
 | protein_ID     | length | mRNA_ID      | compared_to_new_assembly                                     |
@@ -463,4 +463,23 @@ _Notes_
   | QHS68452 | CAGL0L00227g | 3242   | Yes    | Yes   | Yes          |
   | QHS69029 | CAGL0M00121g | 1581   | No     | No    | Yes          |
 
-  
+- To see if other genomes also contain a large number of missing homologs due to genome assembly issues, I downloaded a 2021 assembly for _S. Cerevisiae_ S288C, the same as the genome reference strain. There is no publication associated with [this assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016858165.1/). The webpage for it lists INSCRIPTA as the submitter. Sequencing was done using PacBio and the genome *is* annotated, allowing me to perform blastp. Using the same blastp queries and parameters, no hits were recovered. There are two possible explanations: the new PacBio assembly is still incomplete, especially with respect to the subtelomere region, or that it's _C. glabrata_ that has specifically expanded the Hil family in the subtelomere region.
+
+- Not satisfied with the _S. cerevisiae_ result above, I identified another 2019 PacBio+Illumina assembly for _Kluyveromyces lactic_ CBS2015 (Varela, Wolfe et al 2019, PMID: 31813610). I could identify a single hit in the genome, consistent with the previous refseq result. So it increasingly seems like _C. glabrata_ is an outlier.
+
+- Unclear how this family has evolved in the Nakaseomycetes, as the other genomes are not of the same quality as _C. Glabrata_. Should we get involved in sequencing those species???
+
+## 2022-05-03 [HB] Nakaseomyces blast, GRYC
+
+_Background_
+
+* Nakaseomyces and Lachancea genera blastp
+* Decide whether to add FungiDB and GRYC hits
+* Interpret _C. glabrata_ finding as an isolated instance vs general issue
+
+_Notes_
+
+* FungiDB doesn’t add any new species (all present in refseq), just different strains. I checked all previously “added” sequences from the FungiDB hit list and found them to all be included in the new refseq blast hit list.
+* Nakaseomyces and Lachancea genera species assemblies are present in the Assembly database in NCBI but not in the refseq database. In addition, the assemblies that do exist are not annotated (no translated protein sequences). I thus downloaded the CDS translations from GRYC for the Nakaseomyces (except _C. glabrata_) and Lachancea (only included _L. kluyveri_ as a representative) genera and performed blastp searches locally.
+    * I found a 2021 _C. nivariensis_ assembly for the same strain as the one available in GRYC (CBS 9983). The new assembly used Oxford Nanopore + iSeq and achieved >100x coverage. Performing tblastn searches in this new assembly led to one more hit than those recovered from the early assembly (3 vs 2).
+* My plan is to add the GRYC sequences to the refseq list and use that as the basis for the new version.

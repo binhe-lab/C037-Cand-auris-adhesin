@@ -1,0 +1,25 @@
+# TBLASTN 2.12.0+
+# Query: Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172 [[Candida] auris]
+# Database: ../../blastdb/C_nivariensis_CBS9983
+# Fields: subject id, % query coverage per subject, q. start, q. end, subject length, s. start, s. end, % identity, mismatches, evalue
+# 3 hits found
+gb|JAEVGP010000006.1|	97	1	307	885783	255976	255044	30.341	197	1.02e-19
+gb|JAEVGP010000001.1|	93	10	304	1423475	1419743	1420639	29.114	186	5.14e-12
+gb|JAEVGP010000008.1|	75	78	313	763992	750084	750782	26.613	155	4.18e-10
+# TBLASTN 2.12.0+
+# Query: Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+# Database: ../../blastdb/C_nivariensis_CBS9983
+# Fields: subject id, % query coverage per subject, q. start, q. end, subject length, s. start, s. end, % identity, mismatches, evalue
+# 3 hits found
+gb|JAEVGP010000006.1|	75	83	324	885783	255751	255011	30.159	161	4.59e-24
+gb|JAEVGP010000001.1|	89	32	319	1423475	1419803	1420681	26.733	197	8.51e-15
+gb|JAEVGP010000008.1|	89	25	313	763992	749904	750761	24.183	195	4.10e-12
+# TBLASTN 2.12.0+
+# Query: Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g [[Candida] glabrata]
+# Database: ../../blastdb/C_nivariensis_CBS9983
+# Fields: subject id, % query coverage per subject, q. start, q. end, subject length, s. start, s. end, % identity, mismatches, evalue
+# 3 hits found
+gb|JAEVGP010000001.1|	99	4	328	1423475	1419725	1420699	64.000	117	4.31e-147
+gb|JAEVGP010000006.1|	100	1	328	885783	255979	255011	52.134	152	1.49e-98
+gb|JAEVGP010000008.1|	99	1	325	763992	749826	750782	28.198	203	7.81e-13
+# BLAST processed 3 queries
