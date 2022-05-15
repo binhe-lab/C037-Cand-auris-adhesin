@@ -6,10 +6,10 @@
 # use: qsub raxmlng.sh
 #----------------------
 # scheduler parameters
-#$ -q BH
+#$ -q BH,BIO-INSTR
 #$ -M bhe2@uiowa.edu
 #$ -m ea
-#$ -pe smp 46
+#$ -pe smp 56
 #$ -N raxml-ng
 #$ -cwd
 #$ -o job-log/$JOB_NAME_$JOB_ID.out
