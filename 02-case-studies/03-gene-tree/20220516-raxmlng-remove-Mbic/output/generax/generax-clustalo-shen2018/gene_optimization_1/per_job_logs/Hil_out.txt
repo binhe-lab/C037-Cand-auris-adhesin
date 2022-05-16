@@ -1,0 +1,41 @@
+mpi-scheduler optimizeGeneTrees ../output/generax/generax-clustalo-shen2018/results/Hil/geneTree.newick generax/gene-to-species-map.txt generax/expanded-blast-PF11765-noMbic_clustalo_clipkit.faa ../output/generax/generax-clustalo-shen2018/startingSpeciesTree.newick generax/expanded-blast-PF11765-noMbic_clustalo_clipkit.raxml.bestModel ../output/generax/generax-clustalo-shen2018/gene_optimization_1/dtl_rates.txt 0 0 1 1 -1 1 1 1 2 ../output/generax/generax-clustalo-shen2018/results/Hil/geneTree.newick ../output/generax/generax-clustalo-shen2018/results/Hil/stats.txt 
+[00:00:40] Starting optimizeGeneTreesSlave
+LibpllModel generax/expanded-blast-PF11765-noMbic_clustalo_clipkit.raxml.bestModel
+[00:00:40] Starting optimizing gene tree
+Number of ranks 55
+Taxa number: 186
+[00:00:42] Start optimizing DL rates
+ best rates: 1e-07 1e-07 -2743.09
+joint: -75834.7  libpll: -73091.6  reconciliation: -2743.09  
+Initial ll = -75834.7
+Start SPR round (std::hash=59609, (best ll=-75834.7, radius=2, possible moves: 2326)
+best;; -75781.4 14
+Start SPR round (std::hash=54297, (best ll=-75781.4, radius=2, possible moves: 2326)
+best;; -75767.4 33
+Start SPR round (std::hash=83693, (best ll=-75767.4, radius=2, possible moves: 2326)
+best;; -75760 49
+Start SPR round (std::hash=36605, (best ll=-75760, radius=2, possible moves: 2326)
+best;; -75729.2 49
+Start SPR round (std::hash=42849, (best ll=-75729.2, radius=2, possible moves: 2318)
+best;; -75724.7 54
+Start SPR round (std::hash=73677, (best ll=-75724.7, radius=2, possible moves: 2318)
+best;; -75668.2 53
+Start SPR round (std::hash=34547, (best ll=-75668.2, radius=2, possible moves: 2318)
+best;; -75664 37
+Start SPR round (std::hash=29121, (best ll=-75664, radius=2, possible moves: 2318)
+best;; -75662.4 30
+Start SPR round (std::hash=45253, (best ll=-75662.4, radius=2, possible moves: 2318)
+best;; -75661.2 42
+Start SPR round (std::hash=13719, (best ll=-75661.2, radius=2, possible moves: 2318)
+best;; -75660.6 52
+Start SPR round (std::hash=29017, (best ll=-75660.6, radius=2, possible moves: 2318)
+best;; -75660.5 42
+Start SPR round (std::hash=28047, (best ll=-75660.5, radius=2, possible moves: 2318)
+best;; -75660.3 42
+Start SPR round (std::hash=29017, (best ll=-75660.3, radius=2, possible moves: 2318)
+best;; -75660.3 0
+joint: -75660.3  libpll: -73206.3  reconciliation: -2454.06  
+Saving tree in ../output/generax/generax-clustalo-shen2018/results/Hil/geneTree.newick
+Finished saving  ../output/generax/generax-clustalo-shen2018/results/Hil/geneTree.newick
+[00:01:44] End of optimizing gene tree
+[00:01:44] End of optimizeGeneTreesSlave
