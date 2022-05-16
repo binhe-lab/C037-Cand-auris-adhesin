@@ -13,9 +13,9 @@ output:
 suppressPackageStartupMessages(require(tidyverse))
 suppressPackageStartupMessages(require(cowplot))
 suppressPackageStartupMessages(require(ggvenn))
-suppressPackageStartupMessages(require(rentrez))
 suppressPackageStartupMessages(require(seqinr))
 # set NCBI Entrez API key
+suppressPackageStartupMessages(require(rentrez))
 set_entrez_key("f4f01c220f3a0a162bada5b0bd5d4b131908")
 ```
 
@@ -144,8 +144,8 @@ setdiff(unique(refseq$species), shen2018)
 Manually figure out species synonyms and record both names for the species to use.
 ```{r}
 spsNameSyn <- tibble(
-  ncbi.name = c(intersect(refseq$species, shen2018), "Suhomyces tanzawaensis", "Yamadazyma tenuis"),
-  shen.name = c(intersect(refseq$species, shen2018), "Candida tanzawaensis", "Candida tenuis")
+  ncbi.name = c(intersect(refseq$species, shen2018), "Suhomyces tanzawaensis", "Yamadazyma tenuis", "Lachancea kluyveri"),
+  shen.name = c(intersect(refseq$species, shen2018), "Candida tanzawaensis", "Candida tenuis", "Lachancea kluyveri")
 )
 ```
 
@@ -548,3 +548,36 @@ myFastaRename(file = "../../output/20220506-expanded-blast-combined-homologs.faa
 myFastaRename(file = "../../output/20220512-expanded-blast-combined-homologs-PF11765.faa", 
               out = "../../output/20220512-expanded-blast-combined-homologs-PF11765-longname.faa")
 ```
+
+### 11. Obtain subtrees for the species included
+This is for the latter gene tree reconcilation and plotting. 
+
+Output the species used as a single column text file:
+```{r}
+# after adding the GRYC species, we need to expand the sps.include list
+sps.final <- unique(dedup.merge$species)
+# convert the species names to the Shen 2018 name
+sps.final.shen <- deframe(spsNameSyn)[sps.final]
+cat("The following species are not present in the Shen 2018 list and need to be added later.")
+setdiff(sps.final, spsNameSyn$ncbi.name)
+```
+
+```{r}
+sps.final.shen %>% na.omit() %>% gsub(" ", "_", .) %>%
+  write(file = paste(gsub("-", "", Sys.Date()), "expanded-blast-species-list.txt", sep = "-"))
+```
+
+Get the species tree using [TreeHouse](https://github.com/JLSteenwyk/treehouse)
+```{r}
+# first install shiny and phytools package
+shiny::runGitHub("treehouse", "JLSteenwyk")
+```
+
+I then manually added the missing species by editing the Newick file (without branch length version). The final result is shown below:
+![species tree](20220515-expanded-blast-species-tree.png)
+
+Also export the gene-to-species mapping for `generax`
+```{r}
+
+```
+
