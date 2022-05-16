@@ -1,0 +1,37 @@
+mpi-scheduler optimizeGeneTrees ../output/generax/results/Hil/geneTree.newick generax/gene-to-species-map.txt ../output/align/expanded-blast-PF11765_clustalo_clipkit.faa ../output/generax/startingSpeciesTree.newick generax/expanded-blast-PF11765_clustalo_clipkit.raxml.bestModel ../output/generax/gene_optimization_1/dtl_rates.txt 0 0 1 1 -1 1 1 1 2 ../output/generax/results/Hil/geneTree.newick ../output/generax/results/Hil/stats.txt 
+[00:00:37] Starting optimizeGeneTreesSlave
+LibpllModel generax/expanded-blast-PF11765_clustalo_clipkit.raxml.bestModel
+[00:00:37] Starting optimizing gene tree
+Number of ranks 55
+Taxa number: 215
+[00:00:39] Start optimizing DL rates
+ best rates: 1e-07 1e-07 -3210.55
+joint: -90687.6  libpll: -87477  reconciliation: -3210.55  
+Initial ll = -90687.6
+Start SPR round (std::hash=27011, (best ll=-90687.6, radius=2, possible moves: 2672)
+best;; -90669.2 52
+Start SPR round (std::hash=80333, (best ll=-90669.2, radius=2, possible moves: 2672)
+best;; -90610.8 54
+Start SPR round (std::hash=21779, (best ll=-90610.8, radius=2, possible moves: 2672)
+best;; -90600.7 19
+Start SPR round (std::hash=58769, (best ll=-90600.7, radius=2, possible moves: 2664)
+best;; -90584.5 19
+Start SPR round (std::hash=56225, (best ll=-90584.5, radius=2, possible moves: 2664)
+best;; -90579.4 40
+Start SPR round (std::hash=98269, (best ll=-90579.4, radius=2, possible moves: 2664)
+best;; -90578.2 17
+Start SPR round (std::hash=34175, (best ll=-90578.2, radius=2, possible moves: 2664)
+best;; -90562.5 15
+Start SPR round (std::hash=5581, (best ll=-90562.5, radius=2, possible moves: 2672)
+best;; -90562.1 49
+Start SPR round (std::hash=48493, (best ll=-90562.1, radius=2, possible moves: 2672)
+best;; -90532.2 49
+Start SPR round (std::hash=82957, (best ll=-90532.2, radius=2, possible moves: 2664)
+best;; -90531.9 53
+Start SPR round (std::hash=19357, (best ll=-90531.9, radius=2, possible moves: 2672)
+best;; -90531.9 0
+joint: -90531.9  libpll: -87594.3  reconciliation: -2937.64  
+Saving tree in ../output/generax/results/Hil/geneTree.newick
+Finished saving  ../output/generax/results/Hil/geneTree.newick
+[00:01:47] End of optimizing gene tree
+[00:01:47] End of optimizeGeneTreesSlave

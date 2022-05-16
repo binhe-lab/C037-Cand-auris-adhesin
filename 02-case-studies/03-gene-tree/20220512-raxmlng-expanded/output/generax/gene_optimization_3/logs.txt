@@ -1,0 +1,12 @@
+The master process runs on node argon-lc-h18-24.hpc and on pid 1091
+Remaining commands: 1
+## Started Hil on [0:54] 
+All commands were launched
+End of Hil after 46444ms  (1/1)
+end of run
+Finished running commands. Total elasped time: 46s
+Load balance ratio: 0.980686
+Saving svg output in ../output/generax/gene_optimization_3/statistics.svg
+total width 57
+Time spent writting svg: 0s
+End of Multiraxml run
