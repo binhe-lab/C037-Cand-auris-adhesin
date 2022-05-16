@@ -7,4 +7,4 @@
 # this script file is meant to be run by copy-n-pasting the individual commands to the command line and run individually
 
 # 2021-12-07 uses the recommended radius = 5, and used the parallel version
-mpiexec -np 2 generax --families generax/families.txt --species-tree generax/species-tree.nwk --rec-model UndatedDL --per-family-rates --prefix ../output/generax --max-spr-radius 5
+mpiexec -np 2 generax --families families-clustalo.txt --species-tree generax/species-tree.nwk --rec-model UndatedDL --per-family-rates --prefix ../output/generax --max-spr-radius 5

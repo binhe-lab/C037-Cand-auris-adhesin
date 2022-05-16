@@ -1,6 +1,0 @@
-[FAMILIES]
-- Hil
-starting_gene_tree = generax/RAxML_bipartitions_clustalo_3701250_rooted.nwk
-alignment = ../input/XP_028889033_clustalo_C480.faa
-mapping = generax/gene-to-species-map.txt
-subst_model = LG+G
