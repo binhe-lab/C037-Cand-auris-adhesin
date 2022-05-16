@@ -32,7 +32,7 @@ set -o pipefail
 in=../input/20220516-expanded-blast-remove-Mbic-PF11765-longname.faa
 base=../output/align/expanded-blast-PF11765-noMbic
 clustalo=${base}_clustalo.faa
-hmmalign=${base}_hmmalign.faa
+hmmalign=${base}_hmmalign.phy
 
 echo "Align with ClustalO"
 # align with clustalo
@@ -44,5 +44,5 @@ hmmalign -o $hmmalign --outformat phylip ../../../02-blast/data/HMM-profile/Hyph
 
 echo "Trimming alignment uisng ClipKIT"
 # trim the alignment with ClipKIT
-clipkit $clustalo -o ${clustalo%.*}_clipkit.phy -of fasta
-clipkit $hmmalign -o ${hmmalign%.*}_clipkit.phy -of fasta
+clipkit $clustalo -o ${clustalo%.*}_clipkit.faa -of fasta
+clipkit $hmmalign -o ${hmmalign%.*}_clipkit.faa -of fasta
