@@ -1,0 +1,58 @@
+GeneRax was called as follow:
+generax --families families-clustalo.txt --species-tree generax/species-tree-debaryo-moved.nwk --rec-model UndatedDL --per-family-rates --prefix ../output/generax/generax-clustalo-debaryo-moved/ --max-spr-radius 5 
+
+Parameters summary: 
+Families information: families-clustalo.txt
+Species tree: generax/species-tree-debaryo-moved.nwk
+Species Strategy: SPR
+Strategy: SPR
+Reconciliation model: UndatedDL
+Reconciliation opt: grid
+DTL rates: per family rates
+Prefix: ../output/generax/generax-clustalo-debaryo-moved/
+Unrooted reconciliation likelihood: OFF
+Prune species tree: OFF
+Reconciliation radius: 0
+MPI Ranks: 56
+Max gene SPR radius: 5
+Gene support threshold: -1
+Reconciliation likelihood weight: 1
+Random seed: 123
+Infer ML reconciliation: OFF
+
+[00:00:00] Filtering invalid families...
+
+[00:00:00] Filtering invalid families based on the starting species tree...
+
+[00:00:00] Gathering statistics about the families...
+[00:00:00] Input data information:
+- Number of gene families: 1
+- Number of species: 32
+- Total number of genes: 215
+- Average number of genes per family: 215
+- Maximum number of genes per family: 215
+- Species covered with the smallest family coverage: "Candida_nivariensis" (covered by 1/1 families)
+- Average (over species) species family coverage: 1
+
+[00:00:01] Optimizing reconciliation rates and gene trees with radius=1... 
+	JointLL=-90643 RecLL=-3162.19 LibpllLL=-87480.8
+
+[00:00:32] Optimizing reconciliation rates and gene trees with radius=2... 
+	JointLL=-90431.4 RecLL=-2808.69 LibpllLL=-87622.7
+
+[00:02:09] Optimizing reconciliation rates and gene trees with radius=3... 
+	JointLL=-90418.2 RecLL=-2776.46 LibpllLL=-87641.7
+
+[00:02:51] Optimizing reconciliation rates and gene trees with radius=4... 
+	JointLL=-90412.9 RecLL=-2776.46 LibpllLL=-87636.4
+
+[00:03:37] Optimizing reconciliation rates and gene trees with radius=5... 
+	JointLL=-90408.6 RecLL=-2760.34 LibpllLL=-87648.3
+
+[00:05:24] Terminating the instance..
+
+[00:05:24] Reconciliation likelihood: -2760.34
+[00:05:24] Phylogenetic likelihood: -87648.3
+[00:05:24] Joint likelihood: -90408.6
+[00:05:24] Results directory: ../output/generax/generax-clustalo-debaryo-moved/
+[00:05:24] End of GeneRax execution

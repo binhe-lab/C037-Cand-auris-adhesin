@@ -1,6 +1,0 @@
-[FAMILIES]
-- Hil
-starting_gene_tree = expanded-blast-PF11765_clustalo_clipkit.raxml.bestTree
-alignment = expanded-blast-PF11765_clustalo_clipkit.faa
-mapping = gene-to-species-map.txt
-subst_model = expanded-blast-PF11765_clustalo_clipkit.raxml.bestModel
