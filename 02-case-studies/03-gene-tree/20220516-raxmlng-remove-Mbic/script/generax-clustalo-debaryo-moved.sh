@@ -7,7 +7,7 @@
 # use: qsub generax-clustalo-debaryo-moved.sh
 #----------------------
 # scheduler parameters
-#$ -q BH,BIO-INSTR
+#$ -q BH,BIO-INSTR,UI-MPI,INFORMATICS
 #$ -M bhe2@uiowa.edu
 #$ -m ea
 #$ -pe smp 56
@@ -28,4 +28,4 @@ set -u
 set -o pipefail
 
 # 2021-12-07 uses the recommended radius = 5, and used the parallel version
-mpiexec -np 56 generax --families families-clustalo.txt --species-tree generax/species-tree-debaryo-moved.nwk --rec-model UndatedDL --per-family-rates --prefix ../output/generax/generax-clustalo-debaryo-moved/ --max-spr-radius 5
+mpiexec -np 56 generax --families families-clustalo.txt --species-tree generax/species-tree-debaryo-moved.nwk --rec-model UndatedDTL --per-family-rates --prefix ../output/generax/generax-clustalo-DTL-debaryo-moved/ --max-spr-radius 5

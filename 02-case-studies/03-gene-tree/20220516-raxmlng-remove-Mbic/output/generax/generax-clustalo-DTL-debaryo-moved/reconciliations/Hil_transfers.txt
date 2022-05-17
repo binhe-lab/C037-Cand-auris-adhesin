@@ -1,0 +1,13 @@
+Clavispora_lusitaniae node_17
+node_19 Scheffersomyces_stipitis
+node_20 node_4
+node_5 node_0
+node_0 node_4
+Lodderomyces_elongisporus node_10
+node_13 Candida_haemuloni
+node_13 Candida_haemuloni
+node_13 Debaryomyces_hansenii
+node_13 Candida_pseudohaemulonii
+node_20 node_23
+node_21 Nakaseomyces_delphensis
+Kazachstania_naganishii node_26

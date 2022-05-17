@@ -1,0 +1,12 @@
+The master process runs on node argon-lc-g14-12.hpc and on pid 2360
+Remaining commands: 1
+## Started Hil on [0:54] 
+All commands were launched
+End of Hil after 33794ms  (1/1)
+end of run
+Finished running commands. Total elasped time: 33s
+Load balance ratio: 0.98075
+Saving svg output in ../output/generax/generax-clustalo-DTL-shen2018/gene_optimization_2/statistics.svg
+total width 57
+Time spent writting svg: 0s
+End of Multiraxml run

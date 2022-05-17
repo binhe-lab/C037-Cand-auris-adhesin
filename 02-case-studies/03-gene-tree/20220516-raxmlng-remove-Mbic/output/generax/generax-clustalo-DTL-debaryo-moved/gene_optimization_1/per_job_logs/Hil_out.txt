@@ -1,0 +1,17 @@
+mpi-scheduler optimizeGeneTrees ../output/generax/generax-clustalo-DTL-debaryo-moved//results/Hil/geneTree.newick generax/gene-to-species-map.txt generax/expanded-blast-PF11765-noMbic_clustalo_clipkit.faa ../output/generax/generax-clustalo-DTL-debaryo-moved//species_trees/inferred_species_tree.newick generax/expanded-blast-PF11765-noMbic_clustalo_clipkit.raxml.bestModel ../output/generax/generax-clustalo-DTL-debaryo-moved//gene_optimization_1/dtl_rates.txt 1 1 0 1 0 0.000001 NONE 0 -1 1 1 1 2 ../output/generax/generax-clustalo-DTL-debaryo-moved//results/Hil/geneTree.newick ../output/generax/generax-clustalo-DTL-debaryo-moved//results/Hil/stats.txt 0 
+[00:00:15] Starting optimizeGeneTreesSlave
+LibpllModel generax/expanded-blast-PF11765-noMbic_clustalo_clipkit.raxml.bestModel
+[00:00:15] Starting optimizing gene tree
+Number of ranks 55
+(0.2, 0.2, 0.2, score = 0)
+Taxa number: 186
+[00:00:16] Start optimizing DTL rates
+joint: -73355.7  libpll: -72925.2  reconciliation: -430.504  
+Initial ll = -73355.7
+Start SPR round (std::hash=15149, (best ll=-73355.7, radius=2, possible moves: 2310)
+best;; -73355.7 0
+joint: -73355.7  libpll: -72925.2  reconciliation: -430.504  
+Saving tree in ../output/generax/generax-clustalo-DTL-debaryo-moved//results/Hil/geneTree.newick
+Finished saving  ../output/generax/generax-clustalo-DTL-debaryo-moved//results/Hil/geneTree.newick
+[00:00:21] End of optimizing gene tree
+[00:00:21] End of optimizeGeneTreesSlave
