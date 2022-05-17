@@ -1,0 +1,3616 @@
+<recPhylo 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.recg.org ./recGeneTreeXML.xsd"
+	xmlns="http://www.recg.org">
+<spTree>
+<phylogeny>
+<clade>
+		<name>node_30</name>
+	<clade>
+			<name>node_0</name>
+		<clade>
+				<name>node_1</name>
+			<clade>
+					<name>node_2</name>
+				<clade>
+						<name>node_3</name>
+					<clade>
+							<name>Debaryomyces_hansenii</name>
+					</clade>
+					<clade>
+							<name>Debaryomyces_fabryi</name>
+					</clade>
+				</clade>
+				<clade>
+						<name>node_4</name>
+					<clade>
+							<name>Candida_tanzawaensis</name>
+					</clade>
+					<clade>
+							<name>node_5</name>
+						<clade>
+								<name>node_6</name>
+							<clade>
+									<name>node_7</name>
+								<clade>
+										<name>node_8</name>
+									<clade>
+											<name>node_9</name>
+										<clade>
+												<name>Candida_parapsilosis</name>
+										</clade>
+										<clade>
+												<name>Candida_orthopsilosis</name>
+										</clade>
+									</clade>
+									<clade>
+											<name>Lodderomyces_elongisporus</name>
+									</clade>
+								</clade>
+								<clade>
+										<name>node_10</name>
+									<clade>
+											<name>node_11</name>
+										<clade>
+												<name>Candida_dubliniensis</name>
+										</clade>
+										<clade>
+												<name>Candida_albicans</name>
+										</clade>
+									</clade>
+									<clade>
+											<name>Candida_tropicalis</name>
+									</clade>
+								</clade>
+							</clade>
+							<clade>
+									<name>Spathaspora_passalidarum</name>
+							</clade>
+						</clade>
+						<clade>
+								<name>Scheffersomyces_stipitis</name>
+						</clade>
+					</clade>
+				</clade>
+			</clade>
+			<clade>
+					<name>node_12</name>
+				<clade>
+						<name>node_13</name>
+					<clade>
+							<name>Metschnikowia_bicuspidata</name>
+					</clade>
+					<clade>
+							<name>Clavispora_lusitaniae</name>
+					</clade>
+				</clade>
+				<clade>
+						<name>node_14</name>
+					<clade>
+							<name>Candida_auris</name>
+					</clade>
+					<clade>
+							<name>node_15</name>
+						<clade>
+								<name>Candida_haemuloni</name>
+						</clade>
+						<clade>
+								<name>node_16</name>
+							<clade>
+									<name>Candida_pseudohaemulonii</name>
+							</clade>
+							<clade>
+									<name>Candida_duobushaemulonis</name>
+							</clade>
+						</clade>
+					</clade>
+				</clade>
+			</clade>
+		</clade>
+		<clade>
+				<name>node_17</name>
+			<clade>
+					<name>Meyerozyma_guilliermondii</name>
+			</clade>
+			<clade>
+					<name>Candida_tenuis</name>
+			</clade>
+		</clade>
+	</clade>
+	<clade>
+			<name>node_18</name>
+		<clade>
+				<name>Cyberlindnera_jadinii</name>
+		</clade>
+		<clade>
+				<name>node_19</name>
+			<clade>
+					<name>node_20</name>
+				<clade>
+						<name>Kluyveromyces_lactis</name>
+				</clade>
+				<clade>
+						<name>Lachancea_kluyveri</name>
+				</clade>
+			</clade>
+			<clade>
+					<name>node_21</name>
+				<clade>
+						<name>node_22</name>
+					<clade>
+							<name>node_23</name>
+						<clade>
+								<name>Naumovozyma_dairenensis</name>
+						</clade>
+						<clade>
+								<name>Naumovozyma_castellii</name>
+						</clade>
+					</clade>
+					<clade>
+							<name>node_24</name>
+						<clade>
+								<name>Kazachstania_naganishii</name>
+						</clade>
+						<clade>
+								<name>Kazachstania_africana</name>
+						</clade>
+					</clade>
+				</clade>
+				<clade>
+						<name>node_25</name>
+					<clade>
+							<name>node_26</name>
+						<clade>
+								<name>Nakaseomyces_bacillisporus</name>
+						</clade>
+						<clade>
+								<name>Candida_castellii</name>
+						</clade>
+					</clade>
+					<clade>
+							<name>node_27</name>
+						<clade>
+								<name>Candida_glabrata</name>
+						</clade>
+						<clade>
+								<name>node_28</name>
+							<clade>
+									<name>Candida_bracarensis</name>
+							</clade>
+							<clade>
+									<name>node_29</name>
+								<clade>
+										<name>Nakaseomyces_delphensis</name>
+								</clade>
+								<clade>
+										<name>Candida_nivariensis</name>
+								</clade>
+							</clade>
+						</clade>
+					</clade>
+				</clade>
+			</clade>
+		</clade>
+	</clade>
+</clade>
+</phylogeny>
+</spTree>
+<recGeneTree>
+<phylogeny rooted="true">
+<clade>
+	<name>NULL</name>
+	<eventsRec>
+		<duplication speciesLocation="node_30"/>
+	</eventsRec>
+	<clade>
+		<name>NULL</name>
+		<eventsRec>
+			<duplication speciesLocation="node_30"/>
+		</eventsRec>
+		<clade>
+			<name>NULL</name>
+			<eventsRec>
+				<speciation speciesLocation="node_30"/>
+			</eventsRec>
+			<clade>
+				<name>NULL</name>
+				<eventsRec>
+					<speciation speciesLocation="node_0"/>
+				</eventsRec>
+					<clade>
+					<name>loss</name>
+					<eventsRec>
+						<loss speciesLocation="node_17"/>
+					</eventsRec>
+				</clade>
+				<clade>
+					<name>NULL</name>
+					<eventsRec>
+						<speciation speciesLocation="node_1"/>
+					</eventsRec>
+						<clade>
+						<name>loss</name>
+						<eventsRec>
+							<loss speciesLocation="node_2"/>
+						</eventsRec>
+					</clade>
+					<clade>
+						<name>NULL</name>
+						<eventsRec>
+							<speciation speciesLocation="node_12"/>
+						</eventsRec>
+							<clade>
+							<name>loss</name>
+							<eventsRec>
+								<loss speciesLocation="node_14"/>
+							</eventsRec>
+						</clade>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<speciation speciesLocation="node_13"/>
+							</eventsRec>
+								<clade>
+								<name>loss</name>
+								<eventsRec>
+									<loss speciesLocation="Metschnikowia_bicuspidata"/>
+								</eventsRec>
+							</clade>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<duplication speciesLocation="Clavispora_lusitaniae"/>
+								</eventsRec>
+								<clade>
+									<name>XP_002614121.1_Clavispora_lusitaniae</name>
+									<eventsRec>
+										<leaf speciesLocation="Clavispora_lusitaniae"/>
+									</eventsRec>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<duplication speciesLocation="Clavispora_lusitaniae"/>
+									</eventsRec>
+									<clade>
+										<name>XP_002614829.1_Clavispora_lusitaniae</name>
+										<eventsRec>
+											<leaf speciesLocation="Clavispora_lusitaniae"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<duplication speciesLocation="Clavispora_lusitaniae"/>
+										</eventsRec>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Clavispora_lusitaniae"/>
+											</eventsRec>
+											<clade>
+												<name>XP_002620045.1_Clavispora_lusitaniae</name>
+												<eventsRec>
+													<leaf speciesLocation="Clavispora_lusitaniae"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Clavispora_lusitaniae"/>
+												</eventsRec>
+												<clade>
+													<name>XP_002614120.1_Clavispora_lusitaniae</name>
+													<eventsRec>
+														<leaf speciesLocation="Clavispora_lusitaniae"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Clavispora_lusitaniae"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Clavispora_lusitaniae"/>
+														</eventsRec>
+														<clade>
+															<name>XP_002614815.1_Clavispora_lusitaniae</name>
+															<eventsRec>
+																<leaf speciesLocation="Clavispora_lusitaniae"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>XP_002615218.1_Clavispora_lusitaniae</name>
+															<eventsRec>
+																<leaf speciesLocation="Clavispora_lusitaniae"/>
+															</eventsRec>
+														</clade>
+													</clade>
+													<clade>
+														<name>XP_002614819.1_Clavispora_lusitaniae</name>
+														<eventsRec>
+															<leaf speciesLocation="Clavispora_lusitaniae"/>
+														</eventsRec>
+													</clade>
+												</clade>
+											</clade>
+										</clade>
+										<clade>
+											<name>XP_002614115.1_Clavispora_lusitaniae</name>
+											<eventsRec>
+												<leaf speciesLocation="Clavispora_lusitaniae"/>
+											</eventsRec>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+						</clade>
+					</clade>
+				</clade>
+			</clade>
+			<clade>
+				<name>NULL</name>
+				<eventsRec>
+					<speciation speciesLocation="node_18"/>
+				</eventsRec>
+					<clade>
+					<name>loss</name>
+					<eventsRec>
+						<loss speciesLocation="node_19"/>
+					</eventsRec>
+				</clade>
+				<clade>
+					<name>NULL</name>
+					<eventsRec>
+						<duplication speciesLocation="Cyberlindnera_jadinii"/>
+					</eventsRec>
+					<clade>
+						<name>XP_020068387.1_Cyberlindnera_jadinii</name>
+						<eventsRec>
+							<leaf speciesLocation="Cyberlindnera_jadinii"/>
+						</eventsRec>
+					</clade>
+					<clade>
+						<name>XP_020067797.1_Cyberlindnera_jadinii</name>
+						<eventsRec>
+							<leaf speciesLocation="Cyberlindnera_jadinii"/>
+						</eventsRec>
+					</clade>
+				</clade>
+			</clade>
+		</clade>
+		<clade>
+			<name>NULL</name>
+			<eventsRec>
+				<speciation speciesLocation="node_30"/>
+			</eventsRec>
+			<clade>
+				<name>NULL</name>
+				<eventsRec>
+					<duplication speciesLocation="node_0"/>
+				</eventsRec>
+				<clade>
+					<name>NULL</name>
+					<eventsRec>
+						<speciation speciesLocation="node_0"/>
+					</eventsRec>
+					<clade>
+						<name>NULL</name>
+						<eventsRec>
+							<speciation speciesLocation="node_1"/>
+						</eventsRec>
+							<clade>
+							<name>loss</name>
+							<eventsRec>
+								<loss speciesLocation="node_12"/>
+							</eventsRec>
+						</clade>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<speciation speciesLocation="node_2"/>
+							</eventsRec>
+								<clade>
+								<name>loss</name>
+								<eventsRec>
+									<loss speciesLocation="node_3"/>
+								</eventsRec>
+							</clade>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<speciation speciesLocation="node_4"/>
+								</eventsRec>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<duplication speciesLocation="Candida_tanzawaensis"/>
+									</eventsRec>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<duplication speciesLocation="Candida_tanzawaensis"/>
+										</eventsRec>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Candida_tanzawaensis"/>
+											</eventsRec>
+											<clade>
+												<name>XP_020061729.1_Suhomyces_tanzawaensis</name>
+												<eventsRec>
+													<leaf speciesLocation="Candida_tanzawaensis"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>XP_020063353.1_Suhomyces_tanzawaensis</name>
+												<eventsRec>
+													<leaf speciesLocation="Candida_tanzawaensis"/>
+												</eventsRec>
+											</clade>
+										</clade>
+										<clade>
+											<name>XP_020062061.1_Suhomyces_tanzawaensis</name>
+											<eventsRec>
+												<leaf speciesLocation="Candida_tanzawaensis"/>
+											</eventsRec>
+										</clade>
+									</clade>
+									<clade>
+										<name>XP_020062062.1_Suhomyces_tanzawaensis</name>
+										<eventsRec>
+											<leaf speciesLocation="Candida_tanzawaensis"/>
+										</eventsRec>
+									</clade>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_5"/>
+									</eventsRec>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_6"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="Spathaspora_passalidarum"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="node_7"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<speciation speciesLocation="node_7"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<speciation speciesLocation="node_10"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="node_11"/>
+														</eventsRec>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<speciation speciesLocation="node_11"/>
+															</eventsRec>
+															<clade>
+																<name>XP_717775.2_Candida_albicans</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_albicans"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>XP_002419002.1_Candida_dubliniensis</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_dubliniensis"/>
+																</eventsRec>
+															</clade>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<speciation speciesLocation="node_11"/>
+															</eventsRec>
+															<clade>
+																<name>XP_002419003.1_Candida_dubliniensis</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_dubliniensis"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>XP_717774.1_Candida_albicans</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_albicans"/>
+																</eventsRec>
+															</clade>
+														</clade>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Candida_tropicalis"/>
+														</eventsRec>
+														<clade>
+															<name>XP_002547891.1_Candida_tropicalis</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_tropicalis"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>XP_002546744.1_Candida_tropicalis</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_tropicalis"/>
+															</eventsRec>
+														</clade>
+													</clade>
+												</clade>
+												<clade>
+													<name>XP_001523105.1_Lodderomyces_elongisporus</name>
+													<eventsRec>
+														<speciation speciesLocation="node_8"/>
+													</eventsRec>
+														<clade>
+														<name>loss</name>
+														<eventsRec>
+															<loss speciesLocation="node_9"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>XP_001523105.1_Lodderomyces_elongisporus</name>
+														<eventsRec>
+															<leaf speciesLocation="Lodderomyces_elongisporus"/>
+														</eventsRec>
+													</clade>
+												</clade>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="node_7"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<speciation speciesLocation="node_7"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<speciation speciesLocation="node_10"/>
+														</eventsRec>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="Candida_tropicalis"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="Candida_tropicalis"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Candida_tropicalis"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_002550900.1_Candida_tropicalis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_tropicalis"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_002546360.1_Candida_tropicalis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_tropicalis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Candida_tropicalis"/>
+																	</eventsRec>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="Candida_tropicalis"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_002545510.1_Candida_tropicalis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_tropicalis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_002547620.1_Candida_tropicalis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_tropicalis"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="Candida_tropicalis"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_002549927.1_Candida_tropicalis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_tropicalis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<duplication speciesLocation="Candida_tropicalis"/>
+																			</eventsRec>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<duplication speciesLocation="Candida_tropicalis"/>
+																				</eventsRec>
+																				<clade>
+																					<name>XP_002547615.1_Candida_tropicalis</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_tropicalis"/>
+																					</eventsRec>
+																				</clade>
+																				<clade>
+																					<name>XP_002547617.1_Candida_tropicalis</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_tropicalis"/>
+																					</eventsRec>
+																				</clade>
+																			</clade>
+																			<clade>
+																				<name>XP_002547616.1_Candida_tropicalis</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_tropicalis"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="Candida_tropicalis"/>
+																</eventsRec>
+																<clade>
+																	<name>XP_002545452.1_Candida_tropicalis</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_tropicalis"/>
+																	</eventsRec>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Candida_tropicalis"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_002547904.1_Candida_tropicalis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_tropicalis"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_002547764.1_Candida_tropicalis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_tropicalis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="node_11"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="node_11"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="node_11"/>
+																	</eventsRec>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_11"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_717969.1_Candida_albicans</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_albicans"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_002421681.1_Candida_dubliniensis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_dubliniensis"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="node_11"/>
+																		</eventsRec>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<duplication speciesLocation="node_11"/>
+																			</eventsRec>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<speciation speciesLocation="node_11"/>
+																				</eventsRec>
+																				<clade>
+																					<name>NULL</name>
+																					<eventsRec>
+																						<duplication speciesLocation="Candida_dubliniensis"/>
+																					</eventsRec>
+																					<clade>
+																						<name>XP_002421951.1_Candida_dubliniensis</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_dubliniensis"/>
+																						</eventsRec>
+																					</clade>
+																					<clade>
+																						<name>XP_002421924.1_Candida_dubliniensis</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_dubliniensis"/>
+																						</eventsRec>
+																					</clade>
+																				</clade>
+																				<clade>
+																					<name>NULL</name>
+																					<eventsRec>
+																						<duplication speciesLocation="Candida_albicans"/>
+																					</eventsRec>
+																					<clade>
+																						<name>XP_717330.2_Candida_albicans</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_albicans"/>
+																						</eventsRec>
+																					</clade>
+																					<clade>
+																						<name>XP_715137.2_Candida_albicans</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_albicans"/>
+																						</eventsRec>
+																					</clade>
+																				</clade>
+																			</clade>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<speciation speciesLocation="node_11"/>
+																				</eventsRec>
+																				<clade>
+																					<name>XP_715535.1_Candida_albicans</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_albicans"/>
+																					</eventsRec>
+																				</clade>
+																				<clade>
+																					<name>XP_002420246.1_Candida_dubliniensis</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_dubliniensis"/>
+																					</eventsRec>
+																				</clade>
+																			</clade>
+																		</clade>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<speciation speciesLocation="node_11"/>
+																			</eventsRec>
+																			<clade>
+																				<name>XP_718630.1_Candida_albicans</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_albicans"/>
+																				</eventsRec>
+																			</clade>
+																			<clade>
+																				<name>XP_002421668.1_Candida_dubliniensis</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_dubliniensis"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_11"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_711686.2_Candida_albicans</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_albicans"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_002421505.1_Candida_dubliniensis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_dubliniensis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="node_11"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="node_11"/>
+																	</eventsRec>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_11"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_714201.2_Candida_albicans</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_albicans"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_002420375.1_Candida_dubliniensis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_dubliniensis"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_11"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_002420471.1_Candida_dubliniensis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_dubliniensis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_722183.2_Candida_albicans</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_albicans"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>XP_714203.1_Candida_albicans</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_11"/>
+																	</eventsRec>
+																		<clade>
+																		<name>loss</name>
+																		<eventsRec>
+																			<loss speciesLocation="Candida_dubliniensis"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_714203.1_Candida_albicans</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_albicans"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+														</clade>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<speciation speciesLocation="node_8"/>
+														</eventsRec>
+															<clade>
+															<name>loss</name>
+															<eventsRec>
+																<loss speciesLocation="Lodderomyces_elongisporus"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="node_9"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="node_9"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="node_9"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_036664322.1_Candida_parapsilosis</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_9"/>
+																		</eventsRec>
+																			<clade>
+																			<name>loss</name>
+																			<eventsRec>
+																				<loss speciesLocation="Candida_orthopsilosis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_036664322.1_Candida_parapsilosis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_parapsilosis"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="node_9"/>
+																		</eventsRec>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<speciation speciesLocation="node_9"/>
+																			</eventsRec>
+																				<clade>
+																				<name>loss</name>
+																				<eventsRec>
+																					<loss speciesLocation="Candida_orthopsilosis"/>
+																				</eventsRec>
+																			</clade>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<duplication speciesLocation="Candida_parapsilosis"/>
+																				</eventsRec>
+																				<clade>
+																					<name>NULL</name>
+																					<eventsRec>
+																						<duplication speciesLocation="Candida_parapsilosis"/>
+																					</eventsRec>
+																					<clade>
+																						<name>XP_036663836.1_Candida_parapsilosis</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_parapsilosis"/>
+																						</eventsRec>
+																					</clade>
+																					<clade>
+																						<name>XP_036663837.1_Candida_parapsilosis</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_parapsilosis"/>
+																						</eventsRec>
+																					</clade>
+																				</clade>
+																				<clade>
+																					<name>XP_036668412.1_Candida_parapsilosis</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_parapsilosis"/>
+																					</eventsRec>
+																				</clade>
+																			</clade>
+																		</clade>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<speciation speciesLocation="node_9"/>
+																			</eventsRec>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<duplication speciesLocation="Candida_parapsilosis"/>
+																				</eventsRec>
+																				<clade>
+																					<name>XP_036667770.1_Candida_parapsilosis</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_parapsilosis"/>
+																					</eventsRec>
+																				</clade>
+																				<clade>
+																					<name>NULL</name>
+																					<eventsRec>
+																						<duplication speciesLocation="Candida_parapsilosis"/>
+																					</eventsRec>
+																					<clade>
+																						<name>NULL</name>
+																						<eventsRec>
+																							<duplication speciesLocation="Candida_parapsilosis"/>
+																						</eventsRec>
+																						<clade>
+																							<name>NULL</name>
+																							<eventsRec>
+																								<duplication speciesLocation="Candida_parapsilosis"/>
+																							</eventsRec>
+																							<clade>
+																								<name>XP_036665263.1_Candida_parapsilosis</name>
+																								<eventsRec>
+																									<leaf speciesLocation="Candida_parapsilosis"/>
+																								</eventsRec>
+																							</clade>
+																							<clade>
+																								<name>XP_036662815.1_Candida_parapsilosis</name>
+																								<eventsRec>
+																									<leaf speciesLocation="Candida_parapsilosis"/>
+																								</eventsRec>
+																							</clade>
+																						</clade>
+																						<clade>
+																							<name>NULL</name>
+																							<eventsRec>
+																								<duplication speciesLocation="Candida_parapsilosis"/>
+																							</eventsRec>
+																							<clade>
+																								<name>XP_036664319.1_Candida_parapsilosis</name>
+																								<eventsRec>
+																									<leaf speciesLocation="Candida_parapsilosis"/>
+																								</eventsRec>
+																							</clade>
+																							<clade>
+																								<name>XP_036667771.1_Candida_parapsilosis</name>
+																								<eventsRec>
+																									<leaf speciesLocation="Candida_parapsilosis"/>
+																								</eventsRec>
+																							</clade>
+																						</clade>
+																					</clade>
+																					<clade>
+																						<name>NULL</name>
+																						<eventsRec>
+																							<duplication speciesLocation="Candida_parapsilosis"/>
+																						</eventsRec>
+																						<clade>
+																							<name>XP_036664320.1_Candida_parapsilosis</name>
+																							<eventsRec>
+																								<leaf speciesLocation="Candida_parapsilosis"/>
+																							</eventsRec>
+																						</clade>
+																						<clade>
+																							<name>NULL</name>
+																							<eventsRec>
+																								<duplication speciesLocation="Candida_parapsilosis"/>
+																							</eventsRec>
+																							<clade>
+																								<name>XP_036664318.1_Candida_parapsilosis</name>
+																								<eventsRec>
+																									<leaf speciesLocation="Candida_parapsilosis"/>
+																								</eventsRec>
+																							</clade>
+																							<clade>
+																								<name>XP_036664321.1_Candida_parapsilosis</name>
+																								<eventsRec>
+																									<leaf speciesLocation="Candida_parapsilosis"/>
+																								</eventsRec>
+																							</clade>
+																						</clade>
+																					</clade>
+																				</clade>
+																			</clade>
+																			<clade>
+																				<name>XP_003868555.1_Candida_orthopsilosis</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_orthopsilosis"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>XP_036665262.1_Candida_parapsilosis</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_9"/>
+																	</eventsRec>
+																		<clade>
+																		<name>loss</name>
+																		<eventsRec>
+																			<loss speciesLocation="Candida_orthopsilosis"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_036665262.1_Candida_parapsilosis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_parapsilosis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_9"/>
+																</eventsRec>
+																<clade>
+																	<name>XP_036665264.1_Candida_parapsilosis</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_parapsilosis"/>
+																	</eventsRec>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Candida_orthopsilosis"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_003868554.1_Candida_orthopsilosis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_orthopsilosis"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_003868553.1_Candida_orthopsilosis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_orthopsilosis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+														</clade>
+													</clade>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<speciation speciesLocation="node_7"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<speciation speciesLocation="node_10"/>
+														</eventsRec>
+															<clade>
+															<name>loss</name>
+															<eventsRec>
+																<loss speciesLocation="Candida_tropicalis"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<speciation speciesLocation="node_11"/>
+															</eventsRec>
+															<clade>
+																<name>XP_002418802.1_Candida_dubliniensis</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_dubliniensis"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>XP_714246.2_Candida_albicans</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_albicans"/>
+																</eventsRec>
+															</clade>
+														</clade>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<speciation speciesLocation="node_8"/>
+														</eventsRec>
+														<clade>
+															<name>XP_036665265.1_Candida_parapsilosis</name>
+															<eventsRec>
+																<speciation speciesLocation="node_9"/>
+															</eventsRec>
+																<clade>
+																<name>loss</name>
+																<eventsRec>
+																	<loss speciesLocation="Candida_orthopsilosis"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>XP_036665265.1_Candida_parapsilosis</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_parapsilosis"/>
+																</eventsRec>
+															</clade>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="Lodderomyces_elongisporus"/>
+															</eventsRec>
+															<clade>
+																<name>XP_001526001.1_Lodderomyces_elongisporus</name>
+																<eventsRec>
+																	<leaf speciesLocation="Lodderomyces_elongisporus"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>XP_001523310.1_Lodderomyces_elongisporus</name>
+																<eventsRec>
+																	<leaf speciesLocation="Lodderomyces_elongisporus"/>
+																</eventsRec>
+															</clade>
+														</clade>
+													</clade>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<duplication speciesLocation="Scheffersomyces_stipitis"/>
+										</eventsRec>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Scheffersomyces_stipitis"/>
+											</eventsRec>
+											<clade>
+												<name>KAG2731009.1_Scheffersomyces_stipitis</name>
+												<eventsRec>
+													<leaf speciesLocation="Scheffersomyces_stipitis"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Scheffersomyces_stipitis"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Scheffersomyces_stipitis"/>
+													</eventsRec>
+													<clade>
+														<name>KAG2733521.1_Scheffersomyces_stipitis</name>
+														<eventsRec>
+															<leaf speciesLocation="Scheffersomyces_stipitis"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>KAG2735578.1_Scheffersomyces_stipitis</name>
+														<eventsRec>
+															<leaf speciesLocation="Scheffersomyces_stipitis"/>
+														</eventsRec>
+													</clade>
+												</clade>
+												<clade>
+													<name>KAG2732535.1_Scheffersomyces_stipitis</name>
+													<eventsRec>
+														<leaf speciesLocation="Scheffersomyces_stipitis"/>
+													</eventsRec>
+												</clade>
+											</clade>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Scheffersomyces_stipitis"/>
+											</eventsRec>
+											<clade>
+												<name>KAG2731421.1_Scheffersomyces_stipitis</name>
+												<eventsRec>
+													<leaf speciesLocation="Scheffersomyces_stipitis"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>KAG2734361.1_Scheffersomyces_stipitis</name>
+												<eventsRec>
+													<leaf speciesLocation="Scheffersomyces_stipitis"/>
+												</eventsRec>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+						</clade>
+					</clade>
+					<clade>
+						<name>NULL</name>
+						<eventsRec>
+							<speciation speciesLocation="node_17"/>
+						</eventsRec>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<duplication speciesLocation="Meyerozyma_guilliermondii"/>
+							</eventsRec>
+							<clade>
+								<name>XP_001485548.1_Meyerozyma_guilliermondii</name>
+								<eventsRec>
+									<leaf speciesLocation="Meyerozyma_guilliermondii"/>
+								</eventsRec>
+							</clade>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<duplication speciesLocation="Meyerozyma_guilliermondii"/>
+								</eventsRec>
+								<clade>
+									<name>XP_001482143.1_Meyerozyma_guilliermondii</name>
+									<eventsRec>
+										<leaf speciesLocation="Meyerozyma_guilliermondii"/>
+									</eventsRec>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<duplication speciesLocation="Meyerozyma_guilliermondii"/>
+									</eventsRec>
+									<clade>
+										<name>XP_001487825.1_Meyerozyma_guilliermondii</name>
+										<eventsRec>
+											<leaf speciesLocation="Meyerozyma_guilliermondii"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>XP_001485543.1_Meyerozyma_guilliermondii</name>
+										<eventsRec>
+											<leaf speciesLocation="Meyerozyma_guilliermondii"/>
+										</eventsRec>
+									</clade>
+								</clade>
+							</clade>
+						</clade>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<duplication speciesLocation="Candida_tenuis"/>
+							</eventsRec>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<duplication speciesLocation="Candida_tenuis"/>
+								</eventsRec>
+								<clade>
+									<name>XP_006684153.1_Yamadazyma_tenuis</name>
+									<eventsRec>
+										<leaf speciesLocation="Candida_tenuis"/>
+									</eventsRec>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<duplication speciesLocation="Candida_tenuis"/>
+									</eventsRec>
+									<clade>
+										<name>XP_006687291.1_Yamadazyma_tenuis</name>
+										<eventsRec>
+											<leaf speciesLocation="Candida_tenuis"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>XP_006684896.1_Yamadazyma_tenuis</name>
+										<eventsRec>
+											<leaf speciesLocation="Candida_tenuis"/>
+										</eventsRec>
+									</clade>
+								</clade>
+							</clade>
+							<clade>
+								<name>XP_006683698.1_Yamadazyma_tenuis</name>
+								<eventsRec>
+									<leaf speciesLocation="Candida_tenuis"/>
+								</eventsRec>
+							</clade>
+						</clade>
+					</clade>
+				</clade>
+				<clade>
+					<name>NULL</name>
+					<eventsRec>
+						<speciation speciesLocation="node_0"/>
+					</eventsRec>
+						<clade>
+						<name>loss</name>
+						<eventsRec>
+							<loss speciesLocation="node_17"/>
+						</eventsRec>
+					</clade>
+					<clade>
+						<name>NULL</name>
+						<eventsRec>
+							<duplication speciesLocation="node_1"/>
+						</eventsRec>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<speciation speciesLocation="node_1"/>
+							</eventsRec>
+								<clade>
+								<name>loss</name>
+								<eventsRec>
+									<loss speciesLocation="node_12"/>
+								</eventsRec>
+							</clade>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<speciation speciesLocation="node_2"/>
+								</eventsRec>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_3"/>
+									</eventsRec>
+									<clade>
+										<name>XP_002770240.1_Debaryomyces_hansenii</name>
+										<eventsRec>
+											<leaf speciesLocation="Debaryomyces_hansenii"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>XP_015465113.1_Debaryomyces_fabryi</name>
+										<eventsRec>
+											<leaf speciesLocation="Debaryomyces_fabryi"/>
+										</eventsRec>
+									</clade>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_4"/>
+									</eventsRec>
+										<clade>
+										<name>loss</name>
+										<eventsRec>
+											<loss speciesLocation="Candida_tanzawaensis"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_5"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="Scheffersomyces_stipitis"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="node_6"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<speciation speciesLocation="node_6"/>
+												</eventsRec>
+												<clade>
+													<name>XP_001527307.1_Lodderomyces_elongisporus</name>
+													<eventsRec>
+														<speciation speciesLocation="node_7"/>
+													</eventsRec>
+														<clade>
+														<name>loss</name>
+														<eventsRec>
+															<loss speciesLocation="node_10"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>XP_001527307.1_Lodderomyces_elongisporus</name>
+														<eventsRec>
+															<speciation speciesLocation="node_8"/>
+														</eventsRec>
+															<clade>
+															<name>loss</name>
+															<eventsRec>
+																<loss speciesLocation="node_9"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>XP_001527307.1_Lodderomyces_elongisporus</name>
+															<eventsRec>
+																<leaf speciesLocation="Lodderomyces_elongisporus"/>
+															</eventsRec>
+														</clade>
+													</clade>
+												</clade>
+												<clade>
+													<name>XP_007373711.1_Spathaspora_passalidarum</name>
+													<eventsRec>
+														<leaf speciesLocation="Spathaspora_passalidarum"/>
+													</eventsRec>
+												</clade>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<speciation speciesLocation="node_6"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Spathaspora_passalidarum"/>
+													</eventsRec>
+													<clade>
+														<name>XP_007375135.1_Spathaspora_passalidarum</name>
+														<eventsRec>
+															<leaf speciesLocation="Spathaspora_passalidarum"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>XP_007376669.1_Spathaspora_passalidarum</name>
+														<eventsRec>
+															<leaf speciesLocation="Spathaspora_passalidarum"/>
+														</eventsRec>
+													</clade>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<speciation speciesLocation="node_7"/>
+													</eventsRec>
+														<clade>
+														<name>loss</name>
+														<eventsRec>
+															<loss speciesLocation="node_8"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<speciation speciesLocation="node_10"/>
+														</eventsRec>
+															<clade>
+															<name>loss</name>
+															<eventsRec>
+																<loss speciesLocation="node_11"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="Candida_tropicalis"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="Candida_tropicalis"/>
+																</eventsRec>
+																<clade>
+																	<name>XP_002550387.1_Candida_tropicalis</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_tropicalis"/>
+																	</eventsRec>
+																</clade>
+																<clade>
+																	<name>XP_002550768.1_Candida_tropicalis</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_tropicalis"/>
+																	</eventsRec>
+																</clade>
+															</clade>
+															<clade>
+																<name>XP_002550128.1_Candida_tropicalis</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_tropicalis"/>
+																</eventsRec>
+															</clade>
+														</clade>
+													</clade>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+						</clade>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<duplication speciesLocation="node_1"/>
+							</eventsRec>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<duplication speciesLocation="node_1"/>
+								</eventsRec>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_1"/>
+									</eventsRec>
+										<clade>
+										<name>loss</name>
+										<eventsRec>
+											<loss speciesLocation="node_2"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_12"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="node_13"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="node_14"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="node_14"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="node_14"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="node_14"/>
+														</eventsRec>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<speciation speciesLocation="node_14"/>
+															</eventsRec>
+															<clade>
+																<name>PIS52481.1_Candida_auris</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_auris"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_15"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="node_16"/>
+																	</eventsRec>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_16"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_025338053.1_Candida_duobushaemulonis</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_duobushaemulonis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_024711351.1_Candida_pseudohaemulonii</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>XP_024711350.1_Candida_pseudohaemulonii</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_16"/>
+																		</eventsRec>
+																			<clade>
+																			<name>loss</name>
+																			<eventsRec>
+																				<loss speciesLocation="Candida_duobushaemulonis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_024711350.1_Candida_pseudohaemulonii</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>XP_025342839.1_Candida_haemuloni</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_haemuloni"/>
+																	</eventsRec>
+																</clade>
+															</clade>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="node_14"/>
+															</eventsRec>
+															<clade>
+																<name>XP_024716365.1_Candida_pseudohaemulonii</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_14"/>
+																</eventsRec>
+																	<clade>
+																	<name>loss</name>
+																	<eventsRec>
+																		<loss speciesLocation="Candida_auris"/>
+																	</eventsRec>
+																</clade>
+																<clade>
+																	<name>XP_024716365.1_Candida_pseudohaemulonii</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_15"/>
+																	</eventsRec>
+																		<clade>
+																		<name>loss</name>
+																		<eventsRec>
+																			<loss speciesLocation="Candida_haemuloni"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_024716365.1_Candida_pseudohaemulonii</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_16"/>
+																		</eventsRec>
+																			<clade>
+																			<name>loss</name>
+																			<eventsRec>
+																				<loss speciesLocation="Candida_duobushaemulonis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_024716365.1_Candida_pseudohaemulonii</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_14"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_15"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_025343289.1_Candida_haemuloni</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_haemuloni"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_024716363.1_Candida_pseudohaemulonii</name>
+																		<eventsRec>
+																			<speciation speciesLocation="node_16"/>
+																		</eventsRec>
+																			<clade>
+																			<name>loss</name>
+																			<eventsRec>
+																				<loss speciesLocation="Candida_duobushaemulonis"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_024716363.1_Candida_pseudohaemulonii</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>XP_028892406.1_Candida_auris</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_auris"/>
+																	</eventsRec>
+																</clade>
+															</clade>
+														</clade>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="node_14"/>
+														</eventsRec>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<speciation speciesLocation="node_14"/>
+															</eventsRec>
+																<clade>
+																<name>loss</name>
+																<eventsRec>
+																	<loss speciesLocation="Candida_auris"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_15"/>
+																</eventsRec>
+																<clade>
+																	<name>XP_025343300.1_Candida_haemuloni</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_haemuloni"/>
+																	</eventsRec>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_16"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_024712318.1_Candida_pseudohaemulonii</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_025337648.1_Candida_duobushaemulonis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_duobushaemulonis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="node_14"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_14"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_15"/>
+																	</eventsRec>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="node_16"/>
+																		</eventsRec>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<speciation speciesLocation="node_16"/>
+																			</eventsRec>
+																			<clade>
+																				<name>XP_025334498.1_Candida_duobushaemulonis</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_duobushaemulonis"/>
+																				</eventsRec>
+																			</clade>
+																			<clade>
+																				<name>XP_024713121.1_Candida_pseudohaemulonii</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																		<clade>
+																			<name>XP_025335682.1_Candida_duobushaemulonis</name>
+																			<eventsRec>
+																				<speciation speciesLocation="node_16"/>
+																			</eventsRec>
+																				<clade>
+																				<name>loss</name>
+																				<eventsRec>
+																					<loss speciesLocation="Candida_pseudohaemulonii"/>
+																				</eventsRec>
+																			</clade>
+																			<clade>
+																				<name>XP_025335682.1_Candida_duobushaemulonis</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_duobushaemulonis"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="Candida_haemuloni"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_025344407.1_Candida_haemuloni</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Candida_haemuloni"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<duplication speciesLocation="Candida_haemuloni"/>
+																			</eventsRec>
+																			<clade>
+																				<name>XP_025344601.1_Candida_haemuloni</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_haemuloni"/>
+																				</eventsRec>
+																			</clade>
+																			<clade>
+																				<name>XP_025344416.1_Candida_haemuloni</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_haemuloni"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Candida_auris"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_028888611.1_Candida_auris</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_auris"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_028889033.1_Candida_auris</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_auris"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="node_14"/>
+																</eventsRec>
+																<clade>
+																	<name>XP_028887965.1_Candida_auris</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_14"/>
+																	</eventsRec>
+																		<clade>
+																		<name>loss</name>
+																		<eventsRec>
+																			<loss speciesLocation="node_15"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_028887965.1_Candida_auris</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_auris"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_14"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_028889034.1_Candida_auris</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_auris"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="node_15"/>
+																		</eventsRec>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<speciation speciesLocation="node_15"/>
+																			</eventsRec>
+																				<clade>
+																				<name>loss</name>
+																				<eventsRec>
+																					<loss speciesLocation="Candida_haemuloni"/>
+																				</eventsRec>
+																			</clade>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<duplication speciesLocation="node_16"/>
+																				</eventsRec>
+																				<clade>
+																					<name>NULL</name>
+																					<eventsRec>
+																						<speciation speciesLocation="node_16"/>
+																					</eventsRec>
+																					<clade>
+																						<name>XP_024712323.1_Candida_pseudohaemulonii</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																						</eventsRec>
+																					</clade>
+																					<clade>
+																						<name>XP_025337653.1_Candida_duobushaemulonis</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_duobushaemulonis"/>
+																						</eventsRec>
+																					</clade>
+																				</clade>
+																				<clade>
+																					<name>NULL</name>
+																					<eventsRec>
+																						<speciation speciesLocation="node_16"/>
+																					</eventsRec>
+																					<clade>
+																						<name>XP_024711259.1_Candida_pseudohaemulonii</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																						</eventsRec>
+																					</clade>
+																					<clade>
+																						<name>XP_025335995.1_Candida_duobushaemulonis</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Candida_duobushaemulonis"/>
+																						</eventsRec>
+																					</clade>
+																				</clade>
+																			</clade>
+																		</clade>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<speciation speciesLocation="node_15"/>
+																			</eventsRec>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<speciation speciesLocation="node_16"/>
+																				</eventsRec>
+																				<clade>
+																					<name>XP_024713119.1_Candida_pseudohaemulonii</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																					</eventsRec>
+																				</clade>
+																				<clade>
+																					<name>XP_025334500.1_Candida_duobushaemulonis</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Candida_duobushaemulonis"/>
+																					</eventsRec>
+																				</clade>
+																			</clade>
+																			<clade>
+																				<name>XP_025341971.1_Candida_haemuloni</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Candida_haemuloni"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																	</clade>
+																</clade>
+															</clade>
+														</clade>
+													</clade>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="node_14"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<speciation speciesLocation="node_14"/>
+														</eventsRec>
+															<clade>
+															<name>loss</name>
+															<eventsRec>
+																<loss speciesLocation="Candida_auris"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<speciation speciesLocation="node_15"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="node_16"/>
+																</eventsRec>
+																<clade>
+																	<name>XP_025335681.1_Candida_duobushaemulonis</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_16"/>
+																	</eventsRec>
+																		<clade>
+																		<name>loss</name>
+																		<eventsRec>
+																			<loss speciesLocation="Candida_pseudohaemulonii"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_025335681.1_Candida_duobushaemulonis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_duobushaemulonis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_16"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_024711300.1_Candida_pseudohaemulonii</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_025336698.1_Candida_duobushaemulonis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_duobushaemulonis"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>XP_025344415.1_Candida_haemuloni</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_haemuloni"/>
+																</eventsRec>
+															</clade>
+														</clade>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="node_14"/>
+														</eventsRec>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<speciation speciesLocation="node_14"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_15"/>
+																</eventsRec>
+																<clade>
+																	<name>XP_025341634.1_Candida_haemuloni</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_haemuloni"/>
+																	</eventsRec>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<speciation speciesLocation="node_16"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_025339494.1_Candida_duobushaemulonis</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_duobushaemulonis"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_024713725.1_Candida_pseudohaemulonii</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Candida_pseudohaemulonii"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>XP_028889361.1_Candida_auris</name>
+																<eventsRec>
+																	<leaf speciesLocation="Candida_auris"/>
+																</eventsRec>
+															</clade>
+														</clade>
+														<clade>
+															<name>XP_025344412.1_Candida_haemuloni</name>
+															<eventsRec>
+																<speciation speciesLocation="node_14"/>
+															</eventsRec>
+																<clade>
+																<name>loss</name>
+																<eventsRec>
+																	<loss speciesLocation="Candida_auris"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>XP_025344412.1_Candida_haemuloni</name>
+																<eventsRec>
+																	<speciation speciesLocation="node_15"/>
+																</eventsRec>
+																	<clade>
+																	<name>loss</name>
+																	<eventsRec>
+																		<loss speciesLocation="node_16"/>
+																	</eventsRec>
+																</clade>
+																<clade>
+																	<name>XP_025344412.1_Candida_haemuloni</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Candida_haemuloni"/>
+																	</eventsRec>
+																</clade>
+															</clade>
+														</clade>
+													</clade>
+												</clade>
+											</clade>
+											<clade>
+												<name>XP_025341988.1_Candida_haemuloni</name>
+												<eventsRec>
+													<speciation speciesLocation="node_14"/>
+												</eventsRec>
+													<clade>
+													<name>loss</name>
+													<eventsRec>
+														<loss speciesLocation="Candida_auris"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>XP_025341988.1_Candida_haemuloni</name>
+													<eventsRec>
+														<speciation speciesLocation="node_15"/>
+													</eventsRec>
+														<clade>
+														<name>loss</name>
+														<eventsRec>
+															<loss speciesLocation="node_16"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>XP_025341988.1_Candida_haemuloni</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_haemuloni"/>
+														</eventsRec>
+													</clade>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_1"/>
+									</eventsRec>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_12"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="node_13"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<speciation speciesLocation="node_14"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<speciation speciesLocation="node_15"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<speciation speciesLocation="node_16"/>
+													</eventsRec>
+													<clade>
+														<name>XP_024713752.1_Candida_pseudohaemulonii</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_pseudohaemulonii"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>XP_025336343.1_Candida_duobushaemulonis</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_duobushaemulonis"/>
+														</eventsRec>
+													</clade>
+												</clade>
+												<clade>
+													<name>XP_025344020.1_Candida_haemuloni</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_haemuloni"/>
+													</eventsRec>
+												</clade>
+											</clade>
+											<clade>
+												<name>XP_028892087.1_Candida_auris</name>
+												<eventsRec>
+													<leaf speciesLocation="Candida_auris"/>
+												</eventsRec>
+											</clade>
+										</clade>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_2"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="node_4"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<speciation speciesLocation="node_3"/>
+											</eventsRec>
+												<clade>
+												<name>loss</name>
+												<eventsRec>
+													<loss speciesLocation="Debaryomyces_fabryi"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Debaryomyces_hansenii"/>
+												</eventsRec>
+												<clade>
+													<name>XP_002770057.1_Debaryomyces_hansenii</name>
+													<eventsRec>
+														<leaf speciesLocation="Debaryomyces_hansenii"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>XP_462630.1_Debaryomyces_hansenii</name>
+													<eventsRec>
+														<leaf speciesLocation="Debaryomyces_hansenii"/>
+													</eventsRec>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<speciation speciesLocation="node_1"/>
+								</eventsRec>
+									<clade>
+									<name>loss</name>
+									<eventsRec>
+										<loss speciesLocation="node_2"/>
+									</eventsRec>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_12"/>
+									</eventsRec>
+										<clade>
+										<name>loss</name>
+										<eventsRec>
+											<loss speciesLocation="node_14"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_13"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="Clavispora_lusitaniae"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+												</eventsRec>
+												<clade>
+													<name>XP_018709340.1_Metschnikowia_bicuspidata</name>
+													<eventsRec>
+														<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+													</eventsRec>
+													<clade>
+														<name>XP_018712269.1_Metschnikowia_bicuspidata</name>
+														<eventsRec>
+															<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+														</eventsRec>
+														<clade>
+															<name>XP_018710224.1_Metschnikowia_bicuspidata</name>
+															<eventsRec>
+																<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>XP_018709942.1_Metschnikowia_bicuspidata</name>
+															<eventsRec>
+																<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+															</eventsRec>
+														</clade>
+													</clade>
+												</clade>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+												</eventsRec>
+												<clade>
+													<name>XP_018710225.1_Metschnikowia_bicuspidata</name>
+													<eventsRec>
+														<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+														</eventsRec>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+															</eventsRec>
+															<clade>
+																<name>XP_018710946.1_Metschnikowia_bicuspidata</name>
+																<eventsRec>
+																	<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_018714228.1_Metschnikowia_bicuspidata</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_018709275.1_Metschnikowia_bicuspidata</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>XP_018709279.1_Metschnikowia_bicuspidata</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																	</eventsRec>
+																</clade>
+															</clade>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																	</eventsRec>
+																	<clade>
+																		<name>XP_018709273.1_Metschnikowia_bicuspidata</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																	</clade>
+																	<clade>
+																		<name>XP_018710762.1_Metschnikowia_bicuspidata</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>XP_018714230.1_Metschnikowia_bicuspidata</name>
+																	<eventsRec>
+																		<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																	</eventsRec>
+																</clade>
+															</clade>
+															<clade>
+																<name>XP_018712348.1_Metschnikowia_bicuspidata</name>
+																<eventsRec>
+																	<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+															</clade>
+														</clade>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+														</eventsRec>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+															</eventsRec>
+															<clade>
+																<name>NULL</name>
+																<eventsRec>
+																	<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																	</eventsRec>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_018714595.1_Metschnikowia_bicuspidata</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_018713570.1_Metschnikowia_bicuspidata</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>XP_018712964.1_Metschnikowia_bicuspidata</name>
+																		<eventsRec>
+																			<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																	</clade>
+																</clade>
+																<clade>
+																	<name>NULL</name>
+																	<eventsRec>
+																		<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																	</eventsRec>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																		<clade>
+																			<name>XP_018709944.1_Metschnikowia_bicuspidata</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																			</eventsRec>
+																		</clade>
+																		<clade>
+																			<name>XP_018714824.1_Metschnikowia_bicuspidata</name>
+																			<eventsRec>
+																				<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																			</eventsRec>
+																		</clade>
+																	</clade>
+																	<clade>
+																		<name>NULL</name>
+																		<eventsRec>
+																			<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																		</eventsRec>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																			</eventsRec>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																				</eventsRec>
+																				<clade>
+																					<name>NULL</name>
+																					<eventsRec>
+																						<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																					</eventsRec>
+																					<clade>
+																						<name>XP_018709274.1_Metschnikowia_bicuspidata</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																						</eventsRec>
+																					</clade>
+																					<clade>
+																						<name>XP_018710763.1_Metschnikowia_bicuspidata</name>
+																						<eventsRec>
+																							<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																						</eventsRec>
+																					</clade>
+																				</clade>
+																				<clade>
+																					<name>XP_018714578.1_Metschnikowia_bicuspidata</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																					</eventsRec>
+																				</clade>
+																			</clade>
+																			<clade>
+																				<name>XP_018712283.1_Metschnikowia_bicuspidata</name>
+																				<eventsRec>
+																					<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																				</eventsRec>
+																			</clade>
+																		</clade>
+																		<clade>
+																			<name>NULL</name>
+																			<eventsRec>
+																				<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																			</eventsRec>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																				</eventsRec>
+																				<clade>
+																					<name>XP_018713478.1_Metschnikowia_bicuspidata</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																					</eventsRec>
+																				</clade>
+																				<clade>
+																					<name>XP_018713950.1_Metschnikowia_bicuspidata</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																					</eventsRec>
+																				</clade>
+																			</clade>
+																			<clade>
+																				<name>NULL</name>
+																				<eventsRec>
+																					<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+																				</eventsRec>
+																				<clade>
+																					<name>XP_018714655.1_Metschnikowia_bicuspidata</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																					</eventsRec>
+																				</clade>
+																				<clade>
+																					<name>XP_018713972.1_Metschnikowia_bicuspidata</name>
+																					<eventsRec>
+																						<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																					</eventsRec>
+																				</clade>
+																			</clade>
+																		</clade>
+																	</clade>
+																</clade>
+															</clade>
+															<clade>
+																<name>XP_018709277.1_Metschnikowia_bicuspidata</name>
+																<eventsRec>
+																	<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+															</clade>
+														</clade>
+														<clade>
+															<name>NULL</name>
+															<eventsRec>
+																<duplication speciesLocation="Metschnikowia_bicuspidata"/>
+															</eventsRec>
+															<clade>
+																<name>XP_018713134.1_Metschnikowia_bicuspidata</name>
+																<eventsRec>
+																	<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+															</clade>
+															<clade>
+																<name>XP_018710226.1_Metschnikowia_bicuspidata</name>
+																<eventsRec>
+																	<leaf speciesLocation="Metschnikowia_bicuspidata"/>
+																</eventsRec>
+															</clade>
+														</clade>
+													</clade>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+						</clade>
+					</clade>
+				</clade>
+			</clade>
+			<clade>
+				<name>NULL</name>
+				<eventsRec>
+					<speciation speciesLocation="node_18"/>
+				</eventsRec>
+					<clade>
+					<name>loss</name>
+					<eventsRec>
+						<loss speciesLocation="Cyberlindnera_jadinii"/>
+					</eventsRec>
+				</clade>
+				<clade>
+					<name>NULL</name>
+					<eventsRec>
+						<speciation speciesLocation="node_19"/>
+					</eventsRec>
+						<clade>
+						<name>loss</name>
+						<eventsRec>
+							<loss speciesLocation="node_20"/>
+						</eventsRec>
+					</clade>
+					<clade>
+						<name>NULL</name>
+						<eventsRec>
+							<duplication speciesLocation="node_21"/>
+						</eventsRec>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<speciation speciesLocation="node_21"/>
+							</eventsRec>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<speciation speciesLocation="node_25"/>
+								</eventsRec>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_26"/>
+									</eventsRec>
+									<clade>
+										<name>NABA0s29e06380g_Nakaseomyces_bacillisporus</name>
+										<eventsRec>
+											<leaf speciesLocation="Nakaseomyces_bacillisporus"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<duplication speciesLocation="Candida_castellii"/>
+										</eventsRec>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Candida_castellii"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Candida_castellii"/>
+												</eventsRec>
+												<clade>
+													<name>CACA0s21e06930g_Candida_castellii</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_castellii"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Candida_castellii"/>
+													</eventsRec>
+													<clade>
+														<name>CACA0s12e09086g_Candida_castellii</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_castellii"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>CACA0s22e00132g_Candida_castellii</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_castellii"/>
+														</eventsRec>
+													</clade>
+												</clade>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Candida_castellii"/>
+												</eventsRec>
+												<clade>
+													<name>CACA0s29e00143g_Candida_castellii</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_castellii"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>CACA0s05e11539g_Candida_castellii</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_castellii"/>
+													</eventsRec>
+												</clade>
+											</clade>
+										</clade>
+										<clade>
+											<name>CACA0s05e11550g_Candida_castellii</name>
+											<eventsRec>
+												<leaf speciesLocation="Candida_castellii"/>
+											</eventsRec>
+										</clade>
+									</clade>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_27"/>
+									</eventsRec>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<duplication speciesLocation="Candida_glabrata"/>
+										</eventsRec>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Candida_glabrata"/>
+											</eventsRec>
+											<clade>
+												<name>QHS64811.1_Candida_glabrata</name>
+												<eventsRec>
+													<leaf speciesLocation="Candida_glabrata"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>QHS66001.1_Candida_glabrata</name>
+												<eventsRec>
+													<leaf speciesLocation="Candida_glabrata"/>
+												</eventsRec>
+											</clade>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Candida_glabrata"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Candida_glabrata"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Candida_glabrata"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Candida_glabrata"/>
+														</eventsRec>
+														<clade>
+															<name>QHS69029.1_Candida_glabrata</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_glabrata"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>QHS65049.1_Candida_glabrata</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_glabrata"/>
+															</eventsRec>
+														</clade>
+													</clade>
+													<clade>
+														<name>QHS65618.1_Candida_glabrata</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_glabrata"/>
+														</eventsRec>
+													</clade>
+												</clade>
+												<clade>
+													<name>QHS68452.1_Candida_glabrata</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_glabrata"/>
+													</eventsRec>
+												</clade>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Candida_glabrata"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Candida_glabrata"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Candida_glabrata"/>
+														</eventsRec>
+														<clade>
+															<name>QHS64595.1_Candida_glabrata</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_glabrata"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>QHS67887.1_Candida_glabrata</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_glabrata"/>
+															</eventsRec>
+														</clade>
+													</clade>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Candida_glabrata"/>
+														</eventsRec>
+														<clade>
+															<name>QHS67886.1_Candida_glabrata</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_glabrata"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>QHS67369.1_Candida_glabrata</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_glabrata"/>
+															</eventsRec>
+														</clade>
+													</clade>
+												</clade>
+												<clade>
+													<name>QHS66441.1_Candida_glabrata</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_glabrata"/>
+													</eventsRec>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+									<clade>
+										<name>NADE0s05e05918g_Nakaseomyces_delphensis</name>
+										<eventsRec>
+											<speciation speciesLocation="node_28"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="Candida_bracarensis"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NADE0s05e05918g_Nakaseomyces_delphensis</name>
+											<eventsRec>
+												<speciation speciesLocation="node_29"/>
+											</eventsRec>
+												<clade>
+												<name>loss</name>
+												<eventsRec>
+													<loss speciesLocation="Candida_nivariensis"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>NADE0s05e05918g_Nakaseomyces_delphensis</name>
+												<eventsRec>
+													<leaf speciesLocation="Nakaseomyces_delphensis"/>
+												</eventsRec>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<speciation speciesLocation="node_22"/>
+								</eventsRec>
+									<clade>
+									<name>loss</name>
+									<eventsRec>
+										<loss speciesLocation="node_23"/>
+									</eventsRec>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_24"/>
+									</eventsRec>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<duplication speciesLocation="Kazachstania_africana"/>
+										</eventsRec>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Kazachstania_africana"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Kazachstania_africana"/>
+												</eventsRec>
+												<clade>
+													<name>XP_003958230.1_Kazachstania_africana</name>
+													<eventsRec>
+														<leaf speciesLocation="Kazachstania_africana"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>XP_003956376.1_Kazachstania_africana</name>
+													<eventsRec>
+														<leaf speciesLocation="Kazachstania_africana"/>
+													</eventsRec>
+												</clade>
+											</clade>
+											<clade>
+												<name>XP_003956397.1_Kazachstania_africana</name>
+												<eventsRec>
+													<leaf speciesLocation="Kazachstania_africana"/>
+												</eventsRec>
+											</clade>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="Kazachstania_africana"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Kazachstania_africana"/>
+												</eventsRec>
+												<clade>
+													<name>XP_003959171.1_Kazachstania_africana</name>
+													<eventsRec>
+														<leaf speciesLocation="Kazachstania_africana"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>XP_003959094.1_Kazachstania_africana</name>
+													<eventsRec>
+														<leaf speciesLocation="Kazachstania_africana"/>
+													</eventsRec>
+												</clade>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Kazachstania_africana"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Kazachstania_africana"/>
+													</eventsRec>
+													<clade>
+														<name>XP_003957739.1_Kazachstania_africana</name>
+														<eventsRec>
+															<leaf speciesLocation="Kazachstania_africana"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>XP_003958926.1_Kazachstania_africana</name>
+														<eventsRec>
+															<leaf speciesLocation="Kazachstania_africana"/>
+														</eventsRec>
+													</clade>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Kazachstania_africana"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<duplication speciesLocation="Kazachstania_africana"/>
+														</eventsRec>
+														<clade>
+															<name>XP_003959960.1_Kazachstania_africana</name>
+															<eventsRec>
+																<leaf speciesLocation="Kazachstania_africana"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>XP_003959752.1_Kazachstania_africana</name>
+															<eventsRec>
+																<leaf speciesLocation="Kazachstania_africana"/>
+															</eventsRec>
+														</clade>
+													</clade>
+													<clade>
+														<name>XP_003958180.1_Kazachstania_africana</name>
+														<eventsRec>
+															<leaf speciesLocation="Kazachstania_africana"/>
+														</eventsRec>
+													</clade>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+									<clade>
+										<name>XP_022464879.1_Kazachstania_naganishii</name>
+										<eventsRec>
+											<leaf speciesLocation="Kazachstania_naganishii"/>
+										</eventsRec>
+									</clade>
+								</clade>
+							</clade>
+						</clade>
+						<clade>
+							<name>NULL</name>
+							<eventsRec>
+								<duplication speciesLocation="node_21"/>
+							</eventsRec>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<speciation speciesLocation="node_21"/>
+								</eventsRec>
+									<clade>
+									<name>loss</name>
+									<eventsRec>
+										<loss speciesLocation="node_22"/>
+									</eventsRec>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_25"/>
+									</eventsRec>
+										<clade>
+										<name>loss</name>
+										<eventsRec>
+											<loss speciesLocation="node_26"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_27"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="Candida_glabrata"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<speciation speciesLocation="node_28"/>
+											</eventsRec>
+												<clade>
+												<name>loss</name>
+												<eventsRec>
+													<loss speciesLocation="Candida_bracarensis"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<speciation speciesLocation="node_29"/>
+												</eventsRec>
+													<clade>
+													<name>loss</name>
+													<eventsRec>
+														<loss speciesLocation="Candida_nivariensis"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<duplication speciesLocation="Nakaseomyces_delphensis"/>
+													</eventsRec>
+													<clade>
+														<name>NADE0s03e05775g_Nakaseomyces_delphensis</name>
+														<eventsRec>
+															<leaf speciesLocation="Nakaseomyces_delphensis"/>
+														</eventsRec>
+													</clade>
+													<clade>
+														<name>NADE0s03e00110g_Nakaseomyces_delphensis</name>
+														<eventsRec>
+															<leaf speciesLocation="Nakaseomyces_delphensis"/>
+														</eventsRec>
+													</clade>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+							<clade>
+								<name>NULL</name>
+								<eventsRec>
+									<duplication speciesLocation="node_21"/>
+								</eventsRec>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_21"/>
+									</eventsRec>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_22"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="node_23"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<speciation speciesLocation="node_24"/>
+											</eventsRec>
+												<clade>
+												<name>loss</name>
+												<eventsRec>
+													<loss speciesLocation="Kazachstania_africana"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Kazachstania_naganishii"/>
+												</eventsRec>
+												<clade>
+													<name>XP_022466281.1_Kazachstania_naganishii</name>
+													<eventsRec>
+														<leaf speciesLocation="Kazachstania_naganishii"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>XP_022466292.1_Kazachstania_naganishii</name>
+													<eventsRec>
+														<leaf speciesLocation="Kazachstania_naganishii"/>
+													</eventsRec>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_25"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="node_26"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<duplication speciesLocation="node_27"/>
+											</eventsRec>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<speciation speciesLocation="node_27"/>
+												</eventsRec>
+												<clade>
+													<name>QHS65613.1_Candida_glabrata</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_glabrata"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<speciation speciesLocation="node_28"/>
+													</eventsRec>
+													<clade>
+														<name>CANI0s04e00110g_Candida_nivariensis</name>
+														<eventsRec>
+															<speciation speciesLocation="node_29"/>
+														</eventsRec>
+															<clade>
+															<name>loss</name>
+															<eventsRec>
+																<loss speciesLocation="Nakaseomyces_delphensis"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>CANI0s04e00110g_Candida_nivariensis</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_nivariensis"/>
+															</eventsRec>
+														</clade>
+													</clade>
+													<clade>
+														<name>CABR0s21e03234g_Candida_bracarensis</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_bracarensis"/>
+														</eventsRec>
+													</clade>
+												</clade>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<speciation speciesLocation="node_27"/>
+												</eventsRec>
+												<clade>
+													<name>NULL</name>
+													<eventsRec>
+														<speciation speciesLocation="node_28"/>
+													</eventsRec>
+													<clade>
+														<name>NULL</name>
+														<eventsRec>
+															<speciation speciesLocation="node_29"/>
+														</eventsRec>
+														<clade>
+															<name>CANI0s18e03223g_Candida_nivariensis</name>
+															<eventsRec>
+																<leaf speciesLocation="Candida_nivariensis"/>
+															</eventsRec>
+														</clade>
+														<clade>
+															<name>NADE0s05e04136g_Nakaseomyces_delphensis</name>
+															<eventsRec>
+																<leaf speciesLocation="Nakaseomyces_delphensis"/>
+															</eventsRec>
+														</clade>
+													</clade>
+													<clade>
+														<name>CABR0s31e03938g_Candida_bracarensis</name>
+														<eventsRec>
+															<leaf speciesLocation="Candida_bracarensis"/>
+														</eventsRec>
+													</clade>
+												</clade>
+												<clade>
+													<name>QHS67215.1_Candida_glabrata</name>
+													<eventsRec>
+														<leaf speciesLocation="Candida_glabrata"/>
+													</eventsRec>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+								<clade>
+									<name>NULL</name>
+									<eventsRec>
+										<speciation speciesLocation="node_21"/>
+									</eventsRec>
+										<clade>
+										<name>loss</name>
+										<eventsRec>
+											<loss speciesLocation="node_25"/>
+										</eventsRec>
+									</clade>
+									<clade>
+										<name>NULL</name>
+										<eventsRec>
+											<speciation speciesLocation="node_22"/>
+										</eventsRec>
+											<clade>
+											<name>loss</name>
+											<eventsRec>
+												<loss speciesLocation="node_24"/>
+											</eventsRec>
+										</clade>
+										<clade>
+											<name>NULL</name>
+											<eventsRec>
+												<speciation speciesLocation="node_23"/>
+											</eventsRec>
+											<clade>
+												<name>XP_003678549.1_Naumovozyma_castellii</name>
+												<eventsRec>
+													<leaf speciesLocation="Naumovozyma_castellii"/>
+												</eventsRec>
+											</clade>
+											<clade>
+												<name>NULL</name>
+												<eventsRec>
+													<duplication speciesLocation="Naumovozyma_dairenensis"/>
+												</eventsRec>
+												<clade>
+													<name>XP_003672684.1_Naumovozyma_dairenensis</name>
+													<eventsRec>
+														<leaf speciesLocation="Naumovozyma_dairenensis"/>
+													</eventsRec>
+												</clade>
+												<clade>
+													<name>XP_003671892.1_Naumovozyma_dairenensis</name>
+													<eventsRec>
+														<leaf speciesLocation="Naumovozyma_dairenensis"/>
+													</eventsRec>
+												</clade>
+											</clade>
+										</clade>
+									</clade>
+								</clade>
+							</clade>
+						</clade>
+					</clade>
+				</clade>
+			</clade>
+		</clade>
+	</clade>
+	<clade>
+		<name>NULL</name>
+		<eventsRec>
+			<speciation speciesLocation="node_30"/>
+		</eventsRec>
+		<clade>
+			<name>NULL</name>
+			<eventsRec>
+				<speciation speciesLocation="node_18"/>
+			</eventsRec>
+				<clade>
+				<name>loss</name>
+				<eventsRec>
+					<loss speciesLocation="Cyberlindnera_jadinii"/>
+				</eventsRec>
+			</clade>
+			<clade>
+				<name>NULL</name>
+				<eventsRec>
+					<speciation speciesLocation="node_19"/>
+				</eventsRec>
+					<clade>
+					<name>loss</name>
+					<eventsRec>
+						<loss speciesLocation="node_21"/>
+					</eventsRec>
+				</clade>
+				<clade>
+					<name>NULL</name>
+					<eventsRec>
+						<speciation speciesLocation="node_20"/>
+					</eventsRec>
+					<clade>
+						<name>XP_452176.1_Kluyveromyces_lactis</name>
+						<eventsRec>
+							<leaf speciesLocation="Kluyveromyces_lactis"/>
+						</eventsRec>
+					</clade>
+					<clade>
+						<name>SAKL0C00330g_Lachancea_kluyveri</name>
+						<eventsRec>
+							<leaf speciesLocation="Lachancea_kluyveri"/>
+						</eventsRec>
+					</clade>
+				</clade>
+			</clade>
+		</clade>
+		<clade>
+			<name>KAG2733788.1_Scheffersomyces_stipitis</name>
+			<eventsRec>
+				<speciation speciesLocation="node_0"/>
+			</eventsRec>
+				<clade>
+				<name>loss</name>
+				<eventsRec>
+					<loss speciesLocation="node_17"/>
+				</eventsRec>
+			</clade>
+			<clade>
+				<name>KAG2733788.1_Scheffersomyces_stipitis</name>
+				<eventsRec>
+					<speciation speciesLocation="node_1"/>
+				</eventsRec>
+					<clade>
+					<name>loss</name>
+					<eventsRec>
+						<loss speciesLocation="node_12"/>
+					</eventsRec>
+				</clade>
+				<clade>
+					<name>KAG2733788.1_Scheffersomyces_stipitis</name>
+					<eventsRec>
+						<speciation speciesLocation="node_2"/>
+					</eventsRec>
+						<clade>
+						<name>loss</name>
+						<eventsRec>
+							<loss speciesLocation="node_3"/>
+						</eventsRec>
+					</clade>
+					<clade>
+						<name>KAG2733788.1_Scheffersomyces_stipitis</name>
+						<eventsRec>
+							<speciation speciesLocation="node_4"/>
+						</eventsRec>
+							<clade>
+							<name>loss</name>
+							<eventsRec>
+								<loss speciesLocation="Candida_tanzawaensis"/>
+							</eventsRec>
+						</clade>
+						<clade>
+							<name>KAG2733788.1_Scheffersomyces_stipitis</name>
+							<eventsRec>
+								<speciation speciesLocation="node_5"/>
+							</eventsRec>
+								<clade>
+								<name>loss</name>
+								<eventsRec>
+									<loss speciesLocation="node_6"/>
+								</eventsRec>
+							</clade>
+							<clade>
+								<name>KAG2733788.1_Scheffersomyces_stipitis</name>
+								<eventsRec>
+									<leaf speciesLocation="Scheffersomyces_stipitis"/>
+								</eventsRec>
+							</clade>
+						</clade>
+					</clade>
+				</clade>
+			</clade>
+		</clade>
+	</clade>
+</clade>
+</phylogeny>
+</recGeneTree>
+</recPhylo>

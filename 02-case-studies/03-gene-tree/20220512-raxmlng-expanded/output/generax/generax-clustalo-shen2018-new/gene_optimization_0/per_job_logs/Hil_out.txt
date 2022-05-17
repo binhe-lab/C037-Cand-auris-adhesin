@@ -1,0 +1,31 @@
+mpi-scheduler optimizeGeneTrees generax/expanded-blast-PF11765_clustalo_clipkit.raxml.bestTree generax/gene-to-species-map.txt generax/expanded-blast-PF11765_clustalo_clipkit.faa ../output/generax/generax-clustalo-shen2018/species_trees/inferred_species_tree.newick generax/expanded-blast-PF11765_clustalo_clipkit.raxml.bestModel ../output/generax/generax-clustalo-shen2018/gene_optimization_0/dtl_rates.txt 0 1 0 1 0 0.000001 NONE 0 -1 1 1 1 1 ../output/generax/generax-clustalo-shen2018/results/Hil/geneTree.newick ../output/generax/generax-clustalo-shen2018/results/Hil/stats.txt 0 
+[00:00:01] Starting optimizeGeneTreesSlave
+LibpllModel generax/expanded-blast-PF11765_clustalo_clipkit.raxml.bestModel
+[00:00:01] Starting optimizing gene tree
+Number of ranks 55
+(0.2, 0.2, score = 0)
+Taxa number: 215
+GRIIID
+[00:00:01] Start optimizing DL rates
+ best rates: 0.62048 0.55648 -546.445
+joint: -87894.5  libpll: -87348.1  reconciliation: -546.445  
+Initial ll = -87894.5
+Start SPR round (std::hash=66243, (best ll=-87894.5, radius=1, possible moves: 424)
+best;; -87889.7 18
+Start SPR round (std::hash=62317, (best ll=-87889.7, radius=1, possible moves: 424)
+best;; -87885.2 21
+Start SPR round (std::hash=42297, (best ll=-87885.2, radius=1, possible moves: 424)
+best;; -87881.8 24
+Start SPR round (std::hash=42179, (best ll=-87881.8, radius=1, possible moves: 424)
+best;; -87879.3 48
+Start SPR round (std::hash=35267, (best ll=-87879.3, radius=1, possible moves: 424)
+best;; -87877.3 15
+Start SPR round (std::hash=45891, (best ll=-87877.3, radius=1, possible moves: 424)
+best;; -87877.2 41
+Start SPR round (std::hash=94067, (best ll=-87877.2, radius=1, possible moves: 424)
+best;; -87877.2 0
+joint: -87877.2  libpll: -87363.8  reconciliation: -513.413  
+Saving tree in ../output/generax/generax-clustalo-shen2018/results/Hil/geneTree.newick
+Finished saving  ../output/generax/generax-clustalo-shen2018/results/Hil/geneTree.newick
+[00:00:10] End of optimizing gene tree
+[00:00:10] End of optimizeGeneTreesSlave

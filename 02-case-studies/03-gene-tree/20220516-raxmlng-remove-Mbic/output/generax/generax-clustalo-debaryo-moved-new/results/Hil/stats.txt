@@ -1,0 +1,2 @@
+-72943 -416.353
+Reconciliation rates = 0.49632 0.35648 
