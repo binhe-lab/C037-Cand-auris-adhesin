@@ -27,8 +27,9 @@ set -u
 set -o pipefail
 
 # set input and intermediate file names
-base=expanded-blast-PF11765_hmmalign_clipkit
+#base=expanded-blast-PF11765_hmmalign_clipkit
 #base=expanded-blast-PF11765_clustalo_clipkit
+base=expanded-blast-PF11765_clustalo
 align=../output/align/${base}.faa
 out=../output/raxml-ng/${base}
 
