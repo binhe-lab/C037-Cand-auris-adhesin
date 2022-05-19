@@ -1,0 +1,33 @@
+species	pathogen	reference
+Metschnikowia bicuspidata	crustacean parasite	wikipedia
+Candida tropicalis	human pathogen	
+Candida parapsilosis	human pathogen	
+Candida glabrata	human pathogen (major)	
+Candida albicans	human pathogen (major)	
+Candida haemuloni	human pathogen	
+Candida pseudohaemulonii	human pathogen	
+Candida dubliniensis	human pathogen	
+Candida duobushaemulonis	human pathogen	
+Kazachstania africana	no report	
+Candida auris	human pathogen (major)	
+Clavispora lusitaniae	human pathogen	
+Scheffersomyces stipitis	no report	
+Candida castellii	no report	
+Lodderomyces elongisporus	human pathogen (rare)	PMID: 30245829
+Meyerozyma guilliermondii	human pathogen	
+Nakaseomyces delphensis	no report	
+Suhomyces tanzawaensis	no report	
+Yamadazyma tenuis	no report	
+Candida orthopsilosis	human pathogen	
+Debaryomyces hansenii	human pathogen (rare)	PMID: 18701668
+Kazachstania naganishii	no report	
+Spathaspora passalidarum	no report	
+Candida bracarensis	human pathogen	
+Candida nivariensis	human pathogen	
+Cyberlindnera jadinii	no report	PMID: 30323936 
+Naumovozyma dairenensis	no report	
+Debaryomyces fabryi	no report	
+Kluyveromyces lactis	no report	
+Lachancea kluyveri	no report	
+Nakaseomyces bacillisporus	no report	
+Naumovozyma castellii	no report	

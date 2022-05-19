@@ -1,0 +1,95 @@
+species	TaxId	ScientificName	Rank
+Metschnikowia bicuspidata	2916678	CUG-Ser1 clade	clade
+Metschnikowia bicuspidata	27319	Metschnikowiaceae	family
+Metschnikowia bicuspidata	27320	Metschnikowia	genus
+Metschnikowia bicuspidata	280587	Metschnikowia bicuspidata var. bicuspidata	varietas
+Candida tropicalis	2916678	CUG-Ser1 clade	clade
+Candida tropicalis	766764	Debaryomycetaceae	family
+Candida tropicalis	1535325	Candida/Lodderomyces clade	clade
+Candida tropicalis	1535326	Candida	genus
+Candida parapsilosis	2916678	CUG-Ser1 clade	clade
+Candida parapsilosis	766764	Debaryomycetaceae	family
+Candida parapsilosis	1535325	Candida/Lodderomyces clade	clade
+Candida parapsilosis	1535326	Candida	genus
+Candida glabrata	4893	Saccharomycetaceae	family
+Candida glabrata	374468	Nakaseomyces	genus
+Candida glabrata	600669	Nakaseomyces/Candida clade	clade
+Candida albicans	2916678	CUG-Ser1 clade	clade
+Candida albicans	766764	Debaryomycetaceae	family
+Candida albicans	1535325	Candida/Lodderomyces clade	clade
+Candida albicans	1535326	Candida	genus
+Candida haemuloni	2916678	CUG-Ser1 clade	clade
+Candida haemuloni	27319	Metschnikowiaceae	family
+Candida haemuloni	2937349	Metschnikowiaceae incertae sedis	no rank
+Candida pseudohaemulonii	2916678	CUG-Ser1 clade	clade
+Candida pseudohaemulonii	27319	Metschnikowiaceae	family
+Candida pseudohaemulonii	2937349	Metschnikowiaceae incertae sedis	no rank
+Candida dubliniensis	2916678	CUG-Ser1 clade	clade
+Candida dubliniensis	766764	Debaryomycetaceae	family
+Candida dubliniensis	1535325	Candida/Lodderomyces clade	clade
+Candida dubliniensis	1535326	Candida	genus
+Candida duobushaemulonis	2916678	CUG-Ser1 clade	clade
+Candida duobushaemulonis	27319	Metschnikowiaceae	family
+Candida duobushaemulonis	2937349	Metschnikowiaceae incertae sedis	no rank
+Kazachstania africana	4893	Saccharomycetaceae	family
+Kazachstania africana	71245	Kazachstania	genus
+Candida auris	2916678	CUG-Ser1 clade	clade
+Candida auris	27319	Metschnikowiaceae	family
+Candida auris	2937349	Metschnikowiaceae incertae sedis	no rank
+Clavispora lusitaniae	2916678	CUG-Ser1 clade	clade
+Clavispora lusitaniae	27319	Metschnikowiaceae	family
+Clavispora lusitaniae	36910	Clavispora	genus
+Scheffersomyces stipitis	2916678	CUG-Ser1 clade	clade
+Scheffersomyces stipitis	766764	Debaryomycetaceae	family
+Scheffersomyces stipitis	766733	Scheffersomyces	genus
+Candida castellii	4893	Saccharomycetaceae	family
+Candida castellii	374468	Nakaseomyces	genus
+Candida castellii	600669	Nakaseomyces/Candida clade	clade
+Lodderomyces elongisporus	2916678	CUG-Ser1 clade	clade
+Lodderomyces elongisporus	766764	Debaryomycetaceae	family
+Lodderomyces elongisporus	1535325	Candida/Lodderomyces clade	clade
+Lodderomyces elongisporus	36913	Lodderomyces	genus
+Meyerozyma guilliermondii	2916678	CUG-Ser1 clade	clade
+Meyerozyma guilliermondii	766764	Debaryomycetaceae	family
+Meyerozyma guilliermondii	766728	Meyerozyma	genus
+Nakaseomyces delphensis	4893	Saccharomycetaceae	family
+Nakaseomyces delphensis	374468	Nakaseomyces	genus
+Suhomyces tanzawaensis	2916678	CUG-Ser1 clade	clade
+Suhomyces tanzawaensis	766764	Debaryomycetaceae	family
+Suhomyces tanzawaensis	1539666	Suhomyces	genus
+Yamadazyma tenuis	2916678	CUG-Ser1 clade	clade
+Yamadazyma tenuis	766764	Debaryomycetaceae	family
+Yamadazyma tenuis	766765	Yamadazyma	genus
+Candida orthopsilosis	2916678	CUG-Ser1 clade	clade
+Candida orthopsilosis	766764	Debaryomycetaceae	family
+Candida orthopsilosis	1535325	Candida/Lodderomyces clade	clade
+Candida orthopsilosis	1535326	Candida	genus
+Debaryomyces hansenii	2916678	CUG-Ser1 clade	clade
+Debaryomyces hansenii	766764	Debaryomycetaceae	family
+Debaryomyces hansenii	4958	Debaryomyces	genus
+Kazachstania naganishii	4893	Saccharomycetaceae	family
+Kazachstania naganishii	71245	Kazachstania	genus
+Spathaspora passalidarum	2916678	CUG-Ser1 clade	clade
+Spathaspora passalidarum	766764	Debaryomycetaceae	family
+Spathaspora passalidarum	412764	Spathaspora	genus
+Candida bracarensis	4893	Saccharomycetaceae	family
+Candida bracarensis	374468	Nakaseomyces	genus
+Candida bracarensis	600669	Nakaseomyces/Candida clade	clade
+Candida nivariensis	4893	Saccharomycetaceae	family
+Candida nivariensis	374468	Nakaseomyces	genus
+Candida nivariensis	600669	Nakaseomyces/Candida clade	clade
+Cyberlindnera jadinii	115784	Phaffomycetaceae	family
+Cyberlindnera jadinii	604195	Cyberlindnera	genus
+Naumovozyma dairenensis	4893	Saccharomycetaceae	family
+Naumovozyma dairenensis	278028	Naumovozyma	genus
+Debaryomyces fabryi	2916678	CUG-Ser1 clade	clade
+Debaryomyces fabryi	766764	Debaryomycetaceae	family
+Debaryomyces fabryi	4958	Debaryomyces	genus
+Kluyveromyces lactis	4893	Saccharomycetaceae	family
+Kluyveromyces lactis	4910	Kluyveromyces	genus
+Lachancea kluyveri	4893	Saccharomycetaceae	family
+Lachancea kluyveri	300275	Lachancea	genus
+Nakaseomyces bacillisporus	4893	Saccharomycetaceae	family
+Nakaseomyces bacillisporus	374468	Nakaseomyces	genus
+Naumovozyma castellii	4893	Saccharomycetaceae	family
+Naumovozyma castellii	278028	Naumovozyma	genus

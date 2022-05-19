@@ -35,19 +35,19 @@ I performed blastp analysis using the three queries against either the refseq_pr
 # header for ncbi output
 header <- c("query", "qcovs", "sid", "slen", "pident", "q.start", "q.end", "s.start", "s.end", "evalue", "staxid", "sscinames")
 # refseq results
-refseq <- read_tsv("20220406-expanded-PF11765-blastp-refseq.txt", comment = "#", col_types = cols(), col_names = header) %>% 
+refseq <- read_tsv("data/20220406-expanded-PF11765-blastp-refseq.txt", comment = "#", col_types = cols(), col_names = header) %>% 
   mutate(species = word(sscinames, 1, 2) %>% gsub("\\[|\\]", "", x = .), strain = word(sscinames, 3, -1),
          pident = num(pident, digits = 1)) %>% 
   select(-sscinames) %>% 
   relocate(species:strain, .after = pident)
 # nr results
-nr <- read_tsv("20220406-expanded-PF11765-blastp-clusternr.txt", comment = "#", col_types = cols(), col_names = header) %>% 
+nr <- read_tsv("data/20220406-expanded-PF11765-blastp-clusternr.txt", comment = "#", col_types = cols(), col_names = header) %>% 
   mutate(species = word(sscinames, 1, 2) %>% gsub("\\[|\\]", "", x = .), strain = word(sscinames, 3, -1),
          pident = num(pident, digits = 1)) %>% 
   select(-sscinames) %>% 
   relocate(species:strain, .after = pident)
 # fungidb results
-fdb <- read_csv("20220427-expanded-blast-fungidb.csv") %>% 
+fdb <- read_csv("data/20220427-expanded-blast-fungidb.csv") %>% 
   rename(sid = Accession, evalue = `E-Value`, score = Score, alen = `Align Length`, qcovs = `Query Coverage`) %>% 
   mutate(
     species = word(Organism, 1, 2) %>% gsub("\\[|\\]", "", x = .), strain = word(Organism, 3, -1),
@@ -323,19 +323,6 @@ dedup.ref.cg <- dedup.ref %>%
 ```
 
 
-Resummarize the species family size info
-```{r}
-dedup.ref.cg %>% 
-  group_by(species, strain) %>% 
-  summarize(
-    total = n(),
-    incompl = sum(pComplete %in% c("no-ends", "no-left", "no-right")),
-    gt500 = sum(slen >= 500),
-    shortIncompl = sum(pComplete %in% c("no-ends", "no-left", "no-right") & slen < 500)
-  ) %>% 
-  arrange(desc(total))
-```
-
 Retrieve sequences
 ```{r}
 iter.pid1 <- split(x = dedup.ref.cg$pid, f = ceiling(seq_along(dedup.ref.cg$pid)/50))
@@ -357,7 +344,7 @@ gryc.sps <- tribble(
   ~sps.abr, ~species, ~strain, ~staxid,
   "CANI", "Candida nivariensis", "CBS 9983", "1279115",
   "NADE", "Nakaseomyces delphensis", "CBS 2170", "1279113",
-  "NABA", "Nakaseomyces bacillisporus", "CBS 7720", "1276116",
+  "NABA", "Nakaseomyces bacillisporus", "CBS 7720", "1279116",
   "CACA", "Candida castellii", "CBS 4332", "1279086",
   "CABR", "Candida bracarensis", "CBS 10154", "1279114",
   "SAKL", "Lachancea kluyveri", "CBS 3082", "4934"
@@ -564,7 +551,7 @@ setdiff(sps.final, spsNameSyn$ncbi.name)
 
 ```{r}
 sps.final.shen %>% na.omit() %>% gsub(" ", "_", .) %>%
-  write(file = paste(gsub("-", "", Sys.Date()), "expanded-blast-species-list.txt", sep = "-"))
+  write(file = paste0("data/", gsub("-", "", Sys.Date()), "-expanded-blast-species-list.txt"))
 ```
 
 Get the species tree using [TreeHouse](https://github.com/JLSteenwyk/treehouse)
@@ -574,10 +561,57 @@ shiny::runGitHub("treehouse", "JLSteenwyk")
 ```
 
 I then manually added the missing species by editing the Newick file (without branch length version). The final result is shown below:
-![species tree](20220515-expanded-blast-species-tree.png)
+![species tree](data/20220515-expanded-blast-species-tree.png)
 
 Also export the gene-to-species mapping for `generax`
 ```{r}
+gene2sps.map <- dedup.merge %>% 
+  select(name, species) %>% 
+  mutate(treeName = ifelse(species %in% names(sps.final.shen),  sps.final.shen[species], species),
+         treeName = gsub(" ", "_", treeName))
+gene2sps.map %>% 
+  select(name, treeName) %>% 
+  write_tsv("data/20220516-expanded-blast-genes-to-species-map.tsv", col_names = FALSE)
+```
 
+Append the species list with additional information
+```{r}
+sps.patho <- read_tsv("data/20220518-expanded-blast-species-pathogen-info.txt", col_types = cols())
+sps.summary <- dedup.merge %>% 
+  group_by(species, staxid) %>% 
+  summarize(
+    total = n(),
+    short = sum(slen < 500),
+    shortIncompl = ifelse(
+      any(is.na(pComplete)), NA,
+      sum(pComplete %in% c("no-ends", "no-left", "no-right") & slen < 500)
+    ),
+    .groups = "drop"
+  ) %>% 
+  left_join(sps.patho, by = "species") %>% 
+  arrange(desc(total))
+sps.summary %>% select(-staxid)
+```
+
+Query the taxonomy database for lineage information for each species
+```{r}
+taxon <- entrez_fetch(db = "taxonomy", id = sps.summary$staxid, rettype = "xml") %>% 
+  XML::xmlToList()
+names(taxon) <- sps.summary$species
+```
+
+Parse the taxonomy information
+```{r}
+sps.lin <- lapply(taxon, function(x) {
+  bind_rows(x$LineageEx) %>% tail(-10) %>% filter(Rank != "species")
+  }) %>% 
+  bind_rows(.id = "species")
+write_tsv(sps.lin, "data/20220518-expanded-blast-species-taxonomy.tsv")
+```
+
+
+Write species info to file
+```{r}
+write_tsv(sps.summary, file = "data/20220518-expanded-blast-species-info.tsv")
 ```
 
