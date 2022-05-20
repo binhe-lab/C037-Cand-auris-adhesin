@@ -141,8 +141,10 @@ setdiff(unique(refseq$species), shen2018)
 | Kazachstania barnettii | 61262 | No | NA |
 | Artibeus jamaicensis | 9417 | No | NA |
 
-Manually figure out species synonyms and record both names for the species to use.
+Manually figure out species synonyms and record both names for the species to use. **update**: downloaded the species name convertion table from Shen et al 2018 supplementary material.
 ```{r}
+spsNameConvert <- read_tsv("../../data/yeast-phylogeny/343taxa_speicies-name_clade-name_color-code.txt", col_types = cols()) %>% 
+  mutate(species = word(`Species name`, 1, 2))
 spsNameSyn <- tibble(
   ncbi.name = c(intersect(refseq$species, shen2018), "Suhomyces tanzawaensis", "Yamadazyma tenuis", "Lachancea kluyveri"),
   shen.name = c(intersect(refseq$species, shen2018), "Candida tanzawaensis", "Candida tenuis", "Lachancea kluyveri")
@@ -542,15 +544,20 @@ This is for the latter gene tree reconcilation and plotting.
 Output the species used as a single column text file:
 ```{r}
 # after adding the GRYC species, we need to expand the sps.include list
-sps.final <- unique(dedup.merge$species)
+# add S. cerevisiae for species tree illustrations
+sps.final <- c(unique(dedup.merge$species), "Saccharomyces cerevisiae")
 # convert the species names to the Shen 2018 name
-sps.final.shen <- deframe(spsNameSyn)[sps.final]
+sps.final.shen <- spsNameConvert %>% 
+  mutate(ncbi.name = species,
+         shen2018 = word(gsub("_", " ", old_speceis_names), -2, -1)) %>% 
+  select(ncbi.name, shen2018, `Major clade`, Family, Genus) %>% 
+  filter(ncbi.name %in% sps.final)
 cat("The following species are not present in the Shen 2018 list and need to be added later.")
-setdiff(sps.final, spsNameSyn$ncbi.name)
+setdiff(sps.final, spsNameConvert$species)
 ```
 
 ```{r}
-sps.final.shen %>% na.omit() %>% gsub(" ", "_", .) %>%
+sps.final.shen$shen2018 %>% na.omit() %>% gsub(" ", "_", .) %>%
   write(file = paste0("data/", gsub("-", "", Sys.Date()), "-expanded-blast-species-list.txt"))
 ```
 
@@ -588,6 +595,9 @@ sps.summary <- dedup.merge %>%
     ),
     .groups = "drop"
   ) %>% 
+  add_row(species = "Saccharomyces cerevisiae",
+          staxid = "4932",
+          total = 0, short = 0, shortIncompl = NA) %>% 
   left_join(sps.patho, by = "species") %>% 
   arrange(desc(total))
 sps.summary %>% select(-staxid)
@@ -612,6 +622,12 @@ write_tsv(sps.lin, "data/20220518-expanded-blast-species-taxonomy.tsv")
 
 Write species info to file
 ```{r}
-write_tsv(sps.summary, file = "data/20220518-expanded-blast-species-info.tsv")
+spsInfo <- sps.lin %>% 
+  filter(Rank == "family") %>% 
+  select(species, family = ScientificName) %>% 
+  right_join(sps.summary, by = "species")
+
+%>% 
+  write_tsv(file = "data/20220518-expanded-blast-species-info.tsv")
 ```
 

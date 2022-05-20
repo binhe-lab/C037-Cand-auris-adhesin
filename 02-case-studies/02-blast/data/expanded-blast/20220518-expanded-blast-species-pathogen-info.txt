@@ -1,29 +1,29 @@
 species	pathogen	reference
-Metschnikowia bicuspidata	crustacean parasite	wikipedia
-Candida tropicalis	human pathogen	
-Candida parapsilosis	human pathogen	
-Candida glabrata	human pathogen (major)	
-Candida albicans	human pathogen (major)	
-Candida haemuloni	human pathogen	
-Candida pseudohaemulonii	human pathogen	
-Candida dubliniensis	human pathogen	
-Candida duobushaemulonis	human pathogen	
+Metschnikowia bicuspidata	crustacean	wikipedia
+Candida tropicalis	human	
+Candida parapsilosis	human	
+Candida glabrata	human
+Candida albicans	human
+Candida haemuloni	human	
+Candida pseudohaemulonii	human	
+Candida dubliniensis	human	
+Candida duobushaemulonis	human	
 Kazachstania africana	no report	
-Candida auris	human pathogen (major)	
-Clavispora lusitaniae	human pathogen	
+Candida auris	human
+Clavispora lusitaniae	human	
 Scheffersomyces stipitis	no report	
 Candida castellii	no report	
-Lodderomyces elongisporus	human pathogen (rare)	PMID: 30245829
-Meyerozyma guilliermondii	human pathogen	
+Lodderomyces elongisporus	human (rare)	PMID: 30245829
+Meyerozyma guilliermondii	human	
 Nakaseomyces delphensis	no report	
 Suhomyces tanzawaensis	no report	
 Yamadazyma tenuis	no report	
-Candida orthopsilosis	human pathogen	
-Debaryomyces hansenii	human pathogen (rare)	PMID: 18701668
+Candida orthopsilosis	human	
+Debaryomyces hansenii	human (rare)	PMID: 18701668
 Kazachstania naganishii	no report	
 Spathaspora passalidarum	no report	
-Candida bracarensis	human pathogen	
-Candida nivariensis	human pathogen	
+Candida bracarensis	human	
+Candida nivariensis	human	
 Cyberlindnera jadinii	no report	PMID: 30323936 
 Naumovozyma dairenensis	no report	
 Debaryomyces fabryi	no report	
@@ -31,3 +31,4 @@ Kluyveromyces lactis	no report
 Lachancea kluyveri	no report	
 Nakaseomyces bacillisporus	no report	
 Naumovozyma castellii	no report	
+Saccharomyces cerevisiae	human (rare)
