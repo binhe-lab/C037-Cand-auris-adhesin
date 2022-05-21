@@ -1,0 +1,59 @@
+GeneRax was called as follow:
+generax --families families-clustalo-untrimmed.txt --species-tree generax/species-tree-shen2018-wScer.nwk --rec-model UndatedDL --per-family-rates --prefix ../output/generax/generax-clustalo-shen2018-untrimmed --max-spr-radius 5 
+
+General information:
+- Output prefix: ../output/generax/generax-clustalo-shen2018-untrimmed
+- Families information: families-clustalo-untrimmed.txt
+- Species tree: generax/species-tree-shen2018-wScer.nwk
+- MPI Ranks: 56
+- Random seed: 123
+- Reconciliation model: UndatedDL
+- DTL rates: per family rates
+- Infer ML reconciliation: ON
+- Unrooted reconciliation likelihood: OFF
+- Prune species tree mode: OFF
+
+Gene tree correction information:
+- Gene tree strategy: SPR
+- Max gene SPR radius: 5
+
+[00:00:00] Filtering invalid families...
+
+End of instance initialization
+[00:00:00] Starting species tree initialization...
+[00:00:00] End of species tree initialization
+[00:00:00] Filtering invalid families based on the starting species tree...
+
+[00:00:00] Gathering statistics about the families...
+[00:00:00] Input data information:
+- Number of gene families: 1
+- Number of species: 33
+- Total number of genes: 215
+- Average number of genes per family: 215
+- Maximum number of genes per family: 215
+- Species covered with the smallest family coverage: "Saccharomyces_cerevisiae" (covered by 0/1 families)
+- Average (over species) species family coverage: 0
+
+[00:00:00] Optimizing reconciliation rates and gene trees with radius=1... 
+	JointLL=-87926.6 RecLL=-521.126 LibpllLL=-87405.5
+
+[00:00:09] Optimizing reconciliation rates and gene trees with radius=2... 
+	JointLL=-87918.5 RecLL=-491.523 LibpllLL=-87427
+
+[00:00:54] Optimizing reconciliation rates and gene trees with radius=3... 
+	JointLL=-87916.2 RecLL=-483.922 LibpllLL=-87432.3
+
+[00:01:23] Optimizing reconciliation rates and gene trees with radius=4... 
+	JointLL=-87916.1 RecLL=-483.876 LibpllLL=-87432.2
+
+[00:01:47] Optimizing reconciliation rates and gene trees with radius=5... 
+	JointLL=-87916.1 RecLL=-483.876 LibpllLL=-87432.2
+
+[00:02:23] Reconciling gene trees with the species tree...
+[00:02:24] Terminating the instance..
+
+[00:02:24] Reconciliation likelihood: -483.876
+[00:02:24] Phylogenetic likelihood: -87432.2
+[00:02:24] Joint likelihood: -87916.1
+[00:02:24] Results directory: ../output/generax/generax-clustalo-shen2018-untrimmed
+[00:02:24] End of GeneRax execution

@@ -1,0 +1,31 @@
+mpi-scheduler optimizeGeneTrees ../output/generax/generax-clustalo-shen2018-wScer/results/Hil/geneTree.newick generax/gene-to-species-map.txt generax/expanded-blast-PF11765_clustalo_clipkit.faa ../output/generax/generax-clustalo-shen2018-wScer/species_trees/inferred_species_tree.newick generax/expanded-blast-PF11765_clustalo_clipkit.raxml.bestModel ../output/generax/generax-clustalo-shen2018-wScer/gene_optimization_1/dtl_rates.txt 0 1 0 1 0 0.000001 NONE 0 -1 1 1 1 2 ../output/generax/generax-clustalo-shen2018-wScer/results/Hil/geneTree.newick ../output/generax/generax-clustalo-shen2018-wScer/results/Hil/stats.txt 0 
+[00:00:10] Starting optimizeGeneTreesSlave
+LibpllModel generax/expanded-blast-PF11765_clustalo_clipkit.raxml.bestModel
+[00:00:10] Starting optimizing gene tree
+Number of ranks 55
+(0.2, 0.2, score = 0)
+Taxa number: 215
+GRIIID
+[00:00:10] Start optimizing DL rates
+ best rates: 0.584 0.472 -520.105
+joint: -87879.9  libpll: -87359.8  reconciliation: -520.105  
+Initial ll = -87879.9
+Start SPR round (std::hash=37859, (best ll=-87879.9, radius=2, possible moves: 2664)
+best;; -87875.4 43
+Start SPR round (std::hash=26021, (best ll=-87875.4, radius=2, possible moves: 2664)
+best;; -87874.5 41
+Start SPR round (std::hash=62471, (best ll=-87874.5, radius=2, possible moves: 2664)
+best;; -87874.2 44
+Start SPR round (std::hash=13479, (best ll=-87874.2, radius=2, possible moves: 2664)
+best;; -87873.4 53
+Start SPR round (std::hash=31143, (best ll=-87873.4, radius=2, possible moves: 2664)
+best;; -87873.2 18
+Start SPR round (std::hash=62609, (best ll=-87873.2, radius=2, possible moves: 2664)
+best;; -87873.2 3
+Start SPR round (std::hash=29497, (best ll=-87873.2, radius=2, possible moves: 2664)
+best;; -87873.2 0
+joint: -87873.2  libpll: -87381.7  reconciliation: -491.523  
+Saving tree in ../output/generax/generax-clustalo-shen2018-wScer/results/Hil/geneTree.newick
+Finished saving  ../output/generax/generax-clustalo-shen2018-wScer/results/Hil/geneTree.newick
+[00:00:55] End of optimizing gene tree
+[00:00:55] End of optimizeGeneTreesSlave

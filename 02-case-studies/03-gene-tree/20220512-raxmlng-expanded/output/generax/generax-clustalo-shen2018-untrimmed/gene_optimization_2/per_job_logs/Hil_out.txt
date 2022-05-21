@@ -1,0 +1,21 @@
+mpi-scheduler optimizeGeneTrees ../output/generax/generax-clustalo-shen2018-untrimmed/results/Hil/geneTree.newick generax/gene-to-species-map.txt generax/expanded-blast-PF11765_clustalo.faa ../output/generax/generax-clustalo-shen2018-untrimmed/species_trees/inferred_species_tree.newick generax/expanded-blast-PF11765_clustalo.raxml.bestModel ../output/generax/generax-clustalo-shen2018-untrimmed/gene_optimization_2/dtl_rates.txt 0 1 0 1 0 0.000001 NONE 0 -1 1 1 1 3 ../output/generax/generax-clustalo-shen2018-untrimmed/results/Hil/geneTree.newick ../output/generax/generax-clustalo-shen2018-untrimmed/results/Hil/stats.txt 0 
+[00:00:54] Starting optimizeGeneTreesSlave
+LibpllModel generax/expanded-blast-PF11765_clustalo.raxml.bestModel
+[00:00:54] Starting optimizing gene tree
+Number of ranks 55
+(0.2, 0.2, score = 0)
+Taxa number: 215
+GRIIID
+[00:00:56] Start optimizing DL rates
+ best rates: 0.5616 0.3936 -490.563
+joint: -87916.3  libpll: -87425.7  reconciliation: -490.563  
+Initial ll = -87916.3
+Start SPR round (std::hash=29497, (best ll=-87916.3, radius=3, possible moves: 5600)
+best;; -87916.2 28
+Start SPR round (std::hash=4105, (best ll=-87916.2, radius=3, possible moves: 5600)
+best;; -87916.2 0
+joint: -87916.2  libpll: -87432.3  reconciliation: -483.922  
+Saving tree in ../output/generax/generax-clustalo-shen2018-untrimmed/results/Hil/geneTree.newick
+Finished saving  ../output/generax/generax-clustalo-shen2018-untrimmed/results/Hil/geneTree.newick
+[00:01:23] End of optimizing gene tree
+[00:01:23] End of optimizeGeneTreesSlave
