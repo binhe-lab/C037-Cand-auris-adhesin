@@ -401,7 +401,6 @@ Export the combined homologs list
 dedup.merge <- bind_rows(
   RefSeq = dedup.ref.cg,
   GRYC = dedup.gryc,
-  Manual = c.auris,
   .id = "source"
   ) %>% 
   mutate(name = paste(pid, gsub(" ", "_", species), sep = "_")) %>% 
@@ -574,8 +573,12 @@ Also export the gene-to-species mapping for `generax`
 ```{r}
 gene2sps.map <- dedup.merge %>% 
   select(name, species) %>% 
-  mutate(treeName = ifelse(species %in% names(sps.final.shen),  sps.final.shen[species], species),
-         treeName = gsub(" ", "_", treeName))
+  # modify the two species names that differ between the gene names and species tree
+  mutate(treeName = case_when(
+    species == "Yamadazyma tenuis" ~ "Candida tenuis",
+    species == "Suhomyces tanzawaensis" ~ "Candida tanzawaensis",
+    TRUE ~ species),
+    treeName = gsub(" ", "_", treeName))
 gene2sps.map %>% 
   select(name, treeName) %>% 
   write_tsv("data/20220516-expanded-blast-genes-to-species-map.tsv", col_names = FALSE)
@@ -625,9 +628,13 @@ Write species info to file
 spsInfo <- sps.lin %>% 
   filter(Rank == "family") %>% 
   select(species, family = ScientificName) %>% 
+  mutate(treeName = case_when(
+    species == "Yamadazyma tenuis" ~ "Candida tenuis",
+    species == "Suhomyces tanzawaensis" ~ "Candida tanzawaensis",
+    TRUE ~ species),
+    treeName = gsub(" ", "_", treeName)) %>% 
   right_join(sps.summary, by = "species")
 
-%>% 
-  write_tsv(file = "data/20220518-expanded-blast-species-info.tsv")
+write_tsv(spsInfo, file = "data/20220518-expanded-blast-species-info.tsv")
 ```
 
