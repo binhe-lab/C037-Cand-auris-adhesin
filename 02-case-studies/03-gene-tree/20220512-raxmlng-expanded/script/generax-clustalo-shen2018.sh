@@ -28,4 +28,4 @@ set -u
 set -o pipefail
 
 # 2021-12-07 uses the recommended radius = 5, and used the parallel version
-mpiexec -np 56 generax --families families-clustalo.txt --species-tree generax/species-tree-shen2018.nwk --rec-model UndatedDL --per-family-rates --prefix ../output/generax/generax-clustalo-shen2018 --max-spr-radius 5
+mpiexec -np 56 generax --families families-clustalo.txt --species-tree generax/species-tree-shen2018-wScer.nwk --rec-model UndatedDL --per-family-rates --prefix ../output/generax/generax-clustalo-shen2018-wScer --max-spr-radius 5
