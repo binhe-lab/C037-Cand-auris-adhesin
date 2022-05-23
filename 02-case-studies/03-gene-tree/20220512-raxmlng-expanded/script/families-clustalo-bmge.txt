@@ -1,0 +1,6 @@
+[FAMILIES]
+- Hil
+starting_gene_tree = generax/expanded-blast-PF11765_clustalo_bmge.raxml.bestTree
+alignment = generax/expanded-blast-PF11765_clustalo_bmge.faa
+mapping = generax/gene-to-species-map.txt
+subst_model = generax/expanded-blast-PF11765_clustalo.raxml_bmge.bestModel

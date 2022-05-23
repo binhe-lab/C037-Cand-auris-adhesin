@@ -1,5 +1,12 @@
 ## Note
+### alignment trimming
+I primarily used `ClipKIT`, which is newer and is based on the idea of retaining parsimony-informative sites rather than removing high-entropy columns. I used the software-author-recommended "smart-gap" mode, which retained a lot of the "gappy" columns. To see the effect of retaining the gapped columns on the tree inference, I also tested BMGE with the default settings, using the following command
 
+```
+bmge -i output/align/expanded-blast-PF11765_clustalo.faa -t AA -of output/align/expanded-blast-PF11765_clustalo_bmge.faa
+```
+
+### `raxml-ng` compiliation on ARGON nodes
 I tried to use `raxml-ng` this time. `conda` could only install the 0.9.0 version, as the v1.1.0 seems to cause incompatibility issues with the existing libraries on the system. But since the newer version allows coarse-grained parallelization (not just across sites, but also with different "workers" to parallelize over the different bootstraps), I tried to compile the `raxml-ng-mpi` binary myself. I found that in order to compile the code, I had to temporarily `mv ~/sw/miniconda3 ~/sw/miniconda3-bk` to avoid the compiler seeing some of the conda installed tools. After that things went well. I used the default `stack/2021.1` on ARGON as of 2022-05-13, and loaded the following packages
 ```bash
 module load cmake/3.20.0_gcc-9.3.0
