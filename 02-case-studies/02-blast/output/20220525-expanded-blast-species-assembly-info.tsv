@@ -1,0 +1,46 @@
+species	assemblystatus	coverage	submissiondate	lastupdatedate	refseq_category	contign50	scaffoldn50	assemblyaccession	lastmajorreleaseaccession	taxid	speciestaxid	speciesname	assemblytype
+Candida albicans	Chromosome	700	2016/10/12 00:00	2016/12/08 00:00	representative genome	334280	2231883	GCF_000182965.3	GCF_000182965.3	237561	5476	Candida albicans	haploid
+Candida auris	Scaffold	80	2017/11/15 00:00	2019/04/26 00:00	representative genome	1467420	2363944	GCF_002775015.1	GCF_002775015.1	498019	498019	[Candida] auris	haploid
+Candida bracarensis	Contig	0	2013/08/29 00:00	2015/07/13 00:00	representative genome	109957	109957	GCA_001077315.1	GCA_001077315.1	1279114	273131	[Candida] bracarensis	haploid
+Candida castellii	Contig	0	2013/08/29 00:00	2015/07/06 00:00	representative genome	351735	351735	GCA_001046935.1	GCA_001046935.1	1279086	51914	[Candida] castellii	haploid
+Candida dubliniensis	Complete Genome	0	2009/02/16 00:00	2017/12/13 00:00	representative genome	2267510	2267510	GCF_000026945.1	GCF_000026945.1	573826	42374	Candida dubliniensis	haploid
+Candida duobushaemulonis	Contig	287	2018/02/13 00:00	2019/05/31 00:00	representative genome	3288798	3288798	GCF_002926085.2	GCF_002926085.1	1231522	1231522	[Candida] duobushaemulonis	haploid
+Candida glabrata	Chromosome	0	2008/08/12 00:00	2017/06/05 00:00	representative genome	1100349	1100349	GCF_000002545.3	GCF_000002545.3	5478	5478	[Candida] glabrata	haploid
+Candida haemuloni	Contig	191	2018/02/13 00:00	2019/04/10 00:00	representative genome	1730876	1730876	GCF_002926055.2	GCF_002926055.1	45357	45357	[Candida] haemuloni	haploid
+Candida orthopsilosis	Chromosome	0	2012/03/14 00:00	2017/11/13 00:00	representative genome	120081	1644167	GCF_000315875.1	GCF_000315875.1	1136231	273371	Candida orthopsilosis	haploid
+Candida parapsilosis	Contig	0	2011/10/26 00:00	2020/10/30 00:00	representative genome	2091826	2091826	GCF_000182765.1	GCF_000182765.1	5480	5480	Candida parapsilosis	haploid
+Candida pseudohaemulonii	Scaffold	77	2018/03/22 00:00	2018/04/26 00:00	representative genome	541754	641003	GCF_003013735.1	GCF_003013735.1	418784	418784	[Candida] pseudohaemulonii	haploid
+Candida tropicalis	Scaffold	8.85	2009/06/18 00:00	2018/04/11 00:00	representative genome	221103	1654078	GCF_000006335.3	GCF_000006335.3	294747	5482	Candida tropicalis	haploid
+Clavispora lusitaniae	Scaffold	0	2009/06/02 00:00	2016/11/29 00:00	representative genome	266609	1874050	GCF_000003835.1	GCF_000003835.1	306902	36911	Clavispora lusitaniae	haploid
+Cyberlindnera jadinii	Scaffold	110	2016/09/15 00:00	2017/02/15 00:00	representative genome	111555	700888	GCF_001661405.1	GCF_001661405.1	983966	4903	Cyberlindnera jadinii	haploid
+Debaryomyces fabryi	Contig	1000	2015/11/25 00:00	2020/03/24 00:00	representative genome	59311	59311	GCF_001447935.2	GCF_001447935.1	58627	58627	Debaryomyces fabryi	haploid
+Debaryomyces hansenii	Chromosome	0	2008/09/16 00:00	2014/02/07 00:00	representative genome	993818	2007515	GCF_000006445.2	GCF_000006445.2	284592	4959	Debaryomyces hansenii	haploid
+Kazachstania africana	Chromosome	20	2012/01/17 00:00	2020/06/17 00:00	representative genome	925516	1026673	GCF_000304475.1	GCF_000304475.1	1071382	432096	Kazachstania africana	haploid
+Kazachstania naganishii	Chromosome	0	2012/09/05 00:00	2017/09/27 00:00	representative genome	227487	856010	GCF_000348985.1	GCF_000348985.1	1071383	588726	Kazachstania naganishii	haploid
+Kluyveromyces lactis	Complete Genome	0	2004/07/02 00:00	2012/10/15 00:00	representative genome	1753957	1753957	GCF_000002515.2	GCF_000002515.2	28985	28985	Kluyveromyces lactis	haploid
+Lachancea kluyveri	Chromosome	10.2	2011/05/12 00:00	2021/03/16 00:00	representative genome	1252455	1295560	GCA_000149225.2	GCA_000149225.1	226302	4934	Lachancea kluyveri	haploid
+Lodderomyces elongisporus	Scaffold	0	2007/05/07 00:00	2016/11/29 00:00	representative genome	261145	2011058	GCF_000149685.1	GCF_000149685.1	379508	36914	Lodderomyces elongisporus	haploid
+Metschnikowia bicuspidata	Scaffold	16	2016/06/17 00:00	2016/10/25 00:00	representative genome	62344	2544904	GCF_001664035.1	GCF_001664035.1	869754	27322	Metschnikowia bicuspidata	haploid
+Meyerozyma guilliermondii	Scaffold	0	2007/05/08 00:00	2016/11/29 00:00	representative genome	313225	1701016	GCF_000149425.1	GCF_000149425.1	294746	4929	Meyerozyma guilliermondii	haploid
+Nakaseomyces bacillisporus	Contig	0	2013/08/29 00:00	2015/07/06 00:00	representative genome	145552	145552	GCA_001046975.1	GCA_001046975.1	1279116	51660	Nakaseomyces bacillisporus	haploid
+Nakaseomyces delphensis	Contig	100	2013/08/29 00:00	2015/06/25 00:00	representative genome	129090	129090	GCA_001039675.1	GCA_001039675.1	1279113	51657	Nakaseomyces delphensis	haploid
+Naumovozyma castellii	Chromosome	0	2011/08/01 00:00	2017/07/25 00:00	representative genome	1245273	1245273	GCF_000237345.1	GCF_000237345.1	1064592	27288	Naumovozyma castellii	haploid
+Naumovozyma dairenensis	Chromosome	0	2012/08/20 00:00	2016/11/30 00:00	representative genome	109578	1230053	GCF_000227115.2	GCF_000227115.2	1071378	27289	Naumovozyma dairenensis	haploid
+Spathaspora passalidarum	Scaffold	43.8	2011/08/25 00:00	2014/03/26 00:00	representative genome	1645821	2071440	GCF_000223485.1	GCF_000223485.1	619300	340170	Spathaspora passalidarum	haploid
+Suhomyces tanzawaensis	Scaffold	74	2016/09/15 00:00	2017/02/15 00:00	representative genome	183924	1512535	GCF_001661415.1	GCF_001661415.1	984487	46583	Suhomyces tanzawaensis	haploid
+Yamadazyma tenuis	Scaffold	26.9	2011/08/25 00:00	2014/01/23 00:00	representative genome	382504	1222892	GCF_000223465.1	GCF_000223465.1	590646	2315449	Yamadazyma tenuis	haploid
+Saccharomyces cerevisiae	Complete Genome	0	2014/12/17 00:00	2016/11/29 00:00	reference genome	924431	924431	GCF_000146045.2	GCF_000146045.2	559292	4932	Saccharomyces cerevisiae	haploid
+Candida auris	Chromosome	250	2021/06/10 00:00	2021/06/10 00:00	na	2387897	2387897	GCA_018831645.1	GCA_018831645.1	498019	498019	[Candida] auris	haploid
+Candida auris	Complete Genome	35	2021/01/29 00:00	2021/01/29 00:00	na	2587637	2587637	GCA_016772195.1	GCA_016772195.1	498019	498019	[Candida] auris	haploid
+Candida auris	Contig	200	2019/07/11 00:00	2019/07/19 00:00	na	3155023	3155023	GCA_007168705.1	GCA_007168705.1	498019	498019	[Candida] auris	haploid
+Candida glabrata	Complete Genome	40	2021/10/13 00:00	2021/10/13 00:00	na	1069838	1069838	GCA_020450195.1	GCA_020450195.1	5478	5478	[Candida] glabrata	haploid
+Candida glabrata	Chromosome	261	2017/07/14 00:00	2017/07/14 00:00	na	1178610	1178610	GCA_002219185.1	GCA_002219185.1	5478	5478	[Candida] glabrata	haploid
+Candida haemuloni	Complete Genome	774	2021/07/23 00:00	2021/07/23 00:00	na	3289384	3289384	GCA_019332025.1	GCA_019332025.1	45357	45357	[Candida] haemuloni	haploid
+Candida nivariensis	Contig	0	2013/08/29 00:00	2015/07/06 00:00	na	248381	248381	GCA_001046915.1	GCA_001046915.1	1279115	418086	[Candida] nivariensis	haploid
+Candida parapsilosis	Contig	460.73	2020/08/03 00:00	2020/08/03 00:00	na	2093445	2093445	GCA_014049495.1	GCA_014049495.1	5480	5480	Candida parapsilosis	haploid
+Candida pseudohaemulonii	Contig	451	2018/02/07 00:00	2018/02/20 00:00	na	799808	799808	GCA_002933435.1	GCA_002933435.1	418784	418784	[Candida] pseudohaemulonii	haploid
+Debaryomyces fabryi	Scaffold	31	2018/11/20 00:00	2018/11/20 00:00	na	710497	751370	GCA_003708665.2	GCA_003708665.2	58627	58627	Debaryomyces fabryi	haploid
+Kluyveromyces lactis	Complete Genome	224	2019/08/13 00:00	2021/01/22 00:00	na	1761927	1761927	GCA_007993695.1	GCA_007993695.1	28985	28985	Kluyveromyces lactis	haploid
+Meyerozyma guilliermondii	Contig	240	2019/07/12 00:00	2019/07/12 00:00	na	1721375	1721375	GCA_006942155.1	GCA_006942155.1	294746	4929	Meyerozyma guilliermondii	haploid
+Saccharomyces cerevisiae	Chromosome	380	2022/03/18 00:00	2022/03/18 00:00	na	901927	901927	GCA_022626425.1	GCA_022626425.1	559292	4932	Saccharomyces cerevisiae	haploid
+Scheffersomyces stipitis	Chromosome	167	2021/02/12 00:00	2021/02/12 00:00	na	1880751	1880751	GCA_016859295.1	GCA_016859295.1	4924	4924	Scheffersomyces stipitis	haploid

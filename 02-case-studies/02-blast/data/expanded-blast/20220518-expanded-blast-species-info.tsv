@@ -16,8 +16,8 @@ Candida castellii	Saccharomycetaceae	Candida_castellii	1279086	6	3	NA	no report	
 Lodderomyces elongisporus	Debaryomycetaceae	Lodderomyces_elongisporus	379508	4	2	0	human (rare)	PMID: 30245829
 Meyerozyma guilliermondii	Debaryomycetaceae	Meyerozyma_guilliermondii	294746	4	1	0	human	NA
 Nakaseomyces delphensis	Saccharomycetaceae	Nakaseomyces_delphensis	1279113	4	1	NA	no report	NA
-Suhomyces tanzawaensis	Debaryomycetaceae	Candida_tanzawaensis	984487	4	3	3	no report	NA
-Yamadazyma tenuis	Debaryomycetaceae	Candida_tenuis	590646	4	4	2	no report	NA
+Suhomyces tanzawaensis	Debaryomycetaceae	Suhomyces_tanzawaensis	984487	4	3	3	no report	NA
+Yamadazyma tenuis	Debaryomycetaceae	Yamadazyma_tenuis	590646	4	4	2	no report	NA
 Candida orthopsilosis	Debaryomycetaceae	Candida_orthopsilosis	1136231	3	0	0	human	NA
 Debaryomyces hansenii	Debaryomycetaceae	Debaryomyces_hansenii	284592	3	0	0	human (rare)	PMID: 18701668
 Kazachstania naganishii	Saccharomycetaceae	Kazachstania_naganishii	1071383	3	0	0	no report	NA
@@ -31,4 +31,4 @@ Kluyveromyces lactis	Saccharomycetaceae	Kluyveromyces_lactis	28985	1	0	0	no repo
 Lachancea kluyveri	Saccharomycetaceae	Lachancea_kluyveri	4934	1	0	NA	no report	NA
 Nakaseomyces bacillisporus	Saccharomycetaceae	Nakaseomyces_bacillisporus	1279116	1	0	NA	no report	NA
 Naumovozyma castellii	Saccharomycetaceae	Naumovozyma_castellii	1064592	1	0	0	no report	NA
-Saccharomyces cerevisiae	Saccharomycetaceae	Saccharomyces_cerevisiae	4932	0	0	NA	human (rare)	NA
+Saccharomyces cerevisiae	Saccharomycetaceae	Saccharomyces_cerevisiae	559292	0	0	NA	human (rare)	NA

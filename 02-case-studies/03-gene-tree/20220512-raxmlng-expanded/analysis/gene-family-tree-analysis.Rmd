@@ -1,0 +1,214 @@
+---
+title: "Analyze and plot reconciled gene trees"
+author: "Bin He"
+date: "2022-05-18 (updated `r Sys.Date()`)"
+output: 
+  html_notebook: 
+    toc: yes
+    toc_float: yes
+    toc_depth: 5
+    code_folding: hide
+---
+```{r}
+suppressPackageStartupMessages(require(tidyverse))
+suppressPackageStartupMessages(require(cowplot))
+require(ggtree)
+require(treeio)
+```
+
+Manipulating and plotting species and reconciled gene trees.
+
+## Species tree
+Below is the relationship between the species studied in this analysis.
+```{r, warning=FALSE}
+spsInfo <- read_tsv("../input/20220518-expanded-blast-species-info.tsv", col_types = cols())
+sps.tree <- read.tree("../input/20220521-generax-species-tree.nwk") %>% 
+  as_tibble() %>% 
+  mutate(label = gsub("_", " ", label)) %>% 
+  left_join(spsInfo, by = c("label" = "species")) %>% 
+  as.treedata()
+```
+
+```{r}
+# to label the clades
+clade <- c(
+  MDR = MRCA(sps.tree, "Candida auris", "Candida duobushaemulonis"),
+  CaLo = MRCA(sps.tree, "Candida parapsilosis", "Candida tropicalis"),
+  glabrata = MRCA(sps.tree, "Candida glabrata", "Candida nivariensis")
+)
+sps.tree <- groupClade(sps.tree, clade)
+```
+
+```{r}
+p.tree <- ggtree(sps.tree, ladderize = FALSE) + scale_y_reverse() + xlim(0,3) +
+  #geom_tiplab(aes(color = pathogen), as_ylab = TRUE) +
+  geom_tiplab(size = 3.2, fontface = "italic", align = TRUE, linesize = 0.1, offset = 0.05) +
+  geom_treescale(x = 0, width = 0.2, linesize = 1.2) +
+  geom_hilight(node = clade["MDR"], fill = "#7F00FF", alpha = 0.15)  + # MDR
+  geom_hilight(node = clade["CaLo"], fill = "pink", alpha = 0.25)    + # Candida/Lodderomyces
+  geom_hilight(node = clade["glabrata"], fill = "steelblue", alpha = 0.15)  + # glabrata
+  geom_cladelabel(node = clade["MDR"],  label = "MDR", offset = 1.5,# color = "purple",
+                  offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +# MDR
+  geom_cladelabel(node = clade["CaLo"],  label = "Candida/\nLodderomyces", offset = 1.47,# color = "hotpink2",
+                  offset.text = 0.1, angle = 270, hjust = .5, extend = 0.5, fontsize = 3.5) + # albicans
+  geom_cladelabel(node = clade["glabrata"],  label = "glabrata", offset = 1.38,# color = "steelblue", 
+                  offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +# glabrata
+  geom_tippoint(aes(color = pathogen)) +
+  scale_color_manual(values =  c("crustacean" = "#6a5acd",
+                                 "human" = "#d14949", 
+                                 "human (rare)" = "steelblue",
+                                 "no report" = "gray20")) +
+  #guides(color = guide_legend(byrow = TRUE)) +
+  theme(legend.position = c(0.12, 0.13))
+p.tree
+ggsave(paste0("../output/img/", gsub("-","",Sys.Date()), "-species-tree.png"), width = 6.5, height = 6)
+```
+**Fig. 1** 
+
+> 
+
+Plot the number of Hil family homologs in each species
+```{r}
+df0 <- select(spsInfo, species, total) %>%  
+  mutate(species = factor(species, levels = get_taxa_name(p.tree)))
+p <- ggplot(df0, aes(x = 1, y = species)) + 
+  geom_tile(aes(fill = total), color = "white", alpha = 0.4) +
+  geom_text(aes(label = total), color = "black") +
+  scale_fill_distiller(palette = "Greys", direction = 1, limits = c(0, 20), oob = scales::squish) +
+  scale_x_discrete(position = "top") +
+  theme_cowplot() + 
+  theme(axis.title = element_blank(),
+        axis.line = element_blank(),
+        legend.position = "none")
+ggsave(p, file = paste0("../output/img/",gsub("-", "", Sys.Date()), "-Hil-family-number-side-panel.png"), width = 3.5, height = 6)
+```
+
+> Species tree for the side of a figure
+```{r}
+#p.tree <- sps.tree %>% as_tibble() %>% 
+#  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
+#  as.treedata() %>% ggtree(ladderize = FALSE) + xlim(0,15) + scale_y_reverse() +
+#  geom_tiplab(size = 5, align = TRUE, linesize = .5, fontface = "italic", offset = 0.1) +
+#  geom_hilight(node = 22, fill = "hotpink", alpha = 0.2) + # Clavispora
+#  geom_hilight(node = 23, fill = "purple", alpha = 0.2)  + # MDR
+#  geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
+#  geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
+#  geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
+ggsave("output/img/20210624-species-tree-side.png", p.tree, width = 3, height = 4.5)
+```
+
+## Gene tree
+> **Fig. 2 RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The branch length is proportional to the inferred substitions per site. The tree is manually rooted on the Saccharomycetaceae family, which is the outgroup to both the Candida and Clavispora genera and whose Hil homologs form a distinct group. Protein sequence names are not shown for brevity, but are color coded based on the species (groups) they belong to. The clade color code is nested such that if a sequence belongs to both a species and a clade, e.g. _C. auris_ and the MDR clade, the sequence will be colored based on the smaller phylogenetic unit, i.e. _C. auris_.
+
+### Gene tree reconciled using GeneRax
+```{r}
+# load the gene tree
+gene.tree <- read.nhx(file = "../output/generax/generax-clustalo-shen2018-wScer/reconciliations/Hil_reconciliated.nhx")
+# add supplemental information
+clades <- sps.tree %>% as_tibble() %>% select(treeName, group) %>% na.omit()
+gene.tree <- left_join(gene.tree, select(spsInfo, treeName, family), by = c("S" = "treeName")) %>% 
+  left_join(clades, by = c("S" = "treeName")) %>% 
+  mutate(family = forcats::fct_relevel(family, "Metschnikowiaceae", after = Inf))
+# label selected species to show the clustering
+selected_nodes <- gene.tree %>% as_tibble() %>% 
+  filter(S %in% c("Candida_albicans", "Candida_glabrata", "Candida_auris", "Metschnikowia_bicuspidata")) %>% 
+  pull(node)
+# identify M. bicuspidata clade
+Mbic_nodes <- as_tibble(gene.tree) %>% filter(grepl("bicuspidata", label)) %>% pull(node)
+Mbic_clade <- MRCA(gene.tree, Mbic_nodes)  
+# color by family
+clade.cols <- c(
+  "CaLo" = "firebrick",
+  "MDR" = "#7F00FF",
+  "glabrata" = "steelblue"
+)
+```
+
+```{r}
+p.tree <- ggtree(gene.tree, layout = "circular", branch.length = "none", size = 0.4) +# scale_y_reverse() +
+  #geom_nodepoint(aes(fill = D), data = td_filter(D == "Y"), shape = 21, size = 1, color = "red") + 
+  geom_tippoint(aes(color = group), size = 1) +
+  geom_tiplab(aes(label = paste0(str_sub(S, 1, 1), str_sub(word(S, 2, sep = "_"), 1, 3)), color = family),
+              data = td_filter(isTip & node %in% selected_nodes), size = 2, hjust = -0.5, offset = 0.2) +
+  #geom_cladelab(node = 357,  label = "M. bicuspidata", offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +
+  #geom_text(label = "D", data = td_filter(D == "Y"), hjust = -0.4, size = 1.5, color = "red")# +
+
+  scale_color_manual(name = "Clade", values = clade.cols)# +
+  #guides(color = "none")
+scaleClade(p.tree, Mbic_clade, 0.2) %>% scaleClade(235, 0.8) %>% 
+  collapse(Mbic_clade, mode = "min", fill = "#6a5acd")
+ggsave(file = paste0("../output/img/",gsub("-", "", Sys.Date()), "-reconciled-gene-tree-generax.pdf"), width = 6, height = 5)
+```
+
+### Gene tree reconciled using Notung 2.9
+As an alternative approach, we also reconciled the raxml gene tree with the species tree using Notung v2.9, setting the rearrangement threshold at 90 (branches with <90% support being subject to rearrangement)
+```{r}
+ggsave("output/img/20211124-reconciled-rearranged80-gene-tree-color.png", width = 7.5, height = 7)
+```
+>**Fig. 3 Reconciled and rearranged gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The cladogram shows only the topology of the tree, with endpoints colored in the same way as in Fig. 2. A red "D" next to an internal node indicates an inferred gene duplication event at that node. The labels with gray background highlight the main features of the tree: 1) the Saccharomycetaceae sequences form the outgroup, suggesting there was no ancient duplication prior to the divergence of the family and the remaining species; 2) the CUG-Ser1 clade, which contains both the Candida and Clavispora genera, forms two duplicate groups, suggesting an early duplication event in the clade; 3) the top CUG-Ser1 branch further experienced extensive duplications _independently_ in the Clavispora genus, labeled by the outgroup _D. hansenii_ (DH), and the Candida genus, labeled by the outgroup _S. stipitis_ (SS). 
+```{r, fig.width=3, fig.height=5}
+p.gtree <- ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + 
+  scale_y_reverse() +
+  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
+  geom_tippoint(aes(color = species_gr), show.legend = FALSE) +
+  scale_color_manual(name = "Clades", values = sps.color) +
+  theme(text = element_text(size = 14))
+ggsave("output/img/20210626-reconciled-gene-tree-side.png", width = 3, height = 6)
+```
+
+>export the gene tree order for plotting domain feature maps
+```{r}
+gene.tree.rec %>% as_tibble() %>% pull(name) %>% head(104) %>% 
+  cat(file = "data/reorder_by_gene_tree.txt", sep = "\n")
+```
+
+### Gains and losses on species tree
+```{r}
+# read in notung parsed event summary stats
+reconEventCount <- read_table("../input/20220521-generax-reconciliation-event-counts.txt", 
+                              col_names = c("treeName", "total", "dup", "loss", "hgt"), col_types = "ciiii")
+sps.tree.cnt <- sps.tree %>% 
+  as_tibble() %>% 
+  mutate(treeName = gsub(" ", "_", label)) %>% 
+  full_join(reconEventCount, by = "treeName") %>%
+  select(-staxid, -short, -shortIncompl, -total.x) %>% 
+  rename(total = total.y) %>% 
+  as.treedata()
+```
+
+```{r}
+off = 0.9
+off.text = 0.1 
+ggtree(sps.tree.cnt, aes(color = dup), size = .6, ladderize = FALSE) + scale_y_reverse() + xlim(0,2.5) +
+  scale_color_gradient(name = "Duplication", high = "#f75656", trans = "pseudo_log", breaks = c(0, 2, 5, 10, 20)) +
+  geom_tiplab(size = 3, color = "gray10", fontface = "italic", align = TRUE, linesize = 0.1, offset = 0.05) +
+  #geom_tiplab(color = "black", size = 3.2, fontface = "italic", align = TRUE, linesize = 0.05, offset = 0.05) +
+  geom_treescale(x = 0, width = 0.2, linesize = 1.2) +
+  #geom_hilight(node = clade["MDR"], fill = "#7F00FF", alpha = 0.15)  + # MDR
+  #geom_hilight(node = clade["CaLo"], fill = "pink", alpha = 0.25)    + # Candida/Lodderomyces
+  #geom_hilight(node = clade["glabrata"], fill = "steelblue", alpha = 0.15)#  + # glabrata
+  geom_text(aes(label = dup), data = td_filter(dup > 1),
+            hjust = 3, vjust = -.3, size = 2, color = "red", fontface = 1) +
+  geom_cladelabel(node = clade["MDR"], barsize = 2, color = "#7F00FF", align = TRUE, extend = 0.5, offset = off,
+                  label = "MDR", angle = 270, offset.text = off.text, hjust = .5) +# MDR
+  geom_cladelabel(node = clade["CaLo"], barsize = 2, color = "hotpink2", align = TRUE, extend = 0.5, offset = off,
+                  label = "Candida/\nLodderomyces", fontsize = 3.5, angle = 270, offset.text = off.text, hjust = .5) + # albicans
+  geom_cladelabel(node = clade["glabrata"], barsize = 2, color = "steelblue",  align = TRUE, extend = 0.5, offset = off,
+                  label = "glabrata", angle = 270, offset.text = off.text, hjust = .5) +# glabrata
+  geom_tippoint(aes(fill = total), shape = 21, size = 2.5, color = "gray30") +
+  scale_fill_fermenter(name = "# Hil homologs", palette = "Greys", direction = 1, breaks = c(0, 2, 5, 10, 20, 30)) +
+  #scale_fill_manual(values =  c("crustacean" = "#6a5acd",
+  #                               "human" = "#d14949", 
+  #                               "human (rare)" = "steelblue",
+  #                               "no report" = "gray20")) +
+  #guides(color = guide_legend(byrow = TRUE)) +
+  theme(legend.position = "bottom")
+#p.tree.cnt
+ggsave(paste0("../output/img/", gsub("-", "", Sys.Date()), "-species-tree-with-gains.pdf"), width = 6.5, height = 6.5)
+```
+**Fig. 4 Inferred gene duplications and losses in the Hyr/Iff-Like (HIL) family in Ascomycetes.** The cladogram shows the species relationship with shadings as in Figure 1. The numbers on top of each branch are the inferred duplications (red) and losses (black) using Notung 2.9. Yellow highlight emphasize the branches that experience three or more duplications.
+
+_**Conclusions**_
+
+1. The Hil family **independently** expanded in the Candida and Clavispora genera. The most significant expansion occurred within the albicans clade in the Candida genus and the MDR clade in the Clavispora genus.
+1. Many species in the Saccharomycetaceae family have no homologs in this family based on our blast criteria. This suggests that the gene family has contracted and any remaining homologs are shorter than 500 amino acid and thus likely to not play an adhesin function.
