@@ -88,33 +88,36 @@ Which genes are found by the _C. albicans_ and/or _C. glabrata_ Hyr1 query blast
 ```{r}
 Calb.not.Caur.hits <- set.ovlp %>% filter(!Caur) %>% pull(sid)
 refseq %>% filter(sid %in% Calb.not.Caur.hits) %>% 
+  group_by(sid) %>% filter(evalue == min(evalue)) %>% ungroup() %>% 
   select(query, qcovs, sid, slen, pident, evalue, species) %>% 
   mutate(species = paste(str_sub(species, 1, 1), word(species, 2, 2), sep = ". ")) %>% 
-  arrange(desc(slen))
+  arrange(species)
 ```
 > - The majority of the combined set is already in the subset identified using _C. auris_ Hil1 as the query.
 > - Of the ones that are specific to the _C. albicans_ Hyr1 query, I found the three _C. parasilosis_ hits are already included in the 104 homologs via the FungiDB blast. Whatever the reason that exluded them from the ncbi blastp search using _C. auris_ Hil1 domain as the query, they are already in our dataset.
 > - Same is true for XP_452176.1 from _K. lactis_, this time through the GRYC search.
-> - We will decide if any of the new sequences will be included in future analyses later
 
-Compare "new" sequences with the previous 104 homolog list
+Among the species included previously, how many of the "new" sequences were not part of the 104 homologs list?
 
 | sid | gid | species | in_early_verion | source |
 |:--|:--|:--|:--|:--|
 | XP_002999585 | CAGL0L00227g | C. glabrata | Yes | GRYC |
-| XP_036665263 | CPAR2_806400 | C. parapsilosis | No | NA |
-| XP_036665262 | CPAR2_806390 | C. parapsilosis | Yes | FungiDB |
-| XP_001383953 | PICST_31095 | S. stipitis | Yes* | NCBI |
 | XP_002615218 | CLUG_05233 | C. lusitaniae | Yes | FungiDB |
-| XP_036662815 | CPAR2_600430 | C. parapsilosis | Yes | FungiDB |
+| XP_002620045 | CLUG_01204 | C. lusitaniae | No^ | NA |
 | XP_002614121 | CLUG_05607 | C. lusitaniae | No | NA |
-| XP_001527307 | LELG_02136 | L. elongisporus | No | NA |
+| XP_036665262 | CPAR2_806390 | C. parapsilosis | Yes | FungiDB |
+| XP_036662815 | CPAR2_600430 | C. parapsilosis | Yes | FungiDB |
+| XP_036665263 | CPAR2_806400 | C. parapsilosis | No | NA |
 | XP_452176 | KLLA0_B14498g | K. lactis | Yes | GRYC |
+| XP_001527307 | LELG_02136 | L. elongisporus | No | NA |
+| XP_001385683 | PICST_3402 | S. stipitis | No^ | NA |
+| XP_001383953 | PICST_31095 | S. stipitis | Yes* | NCBI |
 
 *this hit was originally included when the N560 aa was used as query. In later analysis where N360 aa (of _C. auris_ Hil1) was used as query, this hit dropped off the list due to E-value being above the 1e-5 cutoff. So it is a legit, but borderline hit.
 
-1. We potentially need to add three more genes to the existing homolog list.
-1. A few other hits are below the 500 aa cutoff. For the purpose of doing family expansion analysis, we may include them. But we won't include them for the homolog property analysis.
+^shorter than 500 a.a.
+
+> Five hits are new, among which two are shorter than 500 a.a. and would have been excluded from the list (although they were not identified at all with the _C. auris_ query).
 
 
 ### 2. Species to include
@@ -574,11 +577,12 @@ Also export the gene-to-species mapping for `generax`
 gene2sps.map <- dedup.merge %>% 
   select(name, species) %>% 
   # modify the two species names that differ between the gene names and species tree
-  mutate(treeName = case_when(
-    species == "Yamadazyma tenuis" ~ "Candida tenuis",
-    species == "Suhomyces tanzawaensis" ~ "Candida tanzawaensis",
-    TRUE ~ species),
-    treeName = gsub(" ", "_", treeName))
+  mutate(treeName = gsub(" ", "_", species))#treeName = case_when(
+    #species == "Yamadazyma tenuis" ~ "Candida tenuis",
+    #species == "Suhomyces tanzawaensis" ~ "Candida tanzawaensis",
+    #TRUE ~ species),
+    #treeName = gsub(" ", "_", treeName))
+    
 gene2sps.map %>% 
   select(name, treeName) %>% 
   write_tsv("data/20220516-expanded-blast-genes-to-species-map.tsv", col_names = FALSE)
@@ -599,7 +603,7 @@ sps.summary <- dedup.merge %>%
     .groups = "drop"
   ) %>% 
   add_row(species = "Saccharomyces cerevisiae",
-          staxid = "4932",
+          staxid = "559292",
           total = 0, short = 0, shortIncompl = NA) %>% 
   left_join(sps.patho, by = "species") %>% 
   arrange(desc(total))
@@ -628,13 +632,57 @@ Write species info to file
 spsInfo <- sps.lin %>% 
   filter(Rank == "family") %>% 
   select(species, family = ScientificName) %>% 
-  mutate(treeName = case_when(
-    species == "Yamadazyma tenuis" ~ "Candida tenuis",
-    species == "Suhomyces tanzawaensis" ~ "Candida tanzawaensis",
-    TRUE ~ species),
-    treeName = gsub(" ", "_", treeName)) %>% 
+  mutate(treeName = gsub(" ", "_", species)) %>% 
+    #treeName = case_when(
+    #species == "Yamadazyma tenuis" ~ "Candida tenuis",
+    #species == "Suhomyces tanzawaensis" ~ "Candida tanzawaensis",
+    #TRUE ~ species),
+    #treeName = gsub(" ", "_", treeName)) %>% 
   right_join(sps.summary, by = "species")
 
 write_tsv(spsInfo, file = "data/20220518-expanded-blast-species-info.tsv")
+```
+
+### 12. Genome assembly info and chromosomal locations
+Use species taxid to fetch the links to the taxonomy database. Note that some of the taxids are for specific strains while others are at the species level. As a result, there may be different number of assemblies being fetched.
+```{r genome_assembly}
+staxid <- sps.summary %>% select(species, staxid) %>% deframe()
+staxid["Scheffersomyces stipitis"] <- "4924" # use the species general ID
+assembly.lnk <- entrez_link(dbfrom = "taxonomy", db = "assembly", id = staxid, by_id = TRUE)
+assembly.lnk <- lapply(assembly.lnk, function(x) x$links$taxonomy_assembly)
+names(assembly.lnk) <- sps.summary$species
+assembly.lnk["Lachancea kluyveri"] <- "9527871"
+```
+Get the assembly summary info from ncbi
+```{r}
+assembly.info <- lapply(assembly.lnk, function(i){
+  if(!is_empty(i))
+    entrez_summary(db = "assembly", id = i)
+})
+```
+Extract the information into a tibble
+```{r}
+fields <- c("assemblyaccession", "lastmajorreleaseaccession", "taxid", "speciestaxid",
+            "speciesname", "assemblytype", "assemblystatus", "coverage", "submissiondate",
+            "lastupdatedate", "refseq_category", "contign50", "scaffoldn50")
+assembly.tb <- lapply(assembly.info, function(x) {
+  tb <- extract_from_esummary(x, elements = fields, simplify = FALSE)
+  bind_rows(tb)
+}) %>% bind_rows() %>%
+  mutate(species = gsub("\\[|\\]", "", speciesname)) %>% 
+  arrange(desc(refseq_category), species) %>% 
+  select(species, assemblystatus:scaffoldn50, everything())
+  #select(species = speciesname, everything())
+```
+Select the refseq or one alternative assembly
+```{r}
+assembly.tbl <- assembly.tb %>% 
+  mutate(assemblystatus = factor(assemblystatus, levels = c("Complete Genome", "Chromosome", "Scaffold", "Contig"))) %>% 
+  group_by(species) %>% 
+  filter(refseq_category != "na" | scaffoldn50 == max(scaffoldn50) | assemblystatus %in% c("Complete Genome", "Chromosome")) %>% 
+  group_by(species, assemblystatus) %>% 
+  filter(refseq_category != "na" | scaffoldn50 == max(scaffoldn50)) %>% 
+  ungroup()
+write_tsv(assembly.tbl, file = "../../output/20220525-expanded-blast-species-assembly-info.tsv")
 ```
 

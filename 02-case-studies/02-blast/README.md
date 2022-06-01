@@ -336,7 +336,9 @@ Did:
 - To expand the search beyond the refseq_prot database, I repeated the search against the new "clustered nr" database
   `blast_formatter -rid 4VFCXY5F016 -out 20220406-expanded-PF11765-blastp-out.asn -outfmt 11`
 
-## 2022-04-20 [HB] Address RC reviewer 3 comments
+## 2022-04-20 [HB] Reviewer 3 comment: refseq_prot records complete?
+
+### _C. tropicalis_
 
 One of reviewer 3's criticism is that in their unpublished work, they found that seven of the _C. tropicalis_ Hil homologs listed in our manuscript are "incomplete", in the sense that the refseq annotated protein is not the full length product. When I looked closely at the refseq records, it turned out that the mRNA record indicated the product is indeed incomplete. I initially understood this as meaning the ORFfinder algorithm was unable to identify the stop codon. But later I realized that this is not necessarily the case. Note that the "completeness" field in the mRNA record can take several values, including "incomplete 5' end", "incomplete 3' end" and "incomplete on both ends" (exact wording may differ). What "incomplete 5' end" meant was that the gene finder wasn't able to identify an **upstream stop codon** (for the upstream gene) 5' of the current gene's start codon. Similarly, "incomplete 3' end" means that the pipeline cannot identify the **start codon** of the downstream gene. Missing stop codon should, in theory, result in failed gene annotation. But I decided to check the _C. tropicalis_ hits more closely anyway. Specifically, I blasted the mRNA sequence against a [new genome assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_013177555.1) (for the same MYA-3404 type strain) based on a mixture of PacBio and Illumina reads. My reasoning is that if the CDS is at least complete, I should be able to locate both the start and the stop codon in the genome sequences (especially the stop codon).
 
@@ -359,9 +361,13 @@ One of reviewer 3's criticism is that in their unpublished work, they found that
 | XP_002547891.1 | 669    | XM_002547845 | Perfect match                                                |
 | XP_002550387.1 | 588    | XM_002550341 | two SNPs, stop codon present                                 |
 
- To see whether this is a general pattern for the other genomes, I also looked at several other species.
+To see whether this is a general pattern for the other genomes, I also looked at several other species.
 
-- For _C. albicans_ SC5314, the reference assembly was updated in 2016 and no newer assembly is present in the NCBI database for the same strain. Also, none of the _albicans_ hits were annotated as incomplete for the protein product. To assess the completeness of the refseq records, I blasted the 12 mRNA records against two newer assemblies, [GCA_017309835.1](https://www.ncbi.nlm.nih.gov/assembly/GCA_017309835.1) and [GCA_005890745.1](https://www.ncbi.nlm.nih.gov/assembly/GCA_005890745.1). The former is for the CHN1 strain, sequenced using a mixture of Oxford Nanopore and MiSeq, assembled using Flye v.2.7.1 and Pilon v1.23. The latter is for the NCYC4166 strain, sequenced PacBio Sequel and assembled using FALCON-Unzip v. 1.1.3.
+### _C. albicans_
+
+For _C. albicans_ SC5314, the reference assembly was updated in 2016 (the strain was resequenced in 2013, PMID: 24025428). Based on the publication, the assembly should be of high completeness and quality. Notably, none of the _albicans_ hits were annotated as incomplete for the protein product.
+
+Since no newer assembly using 3rd gen technology exists for the same strain, I blasted the 12 mRNA records against two newer assemblies, [GCA_017309835.1](https://www.ncbi.nlm.nih.gov/assembly/GCA_017309835.1) and [GCA_005890745.1](https://www.ncbi.nlm.nih.gov/assembly/GCA_005890745.1). The former is for the CHN1 strain, sequenced using a mixture of Oxford Nanopore and MiSeq, assembled using Flye v.2.7.1 and Pilon v1.23. The latter is for the NCYC4166 strain, sequenced PacBio Sequel and assembled using FALCON-Unzip v. 1.1.3.
 
 | protein_ID  | length | mRNA_ID   | CHN1                            | NCYC4166                       |
 | ----------- | ------ | --------- | ------------------------------- | ------------------------------ |
@@ -380,8 +386,13 @@ One of reviewer 3's criticism is that in their unpublished work, they found that
 
 - The result shows that for _C. albicans_, the reference assembly hits are all fine.
 
-- For _C. parapsilosis_, which has the most hits shorter than the 500 aa cutoff, the reference assembly was submitted in 2011 and last updated in 2020, although it is still at contig level. The particular strain in that assembly, CDC317, has not been subject to another sequencing effort. I found a scaffold-level assembly for a different strain, CBS6318 ([GCA_000982555.2](https://www.ncbi.nlm.nih.gov/assembly/GCA_000982555.2)) that was completed in 2014 and last updated in 2019, and blasted all 15 hits against that assembly. In particular, 10/15 hits based on the reference assembly were shorter than 500 aa. For one of them (XM_036807488), I used ORFfinder to identify a 414 aa product with the same start codon position in the second strain's assembly, compared with 411 aa in the reference assembly. For another one (XM_036807487), the predicted size in the second assembly is 420 aa vs 414 aa in the reference one. **The rest all matched between the two assemblies**. So overall it seems like the short products are validated at least based two assemblies, both of which used short reads.
-- For _C. glabrata_, the Cormack lab has generated PacBio SRII based assemblies in 2020 for the BG strains. I chose BG2 ([ASM1421772v1](https://www.ncbi.nlm.nih.gov/assembly/GCA_014217725.1/)) as the target and blasted the three hits identified based on the reference assembly (for CBS138). 
+### _C. parapsilosis_
+
+For _C. parapsilosis_, which has the most hits shorter than the 500 aa cutoff (10/15), the reference assembly was submitted in 2011 and last updated in 2020, although it is still at contig level. The particular strain in that assembly, CDC317, has not been subject to another sequencing effort. I found a scaffold-level assembly for a different strain, CBS6318 ([GCA_000982555.2](https://www.ncbi.nlm.nih.gov/assembly/GCA_000982555.2)), which was completed in 2014 and last updated in 2019. I blasted all 15 hits against that assembly. For one of them (XM_036807488), I used ORFfinder to identify a 414 aa product with the same start codon position in the second strain's assembly, compared with 411 aa in the reference assembly. For another one (XM_036807487), the predicted size in the second assembly is 420 aa vs 414 aa in the reference one. **The rest all matched between the two assemblies**. So overall it seems like the short products are validated at least based two assemblies, both of which used short reads.
+
+### _C. glabrata_
+
+For _C. glabrata_, the Cormack lab has generated PacBio SRII based assemblies in 2020 for the BG strains. I chose BG2 ([ASM1421772v1](https://www.ncbi.nlm.nih.gov/assembly/GCA_014217725.1/)) as the target and blasted the three hits identified based on the reference assembly (for CBS138). 
 
 | protein_ID     | length | mRNA_ID      | compared_to_new_assembly                                     |
 | -------------- | ------ | ------------ | ------------------------------------------------------------ |
@@ -389,11 +400,17 @@ One of reviewer 3's criticism is that in their unpublished work, they found that
 | XP_445977.1    | 965    | XM_445977    | matches QNG13321.1, 965 aa, identical sequences              |
 | XP_447567.2    | 1771   | XM447567     | matches QNG14727.1, 2581 aa, a long insertion in the new assembly allele |
 
-- Based on the above I can conclude that:
-  - The issue illustrated by _C. tropicalis_ is very organism-specific -- this primarily has to do with how the genome was sequenced in the past and whether the same strain was later sequenced again with a long-read technology. For example, _C. albicans_ and _C. dubliniensis_ were both sequenced in the same study as _C. tropicalis_. The former two were not sequenced (the same strain) later.
-  - The issues affecting _C. tropicalis_ can be summarized as follows: the PF11765 domain hit is credible (that's what we used as query in blast). However, the identified protein may be misannotated, meaning that it may be shorter or longer than it really is (in _C. tropicalis_'s case more likely to be shorter than longer, for reasons unclear to me).
-  - Because of the above, the issue *does not* affect the accuracy of the blastp hits. What it does affect is when I applied the 500 aa length filter, some proteins may have been wrongly left out. I plan to carefully review all hits that would be left out due to length in the revision and so this should be addressed.
-  - Note that none of our conclusions specifically hinged upon the Hil homologs in non _C. auris_ species being complete. The primary use of those sequences are 1) infer the evolutionary history of the family to demonstrate independent expansion, which relies only on the PF11765 domain alignment; 2) demonstrate the rapid divergence in the central domain (reviewer suggested changing this term, call it B-region?). For the latter, the incomplete proteins may affect the S/T frequency and β-aggregation potential analyses, but they are not expected to cause significant changes to any of the conclusions (which is that both features are highly variable among homologs).
+### Conclusion
+
+Based on the above I can conclude that:
+
+- _C. tropicalis_ is likely a specific case -- either its genome is particularly tough to sequence/assemble, or the original assembly was flawed. Other genomes I looked at don't have the same problems.
+- The issues affecting _C. tropicalis_ can be summarized as follows: the PF11765 domain hit is credible (that's what we used as query in blast). However, the identified protein may be misannotated, meaning that it may be shorter or longer than it really is (in _C. tropicalis_'s case more likely to be shorter than longer, for reasons unclear to me).
+- Because of the above, the issue *does not* affect the accuracy of the blastp hits. What it does affect is when I applied the 500 aa length filter, some proteins may have been wrongly left out. I plan to carefully review all hits that would be left out due to length in the revision and so this should be addressed.
+- Note that none of our conclusions specifically hinged upon the Hil homologs in non _C. auris_ species being complete. The primary use of those sequences are 1) infer the evolutionary history of the family to demonstrate independent expansion, which relies only on the PF11765 domain alignment; 2) demonstrate the rapid divergence in the central domain (reviewer suggested changing this term, call it B-region?). For the latter, the incomplete proteins may affect the S/T frequency and β-aggregation potential analyses, but they are not expected to cause significant changes to any of the conclusions (which is that both features are highly variable among homologs).
+
+### _C. auris_ strains
+
 - Of particular interest is the quality of the hits in _C. auris_, including both the reference assembly and the other strains we used for various analyses. First of all, I checked the sequencing and assembly details for the genomes:
 
 | Strain | Clade | Assembly_ID     | Sequencing_Technology | Assembly_Notes           |
@@ -425,14 +442,7 @@ cat GCA_016859295.1_ASM1685929v1_protein.faa.gz | gunzip -c | makeblastdb -in - 
 # I actually wrote a script in the assembly folder to do all the above and the blast. check that instead
 ```
 
-## 2022-04-26 [HB] Expanded BLAST results summary
-
-This is a summary of the past several days of analyses:
-
-1. I performed blastp searches against the refseq database using three queries (Cgla_Hyr1, Calb_Hyr1, Caur_Hil1, just the PF11765 domain portion). In retrospect, I realized that what would be a better solution to this arbitrary choice of queries is to use the HMM model already existing for the PF11765 domain and perform a HMMER search. However, so far the online version of HMMER doesn't support searching against the refseq or any other ncbi databases. This is because HMMER, even though it has been significantly sped up in its recent versions, is still much slower compared with BLAST.
-2. After combining the results from the three queries, I compared them to the previous 104 homologs list and found that among the species included in both, only three additional hits will be added due to the addition of the two new queries. That's quite reassuring, suggesting that our initial (arbitrary) choice of Caur_Hil1 PF11765 domain didn't bias the hits towards species close to it. Note that using the Cgla_Hyr1 as a query didn't recover more hits from the Saccharomycetaceae family.
-3. As described above, when compared with the new generation of assemblies that used long-read technologies, most of the hits do appear to be complete and match quite well.
-4. However, when I performed an independent blastp search (instead of comparing the hits from the refseq hits to the new assembly) in the new _C. glabrata_ assembly generated by the Cormack lab, I could identify a larger set of hits. In the next post I will describe the findings.
+I identified a total of 13 hits, of which seven are above the 50% query coverage threshold. This is quite different from the 18 hits identified in the refseq assembly. When I blasted the refseq hits against the new assembly, some of them had poor matches. Without further investigation, it is not clear what is the cause of the discrepancy. I plan to use the new assembly hits for downstream analyses given that it is more recently sequenced with a higher level of completeness.
 
 ## 2022-05-01 [HB] *C. glabrata* new assembly has more hits
 
@@ -463,11 +473,11 @@ _Notes_
   | QHS68452 | CAGL0L00227g | 3242   | Yes    | Yes   | Yes          |
   | QHS69029 | CAGL0M00121g | 1581   | No     | No    | Yes          |
 
-- To see if other genomes also contain a large number of missing homologs due to genome assembly issues, I downloaded a 2021 assembly for _S. Cerevisiae_ S288C, the same as the genome reference strain. There is no publication associated with [this assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016858165.1/). The webpage for it lists INSCRIPTA as the submitter. Sequencing was done using PacBio and the genome *is* annotated, allowing me to perform blastp. Using the same blastp queries and parameters, no hits were recovered. There are two possible explanations: the new PacBio assembly is still incomplete, especially with respect to the subtelomere region, or that it's _C. glabrata_ that has specifically expanded the Hil family in the subtelomere region.
+- To see if other genomes also contain a large number of missing homologs due to genome assembly issues, I downloaded a 2021 assembly for _S. cerevisiae_ S288C, the same as the genome reference strain. There is no publication associated with [this assembly](https://www.ncbi.nlm.nih.gov/assembly/GCA_016858165.1/). The webpage for it lists INSCRIPTA as the submitter. Sequencing was done using PacBio and the genome *is* annotated, allowing me to perform blastp. Using the same blastp queries and parameters, no hits were recovered. There are two possible explanations: the new PacBio assembly is still incomplete, especially with respect to the subtelomere region, or that it's _C. glabrata_ that has specifically expanded the Hil family in the subtelomere region.
 
-- Not satisfied with the _S. cerevisiae_ result above, I identified another 2019 PacBio+Illumina assembly for _Kluyveromyces lactic_ CBS2015 (Varela, Wolfe et al 2019, PMID: 31813610). I could identify a single hit in the genome, consistent with the previous refseq result. So it increasingly seems like _C. glabrata_ is an outlier.
+- Not satisfied with the _S. cerevisiae_ result above, I identified another 2019 PacBio+Illumina assembly for _Kluyveromyces lactis_ CBS2015 (Varela, Wolfe et al 2019, PMID: 31813610). I could identify a single hit in the genome, consistent with the previous refseq result. So **it increasingly seems like _C. glabrata_ is an outlier.**
 
-- Unclear how this family has evolved in the Nakaseomycetes, as the other genomes are not of the same quality as _C. Glabrata_. Should we get involved in sequencing those species???
+- Unclear how this family has evolved in the Nakaseomycetes, as the other genomes are not of the same quality as _C. glabrata_. Should we get involved in sequencing those species???
 
 ## 2022-05-03 [HB] Nakaseomyces blast, GRYC
 
@@ -483,3 +493,13 @@ _Notes_
 * Nakaseomyces and Lachancea genera species assemblies are present in the Assembly database in NCBI but not in the refseq database. In addition, the assemblies that do exist are not annotated (no translated protein sequences). I thus downloaded the CDS translations from GRYC for the Nakaseomyces (except _C. glabrata_) and Lachancea (only included _L. kluyveri_ as a representative) genera and performed blastp searches locally.
     * I found a 2021 _C. nivariensis_ assembly for the same strain as the one available in GRYC (CBS 9983). The new assembly used Oxford Nanopore + iSeq and achieved >100x coverage. Performing tblastn searches in this new assembly led to one more hit than those recovered from the early assembly (3 vs 2).
 * My plan is to add the GRYC sequences to the refseq list and use that as the basis for the new version.
+
+## 2022-05-26 [HB] Expanded BLAST results summary
+
+This is a summary of the past several days of analyses:
+
+1. I performed blastp searches against the refseq database using three queries (Cgla_Hyr1, Calb_Hyr1, Caur_Hil1, just the PF11765 domain portion). 
+   - In retrospect, I realized that what would be a better solution to this arbitrary choice of queries is to use the HMM model already existing for the PF11765 domain and perform a HMMER search. However, so far the online version of HMMER doesn't support searching against the refseq or any other ncbi databases. This is because HMMER, even though it has been significantly sped up in its recent versions, is still much slower compared with BLAST.
+   - After combining the results from the three queries, I compared them to the previous 104 homologs list and found that among the species included in both, **only three additional hits will be added due to the addition of the two new queries** (two more hits are new but are below 500 aa, which had been excluded in the previous analysis). That's quite reassuring, suggesting that our initial (arbitrary) choice of Caur_Hil1 PF11765 domain didn't bias the hits towards species close to it. Note that using the Cgla_Hyr1 as a query didn't recover more hits from the Saccharomycetaceae family.
+2. As described above, when compared with the new generation of assemblies that used long-read technologies, most of the hits do appear to be complete and match quite well. _C. tropicalis_, for which the refseq assemblies contain many incomplete proteins compared with the newer assembly, appears to be a special case.
+3. When I performed an independent blastp search (instead of comparing the hits from the refseq hits to the new assembly) in the new _C. glabrata_ assembly generated by the Cormack lab, I could identify a larger set of hits (13 vs 2). I checked a few other species with newer assemblies, including _C. nivariensis_ (CBS9983), _S. cerevisiae_ (S288c), _K. lactis_ (CBS2105) and _S. stipitis_ (NRRL-Y7124). All had the same number or fewer hits (_S. stipitis_ had fewer hits).
