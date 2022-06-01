@@ -1,0 +1,590 @@
+BLASTP 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: C_parapsilosis_FDA653
+           5,859 sequences; 2,956,521 total letters
+
+
+
+Query= Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172
+[[Candida] auris]
+
+Length=316
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KAF6064290.1 Hyphally regulated cell wall protein N-terminal fami...  134     2e-35
+KAF6063442.1 Hyphally regulated cell wall protein N-terminal fami...  134     2e-35
+KAF6058095.1 Hyphally regulated cell wall protein N-terminal fami...  103     1e-25
+KAF6064292.1 Hyphally regulated cell wall protein N-terminal fami...  101     3e-24
+KAF6058094.1 Hyphally regulated cell wall protein N-terminal fami...  96.3    5e-23
+KAF6066031.1 Hyphally regulated cell wall protein N-terminal fami...  94.0    5e-22
+KAF6062143.1 Hyphally regulated cell wall protein N-terminal fami...  93.6    5e-22
+KAF6062071.1 Hyphally regulated cell wall protein N-terminal fami...  92.0    2e-21
+KAF6062069.1 Hyphally regulated cell wall protein N-terminal fami...  89.4    2e-20
+KAF6066030.1 Hyphally regulated cell wall protein N-terminal fami...  87.4    7e-20
+KAF6062144.1 Hyphally regulated cell wall protein N-terminal fami...  85.5    3e-19
+KAF6062072.1 Hyphally regulated cell wall protein N-terminal fami...  84.7    6e-19
+KAF6062070.1 Hyphally regulated cell wall protein N-terminal fami...  83.2    2e-18
+KAF6062073.1 Hyphally regulated cell wall protein N-terminal fami...  76.3    5e-16
+KAF6064289.1 Hyphally regulated cell wall protein N-terminal fami...  75.1    2e-15
+KAF6063441.1 Hyphally regulated cell wall protein N-terminal fami...  73.2    9e-15
+
+
+
+Query_1       3    FYLSATWALTITENTVNVGALNIKIGSLTINPGVYYSIVNNALTTLGG--SL--D---NQ  55
+KAF6064290.1  12   L.I.VVSG.N.AT..IDR..ISLNV.DI...S.A.W..I...ISAFVS--N.--EVAPEA  67
+KAF6063442.1  12   L.I.VVSG.N.AT..IDR..ISLNV.DI...S.A.W..I...ISAFVS--N.--EVAPEA  67
+KAF6058095.1  25                D.IDW.TQ.VGQ.DVH.HS.ALW..I...ASDFH.--NIQV.---SN  66
+KAF6064292.1  15     I.TVCS.E..K.RIDR.SI.LGNEDI..RS.AFW..I...G.NFNS--NINV.---EG  67
+KAF6058094.1  25                ..IDW.TQ.VGQ.DVH.HS.ALW..I...ASDFH.--NIQV.---SN  66
+KAF6066031.1  19                  .EW..QDLSF.DVHVF.NTIW.MI...ASNFR.--NIQV.---KT  58
+KAF6062143.1  27                ...DW.TQ.VGN.DVH.HS.AIW..I...ASDFH.--NIQV.---SN  68
+KAF6062071.1  29                  .DW.SQ.VGN.DVSLYSKSIW..I...A.DFH.--NIKV.---AT  68
+KAF6062069.1  28                 ..DW.KQT.PK.NIHVWSNAIW.MI..HNAEFR.--NIQV.---.D  68
+KAF6066030.1  29                 .IDWN.QDVSF.DVHVF.NSIW.MI...YANFR.NIQI--.---KT  69
+KAF6062144.1  27                ...DW.SQYVGN.DVH.HS.AIW..I...A.----------.---FH  60
+KAF6062072.1  28                 ..DW.T..VAN.DVH.Y.NSIW..I..HASNFN.--NIQV.---KD  68
+KAF6062070.1  28                 ..DW.SQ.VGN.DVH.YS.AIW..I...A.----------.---FH  60
+KAF6062073.1  29                  IDW.SKR.GK.DVH.YSKAVW..I..HASHFD.--NIYVE---AH  68
+KAF6064289.1  27                  .SK.PI.LS..NIH.HT.G.W..ID.TISA.V.--D.KVE---RG  66
+KAF6063441.1  27                  .SK.PI.LS..NIH.HT.G.W..ID.TISA.V.--D.KVE---RG  66
+
+Query_1       56   GEFYVT--------SAN---G---LAASVSIV-S--GTIK-----------NSGDLAFNS  87
+KAF6064290.1  68   .LYISS--------TSS---L---ISLQ.TLL-GLLNS.T-----------.N.IIS...  101
+KAF6063442.1  68   .LYISS--------TSS---L---ISLQ.TLL-GLLNS.T-----------.N.IIS...  101
+KAF6058095.1  67   AGL..S--------.V.P--N---I.L.ATLY-D--SIYEFV---------.N.VVS..A  101
+KAF6064292.1  68   .I...S--------.VSP--Q---VSL..TLLG.--Y.LI-----------.N.VISL.A  101
+KAF6058094.1  67   AGL..S--------.VT---S---NV.LSATL-Y--D..YEFV--------.N.VVS..A  101
+KAF6066031.1  59   .GL..STNSSDMQL..T---A---REFALHP.-Y--SF.------------.D.IVS..A  97
+KAF6062143.1  69   AGL..S--------.VT---P---SV.LSATL-Y--DS.YGFV--------.N.VVS..A  103
+KAF6062071.1  69   SGL..S--------TVSPQVS---.S.TLYDS-I--YSFV-----------.D.IVS..A  103
+KAF6062069.1  69   AGL..S--------.VT---PKVC.H.RMPSS-K--YG.V-----------.N.VIS..A  103
+KAF6066030.1  70   .GL.IS--------------.---V.PDIYL--.--A.L.DSIHSFI----.D.IVS..A  104
+KAF6062144.1  61   .NIQ.D--------KNA---.---.Y...VTP-.--I.LSATLYDSIYGFV.N.VVS..A  103
+KAF6062072.1  69   AGL.IS--------.VSPKVS---.SVTL.AS-K--WFFI-----------.N.VVS..A  103
+KAF6062070.1  61   .NIQID--------KNA---.---.Y...VTP-.--I.LSATLYDSIYGFV.N.VVS..A  103
+KAF6062073.1  69   AGL..S--------.IS---P---RCSLSATL-.--SS.YGFV--------.H.VVS..A  103
+KAF6064289.1  67   .G.FIS--------TF.ELI.---.QVLLLGL-L--NS.E-----------.D.II....  101
+KAF6063441.1  67   .G.FIS--------TF.ELI.---.QVLLLGL-L--NS.E-----------.D.II....  101
+
+Query_1       88   LRASVISNYNLNSIG-G-FTNTGNMWLGISGYSLVPPIILGSATNWDNSGRIYLSQNSGS  145
+KAF6064290.1  102  .ASLTS.....--..WS-.Q.N.E.Y..A..--I.ASTMSIT.AS.K.T.LLVFY..QRN  156
+KAF6063442.1  102  .ASLTS.....--..WS-.Q.N.E.Y..A..--I.ASTMSIT.AS.K.T.LLVFY..QRN  156
+KAF6058095.1  102  IKGA--PG.AF.I..-NM.E.N.DLFYSA..EGS.VST.--KTPDFH.T.SLNFY.KMK.  156
+KAF6064292.1  102  IAGN--P...FDLV.TS-MI.N.DLF.SG..DNA.--TVYMK..D.E.Y.L.QVY.KKRT  156
+KAF6058094.1  102  IKGA--PG.AF.I..-NK.E.N.DLFYSA..EGS.VST.--KTPDFH.T.SLNFY.SMK.  156
+KAF6066031.1  98   IKGAPL--.AFWI..-KT.K...DLFFSA..EGTA--.SGVKSED.H.N.N.HFY.TKK.  152
+KAF6062143.1  104  IKGA--PG.SFWIM.-NR.E.N.DLFFSA..EGS.ASG.K.--LD.H.N.L.HIY.KMK.  158
+KAF6062071.1  104  I.GA--PG.IFRIM.-DK.L.N.DLYFAA..VGSAESA.K..--D.H.N.L.HIY.QMK.  158
+KAF6062069.1  104  IKGA--R..RFKIM.-NK.L.N.DFF.AG..EGS.ESY.--KSRD.H.N.LLHVY.SMK.  158
+KAF6066030.1  105  .K.A--PT.TFWIV.-NK.E.N.DLFFSA..EGS.VSA.--K.ED.H.N.YLHFY.KLK.  159
+KAF6062144.1  104  IKGA--.G.IFKIM.-NK.E.N.DLFFAA..QGSMESW.--K.PDFH.N.FMHFY.VMK.  158
+KAF6062072.1  104  I.GA--.S.IFRIV.-NK.E.N.DLFFSA..E.SSHSY.--KSID.H.N.L.HIY.QMK.  158
+KAF6062070.1  104  IKGA--.G.IFKIM.-NK.E.N.DLYFAA..QGSMESW.--K.PDFH.N.FMHFY.VMK.  158
+KAF6062073.1  104  IKGA--.G.VFKIM.-SK.E.N.DLFFSA..L.S.TCG.--KSKR.Y.K.C.HVY.KWK.  158
+KAF6064289.1  102  .KTLIPPI...--..LT-.R...EVY.AAD.--TL..F.GLT.PT.T.N.LVVIYL.KR.  156
+KAF6063441.1  102  .KTLIPPI...--..LT-.R...EVY.AAD.--TL..F.GLT.PT.T.N.LVVIYL.KR.  156
+
+Query_1       146  ASTITISQTLGSITND-GSMCIERLSWLQTTSIKGAGCINLMDDAHLQLQISPWSVSNDQ  204
+KAF6064290.1  157  EGIVNLGAP..T.N.N-.QI.FHNEVYH.....A.T...TADR.SSIYITNAAL...TG.  215
+KAF6063442.1  157  EGIVNLGAP..T.N.N-.QI.FHNEVYH.....A.T...TADR.SSIYITNAAL...TG.  215
+KAF6058095.1  157  D.YVLLGADAKTLV.N-.Q..FTNIN.H.LAGVL....FTAQGQSSFY..NTALQI.E..  215
+KAF6064292.1  157  NGVVYLGN-H.LY..NY.QI.LFNQL.Q..AN.L.T...TGAANSSFY.ANTNLAI.SQ.  215
+KAF6058094.1  157  D.YVLLGADAKTFI.N-.QI.FTNQD.H.LAGVL....FTAQGQSSFY..NTALQI.E..  215
+KAF6066031.1  153  G.FVQLGKDAKTLQ..-.QV.FTNQN.H.LAGVL.T..FTASGKSSFY.MNNAVPF.EN.  211
+KAF6062143.1  159  D.YAYLGYHGKTVV.N-.QV.FTNQN.Y.LSGML.S..VTAQGKSSFYFMNTALKI.E.E  217
+KAF6062071.1  159  D.YTYLGYDGKTMV.N-.QI.FTNQN.K.L.GML.S..VTAQEK.SFYFMNTDLQI.EGE  217
+KAF6062069.1  159  K.YTYLGYVRKTMV.N-.QI.FTNQN.K.HSIML.K..VTAQGKSS.YFKKTDLKI.E.E  217
+KAF6066030.1  160  D.FVQLGKDAKTLV.N-.QV.FTNQN.H.LAGVL.T..FTASGKSSFY.MNNAVPF.EN.  218
+KAF6062144.1  159  D.YTYLGYDGKTMV.N-.QI.FTNQN.K.L.GML.S..VTAQGK.SFYFMNTNLQI.EGE  217
+KAF6062072.1  159  D.YTYLGYDGKTMV.N-.QI.FTNQN.K.RS.ML.S..VTAQGK.SFYFMNTKLKI.EGE  217
+KAF6062070.1  159  D.YTYLGYDGKTMV.N-.QI.FTNQN.K.L.GML.T..VTAQGK.SFYFMNTNLQI.EGE  217
+KAF6062073.1  159  D.CTHLGYDGLT.V.N-.QI.FTNHN.K.LAG.S.T..VTAHGQSSFYFLKTNLKIAES.  217
+KAF6064289.1  157  TTLVNLGAV.SRVE..-.TI.FNNVVYQ.L...Q.N...VANR.STIYITNALLPIPKE.  215
+KAF6063441.1  157  TTLVNLGAV.SRVE..-.TI.FNNVVYQ.L...Q.N...VANR.STIYITNALLPIPKE.  215
+
+Query_1       205  TIYLSS-SSSMLSVLGLSQSITGTKTYNVVGF----G---D----GNS-IRV--------  243
+KAF6064290.1  216  .F..AD-GA.SMI.----.ALSTPQ.F..RN.----.---Q----V.G-.AN--------  250
+KAF6063442.1  216  .F..AD-GA.SMI.----.ALSTPQ.F..RN.----.---Q----V.G-.AN--------  250
+KAF6058095.1  216  IF...N-GETSILAV.---..DNPQ.FH.RN.----.T--.----K.G-VAN--------  252
+KAF6064292.1  216  .M.MAD-GTTSIVAV.---.L.-PL.FT.K..----.---Q----VDG-VSN--------  250
+KAF6058094.1  216  IF..IG-GETSIMAV.---..DNPQ.FH.R..GTTA.---E----A.K-.GL--------  255
+KAF6066031.1  212  IL..DG-.E.--.IMAIPTNF-.PL..H.R..----.TYE.----..A-NKIGLTATLRQ  258
+KAF6062143.1  218  IL..TN-GETSIMAV.---..NDPQ.FH.R..----.T--.----K.G-.AN--------  254
+KAF6062071.1  218  IF...G-GETSIMAV.---..NRPQ.FH.R..----.---T----Y.G-MAN--------  253
+KAF6062069.1  218  IF...G-GETSIMAV.---.KKDPQ.FH.R..----.---TY---D.G-VAN--------  254
+KAF6066030.1  219  IL..NN-GET--.IMAIP-..NNPL..H.R..----.---T----YDTG.SN--------  255
+KAF6062144.1  218  IF..NG-GETSIMAV.---..NNPQ.FH.R..----.---T----Y.G-MAN--------  253
+KAF6062072.1  218  IF...G-GETSIMTE.---.TNDPQ.FH.R..----.---TYNGMA.K-.GL--------  257
+KAF6062070.1  218  IF..NG-GETSIMAV.---.TNNPQ.FH.R..----.---T----Y.G-MAN--------  253
+KAF6062073.1  218  IF..ADGET.IMA.ASRYRP----Q.FH.R..----.---K----I.G-VAN--------  253
+KAF6064289.1  216  .FF.AD-HK.SIV.EP..IPA----RFT.K..----.---W----..K-.GL--------  250
+KAF6063441.1  216  .FF.AD-HK.SIV.EP..IPA----RFT.K..----.---W----..K-.G---------  249
+
+Query_1       244  -N-------T-------GF-----------S-----------G-----------YSYEGD  255
+KAF6064290.1  251  -K-------I-------.LSIPLFALIG--.-----------A-----------W..NSA  271
+KAF6063442.1  251  -K-------I-------.LSIPLFALIG--.-----------A-----------W..NSA  271
+KAF6058095.1  253  -K-------V-------.LTATLYNSVGGK.-----------A-----------.A.NAR  275
+KAF6064292.1  251  -K-------I-------.L-----------.-----------.TLYSSTSGKNPWD.NA.  273
+KAF6058094.1  256  -T-------ATLSSSVP.R-----------A-----------P-----------FA.NAR  274
+KAF6066031.1  259  SD-------A-------.E-----------P-----------A-----------WE.DVK  271
+KAF6062143.1  255  -K-------I-------.LTATLSSPVSGK.-----------P-----------W..NAR  277
+KAF6062071.1  254  -K-------I-------.L-----------T-----------ATLSSPASGKAPWA.DAE  276
+KAF6062069.1  255  -K-------I-------.L-----------T-----------.RLKSPAPGKTPW..NAR  277
+KAF6066030.1  256  -K-------I-------..-----------TATLYNSVSGKPA-----------WE.DAK  278
+KAF6062144.1  254  -K-------I-------.L-----------T-----------ATLSSPVSGRLPWA.NAR  276
+KAF6062072.1  258  -.AKLHSPVA-------.R-----------A-----------P-----------WE.DAR  276
+KAF6062070.1  254  -K-------I-------.L-----------T-----------ATLSSPVSGKLPWA.NAR  276
+KAF6062073.1  254  -K-------I-------.L-----------.-----------SRLYSRVPGRKPW..DAR  276
+KAF6064289.1       ------------------------------------------------------------  
+KAF6063441.1       ------------------------------------------------------------  
+
+Query_1       256  TLTLSFF----LGLFKI---------------------A---------------------  269
+KAF6064290.1  272  .GI.TLRG---A..LSQ---------------------Y---------------------  286
+KAF6063442.1  272  .GI.TLRG---A..LSQ---------------------Y---------------------  286
+KAF6058095.1  276  DGI.TLY----V..YTQ---------------------N---------------------  289
+KAF6064292.1  274  .GI.TLY----V.DYRQ---------------------N---------------------  287
+KAF6058094.1  275  DGI.TLY----V..YTQ---------------------N---------------------  288
+KAF6066031.1  272  NGN.TLR----V.PYVS---------------------S---------------------  285
+KAF6062143.1  278  DGI.TLY----V..YTQ---------------------N---------------------  291
+KAF6062071.1  277  KGI.TLY----V.SYSQ---------------------N---------------------  290
+KAF6062069.1  278  DGI.TLY----H..YHQ---------------------N---------------------  291
+KAF6066030.1  279  YGI.TLW----T..YSH---------------------H---------------------  292
+KAF6062144.1  277  DGI.TLY----V..YTQ---------------------N---------------------  290
+KAF6062072.1  277  DGI.TLH----H.SYSQ---------------------N---------------------  290
+KAF6062070.1  277  DGI.TLY----V..YTQ---------------------N---------------------  290
+KAF6062073.1  277  RGI.TLY----T..YSQ---------------------R---------------------  290
+KAF6064289.1  251  SIP.LKI----PI.G.R---------------------.VDYNPFTGILTLRGLGLGLLS  285
+KAF6063441.1  250  -.SIPLLKIPI..KRAVDYNPFTGILTLRGLGLGLLSQE---------------------  287
+
+Query_1       270  --FKIGTGYSKSGF-----S---------T---------NG-----L----FGAG-----  290
+KAF6064290.1  287  --.N.....DS.K.-----Q---------V---------VT-----D----S...-----  307
+KAF6063442.1  287  --.N.....DS.K.-----Q---------V---------VT-----D----S...-----  307
+KAF6058095.1  290  --.E.....DPTK.-----QIVSD-----.---------.REIPQIY----L..------  318
+KAF6064292.1  288  --....K..DNTK.-----.VV-------.---------DN-----A----L.LP-----  310
+KAF6058094.1  289  --.E.....DPTK.-----QIVSDTSREIP---------QI-----Y----L..------  317
+KAF6066031.1  286  --.E.....DPKK.-----E---------VVSDTSEEIPQV-----H----L..------  314
+KAF6062143.1  292  --.E.....DFTK.-----Q                                          304
+KAF6062071.1  291  --.E.....DITK.RIVSDT---------S---------R.-----.----P.IN-----  316
+KAF6062069.1  292  --.E.....DFTK.QVVTDT---------S---------R.-----.PSVTL..------  320
+KAF6066030.1  293  --.E.....DPTK.-----E                                          305
+KAF6062144.1  291  --.E.....DYTK.QIVSDT---------S---------R.-----.----P.IY-----  316
+KAF6062072.1  291  --.E.....DVTK.-----EIVSDR----S---------R.-----.----P.VT-----  316
+KAF6062070.1  291  --.E.....DYTK.QIVSDT---------S---------R.-----.----P.IY-----  316
+KAF6062073.1  291  --.E..I..DVTK.-----E                                          303
+KAF6064289.1  286  QE.D..R..D.RR.-----Q---------V---------VT-----D----N...IPLML  313
+KAF6063441.1  288  --.D..R..D.RR.-----Q---------V---------VT-----D----N...IPLML  313
+
+Query_1       291  -T------RISYSGAYPGT-VPDVCK-C--------FDFPEPT  316
+KAF6064290.1  308  -LPSTLWGS.Q.N.PV.NPGL.SQ.RV.--------KSL.D    339
+KAF6063442.1  308  -LPSTLWGS.Q.N.PV.NPGL.SQ.RV.--------KSL.D    339
+KAF6058095.1  319  ---------VQ.N.SP.KPGM.SE..P.--------KSI.     341
+KAF6064292.1  311  -APNLG--SVV.N.PV.EPGL.AA..P.--------KPI..    340
+KAF6058094.1  318  ---------VQ.N.PP.NSGI.PE..P.--------KSV.     340
+KAF6066031.1  315  ---------VQ.N.PP.Q.GI.TE..P.--------KPI.D    338
+KAF6062071.1  317  -LG-----AVQ.N..P.NLG..AE..P.--------KAV.     342
+KAF6062069.1  321  ---------VQ.N.PP.NAGM.GE..P.--------KAI.     343
+KAF6062144.1  317  -LG-----AVQ.N.PP.NAGM.AE..P.--------KSI.     342
+KAF6062072.1  317  -LG-----AMQ.NAPP.NPGM.AE..P.KAIPGIPGI.Q.P..  353
+KAF6062070.1  317  -LG-----AVQ.N.PP.NAGM.AE..P.KSIPGIPGV.Q...   352
+KAF6064289.1  314  WG------SVE.N.PI.NPHR.AI.M-.--------K.P...   340
+KAF6063441.1  314  WG------SVE.N.PI.NPHR.AI.M-.--------K.P...   340
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 549001686
+
+
+Query= Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+
+Length=324
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KAF6064290.1 Hyphally regulated cell wall protein N-terminal fami...  234     8e-70
+KAF6063442.1 Hyphally regulated cell wall protein N-terminal fami...  233     1e-69
+KAF6064292.1 Hyphally regulated cell wall protein N-terminal fami...  180     4e-51
+KAF6062070.1 Hyphally regulated cell wall protein N-terminal fami...  170     2e-50
+KAF6062144.1 Hyphally regulated cell wall protein N-terminal fami...  171     2e-50
+KAF6062071.1 Hyphally regulated cell wall protein N-terminal fami...  169     6e-50
+KAF6062072.1 Hyphally regulated cell wall protein N-terminal fami...  166     2e-48
+KAF6058094.1 Hyphally regulated cell wall protein N-terminal fami...  164     5e-48
+KAF6062069.1 Hyphally regulated cell wall protein N-terminal fami...  162     3e-47
+KAF6062143.1 Hyphally regulated cell wall protein N-terminal fami...  152     1e-43
+KAF6058095.1 Hyphally regulated cell wall protein N-terminal fami...  151     5e-43
+KAF6062073.1 Hyphally regulated cell wall protein N-terminal fami...  148     6e-42
+KAF6064289.1 Hyphally regulated cell wall protein N-terminal fami...  147     5e-40
+KAF6063441.1 Hyphally regulated cell wall protein N-terminal fami...  146     1e-39
+KAF6066031.1 Hyphally regulated cell wall protein N-terminal fami...  141     4e-39
+KAF6066030.1 Hyphally regulated cell wall protein N-terminal fami...  130     2e-35
+KAF6060373.1 PT repeat family protein [Candida parapsilosis]          113     4e-28
+KAF6063443.1 PT repeat family protein [Candida parapsilosis]          97.4    7e-23
+KAF6064291.1 PT repeat family protein [Candida parapsilosis]          96.7    2e-22
+
+
+
+Query_2       1    ILLTLNLSAALEVVTSRIDRGGIQGFHGDVKVHSGATWAILGTTLCSFFGGLEVEKGASL  60
+KAF6064290.1  10   VY.YISVVSG.NIA.NT....A.SLNV..ITIN...Y.S.INNAISA.VSN...APE.G.  69
+KAF6063442.1  10   VY.YISVVSG.NIA.NT....A.SLNV..ITIN...Y.S.INNAISA.VSN...APE.G.  69
+KAF6064292.1  20            S..ITKN.....S.NLGNE.ITIR...F.S.INNAGTN.NSNIN.DE.G-I  69
+KAF6062070.1  27                  TTV.W.SQNVGN...HIY...I.S.INNAATD.H.NIQID.N.G.  71
+KAF6062144.1  29                    V.W.SQYVGN...HI....I.S.INNAATD.H.NIQ.D.N.G.  71
+KAF6062071.1  29                    V.W.SQNVGN...SLY.KSI.S.INNAATD.H.NIK.DATSG.  71
+KAF6062072.1  29                    V.W.TLNVAN...HIYPNSI.S.INNHASN.N.NIQ.D.D.G.  71
+KAF6058094.1  27                    ..W.TQNVGQ...HI....L.S.INNAASD.H.NIQ.DSN.G.  69
+KAF6062069.1  39                              .NIH.W.N.I.SMINNHNAE.R.NIQ.DND.G.  71
+KAF6062143.1  29                    V.W.TQNVGN...HI....I.S.INNAASD.H.NIQ.DSN.G.  71
+KAF6058095.1  27                    ..W.TQNVGQ...HI....L.S.INNAASD.H.NIQ.DSN.G.  69
+KAF6062073.1  29                    ..W.SKRIGK...HIY.K.V.S.INNHASH.D.NIY..AH.G.  71
+KAF6064289.1  37                              .NIHI.T.GY.S.IDN.ISALV.D.K..R.GGF  69
+KAF6063441.1  37                              .NIHI.T.GY.S.IDN.ISALV.D.K..R.GGF  69
+KAF6066031.1  29                              ...H.FPNTI.SMINNAASN.R.NIQ.D.TGG.  61
+KAF6066030.1  40                              ...H.FPNSI.SMINNAYAN.R.NIQID.TGG.  72
+KAF6060373.1  38                             Y...HIFP..I.S.INNAASD.H.NIQ.DENGG.  71
+KAF6063443.1  39                              ...HIFP..I.S.INNAASD.H.NIQ.DENGG.  71
+KAF6064291.1  39                              ...HIFP..I.S.INNAASD.H.NIQ.DENGG.  71
+
+Query_2       61   FIKS------------------DNGPVLALNVALSTLVRPV---INNGVISLNSKSSTSF  99
+KAF6064290.1  70   Y.S.------------------TSS-LIS.Q.T.LG.LNSI---T...I..F..LA.LTS  107
+KAF6063442.1  70   Y.S.------------------TSS-LIS.Q.T.LG.LNSI---T...I..F..LA.LTS  107
+KAF6064292.1  70   .YV.------------------SVS.QVS.S.T.-LGSYTL---.........AIAGNPN  107
+KAF6062070.1  72   Y-A.------------------VVT.SIT.SAT.YDSIYGF---V....V.F.AIKGA.G  109
+KAF6062144.1  72   Y-A.------------------VVT.SIT.SAT.YDSIYGF---V....V.F.AIKGA.G  109
+KAF6062071.1  72   YV-.------------------TVS.QVS.SAT.YDSIYSF---V.D.IV.F.AIRGAPG  109
+KAF6062072.1  72   Y.S.------------------VS-.KVS.S.T..ASKWFF---.....V.F.AIRGA.S  109
+KAF6058094.1  70   YVS.------------------VTSN.-..SAT.YDTIYEF---V....V.F.AIKGAPG  107
+KAF6062069.1  72   YVS.------------------VT-.KVC.HARMPSSKYGI---V......F.AIKGARN  109
+KAF6062143.1  72   YVS.------------------VT-.SV..SAT.YDSIYGF---V....V.F.AIKGAPG  109
+KAF6058095.1  70   YVS.------------------V.-.NI..SAT.YDSIYEF---V....V.F.AIKGAPG  107
+KAF6062073.1  72   YVS.------------------IS-.RCS.SAT..SSIYGF---V.H..V.F.AIKGA.G  109
+KAF6064289.1  70   ..STFNELIGLQVLLLGLLNSIE.DGII.F.-S.K..IP.I---Y.--L.G.--------  115
+KAF6063441.1  70   ..STFNELIGLQVLLLGLLNSIE.DGII.F.-S.K..IP.I---Y.--L.G.--------  115
+KAF6066031.1  62   YVST------------------NSSDMQLSAT.REFALH..YSF..D.IV.F.AIKGAPL  103
+KAF6066030.1  73   Y.-.------------------GVA.DIY.SAT.KDSIHSF---..D.IV.F.ALKAAPT  110
+KAF6060373.1  72   YVSA------------------VS-.SIT.SAT.YDSIYGF---V....V.F.AIKGA.G  109
+KAF6063443.1  72   YVSA------------------VS-.SIT.SAT.YDSIYGF---V....V.F.AIKGA.G  109
+KAF6064291.1  72   YVSA------------------VS-.SIT.SAT.YDSIYGF---V....V.F.AIKGA.G  109
+
+Query_2       100  SNFDIGGSSFTNNGEIYLASSGLVKSTAYLYAREWTNNGLIVAYQNQKAAGNIAFGTAYQ  159
+KAF6064290.1  108  ..YNLI.W..Q....M..GA..I.A..MSIT.AS.K.T..L.F....RNE.IVNL.APLG  167
+KAF6063442.1  108  ..YNLI.W..Q....M..GA..I.A..MSIT.AS.K.T..L.F....RNE.IVNL.APLG  167
+KAF6064292.1  108  Y...LV.T.MI...DLF.SG..DNAV.V.MK.TD.E.Y...QV..KKRTN.VVYL.NHGL  167
+KAF6062070.1  110  YI.K.M.NK.E...DL.F.A..QGSMESWIK.PDFH...FMHF..VM.SDSYTYL.YDGK  169
+KAF6062144.1  110  YI.K.M.NK.E...DLFF.A..QGSMESWIK.PDFH...FMHF..VM.SDSYTYL.YDGK  169
+KAF6062071.1  110  YI.R.M.DK.L...DL.F.A..VGSAESAIKGSD.H.....HI..QM.SDSYTYL.YDGK  169
+KAF6062072.1  110  YI.R.V.NK.E...DLFFSA..ESS.HS.IKSID.H.....HI..QM.SDSYTYL.YDGK  169
+KAF6058094.1  108  YA.N.I.NK.E...DLFYSA..EGSVVSTIKTPDFH.T.SLNF..SM.SDSYVLL.ADAK  167
+KAF6062069.1  110  YR.K.M.NK.L...DFF..G..EGSVES.IKS.D.H....LHV..SM.SKSYTYL.YVRK  169
+KAF6062143.1  110  YS.W.M.NR.E...DLFFSA..EGSVASGIKGLD.H.....HI..KM.SDSYAYL.YHGK  169
+KAF6058095.1  108  YA.N.I.NM.E...DLFYSA..EGSVVSTIKTPDFH.T.SLNF..KM.SDSYVLL.ADAK  167
+KAF6062073.1  110  YV.K.M..K.E...DLFFSA...SSV.CGIKSKR.Y.K.C.HV..KW.SDSCTHL.YDGL  169
+KAF6064289.1  116  --------T.R.T..V...AD.TLPPFIG.T.PT......V.I.L.KRSTTLVNL.AVLS  167
+KAF6063441.1  116  --------T.R.T..V...AD.TLPPFIG.T.PT......V.I.L.KRSTTLVNL.AVLS  167
+KAF6066031.1  104  YA.W.I.KT.K.T.DLFFSA..EGTAISGVKSED.H...N.HF..TK.SGSFVQL.KDAK  163
+KAF6066030.1  111  YT.W.V.NK.E...DLFFSA..EGSVVSAIK.ED.H...YLHF..KL.SDSFVQL.KDAK  170
+KAF6060373.1  110  YI.K.M.NK.E...DLFF.A..QGSMESWIK.PDFH....MHF..SM.SDSYTYL.YDGK  169
+KAF6063443.1  110  YI.K.M.NK.E...DLFF.A..QGSMESWIK.PDFH...FMHF..VM.SDSYTYL.YDGK  169
+KAF6064291.1  110  YI.K.M.NK.E...DLFF.A..QGSMESWIK.PDFH...FMHF..VM.SDSYTYL.YDGK  169
+
+Query_2       160  TITNNGQICLRHQDFVPATKIKGTGCVTADEDTWIKLGNTILSVEPTHNFYLKDSKSSLI  219
+KAF6064290.1  168  ..N......FHNEVYHQT.S.A....I...R.SS.YIT.AA...STGQT...A.GA..M.  227
+KAF6063442.1  168  ..N......FHNEVYHQT.S.A....I...R.SS.YIT.AA...STGQT...A.GA..M.  227
+KAF6064292.1  168  YTN.Y.....FN.LWQQTAN.L....I.GAANSSFY.A..N.AISSQQTM.MA.GTT.IV  227
+KAF6062070.1  170  .MV......FTN.NWKQL.GML.......QGKASFYFM..N.QISEGEI...NGGET.IM  229
+KAF6062144.1  170  .MV......FTN.NWKQL.GML.S.....QGKASFYFM..N.QISEGEI...NGGET.IM  229
+KAF6062071.1  170  .MV......FTN.NWKQL.GML.S.....Q.KASFYFM..D.QISEGEI...SGGET.IM  229
+KAF6062072.1  170  .MV......FTN.NWKQRSSML.S.....QGKASFYFM..K.KISEGEI...SGGET.IM  229
+KAF6058094.1  168  .FI......FTN..WHQLAGVL.A..F..QGQSSFY.Q..A.QISEDQI...IGGET.IM  227
+KAF6062069.1  170  .MV......FTN.NWKQHSIML.K.....QGKSSLYFKK.D.KISEDEI...SGGET.IM  229
+KAF6062143.1  170  .VV....V.FTN.NWYQLSGML.S.....QGKSSFYFM..A.KISEDEIL..TNGET.IM  229
+KAF6058095.1  168  .LV....M.FTNINWHQLAGVL.A..F..QGQSSFY.Q..A.QISEDQI...SNGET.IL  227
+KAF6062073.1  170  ..V......FTNHNWKQLAG.S.......HGQSSFYFLK.N.KIAESQI...A.GET.IM  229
+KAF6064289.1  168  RVE.D.T..FNNVVYQQL.S.Q.N..IV.NR.ST.YIT.AL.PIPKEQT.F.A.H...IV  227
+KAF6063441.1  168  RVE.D.T..FNNVVYQQL.S.Q.N..IV.NR.ST.YIT.AL.PIPKEQT.F.A.H...IV  227
+KAF6066031.1  164  .LQ.D..V.FTN.NWHQLAGVL....F..SGKSSFY.M.NAVPFSENQIL..DG.E..IM  223
+KAF6066030.1  171  .LV....V.FTN.NWHQLAGVL....F..SGKSSFY.M.NAVPFSENQIL..NNGET.IM  230
+KAF6060373.1  170  .MV......FTN.NWKQL.GML.S.....QGKSSFYFM..N.QISEGEI...SNGET.IM  229
+KAF6063443.1  170  .MV......FTN.NWKQL.GML.S.....QGKSSFYFM..N.QISEGEI...NGGET.IM  229
+KAF6064291.1  170  .MV......FTN.NWKQL.GML.S.....QGKSSFYFM..N.QISEGEI...NGGET.IM  229
+
+Query_2       220  -VHAVSSN---QTFTVHGF-----G---N-----G--NKLGLT----L----P---L---  246
+KAF6064290.1  228  -.Q.L.TP---...N.RN.-----.QV-.-----.IA..I..S----I----.LFA.---  261
+KAF6063442.1  228  -.Q.L.TP---...N.RN.-----.QV-.-----.IA..I..S----I----.LFA.---  261
+KAF6064292.1  228  -AVGSLTP---L....K..-----.---QVDGV-S--..I..S----G----T---.Y--  259
+KAF6062070.1  230  -AVGSTN.P--...H.R..-----.TY-.-----.MA..I...----A----T---.---  261
+KAF6062144.1  230  A.GSINNP---...H.R..-----.TY-.-----.MA..I...----A----T---.---  261
+KAF6062071.1  230  A.GSINRP---...H.R..-----.TY-.-----.MA..I...----A----T---.---  261
+KAF6062072.1  230  -TEGSTNDP--...H.R..-----.TY-.-----.MA..I..N----AKLHS.---V---  265
+KAF6058094.1  228  A.GSIDNP---...H.R..GTTA-.---E-----A--..I...----A----T---.---  259
+KAF6062069.1  230  A.GSKKDP---...H.R..-----.TYD.-----.VA..I...GRLKS----.---A---  266
+KAF6062143.1  230  A.GSINDP---...H.R..-----.TDK.-----.IA..I...----ATLSS.---V---  266
+KAF6058095.1  228  A.GSIDNP---...H.RN.-----.TDK.-----.VA..V...----A----T---.YNS  263
+KAF6062073.1  230  ---..A.RYRP...H.R..-----.---KINGV-A--..I..S----S----R---.---  261
+KAF6064289.1  228  -.EPL.IP---AR...K..-----.---W-----.--..I..S----I----.---.LKI  257
+KAF6063441.1  228  -.EPL.IP---AR...K..-----.---W-----.--..I..S----I----.---.LKI  257
+KAF6066031.1  224  ---.IPT.FGPL.YH.R..GTYED.---.-----A--..I...----A----T---.R--  257
+KAF6066030.1  231  AIPSINNP---L.YH.R..-----.---TYDTGIS--..I.F.----A----T---.---  263
+KAF6060373.1  230  A.GSINNP---...H.R..-----.TDK.-----.VA......----A----T---.S--  263
+KAF6063443.1  230  A.GSTNNP---...H.R..-----.TDK.-----.VA......ATLST----.---T---  266
+KAF6064291.1  230  A.GSTNNP---...H.R..-----.TDK.-----.VA......ATLST----.---T---  266
+
+Query_2       247  --TGN-RD-HFR-FEYYP---DTGILQLRAAA-LPQYFKIGKGYDSKLFRIV--N--SRG  293
+KAF6064290.1  262  --I.S------A-WS.NS---A....T..G.GL.S...N..T....SK.QV.--T--DS.  305
+KAF6063442.1  262  --I.S------A-WS.NS---A....T..G.GL.S...N..T....SK.QV.--T--DS.  305
+KAF6064292.1  260  --SST-SG-KNP-WD.NA---.....T.YVGD-YR.N........NTK.SV.TD.--AL.  308
+KAF6062070.1  262  --SSPVSG-KLP-WA.NA---RD...T.YVGL-YT.N.E..T...YTK.Q..--SDT...  311
+KAF6062144.1  262  --SSPVSG-RLP-WA.NA---RD...T.YVGL-YT.N.E..T...YTK.Q..--SDT...  311
+KAF6062071.1  262  --SSP-ASGKAP-WA.DA---EK...T.YVGS-YS.N.E..T...ITK....--SDT...  311
+KAF6062072.1  266  --A.R-AP-----W..DA---RD...T.HHGS-YS.N.E..T...VTK.E..--SDR...  311
+KAF6058094.1  260  --SSSVPG-RAP-.A.NA---RD...T.YVGL-YT.N.E..T...PTK.Q..--SDT..E  309
+KAF6062069.1  267  --P.K-TP-----WS.NA---RD...T.YHGL-YH.N.E..T...FTK.QV.TDT--...  312
+KAF6062143.1  267  --S.K-SP-----WS.NA---RD...T.YVGL-YT.N.E..T...FTK.Q..--SDT...  312
+KAF6058095.1  264  --V.G-KS---A-YA.NA---RD...T.YVGL-YT.N.E..T...PTK.Q..--S--DTN  308
+KAF6062073.1  262  --YSR-VP-GRKPWS.DA---RR...T.YTGL-YS.R.E..I...VTK.E..TDR--C..  311
+KAF6064289.1  258  PIL.K-.----A-VD.N.FTGILTLRG.GLGL-.S.E.D..R...KRR.QV.--T--DN.  306
+KAF6063441.1  258  PIL.K-.----A-VD.N.FTGILTLRG.GLGL-.S.E.D..R...KRR.QV.--T--DN.  306
+KAF6066031.1  258  --QSD-AG-EPA-W..DV---KN.N.T..VGP-YVSS.E..T...P.K.EV.--S--DTS  304
+KAF6066030.1  264  --YNSVSG-KPA-W..DA---KY...T.WTGL-YSHH.E..T...PTK.E..--S--DKS  311
+KAF6060373.1  264  --.PT-PG-KNP-WA.NA---RD...T.YVGL-YT.N.E..T...FTK.Q..--SDT...  312
+KAF6063443.1  267  --P.K-N----P-WA.NA---RD...T.YVGL-YT.N.E..T...FTK.Q..--SDT...  312
+KAF6064291.1  267  --P.K-N----P-WA.NA---RD...T.YVGL-YT.N.E..T...FTK.Q..--SDT...  312
+
+Query_2       294  ------LK------N----AVTYDGPVPNNEIPAVCLIPCTNGPSAP  324
+KAF6064290.1  306  AGLPST.W------G----SIQ.N.....PGL.SQ.RV-.KSL.DI.  341
+KAF6063442.1  306  AGLPST.W------G----SIQ.N.....PGL.SQ.RV-.KSL.DI.  341
+KAF6064292.1  309  ------.PAPNL--G----S.V.N....EPGL..A.K-..KPI.EI.  342
+KAF6062070.1  312  ------.PGIYL--G----..Q.N..P..AGM..E.K-..KSI.GI.  345
+KAF6062144.1  312  ------.PGIYL--G----..Q.N..P..AGM..E.K-..KSI.GI.  345
+KAF6062071.1  312  ------.PGINL--G----..Q.N.AP..LGV..E.K-..KAV.GI.  345
+KAF6062072.1  312  ------.PGVTL--G----.MQ.NA.P..PGM..E.K-..KAI.GI.  345
+KAF6058094.1  310  ------IP------QIYLG..Q.N..P..SG..PE.K-..KSV.GI.  343
+KAF6062069.1  313  ------.P------SVTLG..Q.N..P..AGM.GE.K-..KAI..I.  346
+KAF6062143.1  313  ------IPGIYL--G----..Q.N..P..PGV.PE.K-..KSI.GI.  346
+KAF6058095.1  309  ------REIPQIYLG----..Q.N.SP.KPGM.SE.K-..KSI.GI.  344
+KAF6062073.1  312  ------.PGVHL--G----.LQ.N..P.HPGM.PQ.Q-..KPI..I.  345
+KAF6064289.1  307  AGIPLM.W------G----S.E.N..I..PHR..I.M--.KDP.EP.  341
+KAF6063441.1  307  AGIPLM.W------G----S.E.N..I..PHR..I.M--.KDP.EP.  341
+KAF6066031.1  305  ------EEIPQVHLG----..Q.N..P.QTG..TE.K-..KPI.DI.  340
+KAF6066030.1  312  ------REIPQVHLG----..Q.N..P.QPGM.PE.K-..KPI.GI.  347
+KAF6060373.1  313  ------.PGIYN--G----..Q.                          323
+KAF6063443.1  313  ------.                                          313
+KAF6064291.1  313  ------.                                          313
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 549001686
+
+
+Query= Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g
+[[Candida] glabrata]
+
+Length=328
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+KAF6064290.1 Hyphally regulated cell wall protein N-terminal fami...  92.0    5e-21
+KAF6063442.1 Hyphally regulated cell wall protein N-terminal fami...  92.0    6e-21
+KAF6062072.1 Hyphally regulated cell wall protein N-terminal fami...  88.6    3e-20
+KAF6062144.1 Hyphally regulated cell wall protein N-terminal fami...  86.3    2e-19
+KAF6062070.1 Hyphally regulated cell wall protein N-terminal fami...  84.7    6e-19
+KAF6066031.1 Hyphally regulated cell wall protein N-terminal fami...  81.6    9e-18
+KAF6062069.1 Hyphally regulated cell wall protein N-terminal fami...  81.3    1e-17
+KAF6058094.1 Hyphally regulated cell wall protein N-terminal fami...  78.2    1e-16
+KAF6062071.1 Hyphally regulated cell wall protein N-terminal fami...  75.9    7e-16
+KAF6058095.1 Hyphally regulated cell wall protein N-terminal fami...  75.1    1e-15
+KAF6062073.1 Hyphally regulated cell wall protein N-terminal fami...  73.9    3e-15
+KAF6066030.1 Hyphally regulated cell wall protein N-terminal fami...  70.1    6e-14
+KAF6062143.1 Hyphally regulated cell wall protein N-terminal fami...  69.3    1e-13
+KAF6064292.1 Hyphally regulated cell wall protein N-terminal fami...  65.9    3e-12
+KAF6060373.1 PT repeat family protein [Candida parapsilosis]          50.1    3e-07
+KAF6064289.1 Hyphally regulated cell wall protein N-terminal fami...  48.5    1e-06
+KAF6063441.1 Hyphally regulated cell wall protein N-terminal fami...  47.8    2e-06
+KAF6063443.1 PT repeat family protein [Candida parapsilosis]          47.4    2e-06
+KAF6064291.1 PT repeat family protein [Candida parapsilosis]          47.0    3e-06
+
+
+
+Query_3       23   LPSEGFTVNSNQFLALVNTKTVNFAGPLTINKDASVFIGNENAANGAISST---F--S--  75
+KAF6064290.1  39        I.I..GAYWSII.NAISA.VSN.EVAPE.GLY.SSTSSLISLQVTL---L--G--  86
+KAF6063442.1  39        I.I..GAYWSII.NAISA.VSN.EVAPE.GLY.SSTSSLISLQVTL---L--G--  86
+KAF6062072.1  46             .SIWSII.NHAS..N.NIQVD...GLY.---SSVSPKV.LS---V--T--  85
+KAF6062144.1  43          IH.GAIWSII.NAATD.H.NIQVD.N.GLY-ASVVTPSITL.A.---LYD.--  89
+KAF6062070.1  43          IY.GAIWSII.NAATD.H.NIQ.D.N.GLY-ASVVTPSITL.A.---LYD.--  89
+KAF6066031.1  33          .FP.TIWSMI.NAAS..R.NIQVD.TGGLYV-ST.SSDMQL.A.ARE.--A--  80
+KAF6062069.1  36   I.KGNIH.W..AIWSMI.NHNAE.R.NIQVDN..GLYVSSVTPKVCLHARM---P--.--  88
+KAF6058094.1  41          IH.GALWSII.NAASD.H.NIQVDSN.GLYV-SSVTS.V.L.A.---LYDT--  87
+KAF6058095.1  41          IH.GALWSII.NAASD.H.NIQVDSN.GLYVSSV.P-.I.L.A.---LYD.--  87
+KAF6062073.1  43          IY.KAVWSII.NHASH.D.NIYVEAH.GLYV-SSISPRCSL.A.---L--.SS  89
+KAF6066030.1  44          .FP.SIWSMI.NAYA..R.NIQ.D.TGGLY.SGV-.PDIYL.A.---LKD.--  90
+KAF6062143.1  43          IH.GAIWSII.NAASD.H.NIQVDSN.GLYVSSVTPSV-.L.A.---LYD.--  89
+
+Query_3       76   ING--D----INNYGTIVLDNRNSSDAASVSWTAKTFNNYGSMFFN--GASAVVQNSFVL  127
+KAF6064290.1  87   LLN--S----.T.N.I.SFNSLA.LTSSNYNLIGWS.Q.N.E.YL---...GI.ASTMSI  137
+KAF6063442.1  87   LLN--S----.T.N.I.SFNSLA.LTSSNYNLIGWS.Q.N.E.YL---...GI.ASTMSI  137
+KAF6062072.1  86   LSA--SKWFF...-.VVSFNAIRGASSYIFRIVGNK.E.N.DL..S--ASGESSSH.YIK  140
+KAF6062144.1  90   .Y.--F----V..-.VVSFNAIKGASGYIFKIMGNK.E.N.DL..A--ASGQGSME.WIK  140
+KAF6062070.1  90   .Y.--F----V..-.VVSFNAIKGASGYIFKIMGNK.E.N.DLY.A--ASGQGSME.WIK  140
+KAF6066031.1  81   LHPVYS----FI.D.IVSFNAIKGAPLYAFWIIG...K.T.DL..S--ASGEGTAI.G.K  134
+KAF6062069.1  89   SKY--G----.V.N.V.SFNAIKGARNYRFKIMGNK.L.N.DF.LA--.SGEGSVE.YIK  140
+KAF6058094.1  88   .YE--F----V..-.VVSFNAIKGAPGYAFNIIGNK.E.N.DL.Y-----..SGEG.V.S  135
+KAF6062071.1  119                                      .L.N.DLY.---A..G.GSAESAI  139
+KAF6058095.1  88   .YE--F----V..-.VVSFNAIKGAPGYAFNIIGNM.E.N.DL.Y-----..SGEG.V.S  135
+KAF6062073.1  90   .Y.--F----V.-H.VVSFNAIKGASGYVFKIMGSK.E.N.DL..SAS.L.S.TCG----  138
+KAF6066030.1  91   .HS--F----..D-.IVSFNALKAAPTYTFWIVGNK.E.N.DL..-----..SGEG.V.S  138
+KAF6062143.1  90   .Y.--F----V..-.VVSFNAIKGAPGY.FWIMGNR.E.N.DL..-----..SGEG.-.A  136
+
+Query_3       128  TGQT-E-L--VNKGLIQFTQ--Q--PTNWDAVG-SVSSP--SL--VNEGTICLKNMKTQT  174
+KAF6064290.1  138  .AAS---W--K.T..LV.Y.--N--QR.-EGIV-NLGA.LGTI--N.N.Q..FH.EVYHQ  184
+KAF6063442.1  138  .AAS---W--K.T..LV.Y.--N--QR.-EGIV-NLGA.LGTI--N.N.Q..FH.EVYHQ  184
+KAF6062072.1  141  S--I-D-W--H.N...HIY.--.MKSDSYTYL.--YDGK--TM--..N.Q..FT.QNWKQ  186
+KAF6062144.1  141  A--P-D-F--H.N.FMH.Y.VMK--SDSYTYL.--YDGK--TM--..N.Q..FT.QNWKQ  186
+KAF6062070.1  141  A--P-D-F--H.N.FMH.Y.VMK--SDSYTYL.--YDGK--TM--..N.Q..FT.QNWKQ  186
+KAF6066031.1  135  S--E-D-W--H.N.N.H.Y.--T--KKSGSF.QLGKDAK--T.--Q.D.QV.FT.QNWHQ  180
+KAF6062069.1  141  S--R-D-W--H.N..LHVY.SMK--SKSYTYL.-Y.RK---TM--..N.Q..FT.QNWKQ  186
+KAF6058094.1  136  .IK.PD-F--H.T.SLN.Y.SMK--SDSYVLL.-A-DAK--TF--I.N.Q..FT.QDWHQ  184
+KAF6062071.1  140  K.-S-D-W--H.N...HIY.--.MKSDSYTYL.--YDGK--TM--..N.Q..FT.QNWKQ  186
+KAF6058095.1  136  .IK.PD-F--H.T.SLN.Y.--KM-KSDSYVLL-GADAK--T.--..N.QM.FT.INWHQ  184
+KAF6062073.1  139  IKSK-R-W--Y...C.HVY.--K--WKS-.SCT-HLGYD--G.TI..N.Q..FT.HNWKQ  186
+KAF6066030.1  139  AIKA-.DW--H.N.YLH.Y.--K--LKSDSF.QLGKDAK--T.--..N.QV.FT.QNWHQ  187
+KAF6062143.1  137  S.IK-G-.DWH.N...HIY.--KM-KSDSY.YL-GYHGK--TV--..N.QV.FT.QNWYQ  186
+KAF6064292.1  171                                                .Y.Q...F.QLW.Q  184
+KAF6060373.1  171                                            M--..N.Q..FT.QNWKQ  186
+KAF6064289.1  169                                            V--E.D....FN.VVY.Q  184
+KAF6063441.1  169                                            V--E.D....FN.VVY.Q  184
+KAF6063443.1  171                                            M--..N.Q..FT.QNWKQ  186
+KAF6064291.1  171                                            M--..N.Q..FT.QNWKQ  186
+
+Query_3       175  ISSISGSGCIVI-G-EN-S-IY---DM---LSISHGTVGSQMIYLSSTSSELYA-E---S  220
+KAF6064290.1  185  TT..A.T...TA-DRDS-.-..ITNAA---..V.T.----.TF..ADGA.SMIV-Q---A  230
+KAF6063442.1  185  TT..A.T...TA-DRDS-.-..ITNAA---..V.T.----.TF..ADGA.SMIV-Q---A  230
+KAF6062072.1  187  R..ML....VTAQ.-KA-.-F.---F.NTK.K..E.----EIF...GGETSIMT-.G--.  233
+KAF6062144.1  187  LTGML....VTAQ.-KA-.-F.---F.NTN.Q..E.----EIF..NGGETSIM.VG---.  233
+KAF6062070.1  187  LTGML.T..VTAQ.-KA-.-F.---F.NTN.Q..E.----EIF..NGGETSIM.VG---.  233
+KAF6066031.1  181  LAGVL.T..FTA-S-GK-.-SF---YL---MNNAVPFSEN.IL..DGSE.SIM.IP---T  227
+KAF6062069.1  187  H.IML.K..VTAQ.-KS-.-L.FKKTD---.K..E----DEIF...GGETSIM.-V---G  232
+KAF6058094.1  185  LAGVL.A..FTAQ.-QS-.-F.LQNTA---.Q..E----D.IF..IGGETSIM.VG---.  231
+KAF6062071.1  187  LTGML....VTA-Q-.KA.-F.---F.NTD.Q..E.----EIF...GGETSIM.VG---.  233
+KAF6058095.1  185  LAGVL.A..FTAQ.-QS-.-F.LQNTA---.Q..E----D.IF...NGETSIL.VG---.  231
+KAF6062073.1  187  LAG...T..VTA-H-GQ-.-SF---YF---.KTNLKIAE..IF..ADGETSIM.VA---.  233
+KAF6066030.1  188  LAGVL.T..FTA-S-GK-.-SF---YL---MNNAVPFSEN.IL..NNGETSIM.IP---.  234
+KAF6062143.1  187  L.GML....VTAQ.-KS-.-F.---F.NTA.K..E----DEIL..TNGETSIM.-VGSIN  235
+KAF6064292.1  185  TAN.L.T...TG-A-A.-.-SF---YL---ANTNLAISSQ.TM.MADGTTSIV.-V---G  230
+KAF6060373.1  187  LTGML....VTAQ.-KS-.-F.---F.NTN.Q..E.----EIF...NGETSIM.VG---.  233
+KAF6064289.1  185  LT..Q.N....A-N-RD-.T..ITNAL---.P.PK----E.TFF.ADHK.SIVV-.---P  230
+KAF6063441.1  185  LT..Q.N....A-N-RD-.T..ITNAL---.P.PK----E.TFF.ADHK.SIVV-.---P  230
+KAF6063443.1  187  LTGML....VTAQ.-KS-.-F.---F.NTN.Q..E.----EIF..NGGETSIM.------  230
+KAF6064291.1  187  LTGML....VTAQ.-KS-.-F.---F.NTN.Q..E.----EIF..NGGETSIM.------  230
+
+Query_3       221  DAKTDNIV---VAGF-----G-------N---------G--NVI----TFR-T--SI---  244
+KAF6064290.1  231  LSTPQTFN---.RN.-----.-------Q---------V--.G.----ANK-IGL..---  256
+KAF6063442.1  231  LSTPQTFN---.RN.-----.-------Q---------V--.G.----ANK-IGL..---  256
+KAF6062072.1  234  TNDPQTFH---.R..-----.-------T---------Y--.GM----ANK-I--GL---  257
+KAF6062144.1  234  INNPQTFH---.R..-----.-------T---------Y--.GM----ANK-I--GLTAT  260
+KAF6062070.1  234  TNNPQTFH---.R..-----.-------T---------Y--.GM----ANK-I--GLTAT  260
+KAF6066031.1  228  NFGPLTYH---.R..GTYED.-------.---------A--.K.GLTA.L.-Q--.----  259
+KAF6062069.1  233  SK.DPQTFH--.R..-----.TYDNGVA.---------K--IGL----.G.LK--.P---  265
+KAF6058094.1  232  IDNPQTFH---.R..-----.-------TTAGEANKI-.--LTA----.LS-S--.V---  263
+KAF6062071.1  234  INRPQTFH---.R..-----.-------T---------Y--.GM----ANK-I--GLTAT  260
+KAF6058095.1  232  IDNPQTFH---.RN.-----.-------TDKNGVANKV.--LTA----.LY-N--.V---  264
+KAF6062073.1  234  RYRPQTFH---.R..-----.-------K---------I--.GV----ANK-I--GL---  257
+KAF6066030.1  235  INNPLTYH---.R..-----.-------TYDTGI----S--.K.----G.T-A--TLY--  264
+KAF6062143.1  236  .PQ.FH-----.R..-----.TDK----.---------.IA.K.----GLT-A--TLS--  263
+KAF6064292.1  231  SLTPLTFT---.K..-----.-------Q---------V--DGV----SNK-I--GLSGT  257
+KAF6060373.1  234  INNPQTFH---.R..-----.TDK----.---------.VA.KL----GLT-A--TL---  262
+KAF6064289.1  231  LSIPARFT---.K..-----.-------W---------.--.K.----GLS-I--PLLK-  256
+KAF6063441.1  231  LSIPARFT---.K..-----.-------W---------.--.K.----GLS-I--PLLK-  256
+KAF6063443.1  231  VGS.N.PQTFH.R..-----.TDK----.---------.VA.KL----GLT-A--TL---  262
+KAF6064291.1  231  VGS.N.PQTFH.R..-----.TDK----.---------.VA.KL----GLT-A--TL---  262
+
+Query_3       245  --D-------PFR---GK--WSYD----GKTGILT--VKVWPSM-THI-FNIGLGYDSSK  282
+KAF6064290.1  257  --P-------L.ALIGSA--...N----SA.....--LRGAGLL-SQY-....T......  297
+KAF6063442.1  257  --P-------L.ALIGSA--...N----SA.....--LRGAGLL-SQY-....T......  297
+KAF6062072.1  258  --NAKLHS--.VA---.RAP.E..----ARD....--LH-HG.Y-SQN-.E..T...VT.  301
+KAF6062144.1  261  LSS-------.VS---.RLP.A.N----ARD....--LY.-GLY-.QN-.E..T...YT.  301
+KAF6062070.1  261  LSS-------.VS---..LP.A.N----ARD....--LY.-GLY-.QN-.E..T...YT.  301
+KAF6066031.1  260  --.-------AGE---PA--.E..----V.N.N..--LR.G.YV-SS--.E..T...PK.  296
+KAF6062069.1  266  --A-------.GK---TP--...N----ARD....--L--YHGL-Y.QN.E..T...FT.  302
+KAF6058094.1  264  ----------.G.---AP--FA.N----ARD....--LY.G-LY-.QN-.E..T...PT.  299
+KAF6062071.1  261  LSS-------.AS---..AP.A..----AEK....--LY.-G.Y-SQN-.E..T...IT.  301
+KAF6058095.1  265  --G-------G-K---SA--YA.N----ARD....--LY.G-LY-.QN-.E..T...PT.  300
+KAF6062073.1  258  --SSRLYSRV.G.---KP--....----ARR....--LYT-GLY-SQR-.E..I...VT.  301
+KAF6066030.1  265  --N-------SVS---..PA.E..----A.Y....----L.TGLYS.H-.E..T...PT.  303
+KAF6062143.1  264  --S-------.VS---..SP...N----ARD....--LY.-GLY-.QN-.E..T...FT.  302
+KAF6064292.1  258  LYS-------STS---..NP.D.N----AD.....--LY.G-DY-RQN-.K..K...NT.  298
+KAF6060373.1  263  --ST------.TP---..NP.A.N----ARD....--LY.G-LY-.QN-.E..T...FT.  302
+KAF6064289.1  257  --I-------.IL---..--RAV.YNPFTGILT.R--GLGLGLL-SQE-.D..R...KRR  298
+KAF6063441.1  257  --I-------.IL---..--RAV.YNPFTGILT.R--GLGLGLL-SQE-.D..R...KRR  298
+KAF6063443.1  263  --ST------.TP---..NP.A.N----ARD....LY.GLY----.QN-.E..T...FT.  302
+KAF6064291.1  263  --ST------.TP---..NP.A.N----ARD....LY.GLY----.QN-.E..T...FT.  302
+
+Query_3       283  FDWKQIDNHCTPTLVNNAIYYKGPIPDGANKPDKCLPCVDHIPWIP  328
+KAF6064290.1  298  .QVVTDSGAGL.STLWGS.Q.N..V.N-PGL.SQ.RV.-KSL.D..  341
+KAF6063442.1  298  .QVVTDSGAGL.STLWGS.Q.N..V.N-PGL.SQ.RV.-KSL.D..  341
+KAF6062072.1  302  .EIVSDRSRGL.GVTLG.MQ.NA.P.N-PGM.AE.K..-KA..G..  345
+KAF6062144.1  302  .QIVSDTSRGL.GIYLG.VQ.N..P.N-.GM.AE.K..-KS..G..  345
+KAF6062070.1  302  .QIVSDTSRGL.GIYLG.VQ.N..P.N-.GM.AE.K..-KS..G..  345
+KAF6066031.1  297  .EVVSDTSEEI.QVHLG.VQ.N..P.Q-TGI.TE.K..-KP..D..  340
+KAF6062069.1  303  .QVVTDTSRGL.SVTLG.VQ.N..P.N-.GM.GE.K..-KA..S..  346
+KAF6058094.1  300  .QIVSDTSREI.QIYLG.VQ.N..P.N-SGI.PE.K..-KSV.G..  343
+KAF6062071.1  302  .RIVSDTSRGL.GINLG.VQ.N.AP.N-LGV.AE.K..-KAV.G..  345
+KAF6058095.1  301  .QIVSDT.REI.QIYLG.VQ.N.SP.K-PGM.SE.K..-KS..G..  344
+KAF6062073.1  302  .EIVTDRCRGL.GVHLG.LQ.N.-P.PHPGM.PQ.Q..-KP..S..  345
+KAF6066030.1  304  .EIVSDKSREI.QVHLG.VQ.N..P.QPGMP.E-.K..-KP..G..  347
+KAF6062143.1  303  .QIVSDTSRGI.GIYLG.VQ.N-GP.PNPGV.PE.K..-KS..G..  346
+KAF6064292.1  299  .SVVTDNALGL.APNLGSVV.N..V.E-PGL.AA.K..-KP..E..  342
+KAF6060373.1  303  .QIVSDTSRGL.GIY.G.VQ.N.-P.PNPGM.SE.K..-KSV.G..  346
+KAF6064289.1  299  .QVVTDNGAGI.LMLWGSVE.N....N-PHR.AI.M-.K.        336
+KAF6063441.1  299  .QVVTDNGAGI.LMLWGSVE.N....N-PHR.AI.M-.K.        336
+KAF6063443.1  303  .QIVSDTSRGL.GIY.G.VQ.N.-P.PNPGM.PE.K..K-P..G..  346
+KAF6064291.1  303  .QIVSDTSRGL.GIY.G.VQ.N.-P.PNPGM.PE.K..K-P..G..  346
+
+
+Lambda      K        H
+   0.315    0.132    0.387 
+
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+
+Effective search space used: 549001686
+
+
+  Database: C_parapsilosis_FDA653
+    Posted date:  May 31, 2022  9:23 PM
+  Number of letters in database: 2,956,521
+  Number of sequences in database:  5,859
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40
