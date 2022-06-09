@@ -643,7 +643,7 @@ spsInfo <- sps.lin %>%
 write_tsv(spsInfo, file = "data/20220518-expanded-blast-species-info.tsv")
 ```
 
-### 12. Genome assembly info and chromosomal locations
+### 12. Genome assembly info
 Use species taxid to fetch the links to the taxonomy database. Note that some of the taxids are for specific strains while others are at the species level. As a result, there may be different number of assemblies being fetched.
 ```{r genome_assembly}
 staxid <- sps.summary %>% select(species, staxid) %>% deframe()
@@ -684,5 +684,48 @@ assembly.tbl <- assembly.tb %>%
   filter(refseq_category != "na" | scaffoldn50 == max(scaffoldn50)) %>% 
   ungroup()
 write_tsv(assembly.tbl, file = "../../output/20220525-expanded-blast-species-assembly-info.tsv")
+```
+
+### 13. Chromosomal locations
+The goal is to fetch the chromosomal locations for the BLAST hits. We are only going to use the assemblies that are at a chromosomal or complete genome level. Note that _C. auris_ refseq genome is complete even though the record says it is scaffold.
+
+```{r chr_loc1}
+# Get the list of species whose genome assembly are at a chromosomal or complete genome level
+list.genome.compl <- assembly.tbl %>% 
+  filter(assemblystatus %in% c("Complete Genome", "Chromosome"), refseq_category != "na") %>% 
+  pull(species) %>% unique()
+chr.sps <- c(list.genome.compl, "Scheffersomyces stipitis", "Candida auris")
+chr.sid <- dedup.merge %>% filter(species %in% chr.sps, grepl("^ref", sid)) %>% pull(sid) 
+# Get the protein's gene ID (not refseq ID)
+tmp.gene.lnk <- entrez_link(dbfrom = "protein", id = chr.sid, db = "gene", by_id = TRUE)
+# extract gene ID
+tmp.gene.id <- sapply(tmp.gene.lnk, function(x) x$links$protein_gene)
+# fetch summary info from the gene database
+tmp.gene <- entrez_summary(db = "gene", id = tmp.gene.id)
+# extract gene name
+tmp.gene.name <- extract_from_esummary(tmp.gene, elements = "name")
+# extract systematic ID (stored in the otheralias field)
+tmp.gene.alias <- extract_from_esummary(tmp.gene, elements = "otheraliases")
+# extract chromosomal locations, only available for fully assembled genomes
+tmp.gene.loc <- bind_rows(extract_from_esummary(tmp.gene, elements = "genomicinfo"), .id = "gene_uid")
+# pool the unique chromosome sequence IDs to find out their length
+tmp.chr.id <- unique(tmp.gene.loc$chraccver)
+# obtain the chromosome length information from the nuccore database
+tmp.chr <- entrez_summary("nuccore", id = tmp.chr.id)
+tmp.chr.len <- extract_from_esummary(tmp.chr, elements = "slen"); 
+names(tmp.chr.len) = tmp.chr.id
+# assemble the chromosomal location dataset
+chr.loc <- tibble(sid = chr.sid, gene_uid = names(tmp.gene.name), 
+                  gene_name = tmp.gene.name, gene_alias = tmp.gene.alias) %>% 
+  left_join(tmp.gene.loc, by = "gene_uid") %>% 
+  mutate(chrL = tmp.chr.len[chraccver], relLoc = num(chrstart/chrL, digits = 2)) %>% 
+  left_join(select(dedup.merge, sid, pid, species, strain), by = "sid") %>% 
+  relocate(pid:strain, .after = sid) %>% relocate(sid, .after = last_col()) %>% 
+  select(-exoncount) %>% 
+  arrange(species, chrloc)
+```
+
+```{r}
+write_tsv(chr.loc, file = "../../output/20220609-expanded-blast-chromosomal-locations.tsv")
 ```
 
