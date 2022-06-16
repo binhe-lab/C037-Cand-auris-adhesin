@@ -1,0 +1,1183 @@
+---
+title: "Analyze XP_028889033 family evolution and adhesin properties"
+author: "Bin He"
+date: "2022-06-12 (updated `r Sys.Date()`)"
+output: 
+  html_notebook: 
+    toc: yes
+    toc_float: yes
+    toc_depth: 5
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_libraries, echo = FALSE}
+#if (!requireNamespace("treeio", quietly = TRUE))
+#    BiocManager::install("treeio")
+#if (!requireNamespace("ggtree", quietly = TRUE))
+#    BiocManager::install("ggtree")
+#if (!requireNamespace("GenomicRanges", quietly = TRUE))
+#    BiocManager::install("GenomicRanges")
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(cowplot))
+#suppressPackageStartupMessages(library(RColorBrewer))
+#suppressPackageStartupMessages(library(ggtree))
+#suppressPackageStartupMessages(library(treeio))
+#suppressPackageStartupMessages(require(GenomicRanges))
+```
+
+# Goal
+
+Analyze the adhesin properties of the XP_028889033 homologs (putative adhesin in _C. auris_)
+This is version 3 of the analysis, using the updated homologs on 2021-02-05
+
+# Build datasets
+## Basic information
+First get the basic information about the 100 sequences in this study. I decide to write a simple Python script to extract such info.
+```bash
+# edit the PYTHON path below to match your local system
+~/sw/miniconda3/bin/python extract_seq_info.py
+```
+
+Load in the sequence information.
+
+> note that I need to manually edit the sequence ids for four sequences from fungidb, because I used their refseq_id when retrieving their chromosomal locations.
+
+| GRYC ID | Refseq_ID|
+|---------|----------|
+| CLUG_05233   | XP_002615218.1 |
+| CPAR2_600430 | XP_036662815.1 |
+| CPAR2_806390 | XP_036665262.1 |
+| CPAR2_806420 | XP_036665265.1 |
+
+```{r load_seq_info}
+sps.list <- c("Cduobushaemulonis","Cpseudohaemulonis","Chaemuloni","Cauris","Clusitaniae","Dhansenii","Cparapsilosis","Lelongisporus","Ctropicalis","Cdubliniensis","Calbicans","Sstipitis","Klactis","Ncastellii","Cglabrata","Nbracarensis","Ndelphensis","Nnivariensis")
+seqInfo <- read_tsv("data/XP_028889033_homologs.tsv", comment = "#", col_types = "ccci") %>% 
+  mutate(species_id = factor(species, levels = sps.list), species = NULL)
+chrLoc <- read_tsv("data/XP_028889033_homologs_chr_loc.tsv", col_types = cols()) %>% 
+  mutate(id = ifelse(is.na(accession), gene_id, accession), 
+         accession = NULL, 
+         species_id = factor(species_id, levels = sps.list),
+         relLoc = round(chrstart/chrL, 3))
+
+seqInfo <- seqInfo %>% 
+  left_join(chrLoc) %>% 
+  mutate(assemblystatus = factor(assemblystatus, levels = c("Complete Genome","Chromosome","Contig","Scaffold"), 
+                                 labels = c("Chromosome", "Chromosome", "Partial", "Partial")),
+         species_gr = factor(species_id, labels = 
+                               c(rep("MDR clade",4),"C. lusitaniae","D. hansenii",rep("C. parapsilosis",2),
+                                 rep("albicans clade",3), "S. stipitis", rep("Saccharomycetaceae",6)))) %>% 
+  select(name, id, source, starts_with("gene"), starts_with("species"), strain, starts_with("assembly"),
+         length, n_seqs, starts_with("chr"), relLoc)
+```
+
+## Adhesin predictions
+[FungalRV](http://fungalrv.igib.res.in/) and [FaaPred](http://bioinfo.icgeb.res.in/faap/) are two Support Vector Machine (SVM) based prediction algorithms that use sequence features such as amino acid composition (frequency, physiochemical properties etc.) as input and train Machine Learning models to distinguish fungal adhesins from non-adhesins.
+```{r adhesin_prediction}
+frv.th = 0.511 # recommended FungalRV score threshold
+frv <- read_tsv("output/FungalRV/fungalRV_result.txt", skip = 3, col_names = c("name","frv.score"), col_types = "cd") %>% 
+  mutate(name = str_sub(name, 2), frv.pred = frv.score > frv.th)
+faa <- read_tsv("output/web-download/faapred_result.txt", col_names = c("name","faa.score","faa.pred"), col_types = "cdc") %>% 
+  mutate(faa.pred = ifelse(faa.pred == "Adhesin", TRUE, FALSE))
+if("frv.score" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -frv.score, -frv.pred, -faa.score, -faa.pred)
+seqInfo <- seqInfo %>% left_join(frv) %>% left_join(faa)
+```
+
+```{r}
+df <- seqInfo %>% 
+  group_by(species_id) %>% 
+  summarize(n = n(), 
+            fungalRV = sum(frv.score > 0.511), faapred = sum(faa.pred, na.rm = T), 
+            both = sum(frv.score > 0.511 & faa.pred),
+            mean.frv = round(mean(frv.score), 2), mean.faa = round(mean(faa.score, na.rm = T), 2))
+
+dt <- DT::datatable(df, options = list(dom = 't', pageLength = 20, ordering = FALSE), 
+                caption = "Summary of Adhesin Prediction Results")
+# the following code is from https://www.r-bloggers.com/2020/05/mimic-excels-conditional-formatting-in-r-2/
+brks <- stats::quantile(x <- df[[2]], probs = seq(.05, .95, .05), na.rm = TRUE)
+#clrs <- colorRampPalette(c("#fcdbdb", "#ff1515"))(length(brks)+1)
+clrs <- colorRampPalette(brewer.pal(n = 4, name = "Reds"))(length(brks)+1)
+for (j in 2:5){
+  # Create breaks for shading column values high to low
+  # Create shades of green for backgrounds
+  # Format cells in j-th column
+  dt <- DT::formatStyle(dt, j, backgroundColor = DT::styleInterval(brks, clrs))
+}
+```
+```{r}
+# see https://yulab-smu.top/treedata-book/chapter7.html#attach-operator
+# the attach operator "%<+%" works on ggtree objects and requires the first column
+# of the data frame to contain the tip labels
+```
+
+## GPI-anchor prediction
+GPI-anchored proteins are characterized by an N-terminal signal peptide, which would direct the protein to the secretary pathway, and a C-terminal GPI-anchor peptide, which would be cleaved and replaced by the GPI-anchor, allowing the protein to be tethered to the cell wall.
+
+For signal peptide, I used SignalP server. Its latest version is 5.0. But I also ran the sequences through their 4.1 version, with two settings. The results of the latter two are almost identical, except for one sequence "XP_024711350.1", which is only included in the sensitive version, and has a probability lower than 0.5.
+
+```{r signalP, fig.width=5, fig.height=5}
+# Signal peptide
+gff.names <- c("id", "source", "name", "start", "end", "prob", "na1", "na2", "na3")
+signalp5 <- read_tsv("output/web-download/signalp_5.0.gff", comment = "#", col_names = gff.names, col_types = "ccciidccc")
+
+if("signalp" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -signalp)
+
+seqInfo <- left_join(seqInfo, select(signalp5, name = id, prob), by = c("name" = "name")) %>% 
+  mutate(signalp = !is.na(prob)) %>% select(-prob)
+```
+
+For GPI-anchor prediction, I used the [PredGPI server](http://gpcr.biocomp.unibo.it/predgpi/).
+```{r gpi}
+tmp <- read_delim("output/web-download/predgpi_result.txt", delim = "|", col_names = c("name","fp","omega"))
+pred.gpi <- tmp %>% 
+  mutate(name = str_sub(name,2,-2), # remove > and the trailing space
+         fp = as.numeric(str_sub(fp, 9, -2)), # extract the numeric part
+         is.gpi = fp <= 0.01,    # based on the cutoff of the PredGPI server (prob < 99% -> not GPI-anchored)
+         omega = str_sub(omega, 8),
+         cleaveRes = str_sub(omega, 1, 1),
+         cleavePos = as.integer(str_sub(omega, 3))
+         ) %>% 
+  left_join(select(seqInfo, name, length), by = c("name" = "name"))
+
+# remove the column if it already exists
+if("pred.gpi" %in% names(seqInfo))
+  seqInfo <- select(seqInfo, -pred.gpi)
+seqInfo <- left_join(seqInfo, select(pred.gpi, name, pred.gpi = is.gpi), by = c("name"="name"))
+```
+```{r}
+df1 <- seqInfo %>% 
+  group_by(species_id) %>% 
+  summarize(SignalP = sum(signalp), GPI = sum(pred.gpi), All = sum(frv.score > 0.511 & signalp & pred.gpi)) %>% 
+  right_join(df) %>% 
+  select(species = species_id, Total = n, FRV = fungalRV, SP = SignalP, GPI, All) %>% 
+  pivot_longer(Total:All, names_to = "type", values_to = "number") %>% 
+  mutate(type = factor(type, levels = unique(type)))
+p <- ggplot(df1, aes(x = type, y = species)) + 
+  scale_y_discrete(limits = rev) +
+  geom_tile(aes(fill = number), color = "white", alpha = 0.4) +
+  geom_text(aes(label = number), color = "black", size = 4) +
+  scale_fill_distiller(palette = "Greys",direction = 1) +
+  scale_x_discrete(position = "top") +
+  theme_cowplot() + theme(axis.title = element_blank(), legend.position = "none")
+p
+ggsave("output/img/20211024-homologs-prediction-summary.png", width = 4.5, height = 5)
+```
+
+**Summary**
+
+- Most of the Hil homologs in Ascomycetes passed both the GPI-anchor predictions and also the FungalRV predictor, suggesting that they are likely to be cell wall proteins and may play an adhesin function (FaaPred predicted fewer adhesins, but the overall pattern doesn't change).
+
+## Tandem repeat structures
+The non-NTD portion of the proteins evolve rapidly and many of them contain tandem repeats. Therefore, characterizing and visualizing the type, number and spatial distribution of the tandem repeats serve to highlight the differences in the non-NTD part of the proteins in this family.
+
+To identify and group tandem repeats, I used [XSTREAM](https://amnewmanlab.stanford.edu/xstream) with the following parameters `java -Xmx1000m -Xms1000m -jar ~/sw/XSTREAM/xstream.jar $in -i.7 -I.7 -g3 -e2 -L15 -z -G -O -Asub.txt`. The parameters were chosen to identify degenerate tandem repeats that occur at least two times and must be a minimum length of 5 a.a. or longer and the minimum length of a tandem repeat domain (=period x copy #) must be greater than 15 a.a. Please see `script/xstream.sh` for explanation of the parameters.
+
+```{r}
+tandem <- read_tsv("output/xstream/XSTREAM_XP_028889033_homologs_sub_i0.7_g3_m5_L15_chart.tsv",
+                   col_types = "ciiifidcccd", comment = "#")
+# now let's create a tibble for plotting, which would contain each instance of the tandem repeat on a separate row
+tandem.div <- tandem %>% 
+  rowwise(name) %>% 
+  summarize(div = list(c(seq(from = start, to = end, by = period), end)), .groups = "drop") %>% 
+  unnest(div)
+
+# summarize stats of tandem repeats
+repeats <- tandem %>% 
+  group_by(type, period) %>% 
+  summarize(n = n(), copyMean = mean(copyN), .groups = "drop") %>% 
+  mutate(length = period * copyMean)
+```
+
+Calculate length of tandem repeats as a percentage of the protein length minus the PF11765 domain
+
+```{r, fig.width=5, fig.height=4}
+# tandem repeat length distribution
+ggplot(repeats, aes(length)) + geom_histogram(bins = 40) + 
+  scale_x_continuous(breaks = c(10,20,40,80,160,320,640,1280), trans = "log2") +
+  theme_cowplot()
+
+# tandem repeat length cumulative distribution
+ggplot(repeats, aes(length)) + stat_ecdf(geom = "step") + 
+  scale_x_continuous(breaks = 10*2^seq_len(9), trans = "log2") +
+  ylab("Probability") + xlab("length (= period * mean copies)") + 
+  theme_cowplot() + panel_border(color = "black") #+ background_grid()
+```
+
+# Feature map for homologs
+The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
+
+## Load Pfam domains
+```{r}
+# Pfam domains
+pfam <- read_tsv("output/web-download/HMMER-HMMScan-Pfam-hits.tsv", col_types = "ciiiicciiidddiic")
+# save feature file for Jalview examination
+# pfam %>% filter(grepl("XP_028889033",seq_id)) %>% select(hmm_name, seq_id, envelope_start, envelope_end) %>% mutate(featuretype = "domain") %>% write_tsv("XP_028889033_features.jalview")
+# I manually edited the feature file, so I commented out the line above to avoid accidentally 
+# overwriting my own edits
+```
+
+## Organize and combine the tandem repeats features
+```{r}
+tr <- tandem %>% 
+  left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
+  mutate(type = "Tandem Repeats") %>% 
+  select(name, type, start, end)
+```
+
+```{r}
+# GPI-anchor
+# use pred.gpi
+# feature set
+# structure: id  feature  start  end
+seqLen <- seqInfo %>% mutate(start = 1) %>% select(name, start, end = length)
+feature <- bind_rows(
+  pfam %>% select(name = seq_id, type = hmm_name, start = envelope_start, end = envelope_end) %>% 
+    filter(type == "Hyphal_reg_CWP"),
+  # extend the signal peptide segment by 10 amino acids to make it more visible
+  signalp5 %>% mutate(type = "Signal Peptide", end = end + 10) %>% select(name = id, type, start = start, end),
+  # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
+  pred.gpi %>% filter(is.gpi) %>% mutate(type = "GPI-anchor", start = cleavePos-10) %>% 
+    select(name, type, start, end = length),
+  tr
+) 
+
+# in order to plot properties of the sequences in an order that is consistent with the sequences' position in the gene tree
+genetreeOrder <- scan("data/reorder_by_gene_tree.txt", what = "character")
+seqLen$name <- ordered(seqLen$name, levels = rev(genetreeOrder))
+
+feature <- feature %>% 
+  mutate(name = ordered(name, levels = rev(genetreeOrder)),
+         type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "Signal Peptide", "GPI-anchor", "Tandem Repeats")))
+feature.colors <- c(Hyphal_reg_CWP = "#3d85c6", "Signal Peptide" = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeats" = "#af8400bb")
+```
+## Plot domain organization
+```{r plot_tandem_repeats, warning=FALSE}
+# plot
+p0 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + 
+  #geom_segment(color = "black", size = 2.1) +
+  geom_segment(color = "gray80", size = 2)
+p1 <- geom_segment(data = feature, aes(color = type), size = 2)
+p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2, color = "white")
+p3 <- p0 + p1 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = feature.colors) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
+  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
+        legend.position = c(0.75, 0.35), 
+        legend.text = element_text(size = 12), legend.title = element_text(size = 14),
+        plot.title = element_text(hjust = 0.5), 
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
+  labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
+#plot_grid(p.gtree, p3, ncol = 2, align = 'v', rel_widths = c(1,2), scale = c(1.01,1))
+ggsave("output/img/20210625-domain-tandem-repeats.png", width = 6, height = 7.5)
+```
+**Fig. ?** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
+
+## Separate TR types
+```{r}
+DT::datatable(
+  tandem %>% 
+    dplyr::rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
+    select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
+    arrange(desc(name)),
+  fillContainer = FALSE, options = list(pageLength = 10)
+)
+```
+
+Repeat the above analysis but distinguishing between all different TR types
+```{r}
+tr1 <- tandem %>% 
+  left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
+  mutate(type = paste0("TR-", type),
+         tip = paste0(consensus_nogap,
+                      "\ntype: ", type,
+                      "\nperiod: ", period, 
+                      "\ncopyN: ", copyMean),
+         name = ordered(name, levels = rev(genetreeOrder))) %>% 
+  select(name, type, start, end, tip)
+```
+
+```{r set_tr_color}
+require(RColorBrewer)
+tr.th <- 100 # arbitrary threshold for distinguishing "short" from "long" TRs
+tr.col <- character(nrow(repeats)) # create a color vector
+short.rp <- which(repeats$length < tr.th) # identify the short repeats indices
+long.rp <- setdiff(1:nrow(repeats), short.rp) # the long repeats indices
+set.seed(123) # for reproducibly shuffling the order before assigning the colors
+short.rp <- sample(short.rp) # shuffle the indices for short tandem repeats
+tr.col[short.rp] <- colorRampPalette(brewer.pal(12, "Paired")[seq(3,11,by=2)])(length(short.rp)) # assign the short repeats a lower contrast color
+set.seed(231) # for reproducibly shuffling the order before assigning the colors
+long.rp <- sample(long.rp)
+tr.col[long.rp] <- colorRampPalette(brewer.pal(12, "Paired")[seq(4,12,by=2)])(length(long.rp)) # assign the long repeats a higher contrast color
+# -- desaturate the colors -- 
+# https://stackoverflow.com/questions/26314701/r-reducing-colour-saturation-of-a-colour-palette
+library(colorspace)   ## hsv colorspace manipulations
+
+## Function for desaturating colors by specified proportion
+desat <- function(cols, sat=0.5) {
+    X <- diag(c(1, sat, 1)) %*% rgb2hsv(col2rgb(cols))
+    hsv(X[1,], X[2,], X[3,])
+}
+
+tr.col <- desat(tr.col, sat = 0.8)
+# -- finish --
+tr.col <- paste0(tr.col, "CC") # add 20% transparency to the TR features
+names(tr.col) <- paste0("TR-", repeats$type) # name the colors by the TR types
+repeats$color <- tr.col
+```
+
+Combine domains, SP and GPI-anchor with TR features.
+```{r} 
+# combine sequence features with tandem repeats
+feature1 <- bind_rows(filter(feature, type != "Tandem Repeats"), tr1) %>% 
+  mutate(type = ordered(type, levels = c("Hyphal_reg_CWP", "SignalP", "GPI-anchor", unique(tr1$type))))
+feature.col1 <- c(feature.colors[1:3], tr.col) # remove the singel "Tandem Repeats" type
+write_tsv(feature1, file = "output/misc/R-feature-table.tsv", col_names = TRUE)
+```
+
+```{r, warning=FALSE}
+# plot
+p0 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + 
+  #geom_segment(color = "black", size = 2.1) +
+  geom_segment(color = "gray80", size = 2)
+p1 <- geom_segment(data = feature1, aes(color = type, text = tip), size = 2)
+p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2, color = "white")
+p3 <- p0 + p1 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = feature.col1) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
+  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
+        legend.position = "none", plot.title = element_text(hjust = 0.5),
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
+  labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
+# plot_grid(p.gtree, p3 + p2, ncol = 2, align = 'v', rel_widths = c(1,2), scale = c(1.01,1))
+ggsave("output/img/20210626-domain-tandem-repeats-distinct-color.png", width = 5, height = 7.5)
+```
+
+```{r, warning=FALSE, fig.height=9, fig.width=9}
+# plot
+#require(plotly)
+ggplotly(p3, tooltip = "text", width = 900, height = 900)
+```
+# Similarity and divergence
+## Length distribution
+```{r plot_prot_length}
+# plot the length distribution of the homologs in each species
+p <- ggplot(seqInfo, aes(x = species_id, y = length)) + 
+  geom_boxplot(outlier.shape = NA) + geom_hline(yintercept = 500, linetype = 2) +
+  #stat_summary(fun.data = "mean_cl_boot", color = "red") +
+  geom_dotplot(binwidth = 100, binaxis = "y", stackdir = "center", dotsize = 0.5, 
+               binpositions = "all", fill = rgb(0,0,0,0.5), color = rgb(0,0,0,0.6)) + 
+  scale_x_discrete(limits = rev) +
+  coord_flip() +  labs(title = "Distribution of XP_028889033 homologs' length") +
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank())
+  
+plot_grid(p.tree, p, align = "h", ncol = 2, rel_widths = c(1,1.5), scale = c(1.08,1))
+```
+**Fig. 5 Distribution of Hil family homologs' length across species.** The shadings in the species tree on the left is the same as in Figure 1. Protein lengths are plotted both as a dotplot (binned in 100 a.a. bins) and a boxplot, where the box represents the interquartile range, the middle bar indicates the median and the whisker 1.5 times the interquartile range.
+
+_**Discussion**_
+
+- The one sequence below 500 a.a. is from _N. delphensis_, which is labeled as a partial CDS.
+- Majority of the proteins in the list are 500-2000 a.a., with a few exceptionally long
+- Not only do Saccharomycetaceae species have fewer Hil family homologs, the ones they have are also short (< 1000 a.a.) with the exception of _C. glabrata_
+
+## Protein length vs tandem repeat content
+Examine the relationship between the entire protein length and tandem repeat content
+```{r}
+# calculate the length of the PF11765 domain in each protein
+pf11765.length <- feature %>% 
+  filter(type == "Hyphal_reg_CWP") %>% 
+  mutate(domainLen = end - start + 1) %>% 
+  # need the following step because one protein has two instances of PF11765
+  group_by(name) %>% 
+  summarize(dmLen = sum(domainLen))
+
+# calculate repeat content
+tr.length <- tandem %>% 
+  mutate(trLength = end - start + 1) %>% 
+  group_by(name, seqLength) %>% 
+  summarize(trLen = sum(trLength)) %>% 
+  dplyr::rename(length = seqLength) %>% 
+  right_join(select(seqInfo, name, length, species_id, species_gr),
+             by = c("name","length")) %>% 
+  mutate(trLen = ifelse(is.na(trLen), 0, trLen)) %>% 
+  left_join(pf11765.length, by = "name") %>% 
+  mutate(nonNTDLen = length - dmLen, tr.content = trLen/nonNTDLen)
+```
+
+```{r}
+tr.length %>% 
+  ggplot(aes(x = trLen, y = length)) + 
+  geom_point(size = 2.5, alpha = 0.7) + 
+  #geom_smooth(method = "lm") +
+  #scale_color_manual(name = "Clade", values = sps.color) +
+  ylab("Protein length") + xlab("Tandem repeat length") + ylim(0, 4500) +
+  theme_cowplot() + panel_border(color = "black")
+ggsave("output/img/20210627-protein-length-evol-driven-by-tandem-repeats.png", width = 6, height = 4.5)
+```
+Shorter proteins seem to have a lower content of tandem repeats as a percentrage of their non NTD portion of the protein.
+```{r}
+tr.length %>% 
+  mutate(group = cut(length, breaks = c(0,1000,1500,5000), labels = c("<1000","<1500",">1500"))) %>% 
+  ggplot(aes(x = group, y = tr.content)) + 
+  geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2, size = 2, alpha = 0.8) +
+  #geom_hline(yintercept = 0.5, linetype = 2, color = "gray30") +
+  #geom_vline(xintercept = 1500, linetype = 2, color = "gray30") +
+  #scale_color_manual(name = "Clade", values = sps.color) +
+  ylab("Tandem repeat %") + xlab("Protein length") + #coord_flip() +
+  theme_cowplot(font_size = 16) + panel_border(color = "black")
+ggsave("output/img/20211120-tandem-repeat-proportion.png", width = 5, height = 3)
+```
+```{r}
+# https://stackoverflow.com/questions/7549694/add-regression-line-equation-and-r2-on-graph
+# # GET EQUATION AND R-SQUARED AS STRING
+# # SOURCE: https://groups.google.com/forum/#!topic/ggplot2/1TgH-kG5XMA
+# modified by Bin He 2021-06-28
+lm_eq <- function(m){
+    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, 
+         list(a = format(unname(coef(m)[1]), digits = 4),
+              b = format(unname(coef(m)[2]), digits = 4),
+             r2 = format(summary(m)$r.squared, digits = 3)))
+    as.character(as.expression(eq));
+}
+
+lm.obj <- lm(nonNTDLen ~ trLen, tr.length)
+
+tr.length %>% 
+  ggplot(aes(x = trLen, y = nonNTDLen)) + 
+  geom_smooth(method = "glm", formula = y~x, se = FALSE) +
+  geom_point(size = 2.5, alpha = 0.7) + 
+  annotate(geom = "text", x = 2000, y = 500, label = lm_eq(lm.obj), parse = TRUE, size = 5) +
+  xlab("Tandem repeat length") + ylab("Length of non-NTD part") +
+  theme_cowplot() + panel_border(color = "black")
+ggsave("output/img/20210628-protein-nonNTD-length-driven-by-tandem-repeat.png", width = 5, height = 4.5)
+```
+
+_**Discussion**_
+
+- Tandem repeat content is highly correlated to the non-NTD portion of the protein length, with an estimated slope of close to 1, suggesting that protein length evolution is strongly driven by the acquirement, expansion or contraction of tandem repeats.
+- Homologs shorter than 1300 amino acids in the non-NTD portion have more variability in the tandem repeat proportion, with some having very little tandem repeats.
+
+## Serine/Threonine content
+
+S/T sites are potential sites for O-glycosylation, which could increase the rididity of the stalk of the protein and allow the N-terminal domain to protrude out of the cell wall facing the exterior. More evidence for the importance of O-glycosylation in a serine/threonine-rich domain can be found [here](https://ec.asm.org/content/10/10/1317.long).
+
+### In whole protein
+The goal here is to compare the S/T frequencies in the Hil proteins to the proteome average. First we need to calculate the S/T frequencies in the Hil proteins, either in the whole protein or excluding the PF11765 domain. This is done with a script in the `script` folder named `Hil-ST-freq.sh`
+
+To help with the latter task (in the non-PF11765 domain part), I export the PF11765 domain boundaries as a BED format file
+```{r}
+feature %>% 
+  filter(type == "Hyphal_reg_CWP") %>% 
+  select(name, start, end) %>% 
+  write_tsv(file = "data/XP_028889033_homologs_PF11765.BED", col_names = FALSE)
+```
+
+Read in the S/T frequencies
+```{r}
+ST.full <- read_tsv("output/ST-freq/20211121-Hil-full-STfreq.out", col_types = "ciii")
+ST.noNTD <- read_tsv("output/ST-freq/20211121-Hil-noPF11765-STfreq.out", col_types = "ciii")
+```
+
+To determine the background frequency of Serine and Threonine in the proteome(s), I modified the `calc_aafreq_gz.py` script I wrote a long time ago for calculating the cystein and dibasic residues. I then copied four proteome fasta files, for _C. albicans_, _C. glabrata_, _S. cerevisiae_ and _C. auris_ and applied the script on them (using a wrapper script called `S-T-freq.sh`). Below I will look at both the proteome average and the distribution of S/T in individual proteins across the proteome.
+```{r}
+tmp.files <- list.files(path = "output/ST-freq/", pattern = "*ST-freq.tsv.gz")
+files <- file.path("output/ST-freq", tmp.files)
+names(files) <- gsub("-", " ", tmp.files) %>% word(1, 1)
+bgST.freq <- files %>% 
+  map(~read_tsv(., col_types = cols())) %>% 
+  bind_rows(.id = "Species") %>% 
+  mutate(freqS = Ser/length, freqT = Thr/length,
+         Ser = NULL, Thr = NULL,
+         Species = paste0(str_sub(Species, 1, 1), ". ", str_sub(Species, 2))) %>% 
+  pivot_longer(cols = starts_with("freq"), names_to = "Residue", names_prefix = "freq", values_to = "frequency")
+```
+
+Is there any correlations between protein length and S/T frequency?
+```{r}
+bgST.freq %>% 
+  ggplot(aes(x = length, y = frequency)) +
+  geom_hex() + facet_grid(Residue ~ Species, scales = "free_y") + 
+  scale_x_log10() + xlab("Protein length")
+```
+Doesn't seem to be significant.
+
+Now let's combine the Hil protein S/T frequences as an extra "species" into the `bgST.freq`
+```{r}
+tmp <- ST.full %>% 
+  mutate(Species = "Hil_full", S = Ser/length, `T` = Thr/length) %>% 
+  pivot_longer(cols = c(S, `T`), names_to = "Residue", values_to = "frequency") %>% 
+  select(Species, ID, length, Residue, frequency) %>% 
+  bind_rows(filter(bgST.freq, Species != "S. cerevisiae"))
+#tmp <- ST.noNTD %>% 
+#  mutate(Species = "Hil-PF11765", S = Ser/length, `T` = Thr/length) %>% 
+#  pivot_longer(cols = c(S, `T`), names_to = "Residue", values_to = "frequency") %>% 
+#  select(Species, ID, length, Residue, frequency) %>%
+#  bind_rows(tmp)
+
+p <- tmp %>% 
+  ggplot(aes(x = Species, y = frequency, fill = Residue)) + 
+  geom_boxplot(position = position_dodge(0.9), outlier.size = 0.2, outlier.alpha = 0.5) + 
+  #stat_summary(
+  #  fun.data = "mean_sdl",  fun.args = list(mult = 1), 
+  #  geom = "pointrange", color = "black", position = position_dodge(0.9)
+  #) +
+  scale_fill_manual(values = c("T" = "skyblue3", "S" = "lightblue1")) +
+  #scale_fill_brewer() +
+  theme_cowplot() + panel_border(color = "black") +
+  theme(axis.title.x = element_blank())
+
+p# + p1 + scale_color_manual(values = c("S" = alpha("gray20", 0.5), "T" = alpha("gray20", 0.5)))
+ggsave("output/img/20211121-Hil-ST-freq-compared-to-proteome.png", width = 5, height = 2.5)
+```
+
+
+```{r}
+bgST.freq %>% 
+  group_by(Species, Residue) %>% 
+  summarize(mean = round(mean(frequency),3)) %>% 
+  pivot_wider(names_from = Residue, values_from = mean)
+```
+
+### Sliding window estimates
+To determine the S/T frequency in the XP_028889033 homologs, I ran the program `freak` from the EMBOSS suite with the parameters of 100 aa sliding window and a step size of 10 aa. After reformating the output, the rest of the analysis is accomplished below.
+
+
+```{r S_T_freq}
+# load data
+ST.freq <- read_tsv("output/ST-freq/ST_freq_100_10_freak.out.gz", col_types = "cid")
+S.freq <- read_tsv("output/ST-freq/S_freq_100_10_freak.out.gz", col_types = "cid")
+T.freq <- read_tsv("output/ST-freq/T_freq_100_10_freak.out.gz", col_types = "cid")
+# convert sequence name column to an ordered list sorted based on the gene tree sequence
+ST.freq <- ST.freq %>%  mutate(id = ordered(id, levels = rev(genetreeOrder))) # this will produce the desired order
+S.freq <- S.freq %>%  mutate(id = ordered(id, levels = rev(genetreeOrder))) # this will produce the desired order
+T.freq <- T.freq %>%  mutate(id = ordered(id, levels = rev(genetreeOrder))) # this will produce the desired order
+```
+
+```{r plot_ST_freq, fig.width = 6, fig.height=6}
+ggplot(ST.freq, aes(x = id, y = pos)) +  geom_tile(aes(fill = freq)) +
+  coord_flip() + theme_classic() + scale_fill_distiller(palette = "RdGy", limits = c(0, 0.8), oob = scales::squish, breaks = seq(0, 0.6, by = 0.2)) +
+  theme(axis.text.y = element_text(size = 5),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
+        legend.position = c(0.85,0.35),
+        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
+  ylim(1, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "Frequency") + 
+  ggtitle("Serine/Threonine frequency in 100 aa sliding windows")
+ggsave("output/img/20201223-homologs-ST-freq-100aa-window.png", bg = "transparent", width = 7, height = 7)
+```
+```{r, fig.width=8, fig.height=7.5}
+ST.comb <- bind_rows(Ser = S.freq, Thr = T.freq, .id = "Var") %>% 
+  mutate(Var = ordered(Var, levels = c("Ser","Thr")))
+p.st <- ggplot(ST.comb, aes(x = id, y = pos)) + geom_tile(aes(fill = freq), size = 2) + 
+  facet_wrap(~Var, scales = "fixed") + theme_classic() +
+  coord_flip() + 
+  #scale_fill_distiller(palette = "RdGy", limits = c(-0.1, 0.75), oob = scales::squish, breaks = seq(0,0.7,by=0.1)) +
+  scale_fill_gradient2(low = "gray10", high = "#006000", mid = "gray90", midpoint = 0.05, breaks = seq(0,0.7,by=0.1)) +
+  #scale_fill_steps2(low = "#000000", high = "#b30000", midpoint = 0.1, breaks = seq(0,0.7,by=0.1)) +
+  #scale_fill_viridis_b(n.breaks = 10, begin = 0.1) +
+  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
+        strip.background = element_blank(),
+        legend.position = c(0.92,0.40),
+        panel.background = element_rect(fill = alpha("lightblue",0.5))) +
+  ylim(1, 4500) + ylab("Position in sequence") + xlab("Sequences") 
+#plot_grid(p.gtree, p.st, ncol = 2, align = 'v', rel_widths = c(1,3), scale = c(0.99,1))
+p.st
+ggsave("output/img/20201223-ST-freq-composite.png", width = 7, height = 7.5)
+```
+
+
+## TANGO prediction of β-aggregation prone sequences
+
+The amyloid-like $\beta$-aggregation prone sequences have the ability to mediate self-aggregation, which boosts the local concentration of the adhesin molecules on the cell-surface. Similar to the S/T frequency above, we would like to use the output from the prediction algorithm, TANGO, to visulize the distribution of such sequence motifs along the length of the XP_028889033 homolog sequences.
+
+TANGO predictions and the subsequent extraction of $\beta$-aggregation prone sequences were documented in separate Python script, README files and the `tango.Rmd`.
+```{r tango_sequences}
+# here we only look at the extracted tango sequences
+tango <- read_tsv("data/tango_summary_table.tsv.gz", col_types = "cciiidddicc")
+# reorder the sequences for plotting
+tango$name <- ordered(tango$name, levels = rev(genetreeOrder))
+# plot
+p1 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + geom_segment(color = "gray80", size = 2)
+p2 <- geom_segment(data = filter(feature, type == "Hyphal_reg_CWP"), aes(x = name, y = start, xend = name, yend = end), size = 2, color = "#3d84c6")
+p3 <- geom_segment(data = tango, aes(x = name, xend = name,  y = ifelse(start-4 >= 0, start-4, 0), yend = end + 4, color = median), size = 2)
+p4 <- p1 + p2 + p3 + coord_flip() + theme_classic() + 
+  scale_color_viridis_c(limits = c(5,101), breaks = c(5,seq(25,100,25)), direction = -1) +
+  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        plot.title = element_text(hjust = 0.5),
+        legend.position = c(0.75,0.35),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12),
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
+  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "TANGO score") + 
+  ggtitle("TANGO hits with Hyphal_reg_CWP domain masked")
+p4
+#plot_grid(p.gtree, p4, ncol = 2, align = 'v', rel_widths = c(1,2.5), scale = c(1.01,1))
+ggsave("output/img/20210110-tango-score-segment.png", width = 6, height = 7.5)
+```
+### Number and spacing of TANGO hits in each protein sequence
+Some of the following analysis is modeled after another R markdown [20201031-tango.Rmd](analysis/20201031-tango.Rmd).
+
+How many TANGO predicted β-aggregation sequences does each homolog has, either in the entire protein or in the non-NTD portion? To do so I'll take advantage of the GRanges package to distinguish TANGO hits that are within or outside the PF11765 domain(s) for each protein. First, I need to convert the feature table into a GRanges object with the sequence names used as chromosome names and start and end as the IRanges start and end. Then I'll convert the tango output also into a GRanges object in the same way, with the exception of keeping the median as the score field.
+```{r}
+pf11765.gr <- feature %>% 
+  filter(type == "Hyphal_reg_CWP") %>% 
+  select(seqname = name, start, end) %>% 
+  makeGRangesFromDataFrame(ignore.strand = TRUE)
+
+tango.gr <- tango %>% 
+  select(seqname = name, start, end, score = median) %>% 
+  makeGRangesFromDataFrame(keep.extra.columns = TRUE, ignore.strand = TRUE)
+
+# count the number of tango hits in the pf11765 domain
+tango.gr.in <- subsetByOverlaps(tango.gr, pf11765.gr) %>% 
+  as_tibble() %>% 
+  mutate(name = ordered(seqnames, levels = rev(genetreeOrder)), InNTD = TRUE) %>% 
+  select(name, start, end, InNTD)
+
+tango1 <- tango %>% 
+  mutate(InNTD = FALSE) %>% 
+  rows_update(tango.gr.in, by = c("name", "start", "end"))
+```
+
+Once I have the new tibble `tango1` that contains the `InNTD` column, I can calculate summary statistics:
+```{r}
+tango1.sum <- tango1 %>% 
+  group_by(name) %>% 
+  summarize(n.all = sum(!InNTD), n.gt30 = sum(round(median,0) >= 30 & !InNTD)) %>% 
+  left_join(select(seqInfo, name, length), by = "name")
+
+cat("Count the total number of tango hits outside the NTD: ")
+table(cut(tango1.sum$n.all, breaks = c(0,1,5,10,Inf), right = FALSE))
+cat("Among the above tango hits, only count those with median score greater than 30: ")
+table(cut(tango1.sum$n.gt30, breaks = c(0,1,5,10,Inf), right = FALSE))
+```
+
+_C. auris_ Hil1-4 and their MDR orthologs are exceptional in TANGO hits number and distribution. They are on average longer than the rest of the homologs
+
+```{r}
+# the subset of homologs are 22-43 in the genetreeOrder vector. use this to do the following
+tango1.sum %>%
+  group_by(`Hil1-4` = name %in% genetreeOrder[18:43]) %>% 
+  summarize(n = n(), mLen = median(length), nTANGO = median(n.all), nTANGO30 = median(n.gt30))
+```
+
+How about the spacing between the replicates?
+```{r}
+# first count the number of out-of-NTD, median score >= 30 hits per sequence
+motif.per.seq <- tango1 %>% 
+  group_by(name) %>% 
+  summarize(n.all = sum(!InNTD & round(median, 0) >= 30))
+
+# next we will filter the tango dataset in order to recalculate the intervals
+# this will result in 14 sequences to be dropped since they have 0 hits meeting
+# the criteria. we will add them back by right_join() with the tibble above
+motif.per.seq <- tango1 %>% 
+  # limit to sequences not in the PF11765 domain and with median score >= 30
+  filter(!InNTD, round(median,0) >= 30) %>% 
+  group_by(name) %>% 
+  # recalculate the interval since we are now limiting the hits to >= 30
+  mutate(interval = start - lag(end) - 1) %>% 
+  # summarize the results at a sequence level
+  summarize(n.type = length(unique(seq)),
+            n.all = n(),
+            medScore = round(mean(median),1),
+            IVT = round(mean(ivt),2),
+            avg.intv = round(mean(interval, na.rm = T),1), 
+            IQR.intv = round(IQR(interval, na.rm = T)/1.349 ,1),
+            # median absolute deviation is a robust measure of the scale parameter
+            # https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/mad
+            mad.intv = round(mad(interval, na.rm = T),1),
+            seqs = paste(unique(seq), collapse = ","),
+            .groups = "drop_last") %>% 
+  right_join(motif.per.seq, by = c("name", "n.all")) %>% 
+  arrange(desc(n.all), desc(mad.intv))
+DT::datatable(motif.per.seq)
+
+# add extra information for plotting below
+motif.per.seq <- motif.per.seq %>% 
+  left_join(select(seqInfo, species_id, species_gr, name), by = "name") %>% 
+  mutate(reg.spaced = ifelse(n.all > 3 & mad.intv < 5, TRUE, FALSE),
+         mad.intv = ifelse(n.all > 2, mad.intv, NA),
+         species = ordered(species_id, levels = levels(species_id), labels = 
+                             paste0(str_sub(levels(species_id),1,1), ". ", 
+                                    str_sub(levels(species_id), 2))
+         ),
+         species = reorder(species, desc(species)),
+         species_id = NULL)
+```
+Export the tango motif per seq result
+```{r}
+motif.per.seq1 %>% 
+  mutate(id = gsub("_[a-zA-Z]+$", "", name),
+         species = gsub(".*_([A-Z])([a-z]+)$", "\\1\\. \\2", name)) %>% 
+  select(id, species, species_gr, n.type, n.all, avg.intv, mad.intv, seqs) %>% 
+  write_tsv("output/tango/20210904-tango-summary-table.tsv")
+```
+
+```{r}
+#  mutate(Clade2 = ifelse(species %in% clavispora, "Clavispora",
+#                         ifelse(species %in% candida, "Candida", 
+#                                ifelse(species %in% saccharo, "Saccharomycetaceae", "other"))))
+#p0 <- motif.per.seq %>% 
+#  ggplot(aes(x = species)) + geom_bar() + coord_flip() +
+#  # thanks to https://stackoverflow.com/questions/10834382/ggplot2-keep-unused-levels-barplot
+#  scale_x_discrete(drop = FALSE) +
+#  scale_y_continuous(breaks = c(0,5,10,15), minor_breaks = NULL) + 
+#  ylab("# homologs")
+
+col.regspc <- c("TRUE" = "#af8400", "FALSE" = alpha("grey30", 0.5))
+p1 <- motif.per.seq %>% 
+  ggplot(aes(x = species, y = n.all)) + 
+  geom_jitter(aes(color = reg.spaced), size = 2.2, width = 0.3, height = 0) +
+  #geom_dotplot(aes(fill = reg.spaced), binaxis = "y", binwidth = 4, 
+  #             stackdir = "center", width = 0.5, binpositions = "all") +
+  #geom_text(aes(label = ifelse(n.all > 2 & mad.intv < 5, "*", "")),
+  #          color = "grey20") +
+  #scale_size_manual(values = c(1,2)) + guides(size = "none") +
+  #scale_shape_manual(name = "Regularly spaced", values = c(21,19)) +
+  scale_color_manual(name = "Regularly spaced", values = col.regspc) +
+  coord_flip() + ylab("# TANGO hits/protein") +
+  scale_y_continuous(trans = "pseudo_log", breaks = c(0:5,10,20,40),
+                     minor_breaks = NULL)
+legend <- get_legend(p1 + guides(color = guide_legend(nrow = 1), pch = guide_legend(nrow = 1)) +
+                       theme(legend.position = "bottom"))
+  
+p2 <- motif.per.seq %>% 
+  mutate(mad.intv = ifelse(is.na(mad.intv), 500, mad.intv)) %>% 
+  ggplot(aes(x = species, y = mad.intv)) + 
+  geom_jitter(aes(color = reg.spaced), size = 2.2, width = 0.3, height = 0) +
+  #geom_dotplot(aes(fill = reg.spaced), binaxis = "y", binwidth = 0.5, 
+  #             stackdir = "center", width = 0.3, binpositions = "all") +
+  #scale_shape_manual(name = "Regularly spaced", values = c(21, 19)) +
+  scale_color_manual(name = "Regularly spaced", values = col.regspc) +
+  scale_y_continuous(trans = "pseudo_log", 
+                     breaks = c(0,5,25,100,500), minor_breaks = NULL) +
+  coord_flip() + ylab("Variation of spacing (MAD)")
+
+p3 <- theme_cowplot() + panel_border(color = "black") + background_grid() +
+                    theme(axis.text.y = element_blank(), axis.title.y = element_blank(),
+                          legend.position = "none")
+prow <- plot_grid(p1 + p3, p2 + p3, ncol = 2)
+
+plot_grid(legend, prow, ncol = 1, rel_heights = c(.1,1))
+
+ggsave("output/img/20210630-tango-hits-number-and-interval.png", width =5.5, height = 5)
+```
+
+# Evolutionary history
+## Species tree
+Below is the relationship between the species studied in this analysis.
+```{r, warning=FALSE}
+sps.tree <- read.tree(file = "data/20200724-species-tree.nwk")
+p.tree <- sps.tree %>% 
+  as_tibble() %>% 
+  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
+  left_join(spsData, by = "label") %>% 
+  as.treedata() %>% 
+  ggtree(ladderize = FALSE) + xlim(0,17) + scale_y_reverse() +
+  geom_tiplab(aes(color = patho), size = 3.8, fontface = "italic", offset = 0.3) +
+  scale_color_manual(values = c("black","red"), guide = "none") +
+  #geom_hilight(node = 27, fill = "magenta", alpha = 0.15) + # Clavispora
+  geom_hilight(node = 23, fill = "#7F00FF", alpha = 0.15)  + # MDR
+  #geom_hilight(node = 33, fill = "gold", alpha = 0.25) + # Candida
+  geom_hilight(node = 29, fill = "pink", alpha = 0.25)     + # albicans
+  #geom_hilight(node = 37, fill = "grey50", alpha = 0.15)  + # Sacchromycetaceae
+  geom_hilight(node = 33, fill = "steelblue", alpha = 0.15)  # glabrata
+  #geom_cladelabel(node = 22,  label = "Clavispora", offset = 3.7, color = "magenta", 
+  #                offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
+p.tree + 
+  geom_cladelabel(node = 23,  label = "MDR", offset = 4.5, color = "purple", fontface = 2,
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # MDR
+  #geom_cladelabel(node = 27,  label = "Candida", offset = 2.7, color = "salmon", 
+  #                offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # Candida
+  geom_cladelabel(node = 29,  label = "albicans", offset = 3.5, color = "hotpink2", fontface = 2,
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) + # albicans
+  geom_cladelabel(node = 33,  label = "glabrata", offset = 3.5, color = "steelblue", 
+                  offset.text = 0.2, angle = 270, hjust = .5, extend = 0.3) # Sacchromycetaceae
+```
+**Fig. 1 Phylogenetic relationship of the species analyzed in this study.** This species tree is based on the Maximum likelihood phylogeny from Muñoz _et al._ 2018 (PMID: 30559369) for the most part, with the exception of the species in the Saccharomycetaceae family, which is based on Gabaldón _et al._ 2016 (PMID: 27493146).
+
+> Note that he placement of _Debaryomyces hansenii_ differs between the above two publications. The former placed it closer to the Clavispora genus while the latter placed it closer to the Candida genus. We based ours on the first publication. Another large scale phylogenetic analysis (Shen _et al._ 2018 (PMID: 30415838)), also placed _D. hansenii_ closer to the Candida genus. However, in both studies, which reported bootstrap support values in addition to the phylogeny, the support for the part of the tree involving _D. hansenii_ is relatively low suggesting uncertainty in resolving the relationship. We chose to place _D. hansenii_ closer to the Clavispora genus because this is more congruent with the gene tree for the Hil family proteins we inferred below.
+
+Species tree for the side of a figure
+```{r}
+#p.tree <- sps.tree %>% as_tibble() %>% 
+#  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2))) %>% 
+#  as.treedata() %>% ggtree(ladderize = FALSE) + xlim(0,15) + scale_y_reverse() +
+#  geom_tiplab(size = 5, align = TRUE, linesize = .5, fontface = "italic", offset = 0.1) +
+#  geom_hilight(node = 22, fill = "hotpink", alpha = 0.2) + # Clavispora
+#  geom_hilight(node = 23, fill = "purple", alpha = 0.2)  + # MDR
+#  geom_hilight(node = 27, fill = "hotpink", alpha = 0.2) + # Candida
+#  geom_hilight(node = 29, fill = "red", alpha = 0.2)     + # albicans
+#  geom_hilight(node = 31, fill = "grey20", alpha = 0.2)    # Sacchromycetaceae
+ggsave("output/img/20210624-species-tree-side.png", p.tree, width = 3, height = 4.5)
+```
+
+### Update 2021-10-22 add new species
+The species tree above only includes species with at least one homolog of the Hil family and thus leaves out species that are usually included in the yeast phylogeny. Here I add some of them back to achieve two goals: 1) to help make the point that _Candida_ pathogens have evolved independently multiple times, by adding non-pathogenic species around those that are pathogenic; 2) to enhance the point that the Hil family has experienced losses in the non-pathogenic species.
+```{r, warning=FALSE}
+sps.tree.exp <- read.tree(file = "data/20211017-expanded-species-tree-for-fig1.nwk")
+spsData <- read_tsv("data/20211024-extended-species-Als-Hil-homologs-number-table.txt")
+# correct names
+sps.tree.exp <- sps.tree.exp %>% 
+  as_tibble() %>% 
+  mutate(label = gsub("\\.", "\\. ", label)) %>% 
+  left_join(spsData, by = "label") %>% 
+  as.treedata()
+# plotting
+off = 4.5
+p <- ggtree(sps.tree.exp, ladderize = FALSE) + xlim(0,16) + scale_y_reverse() +
+  geom_tiplab(aes(color = patho), size = 3.5, fontface = "italic", offset = 0.3) +
+  scale_color_manual(values = c("black","red"), guide = FALSE) +
+  #geom_hilight(node = 27, fill = "magenta", alpha = 0.15) + # Clavispora
+  geom_hilight(node = 28, fill = "#7F00FF", alpha = 0.15)  + # MDR
+  #geom_hilight(node = 33, fill = "gold", alpha = 0.25) + # Candida
+  geom_hilight(node = 35, fill = "pink", alpha = 0.25)     + # albicans
+  #geom_hilight(node = 37, fill = "grey50", alpha = 0.15)  + # Sacchromycetaceae
+  geom_hilight(node = 41, fill = "steelblue", alpha = 0.15)  + # glabrata
+  #geom_cladelabel(node = 27,  label = "Clavispora", offset = off+1.2, color = "orchid3", 
+  #                offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Clavispora
+  geom_cladelabel(node = 28,  label = "MDR", offset = off+1, color = "#7F00FF", fontface = 2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # MDR
+  geom_cladelabel(node = 33,  label = "Candida", offset = off, color = "orange2", barsize = 0.2, 
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Candida
+  geom_cladelabel(node = 35,  label = "albicans", offset = off+1, color = "hotpink2", fontface = 2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # albicans
+  geom_cladelabel(node = 37,  label = "Saccharomycetaceae", offset = off, color = "grey50",
+                  barsize = 0.2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) + # Sacchromycetaceae
+  geom_cladelabel(node = 41,  label = "glabrata", offset = off+1, color = "steelblue", fontface = 2,
+                  offset.text = 0.3, angle = 270, hjust = .5, extend = 0.3) # glabrata
+p
+ggsave("output/img/20211023-species-tree-multiple-origin.png", width = 5, height = 5)
+```
+Also visualize the number of homologs in the Als and Hil families
+```{r}
+df0 <- select(spsData, label, Als, Hil) %>%  
+  pivot_longer(Hil:Als, names_to = "family", values_to = "number") %>% 
+  mutate(species = factor(label, levels = rev(spsData$label)))
+p <- ggplot(df0, aes(x = family, y = species)) + 
+  geom_tile(aes(fill = number), color = "white", alpha = 0.4) +
+  geom_text(aes(label = number), color = "black") +
+  scale_fill_distiller(palette = "Greys",direction = 1) +
+  scale_x_discrete(position = "top") +
+  theme_cowplot() + theme(axis.title = element_blank(), legend.position = "none")
+p
+ggsave("output/img/20211024-extended-species-Als-Hil-family-size-plot.png", width = 3, height = 5)
+```
+
+## Gene tree
+### RAxML tree before reconciliation
+```{r}
+gene.tree <- read.raxml("data/RAxML_bipartitionsBranchLabels.clustalo_3701250") %>% 
+  root(node = 143, resolve.root = TRUE, edgelabel = TRUE)
+geneNameConvert <- read_tsv("data/20211124-cauris-Hil-gene-name-convert.txt", col_types = "cc")
+df0 <- seqInfo %>% select(name, species_id, species_gr) %>% left_join(geneNameConvert, by = "name")
+gene.tree <- full_join(gene.tree, df0, by = "label")
+sps.color <- c("MDR clade"   = "#7F00FF9F",
+               "C. lusitaniae" = "plum2", 
+               "D. hansenii" = "gray50",
+               "C. parapsilosis" = "orange2",
+               "S. stipitis" = "slategray",
+               "albicans clade" = "hotpink", 
+               "Saccharomycetaceae" = "grey20")
+p <- ggtree(gene.tree, aes(alpha = bootstrap), ladderize = TRUE) +
+  geom_nodelab(aes(x = branch, label = bootstrap, subset = bootstrap < 80), 
+               alpha = 1, vjust = -.5, size = 2) +
+  scale_alpha_continuous(name = "Rapid bootstrap", breaks = c(20,60,100)) + 
+  geom_tippoint(aes(color = species_gr)) +
+  scale_color_manual(name = "Clades / Species", values = sps.color) +
+  theme(text = element_text(size = 10))
+p <- flip(p, 137,149)
+p
+ggsave("output/img/20210624-raxml-gene-tree-color.png", width = 7, height = 5)
+```
+**Fig. 2 RAxML inferred gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The branch length is proportional to the inferred substitions per site. The tree is manually rooted on the Saccharomycetaceae family, which is the outgroup to both the Candida and Clavispora genera and whose Hil homologs form a distinct group. Protein sequence names are not shown for brevity, but are color coded based on the species (groups) they belong to. The clade color code is nested such that if a sequence belongs to both a species and a clade, e.g. _C. auris_ and the MDR clade, the sequence will be colored based on the smaller phylogenetic unit, i.e. _C. auris_.
+
+### Gene tree after reconciliation
+We reconciled the gene tree with the species tree in Notung 2.9. The purpose of this step is to reconstruct the history of gene duplications and losses (transfers don't apply to this case) and to rearrange weakly supported parts of the gene tree to reduce the total event score in accordance with the evolutionary parsimony principal.
+
+Briefly, after both the gene tree and the rooted species tree (see above) were loaded into the graphic user interface, the rooting analysis was run and the branch receiving the highest root score was the same as the manually chosen branch as shown in Fig. 2, namely the ancestral branch for all the Saccharomycetaceae proteins. After rooting and reconciliation, a total of 59 duplications and 47 losses were inferred. The reconciled gene tree was then rearranged. In this step, weakly supported branches -- those with rapid bootstrap score < 90% -- were allowed to be swapped and the event score, calculated as a weighted sum of the total loss and duplication events, was calculated for each rearrangement. Among all rearranged gene tree topologies, the one with the lowest event score had 42 duplications and 12 losses. This is the gene tree that is shown below.
+```{r}
+gene.tree.rec <- read.nhx(file = "output/notung/RAxML_bipartitions_clustalo_3701250_rearrange80.nhx")
+gene.tree.rec <- full_join(gene.tree.rec, df0, by = "label")
+ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + xlim(0,20) + scale_y_reverse() +
+  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
+  geom_tiplab(size = 1.5, offset = 0.2) +
+  geom_nodepoint(aes(fill = D), shape = 21, color = alpha("grey10", 0)) + scale_fill_manual(values = c("Y" = "red2", "N" = alpha("grey10", 0))) +
+  #geom_text(aes(label = ifelse(D == "Y", "D", NA)), hjust = -0.4, size = 2, color = "red") +
+  geom_tippoint(aes(color = species_gr)) +
+  scale_color_manual(name = "Clades", values = sps.color) +
+  theme(text = element_text(size = 14))
+ggsave("output/img/20211124-reconciled-rearranged80-gene-tree-color.png", width = 7.5, height = 7)
+```
+**Fig. 3 Reconciled and rearranged gene tree for Hyr/Iff-Like (HIL) family members in Ascomycetes.** The cladogram shows only the topology of the tree, with endpoints colored in the same way as in Fig. 2. A red "D" next to an internal node indicates an inferred gene duplication event at that node. The labels with gray background highlight the main features of the tree: 1) the Saccharomycetaceae sequences form the outgroup, suggesting there was no ancient duplication prior to the divergence of the family and the remaining species; 2) the CUG-Ser1 clade, which contains both the Candida and Clavispora genera, forms two duplicate groups, suggesting an early duplication event in the clade; 3) the top CUG-Ser1 branch further experienced extensive duplications _independently_ in the Clavispora genus, labeled by the outgroup _D. hansenii_ (DH), and the Candida genus, labeled by the outgroup _S. stipitis_ (SS). 
+```{r, fig.width=3, fig.height=5}
+p.gtree <- ggtree(gene.tree.rec, ladderize = FALSE, branch.length = "none") + 
+  scale_y_reverse() +
+  geom_label(aes(x = branch, label =  ifelse(S %in% c("Saccharomycetaceae", "CUG-Ser1", "DH", "SS") & node != 106, S, NA)),  fill = "gray", size = 3) +
+  geom_tippoint(aes(color = species_gr), show.legend = FALSE) +
+  scale_color_manual(name = "Clades", values = sps.color) +
+  theme(text = element_text(size = 14))
+ggsave("output/img/20210626-reconciled-gene-tree-side.png", width = 3, height = 6)
+```
+
+export the gene tree order for plotting domain feature maps
+```{r}
+gene.tree.rec %>% as_tibble() %>% pull(name) %>% head(104) %>% 
+  cat(file = "data/reorder_by_gene_tree.txt", sep = "\n")
+```
+
+### Gains and losses on species tree
+```{r}
+# read in notung parsed event summary stats
+notung.stat <- read_tsv("output/notung/RAxML_bipartitions.clustalo_3701250_rearrange80_event_summary.txt", col_types = 'cii')
+sps.tree %>% 
+  full_join(notung.stat, by = "label") %>% 
+  as_tibble() %>% 
+  mutate(label = paste0(str_sub(label, 1, 1), ". ", str_sub(label, 2)),
+         patho = c(T,T,T,T,T,F,T,F,T,T,T,F,F,F,T,T,F,T,rep(NA, 35-18))) %>% 
+  as.treedata() %>% 
+  ggtree(ladderize = FALSE) + scale_y_reverse() +
+  geom_tiplab(aes(color = patho), size = 3.5, fontface = "italic", offset = 0.3) + xlim(0,11) +
+  scale_color_manual(values = c("black","red"), guide = "none") +
+  #geom_tiplab(size = 3.5, fontface = "italic", offset = 0.1) +
+  #geom_hilight(node = 22, fill = "magenta", alpha = 0.15) + # Clavispora
+  geom_hilight(node = 23, fill = "purple", alpha = 0.15)  + # MDR
+  #geom_hilight(node = 27, fill = "gold", alpha = 0.15) + # Candida
+  geom_hilight(node = 29, fill = "pink", alpha = 0.25)     + # albicans
+  geom_hilight(node = 33, fill = "steelblue", alpha = 0.15)  + # glabrata
+  geom_text(aes(label = duplications), hjust = 3, vjust = -.3,
+            size = 3, color = "red", fontface = 2) +
+  geom_text(aes(label = paste0("/", losses)), hjust = 1.3, vjust = -.3,
+            size = 3, color = "grey20", fontface = 2) +
+  geom_label(aes(label = ifelse(duplications >= 3, duplications, NA)), hjust = 2.1,
+             vjust = -.11, size = 3, color = "red", fill = "yellow1", fontface = 2,
+             label.size = 0, label.padding = unit(0.12, "lines"))
+ggsave("output/img/20210622-species-tree-with-gains-losses.png", width = 4.5, height = 5)
+```
+**Fig. 4 Inferred gene duplications and losses in the Hyr/Iff-Like (HIL) family in Ascomycetes.** The cladogram shows the species relationship with shadings as in Figure 1. The numbers on top of each branch are the inferred duplications (red) and losses (black) using Notung 2.9. Yellow highlight emphasize the branches that experience three or more duplications.
+
+_**Conclusions**_
+
+1. The Hil family **independently** expanded in the Candida and Clavispora genera. The most significant expansion occurred within the albicans clade in the Candida genus and the MDR clade in the Clavispora genus.
+1. Many species in the Saccharomycetaceae family have no homologs in this family based on our blast criteria. This suggests that the gene family has contracted and any remaining homologs are shorter than 500 amino acid and thus likely to not play an adhesin function.
+
+
+
+# Chromosomal locations
+While I was performing BLAST on FungiDB to identify homologs of our protein, I noticed that many of the hits appear to be at the beginning and end of the chromosomes. To see if there is a systematic trend in the chromosomal locations, I collected this information for all 99 homologs in the list. Note however, not all genomes are assembled to the chromosomal level, and as a result, the locations for the proteins in those species/strains would be relative to a contig or scaffold. My rationale is that if the contig or scaffold is close to choromosomal length (although that varies by at least an order of magnitude), I could at least look at them separately.
+
+```{r}
+p <- seqInfo %>% 
+  mutate(chr = paste(substr(species_id,1,4), chraccver, sep = "_"),
+         chr = reorder(chr, chrL, mean)) %>% 
+  ggplot(aes(x = chr)) + 
+  geom_segment(aes(xend = chr, y = 1, yend = chrL, color = assemblystatus), size = 2) +
+  geom_segment(aes(xend = chr, y = chrstart, yend = chrstart+7000), color = "red", size = 3)
+p + coord_flip() + theme_classic() + scale_color_manual(values = c("grey50", "grey")) +
+  theme(axis.text.y = element_text(size = 5),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(), axis.ticks.x = element_blank(),
+        legend.position = c(0.8,0.2),
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
+  labs(y = "Position", x = "Chromosomes / Scaffolds", color = "Assembly Status")
+ggsave("output/img/20210213-homologs-chr-loc.png", bg = "transparent", width = 5, height = 5)
+```
+
+```{r, fig.width = 8, fig.height = 4}
+p <- seqInfo %>% filter(!(chrL < 1e6 & assemblystatus == "Partial")) %>% 
+  mutate(dTip = ifelse(relLoc < 0.5, relLoc, 1-relLoc)) %>% 
+  ggplot(aes(x = dTip)) + facet_wrap(~assemblystatus) +
+  xlab("Distance from Chromosome or Scaffold Ends") + labs(fill = "Species group") + 
+  scale_x_continuous(breaks = seq(0,0.5,by = 0.1))
+p + geom_histogram(binwidth = 0.05)
+ggsave("output/img/20210213-distribution-on-chromosome-or-scaffolds-histogram-grey.png", width = 5, height = 3)
+p + geom_histogram(aes(fill = species_gr), binwidth = 0.05) + scale_fill_brewer(palette = "Paired")
+ggsave("output/img/20210213-distribution-on-chromosome-or-scaffolds-histogram.png", width = 6, height = 3)
+```
+
+**Discussion**
+
+- Visually there appear to be some enrichment towards the chromosome ends overall.
+- Breakdown by species revealed stronger signals in the albicans clade and the MDR clade.
+- To properly test for enrichment in the chromosomal ends would require documenting the gene density on the affected chromosomes. If the different chromosomes have dramatically different gene distributions, proper tests may not be straightforward to construct. Instead, a bootstrapping approach could be easier to conceive and apply.
+
+## Are members of this protein family enriched in the subtelomeric regions?
+A recent long-read sequencing study for _C. glabrata_ annotated 31 novel ORFs, of which 24 are GPI-Cell Wall Proteins. The authors cited previous literature supporting the  in the subtelomeric regions [Xu 2020](https://doi.org/10.1111/mmi.14488). This plus the empirical observation above showing an apparent enrichment towards the chromosome ends lead me to ask whether there is indeed a significant enrichment among this family of proteins in the subtelomeric regions.
+
+To formally test this hypothesis, I need to account for the background gene density differences along the chromosomes. The idea is to compare the chromosomal positions for this group of proteins compared with the gene densities on the chromosomes they reside on. We will restrict our analysis to those genomes with a chromosomal level assembly status for obvious reasons.
+
+>**Update 2021-06-21** We will also include C. auris B11221 as we know its assembly is nearly at the chromosomal level
+
+```{r decide_which_species_to_use}
+use.sps <- seqInfo %>% 
+  filter(assemblystatus == "Chromosome" | species_id == "Cauris") %>%
+  filter(!species_id %in% c("Cdubliniensis", "Ncastellii")) %>%
+  # phylogenetic relatedness can induce correlations, including when testing for enrichment at the chromosomal ends
+  # based on the gene duplication patterns, combined with YGOB synteny based orthology assignments, the set of species
+  # used here, after excluding Cdubliniensis, represent quasi phylogenetically independent contrasts, thanks to the 
+  # many species-specific duplications
+  select(species_id, assembly) %>% unique()
+use.sps
+# now let's also create a new tibble for our homologs from these species
+fg.freq <- chrLoc %>% 
+  filter(species_id %in% use.sps$species_id) %>% 
+  # remove the one C. auris gene located on an unassembled fragment
+  filter(!(species_id == "Cauris" & chr_name == "scaffold00015")) %>% 
+  # change the scaffold name to chromosome name (they correspond)
+  mutate(chr_name = gsub("scaffold0+", "", chr_name))
+```
+
+To conduct this test, we first need to prepare and compute the background gene densities. To do this, we will gather the genome assembly files for the selected species, read them into R, and generate a table that contains one row for each gene, with its gene ID, chromosome number, chromosome length and the start position expressed as a percentage measured from the chromosome ends.
+
+```{r compute_background_freq}
+# 1. prepare file names
+#   get all file names that ends with "feature_table.txt.gz", which contain the gene annotation
+feature.files <- list.files(path = "data/assembly-info/", pattern = "*feature_table.txt.gz$")
+names(feature.files) <- sapply(str_split(feature.files, pattern = "_"), function(x) {
+  paste(x[1], x[2], sep = "_")
+})
+#   get all file names that ends with "assembly_report.txt", which contain the chromosomal length
+assembly.files <- list.files(path = "data/assembly-info/", pattern = "*assembly_report.txt$")
+names(assembly.files) <- sapply(str_split(assembly.files, pattern = "_"), function(x) {
+  paste(x[1], x[2], sep = "_")
+})
+use.sps$FeatureFile <- feature.files[use.sps$assembly]
+use.sps$AssemblyFile <- assembly.files[use.sps$assembly]
+
+# 2. read in the assembly information
+feature.col.names <- c("feature","class","assembly","assembly_unit","seq_type","chromosome","genomic_accession","start","end","strand","product_accession","non_redundant_refseq","related_accession","name","symbol","GeneID","locus_tag","feature_interval_length","product_length","attributes")
+assembly.col.names <- c("chromosome","seq_role","assign_molecule","type","gb_acc","relationship",
+                        "chraccver","assembly_unit","seqL","ucsc_name")
+compute.bg.freq <- function(row){
+  assembly.file <- row["AssemblyFile"]
+  assembly <- read_tsv(paste0("data/assembly-info/",assembly.file), comment = "#",
+                       col_names = assembly.col.names, col_types = "ccccccccic")
+  feature.file <- row["FeatureFile"]
+  feature <- read_tsv(paste0("data/assembly-info/",feature.file), col_names = feature.col.names,
+                      col_types = "ccccccciicccccccciic", skip = 1)
+  res <- feature %>% 
+    filter(feature == "mRNA") %>% 
+    # these feature tables are organized hierarchically, with the top level being "gene"
+    # the next level one of "mRNA", "ncRNA", "tRNA" or "rRNA". we only count protein-coding genes, i.e.
+    # "mRNA". the reason I didn't select the "CDS" feature type is because in a small number of cases,
+    # one mRNA feature contains more than one CDS feature, possibly due to splicing or alternative 
+    # translational start site
+    select(chromosome, start, end) %>% 
+    left_join(select(assembly, chromosome, chraccver, seqL), by = c("chromosome" = "chromosome")) %>%
+    mutate(relLoc = round(start / seqL, 3))
+  return(res)
+}
+# apply the function to the genomes, but leave out C. auris
+bg.freq <- apply(filter(use.sps, species_id != "Cauris"), MARGIN = 1, compute.bg.freq)
+names(bg.freq) <- use.sps %>% filter(species_id != "Cauris") %>% pull(species_id)
+```
+
+Separately calculate the background frequency for _C. auris_
+```{r}
+compute.bg.freq.cau <- function(){
+  assembly.col.names <- c("chromosome","seq_role","assign_molecule","type","gb_acc","relationship",
+                        "chraccver","assembly_unit","seqL","ucsc_name")
+  row = use.sps %>% filter(species_id == "Cauris") # C. auris entry
+  assembly.file <- row["AssemblyFile"]
+  assembly <- read_tsv(paste0("data/assembly-info/",assembly.file), comment = "#",
+                       col_names = assembly.col.names, col_types = "ccccccccic") %>% 
+    filter(as.integer(str_sub(chromosome, -2, -1)) <= 7)
+  feature.file <- row["FeatureFile"]
+  feature <- read_tsv(paste0("data/assembly-info/",feature.file), col_names = feature.col.names,
+                      col_types = "ccccccciicccccccciic", skip = 1)
+  res <- feature %>% 
+    filter(feature == "mRNA") %>% 
+    select(chraccver = genomic_accession, start, end) %>% 
+    right_join(select(assembly, chromosome, chraccver, seqL), by = "chraccver") %>%
+    mutate(relLoc = round(start / seqL, 3),
+           chromosome = gsub("scaffold0+","",chromosome))
+  return(res)
+}
+bg.freq$Cauris <- compute.bg.freq.cau()
+```
+
+Let's take a look at the gene density in one of the genomes, e.g. _D. hansenii_
+
+```{r}
+bg.freq$Dhansenii %>% ggplot(aes(x = relLoc)) + 
+  geom_density() + facet_wrap(~ chromosome) + ggtitle("D. hansenii") + theme(plot.title = element_text(hjust = 0.5))
+```
+> We can see that there is typically a drop in gene density towards the chromosome ends, which makes the observation that our protein family are biased towards the chromosomal ends even more striking.
+
+_**Note** that the above plot was wrong due to the way the density() function estimates the kernel density, which assumes that the data outside the range are possible, in this case smaller than 0 and greater than 1. This leads to the underestimation of the density at the boundaries because it includes regions outside the possible range, where there is no observation. See this post for discussion https://github.com/tidyverse/ggplot2/issues/3387_
+
+Below I use the `geom_histogram` function instead, with breaks specified manually. This results in a density distribution that is pretty flat across the chromosomes.
+```{r}
+bg.freq$Dhansenii %>% ggplot(aes(x = relLoc)) + 
+  geom_histogram(breaks = seq(0,1,0.05)) +
+  facet_wrap(~ chromosome) + ggtitle("D. hansenii") + theme(plot.title = element_text(hjust = 0.5))
+ggsave("output/img/20210303-dhansenii-chromosome-gene-density-histogram.png", width = 6, height = 4)
+```
+
+In order to compare the distribution of _all_ genes in different bins of the chromosomes to the homologs in our case study, we can divide each chromosome in the `nrow(use.sps)` genomes into an arbitrary number of bins after "folding" them in half, e.g. 0-10%, 10-20%, 20-30%, 30-40% and 40-50%. To be able to visually compare the distribution of our homologs and the genome background, we will create a special "chromosome" class that will be our homologs and combine them with the `bg.freq` table.
+```{r}
+freq.bins <- c(-0.001, seq(0.1, 0.5, 0.1)); freq.binsL <- c(0, freq.bins[-1])
+freq.label <- paste0(head(freq.binsL, -1)*100,"-",tail(freq.binsL, -1)*100,"%")
+bg.freq.tb <- bind_rows(bg.freq, .id = "species") %>% 
+  mutate(fold.relLoc = ifelse(relLoc <= 0.5, relLoc, 1-relLoc),
+         bin = cut(fold.relLoc, breaks = freq.bins, labels = freq.label))
+
+# add the homologs
+fg.freq <- fg.freq %>% 
+  mutate(fold.relLoc = ifelse(relLoc <= 0.5, relLoc, 1-relLoc),
+         bin = cut(fold.relLoc, breaks = freq.bins, labels = freq.label)) 
+freq.plot <- fg.freq %>%
+  mutate(chromosome = "X") %>%  # we label the homologs as X to make it a separate class
+  select(species = species_id, chromosome, bin) %>% 
+  bind_rows(select(bg.freq.tb, species, chromosome, bin))# %>% 
+  #filter(!species %in% c("Ncastellii")) # remove one species to make it easier to plot
+
+# plot
+freq.plot %>% 
+  mutate(species = paste0(substr(species, 1, 1), ". ", substr(species, 2, 15))) %>% 
+  ggplot(aes(x = chromosome, group = bin, fill = bin)) + 
+  geom_bar(position = position_fill()) +
+  facet_wrap(~ species, scales = "free_x") + 
+  #scale_fill_brewer("Distance from\nchromosome end", type = "qual", palette = 3) +
+  scale_fill_viridis_d(direction = -1, end = 0.95, alpha = 0.9) +
+  scale_y_continuous(name = "Cumulative % of genes", trans = "reverse", breaks = seq(0,1,0.2)) + 
+  theme_cowplot() + panel_border(color = "grey80") +
+  theme(legend.position = "none", strip.background = element_blank(),
+        strip.text.x = element_text(face = 3))
+
+ggsave("output/img/20210303-compare-homologs-chromosomal-locations-to-bg.png", width = 6, height = 4)
+```
+In the plot above, "X" is a special category that collects our homologs. We can see that the distribution of these proteins on the chromosome deviate from the background. Note that a few of the seven species contain only 1-2 PF11765 homologs -- these include the three in the middle row -- and we should interpret their homologs distribution with caution.
+
+Now that we have the background gene frequencies computed, we can start constructing a test that tests for significant departure in the chromosomal locations of our protein family from the background frequencies. One idea is to divide the chromosome into equal-sized bins and use the frequencies of _all_ genes in each bin as the multinomial probabilities in the null hypothesis. If our proteins were randomly selected from each chromosome without regard to their location, we would expect their locations to conform to the background frequencies. This can be tested using an exact multinomial test or an approximate Chi-square test or G-test. Since we don't distinguish the two ends of a chromosome, we can "fold" the chromosome "in half" and measure each gene's location as a percentage from the closer end, i.e. the relative location ranging from 0%-50%. If we can reject the null hypothesis, that constitutes evidence that the proteins from our group are not randomly selected from the background set.
+
+**Result of multinomial test**
+
+```{r multinomial_test}
+# install XNomial package for the multinomial exact test function
+# https://cran.r-project.org/web/packages/XNomial/vignettes/XNomial.html#e1
+while(!require(XNomial))
+  suppressMessages(install.packages("XNomial"))
+# calculate pooled background frequency
+bg.cnt <- cut(bg.freq.tb$fold.relLoc, breaks = freq.bins, labels = freq.label) %>% tabulate()
+fg.cnt <- tabulate(fg.freq$bin)
+xmulti(obs = fg.cnt, expr = bg.cnt, detail = 3)
+```
+Note that the three _P_-values correspond to three approaches of testing the goodness-of-fit. The LLR, which stands for Log Likelihood Ratio, is generally preferred. But all three said the same thing: the observation deviates from the background frequency significantly. By looking at the plots above, it is clear that the deviation is due to the excess of our homologs residing in the 0-10% bin, which is the tip of the chromosomes.
+
+The test above assumes that the gene density along all chromosomes in the seven species follow the same distribution. The empirical observation supports that hypothesis. Should that to be not the case, we could also account for the variability in gene density distribution between species or even between chromosomes within a species. The idea is to first collect the chromosomes that our homologs come from, and then randomly sample the **same** number of genes as the number of our homologs on that chromosome. Do this for all of the homolog-containing chromosomes, we would obtain one random sample. Repeat this process 1000 times or more, we will then get the pseudosample, which we can use to compare with our observations. Here we need to come up with a statistic that summarizes each of our observation or pseudosample. For example, we could calculate the median % location for each sample, and ask where our observation lie relative to the pseudosamples. I'll skip this approach for now since the first appraoch appears to be OK given the similar gene density distribution across chromosomes and species.
