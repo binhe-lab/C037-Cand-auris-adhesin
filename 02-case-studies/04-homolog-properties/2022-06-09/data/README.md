@@ -1,0 +1,4 @@
+`expanded-blast-homologs.faa`: symbolic link to ../../../02-blast/output/20220506-expanded-blast-combined-homologs-longname.faa
+`expanded-blast-homologs-edited.faa`: edited the sequence of XP_717775.2_Candida_albicans, changed an ambiguous amino acid symbol B (Asx) to D (Asp), based on the mRNA sequence (XM_712682.2). Make sure to regenerate this sequence when the upstream sequence above has been updated
+`expanded-blast-homologs-edited-forFRV.faa`: further edited to remove the "X" symbols from XP_003868554.1_Candida_orthopsilosis and NABA0s29e06380g_Nakaseomyces_bacillisporus, to avoid errors when running FungalRV. Make sure to check the results of those two sequences and mark them as uncertain
+`expanded-blast-homologs-info.tsv`: symbolic link to ../../../02-blast/output/20220506-expanded-blast-combined-homologs.tsv

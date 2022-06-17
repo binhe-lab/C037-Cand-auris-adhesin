@@ -89,3 +89,10 @@ $ grep "^>" cauris-five-strains-homologs-frv-res.txt| grep -v "QEO" | \
 		print "Cauris",strain[1],name[1],$2}' > cauris-five-strains-homologs-frv-res-formatted.txt
 $ mv cauris-five-strains* data-output/
 ```
+## 2022-06-17 Recompile C source files
+I couldn't find the previously compiled C programs (they were stored in a `bin` directory, which seems to have been lost). To recompile them on the new MacOS v12.4, both `gcc` and `clang` would complain about implicit type specifications in the source code. Based on the error message, I figured out the solution: adding a line `#include <ctype.h>` to the top of each `.c` file, and do the following
+```bash
+for f in *.c;do clang $f -o bin-mac/${f/.c/}; done
+```
+
+It turns out that I don't need to append the `-lm` flag for one of the source files to compile anymore.
