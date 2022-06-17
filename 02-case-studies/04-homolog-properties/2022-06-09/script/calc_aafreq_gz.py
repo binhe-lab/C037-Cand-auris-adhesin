@@ -1,0 +1,1 @@
+../../2020-10-31/script/calc_aafreq_gz.py

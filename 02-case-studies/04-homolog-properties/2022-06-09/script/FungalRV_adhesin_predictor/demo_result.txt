@@ -1,0 +1,15 @@
+FungalRv adhesin Predictor Output
+Input File: demo_file.txt
+
+>gi|71001330|ref|XP_755346.1| adhesin [Aspergillus fumigatus Af293]	1.0004667
+>Afu3g09690 | extracellular thaumatin domain protein, putative | Aspergillus fumigatus | chr_3 | AAHF01000002 | 93	1.0009641
+>tr|Q00048|Q00048_AJEDE WI-1 (Fragment) OS=Ajellomyces dermatitidis GN=WI-1 PE=2 SV=2	1.0007058
+>gi|239606518|gb|EEQ83505.1| RNA polymerase II transcriptional coactivator [Ajellomyces dermatitidis ER-3]	-0.99906948
+>gi|34809539|gb|AAQ82692.1| Epa2p [Candida glabrata]	1.6686913
+>gi|74591477|sp|Q5AGC1.1|FIP1_CANAL RecName: Full=Pre-mRNA polyadenylation factor FIP1	-0.73674514
+>gi|239595576|gb|EEQ78157.1| RNA polymerase II transcriptional coactivator [Ajellomyces dermatitidis SLH14081]	-1.0359635
+>gi|71000802|ref|XP_755082.1| RNA polymerase II transcriptional coactivator [Aspergillus fumigatus Af293]	-0.99964211
+>gi|1022896|gb|AAA91036.1| WI-1 adhesin	1.0001888
+>gi|74661318|sp|Q6FST5.1|DBP6_CANGA RecName: Full=ATP-dependent RNA helicase DBP6	-0.99963351
+>gi|68491206|ref|XP_710583.1| RNA polymerase II fourth largest subunit fragment [Candida albicans SC5314]	-0.82959063
+>gi|34809540|gb|AAQ82693.1| Epa3p [Candida glabrata]	1.5808674
