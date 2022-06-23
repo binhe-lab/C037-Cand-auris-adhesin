@@ -503,6 +503,14 @@ domain.BED <- domain.final %>%
 write_tsv(domain.BED, file = "../../output/20220512-expanded-blast-combined-homologs-PF11765.BED", col_names = FALSE)
 ```
 
+Also write a version with the long name
+```{r}
+domain.BED %>% 
+  left_join(select(dedup.merge, seq = pid, name), by = "seq") %>% 
+  ungroup %>% select(name, from, to) %>% 
+  write_tsv(file = "../../output/20220623-expanded-blast-combined-homologs-PF11765-longname.BED", col_names = FALSE)
+```
+
 To extract the sequence matches to the PF11765 profile, execute the following shell command
 ```
 seqtk subseq 20220506-expanded-blast-combined-homologs.faa \
@@ -728,4 +736,3 @@ chr.loc <- tibble(sid = chr.sid, gene_uid = names(tmp.gene.name),
 ```{r}
 write_tsv(chr.loc, file = "../../output/20220609-expanded-blast-chromosomal-locations.tsv")
 ```
-
