@@ -491,7 +491,7 @@ domain.final %>%
 
 Write the coordinates into a BED formatted file for extracting the sequences.
 ```{r}
-domain.BED <- domain.final %>% 
+domain.final %>% 
   mutate(
     # if hmm hits are not available, use cd-search hit coordinates, with 3 bp expansion on both sides
     # note that BED format is 0-based for the start position
@@ -499,13 +499,18 @@ domain.BED <- domain.final %>%
     to = ifelse(is.na(env.to), cd.to + 3, env.to)) %>% 
   select(seq = sid, from, to) %>% 
   # the following statement is to remove the second PF11765 domain from one protein for the purpose of gene tree
-  group_by(seq) %>%  filter(from == min(from))
-write_tsv(domain.BED, file = "../../output/20220512-expanded-blast-combined-homologs-PF11765.BED", col_names = FALSE)
+  group_by(seq) %>% 
+  filter(from == min(from)) %>% 
+  write_tsv(file = "../../output/20220512-expanded-blast-combined-homologs-PF11765.BED", col_names = FALSE)
 ```
 
-Also write a version with the long name
+Also write a version with the long name and not removing the second domain from the one sequence, for the purpose of plotting and calculating sequence length - PF11765
 ```{r}
-domain.BED %>% 
+domain.final %>% 
+  mutate(
+    from = ifelse(is.na(env.from), cd.from - 3 - 1, env.from - 1), 
+    to = ifelse(is.na(env.to), cd.to + 3, env.to)) %>% 
+  select(seq = pid, from, to) %>% # select pid for merging with dedup.merge
   left_join(select(dedup.merge, seq = pid, name), by = "seq") %>% 
   ungroup %>% select(name, from, to) %>% 
   write_tsv(file = "../../output/20220623-expanded-blast-combined-homologs-PF11765-longname.BED", col_names = FALSE)
