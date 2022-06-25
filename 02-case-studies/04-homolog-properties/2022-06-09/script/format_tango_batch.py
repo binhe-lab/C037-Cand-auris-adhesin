@@ -3,6 +3,7 @@
    Bin He
    2020-08-10
    updated 2022-06-25, to specify output script file path and name
+                       and to remove species name
 """
 
 # import libraries
@@ -29,7 +30,8 @@ param = 'ct="N" nt="N" ph="7.5" te="298" io="0.1" tf="0" stab="-10" conc="1"'
 for record in SeqIO.parse(infile, "fasta"):
     # strip the species name from the sequence ID. the mac version of tango2_3_1 doesn't generate
     # a residual level report for sequences that has long names (25 characters?)
-    id = record.id.rsplit("_",1)[0]
+    # modified 2022-06-25 to adapt to the long species name format adopted in the new analysis
+    id = record.id.rsplit("_",2)[0]
     # convert the sequence from Seq to a plain string
     seq  = str(record.seq)
     # print a header for each sequence to define the sequence limits
