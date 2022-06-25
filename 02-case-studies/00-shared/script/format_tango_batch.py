@@ -2,6 +2,7 @@
    Parameters based on Rachel's notes in 01-global-analysis/output/TANGO/README.md
    Bin He
    2020-08-10
+   updated 2022-06-25, to specify output script file path and name
 """
 
 # import libraries
@@ -10,12 +11,12 @@ import sys
 import re
 
 # parse arguments
-if len(sys.argv) != 2: # the first element is the program name
-    print("python3 format_tango_input.py <FASTA>")
+if len(sys.argv) != 3: # the first element is the program name
+    print("python3 format_tango_input.py <FASTA-IN> <OUT-PREFIX>")
     sys.exit()
 
 infile = sys.argv[1] # Fasta file
-outfile = infile.rsplit(".",1)[0] + "_tango.sh"
+outfile = sys.argv[2] + "_tango.sh"
 out = open(outfile, "w")
 
 # tango parameters (this is based on Rachel's note)
