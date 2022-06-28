@@ -1,0 +1,59 @@
+
+Analysis Description
+--------------------
+GARD : Genetic Algorithms for Recombination Detection. Implements a
+heuristic approach to screening alignments of sequences for
+recombination, by using the CHC genetic algorithm to search for
+phylogenetic incongruence among different partitions of the data. The
+number of partitions is determined using a step-up procedure, while the
+placement of breakpoints is searched for with the GA. The best fitting
+model (based on c-AIC) is returned; and additional post-hoc tests run to
+distinguish topological incongruence from rate-variation. v0.2 adds and
+spooling results to JSON after each breakpoint search conclusion
+
+- __Requirements__: A sequence alignment.
+
+- __Citation__: **Automated Phylogenetic Detection of Recombination Using a Genetic
+Algorithm**, _Mol Biol Evol 23(10), 1891–1901
+
+- __Written by__: Sergei L Kosakovsky Pond
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 0.2
+
+type: nucleotide
+rv: Gamma
+>How many site rate classes to use (permissible range = [2,10], default value = 4, integer): rate-classes: 4
+mode: Normal
+>Loaded a nucleotide multiple sequence alignment with **8** sequences, **975** sites (765 of which are variable) from `/home/datamonkey/datamonkey-js-server/production/app/gard/output/62bb30a0e3fb78072bbb8e81`
+>Minimum size of a partition is set to be 13 sites
+
+
+### Fitting the baseline (single-partition; no breakpoints) model
+* Log(L) = -7472.43, AIC-c = 14989.93 (22 estimated parameters)
+
+### Performing an exhaustive single breakpoint analysis
+Done with single breakpoint analysis.
+   Best sinlge break point location: 697
+   c-AIC  = 14946.62319052583
+
+### Performing multi breakpoint analysis using a genetic algorithm
+Done with 2 breakpoint analysis.
+    Best break point locations: 701, 870
+    c-AIC = 14911.88919472002
+Done with 3 breakpoint analysis.
+    Best break point locations: 27, 701, 880
+    c-AIC = 14894.93241897015
+Done with 4 breakpoint analysis.
+    Best break point locations: 28, 356, 701, 879
+    c-AIC = 14880.20565313385
+Done with 5 breakpoint analysis.
+    Best break point locations: 28, 356, 697, 736, 880
+    c-AIC = 14867.99682821145
+Done with 6 breakpoint analysis.
+    Best break point locations: 28, 356, 677, 697, 736, 880
+    c-AIC = 14864.40390373049
+Done with 7 breakpoint analysis.
+    Best break point locations: 28, 356, 424, 677, 697, 736, 880
+    c-AIC = 14864.1637370633

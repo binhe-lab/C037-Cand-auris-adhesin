@@ -1,0 +1,1 @@
+At the suggestion of a reviewer, we used [GARD](https://academic.oup.com/mbe/article/23/10/1891/1096946) (part of the [HYPHY](https://github.com/veg/hyphy) package) to detect recombination as a pre-step for the PAML analysis. GARD is installed via conda (v2.5.2)
