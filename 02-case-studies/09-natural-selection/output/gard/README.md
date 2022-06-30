@@ -12,16 +12,19 @@ Analyses were performed on the [datamonkey server](https://datamonkey.org/), wit
 
 I tested both amino acid and nucleotide sequence as input. For nucleotide sequence, I tested the default setting with no rate-variation and a scenario allowing for rate-variation following a beta-gamma distribution with four classes. In summary, GARD found strong evidence for recombination in all three analyses, but the inferred number and locations of the breakpoints vary.
 
-| Run type   | Rate variation        | Breakpoints                           |
-| ---------- | --------------------- | ------------------------------------- |
-| Amino acid | No                    | 28, 101, 230 (nucl: 84, 303, 690)     |
-| Nucleotide | No                    | 54, 73, 357, 676, 699, 880            |
-| Nucleotide | beta-gamma, 4 classes | 29, 357, 425, 678, 698, 737, 881, 975 |
+| Run type   | Rate variation              | Breakpoints                           |
+| ---------- | --------------------------- | ------------------------------------- |
+| Amino acid | No                          | 28, 101, 230 (nucl: 84, 303, 690)     |
+| Amino acid | general discrete, 3 classes | 29, 102 (nucl: 87, 306)               |
+| Nucleotide | No                          | 54, 73, 357, 676, 699, 880            |
+| Nucleotide | general discrete, 3 classes | 29, 366, 702, 867                     |
+| Nucleotide | beta-gamma, 4 classes       | 29, 357, 425, 678, 698, 737, 881, 975 |
 
 Overall I conclude that
 
 1. there is evidence of recombination.
-2. one breakpoint appears to be robustly inferred, which is located at around 690-700th column in the nucleotide alignment, corresponding to the 230th column in the amino acid alignment.
+2. one breakpoint appears to be robustly inferred, which is located at around 690-700th column in the nucleotide alignment, corresponding to the 230th column in the amino acid alignment (the amino acid general discrete 3 class model does identify 230 as a breakpoint in its one breakpoint model, but not in the 2-breakpoint model, which was picked as the best model).
+3. the second most supported breakpoint is at around 355-370th column in the nucleotide alignment. In the amino acid model, however, the inferred breakpoint is at 101-102th column, which doesn't entirely agree with the nucleotide.
 
 Based on the above I plan to separate the alignment into two putative non-recombining segments, one from column 1 - 699 and the other from 700 - end. Slight variations in the choice of the breakpoint is not expected to affect the downstream analyses. I will infer a gene tree for each fragment separately and conduct PAML analysis on each.
 
