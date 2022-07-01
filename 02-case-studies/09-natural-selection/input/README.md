@@ -5,6 +5,7 @@ input files for selection analysis. See main README in the parent folder for det
 |--|--|
 | repeats | (un)aligned repeat sequences |
 | homologs | (un)aligned Hil homologs |
+| gene-tree | gene-tree inferred using RAxML-NG for PAML analysis |
 | BED | BED files for extracting parts of sequences |
 | source | fasta files containing the source sequences for extracting |
 | misc | Jalview annotation files, etc. to help with extraction |
