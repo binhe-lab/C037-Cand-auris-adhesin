@@ -336,6 +336,11 @@ Did:
 - To expand the search beyond the refseq_prot database, I repeated the search against the new "clustered nr" database
   `blast_formatter -rid 4VFCXY5F016 -out 20220406-expanded-PF11765-blastp-out.asn -outfmt 11`
 
+Results
+
+- See [here](https://rpubs.com/emptyhb/c037-expanded-blast-analyses) (html output of Rmarkdown file [here](analysis/expanded-blast/expanded-blast.Rmd)).
+- In short, the combined queries yielded just 3 new hits.
+
 ## 2022-04-20 [HB] Reviewer 3 comment: refseq_prot records complete?
 
 ### _C. tropicalis_
