@@ -28,9 +28,15 @@ See [here](output/gard/README.md) for detailed notes on the analysis. The basic 
 2. use the segment alignment and tree as input for PAML analysis.
 3. summarize the PAML results and compare them to the original single segment analysis result.
 
+### Prepare alignment
 
+In order to split the alignment into partitions based on custom boundaries, I made several changes to the previous workflow:
 
-### Previous results on PF11765 domain evolution
+- added XP_018709340.1 from _M bicuspidata_ to the alignment to serve as an outgroup.
+- renamed Hil1-8 from _C. auris_ to just be Hil1 through Hil8. This makes it easier to work with the sequence names in various format conversions (especially when it involves PHYLIP format).
+- instead of using `pal2nal.pl` to convert the codon alignment into PHYLIP format, I wrote a [custom script](script/split-alignment.py) to partition the alignment based on the boundary information stored in a text file. In writing this script, I learned a lot of useful things about the Biopython's AlignIO module. See this helpful [tutorial](http://biopython.org/DIST/docs/tutorial/Tutorial.html#sec80).
+
+## Previous results on PF11765 domain evolution
 The question here is whether after the duplications that led to Hil1-8 in _C. auris_, there has been selection on the PF11765 domain to diversify in its function among the paralogs. So far I've been describing the evolution of the NTD as being conserved. While this is true relative to the fast-evolving repeat regions, it ignored the possibility of positive selection acting on the backdrop of purifying selection in the background (for most of the sites). After all, if positive selection was indeed involved, it would have only acted on a few residues.
 
 I have two specific questions here:

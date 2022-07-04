@@ -42,7 +42,7 @@ Overall I conclude that
   2. the second most supported breakpoint is at around 350th column in the nucleotide alignment. In the amino acid model, however, the inferred breakpoint is at 101-102th column without outgroup, or at most 110 with outgroup.
 
 
-Based on the above I plan to create severeal putative non-recombining segments based on the alignment with outgroup. These are 1-580, 1-695 and 695-981. Slight variations in the choice of the breakpoint is not expected to affect the downstream analyses. I will infer a gene tree for each fragment separately and conduct PAML analysis on each.
+Based on the above I plan to create severeal putative non-recombining segments based on the alignment with outgroup. These are 1-414, 1-580, 1-695 and 695-981. Slight variations in the choice of the breakpoint is not expected to affect the downstream analyses. I will infer a gene tree for each fragment separately and conduct PAML analysis on each.
 
 ### No outgroup
 
@@ -97,12 +97,12 @@ I tried to find legends explaining what the difference is between the gray, smal
 
 #### Nucleotide input, general discrete 3 classes
 
-![20220629-nuc-generaldiscrete-3class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220629-nuc-generaldiscrete-3class-breakpoint-by-model.svg)
+![20220701-nuc-generaldiscrete-3class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-generaldiscrete-3class-breakpoint-by-model.svg)
 
-![20220629-nuc-generaldiscrete-3class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220629-nuc-generaldiscrete-3class-breakpoint-support.svg)
+![20220701-nuc-generaldiscrete-3class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-generaldiscrete-3class-breakpoint-support.svg)
 
 #### Nucleotide input, beta-gamma distribution, 4 classes
 
-![20220628-nuc-betagamma-4class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-nuc-betagamma-4class-breakpoint-by-model.svg)
+![20220701-nuc-betagamma-4class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-betagamma-4class-breakpoint-by-model.svg)
 
-![20220628-nuc-betagamma-4class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-nuc-betagamma-4class-breakpoint-support.svg)
+![20220701-nuc-betagamma-4class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-betagamma-4class-breakpoint-support.svg)
