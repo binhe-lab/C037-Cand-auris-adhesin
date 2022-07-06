@@ -28,7 +28,7 @@ In some cases, the in-paralogs are more closely related to each other than they 
 
 ## Horizontal vs vertical evolution in Hil1-2
 
-![compare dN/dS of horizontal vs vertical evolution](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-Hil1-2-MDR-pairwise-estimates-compare.png)
+<img src="output/figure/20220122-Hil1-2-MDR-pairwise-estimates-compare.png" alt="compare dN/dS of horizontal vs vertical evolution" style="zoom: 40%;" />
 
 - 
 
@@ -54,7 +54,7 @@ The first step is to extract the paralogous repeat alignments, which I already d
 1. Use `pal2nal.pl` to generate a PHYLIP format nucleotide alignment (since the nucleotide sequences are already aligned, this step can also be done with any program that can convert a fasta to a phylip format).
 1. PAML author (Yang Ziheng) recommended using `runmode = -2` in PAML to perform pairwise ML analysis to estimate dN/dS ratios, rather than the NG86 estimates. Both were produced in the run. For NG86, many sites cannot be estimated due to saturation. ML produced an estimate for each pairwise comparison.
 1. After comparing the estimate by the ML, YN00 and NG86, I decided to use YN00. ML analysis using F3x4 with free kappa results in very large dS estimates (>20), which are likely not reliable. NG86 fails on any pairs with pS > 0.75. YN00 generally correlates well with NG86. I filtered out any pairs where dS > 3 or SE.dS/dS or SE.dN/dN > 2.
-   ![pairs comparison of dS estimates by three methods](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-compare-dS-estimates-by-three-methods.png)
+   ![pairs comparison of dS estimates by three methods](output/figure/20220122-compare-dS-estimates-by-three-methods.png)
 
 
 
@@ -105,7 +105,7 @@ Hil1 and Hil2 are the most closely related Hil homologs in _C. auris_. The NTD t
 
 To answer the evolutionary history question, I used `raxml-ng` to build ML trees for the repeats in the two proteins. I selected the first 17 repeats from Hil1 and 17/19 repeats from Hil2, both from the B8441 strain. The two that were omitted from Hil2 were of different lengths than the rest. I extracted both the amino acid and coding sequences for them and inferred phylogenetic trees using `raxml-ng`. The amino acid sequences turn out to be too close for some of the repeats and resulted in zero branch length for a couple of them. In the meantime, the level of divergence appear to be not so great as to overwhelm the nucleotide sequence tree. So I decided to use the latter. The best ML tree with branch support (from 2000 Felsenstein Bootstrap replicates) is shown below (annotated in iTol)
 
-![Hil1-2-repeat tree](output/gene-tree/Hil1-2-repeats/20220112-Hil1-2-repeats-raxml-nuc-tree-iTol-unrooted.png)
+![Hil1-2-repeat tree](input/gene-tree/Hil1-2-repeats/20220112-Hil1-2-repeats-raxml-nuc-tree-iTol-unrooted.png)
 
 - The tree is unrooted
 - Notably, repeat 1 from Hil2, which is the first repeat after the NTD, is close to the clade that includes the 1st repeat from Hil1. In addition, repeats 2-6 from Hil2 form a clade that also includes repeat 11 from Hil1, and which is somewhat close to the other repeats from Hil1. Beyond those two, the majority of the Hil2 repeats form a distant clade with one repeat from Hil1 mixed with them. This overall pattern suggests that
@@ -162,7 +162,7 @@ I wrote several scripts in the `script` folder to extract, align and transform t
 
 Initially I planned to work with the 35 sequences in the MDR clade tree as shown above. But I found an exploratory run with the one ratio and free ratio model with the large dataset, I found the patterns are quite complicated. In particular, several non auris MDR species homologs show elevated dN/dS. Since the next step is to test hypotheses about specific branches being subject to positive selection, this large dataset provides too many clues that are not focused on _C. auris_, our focal species.
 
-![MDR PF11765 domain free ratio estimates](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-MDR-PF11765-freeR-anno-tree.png)
+![MDR PF11765 domain free ratio estimates](output/figure/20220122-MDR-PF11765-freeR-anno-tree.png)
 
 Based on the above, I decided to switch to a small dataset with just Hil1-8 from _C. auris_. The goal is to specifically ask whether during the expansion of the Hil family in _C. auris_ any of the duplicated copies experienced accelerated evolution in their NTD, which could be indications of either relaxed constraints (if ω is higher than the background but lower than 1) or positive selection (if ω > 1). My approach is to first run the free ratio model to identify candidate branches that are likely to have had elevated dN/dS. Note that this approach violates the best practice in statistical testing. Here is a quote from Yang 1998 (PMID: 9580986):
 
@@ -172,7 +172,7 @@ I will note these while writing up this part.
 
 That said, using the free ratio model (model = 1), I found `CodonFreq = 0/1` led to the same picture: the ancestral branch of Hil6/8 and the ancestral branch of Hil1/2/6/8 were inferred to have an extreme dN/dS, since their dS estimates are 0.
 
-![cauris Hil1-8 Fequal freeR](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/figure/20220122-caur-PF11765-Feual-freeR-anno-tree.png)
+<img src="output/figure/20220122-caur-PF11765-Feual-freeR-anno-tree.png" alt="cauris Hil1-8 Fequal freeR" style="zoom: 50%;" />
 
 Based on this result, I set up a series of tests (in the `output/paml/B8441-Hil1-8-PF11765` folder) and summarized the results in a [google sheet](https://docs.google.com/spreadsheets/d/1iufv2kxs1tuUXiOvHX1CGbYaFmCWnCXX-AHUnXRgjlk/edit?usp=sharing).
 
