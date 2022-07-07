@@ -14,7 +14,7 @@ do
 	echo "Inferring tree for $i"
 	base=$(basename $i '.nuc')
 	o=../input/gene-tree/B8441-Hil-PF11765-split/$base
-	raxml-ng --all --msa $i --model GTR+G --seed 123 --threads 4 --bs-trees autoMRE --prefix $o
+	raxml-ng --all --msa $i --model GTR+G --seed 123 --threads 4 --bs-trees autoMRE --outgroup OG --prefix $o
 done
 
 # 2022-07-01 B8441-Hil-PF11765-1-699

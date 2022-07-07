@@ -33,5 +33,5 @@ with open(partit, 'r') as PA:
         outfile = '-'.join([prefix, start, end]) + '.nuc'
         OF = open(outfile, 'w')
         paralign = align[:, (int(start)-1):int(end)]  # slice the alignment
-        AlignIO.write(paralign, OF, "phylip-relaxed")
+        AlignIO.write(paralign, OF, "phylip-sequential")
         OF.close()

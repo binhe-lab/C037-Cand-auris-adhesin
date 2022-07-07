@@ -27,14 +27,14 @@ Full MDR PF11765 tree ML analysis
 | MDR-PF11765-freeR           | MDR homologs PF11765 domain, model=1, NSsites=0 |
 | MDR-PF11765-oneR            | MDR homologs PF11765 domain, model=0, NSsites=0 |
 
-## B8441-Hil1-8-PF11765
-Main ML analysis for the _C. auris_ Hil1-8 PF11765 domain alignment, using various models.
+## b8441-hil1-8-pf11765
+main ml analysis for the _c. auris_ hil1-8 pf11765 domain alignment, using various models.
 
-The subdirectories are first grouped by the `CodonFreq = 0/1/2` parameter. The branch models are labeled as `1/2/3R` and the site model is labeled as `site`
+the subdirectories are first grouped by the `codonfreq = 0/1/2` parameter. the branch models are labeled as `1/2/3r` and the site model is labeled as `site`
 
 | directory | parameters | description |
 |-----------|---------|----------|
-| codonfreq0-freeR  | CodonFreq=0, model=1, NSsites=0 | free omega |
+| codonfreq0-freer  | codonfreq=0, model=1, nssites=0 | free omega |
 | codonfreq0-1R  | CodonFreq=0, model=0, NSsites=0 | one omega |
 | codonfreq0-2Ra | CodonFreq=0, model=2, NSsites=0 | two omega with Hil6/8 ancestor different from the rest |
 | codonfreq0-2Rb | CodonFreq=0, model=2, NSsites=0 | two omega with Hil1/2/6/8 ancestor different from the rest |
@@ -42,3 +42,12 @@ The subdirectories are first grouped by the `CodonFreq = 0/1/2` parameter. The b
 | codonfreq0-2Rap | CodonFreq=0, model=2, NSsites=0, fix_omega=1, omega=1 | two omega with Hil6/8 ancestor constrained to be 1 |
 | codonfreq0-site | CodonFreq=0, model=0, NSsites=0 1 2 7 8 | Site model test |
 | codonfreq0-siteM8a | CodonFreq=0, model=0, NSsites=8, fix_omega=1, omega=1 | Site model M8a |
+
+## B8441-OG-part
+Updated 2022-07-03: in response to reviewer's comment, we used GARD and detected evidence of recombination in the PF11765 domain alignment. Here we split the alignment into putative non-recombining segments. For each segment, we will perform the site tests and branch tests. The results will be organized by the test parameters.
+
+the subdirectories are first grouped by the `codonfreq = 0/1/2` parameter. the branch models are labeled as `1/2/3r` and the site model is labeled as `site`
+
+| directory | parameters | description |
+|-----------|---------|----------|
+| codonfreq0-freer  | codonfreq=0, model=1, nssites=0 | free omega |

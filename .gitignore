@@ -2,4 +2,5 @@
 .Rproj.user
 .Rhistory
 .RData
+.ipynb_checkpoints/
 sandbox/
