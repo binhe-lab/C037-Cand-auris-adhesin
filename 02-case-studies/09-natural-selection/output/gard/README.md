@@ -50,59 +50,59 @@ I tried to find legends explaining what the difference is between the gray, smal
 
 #### Amino acid input, no rate variation
 
-![](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-aa-no-rate-var-breakpoint-by-model.svg)
+![](20220628-aa-no-rate-var-breakpoint-by-model.svg)
 
-![](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-aa-no-rate-var-breakpoint-support.svg)
+![](20220628-aa-no-rate-var-breakpoint-support.svg)
 
 #### Amino acid input, general discrete 3 classes
 
-![20220629-aa-generaldiscrete-3class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220629-aa-generaldiscrete-3class-breakpoint-by-model.svg)
-![20220629-aa-generaldiscrete-3class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220629-aa-generaldiscrete-3class-breakpoint-support.svg)
+![20220629-aa-generaldiscrete-3class-breakpoint-by-model](20220629-aa-generaldiscrete-3class-breakpoint-by-model.svg)
+![20220629-aa-generaldiscrete-3class-breakpoint-support](20220629-aa-generaldiscrete-3class-breakpoint-support.svg)
 
 #### Nucleotide input, no rate variation
 
-![20220628-nuc-no-rate-var-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-nuc-no-rate-var-breakpoint-by-model.svg)
+![20220628-nuc-no-rate-var-breakpoint-by-model](20220628-nuc-no-rate-var-breakpoint-by-model.svg)
 
-![20220628-nuc-no-rate-var-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-nuc-no-rate-var-breakpoint-support.svg)
+![20220628-nuc-no-rate-var-breakpoint-support](20220628-nuc-no-rate-var-breakpoint-support.svg)
 
 #### Nucleotide input, general discrete 3 classes
 
-![20220629-nuc-generaldiscrete-3class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220629-nuc-generaldiscrete-3class-breakpoint-by-model.svg)
+![20220629-nuc-generaldiscrete-3class-breakpoint-by-model](20220629-nuc-generaldiscrete-3class-breakpoint-by-model.svg)
 
-![20220629-nuc-generaldiscrete-3class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220629-nuc-generaldiscrete-3class-breakpoint-support.svg)
+![20220629-nuc-generaldiscrete-3class-breakpoint-support](20220629-nuc-generaldiscrete-3class-breakpoint-support.svg)
 
 #### Nucleotide input, beta-gamma distribution, 4 classes
 
-![20220628-nuc-betagamma-4class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-nuc-betagamma-4class-breakpoint-by-model.svg)
-![20220628-nuc-betagamma-4class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220628-nuc-betagamma-4class-breakpoint-support.svg)
+![20220628-nuc-betagamma-4class-breakpoint-by-model](20220628-nuc-betagamma-4class-breakpoint-by-model.svg)
+![20220628-nuc-betagamma-4class-breakpoint-support](20220628-nuc-betagamma-4class-breakpoint-support.svg)
 
 ### With outgroup
 #### Amino acid input, no rate variation
 
-![20220701-aa-no-rate-var-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-aa-no-rate-var-breakpoint-by-model.svg)
+![20220701-aa-no-rate-var-breakpoint-by-model](20220701-aa-no-rate-var-breakpoint-by-model.svg)
 
-![20220701-aa-no-rate-var-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-aa-no-rate-var-breakpoint-support.svg)
+![20220701-aa-no-rate-var-breakpoint-support](20220701-aa-no-rate-var-breakpoint-support.svg)
 
 #### Amino acid input, general discrete 3 classes
 
-![20220701-aa-generaldiscrete-3class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-aa-generaldiscrete-3class-breakpoint-by-model.svg)
+![20220701-aa-generaldiscrete-3class-breakpoint-by-model](20220701-aa-generaldiscrete-3class-breakpoint-by-model.svg)
 
-![20220701-aa-generaldiscrete-3class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-aa-generaldiscrete-3class-breakpoint-support.svg)
+![20220701-aa-generaldiscrete-3class-breakpoint-support](20220701-aa-generaldiscrete-3class-breakpoint-support.svg)
 
 #### Nucleotide input, no rate variation
 
-![20220701-nuc-no-rate-var-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-no-rate-var-breakpoint-by-model.svg)
+![20220701-nuc-no-rate-var-breakpoint-by-model](20220701-nuc-no-rate-var-breakpoint-by-model.svg)
 
-![20220701-nuc-no-rate-var-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-no-rate-var-breakpoint-support.svg)
+![20220701-nuc-no-rate-var-breakpoint-support](20220701-nuc-no-rate-var-breakpoint-support.svg)
 
 #### Nucleotide input, general discrete 3 classes
 
-![20220701-nuc-generaldiscrete-3class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-generaldiscrete-3class-breakpoint-by-model.svg)
+![20220701-nuc-generaldiscrete-3class-breakpoint-by-model](20220701-nuc-generaldiscrete-3class-breakpoint-by-model.svg)
 
-![20220701-nuc-generaldiscrete-3class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-generaldiscrete-3class-breakpoint-support.svg)
+![20220701-nuc-generaldiscrete-3class-breakpoint-support](20220701-nuc-generaldiscrete-3class-breakpoint-support.svg)
 
 #### Nucleotide input, beta-gamma distribution, 4 classes
 
-![20220701-nuc-betagamma-4class-breakpoint-by-model](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-betagamma-4class-breakpoint-by-model.svg)
+![20220701-nuc-betagamma-4class-breakpoint-by-model](20220701-nuc-betagamma-4class-breakpoint-by-model.svg)
 
-![20220701-nuc-betagamma-4class-breakpoint-support](/Users/bhe2/Documents/work/current/C037-Cand-auris-adhesin/02-case-studies/09-natural-selection/output/gard/20220701-nuc-betagamma-4class-breakpoint-support.svg)
+![20220701-nuc-betagamma-4class-breakpoint-support](20220701-nuc-betagamma-4class-breakpoint-support.svg)
