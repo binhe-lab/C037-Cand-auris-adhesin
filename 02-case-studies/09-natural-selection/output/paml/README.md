@@ -46,8 +46,6 @@ the subdirectories are first grouped by the `codonfreq = 0/1/2` parameter. the b
 ## B8441-OG-part
 Updated 2022-07-03: in response to reviewer's comment, we used GARD and detected evidence of recombination in the PF11765 domain alignment. Here we split the alignment into putative non-recombining segments. For each segment, we will perform the site tests and branch tests. The results will be organized by the test parameters.
 
-the subdirectories are first grouped by the `codonfreq = 0/1/2` parameter. the branch models are labeled as `1/2/3r` and the site model is labeled as `site`
+the subdirectories are first grouped by the partitions, then by the separate tests performed. This time I used a ipython notebook to organize all the PAML analyses, including setting up and running the program, then loading and analyzing the results.
 
-| directory | parameters | description |
-|-----------|---------|----------|
-| codonfreq0-freer  | codonfreq=0, model=1, nssites=0 | free omega |
+The nucleotide alignment files are directly linked from the `input/homologs` folder, while the gene trees are copied from `input/gene-tree/` folder, with branch lengths removed. Additional gene tree files are modified based on thefirst one (e.g., `p1-414.nwk`)

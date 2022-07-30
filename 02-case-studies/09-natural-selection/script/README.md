@@ -6,3 +6,5 @@
 | prune-gene-tree.R        | prune the generax corrected gene tree of the MDR clade for PAML |
 | retrieve-MDR-homologs-CDS.R | extract the MDR Hil homolog sequences for PAML |
 | split-alignment.sh       | split the B8441 Hil PF11765 domain alignment into putative non-recombining segments |
+| run-paml.ipynb           | run PAML and perform statistical tests |
+| visualize-trees.ipynb    | show trees using Phylo |
