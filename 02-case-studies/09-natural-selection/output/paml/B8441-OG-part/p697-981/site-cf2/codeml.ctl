@@ -1,0 +1,17 @@
+seqfile = ../B8441-OG-Hil-PF11765-697-981.nuc
+outfile = mlc
+treefile = ../p697-981.nwk
+noisy = 2
+verbose = 0
+seqtype = 1
+CodonFreq = 2
+clock = 0
+model = 0
+NSsites = 0 1 2 7 8
+icode = 8
+fix_kappa = 0
+kappa = 2
+fix_omega = 0
+omega = 0.4
+cleandata = 1
+fix_blength = 0
