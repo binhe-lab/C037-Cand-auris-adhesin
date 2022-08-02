@@ -50,15 +50,15 @@ p.cf2 <- ggtree(p1.freeR.cf2, aes(color = dN_vs_dS), size = 1, branch.length = '
   geom_nodelab(hjust = -0.2, size = 3, color = "black") +
   geom_tiplab(size = 6, hjust = -0.5, color = 1) + 
   xlim(0, 5.6) +
-  geom_text(data = td_filter(dN_vs_dS > 0.5),
+  geom_text(data = td_filter(dN_vs_dS > 1),
             aes(x = branch, label = paste0("ω = ", round(dN_vs_dS, 0))), 
             vjust = -.5, size = 4) + 
-  geom_text(data = td_filter(dN_vs_dS > 0.5),
+  geom_text(data = td_filter(dN_vs_dS > 1),
             aes(x = branch, label = paste0("dN = ", round(dN, 2), "\n", "dS = ", round(dS, 2))), 
             vjust = 1.2, lineheight = 0.8, size = 4) + 
   geom_richtext(data = td_filter(node == 12), aes(x = branch, label = "ω1"), 
                 fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
-  geom_richtext(data = td_filter(node == 13), aes(x = branch, label = "ω2"), 
+  geom_richtext(data = td_filter(node == 11), aes(x = branch, label = "ω2"), 
                 fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
   geom_richtext(data = td_filter(node == 16), aes(x = branch, label = "ω3"), 
                 fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
@@ -75,10 +75,10 @@ p.cf1 <- ggtree(p1.freeR.cf1, aes(color = dN_vs_dS), size = 1, branch.length = '
   geom_nodelab(hjust = -0.2, size = 3, color = "black") +
   geom_tiplab(size = 6, hjust = -0.5, color = 1) + 
   xlim(0, 5.6) +
-  geom_text(data = td_filter(dN_vs_dS > 0.5),
+  geom_text(data = td_filter(dN_vs_dS > 1),
             aes(x = branch, label = paste0("ω = ", round(dN_vs_dS, 0))), 
             vjust = -.5, size = 4) + 
-  geom_text(data = td_filter(dN_vs_dS > 0.5),
+  geom_text(data = td_filter(dN_vs_dS > 1),
             aes(x = branch, label = paste0("dN = ", round(dN, 2), "\n", "dS = ", round(dS, 2))), 
             vjust = 1.2, lineheight = 0.8, size = 4) + 
   geom_richtext(data = td_filter(node == 12), aes(x = branch, label = "ω1"), 
@@ -119,3 +119,68 @@ ggtree(p1.freeR.cf1, aes(color = dS)) +
   geom_tiplab(color = 1) + geom_nodelab(color = 1, size = 3, hjust = -.2)
 ```
 
+# Partition 697-981
+## One ratio vs free ratio
+Read in the tree files with PAML results
+```{r}
+p2.freeR.cf2 <- read.codeml_mlc("../output/paml/B8441-OG-part/p697-981/branch-freer-cf2/mlc") %>% root(outgroup = "OG")
+p2.oneR.cf2 <- read.codeml_mlc("../output/paml/B8441-OG-part/p697-981/branch-1r-cf2/mlc") %>% root(outgroup = "OG")
+p2.freeR.cf1 <- read.codeml_mlc("../output/paml/B8441-OG-part/p697-981/branch-freer-cf1/mlc") %>% root(outgroup = "OG")
+p2.oneR.cf1 <- read.codeml_mlc("../output/paml/B8441-OG-part/p697-981/branch-1r-cf1/mlc") %>% root(outgroup = "OG")
+```
+Plot the tree with omega ratios labeled for branches with high dN/dS
+```{r}
+p.cf2 <- ggtree(p1.freeR.cf2, aes(color = dN_vs_dS), size = 1, branch.length = 'none') + 
+  #geom_rootedge(rootedge = 0.1) +
+  geom_nodelab(hjust = -0.2, size = 3, color = "black") +
+  geom_tiplab(size = 6, hjust = -0.5, color = 1) + 
+  xlim(0, 5.6) +
+  geom_text(data = td_filter(dN_vs_dS > 1),
+            aes(x = branch, label = paste0("ω = ", round(dN_vs_dS, 0))), 
+            vjust = -.5, size = 4) + 
+  geom_text(data = td_filter(dN_vs_dS > 1),
+            aes(x = branch, label = paste0("dN = ", round(dN, 2), "\n", "dS = ", round(dS, 2))), 
+            vjust = 1.2, lineheight = 0.8, size = 4) + 
+  geom_richtext(data = td_filter(node == 12), aes(x = branch, label = "ω1"), 
+                fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
+  geom_richtext(data = td_filter(node == 11), aes(x = branch, label = "ω2"), 
+                fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
+  geom_richtext(data = td_filter(node == 16), aes(x = branch, label = "ω3"), 
+                fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5), 
+                         oob=scales::squish, low='darkgreen', high="darkviolet") +
+  theme(legend.position = c(0.1,0.8), legend.text = element_text(size = 12), 
+        legend.title = element_text(size = 14))
+#ggsave("../output/figure/20220122-MDR-PF11765-freeR-anno-tree.png", width = 7, height = 4.5)
+```
+
+```{r}
+p.cf1 <- ggtree(p1.freeR.cf1, aes(color = dN_vs_dS), size = 1, branch.length = 'none') + 
+  #geom_rootedge(rootedge = 0.1) +
+  geom_nodelab(hjust = -0.2, size = 3, color = "black") +
+  geom_tiplab(size = 6, hjust = -0.5, color = 1) + 
+  xlim(0, 5.6) +
+  geom_text(data = td_filter(dN_vs_dS > 1),
+            aes(x = branch, label = paste0("ω = ", round(dN_vs_dS, 0))), 
+            vjust = -.5, size = 4) + 
+  geom_text(data = td_filter(dN_vs_dS > 1),
+            aes(x = branch, label = paste0("dN = ", round(dN, 2), "\n", "dS = ", round(dS, 2))), 
+            vjust = 1.2, lineheight = 0.8, size = 4) + 
+  geom_richtext(data = td_filter(node == 12), aes(x = branch, label = "ω1"), 
+                fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
+  geom_richtext(data = td_filter(node == 13), aes(x = branch, label = "ω2"), 
+                fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
+  geom_richtext(data = td_filter(node == 16), aes(x = branch, label = "ω3"), 
+                fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
+  geom_richtext(data = td_filter(node == 9), aes(x = branch, label = "ω4"), 
+                fill = NA, label.color = NA, vjust = -0.5, size = 6, color = "red") +
+  scale_color_continuous(name='dN/dS', limits=c(0, 1.5), 
+                         oob=scales::squish, low='darkgreen', high="darkviolet") +
+  theme(legend.position = c(0.1,0.8), legend.text = element_text(size = 12), 
+        legend.title = element_text(size = 14))
+#ggsave("../output/figure/20220122-MDR-PF11765-freeR-anno-tree.png", width = 7, height = 4.5)
+```
+```{r fig.width = 10, fig.height = 5}
+plot_grid(p.cf1 + labs(title = "CodonFreq = 1"), p.cf2 + labs(title = "CodonFreq = 2"), nrow = 1)
+ggsave(paste0("../output/figure/", gsub("-", "", Sys.Date()),"-B8441-OG-p1-414-branch-freer-tree.png"), width = 10, height = 5)
+```
