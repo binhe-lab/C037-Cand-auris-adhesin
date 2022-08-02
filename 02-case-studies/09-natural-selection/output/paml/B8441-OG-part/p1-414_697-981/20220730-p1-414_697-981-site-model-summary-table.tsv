@@ -1,0 +1,13 @@
+codonfreq	model	npar	lnL	kappa	omega	description
+F1x4	M0	17	-5877.793871	1.51654	w=0.154	one-ratio
+F1x4	M1	18	-5810.060256	1.74885	p0=0.785, w0=0.133; p1=0.215, w1=1.000; 	NearlyNeutral (2 categories)
+F1x4	M2	20	-5810.060256	1.74885	p0=0.785, w0=0.133; p1=0.183, w1=1.000; p2=0.032, w2=1.000; 	PositiveSelection (3 categories)
+F1x4	M7	18	-5756.913943	1.64325	p=0.821, q=3.540	beta (10 categories)
+F1x4	M8	20	-5748.634376	1.69618	p0=0.972, p=0.920, q=4.606; p1=0.028, w=157.032	beta&w>1 (11 categories)
+F1x4	M8a	19	-5755.082093	1.64589	p0=0.955, p=0.869, q=4.787; p1=0.045, w=1.000	beta&w>1
+F3x4	M0	17	-5786.491306	1.39447	w=0.019	one-ratio
+F3x4	M1	18	-5722.993764	1.46967	p0=0.797, w0=0.062; p1=0.203, w1=1.000; 	NearlyNeutral (2 categories)
+F3x4	M2	20	-5722.993764	1.46967	p0=0.797, w0=0.062; p1=0.032, w1=1.000; p2=0.170, w2=1.000; 	PositiveSelection (3 categories)
+F3x4	M7	18	-5648.602475	1.46643	p=0.749, q=16.775	beta (10 categories)
+F3x4	M8	20	-5639.848275	1.46685	p0=0.969, p=0.874, q=21.467; p1=0.031, w=9.262	beta&w>1 (11 categories)
+F3x4	M8a	19	-5642.467198	1.48571	p0=0.964, p=0.810, q=20.775; p1=0.036, w=1.000	beta&w>1
