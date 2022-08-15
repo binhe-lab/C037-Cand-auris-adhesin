@@ -8,3 +8,4 @@ To determine if older assemblies tend to miss Hil homologs, I downloaded a few n
 | k_lactis_CBS2105 | GCA_007993695.1 | 2019 | PacBio RSII | 224.0x |
 | s_cerevisiae_s288c | GCA_016858165.1 | 2021 | PacBio Sequel | 50x |
 | c_nivariensis_CBS9983 | GCA_017309295.1 | 2021 | Oxford Nanopore + Illumina iSeq | 296.0x |
+| s_passalidarum_Y27907 | GCA_013620965.1 | 2020 | Oxford Nanopore + Illumina MiSeq | 200.0x |
