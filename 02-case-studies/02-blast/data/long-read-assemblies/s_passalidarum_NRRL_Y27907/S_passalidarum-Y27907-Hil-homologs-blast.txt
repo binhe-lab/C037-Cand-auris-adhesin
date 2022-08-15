@@ -1,0 +1,33 @@
+# TBLASTN 2.12.0+
+# Query: Caur_Hil1 XP_028889033.1:12-327 uncharacterized protein CJI97_004172 [[Candida] auris]
+# Database: ../../blastdb/S_passalidarum-Y27907
+# Fields: subject id, % query coverage per subject, q. start, q. end, subject length, s. start, s. end, % identity, mismatches, evalue
+# 7 hits found
+gb|PQIC01000005.1|	83	48	310	859102	14301	13522	30.325	162	1.42e-12
+gb|PQIC01000002.1|	99	47	313	2054362	55566	54796	24.176	185	8.59e-10
+gb|PQIC01000002.1|	99	2	310	2054362	835310	836152	26.829	174	3.78e-09
+gb|PQIC01000007.1|	99	1	312	1751630	9924	8995	24.383	219	5.03e-09
+gb|PQIC01000007.1|	99	28	286	1751630	1109257	1109943	28.358	144	2.75e-07
+gb|PQIC01000004.1|	99	1	313	1660554	11943	10996	25.378	214	6.70e-07
+gb|PQIC01000006.1|	66	104	311	855437	81416	80841	29.864	113	5.29e-06
+# TBLASTN 2.12.0+
+# Query: Calb_Hyr1 XP_722183.2:11-334 Hyr1p [Candida albicans SC5314]
+# Database: ../../blastdb/S_passalidarum-Y27907
+# Fields: subject id, % query coverage per subject, q. start, q. end, subject length, s. start, s. end, % identity, mismatches, evalue
+# 7 hits found
+gb|PQIC01000010.1|	68	85	305	1176369	1159618	1160238	30.222	135	1.66e-14
+gb|PQIC01000002.1|	85	29	305	2054362	55620	54835	28.114	179	1.73e-13
+gb|PQIC01000007.1|	70	85	289	1751630	9684	9076	31.308	127	5.23e-13
+gb|PQIC01000007.1|	70	80	305	1751630	1109371	1109976	29.694	131	3.11e-11
+gb|PQIC01000004.1|	69	85	307	1660554	11691	11029	27.586	148	4.39e-09
+gb|PQIC01000003.1|	73	84	321	1811314	1790908	1791555	28.512	143	4.88e-09
+gb|PQIC01000001.1|	47	157	307	2646511	1785233	1784808	30.921	94	4.76e-07
+# TBLASTN 2.12.0+
+# Query: Cgla_Hyr1 XP_445977.1:14-341 uncharacterized protein CAGL0E06600g [[Candida] glabrata]
+# Database: ../../blastdb/S_passalidarum-Y27907
+# Fields: subject id, % query coverage per subject, q. start, q. end, subject length, s. start, s. end, % identity, mismatches, evalue
+# 3 hits found
+gb|PQIC01000006.1|	89	30	322	855437	81641	80841	25.338	189	7.52e-12
+gb|PQIC01000007.1|	95	1	312	1751630	1109152	1109988	29.022	182	1.70e-11
+gb|PQIC01000002.1|	61	125	325	2054362	835613	836167	29.851	125	2.70e-09
+# BLAST processed 3 queries
