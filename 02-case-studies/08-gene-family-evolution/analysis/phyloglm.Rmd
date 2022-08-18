@@ -1,0 +1,103 @@
+---
+title: "PhyloGLM analysis"
+author: "Bin He"
+date: "2022-08-18 (updated: `r Sys.Date()`)"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    toc_depth: 5
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+suppressPackageStartupMessages(require(tidyverse))
+suppressPackageStartupMessages(require(cowplot))
+suppressPackageStartupMessages(require(phytools))
+suppressPackageStartupMessages(require(phylolm))
+```
+
+## Introduction
+### Goal
+- Test the hypothesis that pathogenic Candida lineages have a larger Hil family, while controlling for phylogenetic relatedness
+
+### Input
+- Species tree
+- Gene family size vector
+
+### Approach
+- t-test under the incorrect assumption of independence among the Hil family size values across species (they are related by the tree and thus are not i.i.d.)
+- PhyloGLM using the `phylolm` package in R, which tests for association between a quantitative independent variable (Hil family size) and a binary dependent variable (pathogen or not)
+
+## Analysis
+### Load data
+Species tree
+```{r}
+spsInfo <- read_tsv("../input/20220518-expanded-blast-species-info.tsv", col_types = cols())
+tree <- read.tree("../input/20220521-generax-species-tree.nwk")
+```
+
+Encode the life history trait
+```{r}
+trait <- spsInfo %>% 
+  mutate(species = treeName, 
+         pathogen = fct_recode(pathogen, Yes = "human", Yes = "crustacean", No = "human (rare)", No = "no report"),
+         .keep = "none")
+```
+
+Gene family size
+```{r}
+famSize <- read_tsv("../input/20220818-Hil-family-size-adhesin-status-summary.tsv", col_types = cols()) %>% 
+  mutate(species = factor(gsub(" ", "_", species), levels = tree$tip.label)) %>% 
+  group_by(species) %>% 
+  summarize(total = n(), FRV = sum(frv.pred), SP = sum(sp.pred), GPI = sum(gpi.pred), 
+            final = sum(frv.pred & sp.pred & gpi.pred)) %>% 
+  select(species, total, final) %>% 
+  # complete missing values for S. cerevisiae
+  complete(species, fill = list(total = 0, final = 0))
+```
+
+### Star phylogeny test
+Here we make the incorrect assumption that all species are equally related to each other, such that both their traits and their family sizes evolved independently from the common ancestor. We are looking to test whether there is an association between the life history trait and the Hil family size
+```{r}
+dat <- left_join(trait, famSize, by = "species")
+```
+
+visualize the two groups
+```{r}
+dat %>% 
+  pivot_longer(c(total, final), names_to = "var", values_to = "n") %>% 
+  mutate(var = fct_recode(var, Total = "total", `Putative adhesin` = "final")) %>% 
+  ggplot(aes(x = pathogen, y = n)) + 
+  geom_boxplot() + geom_jitter(width = 0.2, alpha = 0.7, size = 2, shape = 16) +
+  ylab("# of Hil family genes") +
+  facet_wrap(~var) + theme_cowplot()
+```
+
+t-test (using ANOVA)
+```{r}
+t.test(total ~ pathogen, data = dat, alternative = "greater")
+```
+
+non-parametric rank order test
+```{r}
+wilcox.test(total ~ pathogen, data = dat, alternative = "greater")
+```
+
+### PhyloGLM
+Prepare data
+```{r}
+dat1 <- dat %>% column_to_rownames(var = "species") %>% 
+  mutate(pathogen = 2 - as.numeric(pathogen))
+```
+
+Fit the model
+```{r}
+fit <- phyloglm(formula = pathogen ~ total, data = dat1, phy = tree, method = "logistic_IG10", btol = 50, boot = 1000)
+summary(fit)
+```
+
