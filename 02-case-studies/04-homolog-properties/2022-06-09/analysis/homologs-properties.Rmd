@@ -100,6 +100,11 @@ adhesin <- blastInfo %>%
   relocate(c(frv.pred, sp.pred, gpi.pred), .after = pComplete)
 ```
 
+Export the adhesin summary table
+```{r}
+write_tsv(adhesin, file = "../output/table/20220818-Hil-family-size-adhesin-status-summary.tsv")
+```
+
 Plot the results alongside the species tree. First import the species tree
 ```{r}
 spsInfo <- read_tsv("../data/20220518-expanded-blast-species-info.tsv", col_types = cols())

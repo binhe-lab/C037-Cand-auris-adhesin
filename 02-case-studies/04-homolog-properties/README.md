@@ -10,9 +10,9 @@ The overall question in the phylogenetic analysis of the protein family is to un
 ## Analysis
 | Folder | Content |
 | ------ | ------- |
-| 2020-07-17| version 1 of the analysis|
-| 2020-07-24| version 2, with new homologs in the Saccharomycetaceae family (e.g. Nakaseomyces)|
-| 2020-10-31 | version 3, current analysis updated to 2021-06-18 |
+| 2020-07-17 | version 1 of the analysis|
+| 2020-07-24 | version 2, with new homologs in the Saccharomycetaceae family (e.g. Nakaseomyces)|
+| 2020-10-31 | version 3, analysis updated to 2021-06-18 |
 | 2022-06-09 | version 4, after the expanded blast, in response to Review Commons reviews |
 
 Below are notes for the original analysis. Updated notes will be in the respective folder.
