@@ -22,14 +22,17 @@ suppressPackageStartupMessages(require(phylolm))
 ```
 
 ## Introduction
-### Goal
+_Goal_
+
 - Test the hypothesis that pathogenic Candida lineages have a larger Hil family, while controlling for phylogenetic relatedness
 
-### Input
+_Input_
+
 - Species tree
 - Gene family size vector
 
-### Approach
+_Approach_
+
 - t-test under the incorrect assumption of independence among the Hil family size values across species (they are related by the tree and thus are not i.i.d.)
 - PhyloGLM using the `phylolm` package in R, which tests for association between a quantitative independent variable (Hil family size) and a binary dependent variable (pathogen or not)
 
@@ -61,43 +64,86 @@ famSize <- read_tsv("../input/20220818-Hil-family-size-adhesin-status-summary.ts
   complete(species, fill = list(total = 0, final = 0))
 ```
 
-### Star phylogeny test
-Here we make the incorrect assumption that all species are equally related to each other, such that both their traits and their family sizes evolved independently from the common ancestor. We are looking to test whether there is an association between the life history trait and the Hil family size
+### Visually compare the pathogen vs non-pathogens
 ```{r}
 dat <- left_join(trait, famSize, by = "species")
 ```
 
-visualize the two groups
+We remove _M. bicuspidata_ here as it doesn't fit either the human pathogen or the low pathogenic potential group.
 ```{r}
-dat %>% 
+dat1 <- dat %>% 
+  filter(species != "Metschnikowia_bicuspidata")
+```
+
+Plot as boxplots
+```{r}
+p <- dat1 %>% 
   pivot_longer(c(total, final), names_to = "var", values_to = "n") %>% 
-  mutate(var = fct_recode(var, Total = "total", `Putative adhesin` = "final")) %>% 
+  mutate(var = fct_recode(var, Total = "total", `Putative adhesin` = "final") %>% 
+           fct_relevel("Total")) %>% 
   ggplot(aes(x = pathogen, y = n)) + 
-  geom_boxplot() + geom_jitter(width = 0.2, alpha = 0.7, size = 2, shape = 16) +
-  ylab("# of Hil family genes") +
-  facet_wrap(~var) + theme_cowplot()
+  geom_boxplot(width = 0.5) + 
+  geom_jitter(width = 0.2, alpha = 0.7, size = 2, shape = 16) +
+  ylab("# of Hil family genes") 
+p + facet_wrap(~var) + theme_cowplot(font_size = 18)
+ggsave(file = "../output/img/20220819-Hil-family-size-between-PA-nonPA.png", 
+       plot = p + facet_wrap(~var, nrow = 2) + theme_bw(base_size = 12) + background_grid(major = "y"),
+       width = 3, height = 4)
 ```
 
-t-test (using ANOVA)
+### Star phylogeny test
+Here we make the incorrect assumption that all species are equally related to each other, such that both their traits and their family sizes evolved independently from the common ancestor. We are looking to test whether there is an association between the life history trait and the Hil family size
+
+1. t-test for total number of Hil family homologs
 ```{r}
-t.test(total ~ pathogen, data = dat, alternative = "greater")
+t.test(total ~ pathogen, data = dat1, alternative = "greater")
 ```
 
-non-parametric rank order test
+1. t-test for putative adhesins within the Hil family
 ```{r}
-wilcox.test(total ~ pathogen, data = dat, alternative = "greater")
+t.test(final ~ pathogen, data = dat1, alternative = "greater")
 ```
 
-### PhyloGLM
+1. non-parametric rank sum test for total number of Hil family homologs
+```{r}
+wilcox.test(total ~ pathogen, data = dat1, paired = FALSE, alternative = "greater")
+```
+1. non-parametric rank sum test for putative adhesins within the Hil family
+```{r}
+wilcox.test(final ~ pathogen, data = dat1, paired = FALSE, alternative = "greater")
+```
+
+### Phylogenetic regression using PhyloGLM
 Prepare data
 ```{r}
-dat1 <- dat %>% column_to_rownames(var = "species") %>% 
+df <- dat %>% column_to_rownames(var = "species") %>% 
+  mutate(pathogen = 2 - as.numeric(pathogen))
+df1 <- dat1 %>% column_to_rownames(var = "species") %>% 
   mutate(pathogen = 2 - as.numeric(pathogen))
 ```
 
-Fit the model
+1. Fit the model with _M. bicuspidata_ included, using the total number of Hil family homologs as the independent variable
 ```{r}
-fit <- phyloglm(formula = pathogen ~ total, data = dat1, phy = tree, method = "logistic_IG10", btol = 50, boot = 1000)
-summary(fit)
+fit = list()
+fit$'all.total' <- phyloglm(formula = pathogen ~ total, data = df, phy = tree, method = "logistic_IG10", btol = 50, boot = 100)
+summary(fit$"all.total")
 ```
 
+1. Fit the model with _M. bicuspidata_ included, using the number of putative adhesins in the Hil family as the independent variable
+```{r}
+fit$'all.final' <- phyloglm(formula = pathogen ~ final, data = df, phy = tree, method = "logistic_IG10", btol = 50, boot = 100)
+summary(fit$'all.final')
+```
+
+1. Fit the model without _M. bicuspidata_, using the total number of Hil family homologs as the independent variable
+```{r}
+tree1 <- drop.tip(phy = tree, tip = "Metschnikowia_bicuspidata")
+fit$'noM.total' <- phyloglm(formula = pathogen ~ total, data = df1, phy = tree1, method = "logistic_IG10", btol = 50, boot = 100)
+summary(fit$"noM.total")
+```
+
+1. Fit the model without _M. bicuspidata_, using the number of putative adhesins in the Hil family as the independent variable
+```{r}
+fit$'noM.final' <- phyloglm(formula = pathogen ~ final, data = df1, phy = tree1, method = "logistic_IG10", btol = 50, boot = 100)
+summary(fit$'noM.final')
+```
