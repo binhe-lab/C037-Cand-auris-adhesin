@@ -12,8 +12,8 @@ output:
 ```{r}
 suppressPackageStartupMessages(require(tidyverse))
 suppressPackageStartupMessages(require(cowplot))
-require(ggtree)
-require(treeio)
+suppressPackageStartupMessages(require(ggtree))
+suppressPackageStartupMessages(require(treeio))
 ```
 
 Manipulating and plotting species and reconciled gene trees.
@@ -124,8 +124,8 @@ clade.cols <- c(
 )
 ```
 
-```{r}
-p.tree <- ggtree(gene.tree, layout = "circular", branch.length = "none", size = 0.4) +# scale_y_reverse() +
+```{r, fig.height=6, fig.width=5}
+p.tree0 <- ggtree(gene.tree, layout = "fan", size = 0.4) +# scale_y_reverse() +
   #geom_nodepoint(aes(fill = D), data = td_filter(D == "Y"), shape = 21, size = 1, color = "red") + 
   geom_tippoint(aes(color = group), size = 1) +
   geom_tiplab(aes(label = paste0(str_sub(S, 1, 1), str_sub(word(S, 2, sep = "_"), 1, 3)), color = family),
@@ -136,10 +136,24 @@ p.tree <- ggtree(gene.tree, layout = "circular", branch.length = "none", size = 
   scale_color_manual(name = "Clade", values = clade.cols)# +
   #guides(color = "none")
 scaleClade(p.tree, Mbic_clade, 0.2) %>% scaleClade(235, 0.8) %>% 
-  collapse(Mbic_clade, mode = "min", fill = "#6a5acd")
-ggsave(file = paste0("../output/img/",gsub("-", "", Sys.Date()), "-reconciled-gene-tree-generax.pdf"), width = 6, height = 5)
+  collapse(Mbic_clade, mode = "min", fill = "darkgreen")
+#ggsave(file = paste0("../output/img/",gsub("-", "", Sys.Date()), "-reconciled-gene-tree-generax.pdf"), width = 6, height = 5)
 ```
+```{r}
+p.tree <- ggtree(gene.tree, layout = "circular", branch.length = "none", size = 0.4) +# scale_y_reverse() +
+  #geom_nodepoint(aes(fill = D), data = td_filter(D == "Y"), shape = 21, size = 1, color = "red") + 
+  geom_tippoint(aes(color = group), size = 1) +
+  geom_tiplab(aes(label = paste0(str_sub(S, 1, 1), str_sub(word(S, 2, sep = "_"), 1, 3))),
+              data = td_filter(isTip & node %in% selected_nodes), size = 2, hjust = -0.5, offset = 0.2) +
+  #geom_cladelab(node = 357,  label = "M. bicuspidata", offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +
+  #geom_text(label = "D", data = td_filter(D == "Y"), hjust = -0.4, size = 1.5, color = "red")# +
 
+  scale_color_manual(name = "Clade", values = clade.cols)# +
+  #guides(color = "none")
+scaleClade(p.tree, Mbic_clade, 0.2) %>% scaleClade(235, 0.8) %>% 
+  collapse(Mbic_clade, mode = "min", fill = "plum4")
+ggsave(file = paste0("../output/img/",gsub("-", "", Sys.Date()), "-reconciled-gene-tree-generax.png"), width = 6, height = 5)
+```
 ### Gene tree reconciled using Notung 2.9
 As an alternative approach, we also reconciled the raxml gene tree with the species tree using Notung v2.9, setting the rearrangement threshold at 90 (branches with <90% support being subject to rearrangement)
 ```{r}
@@ -183,12 +197,12 @@ ggtree(sps.tree.cnt, aes(color = dup), size = .6, ladderize = FALSE) + scale_y_r
   scale_color_gradient(name = "Duplication", high = "#f75656", trans = "pseudo_log", breaks = c(0, 2, 5, 10, 20)) +
   geom_tiplab(size = 3, color = "gray10", fontface = "italic", align = TRUE, linesize = 0.1, offset = 0.05) +
   #geom_tiplab(color = "black", size = 3.2, fontface = "italic", align = TRUE, linesize = 0.05, offset = 0.05) +
-  geom_treescale(x = 0, width = 0.2, linesize = 1.2) +
+  geom_treescale(x = 0, width = 0.2, linesize = 1.5) +
   #geom_hilight(node = clade["MDR"], fill = "#7F00FF", alpha = 0.15)  + # MDR
   #geom_hilight(node = clade["CaLo"], fill = "pink", alpha = 0.25)    + # Candida/Lodderomyces
   #geom_hilight(node = clade["glabrata"], fill = "steelblue", alpha = 0.15)#  + # glabrata
-  geom_text(aes(label = dup), data = td_filter(dup > 1),
-            hjust = 3, vjust = -.3, size = 2, color = "red", fontface = 1) +
+  geom_text(aes(label = dup), data = td_filter(dup > 2),
+            hjust = 3, vjust = -.3, size = 2.5, color = "red", fontface = 2) +
   geom_cladelabel(node = clade["MDR"], barsize = 2, color = "#7F00FF", align = TRUE, extend = 0.5, offset = off,
                   label = "MDR", angle = 270, offset.text = off.text, hjust = .5) +# MDR
   geom_cladelabel(node = clade["CaLo"], barsize = 2, color = "hotpink2", align = TRUE, extend = 0.5, offset = off,
@@ -196,6 +210,7 @@ ggtree(sps.tree.cnt, aes(color = dup), size = .6, ladderize = FALSE) + scale_y_r
   geom_cladelabel(node = clade["glabrata"], barsize = 2, color = "steelblue",  align = TRUE, extend = 0.5, offset = off,
                   label = "glabrata", angle = 270, offset.text = off.text, hjust = .5) +# glabrata
   geom_tippoint(aes(fill = total), shape = 21, size = 2.5, color = "gray30") +
+  geom_nodepoint(aes(fill = total), shape = 21, size = 1.5, color = "gray30") +
   scale_fill_fermenter(name = "# Hil homologs", palette = "Greys", direction = 1, breaks = c(0, 2, 5, 10, 20, 30)) +
   #scale_fill_manual(values =  c("crustacean" = "#6a5acd",
   #                               "human" = "#d14949", 
@@ -204,7 +219,7 @@ ggtree(sps.tree.cnt, aes(color = dup), size = .6, ladderize = FALSE) + scale_y_r
   #guides(color = guide_legend(byrow = TRUE)) +
   theme(legend.position = "bottom")
 #p.tree.cnt
-ggsave(paste0("../output/img/", gsub("-", "", Sys.Date()), "-species-tree-with-gains.pdf"), width = 6.5, height = 6.5)
+ggsave(paste0("../output/img/", gsub("-", "", Sys.Date()), "-species-tree-with-gains.png"), width = 6, height = 6.5)
 ```
 **Fig. 4 Inferred gene duplications and losses in the Hyr/Iff-Like (HIL) family in Ascomycetes.** The cladogram shows the species relationship with shadings as in Figure 1. The numbers on top of each branch are the inferred duplications (red) and losses (black) using Notung 2.9. Yellow highlight emphasize the branches that experience three or more duplications.
 

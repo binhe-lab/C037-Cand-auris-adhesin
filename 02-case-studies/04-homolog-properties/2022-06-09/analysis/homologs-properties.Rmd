@@ -172,6 +172,12 @@ ggsave(p, file = paste0("../output/img/",gsub("-", "", Sys.Date()), "-species-ad
 p1 <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
 plot_grid(p.tree, p1, rel_widths = c(3,2), scale = c(1, 0.95))
 ```
+Summarize the % of Hil genes passing all three tests
+```{r}
+df0 %>% pivot_wider(names_from = "type", values_from = "number") %>% 
+  select(species, total, final) %>% 
+  summarize(total = sum(total), adhesin = sum(final))
+```
 
 # Adhesin-related characteristics
 ## Serine/Threonine content
