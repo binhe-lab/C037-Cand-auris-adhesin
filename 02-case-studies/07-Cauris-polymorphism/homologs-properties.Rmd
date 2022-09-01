@@ -26,12 +26,12 @@ suppressPackageStartupMessages(library(plotly))
 
 Analyze the evolution of sequence features of the XP_028889033 homologs within _C. auris_ species. In particular, we are interested in intra-species variation in copy number, NTD protein sequence evolutionary rates, stalk repeat numbers and sequences.
 
-## Homologs identification
 Homologs of the PF11765 domain containing proteins were identified in the five strains of _C. auris_ used in Muñoz _et al._ 2018 Nat. Genet. Homologs from _C. pseudohaemulonis_ and _C. haemuloni_ were added to help provide the evolutionary context, e.g. timing of gene duplication and sequence evolution both within and between closely related species. Finally, two homologs from the outrgroup species _D. hansenii_ were added to root the gene tree. A third _D. hansenii_ sequencing with the PF11765 domain was not included as it belong to the Clavispora/Candida duplicate 2 branch, which didn't include any _C. auris_ sequences.
 
 **Update 2021-05-21 [HB] Clade I strain 6684 is removed from this analysis, leaving four strains repesenting one of the four clades**
 
-As shown in Muñoz _et al._ 2021 Genetics, _C. auris_ as a species has a total of eight members in this family. The number of members present in each strain varies. In particular, Clade II strains, represented by B11220 in our dataset, has only three. Below we will show the domain architecture for the eight members from the clade I strain B8441. The data for this plot is actually generated in the [latter part](#B8441) of this R markdown file
+## B8441 representative sequence feature plot
+As shown in Muñoz _et al._ 2021 Genetics, _C. auris_ as a species has a total of eight members in this family. The number of members present in each strain varies. In particular, Clade II strains, represented by B11220 in our dataset, has only three. Below we will show the domain architecture for the eight members from the **clade I strain B8441**. The data for this plot is actually generated in the [latter part](#B8441) of this R markdown file
 
 ```{r}
 # read in data
@@ -50,7 +50,7 @@ B8441$gID <- ordered(B8441$gID, levels = seq.order)
 B8441.tango$gID <- ordered(B8441.tango$gID, levels = seq.order)
 ```
 
-```{r}
+```{r fig.width=8, fig.height=3.5}
 # plot
 colors <- c(Hyphal_reg_CWP = "#3d85c6", "Signal Peptide" = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeat" = "#af8400")
 p1 <- ggplot(B8441 %>% filter(type == "entire protein"), aes(x = gID, y = start)) + 
@@ -68,12 +68,102 @@ p4 <- p1 + p2 + p3 + coord_flip() + theme_cowplot() +
         legend.box.margin = margin(6,6,6,6),
         legend.box.background = element_rect(size = 0.5, linetype = "solid", color = 1))
 p4
-ggsave("output/figure/20210526-B8441-domain-tandem-repeats.png", width = 8, height = 3.5)
+ggsave(paste0("output/figure/", gsub("-", "", Sys.Date()), "-B8441-domain-tandem-repeats.png"), width = 8, height = 3.5)
 ```
 **Fig. 1 Domain schematic of the eight homologs in the Hyr/Iff-like (Hil) family in _C. auris_ strain B8441**. The gene name is shown to the left and sorted based on the length of the predicted proteins. Various features were shown as colored blocks, including the Hyphal_reg_CWP (PF11765) domain, Signal Peptide as predicted by SignalP 5.0 server, GPI-anchor predicted by PredGPI server and tandem repeats predicted by XSTREAM (see Materials and Methods). The short bars behind each sequence's schematic represents TANGO predicted β-aggregation motifs, whose predicted strength (score) is proportional to the transparency of the bar.
 
 `r len %>% arrange(desc(length))`
 
+### S/T frequency
+For S/T frequencies, I ran `freak` with 30 aa sliding window and 30 aa step size, that is, I divided each protein into 30 aa bins and calculated the frequency in each window.
+```{r}
+files <- paste0("output/seq-feature/B8441_", c("S", "T", "ST"), "_freq_50_10_freak.out.gz")
+names(files) <- c("S", "T", "S/T")
+B8441.ST <- map_dfr(files, read_tsv, col_types = "cid", .id = "Var") %>% 
+  # reformat pID
+  separate(id, into = c("name", "pID", NA), sep = "_") %>% 
+  mutate(pID = paste0(pID, "_B8441_Cauris")) %>% 
+  # introduce gID for plotting
+  left_join(select(len, pID, gID), by = "pID") %>% 
+  mutate(Var = ordered(Var, levels = c("S/T","S","T")),
+         gID = ordered(gID, levels = seq.order))
+```
+
+### N- and O-glycosylation
+To directly assess the extent and distribution of N- and O-glycosylation sites in the representative Hil homologs in _C. auris_, I used the following tools to predict the two types of modifications in the eight Hil  homologs from B8441:
+
+- [NetNGlyc - v1.0](https://services.healthtech.dtu.dk/service.php?NetNGlyc-1.0)
+- [NetOGlyc - v4.0](https://services.healthtech.dtu.dk/service.php?NetOGlyc-4.0)
+
+
+```{r read_gff()}
+# modified from https://cran.r-project.org/web/packages/rmonad/vignettes/gff-processing.html
+read_gff <- function(file){
+  readr::read_table(
+    file,
+    col_names = c(
+        "seqid",
+        "source",
+        "type",
+        "start",
+        "stop",
+        "score",
+        "strand",
+        "phase",
+        "attr"
+    ),
+    na        = ".",
+    comment   = "#",
+    col_types = "ccciidcic"
+  )
+}
+```
+Read glycosylation prediction results
+```{r}
+B8441.NGlyc <- read_tsv("output/glycosylation/20220624-B8441-Hil-homologs-NetNGlyc-results.txt", col_types = cols()) %>% 
+  # reformat pID
+  separate(seqname, into = c("name", "pID", NA), sep = "_") %>% 
+  mutate(pID = paste0(pID, "_B8441_Cauris")) %>% 
+  # introduce gID for plotting
+  left_join(select(len, pID, gID), by = "pID")
+
+B8441.OGlyc <- read_gff("output/glycosylation/20220624-B8441-Hil-homologs-NetOGlyc-results.txt") %>% 
+  separate(seqid, into = c("name", "pID", NA, NA), sep = "_") %>% 
+  mutate(pID = paste0(pID, ".1_B8441_Cauris")) %>% 
+  left_join(select(len, pID, gID), by = "pID")
+```
+
+Plot the predictions
+```{r fig.width=8, fig.height=3.5}
+w = 50 # window size
+p1 <- ggplot(data = B8441.ST %>% filter(Var == "S/T"), aes(x = gID, y = pos + w/2)) + 
+  geom_tile(aes(fill = freq), width = 0.6, height = w, alpha = 0.9)
+#p2 <- geom_tile(data = B8441.ST %>% filter(Var == "T"), aes(x = gID, y = pos, fill = freq),
+                #width = 0.25, alpha = 0.9, position = position_nudge(x = -0.12))
+p3 <- geom_segment(data = B8441.NGlyc %>% filter(result %in% c("+", "++")), 
+                   aes(xend = gID, y = ifelse(position < 5, 0, position - 5), yend = position + 5),
+                   position = position_nudge(x = 0.35, y = 0), color = "red4", size = 1.5)
+#p3 <- geom_point(data = B8441.NGlyc %>% filter(result %in% c("+", "++")), aes(x = gID, y = position),
+#                 shape = 3, fill = "white", size = 1.5, #stroke = 0, alpha = 0.8,
+#                 position = position_nudge(x = .3))
+p4 <- geom_segment(data = B8441.OGlyc %>% filter(attr == "+"), 
+                   aes(xend = gID, y = ifelse(start < 2, 0, start - 2), yend = start + 2),
+                   position = position_nudge(x = -0.35, y = 0), color = "pink3", size = 1.5)
+
+p1 + p3 + p4 + coord_flip() + theme_cowplot() + 
+  #scale_fill_viridis_b("Ser/Thr", option = "A", n.breaks = 10) +
+  scale_fill_fermenter("Ser/Thr", direction = -1, palette = "YlGnBu", n.breaks = 10) +
+  scale_x_discrete(labels = paste0(len$gID, " (", len$name, ")")) +
+  #scale_alpha(guide = "none") +
+  labs(y = "Position in sequence", x = NULL, color = "FEATURES") + 
+  theme(legend.position = c(0.7,0.4),
+        legend.box.margin = margin(6,6,6,6),
+        legend.box.background = element_rect(size = 0.5, linetype = "solid", color = 1))
+ggsave(paste0("output/figure/", gsub("-", "", Sys.Date()), "-B8441-ST-glycosyl.png"),
+       width = 8, height = 3.5, dpi = 300)
+```
+
+### β-aggregation sequences
 **TANGO predicted β-aggregation sequences (prob > 25%):**
 
 ```{r}
@@ -86,7 +176,6 @@ B8441.tango %>%
   arrange(name, desc(n))
 ```
 
-For S/T frequencies, please first run the script at the end of this notebook to load the data [link](#STB8441)
 
 ## Evolution (duplications and losses)
 ### Gene tree
@@ -571,13 +660,14 @@ ggsave("output/figure/20210530-ST-freq-composite.png", width = 10, height = 6)
 ```
 
 #### S/T in B8441 {#STB8441}
-Sliding window plot of S/T frequency for Hil family proteins in B8441
-```{r}
-B8441.ST <- ST.comb %>% 
-  filter(grepl("B8441", id)) %>% 
-  left_join(select(len, shortName = name, gID, pID), by = c("id" = "pID")) %>% 
-  mutate(gID = ordered(gID, levels = seq.order))
-```
+<!-- Sliding window plot of S/T frequency for Hil family proteins in B8441 -->
+<!-- ```{r} -->
+<!-- B8441.ST <- ST.comb %>%  -->
+<!--   filter(grepl("B8441", id)) %>%  -->
+<!--   left_join(select(len, shortName = name, gID, pID), by = c("id" = "pID")) %>%  -->
+<!--   mutate(gID = ordered(gID, levels = seq.order)) -->
+<!-- ``` -->
+
 ```{r}
 ggplot(B8441.ST, aes(x = gID, y = pos)) + geom_tile(aes(fill = freq)) + 
   facet_wrap(~Var, nrow = 3, scales = "fixed") + coord_flip() + 
@@ -592,7 +682,7 @@ ggplot(B8441.ST, aes(x = gID, y = pos)) + geom_tile(aes(fill = freq)) +
         strip.background = element_blank(),
         panel.background = element_rect(fill = alpha("gray90", 0.5)),
         legend.position = "right") +
-  ggtitle("Ser/Thr frequency in 100 aa sliding windows")
+  ggtitle("Ser/Thr frequency in 50 aa windows")
 ggsave("output/figure/20211118-B8441-ST-freq.png", width = 8, height = 6.5)
 ```
 
@@ -601,7 +691,8 @@ Compare the Hil family to the proteome in B8441
 B8441.STprot <- read_tsv("input/Cauris-ST-freq-per-protein.txt.gz", col_types = cols()) %>% 
   mutate(Ser = Ser/length, Thr = Thr/length) %>% 
   pivot_longer(cols = c(Ser, Thr), names_to = "residue", values_to = "value") %>% 
-  mutate(residue = factor(residue, levels = c("Ser", "Thr")))
+  mutate(residue = factor(residue, levels = c("Ser", "Thr")),
+         Hil = ID %in% str_split(len$pID, "_", simplify = T)[,1])
 ```
 ```{r}
 B8441.STprot %>% 
@@ -609,12 +700,19 @@ B8441.STprot %>%
   geom_histogram(bins = 30) +
   #scale_fill_viridis_c(option = "B", direction = -1) + 
   #scale_fill_distiller(palette = "OrRd", direction = 1) +
-  geom_segment(data = filter(B8441.STprot, ID %in% str_split(len$pID, "_", simplify = T)[,1]), 
+  geom_segment(data = filter(B8441.STprot, Hil), 
                aes(xend = value, y = -200, yend = 200), 
                color = "red", size = 0.9) +
   facet_wrap(~residue, nrow = 2, scales = "free") +
   xlab("Ser/Thr frequency in protein") + ylab("") + 
   theme_cowplot()
 ggsave("output/figure/20211118-B8441-ST-freq-distr-to-all-proteins.png", width = 6, height = 4)
+```
+Testing the difference in Ser/Thr frequency between the Hil family and the rest of the proteome
+```{r}
+B8441.STprot %>% 
+  filter(residue == "Ser") %>% 
+  lm(value ~ Hil, data = .) %>% 
+  summary
 ```
 
