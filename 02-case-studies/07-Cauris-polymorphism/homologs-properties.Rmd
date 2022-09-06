@@ -708,11 +708,16 @@ B8441.STprot %>%
   theme_cowplot()
 ggsave("output/figure/20211118-B8441-ST-freq-distr-to-all-proteins.png", width = 6, height = 4)
 ```
-Testing the difference in Ser/Thr frequency between the Hil family and the rest of the proteome
+Testing the difference in Ser frequency between the Hil family and the rest of the proteome
 ```{r}
 B8441.STprot %>% 
   filter(residue == "Ser") %>% 
-  lm(value ~ Hil, data = .) %>% 
-  summary
+  t.test(value ~ Hil, data = ., var.equal = TRUE)
 ```
 
+Testing the difference in Thr frequency between the Hil family and the rest of the proteome
+```{r}
+B8441.STprot %>% 
+  filter(residue == "Thr") %>% 
+  t.test(value ~ Hil, data = ., var.equal = TRUE)
+````
