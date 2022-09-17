@@ -180,6 +180,17 @@ df0 %>% pivot_wider(names_from = "type", values_from = "number") %>%
 ```
 
 # Adhesin-related characteristics
+
+**Update 2022-09-16**
+
+Remove _M. bicuspidata_ sequences from consideration, due to a large number of them being incomplete and possibly skewing the results.
+
+```{r}
+Mb.rm <- blastInfo %>% 
+  filter(species == "Metschnikowia bicuspidata") %>% 
+  select(pid, name)
+```
+
 ## Serine/Threonine content
 
 S/T sites are potential sites for O-glycosylation, which could increase the rididity of the stalk of the protein and allow the N-terminal domain to protrude out of the cell wall facing the exterior. More evidence for the importance of O-glycosylation in a serine/threonine-rich domain can be found [here](https://ec.asm.org/content/10/10/1317.long).
@@ -189,8 +200,8 @@ The goal here is to compare the S/T frequencies in the Hil proteins to the prote
 Read in the S/T frequencies
 ```{r}
 ST <- list(
-  full = read_tsv("../output/ST-freq/20220623-Hil-full-STfreq.out", col_types = "ciii"),
-  noNTD = read_tsv("../output/ST-freq/20220623-Hil-noPF11765-STfreq.out", col_types = "ciii")
+  full = read_tsv("../output/ST-freq/20220623-Hil-full-STfreq.out.gz", col_types = "ciii"),
+  noNTD = read_tsv("../output/ST-freq/20220623-Hil-noPF11765-STfreq.out.gz", col_types = "ciii")
 )
 ```
 
@@ -220,6 +231,7 @@ Doesn't seem to be significant.
 Now let's combine the Hil protein S/T frequences as an extra "species" into the `bgST.freq`
 ```{r}
 tmp <- ST$full %>% 
+  filter(!ID %in% Mb.rm$name) %>% 
   mutate(Species = "Hil family", `S` = Ser/length, `T` = Thr/length) %>% 
   pivot_longer(cols = c(`S`, `T`), names_to = "Residue", values_to = "frequency") %>% 
   select(Species, ID, length, Residue, frequency) %>% 
@@ -332,13 +344,16 @@ tr.len <- tandem %>%
   mutate(trLength = end - start + 1) %>% 
   group_by(name) %>% 
   summarize(trLen = sum(trLength), .groups = "drop") %>% 
-  right_join(select(blastInfo, name, <- = slen, species),
+  right_join(select(blastInfo, name, seqLen = slen, species),
              by = "name") %>% 
   mutate(trLen = ifelse(is.na(trLen), 0, trLen)) %>% 
   full_join(pf11765.len, by = "name") %>%
   mutate(nonNTDLen = seqLen - dmLen, tr.perc = trLen/nonNTDLen) %>% 
   full_join(select(adhesin, name, frv.pred, sp.pred, gpi.pred), by = "name") %>% 
   relocate(species, .after = last_col())
+
+# remove M. bicuspidata
+tr.len <- filter(tr.len, species != "Metschnikowia bicuspidata")
 ```
 
 Shorter proteins seem to have a lower content of tandem repeats as a percentrage of their non NTD portion of the protein.
@@ -377,6 +392,7 @@ tr.len %>%
   geom_point(size = 1, alpha = 0.9) + 
   annotate(geom = "text", x = 2000, y = 500, label = lm_eq(lm.obj), parse = TRUE, size = rel(5)) +
   xlab("Tandem repeat length (aa)") + ylab("Total protein length (aa)") +
+  #coord_trans(x = "sqrt", y = "sqrt") +
   #scale_color_manual(name = "FungalRV", values = c("TRUE" = "black","FALSE" = "gold2")) +
   theme_cowplot(font_size = 16) + panel_border(color = "black")
 ggsave("../output/img/20220625-protein-nonNTD-length-driven-by-tandem-repeat.png", width = 5, height = 4.5)
@@ -394,7 +410,8 @@ How many TANGO predicted β-aggregation sequences does each homolog has, either 
 ```{r}
 # read in the summary results
 tango <- read_tsv("../data/tango_summary_table.tsv.gz", col_types = "cciiidddicc") %>% 
-  left_join(blastInfo %>% select(id = pid, name), by = "id")
+  left_join(blastInfo %>% select(id = pid, name), by = "id") %>% 
+  filter(!id %in% Mb.rm$pid)
 
 pf11765.gr <- pf11765 %>% 
   select(seqname = name, start, end) %>% 
@@ -472,11 +489,9 @@ DT::datatable(motif.per.seq)
 # add extra information for plotting below
 motif.per.seq <- motif.per.seq %>% 
   left_join(select(blastInfo, species, name), by = "name") %>% 
-  mutate(reg.spaced = ifelse(n.all > 3 & mad.intv < 5, TRUE, FALSE),
-         mad.intv = ifelse(n.all > 2, mad.intv, NA),
+  mutate(mad.intv = ifelse(n.all > 2, mad.intv, NA),
+         reg.spaced = ifelse(n.all >= 5 & mad.intv < 5, TRUE, FALSE),
          species = ordered(species, levels = get_taxa_name(p.tree)))
-         #species = reorder(species, desc(species)),
-         #species_id = NULL)
 ```
 
 <!-- Export the tango motif per seq result -->
@@ -502,13 +517,13 @@ p0 <- motif.per.seq %>%
 col.regspc <- c("TRUE" = "#af8400", "FALSE" = alpha("grey30", 0.5))
 p1 <- motif.per.seq %>% 
   ggplot(aes(x = species, y = n.all)) + 
-  geom_jitter(aes(color = reg.spaced, size = reg.spaced),width = 0.3, height = 0) +
+  geom_jitter(aes(color = reg.spaced, size = reg.spaced), width = 0.2, height = 0) +
   scale_x_discrete(drop = FALSE) +
-  scale_size_manual(values = c(1,1.6), guide = "none") +
+  scale_size_manual(values = c(.8,1.8), guide = "none") +
   scale_color_manual(name = "Regularly spaced", values = col.regspc) +
-  coord_flip() + ylab("# TANGO hits/protein") +
-  scale_y_continuous(trans = "pseudo_log", breaks = c(0,1,2,5,10,20,40),
-                     minor_breaks = NULL)
+  coord_flip() + ylab("# TANGO hits/protein")# +
+  #scale_y_continuous(trans = "pseudo_log", breaks = c(0,1,2,5,10,20,40),
+  #                   minor_breaks = NULL)
 legend <- get_legend(p1 + guides(color = guide_legend(nrow = 1), pch = guide_legend(nrow = 1)) +
                        theme(legend.position = "bottom"))
   
@@ -525,90 +540,95 @@ p2 <- motif.per.seq %>%
   coord_flip() + ylab("Variation in spacing (MAD)")
 
 p3 <- theme_bw(base_size = 14) + theme(axis.text.y = element_blank(), axis.title.y = element_blank(), legend.position = "none")
-prow <- plot_grid(p1 + p3, p2 + p3, ncol = 2)
+prow <- plot_grid(p0 + p3, p1 + p3, ncol = 2, rel_widths = c(1.5,2))
 
-#plot_grid(legend, prow, ncol = 1, rel_heights = c(.1,1))
-plot_grid(p.tree, p0+p3, p1 + p3, nrow = 1, align = "h", rel_widths = c(4,1,2), scale = c(1,0.9,0.9))
+plot_grid(legend, prow, ncol = 1, rel_heights = c(.1,1))
+#plot_grid(p.tree, p0+p3, p1 + p3, nrow = 1, align = "h", rel_widths = c(4,1,2), scale = c(1,0.9,0.9))
 
-ggsave("output/img/20210630-tango-hits-number-and-interval.png", width =5.5, height = 5)
+ggsave("../output/img/20220915-tango-hits-number-and-interval.png", width =3.5, height = 4.5)
+```
+
+we need a species tree on the side
+```{r}
+p.sps.tree.side <- ggtree(sps.tree, ladderize = FALSE) + xlim(0,2.4) + scale_y_reverse() +
+  geom_tiplab(aes(label = paste(str_sub(word(label, 1), 1, 1), word(label, 2), sep = ". ")),
+              size = 3.2, fontface = "italic", align = TRUE, linesize = 0.1, offset = 0.05) +
+  #geom_treescale(x = 0, width = 0.2, linesize = 1.2) +
+  geom_hilight(node = clade["MDR"], fill = "#7F00FF", alpha = 0.15)  + # MDR
+  geom_hilight(node = clade["CaLo"], fill = "pink", alpha = 0.25)    + # Candida/Lodderomyces
+  geom_hilight(node = clade["glabrata"], fill = "steelblue", alpha = 0.15)  + # glabrata
+  #geom_cladelabel(node = clade["MDR"],  label = "MDR", offset = 1.5,# color = "purple",
+  #                offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +# MDR
+  #geom_cladelabel(node = clade["CaLo"],  label = "Candida/\nLodderomyces", offset = 1.47,# color = "hotpink2",
+  #                offset.text = 0.1, angle = 270, hjust = .5, extend = 0.5, fontsize = 3.5) + # albicans
+  #geom_cladelabel(node = clade["glabrata"],  label = "glabrata", offset = 1.38,# color = "steelblue", 
+  #                offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +# glabrata
+  geom_tippoint(aes(color = pathogen)) +
+  scale_color_manual(values =  c("crustacean" = "#6a5acd",
+                                 "human" = "#d14949", 
+                                 "human (rare)" = "steelblue",
+                                 "no report" = "gray20"),
+                     guide = "none")
+p.sps.tree.side
+ggsave(filename = "../output/img/20220916-species-tree-side.png", width = 3.5, height = 5)
 ```
 
 
 # Feature map for homologs
-The goal is to produce a cartoon-like plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
+The goal is to produce a schematic plot for each homolog outlining their main features, such as the locations of the PFam domains (mainly the Hyp_reg_CWP), locations of the signal peptide and GPI-anchor, distribution of TANGO sequences. Note that all these features can be represented as a range with associated metadata. So the first step is to collect the coordinates of the features
 
-## Organize and combine the tandem repeats features
+## Gene tree for organizing the features
 ```{r}
-tr <- tandem %>% 
-  left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
-  mutate(type = "Tandem Repeats") %>% 
-  select(name, type, start, end)
-```
-
-```{r}
-# GPI-anchor
-# use pred.gpi
-# feature set
-# structure: id  feature  start  end
-feature <- bind_rows(
-  pfam %>% select(name = seq_id, type = hmm_name, start = envelope_start, end = envelope_end) %>% 
-    filter(type == "Hyphal_reg_CWP"),
-  # extend the signal peptide segment by 10 amino acids to make it more visible
-  signalp5 %>% mutate(type = "Signal Peptide", end = end + 10) %>% select(name = id, type, start = start, end),
-  # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
-  pred.gpi %>% filter(is.gpi) %>% mutate(type = "GPI-anchor", start = cleavePos-10) %>% 
-    select(name, type, start, end = length),
-  tr
-) 
-
-# in order to plot properties of the sequences in an order that is consistent with the sequences' position in the gene tree
-genetreeOrder <- scan("data/reorder_by_gene_tree.txt", what = "character")
-seqLen$name <- ordered(seqLen$name, levels = rev(genetreeOrder))
-
-feature <- feature %>% 
-  mutate(name = ordered(name, levels = rev(genetreeOrder)),
-         type = ordered(type, levels = c("entire protein", "Hyphal_reg_CWP", "Signal Peptide", "GPI-anchor", "Tandem Repeats")))
-feature.colors <- c(Hyphal_reg_CWP = "#3d85c6", "Signal Peptide" = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeats" = "#af8400bb")
-```
-## Plot domain organization
-```{r plot_tandem_repeats, warning=FALSE}
-# plot
-p0 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + 
-  #geom_segment(color = "black", size = 2.1) +
-  geom_segment(color = "gray80", size = 2)
-p1 <- geom_segment(data = feature, aes(color = type), size = 2)
-p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2, color = "white")
-p3 <- p0 + p1 + coord_flip() + theme_classic() + 
-  scale_color_manual(values = feature.colors) +
-  scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
-  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
-        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
-        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
-        legend.position = c(0.75, 0.35), 
-        legend.text = element_text(size = 12), legend.title = element_text(size = 14),
-        plot.title = element_text(hjust = 0.5), 
-        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
-  labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
-#plot_grid(p.gtree, p3, ncol = 2, align = 'v', rel_widths = c(1,2), scale = c(1.01,1))
-ggsave("output/img/20210625-domain-tandem-repeats.png", width = 6, height = 7.5)
-```
-**Fig. ?** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
-
-## Separate TR types
-```{r}
-DT::datatable(
-  tandem %>% 
-    dplyr::rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
-    select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
-    arrange(desc(name)),
-  fillContainer = FALSE, options = list(pageLength = 10)
+# load the gene tree
+gene.tree <- read.nhx(file = "../data/20220512-generax-clustalo-shen2018-wScer-gene-tree.nhx") %>% 
+  drop.tip(tip = Mb.rm$name)
+# add supplemental information
+clades <- sps.tree %>% as_tibble() %>% select(treeName, group) %>% na.omit()
+gene.tree <- left_join(gene.tree, select(spsInfo, treeName, family), by = c("S" = "treeName")) %>% 
+  left_join(clades, by = c("S" = "treeName"))# %>% 
+  #mutate(family = forcats::fct_relevel(family, "Metschnikowiaceae", after = Inf))
+# label selected species to show the clustering
+selected_nodes <- gene.tree %>% as_tibble() %>% 
+  filter(S %in% c("Candida_albicans", "Candida_glabrata", "Candida_auris")) %>% 
+  pull(node)
+# color by family
+clade.cols <- c(
+  "CaLo" = "firebrick",
+  "MDR" = "#7F00FF",
+  "glabrata" = "steelblue"
 )
 ```
 
-Repeat the above analysis but distinguishing between all different TR types
+```{r fig.width=5, fig.height=7}
+p.gene.tree <- ggtree(gene.tree, size = 0.4) + xlim(0,4) + 
+  #geom_nodepoint(aes(fill = D), data = td_filter(D == "Y"), shape = 21, size = 1, color = "red") + 
+  geom_tippoint(aes(color = group), size = 1) +
+  geom_tiplab(aes(color = family),
+               align = TRUE, linesize = 0.1, size = 1, offset = 0.05) +
+  #geom_cladelab(node = 357,  label = "M. bicuspidata", offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +
+  #geom_text(label = "D", data = td_filter(D == "Y"), hjust = -0.4, size = 1.5, color = "red")# +
+
+  scale_color_manual(name = "Clade", values = clade.cols)# +
+p.gene.tree
+ggsave(filename = "../output/img/20220916-gene-tree-side.png", width = 5, height = 7)
+```
+
+Extract gene tree order
 ```{r}
-tr1 <- tandem %>% 
+genetreeOrder <- get_taxa_name(p.gene.tree)
+```
+
+## Organize and combine the tandem repeats features
+```{r}
+# summarize stats of tandem repeats
+repeats <- tandem %>% 
+  group_by(type, period) %>% 
+  summarize(n = n(), copyMean = mean(copyN), .groups = "drop") %>% 
+  mutate(length = period * copyMean)
+
+tr <- tandem %>% 
   left_join(select(repeats, type, copyMean), by = c("type" = "type")) %>% 
+  filter(name %in% genetreeOrder) %>% 
   mutate(type = paste0("TR-", type),
          tip = paste0(consensus_nogap,
                       "\ntype: ", type,
@@ -618,6 +638,77 @@ tr1 <- tandem %>%
   select(name, type, start, end, tip)
 ```
 
+Make a `seqLen` object to draw the overall length of each protein
+```{r}
+seqLen <- blastInfo %>% 
+  filter(name %in% genetreeOrder) %>% 
+  mutate(start = 1, 
+         name = ordered(name, levels = rev(genetreeOrder))) %>% 
+  select(name, start, end = slen)
+```
+
+```{r}
+# GPI-anchor
+# use pred.gpi
+# feature set
+# structure: id  feature  start  end
+feature <- bind_rows(
+  Hyphal_reg_CWP = pf11765,
+  # extend the signal peptide segment by 10 amino acids to make it more visible
+  `Signal Peptide` = signalp6 %>% mutate(end = end + 10) %>% select(name, start, end),
+  # extend the GPI-anchor C-terminus segment by 20 amino acids to make it more visible
+  `GPI-anchor` = pred.gpi %>% filter(gpi.pred) %>%
+    left_join(select(blastInfo, name, slen), by = "name") %>% 
+    mutate(start = cleavePos-10, end = slen) %>% 
+    select(name, start, end),
+  `Tandem Repeats` = tr %>% select(name, start, end),
+  .id = "type"
+) %>% filter(!name %in% Mb.rm$name)
+
+feature <- feature %>% 
+  mutate(name = ordered(name, levels = rev(genetreeOrder)),
+         type = ordered(type, levels = c("Hyphal_reg_CWP", "Signal Peptide", "GPI-anchor", "Tandem Repeats")))
+feature.colors <- c("Hyphal_reg_CWP" = "#3d85c6", "Signal Peptide" = "#cc0000", "GPI-anchor" = "#6a3d9a", "Tandem Repeats" = "#af8400bb")
+```
+
+## Plot domain organization
+```{r plot_tandem_repeats, warning=FALSE}
+h = 1.2
+# plot
+p0 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + 
+  geom_segment(color = "gray80", size = h)
+p1 <- geom_segment(data = feature,  aes(color = type), size = h)
+p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5),
+                   size = h, color = "white")
+p3 <- p0 + p1 + coord_flip() + theme_classic() + 
+  scale_color_manual(values = feature.colors) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
+  theme(axis.text.y = element_text(size = 3), axis.title.y = element_blank(),
+        axis.line.y = element_blank(), axis.ticks.y = element_blank(),
+        axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
+        legend.position = c(0.8, 0.9), 
+        legend.text = element_text(size = 12), legend.title = element_text(size = 14),
+        plot.title = element_text(hjust = 0.5), 
+        panel.background = element_rect(fill = alpha("lightblue",0.1))) +
+  labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
+#plot_grid(p.gtree, p3, ncol = 2, align = 'v', rel_widths = c(1,2), scale = c(1.01,1))
+ggsave("../output/img/20220916-domain-tandem-repeats.png", plot = p3, width = 6, height = 7.5)
+```
+**Fig. ?** Blue boxes indicate the PF11765 domains while all other non-grey boxes indicate XSTREAM-determined tandem repeat domains. Colors are used to group highly similar tandem repeats. The black thin lines demarcate adjacent tandem repeat units. The table below shows the copy number, period and consensus sequence for each tandem domain organized by the host sequences.
+
+## Separate TR types
+
+```{r}
+#DT::datatable(
+#  tandem %>% 
+#    dplyr::rename(seqL = seqLength, err = consensus_error, seq = consensus_nogap) %>% 
+#    select(-seqAlign, -type, -consensus_gap, -seq, seq) %>% 
+#    arrange(desc(name)),
+#  fillContainer = FALSE, options = list(pageLength = 10)
+#)
+```
+
+Repeat the above analysis but distinguishing between all different TR types
 ```{r set_tr_color}
 require(RColorBrewer)
 tr.th <- 100 # arbitrary threshold for distinguishing "short" from "long" TRs
@@ -650,62 +741,59 @@ repeats$color <- tr.col
 Combine domains, SP and GPI-anchor with TR features.
 ```{r} 
 # combine sequence features with tandem repeats
-feature1 <- bind_rows(filter(feature, type != "Tandem Repeats"), tr1) %>% 
-  mutate(type = ordered(type, levels = c("Hyphal_reg_CWP", "SignalP", "GPI-anchor", unique(tr1$type))))
+feature1 <- bind_rows(filter(feature, type != "Tandem Repeats"), tr) %>% 
+  mutate(type = ordered(type, levels = c("Hyphal_reg_CWP", "SignalP", "GPI-anchor", unique(tr$type))))
 feature.col1 <- c(feature.colors[1:3], tr.col) # remove the singel "Tandem Repeats" type
-write_tsv(feature1, file = "output/misc/R-feature-table.tsv", col_names = TRUE)
+#write_tsv(feature1, file = "../output/misc/R-feature-table.tsv", col_names = TRUE)
 ```
 
 ```{r, warning=FALSE}
 # plot
-p0 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + 
-  #geom_segment(color = "black", size = 2.1) +
-  geom_segment(color = "gray80", size = 2)
-p1 <- geom_segment(data = feature1, aes(color = type, text = tip), size = 2)
-p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5), size = 2, color = "white")
+p1 <- geom_segment(data = feature1, aes(color = type, text = tip), size = h)
+p2 <- geom_segment(data = tandem.div, aes(x = name, xend = name, y = div, yend = div + 1.5),
+                   size = h, color = "white")
 p3 <- p0 + p1 + coord_flip() + theme_classic() + 
   scale_color_manual(values = feature.col1) +
   scale_y_continuous(expand = expansion(mult = c(0.02, 0.02))) +
-  theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
+  theme(axis.text.y = element_text(size = 3), axis.title.y = element_blank(),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(),# axis.ticks.x = element_blank(),
         legend.position = "none", plot.title = element_text(hjust = 0.5),
         panel.background = element_rect(fill = alpha("lightblue",0.1))) +
   labs(y = "Position in sequence", x = "Sequences", color = "FEATURES")
 # plot_grid(p.gtree, p3 + p2, ncol = 2, align = 'v', rel_widths = c(1,2), scale = c(1.01,1))
-ggsave("output/img/20210626-domain-tandem-repeats-distinct-color.png", width = 5, height = 7.5)
+ggsave("../output/img/20220916-domain-tandem-repeats-distinct-color.png", plot = p3, width = 5, height = 7.5)
 ```
 
 ```{r, warning=FALSE, fig.height=9, fig.width=9}
 # plot
 #require(plotly)
-ggplotly(p3, tooltip = "text", width = 900, height = 900)
+plotly::ggplotly(p3, tooltip = "text", width = 900, height = 900)
 ```
 
 ## Tango predicted β-aggregation sequences
 ```{r tango_sequences, fig.width=6, fig.height=8}
 # reorder the sequences for plotting
-#tango$name <- ordered(tango$name, levels = rev(genetreeOrder))
-seqLen <- blastInfo %>% mutate(start = 1) %>% select(name, start, end = slen)
 # plot
-p1 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + geom_segment(color = "gray80", size = 2)
-p2 <- geom_segment(data = pf11765, aes(x = name, y = start+1, xend = name, yend = end), size = 2, color = "#3d84c6")
-p3 <- geom_segment(data = tango, aes(x = name, xend = name,  y = ifelse(start-4 >= 0, start-4, 0), yend = end + 4, color = median), size = 2)
-p4 <- p1 + p2 + p3 + coord_flip() + theme_classic() + 
+#p1 <- ggplot(seqLen, aes(x = name, y = start, xend = name, yend = end)) + geom_segment(color = "gray80", size = 2)
+p1 <- geom_segment(data = filter(pf11765, !name %in% Mb.rm$name), 
+                   aes(x = name, xend = name, y = start+1, yend = end), size = h, color = "#3d84c6")
+p2 <- geom_segment(data = filter(tango, !name %in% Mb.rm$name), 
+                   aes(x = name, xend = name, y = ifelse(start-4 >= 0, start-4, 0), yend = end + 4, color = median), size = h)
+p3 <- p0 + p1 + p2 + coord_flip() + theme_classic() + 
   scale_color_viridis_c(limits = c(5,101), breaks = c(5,seq(25,100,25)), direction = -1) +
   theme(axis.text.y = element_text(size = 4), axis.title.y = element_blank(),
         axis.line.y = element_blank(), axis.ticks.y = element_blank(),
         axis.line.x = element_blank(), axis.ticks.x = element_blank(),
         plot.title = element_text(hjust = 0.5),
-        legend.position = c(0.75,0.35),
+        legend.position = c(0.8,0.88),
         legend.title = element_text(size = 14),
         legend.text = element_text(size = 12),
         panel.background = element_rect(fill = alpha("lightblue",0.1))) +
-  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "TANGO score") + 
-  ggtitle("TANGO hits with Hyphal_reg_CWP domain masked")
-p4
+  ylim(-2, 4500) + labs(y = "Position in sequence", x = "Sequences", color = "TANGO score")
+p3
 ##plot_grid(p.gtree, p4, ncol = 2, align = 'v', rel_widths = c(1,2.5), scale = c(1.01,1))
-#ggsave("output/img/20210110-tango-score-segment.png", width = 6, height = 7.5)
+ggsave("../output/img/20220916-tango-score-segment.png", plot = p3, width = 6, height = 7.5)
 ```
 # Similarity and divergence
 ## Length distribution
