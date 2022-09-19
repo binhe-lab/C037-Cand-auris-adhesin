@@ -738,6 +738,52 @@ chr.loc <- tibble(sid = chr.sid, gene_uid = names(tmp.gene.name),
   arrange(species, chrloc)
 ```
 
+Add the non-refseq genome genes by looking up their GFF files. Define the necessary variables and a function for doing so.
 ```{r}
-write_tsv(chr.loc, file = "../../output/20220609-expanded-blast-chromosomal-locations.tsv")
+gff.header <- c("seqname", "source", "feature", "start", "end", "score", "strand", "frame", "attrib")
+chrLocFromGFF <- function(pid, gff.file){
+  gff <- read_tsv(gff.file, comment = "#", col_types = cols(), col_names = gff.header)
+  ids <- paste(pid, collapse = "|")
+  chrL <- gff %>% 
+    filter(feature == "region") %>%
+    mutate(chrloc = str_match(attrib, "chromosome=(.)")[,2]) %>% 
+    select(chrloc, chraccver = seqname, chrL = end)
+  loc <- gff %>%
+    filter(grepl(ids, attrib)) %>% 
+    mutate(pid = str_extract(attrib, ids)) %>% 
+    select(pid, chraccver = seqname, chrstart = start, chrstop = end) %>% 
+    left_join(chrL, by = "chraccver") %>% 
+    mutate(relLoc = num(chrstart/chrL, digits = 2))
+  return(loc)
+}
+```
+
+Applying to _Candida glabrata_, _Candida auris_ and _Scheffersomyces stipitis_, skipping _L. kluyveri_, which doesn't have a GFF file.
+```{r}
+supp.ids <- dedup.merge %>% 
+  filter(species %in% c("Candida glabrata", "Scheffersomyces stipitis")) %>% pull(pid)
+cauris.ids <- c(Hil1 = "PIS50296.1", Hil2 = "PIS49865.1", Hil3 = "PIS55432.1", Hil4 = "PIS52481.1",
+                Hil5 = "PIS56617.1", Hil6 = "PIS52483.1", Hil7 = "PIS50623.1", Hil8 = "PIS50297.1")
+supp.ids <- c(supp.ids, cauris.ids)
+gff.files <- c(
+  "Candida glabrata" = "../../data/assembly-info/GCA_010111755.1_ASM1011175v1_genomic.gff.gz",
+  "Scheffersomyces stipitis" = "../../data/assembly-info/GCA_016859295.1_ASM1685929v1_genomic.gff.gz",
+  "Candida auris" = "../../data/assembly-info/GCA_002759435.2_Cand_auris_B8441_V2_genomic.gff.gz"
+)
+strains <- c(
+  "Candida glabrata" = "CBS138",
+  "Scheffersomyces stipitis" = "NRRL Y-7124",
+  "Candida auris" = "B8441"
+)
+chrLoc.add <- map_dfr(gff.files, ~ chrLocFromGFF(supp.ids, .), .id = "species") %>% 
+  mutate(strain = strains[species]) %>% 
+  group_by(pid) %>% 
+  filter(chrstart == min(chrstart))
+```
+
+```{r}
+chr.loc %>% 
+  filter(species != "Candida auris") %>% # use the B8441 strain information
+  bind_rows(chrLoc.add) %>% 
+  write_tsv(file = "../../output/20220919-expanded-blast-chromosomal-locations.tsv")
 ```
