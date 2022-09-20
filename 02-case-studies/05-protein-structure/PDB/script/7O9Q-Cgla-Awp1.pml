@@ -24,16 +24,23 @@ remove organic
 # create domain selections
 select beta-helix, resi 18-240
 select alpha-crystallin, res 241-340
+
+# show disulfide bonds, https://pymol.org/dokuwiki/doku.php?id=selection:bound_to
+# https://kpwu.wordpress.com/2006/03/19/draw-better-disulfide-bond/
+show sticks, (cys/ca+cb+sg) and byres (cys/sg and bound_to cys/sg)
+select disulfides, CYS/SG and bound_to CYS/SG
+show sphere, disulfides
+set sphere_scale, 0.5, disulfides
+
 deselect
 
 # color by domain
 color 0x0053D6, beta-helix
 color slate, alpha-crystallin
-#color limegreen, beta-helix
-#color limon, alpha-crystallin
+color yelloworange, disulfides
 
 # labeling the β-strands
-set label_size, -3.5
+set label_size, 8
 set label_font_id, 10
 
 label 26/CA, u"\u03b22"

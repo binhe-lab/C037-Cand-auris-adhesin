@@ -18,7 +18,14 @@ hide nonbonded
 select beta-helix, resi 1-224
 select alpha-crystallin, res 225-300
 select c-term, res 301-316
-hide everything, c-term
+#hide everything, c-term
+
+# show disulfide bonds, https://pymol.org/dokuwiki/doku.php?id=selection:bound_to
+# https://kpwu.wordpress.com/2006/03/19/draw-better-disulfide-bond/
+show sticks, (cys/ca+cb+sg) and byres (cys/sg and bound_to cys/sg)
+select disulfides, CYS/SG and bound_to CYS/SG
+show sphere, disulfides
+set sphere_scale, 0.5, disulfides
 
 deselect
 center
@@ -26,11 +33,14 @@ center
 # color by domain
 color 0x0053D6, beta-helix
 color slate, alpha-crystallin
+color gray80, c-term
+color yelloworange, disulfides
 #color limegreen, beta-helix
 #color limon, alpha-crystallin
 
+
 # labeling the β-strands
-set label_size, -2.8
+set label_size, -1.8
 set label_font_id, 10
 
 label 18/CA, u"\u03b22"
@@ -60,6 +70,6 @@ set_view (\
 		183.807556152,  282.467895508,  -20.000000000 )
 # end set view
 
-scene long, store
-ray 2000, 1400
-png ../output/20220902-Caur-Hil1-long.png
+#scene long, store
+#ray 2000, 1400
+#png ../output/20220902-Caur-Hil1-long.png

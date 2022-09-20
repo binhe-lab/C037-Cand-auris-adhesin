@@ -19,15 +19,10 @@ dss
 # remove water
 hide nonbonded
 
-# create domain selections
-#select beta-helix, resi 18-240
-#select alpha-crystallin, res 241-340
-#deselect
-
 # color by domain
-color 0x0053D6, 5ny0
-#color limegreen, 5ny0
-color yelloworange, ss h
+#color 0x0053D6, 5ny0
+color skyblue, 5ny0
+#color yelloworange, ss h
 
 # labeling the β-strands
 set label_size, -2.5
