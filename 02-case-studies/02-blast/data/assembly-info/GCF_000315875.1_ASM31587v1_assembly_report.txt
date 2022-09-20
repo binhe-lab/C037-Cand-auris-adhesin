@@ -1,0 +1,35 @@
+# Assembly name:  ASM31587v1
+# Organism name:  Candida orthopsilosis Co 90-125 (budding yeasts)
+# Infraspecific name:  strain=Co 90-125
+# Taxid:          1136231
+# BioSample:      SAMEA2272376
+# BioProject:     PRJEA83665
+# Submitter:      Trinity College Dublin
+# Date:           2012-03-14
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000315875.1
+# RefSeq assembly accession: GCF_000315875.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000315885.1	GCF_000315885.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	HE681719.1	=	NC_018292.1	Primary Assembly	2936865	na
+2	assembled-molecule	2	Chromosome	HE681720.1	=	NC_018295.1	Primary Assembly	2433673	na
+3	assembled-molecule	3	Chromosome	HE681721.1	=	NC_018296.1	Primary Assembly	1644167	na
+4	assembled-molecule	4	Chromosome	HE681722.1	=	NC_018297.1	Primary Assembly	1591921	na
+5	assembled-molecule	5	Chromosome	HE681723.1	=	NC_018298.1	Primary Assembly	1474802	na
+6	assembled-molecule	6	Chromosome	HE681724.1	=	NC_018300.1	Primary Assembly	1027593	na
+7	assembled-molecule	7	Chromosome	HE681725.1	=	NC_018301.1	Primary Assembly	937312	na
+8	assembled-molecule	8	Chromosome	HE681726.1	=	NC_018302.1	Primary Assembly	613068	na

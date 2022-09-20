@@ -1,0 +1,39 @@
+# Assembly name:  ASM22711v2
+# Organism name:  Naumovozyma dairenensis CBS 421 (budding yeasts)
+# Infraspecific name:  strain=type strain:CBS 421
+# Taxid:          1071378
+# BioSample:      SAMEA2272418
+# BioProject:     PRJEA70961
+# Submitter:      Wolfe Laboratory, Smurfit Institute of Genetics, Trinity College Dublin, Ireland
+# Date:           2012-08-20
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000227115.2
+# RefSeq assembly accession: GCF_000227115.2
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000227125.2	GCF_000227125.2	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	HE580267.1	=	NC_016479.1	Primary Assembly	2054635	na
+2	assembled-molecule	2	Chromosome	HE580268.1	=	NC_016480.1	Primary Assembly	1549475	na
+3	assembled-molecule	3	Chromosome	HE580269.1	=	NC_016481.1	Primary Assembly	1536206	na
+4	assembled-molecule	4	Chromosome	HE580270.1	=	NC_016482.1	Primary Assembly	1230053	na
+5	assembled-molecule	5	Chromosome	HE580271.1	=	NC_016483.1	Primary Assembly	1184459	na
+6	assembled-molecule	6	Chromosome	HE580272.1	=	NC_016484.1	Primary Assembly	1138463	na
+7	assembled-molecule	7	Chromosome	HE580273.2	=	NC_016485.2	Primary Assembly	1565278	na
+8	assembled-molecule	8	Chromosome	HE580274.1	=	NC_016486.1	Primary Assembly	1004037	na
+9	assembled-molecule	9	Chromosome	HE580275.1	=	NC_016487.1	Primary Assembly	786484	na
+10	assembled-molecule	10	Chromosome	HE580276.1	=	NC_016488.1	Primary Assembly	782356	na
+11	assembled-molecule	11	Chromosome	HE580277.1	=	NC_016489.1	Primary Assembly	696134	na

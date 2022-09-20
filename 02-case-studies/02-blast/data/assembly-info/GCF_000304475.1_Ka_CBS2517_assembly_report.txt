@@ -1,0 +1,41 @@
+# Assembly name:  Ka_CBS2517
+# Organism name:  Kazachstania africana CBS 2517 (budding yeasts)
+# Infraspecific name:  strain=type strain:CBS 2517
+# Taxid:          1071382
+# BioSample:      SAMEA2272790
+# BioProject:     PRJEA70967
+# Submitter:      Wolfe Laboratory, Smurfit Institute of Genetics, Trinity College Dublin, Ireland
+# Date:           2012-01-17
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Genome coverage: 20x
+# Relation to type material: assembly from type material
+# RefSeq category: Representative Genome
+# GenBank assembly accession: GCA_000304475.1
+# RefSeq assembly accession: GCF_000304475.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000304485.1	GCF_000304485.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+1	assembled-molecule	1	Chromosome	HE650821.1	=	NC_018940.1	Primary Assembly	1757399	na
+2	assembled-molecule	2	Chromosome	HE650822.1	=	NC_018941.1	Primary Assembly	1485491	na
+3	assembled-molecule	3	Chromosome	HE650823.1	=	NC_018942.1	Primary Assembly	1340033	na
+4	assembled-molecule	4	Chromosome	HE650824.1	=	NC_018943.1	Primary Assembly	1026673	na
+5	assembled-molecule	5	Chromosome	HE650825.1	=	NC_018944.1	Primary Assembly	925516	na
+6	assembled-molecule	6	Chromosome	HE650826.1	=	NC_018945.1	Primary Assembly	888590	na
+7	assembled-molecule	7	Chromosome	HE650827.1	=	NC_018946.1	Primary Assembly	812636	na
+8	assembled-molecule	8	Chromosome	HE650828.1	=	NC_018947.1	Primary Assembly	738805	na
+9	assembled-molecule	9	Chromosome	HE650829.1	=	NC_018948.1	Primary Assembly	607727	na
+10	assembled-molecule	10	Chromosome	HE650830.1	=	NC_018949.1	Primary Assembly	578118	na
+11	assembled-molecule	11	Chromosome	HE650831.1	=	NC_018950.1	Primary Assembly	547686	na
+12	assembled-molecule	12	Chromosome	HE650832.1	=	NC_018951.1	Primary Assembly	421466	na

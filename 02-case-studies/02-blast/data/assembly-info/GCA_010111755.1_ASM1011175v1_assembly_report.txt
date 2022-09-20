@@ -1,0 +1,43 @@
+# Assembly name:  ASM1011175v1
+# Organism name:  [Candida] glabrata (budding yeasts)
+# Infraspecific name:  strain=ATCC 2001
+# Taxid:          5478
+# BioSample:      SAMN13613350
+# BioProject:     PRJNA596126
+# Submitter:      Johns Hopkins Medical Institution
+# Date:           2020-02-03
+# Assembly type:  haploid
+# Release type:   major
+# Assembly level: Chromosome
+# Genome representation: full
+# Assembly method: Canu v. 1.5
+# Expected final version: yes
+# Reference guided assembly: [Candida] glabrata ASM254v2
+# Genome coverage: 102.0x
+# Sequencing technology: PacBio RSII
+# Relation to type material: assembly from type material
+# GenBank assembly accession: GCA_010111755.1
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_010111825.1		Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+A	assembled-molecule	A	Chromosome	CP048118.1	<>	na	Primary Assembly	527799	na
+B	assembled-molecule	B	Chromosome	CP048119.1	<>	na	Primary Assembly	512655	na
+C	assembled-molecule	C	Chromosome	CP048120.1	<>	na	Primary Assembly	594526	na
+D	assembled-molecule	D	Chromosome	CP048121.1	<>	na	Primary Assembly	667900	na
+E	assembled-molecule	E	Chromosome	CP048122.1	<>	na	Primary Assembly	707423	na
+F	assembled-molecule	F	Chromosome	CP048123.1	<>	na	Primary Assembly	957515	na
+G	assembled-molecule	G	Chromosome	CP048124.1	<>	na	Primary Assembly	1010292	na
+H	assembled-molecule	H	Chromosome	CP048125.1	<>	na	Primary Assembly	1057388	na
+I	assembled-molecule	I	Chromosome	CP048126.1	<>	na	Primary Assembly	1142525	na
+J	assembled-molecule	J	Chromosome	CP048127.1	<>	na	Primary Assembly	1247563	na
+K	assembled-molecule	K	Chromosome	CP048128.1	<>	na	Primary Assembly	1307090	na
+L	assembled-molecule	L	Chromosome	CP048129.1	<>	na	Primary Assembly	1528264	na
+M	assembled-molecule	M	Chromosome	CP048130.1	<>	na	Primary Assembly	1465272	na
