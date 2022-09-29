@@ -124,20 +124,20 @@ clade.cols <- c(
 )
 ```
 
-```{r, fig.height=6, fig.width=5}
-p.tree0 <- ggtree(gene.tree, layout = "fan", size = 0.4) +# scale_y_reverse() +
+```{r, fig.height=6, fig.width=6}
+p.gene.tree <- ggtree(gene.tree, size = 0.4) + xlim(0,4) + 
   #geom_nodepoint(aes(fill = D), data = td_filter(D == "Y"), shape = 21, size = 1, color = "red") + 
   geom_tippoint(aes(color = group), size = 1) +
-  geom_tiplab(aes(label = paste0(str_sub(S, 1, 1), str_sub(word(S, 2, sep = "_"), 1, 3)), color = family),
-              data = td_filter(isTip & node %in% selected_nodes), size = 2, hjust = -0.5, offset = 0.2) +
-  #geom_cladelab(node = 357,  label = "M. bicuspidata", offset.text = 0.05, angle = 270, hjust = .5, extend = 0.5) +
+  geom_tiplab(aes(color = family),
+               align = TRUE, linesize = 0.1, size = 1, offset = 0.05) +
+  #geom_nodelab(aes(x = branch, label = node), size = 1, vjust = -0.5) +
+  geom_cladelab(node = 357,  label = "M. bicuspidata", fontsize = 2, fontface = 3, vjust = 2.5, barcolor = NA) +
   #geom_text(label = "D", data = td_filter(D == "Y"), hjust = -0.4, size = 1.5, color = "red")# +
-
   scale_color_manual(name = "Clade", values = clade.cols)# +
-  #guides(color = "none")
-scaleClade(p.tree, Mbic_clade, 0.2) %>% scaleClade(235, 0.8) %>% 
+scaleClade(p.gene.tree, Mbic_clade, 0.2) %>% #scaleClade(235, 0.8) %>% 
   collapse(Mbic_clade, mode = "min", fill = "darkgreen")
-#ggsave(file = paste0("../output/img/",gsub("-", "", Sys.Date()), "-reconciled-gene-tree-generax.pdf"), width = 6, height = 5)
+  
+ggsave("../output/img/20220921-gene-tree-rectangular.pdf", width = 6, height = 7)
 ```
 ```{r}
 p.tree <- ggtree(gene.tree, layout = "circular", branch.length = "none", size = 0.4) +# scale_y_reverse() +
@@ -219,7 +219,7 @@ ggtree(sps.tree.cnt, aes(color = dup), size = .6, ladderize = FALSE) + scale_y_r
   #guides(color = guide_legend(byrow = TRUE)) +
   theme(legend.position = "bottom")
 #p.tree.cnt
-ggsave(paste0("../output/img/", gsub("-", "", Sys.Date()), "-species-tree-with-gains.png"), width = 6, height = 6.5)
+ggsave(paste0("../output/img/", gsub("-", "", Sys.Date()), "-species-tree-with-gains.png"), width = 5.5, height = 6.5)
 ```
 **Fig. 4 Inferred gene duplications and losses in the Hyr/Iff-Like (HIL) family in Ascomycetes.** The cladogram shows the species relationship with shadings as in Figure 1. The numbers on top of each branch are the inferred duplications (red) and losses (black) using Notung 2.9. Yellow highlight emphasize the branches that experience three or more duplications.
 
