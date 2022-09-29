@@ -1,0 +1,34 @@
+species	assemblyaccession	assemblystatus	coverage	contign50	scaffoldn50	refseq_category	submissiondate	lastupdatedate	taxid	speciesname
+Candida albicans	GCF_000182965.3	Chromosome	700	334,280	2,231,883	representative genome	2016/10/12 	2016/12/08 	237561	Candida albicans
+Candida auris	GCA_008275145.1	Complete Genome	88	2,321,794	2,321,794	representative genome	2019/09/05 	2019/09/05 	498019	[Candida] auris
+Candida bracarensis	GCA_001077315.1	Contig	0	109,957	109,957	representative genome	2013/08/29 	2015/07/13 	1279114	[Candida] bracarensis
+Candida castellii	GCA_001046935.1	Contig	0	351,735	351,735	representative genome	2013/08/29 	2015/07/06 	1279086	[Candida] castellii
+Candida dubliniensis	GCF_000026945.1	Complete Genome	0	2,267,510	2,267,510	representative genome	2009/02/16 	2017/12/13 	573826	Candida dubliniensis
+Candida duobushaemulonis	GCF_002926085.2	Contig	287	3,288,798	3,288,798	representative genome	2018/02/13 	2019/05/31 	1231522	[Candida] duobushaemulonis
+Candida glabrata	GCA_010111755.1	Chromosome	102	1,142,525	1,142,525	na	2020/02/03 	2020/02/03 	5478	[Candida] glabrata
+Candida haemuloni	GCF_002926055.2	Contig	191	1,730,876	1,730,876	representative genome	2018/02/13 	2019/04/10 	45357	[Candida] haemuloni
+Candida nivariensis	GCA_001046915.1	Contig	0	248,381	248,381	na	2013/08/29 	2015/07/06 	1279115	[Candida] nivariensis
+Candida orthopsilosis	GCF_000315875.1	Chromosome	0	120,081	1,644,167	representative genome	2012/03/14 	2017/11/13 	1136231	Candida orthopsilosis
+Candida parapsilosis	GCF_000182765.1	Contig	0	2,091,826	2,091,826	representative genome	2011/10/26 	2020/10/30 	5480	Candida parapsilosis
+Candida pseudohaemulonii	GCF_003013735.1	Scaffold	77	541,754	641,003	representative genome	2018/03/22 	2018/04/26 	418784	[Candida] pseudohaemulonii
+Candida tropicalis	GCF_000006335.3	Scaffold	8.85	221,103	1,654,078	representative genome	2009/06/18 	2018/04/11 	294747	Candida tropicalis
+Clavispora lusitaniae	GCF_000003835.1	Scaffold	0	266,609	1,874,050	representative genome	2009/06/02 	2016/11/29 	306902	Clavispora lusitaniae
+Cyberlindnera jadinii	GCF_001661405.1	Scaffold	110	111,555	700,888	representative genome	2016/09/15 	2017/02/15 	983966	Cyberlindnera jadinii
+Debaryomyces fabryi	GCF_001447935.2	Contig	1000	59,311	59,311	representative genome	2015/11/25 	2020/03/24 	58627	Debaryomyces fabryi
+Debaryomyces hansenii	GCF_000006445.2	Chromosome	0	993,818	2,007,515	representative genome	2008/09/16 	2014/02/07 	284592	Debaryomyces hansenii
+Kazachstania africana	GCF_000304475.1	Chromosome	20	925,516	1,026,673	representative genome	2012/01/17 	2020/06/17 	1071382	Kazachstania africana
+Kazachstania naganishii	GCF_000348985.1	Chromosome	0	227,487	856,010	representative genome	2012/09/05 	2017/09/27 	1071383	Kazachstania naganishii
+Kluyveromyces lactis	GCF_000002515.2	Complete Genome	0	1,753,957	1,753,957	representative genome	2004/07/02 	2012/10/15 	28985	Kluyveromyces lactis
+Lachancea kluyveri	GCA_000149225.2	Chromosome	10.2	1,252,455	1,295,560	representative genome	2011/05/12 	2021/03/16 	226302	Lachancea kluyveri
+Lodderomyces elongisporus	GCF_000149685.1	Scaffold	0	261,145	2,011,058	representative genome	2007/05/07 	2016/11/29 	379508	Lodderomyces elongisporus
+Metschnikowia bicuspidata	GCF_001664035.1	Scaffold	16	62,344	2,544,904	representative genome	2016/06/17 	2016/10/25 	869754	Metschnikowia bicuspidata
+Meyerozyma guilliermondii	GCF_000149425.1	Scaffold	0	313,225	1,701,016	representative genome	2007/05/08 	2016/11/29 	294746	Meyerozyma guilliermondii
+Nakaseomyces bacillisporus	GCA_001046975.1	Contig	0	145,552	145,552	representative genome	2013/08/29 	2015/07/06 	1279116	Nakaseomyces bacillisporus
+Nakaseomyces delphensis	GCA_001039675.1	Contig	100	129,090	129,090	representative genome	2013/08/29 	2015/06/25 	1279113	Nakaseomyces delphensis
+Naumovozyma castellii	GCF_000237345.1	Chromosome	0	1,245,273	1,245,273	representative genome	2011/08/01 	2017/07/25 	1064592	Naumovozyma castellii
+Naumovozyma dairenensis	GCF_000227115.2	Chromosome	0	109,578	1,230,053	representative genome	2012/08/20 	2016/11/30 	1071378	Naumovozyma dairenensis
+Saccharomyces cerevisiae	GCF_000146045.2	Complete Genome	0	924,431	924,431	reference genome	2014/12/17 	2016/11/29 	559292	Saccharomyces cerevisiae
+Scheffersomyces stipitis	GCA_016859295.1	Chromosome	167	1,880,751	1,880,751	na	2021/02/12 	2021/02/12 	4924	Scheffersomyces stipitis
+Spathaspora passalidarum	GCF_000223485.1	Scaffold	43.8	1,645,821	2,071,440	representative genome	2011/08/25 	2014/03/26 	619300	Spathaspora passalidarum
+Suhomyces tanzawaensis	GCF_001661415.1	Scaffold	74	183,924	1,512,535	representative genome	2016/09/15 	2017/02/15 	984487	Suhomyces tanzawaensis
+Yamadazyma tenuis	GCF_000223465.1	Scaffold	26.9	382,504	1,222,892	representative genome	2011/08/25 	2014/01/23 	590646	Yamadazyma tenuis

@@ -412,6 +412,14 @@ dedup.merge <- bind_rows(
 write_tsv(dedup.merge, file = "../../output/20220506-expanded-blast-combined-homologs.tsv")
 ```
 
+Export a table to be used as supplementary table
+```{r}
+dedup.merge %>% 
+  select(source, id = pid, length = slen, complete = pComplete, species, strain, taxid = staxid,
+         e_value = evalue, query_cover = qcovs, perc_ident = pident) %>% 
+  write_tsv(file = "../../output/20220922-expanded-blast-homologs-supp-table.tsv")
+```
+
 ### 8. Compare with the former 104 list
 Hits in the previous refseq blast list but not in the current one:
 ```{r}
