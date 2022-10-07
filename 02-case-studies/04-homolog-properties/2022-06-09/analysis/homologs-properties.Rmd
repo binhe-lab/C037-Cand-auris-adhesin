@@ -179,6 +179,66 @@ df0 %>% pivot_wider(names_from = "type", values_from = "number") %>%
   summarize(total = sum(total), adhesin = sum(final))
 ```
 
+
+## Short or no GPI-anchor
+A subset of the identified Hil homologs are short and/or missing either the signal peptide or the GPI anchor. We need to first filter out ones that are incomplete (sequence record) before examining the remaining ones.
+
+First, check the protein length distribution. _M. bicuspidata_ is an outlier in that 27 of the 29 Hil homologs in this species are shorter than 500 aa and 10 were annotated as being incomplete in the RefSeq database.
+```{r}
+adhesin %>% 
+  mutate(`M. bicuspidata` = species == "Metschnikowia bicuspidata",
+         protein = ifelse(grepl("no", pComplete), "Incomplete", "Complete")) %>% 
+  ggplot(aes(x = len, fill = `M. bicuspidata`)) + 
+  geom_histogram(binwidth = 100) + 
+  geom_vline(xintercept = 600, linetype = 2, color = "gray20") +
+  scale_fill_manual(values = c("gray50", "red3")) +
+  facet_wrap(~protein, nrow = 2, labeller = "label_both") +
+  xlab("Protein length") + ylab("Frequency") +
+  theme_cowplot() + theme(legend.title = element_text(face = 3))
+ggsave(file = "../output/img/20221002-homologs-length-distribution-Mb.png", width = 6, height = 4)
+```
+
+Filter out incomplete entries and focus on those that either are short or miss SP/GPI
+```{r}
+# short and missing SP/GPI
+adhesin %>% 
+  filter(!grepl("no", pComplete), len < 600, len > 250) %>% 
+  group_by(sp.pred, gpi.pred, species) %>% 
+  summarize(n = n(), .groups = "drop") %>% 
+  mutate(group = paste0(ifelse(sp.pred, "SP+", "sp-"), ifelse(gpi.pred, "GPI+", "gpi-"))) %>% 
+  select(group, species, n) %>% 
+  pivot_wider(names_from = group, values_from = n, values_fill = 0) %>% 
+  mutate(total = rowSums(across(`sp-gpi-`:`SP+GPI+`), na.rm = TRUE)) %>% 
+  arrange(desc(total)) %>% 
+  write_tsv(file = "../output/table/20221003-short-and-missing-SP-GPI.tsv")
+
+# long and missing SP/GPI
+adhesin %>% 
+  filter(!grepl("no", pComplete), len >= 600) %>% 
+  group_by(sp.pred, gpi.pred, species) %>% 
+  summarize(n = n(), .groups = "drop") %>% 
+  mutate(group = paste0(ifelse(sp.pred, "SP+", "sp-"), ifelse(gpi.pred, "GPI+", "gpi-"))) %>% 
+  select(group, species, n) %>% 
+  pivot_wider(names_from = group, values_from = n, values_fill = 0) %>% 
+  mutate(total = rowSums(across(`sp-gpi-`:`SP+GPI+`), na.rm = TRUE)) %>% 
+  arrange(desc(total)) %>% 
+  write_tsv(file = "../output/table/20221003-long-and-missing-SP-GPI.tsv")
+
+# all length
+adhesin %>% 
+  filter(!grepl("no", pComplete)) %>% 
+  mutate(length = cut(len, breaks = c(0, 250, 600, 5000), labels = c("0-250", "251-600", ">600"))) %>% 
+  group_by(sp.pred, gpi.pred, length) %>% 
+  summarize(n = n(), .groups = "drop") %>% 
+  mutate(group = paste0(ifelse(sp.pred, "SP+", "sp-"), ifelse(gpi.pred, "GPI+", "gpi-"))) %>% 
+  select(group, length, n) %>% 
+  pivot_wider(names_from = group, values_from = n, values_fill = 0) %>% 
+  mutate(total = rowSums(across(`sp-gpi-`:`SP+GPI+`), na.rm = TRUE)) %>% 
+  arrange(desc(total)) %>% 
+  write_tsv(file = "../output/table/20221003-all-missing-SP-GPI.tsv")
+  
+```
+
 # Adhesin-related characteristics
 
 **Update 2022-09-16**
