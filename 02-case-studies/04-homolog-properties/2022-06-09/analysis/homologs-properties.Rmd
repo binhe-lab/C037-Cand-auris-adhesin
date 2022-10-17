@@ -879,6 +879,15 @@ motif.per.seq %>%
   summarize(median = median(n.all))
 ```
 
+protein length difference
+```{r}
+blastInfo %>% 
+  select(name, slen) %>% 
+  mutate(group = ifelse(name %in% hil1_4_mdr, "Hil1-4_MDR", "others")) %>% 
+  group_by(group) %>% 
+  summarize(median = median(slen))
+```
+
 
 _**Discussion**_
 
