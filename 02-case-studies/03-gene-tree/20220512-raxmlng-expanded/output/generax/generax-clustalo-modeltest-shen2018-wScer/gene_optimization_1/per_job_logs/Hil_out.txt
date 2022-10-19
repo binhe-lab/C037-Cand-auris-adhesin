@@ -1,0 +1,29 @@
+mpi-scheduler optimizeGeneTrees ../output/generax/generax-clustalo-modeltest-shen2018-wScer/results/Hil/geneTree.newick generax/gene-to-species-map.txt generax/expanded-blast-PF11765_clustalo_clipkit.faa ../output/generax/generax-clustalo-modeltest-shen2018-wScer/species_trees/inferred_species_tree.newick generax/expanded-blast-PF11765_clustalo_clipkit_VT_I_G4.raxml.bestModel ../output/generax/generax-clustalo-modeltest-shen2018-wScer/gene_optimization_1/dtl_rates.txt 0 1 0 1 0 0.000001 NONE 0 -1 1 1 1 2 ../output/generax/generax-clustalo-modeltest-shen2018-wScer/results/Hil/geneTree.newick ../output/generax/generax-clustalo-modeltest-shen2018-wScer/results/Hil/stats.txt 0 
+[00:00:20] Starting optimizeGeneTreesSlave
+LibpllModel generax/expanded-blast-PF11765_clustalo_clipkit_VT_I_G4.raxml.bestModel
+[00:00:20] Starting optimizing gene tree
+Number of ranks 55
+(0.2, 0.2, score = 0)
+Taxa number: 215
+GRIIID
+[00:00:22] Start optimizing DL rates
+ best rates: 0.584 0.4784 -524.481
+joint: -87613.5  libpll: -87089  reconciliation: -524.481  
+Initial ll = -87613.5
+Start SPR round (std::hash=91441, (best ll=-87613.5, radius=2, possible moves: 2664)
+best;; -87606.4 41
+Start SPR round (std::hash=46865, (best ll=-87606.4, radius=2, possible moves: 2664)
+best;; -87603.4 17
+Start SPR round (std::hash=38883, (best ll=-87603.4, radius=2, possible moves: 2664)
+best;; -87603.2 30
+Start SPR round (std::hash=68127, (best ll=-87603.2, radius=2, possible moves: 2664)
+best;; -87603 53
+Start SPR round (std::hash=63283, (best ll=-87603, radius=2, possible moves: 2664)
+best;; -87602.9 1
+Start SPR round (std::hash=11717, (best ll=-87602.9, radius=2, possible moves: 2664)
+best;; -87602.9 0
+joint: -87602.9  libpll: -87103.7  reconciliation: -499.181  
+Saving tree in ../output/generax/generax-clustalo-modeltest-shen2018-wScer/results/Hil/geneTree.newick
+Finished saving  ../output/generax/generax-clustalo-modeltest-shen2018-wScer/results/Hil/geneTree.newick
+[00:01:01] End of optimizing gene tree
+[00:01:01] End of optimizeGeneTreesSlave
