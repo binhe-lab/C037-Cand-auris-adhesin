@@ -1,0 +1,1 @@
+Ran [modeltest-ng](https://github.com/ddarriba/modeltest/releases) static version for Mac (GUI) with the ClustalO aligned, ClipKit trimmed alignment [file](../../output/align/expanded-blast-PF11765_clustalo_clipkit.faa). Result is stored here. The output suggests VT+I+G as the best model.

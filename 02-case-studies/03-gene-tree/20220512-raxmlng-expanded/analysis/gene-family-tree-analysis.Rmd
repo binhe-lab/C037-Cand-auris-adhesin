@@ -135,9 +135,9 @@ p.gene.tree <- ggtree(gene.tree, size = 0.4) + xlim(0,4) +
   #geom_text(label = "D", data = td_filter(D == "Y"), hjust = -0.4, size = 1.5, color = "red")# +
   scale_color_manual(name = "Clade", values = clade.cols)# +
 scaleClade(p.gene.tree, Mbic_clade, 0.2) %>% #scaleClade(235, 0.8) %>% 
-  collapse(Mbic_clade, mode = "min", fill = "darkgreen")
+  collapse(Mbic_clade, mode = "min", fill = "plum4")
   
-ggsave("../output/img/20220921-gene-tree-rectangular.pdf", width = 6, height = 7)
+ggsave("../output/img/20220921-gene-tree-rectangular.png", width = 6, height = 7)
 ```
 ```{r}
 p.tree <- ggtree(gene.tree, layout = "circular", branch.length = "none", size = 0.4) +# scale_y_reverse() +
@@ -193,8 +193,9 @@ sps.tree.cnt <- sps.tree %>%
 ```{r}
 off = 0.9
 off.text = 0.1 
-ggtree(sps.tree.cnt, aes(color = dup), size = .6, ladderize = FALSE) + scale_y_reverse() + xlim(0,2.5) +
+ggtree(sps.tree.cnt, aes(color = dup, size = dup > 2), ladderize = FALSE) + scale_y_reverse() + xlim(0,2.5) +
   scale_color_gradient(name = "Duplication", high = "#f75656", trans = "pseudo_log", breaks = c(0, 2, 5, 10, 20)) +
+  scale_size_manual(values = c(0.6, 1), guide = "none") +
   geom_tiplab(size = 3, color = "gray10", fontface = "italic", align = TRUE, linesize = 0.1, offset = 0.05) +
   #geom_tiplab(color = "black", size = 3.2, fontface = "italic", align = TRUE, linesize = 0.05, offset = 0.05) +
   geom_treescale(x = 0, width = 0.2, linesize = 1.5) +
