@@ -8,6 +8,13 @@ date: 2022-05-12
 There are three changes in this version. First, the homolog list has been expanded to include additional species and homologs identified in newer assemblies. See `02-blast/analysis/expanded-blast` for details. Second, we will experiment with alignment trimming software and test its impact on the resulting tree. In particular, we will try [BMGE](http://gensoft.pasteur.fr/docs/BMGE/1.12/BMGE_doc.pdf) and [ClipKIT](https://github.com/JLSteenwyk/ClipKIT). The former calculates a score that is closely related to entropy, and weight it by a similarity matrix. The idea is to come up with a measure of how likely it is for evolution to generate the observed character states in the column (of the alignment). Some cutoff is used to remove "unlikely" columns. The latter is from the Rokas lab. Instead of removing poorly aligned columns, the software tries to retain columns based on a measure related to how informative it is for parsimony inference. I'll try both methods.
 
 # Notes
+## 2022-10-19 Compare protein evolution models on tree results
+In response to one of the reviewers' comments on the choice of the ML parameters, I used [modeltest-ng](https://github.com/ddarriba/modeltest) (downloaded as a static v0.17 built for mac, GUI) to select the best model. The result is `VT+I+G4` by either BIC or AIC. Previously I used LG+G4, a choice made primarily based on the raxml-ng github wiki's examples (now the updated wiki mostly uses GTR+G). I reran `raxml-ng` using the `VT+I+G4` model and got a better likelihood (logL: -87073.5, BIC: 176827.4) than what I got with `LG+G4` (logL: -87348.1, BIC: 177370.4). To see how the difference in model affects the topology, I reran `Generax` on the newly generated `raxml-ng` tree using `VT+I+G4` and used [phylo.io](https://beta.phylo.io/) to compare the two corrected trees. The result is highly similar, with only minor changes in some local topologies.
+
+![compare trees](output/img/20221019-compare-gene-tree-LG+G-VT+I+G-phylo.io.png)
+
+The dark blue color in the two trees above indicate concordant topologies. There are a few branches that show slightly lighter blue, suggesting differences. By and large, the two trees show the same topology. The Robinson-Foulds distance between the two trees are 20/2 = 10. 95% of the leaf nodes were found to be consistent between the two.
+
 ## 2022-05-17 Summarize reconciled gene tree results
 
 Here I'll focus on the `clustalo` alignment based results first. The goal is to work out the reconciliation event results both with and without _M. bicuspidata_, reconciled with two different species trees with different placement for the _Debaryomyces_ clade.
