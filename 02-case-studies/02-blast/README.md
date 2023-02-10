@@ -395,15 +395,33 @@ Since no newer assembly using 3rd gen technology exists for the same strain, I b
 
 For _C. parapsilosis_, which has the most hits shorter than the 500 aa cutoff (10/15), the reference assembly was submitted in 2011 and last updated in 2020, although it is still at contig level. The particular strain in that assembly, CDC317, has not been subject to another sequencing effort. I found a scaffold-level assembly for a different strain, CBS6318 ([GCA_000982555.2](https://www.ncbi.nlm.nih.gov/assembly/GCA_000982555.2)), which was completed in 2014 and last updated in 2019. I blasted all 15 hits against that assembly. For one of them (XM_036807488), I used ORFfinder to identify a 414 aa product with the same start codon position in the second strain's assembly, compared with 411 aa in the reference assembly. For another one (XM_036807487), the predicted size in the second assembly is 420 aa vs 414 aa in the reference one. **The rest all matched between the two assemblies**. So overall it seems like the short products are validated at least based two assemblies, both of which used short reads.
 
+| refseq_pID     | refseq_tID   | refseq_len | new_qcov | new_%id | compared_to_new_assembly |
+| -------------- | ------------ | ---------- | -------- | ------- | ------------------------ |
+| XP_036665264.1 | XM_036808537 | 1671       | 100%     | 95.11%  |                          |
+| XP_036664320.1 | XM_036807488 | 411        |          |         |                          |
+| XP_036665262.1 | XM_036808535 | 1640       |          |         |                          |
+| XP_036667771.1 | XM_036811321 | 420        |          |         |                          |
+| XP_036664319.1 | XM_036807487 | 414        |          |         |                          |
+| XP_036664321.1 | XM_036807489 | 419        |          |         |                          |
+| XP_036668412.1 | XM_036812035 | 418        |          |         |                          |
+| XP_036664318.1 | XM_036807486 | 439        |          |         |                          |
+| XP_036667770.1 | XM_036811320 | 410        |          |         |                          |
+| XP_036664322.1 | XM_036807491 | 437        |          |         |                          |
+| XP_036663837.1 | XM_036806952 | 438        |          |         |                          |
+| XP_036665265.1 | XM_036808538 | 1714       |          |         |                          |
+| XP_036663836.1 | XM_036806951 | 404        |          |         |                          |
+| XP_036662815.1 | XM_036810545 | 1429       |          |         |                          |
+| XP_036665263.1 | XM_036808536 | 2273       |          |         |                          |
+
 ### _C. glabrata_
 
-For _C. glabrata_, the Cormack lab has generated PacBio SRII based assemblies in 2020 for the BG strains. I chose BG2 ([ASM1421772v1](https://www.ncbi.nlm.nih.gov/assembly/GCA_014217725.1/)) as the target and blasted the three hits identified based on the reference assembly (for CBS138). 
+For _C. glabrata_, the Cormack lab has generated PacBio SRII based assemblies for several strains, including the genome reference strain CBS138. I used blastp to search the three hits based on the RefSeq assembly (GCF_000002545.3) against the new one (GCA_010111755.1) using a locally installed database and got the following result. 
 
-| protein_ID     | length | mRNA_ID      | compared_to_new_assembly                                     |
-| -------------- | ------ | ------------ | ------------------------------------------------------------ |
-| XP_002999585.1 | 3241   | XM_002999539 | matches QNG12756.1, 3329 aa, diverged significantly after the NTD |
-| XP_445977.1    | 965    | XM_445977    | matches QNG13321.1, 965 aa, identical sequences              |
-| XP_447567.2    | 1771   | XM447567     | matches QNG14727.1, 2581 aa, a long insertion in the new assembly allele |
+| protein_ID     | length | mRNA_ID      | compared_to_new_assembly                             |
+| -------------- | ------ | ------------ | ---------------------------------------------------- |
+| XP_002999585.1 | 3241   | XM_002999539 | 100% identical to QHS68452.1                         |
+| XP_445977.1    | 965    | XM_445977    | 100% identical to QHS65613.1                         |
+| XP_447567.2    | 1771   | XM_447567    | 88.7% identical to QHS67215.1, which is 1861 aa long |
 
 ### Conclusion
 
