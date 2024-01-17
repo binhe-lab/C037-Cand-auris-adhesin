@@ -1,34 +1,20 @@
-species	family	treeName	staxid	total	short	shortIncompl	pathogen	reference
-Metschnikowia bicuspidata	Metschnikowiaceae	Metschnikowia_bicuspidata	869754	29	27	10	crustacean	wikipedia
-Candida tropicalis	Debaryomycetaceae	Candida_tropicalis	294747	16	2	0	human	NA
-Candida parapsilosis	Debaryomycetaceae	Candida_parapsilosis	5480	15	10	0	human	NA
-Candida glabrata	Saccharomycetaceae	Candida_glabrata	5478	13	0	0	human	NA
-Candida albicans	Debaryomycetaceae	Candida_albicans	237561	12	0	0	human	NA
-Candida haemuloni	Metschnikowiaceae	Candida_haemuloni	45357	12	0	0	human	NA
-Candida pseudohaemulonii	Metschnikowiaceae	Candida_pseudohaemulonii	418784	12	0	0	human	NA
-Candida dubliniensis	Debaryomycetaceae	Candida_dubliniensis	573826	11	0	0	human	NA
-Candida duobushaemulonis	Metschnikowiaceae	Candida_duobushaemulonis	1231522	11	0	0	human	NA
-Kazachstania africana	Saccharomycetaceae	Kazachstania_africana	1071382	10	4	0	no report	NA
-Candida auris	Metschnikowiaceae	Candida_auris	498019	8	0	0	human	NA
-Clavispora lusitaniae	Metschnikowiaceae	Clavispora_lusitaniae	306902	8	2	0	human	NA
-Scheffersomyces stipitis	Debaryomycetaceae	Scheffersomyces_stipitis	913138	7	0	0	no report	NA
-Candida castellii	Saccharomycetaceae	Candida_castellii	1279086	6	3	NA	no report	NA
-Lodderomyces elongisporus	Debaryomycetaceae	Lodderomyces_elongisporus	379508	4	2	0	human (rare)	PMID: 30245829
-Meyerozyma guilliermondii	Debaryomycetaceae	Meyerozyma_guilliermondii	294746	4	1	0	human	NA
-Nakaseomyces delphensis	Saccharomycetaceae	Nakaseomyces_delphensis	1279113	4	1	NA	no report	NA
-Suhomyces tanzawaensis	Debaryomycetaceae	Suhomyces_tanzawaensis	984487	4	3	3	no report	NA
-Yamadazyma tenuis	Debaryomycetaceae	Yamadazyma_tenuis	590646	4	4	2	no report	NA
-Candida orthopsilosis	Debaryomycetaceae	Candida_orthopsilosis	1136231	3	0	0	human	NA
-Debaryomyces hansenii	Debaryomycetaceae	Debaryomyces_hansenii	284592	3	0	0	human (rare)	PMID: 18701668
-Kazachstania naganishii	Saccharomycetaceae	Kazachstania_naganishii	1071383	3	0	0	no report	NA
-Spathaspora passalidarum	Debaryomycetaceae	Spathaspora_passalidarum	619300	3	1	0	no report	NA
-Candida bracarensis	Saccharomycetaceae	Candida_bracarensis	1279114	2	1	NA	human	NA
-Candida nivariensis	Saccharomycetaceae	Candida_nivariensis	1279115	2	1	NA	human	NA
-Cyberlindnera jadinii	Phaffomycetaceae	Cyberlindnera_jadinii	983966	2	1	1	no report	PMID: 30323936
-Naumovozyma dairenensis	Saccharomycetaceae	Naumovozyma_dairenensis	1071378	2	1	0	no report	NA
-Debaryomyces fabryi	Debaryomycetaceae	Debaryomyces_fabryi	58627	1	1	1	no report	NA
-Kluyveromyces lactis	Saccharomycetaceae	Kluyveromyces_lactis	28985	1	0	0	no report	NA
-Lachancea kluyveri	Saccharomycetaceae	Lachancea_kluyveri	4934	1	0	NA	no report	NA
-Nakaseomyces bacillisporus	Saccharomycetaceae	Nakaseomyces_bacillisporus	1279116	1	0	NA	no report	NA
-Naumovozyma castellii	Saccharomycetaceae	Naumovozyma_castellii	1064592	1	0	0	no report	NA
-Saccharomyces cerevisiae	Saccharomycetaceae	Saccharomyces_cerevisiae	559292	0	0	NA	human (rare)	NA
+species	family	treeName	pathogen	reference
+Candida tropicalis	Debaryomycetaceae	Candida_tropicalis	human	NA
+Candida parapsilosis	Debaryomycetaceae	Candida_parapsilosis	human	NA
+Candida glabrata	Saccharomycetaceae	Candida_glabrata	human	NA
+Candida albicans	Debaryomycetaceae	Candida_albicans	human	NA
+Candida auris	Metschnikowiaceae	Candida_auris	human	NA
+Clavispora lusitaniae	Metschnikowiaceae	Clavispora_lusitaniae	human	NA
+Scheffersomyces stipitis	Debaryomycetaceae	Scheffersomyces_stipitis	no report	NA
+Lodderomyces elongisporus	Debaryomycetaceae	Lodderomyces_elongisporus	human (rare)	PMID: 30245829
+Nakaseomyces delphensis	Saccharomycetaceae	Nakaseomyces_delphensis	no report	NA
+Debaryomyces hansenii	Debaryomycetaceae	Debaryomyces_hansenii	human (rare)	PMID: 18701668
+Candida bracarensis	Saccharomycetaceae	Candida_bracarensis	human	NA
+Candida nivariensis	Saccharomycetaceae	Candida_nivariensis	human	NA
+Kluyveromyces lactis	Saccharomycetaceae	Kluyveromyces_lactis	no report	NA
+Lachancea kluyveri	Saccharomycetaceae	Lachancea_kluyveri	no report	NA
+Nakaseomyces bacillisporus	Saccharomycetaceae	Nakaseomyces_bacillisporus	no report	NA
+Saccharomyces cerevisiae	Saccharomycetaceae	Saccharomyces_cerevisiae	human (rare)	NA
+Saccharomyces paradoxus	Saccharomycetaceae	Saccharomyces_paradoxus	no report	NA
+Komagataella pastoris	Phaffomycetaceae	Komagataella_pastoris	no report	NA
+Yarrowia lipolytica	Dipodascaceae	Yarrowia_lipolytica	no report	NA
